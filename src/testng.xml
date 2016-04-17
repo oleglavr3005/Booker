@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<parameter name="loginurl"
+		value="http://localhost:8080/resources/login" />
+	<parameter name="logouturl"
+		value="http://localhost:8080/resources/logout" />
+	<parameter name="browserName"
+		value="firefox" />
+	<!-- 3 ERROR 5 WARNING 7 INFO -->
+	<test verbose="5" name="Test">
+		<parameter name="number" value="2" />
+		<groups>
+            <run>
+               <include name="JScript"/>
+            </run>
+          </groups>  
+		<classes>
+			<class name="com.softserve.edu.rs.tests.ResourceSearchTest">
+			</class>
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
