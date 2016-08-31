@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.epam.task.database.model.Order;
@@ -28,8 +29,8 @@ public class OrderDAO {
 		this.connection = connection;
 	}
 
-	public List<Order> getAll() {
-		List<Order> orders = null;
+	public List<Order> getAllOrders() {
+		List<Order> orders = new ArrayList<>();
 		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ALL_ORDERS);) {
 			ResultSet rs = statement.executeQuery();
 			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);

@@ -16,7 +16,7 @@ public class OrderService {
 	}
 
 	public List<Order> getAllOrders() {
-		return daoManager.executeAndClose(() -> daoManager.getOrderDao().getAll());
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().getAllOrders());
 	}
 
 	public List<Order> getordersByStatus(OrderStatus status) {
