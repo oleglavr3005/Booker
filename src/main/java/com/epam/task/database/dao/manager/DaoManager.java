@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import com.epam.task.database.dao.FeedbackDao;
+import com.epam.task.database.dao.HotelDao;
 import com.epam.task.database.dao.OrderDAO;
 import com.epam.task.database.dao.RoomDao;
 import com.epam.task.database.dao.UserDao;
@@ -16,6 +17,7 @@ public class DaoManager {
     private RoomDao roomDao;
     private FeedbackDao feedbackDao;
     private OrderDAO orderDAO;
+    private HotelDao hotelDao;
     public DaoManager() {
     }
 
@@ -55,6 +57,12 @@ public class DaoManager {
         else orderDAO.setConnection(getConnection());
         return orderDAO;
 	}
+    
+    public HotelDao getHotelDao(){
+    	if(hotelDao == null) hotelDao = new HotelDao(getConnection());
+    	else hotelDao.setConnection(getConnection());
+    	return hotelDao;
+    }
     
     public <T> T executeAndClose(DaoCommand<T> command){
         try{
