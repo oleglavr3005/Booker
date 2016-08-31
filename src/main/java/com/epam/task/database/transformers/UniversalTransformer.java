@@ -3,21 +3,18 @@ package com.epam.task.database.transformers;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class UniversalTransformer {
 	//public static final Logger LOG = Logger.getLogger(UniversalTransformer.class);
 
-	public static <T> Collection<T> getCollectionFromRS(ResultSet result, Class<T> clazz) throws SQLException {
+	public static <T> List<T> getCollectionFromRS(ResultSet result, Class<T> clazz) throws SQLException {
 
-		Collection<T> collection = new ArrayList<T>();
+		List<T> collection = new ArrayList<T>();
 
 		while (result.next()) {
 			collection.add(getCurrentRow(result, clazz));
