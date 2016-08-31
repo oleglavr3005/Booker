@@ -25,13 +25,13 @@ public class RoomDao {
 
 	private final String SQL_UPDATE_ROOM = "UPDATE room "
 			+ "SET hotel_id= ?, number= ?, type= ?, beds_count= ?, double_beds_count= ?, price= ?, has_wifi= ?, "
-			+ "has_shower= ?, has_parking= ?, has_condition= ?, has_pool= ?, has_gym= ? "
+			+ "has_shower= ?, has_parking= ?, has_condition= ?, has_pool= ?, has_gym= ?, "
 			+ "has_balcony= ?, food= ?, days_count= ?, percentage= ?, is_deleted= ? "
 			+ "WHERE room_id= ?;";
 
 	private final String SQL_CHANGE_ROOM_STATUS = "UPDATE room " 
-			+ "SET is_deleted= ?"
-			+ "WHERE id = ?;";
+			+ "SET is_deleted = ? "
+			+ "WHERE room_id = ? ;";
 
 	public RoomDao(Connection connection) {
 		super();
@@ -130,10 +130,10 @@ public class RoomDao {
 		int result = 0;
 		try (PreparedStatement st = connection.prepareStatement(SQL_CHANGE_ROOM_STATUS);) {
 			int i = 1;
-			st.setBoolean(i++, Boolean.FALSE);
+			st.setBoolean(i++, Boolean.TRUE);
 			
 			st.setInt(i++, id);
-	
+			
 			result = st.executeUpdate();
 
 		} catch (SQLException e) {
@@ -146,7 +146,7 @@ public class RoomDao {
 		int result = 0;
 		try (PreparedStatement st = connection.prepareStatement(SQL_CHANGE_ROOM_STATUS);) {
 			int i = 1;
-			st.setBoolean(i++, Boolean.TRUE);
+			st.setBoolean(i++, Boolean.FALSE);
 			
 			st.setInt(i++, id);
 	
