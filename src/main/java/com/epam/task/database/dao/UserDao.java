@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.epam.task.database.model.User;
@@ -29,21 +30,29 @@ public class UserDao {
 		this.connection = connection;
 	}
 
-	public List<User> getAllUsers() throws SQLException{
+	public List<User> getAllUsers() {
 		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL);
 					ResultSet result = statement.executeQuery()) {
 			return UniversalTransformer.getCollectionFromRS(result, User.class);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new ArrayList<>();
 		}
 	}
 	
-	public User getUserById() throws SQLException {
-		try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID);
-				ResultSet result = statement.executeQuery()) {
-			return UniversalTransformer.getObjectFromRS(result, User.class);
+	public User getUserById(int id) {
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID)) {
+			statement.setInt(1, id);
+			try (ResultSet result = statement.executeQuery()) {
+				return UniversalTransformer.getObjectFromRS(result, User.class);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 	
-	public int insertUser(User user) throws SQLException {
+	public int insertUser(User user) {
 		try (PreparedStatement statement = connection.prepareStatement(INSERT)) {
 			int i = 1;
 			statement.setString(i++, user.getFirstName());
@@ -59,10 +68,13 @@ public class UserDao {
 			statement.setString(i++, user.getSocialNetwork().toString());
 			statement.setString(i, user.getSocialNetworkId());
 			return statement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
 		}
 	}
 	
-	public int updateUser(User user) throws SQLException {
+	public int updateUser(User user) {
 		try (PreparedStatement statement = connection.prepareStatement(UPDATE)) {
 			int i = 1;
 			statement.setString(i++, user.getFirstName());
@@ -80,6 +92,9 @@ public class UserDao {
 
 			statement.setInt(i, user.getId());
 			return statement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
 		}
 	}
 }

@@ -1,6 +1,6 @@
 package com.epam.task.database.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import com.epam.task.database.dao.manager.DaoManager;
 import com.epam.task.database.model.User;
@@ -13,11 +13,24 @@ public class UserService {
 		daoManager = new DaoManager();
 	}
 
-//	public Collection<User> getAllUsers() {
-//		return daoManager.executeAndClose(() -> daoManager.getUserDao().getAllUsers());
-//	}
-//	
-//	public void delete(User u) {
-//		daoManager.executeVoidAndClose(() -> daoManager.getUserDao().delete(u));
-//	}
+	public List<User> getAllUsers() {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getAllUsers());
+	}
+	
+	public User getUserById(int id) {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getUserById(id));
+	}
+	
+	public int insertUser(User user) {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().insertUser(user));
+	}
+	
+	public int updateUser(User user) {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().updateUser(user));
+	}
+	
+	public static void main(String[] args) {
+		UserService s = new UserService();
+		s.getUserById(1);
+	}
 }
