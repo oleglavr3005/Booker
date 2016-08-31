@@ -5,8 +5,10 @@ import java.sql.SQLException;
 
 import com.epam.task.database.dao.FeedbackDao;
 import com.epam.task.database.dao.HotelDao;
+import com.epam.task.database.dao.HotelPhotoDao;
 import com.epam.task.database.dao.OrderDAO;
 import com.epam.task.database.dao.RoomDao;
+import com.epam.task.database.dao.RoomPhotoDao;
 import com.epam.task.database.dao.UserDao;
 import com.epam.task.database.util.HikariConnManager;
 
@@ -18,6 +20,10 @@ public class DaoManager {
     private FeedbackDao feedbackDao;
     private OrderDAO orderDAO;
     private HotelDao hotelDao;
+    private HotelPhotoDao hotelPhotoDao;
+	private RoomPhotoDao roomPhotoDao;
+
+    
     public DaoManager() {
     }
 
@@ -64,6 +70,22 @@ public class DaoManager {
     	return hotelDao;
     }
     
+    public HotelPhotoDao getHotelPhotoDao() {
+		if (hotelPhotoDao == null)
+			hotelPhotoDao = new HotelPhotoDao(getConnection());
+		else
+			hotelPhotoDao.setConnection(getConnection());
+		return hotelPhotoDao;
+	}
+
+	public RoomPhotoDao getRoomPhotoDao() {
+		if (roomPhotoDao == null)
+			roomPhotoDao = new RoomPhotoDao(getConnection());
+		else
+			roomPhotoDao.setConnection(getConnection());
+		return roomPhotoDao;
+	}
+	
     public <T> T executeAndClose(DaoCommand<T> command){
         try{
             return command.execute();
