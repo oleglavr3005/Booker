@@ -28,8 +28,8 @@ public class RoomPhotoDao {
 		this.connection = connection;
 	}
 
-	public List<RoomPhoto> getAll() {
-		List<RoomPhoto> photos = null;
+	public List<RoomPhoto> getAllRoomPhotos() {
+		List<RoomPhoto> photos = new ArrayList<>();
 		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ALL);) {
 			ResultSet rs = statement.executeQuery();
 			photos = (List<RoomPhoto>) UniversalTransformer.getCollectionFromRS(rs, RoomPhoto.class);

@@ -14,7 +14,7 @@ public class HotelPhotoService {
 	}
 	
 	public Collection<HotelPhoto> getAllHotelPhotos(){
-		return daoManager.executeAndClose(() -> daoManager.getHotelPhotoDao().getAll());
+		return daoManager.executeAndClose(() -> daoManager.getHotelPhotoDao().getAllHotelPhotos());
 	}
 	
 	public int insertHotelPhoto(HotelPhoto element){

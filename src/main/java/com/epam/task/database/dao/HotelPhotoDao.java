@@ -31,8 +31,8 @@ public class HotelPhotoDao {
 		this.connection = connection;
 	}
 
-	public List<HotelPhoto> getAll() {
-		List<HotelPhoto> photos = null;
+	public List<HotelPhoto> getAllHotelPhotos() {
+		List<HotelPhoto> photos = new ArrayList<>();;
 		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ALL);) {
 			ResultSet rs = statement.executeQuery();
 			photos = (List<HotelPhoto>) UniversalTransformer.getCollectionFromRS(rs, HotelPhoto.class);
@@ -89,12 +89,5 @@ public class HotelPhotoDao {
 			return -1;
 		}
 	}
-	// public Order changeOrder(Order order) {
-	// try (PreparedStatement st = connection.prepareStatement(SQL);) {
-	//
-	// } catch (SQLException e) {
-	// e.printStackTrace();
-	// }
-	// }
 
 }
