@@ -31,6 +31,6 @@ public class UserService {
 	
 	public static void main(String[] args) {
 		UserService s = new UserService();
-		s.getUserById(1);
+		System.out.println(s.getUserById(1));
 	}
 }

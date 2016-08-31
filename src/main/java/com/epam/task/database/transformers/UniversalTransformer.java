@@ -61,9 +61,9 @@ public class UniversalTransformer {
 	}
 
 	private static Object getValue(String fieldName, Class<?> fieldType, ResultSet result) throws SQLException {
-		if (fieldType == String.class) {
+		if (fieldType == String.class || fieldType.isEnum()) {
 			return result.getString(fieldName);
-		}
+		}	
 		if (fieldType == Timestamp.class) {
 			return result.getTimestamp(fieldName);
 		}
