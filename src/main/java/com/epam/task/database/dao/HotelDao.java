@@ -12,6 +12,7 @@ import com.epam.task.database.transformers.UniversalTransformer;
 
 public class HotelDao {
 
+
 	private Connection connection;
 	
 	private final String SELECT_ALL = "SELECT * FROM `hotel`";
@@ -19,6 +20,7 @@ public class HotelDao {
 			+ " manager_id, x_coord, y_coord, rating,"
 			+ " is_deleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	private final String SELECT_BY_ID = SELECT_ALL + " WHERE hotel_id = ?";
+	private final String DELETE_HOTEL = "INSERT hotel SET is_deleted=? WHERE hotel_id = ?";
 	
 	public HotelDao(Connection connection){
 		super();
@@ -29,7 +31,7 @@ public class HotelDao {
 		this.connection = connection;
 	}
 	
-	public List<Hotel> getAllHotel(){
+	public List<Hotel> getAllHotels(){
 		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL);
 				ResultSet result = statement.executeQuery()) {
 			return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
@@ -39,10 +41,12 @@ public class HotelDao {
 		}
 	}
 	
-	public Hotel getHotelById(){
-		try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID);
-				ResultSet result = statement.executeQuery()) {
-			return UniversalTransformer.getObjectFromRS(result, Hotel.class);
+	public Hotel getHotelById(int id) {
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID)) {
+			statement.setInt(1, id);
+			try (ResultSet result = statement.executeQuery()) {
+				return UniversalTransformer.getObjectFromRS(result, Hotel.class);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -65,6 +69,16 @@ public class HotelDao {
 			statement.setBoolean(i++, hotel.isDeleted());
 			return statement.executeUpdate();
 		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	
+	public int deleteHotel(Hotel hotel) {
+		try (PreparedStatement statment = connection.prepareStatement(DELETE_HOTEL)) {
+			statment.setInt(1, hotel.getId());
+			return statment.executeUpdate();
+		} catch (Exception e) {
 			e.printStackTrace();
 			return -1;
 		}
