@@ -128,13 +128,29 @@ public class RoomDao {
 		return result;
 	}
 
-	public int changeRoomStatus(Room room) { 
+	public int removeRoom(int id) { 
 		int result = 0;
 		try (PreparedStatement st = connection.prepareStatement(SQL_CHANGE_ROOM_STATUS);) {
 			int i = 1;
-			st.setBoolean(i++, room.getDeleted());
+			st.setBoolean(i++, Boolean.FALSE);
 			
-			st.setInt(i++, room.getId());
+			st.setInt(i++, id);
+	
+			result = st.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public int restoreRoom(int id) { 
+		int result = 0;
+		try (PreparedStatement st = connection.prepareStatement(SQL_CHANGE_ROOM_STATUS);) {
+			int i = 1;
+			st.setBoolean(i++, Boolean.TRUE);
+			
+			st.setInt(i++, id);
 	
 			result = st.executeUpdate();
 

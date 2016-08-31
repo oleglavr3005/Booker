@@ -30,8 +30,12 @@ public class RoomService {
 		return daoManager.executeAndClose(() -> daoManager.getRoomDao().updateRoom(room));
 	}
 
-	public Integer changeRoomStatus(Room room) {
-		return daoManager.executeAndClose(() -> daoManager.getRoomDao().updateRoom(room));
+	public Integer removeRoom(int id) {
+		return daoManager.executeAndClose(() -> daoManager.getRoomDao().removeRoom(id));
+	}
+
+	public Integer restoreRoom(int id) {
+		return daoManager.executeAndClose(() -> daoManager.getRoomDao().restoreRoom(id));
 	}
 
 }
