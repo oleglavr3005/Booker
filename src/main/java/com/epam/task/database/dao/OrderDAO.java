@@ -20,6 +20,9 @@ public class OrderDAO {
 	private final String SQL_READ_ORDER_BY_ID = "SELECT * FROM order WHERE order_id = ?";
 	private final String SQL_UPDATE_ORDER = "UPDATE order SET user_id = ?, room_id = ?, start_date = ?, end_date = ?, status = ?, order_date = ?, price = ?";
 	private final String SQL_GET_ALL_ORDERS_BY_STATUS = "SELECT * FROM order WHERE status LIKE ?;";
+	private final String SQL_GET_ORDER_BY_USER_ID = "SELECT * FROM order WHERE user_id = ?";
+	private final String SQL_GET_ORDER_BY_ROOM_ID = "SELECT * FROM order WHERE room_id = ?";
+
 	public OrderDAO(Connection connection) {
 		super();
 		this.connection = connection;
@@ -87,11 +90,35 @@ public class OrderDAO {
 		}
 		return result;
 	}
-	
-	public List<Order> getOrdersByStatus(OrderStatus status){
-		List<Order> orders = null;
+
+	public List<Order> getOrdersByStatus(OrderStatus status) {
+		List<Order> orders = new ArrayList<>();
 		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ALL_ORDERS_BY_STATUS);) {
 			statement.setString(1, status.toString());
+			ResultSet rs = statement.executeQuery();
+			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return orders;
+	}
+
+	public List<Order> getOrdersByUser(int userId) {
+		List<Order> orders = new ArrayList<>();
+		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ORDER_BY_USER_ID);) {
+			statement.setInt(1, userId);
+			ResultSet rs = statement.executeQuery();
+			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return orders;
+	}
+
+	public List<Order> getOrdersByRoom(int roomId) {
+		List<Order> orders = new ArrayList<>();
+		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ORDER_BY_ROOM_ID);) {
+			statement.setInt(1, roomId);
 			ResultSet rs = statement.executeQuery();
 			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
 		} catch (SQLException e) {
