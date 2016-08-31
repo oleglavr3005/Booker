@@ -50,7 +50,7 @@ public class DaoManager {
         return feedbackDao;
 	}
     
-    public OrderDAO getOrderkDao() {
+    public OrderDAO getOrderDao() {
     	if (orderDAO == null) orderDAO = new OrderDAO(getConnection());
         else orderDAO.setConnection(getConnection());
         return orderDAO;
