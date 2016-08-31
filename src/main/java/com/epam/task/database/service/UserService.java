@@ -5,9 +5,11 @@ import java.util.List;
 import com.epam.task.database.dao.manager.DaoManager;
 import com.epam.task.database.model.User;
 
+
+
 public class UserService {
 	private DaoManager daoManager;
-
+	
 	public UserService() {
 		super();
 		daoManager = new DaoManager();
@@ -31,6 +33,8 @@ public class UserService {
 	
 	public static void main(String[] args) {
 		UserService s = new UserService();
-		System.out.println(s.getUserById(1));
+		for(int i = 0; i < 10000; i++){
+		System.out.println(i + " " + s.getUserById(1));
+		}
 	}
 }

@@ -28,4 +28,6 @@ public class FeedbackService {
 	public int deleteFeedback(Feedback element){
 		return daoManager.executeAndClose(() -> daoManager.getFeedbackDao().deleteFeedback(element));
 	}
+	
+	
 }

@@ -4,11 +4,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import com.epam.task.database.dao.FeedbackDao;
-import com.epam.task.database.dao.HotelDao;
 import com.epam.task.database.dao.OrderDAO;
 import com.epam.task.database.dao.RoomDao;
 import com.epam.task.database.dao.UserDao;
-import com.epam.task.database.util.ConnectionManager;
+import com.epam.task.database.util.HikariConnManager;
 
 public class DaoManager {
 
@@ -17,14 +16,13 @@ public class DaoManager {
     private RoomDao roomDao;
     private FeedbackDao feedbackDao;
     private OrderDAO orderDAO;
-    private HotelDao hotelDao;
     public DaoManager() {
     }
 
     private Connection getConnection(){
         try {
             if(this.connection == null || this.connection.isClosed()){
-                this.connection = ConnectionManager.getConnection();
+                this.connection = HikariConnManager.getConnection();
                 if (connection == null) throw new NullPointerException("No connection.");
             }
         } catch (SQLException e) {
@@ -57,12 +55,6 @@ public class DaoManager {
         else orderDAO.setConnection(getConnection());
         return orderDAO;
 	}
-    
-    public HotelDao getHotelDao(){
-    	if(hotelDao == null) hotelDao = new HotelDao(getConnection());
-    	else hotelDao.setConnection(getConnection());
-    	return hotelDao;
-    }
     
     public <T> T executeAndClose(DaoCommand<T> command){
         try{

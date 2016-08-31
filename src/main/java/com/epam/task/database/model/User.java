@@ -41,13 +41,13 @@ public class User {
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
-		this.type = UserType.valueOf(type);
+		this.type = type == null ? null : UserType.valueOf(type);
 		this.isBanned = isBanned;
 		this.confirmCode = confirmCode;
-		this.status = UserStatus.valueOf(status);
+		this.status = status == null ? null : UserStatus.valueOf(status);
 		this.phoneNumber = phoneNumber;
 		this.image = image;
-		this.socialNetwork = SocialNetwork.valueOf(socialNetwork);
+		this.socialNetwork = socialNetwork == null ? null : SocialNetwork.valueOf(socialNetwork);
 		this.socialNetworkId = socialNetworkId;
 	}
 	public int getId() {
@@ -84,7 +84,7 @@ public class User {
 		return type;
 	}
 	public void setType(String type) {
-		this.type = UserType.valueOf(type);
+		this.type = type == null ? null : UserType.valueOf(type);
 	}
 	public boolean isBanned() {
 		return isBanned;
@@ -102,7 +102,7 @@ public class User {
 		return status;
 	}
 	public void setStatus(String status) {
-		this.status = UserStatus.valueOf(status);
+		this.status = status == null ? null : UserStatus.valueOf(status);
 	}
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -120,7 +120,7 @@ public class User {
 		return socialNetwork;
 	}
 	public void setSocialNetwork(String socialNetwork) {
-		this.socialNetwork = SocialNetwork.valueOf(socialNetwork);
+		this.socialNetwork = socialNetwork == null ? null : SocialNetwork.valueOf(socialNetwork);
 	}
 	public String getSocialNetworkId() {
 		return socialNetworkId;
