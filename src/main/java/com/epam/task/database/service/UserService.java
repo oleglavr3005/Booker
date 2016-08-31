@@ -13,11 +13,11 @@ public class UserService {
 		daoManager = new DaoManager();
 	}
 
-	public Collection<User> getAllUsers() {
-		return daoManager.executeAndClose(() -> daoManager.getUserDao().getAllUsers());
-	}
-	
-	public void delete(User u) {
-		daoManager.executeVoidAndClose(() -> daoManager.getUserDao().delete(u));
-	}
+//	public Collection<User> getAllUsers() {
+//		return daoManager.executeAndClose(() -> daoManager.getUserDao().getAllUsers());
+//	}
+//	
+//	public void delete(User u) {
+//		daoManager.executeVoidAndClose(() -> daoManager.getUserDao().delete(u));
+//	}
 }
