@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -66,11 +67,8 @@ public class UniversalTransformer {
 		if (fieldType == String.class) {
 			return result.getString(fieldName);
 		}
-		if (fieldType == Date.class) {
-			return result.getDate(fieldName);
-		}
-		if (fieldType == Time.class) {
-			return result.getTime(fieldName);
+		if (fieldType == Timestamp.class) {
+			return result.getTimestamp(fieldName);
 		}
 		if (fieldType == int.class) {
 			return result.getInt(fieldName);
