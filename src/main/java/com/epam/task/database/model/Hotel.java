@@ -4,8 +4,24 @@ import com.epam.task.database.transformers.DataBaseField;
 
 public class Hotel {
 
+	public Hotel(int id, String name, String city, String street, int stars, String desc, int managerId,
+			double xCoord, double yCoord, double rating, boolean isDeleted) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.city = city;
+		this.street = street;
+		this.stars = stars;
+		this.desc = desc;
+		this.managerId = managerId;
+		this.xCoord = xCoord;
+		this.yCoord = yCoord;
+		this.rating = rating;
+		this.isDeleted = isDeleted;
+	}
+	
 	@DataBaseField(fieldName = "hotel_id")
-	private int hotelId;
+	private int id;
 	@DataBaseField(fieldName = "name")
 	private String name;
 	@DataBaseField(fieldName = "city")
@@ -27,11 +43,11 @@ public class Hotel {
 	@DataBaseField(fieldName = "is_deleted")
 	private boolean isDeleted;
 	
-	public int getHotelId() {
-		return hotelId;
+	public int getId() {
+		return id;
 	}
-	public void setHotelId(int hotelId) {
-		this.hotelId = hotelId;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -93,4 +109,12 @@ public class Hotel {
 	public void setDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
 	}
+	
+	@Override
+	public String toString() {
+		return "Hotel [hotelId=" + id + ", name=" + name + ", city=" + city + ", street=" + street + ", stars="
+				+ stars + ", desc=" + desc + ", managerId=" + managerId + ", xCoord=" + xCoord + ", yCoord=" + yCoord
+				+ ", rating=" + rating + ", isDeleted=" + isDeleted + "]";
+	}
+	
 }
