@@ -1,17 +1,12 @@
 package com.epam.task.database.dao;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.List;
 
-public class UserDao {
+public class RoomDao {
 
 	private Connection connection;
 	
-	private final String SQL_DELETE_USER = "DELETE FROM user " + "WHERE id = ?;";
-
-	public UserDao(Connection connection) {
+	public RoomDao(Connection connection) {
 		super();
 		this.connection = connection;
 	}
@@ -20,5 +15,5 @@ public class UserDao {
 		this.connection = connection;
 	}
 
-	
+
 }

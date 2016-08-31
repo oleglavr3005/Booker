@@ -3,12 +3,15 @@ package com.epam.task.database.dao.manager;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import com.epam.task.database.dao.RoomDao;
+import com.epam.task.database.dao.UserDao;
 import com.epam.task.database.util.ConnectionManager;
 
 public class DaoManager {
 
     private Connection connection;
-//    private UserDao userDao;
+    private UserDao userDao;
+    private RoomDao roomDao;
 
     public DaoManager() {
     }
@@ -26,11 +29,17 @@ public class DaoManager {
         return connection;
     }
 
-//    public UserDao getUserDao() {
-//        if (userDao == null) userDao = new UserDao(getConnection());
-//        else userDao.setConnection(getConnection());
-//        return userDao;
-//    }
+    public UserDao getUserDao() {
+        if (userDao == null) userDao = new UserDao(getConnection());
+        else userDao.setConnection(getConnection());
+        return userDao;
+    }
+
+    public RoomDao getRoomDao() {
+        if (roomDao == null) roomDao = new RoomDao(getConnection());
+        else roomDao.setConnection(getConnection());
+        return roomDao;
+    }
 
     public <T> T executeAndClose(DaoCommand<T> command){
         try{
