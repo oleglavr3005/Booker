@@ -45,38 +45,40 @@ public class UserDao {
 	
 	public int insertUser(User user) throws SQLException {
 		try (PreparedStatement statement = connection.prepareStatement(INSERT)) {
-			statement.setString(1, user.getFirstName());
-			statement.setString(2, user.getLastName());
-			statement.setString(3, user.getEmail());
-			statement.setString(4, user.getPassword());
-			statement.setString(5, user.getType().toString());
-			statement.setBoolean(6, user.isBanned());
-			statement.setString(7, user.getConfirmCode());
-			statement.setString(8, user.getStatus().toString());
-			statement.setString(9, user.getPhoneNumber());
-			statement.setString(10, user.getImage());
-			statement.setString(11, user.getSocialNetwork().toString());
-			statement.setString(12, user.getSocialNetworkId());
+			int i = 1;
+			statement.setString(i++, user.getFirstName());
+			statement.setString(i++, user.getLastName());
+			statement.setString(i++, user.getEmail());
+			statement.setString(i++, user.getPassword());
+			statement.setString(i++, user.getType().toString());
+			statement.setBoolean(i++, user.isBanned());
+			statement.setString(i++, user.getConfirmCode());
+			statement.setString(i++, user.getStatus().toString());
+			statement.setString(i++, user.getPhoneNumber());
+			statement.setString(i++, user.getImage());
+			statement.setString(i++, user.getSocialNetwork().toString());
+			statement.setString(i, user.getSocialNetworkId());
 			return statement.executeUpdate();
 		}
 	}
 	
 	public int updateUser(User user) throws SQLException {
 		try (PreparedStatement statement = connection.prepareStatement(UPDATE)) {
-			statement.setString(1, user.getFirstName());
-			statement.setString(2, user.getLastName());
-			statement.setString(3, user.getEmail());
-			statement.setString(4, user.getPassword());
-			statement.setString(5, user.getType().toString());
-			statement.setBoolean(6, user.isBanned());
-			statement.setString(7, user.getConfirmCode());
-			statement.setString(8, user.getStatus().toString());
-			statement.setString(9, user.getPhoneNumber());
-			statement.setString(10, user.getImage());
-			statement.setString(11, user.getSocialNetwork().toString());
-			statement.setString(12, user.getSocialNetworkId());
+			int i = 1;
+			statement.setString(i++, user.getFirstName());
+			statement.setString(i++, user.getLastName());
+			statement.setString(i++, user.getEmail());
+			statement.setString(i++, user.getPassword());
+			statement.setString(i++, user.getType().toString());
+			statement.setBoolean(i++, user.isBanned());
+			statement.setString(i++, user.getConfirmCode());
+			statement.setString(i++, user.getStatus().toString());
+			statement.setString(i++, user.getPhoneNumber());
+			statement.setString(i++, user.getImage());
+			statement.setString(i++, user.getSocialNetwork().toString());
+			statement.setString(i++, user.getSocialNetworkId());
 
-			statement.setInt(13, user.getId());
+			statement.setInt(i, user.getId());
 			return statement.executeUpdate();
 		}
 	}
