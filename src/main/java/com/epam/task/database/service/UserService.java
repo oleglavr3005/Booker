@@ -33,7 +33,7 @@ public class UserService {
 	
 	public static void main(String[] args) {
 		UserService s = new UserService();
-		for(int i = 0; i < 10000; i++){
+		for(int i = 0; i < 10; i++){
 		System.out.println(i + " " + s.getUserById(1));
 		}
 	}

@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.epam.task.database.model.User;
+import com.epam.task.database.model.enums.UserStatus;
+import com.epam.task.database.model.enums.UserType;
 import com.epam.task.database.transformers.UniversalTransformer;
 
 public class UserDao {
@@ -16,7 +18,9 @@ public class UserDao {
 	
 	private final String SELECT_ALL = "SELECT * FROM `user`";
 	private final String SELECT_BY_ID = SELECT_ALL + " WHERE user_id = ?";
-	//private final String SQL_DELETE_USER = "DELETE FROM user " + "WHERE id = ?;";
+	private final String SELECT_BY_EMAIL = SELECT_ALL + " WHERE e_mail LIKE ?";
+	private final String SELECT_BY_STATUS = SELECT_ALL + " WHERE status LIKE ?";
+	private final String SELECT_BY_TYPE	 = SELECT_ALL + " WHERE type LIKE ?";
 	
 	private final String INSERT = "INSERT INTO `user` (first_name, last_name, e_mail, password, type, is_banned, confirm_code, status, phone_number, img, social_network, social_network_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private final String UPDATE = "UPDATE `user` SET first_name = ?, last_name = ?, e_mail = ?, password = ?, type = ?, is_banned = ?, confirm_code = ?, status = ?, phone_number = ?, img = ?, social_network = ?, social_network_id = ? WHERE user_id = ?";
@@ -43,6 +47,42 @@ public class UserDao {
 	public User getUserById(int id) {
 		try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID)) {
 			statement.setInt(1, id);
+			try (ResultSet result = statement.executeQuery()) {
+				return UniversalTransformer.getObjectFromRS(result, User.class);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public User getUserByEmail(String email) {
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_EMAIL)) {
+			statement.setString(1, email);
+			try (ResultSet result = statement.executeQuery()) {
+				return UniversalTransformer.getObjectFromRS(result, User.class);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public User getUserByStatus(UserStatus status) {
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_STATUS)) {
+			statement.setString(1, status.toString());
+			try (ResultSet result = statement.executeQuery()) {
+				return UniversalTransformer.getObjectFromRS(result, User.class);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public User getUserByStatus(UserType type) {
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_TYPE)) {
+			statement.setString(1, type.toString());
 			try (ResultSet result = statement.executeQuery()) {
 				return UniversalTransformer.getObjectFromRS(result, User.class);
 			}
