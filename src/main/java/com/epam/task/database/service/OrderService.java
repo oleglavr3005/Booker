@@ -34,4 +34,12 @@ public class OrderService {
 	public int insertOrder(Order order) {
 		return daoManager.executeAndClose(() -> daoManager.getOrderDao().insertOrder(order));
 	}
+
+	public List<Order> getordersByUser(int userId) {
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().getOrdersByUser(userId));
+	}
+
+	public List<Order> getordersByRoom(int roomId) {
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().getOrdersByUser(roomId));
+	}
 }
