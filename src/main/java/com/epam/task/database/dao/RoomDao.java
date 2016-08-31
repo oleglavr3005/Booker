@@ -14,10 +14,8 @@ public class RoomDao {
 
 	private Connection connection;
 
-	// перевірити булеан
 	private final String GET_ALL_ACIVE_ROOMS_FOR_HOTEL = "SELECT * FROM room WHERE hotel_id = ? AND is_deleted = 'false'";
 	
-	// перевірити булеан
 	private final String GET_ALL_ROOMS_FOR_HOTEL = "SELECT * FROM room WHERE hotel_id = ?";
 
 	private final String SQL_INSERT_ROOM = "INSERT INTO room "
@@ -159,5 +157,6 @@ public class RoomDao {
 		}
 		return result;
 	}
+	
 	
 }

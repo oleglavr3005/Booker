@@ -13,7 +13,7 @@ public class Room {
 		this.id = id;
 		this.hotelId = hotelId;
 		this.number = number;
-		this.type = RoomType.valueOf(type);
+		this.type = type == null ? null : RoomType.valueOf(type);
 		this.bedsCount = bedsCount;
 		this.doubleBedsCount = doubleBedsCount;
 		this.price = price;
@@ -24,7 +24,7 @@ public class Room {
 		this.pool = pool;
 		this.gym = gym;
 		this.balcony = balcony;
-		this.food = RoomFood.valueOf(food);
+		this.food = food == null ? null : RoomFood.valueOf(food);
 		this.daysCount = daysCount;
 		this.percentage = percentage;
 		this.deleted = deleted;
@@ -112,8 +112,8 @@ public class Room {
 		return type;
 	}
 
-	public void setType(RoomType type) {
-		this.type = type;
+	public void setType(String type) {
+		this.type = type == null ? null : RoomType.valueOf(type);
 	}
 
 	public Integer getBedsCount() {
@@ -199,9 +199,9 @@ public class Room {
 	public RoomFood getFood() {
 		return food;
 	}
-
-	public void setFood(RoomFood food) {
-		this.food = food;
+	
+	public void setFood(String food) {
+		this.food = food == null ? null : RoomFood.valueOf(food);
 	}
 
 	public Integer getDaysCount() {
