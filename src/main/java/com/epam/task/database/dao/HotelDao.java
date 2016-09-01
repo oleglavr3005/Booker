@@ -21,7 +21,7 @@ public class HotelDao {
 			+ "WHERE (h.name REGEXP ? OR h.city REGEXP ? OR h.street REGEXP ?) AND h.stars >= ? AND h.stars <= ? AND h.is_deleted = false AND "
 			+ "? <= (SELECT SUM(double_beds_count)*2 + SUM(beds_count) FROM room r2 WHERE r2.room_id = r.room_id GROUP BY r2.hotel_id) AND "
 			+ "r.price >= ? AND r.price <= ? AND r.is_deleted = false AND "
-			+ "(o.end_date <= ? OR o.start_date >= ? OR o.status LIKE 'canceled')";
+			+ "(o.end_date IS NULL OR o.end_date <= ? OR o.start_date >= ? OR o.status LIKE 'canceled')";
 
 	private final String TYPE_STANDART = "r.type LIKE 'STANDART'";
 	private final String TYPE_LUX = "r.type LIKE 'LUX'";
@@ -170,6 +170,7 @@ public class HotelDao {
 			statement.setTimestamp(i++, startDate);
 			statement.setTimestamp(i, endDate);
 			
+			System.out.println(statement.toString());
 			try (ResultSet result = statement.executeQuery()) {
 				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
 			}
