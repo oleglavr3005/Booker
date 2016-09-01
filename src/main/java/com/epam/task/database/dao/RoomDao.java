@@ -32,6 +32,9 @@ public class RoomDao {
 	private final String SQL_CHANGE_ROOM_STATUS = "UPDATE room " 
 			+ "SET is_deleted = ? "
 			+ "WHERE room_id = ? ;";
+	
+	private final String GET_MIN_PRICE = "SELECT MIN(price) FROM room WHERE is_deleted = false";
+	private final String GET_MAX_PRICE = "SELECT MAX(price) FROM room WHERE is_deleted = false";
 
 	public RoomDao(Connection connection) {
 		super();
@@ -66,7 +69,7 @@ public class RoomDao {
 	
 	public int insertRoom(Room room) { 
 		int result = 0;
-		try (PreparedStatement st = connection.prepareStatement(SQL_INSERT_ROOM);) {
+		try (PreparedStatement st = connection.prepareStatement(SQL_INSERT_ROOM)) {
 			int i = 1;
 			st.setInt(i++, room.getHotelId());
 			st.setString(i++, room.getNumber());
@@ -96,7 +99,7 @@ public class RoomDao {
 	
 	public int updateRoom(Room room) { 
 		int result = 0;
-		try (PreparedStatement st = connection.prepareStatement(SQL_UPDATE_ROOM);) {
+		try (PreparedStatement st = connection.prepareStatement(SQL_UPDATE_ROOM)) {
 			int i = 1;
 			st.setInt(i++, room.getHotelId());
 			st.setString(i++, room.getNumber());
@@ -128,7 +131,7 @@ public class RoomDao {
 
 	public int removeRoom(int id) { 
 		int result = 0;
-		try (PreparedStatement st = connection.prepareStatement(SQL_CHANGE_ROOM_STATUS);) {
+		try (PreparedStatement st = connection.prepareStatement(SQL_CHANGE_ROOM_STATUS)) {
 			int i = 1;
 			st.setBoolean(i++, Boolean.TRUE);
 			
@@ -144,7 +147,7 @@ public class RoomDao {
 	
 	public int restoreRoom(int id) { 
 		int result = 0;
-		try (PreparedStatement st = connection.prepareStatement(SQL_CHANGE_ROOM_STATUS);) {
+		try (PreparedStatement st = connection.prepareStatement(SQL_CHANGE_ROOM_STATUS)) {
 			int i = 1;
 			st.setBoolean(i++, Boolean.FALSE);
 			
@@ -158,5 +161,33 @@ public class RoomDao {
 		return result;
 	}
 	
+	public int getMinPrice(){
+		try(PreparedStatement st = connection.prepareStatement(GET_MIN_PRICE)){
+			ResultSet result = st.executeQuery();
+			if(result.next()) {
+				return result.getInt(1);
+			} else {
+				return 0;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
+		
+	}
 	
+	public int getMaxPrice(){
+		try(PreparedStatement st = connection.prepareStatement(GET_MAX_PRICE)){
+			ResultSet result = st.executeQuery();
+			if(result.next()) {
+				return result.getInt(1);
+			} else {
+				return 0;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
+		
+	}
 }
