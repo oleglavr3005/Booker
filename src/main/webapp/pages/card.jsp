@@ -38,20 +38,45 @@ b {
 
 	<div id="hotel_card_${hotel.id}" class="col s10 offset-s1">
 		<div class="card">
+		
 			<div class="container-fluid">
 				<div class="row">
-					
+
 					<div class="card-image col s4" style="position: relative;">
 						<a
 							href="${pageContext.servletContext.contextPath}/booker/hotel/${hotel.id}">
 							<img src="<i:urlToImage url="${hotel.photo}" />"
 							style="height: 170px; width: 200px; padding: 10px;">
 						</a>
-					
+
+					</div>
+
+					<div class="col s6">
+						<div class="row">
+							<span>${hotel.name}</span> <span>STAR_ZONE</span>
+						</div>
+
+						<div class="row">
+							<i class="fa fa-2x icon-map-marker" aria-hidden="true"></i> <span>${hotel.city}
+								${hotel.street}</span>
+						</div>
+
+						<div class="row">
+							<i class="material-icons prefix"
+								style="margin-left: -5px; margin-right: 10px; margin-top: 14px;">receipt</i>
+							<span>${hotel.desc}</span>
+						</div>
 					</div>
 					
-					<div class="col s8">
-						<h3>${hotel.name}</h3>
+					<div class="col s2">
+						<div class="row">
+							<i class="fa fa-2x fa-star" aria-hidden="true"></i> <span>RATING : ${hotel.rating }</span>
+						</div>
+						
+						
+						<div class="row" style="margin-top : 50px">
+							<i class="fa fa-2x fa-star" aria-hidden="true"></i> <span>BUTTON READ INFO</span>
+						</div>
 					
 					</div>
 				</div>
