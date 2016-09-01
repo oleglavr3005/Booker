@@ -27,7 +27,10 @@ public class HomeServlet extends HttpServlet {
 		HotelService hotelService = new HotelService();
 		HotelPhotoService hotelPhotoService = new HotelPhotoService();
 		
-		List<Hotel> hotels = hotelService.getAllHotels();
+		String pageString = request.getParameter("page");
+		int page = pageString == null ? 1 : Integer.parseInt(pageString);
+		
+		List<Hotel> hotels = hotelService.getAllHotelsByPage(page);
 		
 		for(Hotel hotel : hotels){
 			hotel.setPhotos(hotelPhotoService.getHotelPhotosByHotel(hotel.getId()));

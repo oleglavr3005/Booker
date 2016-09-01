@@ -17,6 +17,8 @@ public class HotelDao {
 	private Connection connection;
 	
 	private final String SELECT_ALL = "SELECT * FROM `hotel`";
+	private final String PAGINATION = " LIMIT ?, 3";
+	
 	private final String SELECT_ALL_SUITABLE = "SELECT DISTINCT h.* FROM hotel h INNER JOIN room r ON h.hotel_id = r.hotel_id LEFT JOIN `order` o ON o.room_id = r.room_id "
 			+ "WHERE (h.name REGEXP ? OR h.city REGEXP ? OR h.street REGEXP ?) AND h.stars >= ? AND h.stars <= ? AND h.is_deleted = false AND "
 			+ "? <= (SELECT SUM(double_beds_count)*2 + SUM(beds_count) FROM room r2 WHERE r2.room_id = r.room_id GROUP BY r2.hotel_id) AND "
@@ -40,7 +42,6 @@ public class HotelDao {
 	private final String HAS_GYM = " AND r.has_gym = true";
 	private final String HAS_BALCONY = " AND r.has_balcony = true";
 	private final String NO_DEPOSIT = " AND r.days_count < 0";
-
 	
 	private final String INSERT_HOTEL = "INSERT INTO `hotel` (name, city, street, stars, desc,"
 			+ " manager_id, x_coord, y_coord, rating,"
@@ -69,6 +70,18 @@ public class HotelDao {
 			return new ArrayList<>();
 		}
 	}
+
+	public List<Hotel> getAllHotelsByPage(int page) {
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL + PAGINATION)) {
+			statement.setInt(1, (page-1)*3);
+			try (ResultSet result = statement.executeQuery()) {
+				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new ArrayList<>();
+		}
+	}
 	
 	public List<Hotel> getAllSuitableHotels(String name, int minStars, int maxStars, int people,	//main search
 			boolean typeStandart, boolean typeLux, boolean typeDelux, 								//room type
@@ -76,7 +89,7 @@ public class HotelDao {
 			int minPrice, int maxPrice,																//price
 			boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, 			//additional
 			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit, 
-			Timestamp startDate, Timestamp endDate){												//dates
+			Timestamp startDate, Timestamp endDate, int page){												//dates
 		
 		StringBuilder SQL = new StringBuilder(SELECT_ALL_SUITABLE);
 		//ROOM TYPE
@@ -153,6 +166,7 @@ public class HotelDao {
 			SQL.append(NO_DEPOSIT);
 		}
 		
+		SQL.append(PAGINATION);
 		try (PreparedStatement statement = connection.prepareStatement(SQL.toString())) {
 			int i = 1;
 			statement.setString(i++, ".*" + name + ".*");
@@ -168,9 +182,10 @@ public class HotelDao {
 			statement.setInt(i++, maxPrice);
 			
 			statement.setTimestamp(i++, startDate);
-			statement.setTimestamp(i, endDate);
+			statement.setTimestamp(i++, endDate);
 			
-			System.out.println(statement.toString());
+			statement.setInt(i, (page-1)*3);
+			
 			try (ResultSet result = statement.executeQuery()) {
 				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
 			}

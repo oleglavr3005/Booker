@@ -64,13 +64,15 @@ public class FindHotelsServlet extends HttpServlet {
 		} catch (ParseException e) {
 			endDate = new Timestamp(new Date().getTime());
 		}
-		
+
+		String pageString = request.getParameter("page");
+		int page = pageString == null ? 1 : Integer.parseInt(pageString);
 		List<Hotel> suitableHotels = new HotelService().getAllSuitableHotels(name, minStars, maxStars, people, 
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull, 
 				minPrice, maxPrice, 
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
-				startDate, endDate);
+				startDate, endDate, page);
 		
 		for(Hotel hotel : suitableHotels) {
 			System.out.println(hotel);
