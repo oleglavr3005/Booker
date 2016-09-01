@@ -15,6 +15,14 @@ public class RoomPhoto {
 	@DataBaseField(fieldName = "room_id")
 	private int roomId;
 
+	public RoomPhoto(int id, String img, String desc, int roomId) {
+		super();
+		this.id=id;
+		this.img = img;
+		this.desc = desc;
+		this.roomId = roomId;
+	} 
+	
 	public int getId() {
 		return id;
 	}
