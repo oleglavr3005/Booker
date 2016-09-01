@@ -187,36 +187,36 @@ div #sidebar-wrapper {
 			</div>
 		</div>
 		<div class="row">
-			<table id="example" class="display">
-				<thead>
-					<tr>
-						<th>Name</th>
+		<table id="example" class="display">
+    <thead>
+        <tr>
+          	<th>Name</th>
 						<th>Position</th>
 						<th>Office</th>
-					</tr>
-				</thead>
+        </tr>
+    </thead>
 
-				<c:forEach items="${rooms}" var="room">
-					<tbody>
-						<tr>
+						<c:forEach items="${rooms}" var="room">
+						    <tbody>
+    <tr>
 							<td><c:out value="${ room.price}"></c:out></td>
 							<td><c:out value="${ room.price}"></c:out></td>
 							<td><c:out value="${ room.price}"></c:out></td>
-
+						
 						</tr>
-				</c:forEach>
-
-				<tr>
-					<td>Row 1 Data 1</td>
-					<td>Row 1 Data 2</td>
-				</tr>
-				<tr>
-					<td>Row 2 Data 1</td>
-					<td>Row 2 Data 2</td>
-				</tr>
-				</tbody>
-			</table>
-
+						</c:forEach>
+					
+        <tr>
+            <td>Row 1 Data 1</td>
+            <td>Row 1 Data 2</td>
+        </tr>
+        <tr>
+            <td>Row 2 Data 1</td>
+            <td>Row 2 Data 2</td>
+        </tr>
+    </tbody>
+</table>
+			
 		</div>
 	</div>
 
