@@ -46,7 +46,7 @@ public class HotelDao {
 			+ " manager_id, x_coord, y_coord, rating,"
 			+ " is_deleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	private final String SELECT_BY_ID = SELECT_ALL + " WHERE hotel_id = ?";
-	private final String DELETE_HOTEL = "INSERT hotel SET is_deleted=? WHERE hotel_id = ?";
+	private final String CHANGE_HOTEL_STATUS = "UPDATE `hotel` SET is_deleted = ? WHERE hotel_id = ?";
 	private final String UPDATE_HOTEL = "UPDATE `hotel` SET hotel_id = ?, name = ?,"
 			+ " city = ?, street = ?, stars = ?, desc = ?, manager_id = ?,"
 			+ " x_coord = ?, y_coord = ?, rating = ?, WHERE hotel_id = ?";
@@ -212,9 +212,21 @@ public class HotelDao {
 		}
 	}
 	
-	public int deleteHotel(Hotel hotel) {
-		try (PreparedStatement statment = connection.prepareStatement(DELETE_HOTEL)) {
-			statment.setInt(1, hotel.getId());
+	public int removeHotel(Hotel hotel) {
+		try (PreparedStatement statment = connection.prepareStatement(CHANGE_HOTEL_STATUS)) {
+			statment.setBoolean(1, true);
+			statment.setInt(2, hotel.getId());
+			return statment.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	
+	public int restoreHotel(Hotel hotel) {
+		try (PreparedStatement statment = connection.prepareStatement(CHANGE_HOTEL_STATUS)) {
+			statment.setBoolean(1, true);
+			statment.setInt(2, hotel.getId());
 			return statment.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

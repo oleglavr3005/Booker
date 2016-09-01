@@ -43,8 +43,8 @@ private DaoManager daoManager;
 		return daoManager.executeAndClose(() -> daoManager.getHotelDao().insertHotel(hotel));
 	}
 	
-	public int deleteHotel(Hotel hotel){
-		return daoManager.executeAndClose(() -> daoManager.getHotelDao().deleteHotel(hotel));
+	public int removeHotel(Hotel hotel){
+		return daoManager.executeAndClose(() -> daoManager.getHotelDao().removeHotel(hotel));
 	}
 	
 	public int updateHotel(Hotel hotel){
