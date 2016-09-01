@@ -44,12 +44,31 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css"
 	rel="stylesheet">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
 <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-<script src="js/bootstrap-image-gallery.min.js"></script>
+<script
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+
+
+
+<!-- JTable -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8"
+	src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#example').DataTable();
+} );
+</script>
 <style>
 div #sidebar-wrapper {
 	position: relative;
@@ -85,7 +104,35 @@ div #sidebar-wrapper {
 
 
 <body>
-
+	<div id="blueimp-gallery" class="blueimp-gallery">
+		<!-- The container for the modal slides -->
+		<div class="slides"></div>
+		<!-- Controls for the borderless lightbox -->
+		<h3 class="title"></h3>
+		<a class="prev">‹</a> <a class="next">›</a> <a class="close">×</a> <a
+			class="play-pause"></a>
+		<ol class="indicator"></ol>
+		<!-- The modal dialog, which will be used to wrap the lightbox content -->
+		<div class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" aria-hidden="true">&times;</button>
+						<h4 class="modal-title"></h4>
+					</div>
+					<div class="modal-body next"></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default pull-left prev">
+							<i class="glyphicon glyphicon-chevron-left"></i> Previous
+						</button>
+						<button type="button" class="btn btn-primary next">
+							Next <i class="glyphicon glyphicon-chevron-right"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<input id="lang" type="hidden" value="${language}" />
 
@@ -103,57 +150,75 @@ div #sidebar-wrapper {
 	<!-- SideBar End====================================================================== -->
 
 
-	<div class="container">
-	<div id="blueimp-gallery" class="blueimp-gallery">
-    <!-- The container for the modal slides -->
-    <div class="slides"></div>
-    <!-- Controls for the borderless lightbox -->
-    <h3 class="title"></h3>
-    <a class="prev">‹</a>
-    <a class="next">›</a>
-    <a class="close">×</a>
-    <a class="play-pause"></a>
-    <ol class="indicator"></ol>
-    <!-- The modal dialog, which will be used to wrap the lightbox content -->
-    <div class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title"></h4>
-                </div>
-                <div class="modal-body next"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left prev">
-                        <i class="glyphicon glyphicon-chevron-left"></i>
-                        Previous
-                    </button>
-                    <button type="button" class="btn btn-primary next">
-                        Next
-                        <i class="glyphicon glyphicon-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="links">
-    <a href="images/banana.jpg" title="Banana" data-gallery>
-        <img src="images/thumbnails/banana.jpg" alt="Banana">
-    </a>
-    <a href="images/apple.jpg" title="Apple" data-gallery>
-        <img src="images/thumbnails/apple.jpg" alt="Apple">
-    </a>
-    <a href="images/orange.jpg" title="Orange" data-gallery>
-        <img src="images/thumbnails/orange.jpg" alt="Orange">
-    </a>
-</div>
+	<div class="container" style="margin-top: 20px">
+
+
+		<div id="links">
+			<div class="row">
+				<div class="col s4">
+					<a
+						href='<c:out value="${mainPhoto.id}"></c:out>'
+						title="Banana" data-gallery> <img
+						src="<c:out value="${mainPhoto.img}"></c:out>"
+						alt="Banana">
+					</a>
+
+
+					<div style="overflow-x: auto;">
+						<div style="margin: 10px; white-space: nowrap;">
+						<c:forEach items="${hotelPhoto}" var="photo">
+						   <div style="display: inline-block;">
+								<a
+									href='<c:out value="${photo.img }"></c:out>'
+									title="<c:out value="${photo.img }"></c:out>" data-gallery> <img style="height: 60px;"
+									src="<c:out value="${photo.img }"></c:out>"
+									alt="<c:out value="${photo.img }"></c:out>">
+								</a>
+							</div>
+						</c:forEach>
+						</div>
+					</div>
+				</div>
+				<div class="col s6 offset-s1">
+					<h1>
+						<c:out value="${hotel.name }"></c:out>
+					</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+		<table id="example" class="display">
+    <thead>
+        <tr>
+          	<th>Name</th>
+						<th>Position</th>
+						<th>Office</th>
+        </tr>
+    </thead>
+
+						<c:forEach items="${rooms}" var="room">
+						    <tbody>
+    <tr>
+							<td><c:out value="${ room.price}"></c:out></td>
+							<td><c:out value="${ room.price}"></c:out></td>
+							<td><c:out value="${ room.price}"></c:out></td>
+						
+						</tr>
+						</c:forEach>
+					
+        <tr>
+            <td>Row 1 Data 1</td>
+            <td>Row 1 Data 2</td>
+        </tr>
+        <tr>
+            <td>Row 2 Data 1</td>
+            <td>Row 2 Data 2</td>
+        </tr>
+    </tbody>
+</table>
+			
+		</div>
 	</div>
-
-
-
-
-
 
 	<!-- 	</div> -->
 
@@ -207,9 +272,9 @@ div #sidebar-wrapper {
 	</c:if>
 
 
-<!-- 	<script type="text/javascript" -->
-<%-- 		src="${pageContext.servletContext.contextPath}/resources/js/search/details.js"></script> --%>
-		
+	<!-- 	<script type="text/javascript" -->
+	<%-- 		src="${pageContext.servletContext.contextPath}/resources/js/search/details.js"></script> --%>
+
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 	<script
@@ -230,37 +295,36 @@ div #sidebar-wrapper {
 			}
 		});
 	</script>
-	
+
 	<script>
-	var range2 = document.getElementById('priceSlider');
-	noUiSlider.create(range2, {
-		start : [ 100, 5000 ], // Handle start position
-		step : 1, // Slider moves in increments of '1'
-		connect : true, // Display a colored bar between the handles
-		behaviour : 'tap-drag', // Move handle on tap, bar is draggable
-		range : { // Slider can select '1' to '5'
-			'min' : 100,
-			'max' : 5000
+		var range2 = document.getElementById('priceSlider');
+		noUiSlider.create(range2, {
+			start : [ 100, 5000 ], // Handle start position
+			step : 1, // Slider moves in increments of '1'
+			connect : true, // Display a colored bar between the handles
+			behaviour : 'tap-drag', // Move handle on tap, bar is draggable
+			range : { // Slider can select '1' to '5'
+				'min' : 100,
+				'max' : 5000
+			}
+		});
+
+		function togle() {
+			var elem1 = document.getElementById("details_panel");
+			var style = document.defaultView.getComputedStyle(elem1, null)
+					.getPropertyValue("display");
+			if (style == 'none') {
+				document.getElementById('details_panel').style.display = "block";
+
+				$('#arrow_icon').removeClass("fa-angle-double-down");
+				$('#arrow_icon').addClass("fa-angle-double-up");
+			} else {
+				document.getElementById('details_panel').style.display = "none";
+
+				$('#arrow_icon').removeClass("fa-angle-double-up");
+				$('#arrow_icon').addClass("fa-angle-double-down");
+			}
 		}
-	});
-	
-	function togle(){
-		var elem1 = document.getElementById("details_panel");
-		var style = document.defaultView.getComputedStyle(elem1, null).getPropertyValue("display");
-		if (style == 'none'){
-			document.getElementById('details_panel').style.display = "block";
-			
-			$('#arrow_icon').removeClass("fa-angle-double-down");
-			$('#arrow_icon').addClass("fa-angle-double-up");
-		}
-		else {
-			document.getElementById('details_panel').style.display = "none";
-			
-			$('#arrow_icon').removeClass("fa-angle-double-up");
-			$('#arrow_icon').addClass("fa-angle-double-down");
-		}
-	}
-	
 	</script>
 
 </body>
