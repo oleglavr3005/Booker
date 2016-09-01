@@ -1,6 +1,5 @@
 package com.epam.task.database.service;
 
-import java.util.List;
 
 import com.epam.task.database.dao.manager.DaoManager;
 import com.epam.task.database.model.Room;

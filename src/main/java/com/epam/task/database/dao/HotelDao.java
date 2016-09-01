@@ -21,6 +21,9 @@ public class HotelDao {
 			+ " is_deleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	private final String SELECT_BY_ID = SELECT_ALL + " WHERE hotel_id = ?";
 	private final String DELETE_HOTEL = "INSERT hotel SET is_deleted=? WHERE hotel_id = ?";
+	private final String UPDATE_HOTEL = "UPDATE `hotel` SET hotel_id = ?, name = ?,"
+			+ " city = ?, street = ?, stars = ?, desc = ?, manager_id = ?,"
+			+ " x_coord = ?, y_coord = ?, rating = ?, WHERE hotel_id = ?";
 	
 	public HotelDao(Connection connection){
 		super();
@@ -79,6 +82,29 @@ public class HotelDao {
 			statment.setInt(1, hotel.getId());
 			return statment.executeUpdate();
 		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	
+	public int updateHotel(Hotel hotel) {
+		try (PreparedStatement statement = connection.prepareStatement(UPDATE_HOTEL)) {
+			int i = 1;
+			statement.setInt(i++, hotel.getId());
+			statement.setString(i++, hotel.getName());
+			statement.setString(i++, hotel.getCity());
+			statement.setString(i++, hotel.getStreet());
+			statement.setInt(i++, hotel.getStars());
+			statement.setString(i++, hotel.getDesc());
+			statement.setInt(i++, hotel.getManagerId());
+			statement.setDouble(i++, hotel.getXCoord());
+			statement.setDouble(i++, hotel.getYCoord());
+			statement.setDouble(i++, hotel.getRating());
+			statement.setBoolean(i++, hotel.isDeleted());
+
+			statement.setInt(i, hotel.getId());
+			return statement.executeUpdate();
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return -1;
 		}
