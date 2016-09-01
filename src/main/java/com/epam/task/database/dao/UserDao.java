@@ -105,7 +105,7 @@ public class UserDao {
 			statement.setString(i++, user.getStatus().toString());
 			statement.setString(i++, user.getPhoneNumber());
 			statement.setString(i++, user.getImage());
-			statement.setString(i++, user.getSocialNetwork().toString());
+			statement.setString(i++, user.getSocialNetwork().toString());			
 			statement.setString(i, user.getSocialNetworkId());
 			return statement.executeUpdate();
 		} catch (SQLException e) {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.epam.task.database.dao.manager.DaoManager;
 import com.epam.task.database.model.User;
+import com.epam.task.util.MailSender;
 
 
 
@@ -24,11 +25,55 @@ public class UserService {
 	}
 	
 	public int insertUser(User user) {
-		return daoManager.executeAndClose(() -> daoManager.getUserDao().insertUser(user));
+	//	if (UserValidator.validate(user)) {
+			int value = daoManager.executeAndClose(() -> daoManager.getUserDao().insertUser(user));
+			if (user.getSocialNetworkId() == null) {
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						sendConfirmation(user);
+					}
+				}).start();
+			}
+			return value;
+	//	}
+
+	}
+
+	private void sendConfirmation(User user) {
+		String subject = "Підтвердження реєстрації";
+		String link = "http://localhost:8080/booker/signup_confirmation?token=" + user.getConfirmCode();
+		String text = "<body style='background-color: #fff'>" +
+
+				"<div style='width: 100%; height:20px; background-color: #00000 position: relative color:white;'>Mail Confirmation"
+				+ "<div style='top: 10px; background-color: white; padding:20px'>"
+				+ "<div><h1 style='color: #00264d;'> Hello, " + user.getFirstName() + "</h1>"
+				+ "<p>In order to confirm registration pls click here: </p>" + "</div><div id='one'><p>"
+				+ link + "<p></div></div></div></body>";
+
+		MailSender.send(subject, text, user.getEmail());
+	}
+
+	public void sendPass(User user, String pass) {
+		String subject = "Відновлення паролю";
+		String text = "<body style='background-color: #fff'>" +
+		
+				"<div style='width: 100%; height:20px; background-color: #00000 position: relative color:white;'>Mail Confirmation"
+				+ "<div style='top: 10px; background-color: white; padding:20px'>"
+				+ "<div><h1 style='color: #00264d;'> Hello, " + user.getFirstName() + "</h1>"
+				+ "<p>new pass: </p>"
+				+ "</div><div id='one'><p>" + pass + "<p></div></div></div></body>";
+
+		MailSender.send(subject, text, user.getEmail());
 	}
 	
 	public int updateUser(User user) {
 		return daoManager.executeAndClose(() -> daoManager.getUserDao().updateUser(user));
+	}
+	
+	public User getUserByEmail(String email) {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getUserByEmail(email));
 	}
 	
 	public static void main(String[] args) {

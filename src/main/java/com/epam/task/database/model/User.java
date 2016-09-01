@@ -32,10 +32,14 @@ public class User {
 	private SocialNetwork socialNetwork; //enum
 	@DataBaseField(fieldName = "social_network_id")
 	private String socialNetworkId;
+	
+	public User(){
+		socialNetwork = SocialNetwork.NONE;
+	}
+		
 	public User(int id, String firstName, String lastName, String email, String password, String type,
 			boolean isBanned, String confirmCode, String status, String phoneNumber, String image,
 			String socialNetwork, String socialNetworkId) {
-		
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
