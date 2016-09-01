@@ -2,6 +2,7 @@ package com.epam.task.database.model;
 
 import java.util.List;
 
+import com.epam.task.database.service.HotelPhotoService;
 import com.epam.task.database.transformers.DataBaseField;
 
 public class Hotel {
@@ -20,6 +21,8 @@ public class Hotel {
 		this.yCoord = yCoord;
 		this.rating = rating;
 		this.isDeleted = isDeleted;
+		
+		photos = new HotelPhotoService().getHotelPhotosByHotel(id);
 	}
 	
 	@DataBaseField(fieldName = "hotel_id")
