@@ -1,8 +1,10 @@
 package com.epam.task.database.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.epam.task.database.dao.manager.DaoManager;
+import com.epam.task.database.model.Order;
 import com.epam.task.database.model.Order;
 import com.epam.task.database.model.enums.OrderStatus;
 
@@ -40,6 +42,63 @@ public class OrderService {
 	}
 
 	public List<Order> getordersByRoom(int roomId) {
-		return daoManager.executeAndClose(() -> daoManager.getOrderDao().getOrdersByUser(roomId));
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().getOrdersByRoom(roomId));
 	}
+	
+	public static void main(String[] args) {
+		OrderService service = new OrderService();
+		service.testing();
+	}
+	
+	private void testing(){
+	OrderService service = new OrderService();
+	System.out.println("ById");
+	Order order = service.getOrderById(1);
+		System.out.println(order.getId());
+	System.out.println("ByStatus");
+	List<Order> photos = service.getordersByStatus(OrderStatus.ACTIVE);
+	for (Order photo : photos) {
+		System.out.println(photo.getId());
+	}
+	System.out.println("All");
+	photos = service.getAllOrders();
+	for (Order photo : photos) {
+		System.out.println(photo.getId());
+	}
+
+	System.out.println("Insert");
+	Order newPhoto = new Order(8,2,1,new Timestamp(1000000),new Timestamp(1070000),"ACTIVE",new Timestamp(1070000),2000);
+	service.insertOrder(newPhoto);
+	System.out.println("All");
+	photos = service.getAllOrders();
+	for (Order photo : photos) {
+		System.out.println(photo.getId());
+	}
+	
+	System.out.println("ByUser");
+	 photos = service.getordersByUser(1);
+	for (Order photo : photos) {
+		System.out.println(photo.getId());
+	}
+	System.out.println("ByRoom");
+	 photos = service.getordersByRoom(2);
+	for (Order photo : photos) {
+		System.out.println(photo.getId());
+	}
+	System.out.println("All");
+	photos = service.getAllOrders();
+	for (Order photo : photos) {
+		System.out.println(photo.getId());
+	}
+	
+	System.out.println("update");
+	service.updateOrder(new Order(8,2,1,new Timestamp(1000000),new Timestamp(1070000),"ACTIVE",new Timestamp(1070000),2000));
+
+	System.out.println("All");
+	photos = service.getAllOrders();
+	for (Order photo : photos) {
+		System.out.println(photo.getId());
+	}
+	
+}
 }
