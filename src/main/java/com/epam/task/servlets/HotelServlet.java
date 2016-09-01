@@ -15,7 +15,6 @@ import com.epam.task.database.model.Feedback;
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.service.FeedbackService;
 import com.epam.task.database.service.HotelService;
-import com.epam.task.database.util.HikariConnManager;
 
 @WebServlet("/hotel/*")
 public class HotelServlet extends HttpServlet {
@@ -32,6 +31,7 @@ public class HotelServlet extends HttpServlet {
 		int id = 0;
 		try{
 			id = Integer.parseInt(hotelId);
+			System.out.println(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			LOGGER.info("Bad user id for hotel");
@@ -47,6 +47,7 @@ public class HotelServlet extends HttpServlet {
 		List<Feedback> feedbacks = new FeedbackService().getAllFeedbacksByHotel(id);
 		request.setAttribute("hotel", hotel);
 		request.setAttribute("feedbacks", feedbacks);
+		request.getRequestDispatcher("/pages/hotel.jsp").forward(request, response);
 		
 	}
 
