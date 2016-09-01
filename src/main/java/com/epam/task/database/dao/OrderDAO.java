@@ -15,11 +15,11 @@ public class OrderDAO {
 
 	private Connection connection;
 
-	private final String SQL_GET_ALL_ORDERS = "SELECT * FROM order;";
-	private final String SQL_CREATE_ORDER = "INSERT INTO order (user_id, room_id, start_date, end_date, status, order_date, price) VALUES (?, ?, ?, ?, ?, ?, ?);";
+	private final String SQL_GET_ALL_ORDERS = "SELECT * FROM order";
+	private final String SQL_CREATE_ORDER = "INSERT INTO order (user_id, room_id, start_date, end_date, status, order_date, price) VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private final String SQL_READ_ORDER_BY_ID = "SELECT * FROM order WHERE order_id = ?";
 	private final String SQL_UPDATE_ORDER = "UPDATE order SET user_id = ?, room_id = ?, start_date = ?, end_date = ?, status = ?, order_date = ?, price = ?";
-	private final String SQL_GET_ALL_ORDERS_BY_STATUS = "SELECT * FROM order WHERE status LIKE ?;";
+	private final String SQL_GET_ALL_ORDERS_BY_STATUS = "SELECT * FROM order WHERE status LIKE ?";
 	private final String SQL_GET_ORDER_BY_USER_ID = "SELECT * FROM order WHERE user_id = ?";
 	private final String SQL_GET_ORDER_BY_ROOM_ID = "SELECT * FROM order WHERE room_id = ?";
 

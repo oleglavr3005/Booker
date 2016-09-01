@@ -12,8 +12,8 @@ import com.epam.task.database.transformers.UniversalTransformer;
 public class FeedbackDao {
 	private Connection connection;
 	private final String SELECT_ALL_FEEDBACK = "SELECT * FROM feedback";
-	private final String INSERT_FEEDBACK = "INSERT INTO feedback VALUES (?, ?, ?, ?, ?, ?)";
-	private final String UPDATE_FEEDBACK = "UPDATE INTO feedback SET user_id = ?, hotel_id = ?, rating = ?, comment = ?, title = ?, date = ? WHERE feedback_id = ?";
+	private final String INSERT_FEEDBACK = "INSERT INTO feedback (user_id, hotel_id, rating, title, comment, date) VALUES (?, ?, ?, ?, ?, ?)";
+	private final String UPDATE_FEEDBACK = "UPDATE feedback SET user_id = ?, hotel_id = ?, rating = ?, comment = ?, title = ?, date = ? WHERE feedback_id = ?";
 	private final String DELETE_FEEDBACK = "DELETE FROM feedback WHERE feedback_id = ?";
 	private final String SELECT_ALL_FEEDBACK_BY_HOTEL = "SELECT * FROM feedback WHERE hotel_id = ?;";
 	public FeedbackDao(Connection connection) {
@@ -38,10 +38,10 @@ public class FeedbackDao {
 	public int insertFeedback(Feedback element) {
 		try (PreparedStatement statment = connection.prepareStatement(INSERT_FEEDBACK)) {
 			statment.setInt(1, element.getUserId());
-			statment.setInt(2, element.getUserId());
-			statment.setInt(3, element.getUserId());
-			statment.setString(4, element.getComment());
-			statment.setString(5, element.getTitle());
+			statment.setInt(2, element.getHotelId());
+			statment.setInt(3, element.getRating());
+			statment.setString(4, element.getTitle());
+			statment.setString(5, element.getComment());
 			statment.setTimestamp(6, element.getDate());
 			return statment.executeUpdate();
 		} catch (Exception e) {
@@ -53,10 +53,10 @@ public class FeedbackDao {
 	public int updateFeedback(Feedback element) {
 		try (PreparedStatement statment = connection.prepareStatement(UPDATE_FEEDBACK)) {
 			statment.setInt(1, element.getUserId());
-			statment.setInt(2, element.getUserId());
-			statment.setInt(3, element.getUserId());
-			statment.setString(4, element.getComment());
-			statment.setString(5, element.getTitle());
+			statment.setInt(2, element.getHotelId());
+			statment.setInt(3, element.getRating());
+			statment.setString(4, element.getTitle());
+			statment.setString(5, element.getComment());
 			statment.setTimestamp(6, element.getDate());
 			statment.setInt(7, element.getId());
 			return statment.executeUpdate();

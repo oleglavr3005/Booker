@@ -42,14 +42,14 @@ public class HotelDao {
 	private final String NO_DEPOSIT = " AND r.days_count < 0";
 
 	
-	private final String INSERT_HOTEL = "INSERT INTO `hotel` (hotel_id, name, city, street, stars, desc,"
+	private final String INSERT_HOTEL = "INSERT INTO `hotel` (name, city, street, stars, desc,"
 			+ " manager_id, x_coord, y_coord, rating,"
-			+ " is_deleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			+ " is_deleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private final String SELECT_BY_ID = SELECT_ALL + " WHERE hotel_id = ?";
 	private final String CHANGE_HOTEL_STATUS = "UPDATE `hotel` SET is_deleted = ? WHERE hotel_id = ?";
-	private final String UPDATE_HOTEL = "UPDATE `hotel` SET hotel_id = ?, name = ?,"
+	private final String UPDATE_HOTEL = "UPDATE `hotel` SET name = ?,"
 			+ " city = ?, street = ?, stars = ?, desc = ?, manager_id = ?,"
-			+ " x_coord = ?, y_coord = ?, rating = ?, WHERE hotel_id = ?";
+			+ " x_coord = ?, y_coord = ?, rating = ? WHERE hotel_id = ?";
 	
 	public HotelDao(Connection connection){
 		super();
@@ -194,7 +194,6 @@ public class HotelDao {
 	public int insertHotel(Hotel hotel){
 		try (PreparedStatement statement = connection.prepareStatement(INSERT_HOTEL)) {
 			int i = 1;
-			statement.setInt(i++, hotel.getId());
 			statement.setString(i++, hotel.getName());
 			statement.setString(i++, hotel.getCity());
 			statement.setString(i++, hotel.getStreet());
@@ -225,7 +224,7 @@ public class HotelDao {
 	
 	public int restoreHotel(Hotel hotel) {
 		try (PreparedStatement statment = connection.prepareStatement(CHANGE_HOTEL_STATUS)) {
-			statment.setBoolean(1, true);
+			statment.setBoolean(1, false);
 			statment.setInt(2, hotel.getId());
 			return statment.executeUpdate();
 		} catch (Exception e) {
@@ -237,7 +236,6 @@ public class HotelDao {
 	public int updateHotel(Hotel hotel) {
 		try (PreparedStatement statement = connection.prepareStatement(UPDATE_HOTEL)) {
 			int i = 1;
-			statement.setInt(i++, hotel.getId());
 			statement.setString(i++, hotel.getName());
 			statement.setString(i++, hotel.getCity());
 			statement.setString(i++, hotel.getStreet());
