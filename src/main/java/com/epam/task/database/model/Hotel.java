@@ -1,5 +1,7 @@
 package com.epam.task.database.model;
 
+import java.util.List;
+
 import com.epam.task.database.transformers.DataBaseField;
 
 public class Hotel {
@@ -42,6 +44,8 @@ public class Hotel {
 	private double rating;
 	@DataBaseField(fieldName = "is_deleted")
 	private boolean isDeleted;
+	
+	private List<HotelPhoto> photos;
 	
 	public int getId() {
 		return id;
@@ -108,6 +112,18 @@ public class Hotel {
 	}
 	public void setDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
+	}
+	
+	public HotelPhoto getPhoto(){
+		return photos.get(0);
+	}
+	
+	public List<HotelPhoto> getPhotos() {
+		return photos;
+	}
+	
+	public void setPhotos(List<HotelPhoto> photos) {
+		this.photos = photos;
 	}
 	
 	@Override

@@ -15,7 +15,7 @@ public class HotelPhotoDao {
 	private Connection connection;
 
 	private final String SQL_GET_ALL = "SELECT * FROM hotel_photo;";
-	private final String SQL_CREATE_HOTEL_PHOTO = "INSERT INTO hotel_photo (img, desc, hotel_id) VALUES (?, ?, ?);";
+	private final String SQL_CREATE_HOTEL_PHOTO = "INSERT INTO hotel_photo (img, `desc`, hotel_id) VALUES (?, ?, ?);";
 	private final String SQL_READ_HOTEL_PHOTO_BY_ID = "SELECT * FROM hotel_photo WHERE hotel_photo_id = ?";
 	private final String SQL_READ_PHOTOS_BY_HOTEL = "SELECT * FROM hotel_photo WHERE hotel_id = ?";
 	private final String SQL_DELETE_PHOTO_BY_ID = "DELETE FROM hotel_photo WHERE room_id = ?";
@@ -72,6 +72,7 @@ public class HotelPhotoDao {
 	public List<HotelPhoto> getHotelPhotosByHotel(int id) {
 		List<HotelPhoto> photos = new ArrayList<>();
 		try (PreparedStatement statement = connection.prepareStatement(SQL_READ_PHOTOS_BY_HOTEL);) {
+			statement.setInt(1, id);
 			ResultSet rs = statement.executeQuery();
 			photos = (List<HotelPhoto>) UniversalTransformer.getCollectionFromRS(rs, HotelPhoto.class);
 		} catch (SQLException e) {

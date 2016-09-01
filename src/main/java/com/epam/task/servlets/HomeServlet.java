@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.Hotel;
+import com.epam.task.database.service.HotelPhotoService;
 import com.epam.task.database.service.HotelService;
 
 @WebServlet("/home")
@@ -23,8 +24,15 @@ public class HomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.sendRedirect("pages/index.jsp");
 		//or
-		HotelService service = new HotelService();
-		List<Hotel> hotels = service.getAllHotels();
+		HotelService hotelService = new HotelService();
+		HotelPhotoService hotelPhotoService = new HotelPhotoService();
+		
+		List<Hotel> hotels = hotelService.getAllHotels();
+		
+		for(Hotel hotel : hotels){
+			hotel.setPhotos(hotelPhotoService.getHotelPhotosByHotel(hotel.getId()));
+		}
+		
 		request.setAttribute("hotels", hotels);
 		request.setAttribute("countOfHotels", hotels.size());
 		request.getRequestDispatcher("pages/index.jsp").forward(request, response);

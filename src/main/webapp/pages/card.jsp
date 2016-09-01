@@ -38,64 +38,20 @@ b {
 
 	<div id="hotel_card_${hotel.id}" class="col s10 offset-s1">
 		<div class="card">
-			<div class="card-image" style="position: relative;">
-				<c:choose>
-
-					<c:when test="${periodical.sale > 0}">
+			<div class="container-fluid">
+				<div class="row">
+					
+					<div class="card-image col s4" style="position: relative;">
 						<a
-							href="${pageContext.servletContext.contextPath}/periodical/${periodical.id}">
-							<img class="my-card-img${periodical.id}"
-							src="<i:urlToImage url="${periodical.image}" />"
-							style="height: 250px; width: 230px; padding: 10px;">
+							href="${pageContext.servletContext.contextPath}/booker/hotel/${hotel.id}">
+							<img src="<i:urlToImage url="${image}" />"
+							style="height: 170px; width: 200px; padding: 10px;">
 						</a>
-						<img class="my-card-img-sale${periodical.id}"
-							src="${pageContext.servletContext.contextPath}/resources/images/sale.png"
-							style="position: absolute; width: 40px; height: 40px; margin-top: 7px;">
-						<script>
-							var width = $('.my-card-img${periodical.id}')
-									.width();
-							$('.my-card-img-sale${periodical.id}').css(
-									'margin-left', width - 30 + 'px');
-						</script>
-
-						<c:if test="${userState == 'user' && periodical.userId != '0'}">
-							<img
-								src="${pageContext.servletContext.contextPath}/resources/images/bookmark.png"
-								style="position: absolute; width: 40px; height: 40px; margin-top: 8px; margin-left: 6px;">
-
-						</c:if>
-
-					</c:when>
-
-					<c:otherwise>
-						<c:choose>
-
-							<c:when test="${userState == 'user' && periodical.userId != '0'}">
-								<a
-									href="${pageContext.servletContext.contextPath}/periodical/${periodical.id}">
-									<img src="<i:urlToImage url="${periodical.image}" />"
-									style="height: 250px; width: 230px; padding: 10px;">
-								</a>
-								<img
-									src="${pageContext.servletContext.contextPath}/resources/images/bookmark.png"
-									style="position: absolute; width: 40px; height: 40px; margin-top: 8px; margin-left: 6px;">
-								<%-- 							</c:if> --%>
-							</c:when>
-
-							<c:otherwise>
-								<a
-									href="${pageContext.servletContext.contextPath}/periodical/${periodical.id}">
-									<img src="<i:urlToImage url="${periodical.image}" />"
-									style="height: 250px; width: 230px; padding: 10px;">
-								</a>
-							</c:otherwise>
-
-						</c:choose>
-					</c:otherwise>
-
-				</c:choose>
-
+					
+					</div>
+				</div>
 			</div>
+
 
 
 			<div class="card-content"

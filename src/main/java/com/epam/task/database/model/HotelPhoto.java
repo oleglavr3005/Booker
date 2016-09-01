@@ -9,7 +9,7 @@ public class HotelPhoto {
 	@DataBaseField(fieldName = "img")
 	private String img;
 
-	@DataBaseField(fieldName = "desk")	
+	@DataBaseField(fieldName = "desc")	
 	private String desc;
 
 	@DataBaseField(fieldName = "hotel_id")
