@@ -1,6 +1,6 @@
 package com.epam.task.database.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import com.epam.task.database.dao.manager.DaoManager;
 import com.epam.task.database.model.RoomPhoto;
@@ -13,7 +13,7 @@ public class RoomPhotoService {
 		daoManager = new DaoManager();
 	}
 
-	public Collection<RoomPhoto> getAllRoomPhotos() {
+	public List<RoomPhoto> getAllRoomPhotos() {
 		return daoManager.executeAndClose(() -> daoManager.getRoomPhotoDao().getAllRoomPhotos());
 	}
 
@@ -21,7 +21,7 @@ public class RoomPhotoService {
 		return daoManager.executeAndClose(() -> daoManager.getRoomPhotoDao().insertRoomPhoto(element));
 	}
 
-	public Collection<RoomPhoto> getRoomPhotosByHotel(int element) {
+	public List<RoomPhoto> getRoomPhotosByHotel(int element) {
 		return daoManager.executeAndClose(() -> daoManager.getRoomPhotoDao().getRoomPhotosByRoom(element));
 	}
 
