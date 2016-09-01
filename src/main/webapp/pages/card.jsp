@@ -17,7 +17,6 @@ b {
 </style>
 
 <h6>
-
 	<c:if test="${countOfHotels > 0 }">
 		<fmt:message key="card.header" />
 		<span id="periodicals_number_for_all_users">${countOfHotels}</span>
@@ -88,7 +87,7 @@ b {
 
 
 		</div>
-	</div>
+	</div>	
 </c:forEach>
 
 <c:if test="${userState == 'admin'}">

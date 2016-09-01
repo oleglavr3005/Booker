@@ -90,15 +90,6 @@ div #sidebar-wrapper {
 	<jsp:include page="header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 
-
-	<!-- 	<div id="wrapper" style="position: relative; min-height: 100%;"> -->
-
-
-	<!-- SideBar ========================================================================= -->
-	<%-- 		<jsp:include page="side.jsp"></jsp:include> --%>
-	<!-- SideBar End====================================================================== -->
-
-
 	<div class="container">
 		<h4 style="text-align: center; margin-top: 20px;">
 			<fmt:message key="index.search.header" />
@@ -285,11 +276,6 @@ div #sidebar-wrapper {
 			<jsp:include page="card.jsp"></jsp:include> 
 		</div>
 	</div>
-
-
-	<!-- 	</div> -->
-
-
 
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="foot.jsp"></jsp:include>
