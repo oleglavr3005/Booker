@@ -43,46 +43,46 @@ public class Room {
 	private RoomType type;
 	
 	@DataBaseField(fieldName = "beds_count")
-	private Integer bedsCount;
+	private int bedsCount;
 
 	@DataBaseField(fieldName = "double_beds_count")
-	private Integer doubleBedsCount;
+	private int doubleBedsCount;
 
 	@DataBaseField(fieldName = "price")
-	private Integer price;
+	private int price;
 
 	@DataBaseField(fieldName = "has_wifi")
-	private Boolean wifi;
+	private boolean wifi;
 
 	@DataBaseField(fieldName = "has_shower")
-	private Boolean shower;
+	private boolean shower;
 
 	@DataBaseField(fieldName = "has_parking")
-	private Boolean parking;
+	private boolean parking;
 
 	@DataBaseField(fieldName = "has_condition")
-	private Boolean condition;
+	private boolean condition;
 
 	@DataBaseField(fieldName = "has_pool")
-	private Boolean pool;
+	private boolean pool;
 
 	@DataBaseField(fieldName = "has_gym")
-	private Boolean gym;
+	private boolean gym;
 
 	@DataBaseField(fieldName = "has_balcony")
-	private Boolean balcony;
+	private boolean balcony;
 	
 	@DataBaseField(fieldName = "food")
 	private RoomFood food;
 
 	@DataBaseField(fieldName = "days_count")	
-	private Integer daysCount;
+	private int daysCount;
 	
 	@DataBaseField(fieldName = "percentage")
-	private Integer percentage;
+	private int percentage;
 
 	@DataBaseField(fieldName = "is_deleted")
-	private Boolean deleted;
+	private boolean deleted;
 
 	public int getId() {
 		return id;
@@ -226,6 +226,15 @@ public class Room {
 
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
+	}
+
+	@Override
+	public String toString() {
+		return "Room [id=" + id + ", hotelId=" + hotelId + ", number=" + number + ", type=" + type + ", bedsCount="
+				+ bedsCount + ", doubleBedsCount=" + doubleBedsCount + ", price=" + price + ", wifi=" + wifi
+				+ ", shower=" + shower + ", parking=" + parking + ", condition=" + condition + ", pool=" + pool
+				+ ", gym=" + gym + ", balcony=" + balcony + ", food=" + food + ", daysCount=" + daysCount
+				+ ", percentage=" + percentage + ", deleted=" + deleted + "]";
 	}	
 
 }
