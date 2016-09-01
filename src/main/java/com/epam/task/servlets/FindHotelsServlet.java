@@ -26,44 +26,45 @@ public class FindHotelsServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		System.out.println(request.getParameter("typeStandart"));		
-		System.out.println(request.getParameter("typeLux"));
+		System.out.println(request.getParameter("typeLux"));	
+		System.out.println(request.getParameter("startDate"));
 		
-		String name = "Hotel"; //get from request
-		int minStars = 4; //get from request
-		int maxStars = 5; //get from request
-		int people = 3; //get from request
+		String name = request.getParameter("name"); //get from request
+		int minStars = Integer.parseInt(request.getParameter("minStars")); //get from request
+		int maxStars = Integer.parseInt(request.getParameter("maxStars")); //get from request
+		int people = Integer.parseInt(request.getParameter("people")); //get from request
 		
-		boolean typeStandart = false; //get from request
-		boolean typeLux = false; //get from request
-		boolean typeDelux = false; //get from request
+		boolean typeStandart = Boolean.parseBoolean(request.getParameter("typeStandart")); //get from request
+		boolean typeLux = Boolean.parseBoolean(request.getParameter("typeLux")); //get from request
+		boolean typeDelux = Boolean.parseBoolean(request.getParameter("typeDelux")); //get from request
 
-		boolean foodNone = true; //get from request
-		boolean foodBreakfast = true; //get from request
-		boolean foodTwice = false; //get from request
-		boolean foodFull = false; //get from request
+		boolean foodNone = Boolean.parseBoolean(request.getParameter("foodNone")); //get from request
+		boolean foodBreakfast = Boolean.parseBoolean(request.getParameter("foodBreakfast")); //get from request
+		boolean foodTwice = Boolean.parseBoolean(request.getParameter("foodTwice")); //get from request
+		boolean foodFull = Boolean.parseBoolean(request.getParameter("foodFull")); //get from request
 		
-		int minPrice = 1; //get from request
-		int maxPrice = 120; //get from request
+		int minPrice = Integer.parseInt(request.getParameter("minPrice")); //get from request
+		int maxPrice = Integer.parseInt(request.getParameter("maxPrice")); //get from request
 
-		boolean hasWiFi = false; //get from request
-		boolean hasShower = false; //get from request
-		boolean hasParking = false; //get from request
-		boolean hasCondition = false; //get from request
-		boolean hasPool = false; //get from request
-		boolean hasGym = false; //get from request
-		boolean hasBalcony = false; //get from request
+		boolean hasWiFi = Boolean.parseBoolean(request.getParameter("wifi")); //get from request
+		boolean hasShower = Boolean.parseBoolean(request.getParameter("shower")); //get from request
+		boolean hasParking = Boolean.parseBoolean(request.getParameter("parking")); //get from request
+		boolean hasCondition = Boolean.parseBoolean(request.getParameter("condition")); //get from request
+		boolean hasPool = Boolean.parseBoolean(request.getParameter("pool")); //get from request
+		boolean hasGym = Boolean.parseBoolean(request.getParameter("gym")); //get from request
+		boolean hasBalcony = Boolean.parseBoolean(request.getParameter("balcony")); //get from request
 
-		boolean noDeposit = false; //get from request
+		boolean noDeposit = Boolean.parseBoolean(request.getParameter("no_deposit")); //get from request
 		
 		Timestamp startDate;
 		Timestamp endDate;
 		try {
-			startDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse("2016-09-22").getTime());
+			startDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("startDate")).getTime());
 		} catch (ParseException e) {
 			startDate = new Timestamp(new Date().getTime());
 		}
 		try {
-			endDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse("2016-09-26").getTime());
+			endDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("endDate")).getTime());
 		} catch (ParseException e) {
 			endDate = new Timestamp(new Date().getTime());
 		}
