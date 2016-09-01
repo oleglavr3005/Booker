@@ -18,7 +18,7 @@ public class RoomPhotoDao {
 	private final String SQL_CREATE_ROOM_PHOTO = "INSERT INTO room_photo (img, `desc`, room_id) VALUES (?, ?, ?);";
 	private final String SQL_READ_ROOM_PHOTO_BY_ID = "SELECT * FROM room_photo WHERE room_photo_id = ?";
 	private final String SQL_READ_PHOTOS_BY_ROOM = "SELECT * FROM room_photo WHERE room_id = ?";
-	private final String SQL_DELETE_PHOTO_BY_ID = "DELETE FROM room_photo WHERE room_id = ?";
+	private final String SQL_DELETE_PHOTO_BY_ID = "DELETE FROM room_photo WHERE room_photo_id = ?";
 	
 	public RoomPhotoDao(Connection connection) {
 		super();

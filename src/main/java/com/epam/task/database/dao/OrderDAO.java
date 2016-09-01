@@ -52,7 +52,7 @@ public class OrderDAO {
 			st.setInt(2, order.getRoomId());
 			st.setTimestamp(3, order.getStartDate());
 			st.setTimestamp(4, order.getEndDate());
-			st.setString(5, order.getStartDate().toString());
+			st.setString(5, order.getStatus().toString());
 			st.setTimestamp(6, order.getOrderDate());
 			st.setInt(7, order.getPrice());
 			result = st.executeUpdate();
@@ -83,7 +83,7 @@ public class OrderDAO {
 			st.setInt(2, order.getRoomId());
 			st.setTimestamp(3, order.getStartDate());
 			st.setTimestamp(4, order.getEndDate());
-			st.setString(5, order.getStartDate().toString());
+			st.setString(5, order.getStatus().toString());
 			st.setTimestamp(6, order.getOrderDate());
 			st.setInt(7, order.getPrice());
 			result = st.executeUpdate();
