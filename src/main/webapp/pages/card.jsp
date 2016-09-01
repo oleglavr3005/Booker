@@ -39,7 +39,7 @@ b {
 		<div class="card">
 
 			<div class="container-fluid">
-				<div class="row">
+				<div class="row" style="margin-top:15px; margin-bottom:10px;">
 
 					<div class="card-image col s4" style="position: relative;">
 						<a
@@ -60,7 +60,7 @@ b {
 								${hotel.street}</span>
 						</div>
 
-						<div class="row">
+						<div class="row" style="margin-bottom:5px">
 							<i class="material-icons prefix"
 								style="margin-left: -5px; margin-right: 10px; margin-top: 14px;">receipt</i>
 							<span>${hotel.desc}</span>
@@ -74,7 +74,7 @@ b {
 						</div>
 
 
-						<div class="row" style="margin-top: 50px">
+						<div class="row" style="margin-top: 130px">
 
 							<a class="waves-effect waves-light btn"
 								href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"

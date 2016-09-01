@@ -41,7 +41,11 @@ public class AuthServlet extends HttpServlet {
 				throw new Exception();
 			}
 			request.getSession().setAttribute("userID", user.getId());
-			request.getSession().setAttribute("userState", user.getType());
+			
+	//		request.getSession().setAttribute("userState", user.getType());
+			
+			request.getSession().setAttribute("userState", "user");
+			
 			response.getWriter().write(user.getType() != UserType.ADMIN ? "cabinet" : "admin");
 		} catch (Exception e) {
 			response.setContentType("text/plain");
