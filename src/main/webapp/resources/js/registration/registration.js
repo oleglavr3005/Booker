@@ -4,9 +4,6 @@ var busyMail = "Email is allready in use";
 var regist = "Реєстрація";
 
 function confirmRegistration(wMail,bMail,succes,cont,fail,reg){
-	
-	alert("confirm");
-	
 	wrongMail = wMail;
 	busyMail = bMail;
 	regist = reg;
@@ -19,19 +16,11 @@ function confirmRegistration(wMail,bMail,succes,cont,fail,reg){
 			password : $('#password').val()
 		}, function(result) {
 			if(result == 'true'){
-				
-
-				alert("true");
-				
 				$('#registrationHeader').text(succes);
 				$('#registrationHeader').css('color', '#5BB65B');
 				$('#registrationHeader').after('<p id="afterRegHeader">*' + cont + '</p>');
 				$('#registrationConfirmButton').prop('disabled', true);
 			}else{
-				
-
-				alert("false");
-				
 				$('#registrationHeader').text(fail);
 				$('#registrationHeader').css('color', '#F44336');
 			}

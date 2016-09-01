@@ -63,59 +63,59 @@ public class RoomService {
 			System.out.println(room);
 		}
 
-		System.out.println("remove");
-		service.removeRoom(1);
-
-		System.out.println("Active");
-		rooms = service.getAllActiveRoomsForHotel(1);
-		for (Room room : rooms) {
-			System.out.println(room);
-		}
-		System.out.println("All");
-		rooms = service.getAllRoomsForHotel(1);
-		for (Room room : rooms) {
-			System.out.println(room);
-		}
-
-		System.out.println("restore");
-		service.restoreRoom(1);
-
-		System.out.println("Active");
-		rooms = service.getAllActiveRoomsForHotel(1);
-		for (Room room : rooms) {
-			System.out.println(room);
-		}
-		System.out.println("All");
-		rooms = service.getAllRoomsForHotel(1);
-		for (Room room : rooms) {
-			System.out.println(room);
-		}
-		
-		System.out.println("Insert");
-		Room newRoom = new Room(3, 1, "12", "LUX", 1, 1, 123, Boolean.TRUE, Boolean.FALSE, Boolean.TRUE,
-				Boolean.FALSE, Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, "FULL", 30, 10, Boolean.FALSE);
-		service.insertRoom(newRoom);
-
-		System.out.println("Active");
-		rooms = service.getAllActiveRoomsForHotel(1);
-		for (Room room : rooms) {
-			System.out.println(room);
-		}
-		
-		System.out.println("Update");
-		newRoom.setDeleted(Boolean.TRUE);
-		service.updateRoom(newRoom);
-
-		System.out.println("Active");
-		rooms = service.getAllActiveRoomsForHotel(1);
-		for (Room room : rooms) {
-			System.out.println(room);
-		}
-		System.out.println("All");
-		rooms = service.getAllRoomsForHotel(1);
-		for (Room room : rooms) {
-			System.out.println(room);
-		}
+//		System.out.println("remove");
+//		service.removeRoom(1);
+//
+//		System.out.println("Active");
+//		rooms = service.getAllActiveRoomsForHotel(1);
+//		for (Room room : rooms) {
+//			System.out.println(room);
+//		}
+//		System.out.println("All");
+//		rooms = service.getAllRoomsForHotel(1);
+//		for (Room room : rooms) {
+//			System.out.println(room);
+//		}
+//
+//		System.out.println("restore");
+//		service.restoreRoom(1);
+//
+//		System.out.println("Active");
+//		rooms = service.getAllActiveRoomsForHotel(1);
+//		for (Room room : rooms) {
+//			System.out.println(room);
+//		}
+//		System.out.println("All");
+//		rooms = service.getAllRoomsForHotel(1);
+//		for (Room room : rooms) {
+//			System.out.println(room);
+//		}
+//		
+//		System.out.println("Insert");
+//		Room newRoom = new Room(3, 1, "12", "LUX", 1, 1, 123, Boolean.TRUE, Boolean.FALSE, Boolean.TRUE,
+//				Boolean.FALSE, Boolean.TRUE, Boolean.FALSE, Boolean.TRUE, "FULL", 30, 10, Boolean.FALSE);
+//		service.insertRoom(newRoom);
+//
+//		System.out.println("Active");
+//		rooms = service.getAllActiveRoomsForHotel(1);
+//		for (Room room : rooms) {
+//			System.out.println(room);
+//		}
+//		
+//		System.out.println("Update");
+//		newRoom.setDeleted(Boolean.TRUE);
+//		service.updateRoom(newRoom);
+//
+//		System.out.println("Active");
+//		rooms = service.getAllActiveRoomsForHotel(1);
+//		for (Room room : rooms) {
+//			System.out.println(room);
+//		}
+//		System.out.println("All");
+//		rooms = service.getAllRoomsForHotel(1);
+//		for (Room room : rooms) {
+//			System.out.println(room);
+//		}
 	}
 
 }

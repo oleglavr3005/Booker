@@ -77,6 +77,10 @@ public class UserService {
 	public User getUserByEmail(String email) {
 		return daoManager.executeAndClose(() -> daoManager.getUserDao().getUserByEmail(email));
 	}
+
+	public User getUserByConfirmCode(String code) {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getUserByConfirmCode(code));
+	}
 	
 	public User getUserByStatus(UserStatus status) {
 		return daoManager.executeAndClose(() -> daoManager.getUserDao().getUserByStatus(status));

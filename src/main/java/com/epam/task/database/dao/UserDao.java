@@ -21,6 +21,7 @@ public class UserDao {
 	private final String SELECT_BY_EMAIL = SELECT_ALL + " WHERE e_mail LIKE ?";
 	private final String SELECT_BY_STATUS = SELECT_ALL + " WHERE status LIKE ?";
 	private final String SELECT_BY_TYPE	 = SELECT_ALL + " WHERE type LIKE ?";
+	private final String SELECT_BY_CODE = "SELECT * FROM user u WHERE u.confirm_code LIKE ?;";
 	
 	private final String INSERT = "INSERT INTO `user` (first_name, last_name, e_mail, password, type, is_banned, confirm_code, status, phone_number, img, social_network, social_network_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private final String UPDATE = "UPDATE `user` SET first_name = ?, last_name = ?, e_mail = ?, password = ?, type = ?, is_banned = ?, confirm_code = ?, status = ?, phone_number = ?, img = ?, social_network = ?, social_network_id = ? WHERE user_id = ?";
@@ -64,6 +65,17 @@ public class UserDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public User getUserByConfirmCode(String code) {
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_CODE)) {
+			statement.setString(1, code);
+			try (ResultSet result = statement.executeQuery()) {
+				return UniversalTransformer.getObjectFromRS(result, User.class);
+			}
+		} catch (Exception e) {
 			return null;
 		}
 	}
