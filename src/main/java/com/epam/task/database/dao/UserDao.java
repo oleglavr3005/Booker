@@ -80,7 +80,7 @@ public class UserDao {
 		}
 	}
 
-	public User getUserByStatus(UserType type) {
+	public User getUserByType(UserType type) {
 		try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_TYPE)) {
 			statement.setString(1, type.toString());
 			try (ResultSet result = statement.executeQuery()) {

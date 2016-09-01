@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.epam.task.database.dao.manager.DaoManager;
 import com.epam.task.database.model.User;
+import com.epam.task.database.model.enums.UserStatus;
+import com.epam.task.database.model.enums.UserType;
 import com.epam.task.util.MailSender;
 
 
@@ -42,7 +44,7 @@ public class UserService {
 	}
 
 	private void sendConfirmation(User user) {
-		String subject = "Підтвердження реєстрації";
+		String subject = "ПіпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
 		String link = "http://localhost:8080/booker/signup_confirmation?token=" + user.getConfirmCode();
 		String text = "<body style='background-color: #fff'>" +
 
@@ -56,7 +58,7 @@ public class UserService {
 	}
 
 	public void sendPass(User user, String pass) {
-		String subject = "Відновлення паролю";
+		String subject = "ВіпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ";
 		String text = "<body style='background-color: #fff'>" +
 		
 				"<div style='width: 100%; height:20px; background-color: #00000 position: relative color:white;'>Mail Confirmation"
@@ -74,6 +76,14 @@ public class UserService {
 	
 	public User getUserByEmail(String email) {
 		return daoManager.executeAndClose(() -> daoManager.getUserDao().getUserByEmail(email));
+	}
+	
+	public User getUserByStatus(UserStatus status) {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getUserByStatus(status));
+	}
+	
+	public User getUserByType(UserType type) {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getUserByType(type));
 	}
 	
 	public static void main(String[] args) {
