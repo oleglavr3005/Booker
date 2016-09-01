@@ -28,14 +28,14 @@ public class FindHotelsServlet extends HttpServlet {
 		String name = "Hotel"; //get from request
 		int minStars = 4; //get from request
 		int maxStars = 5; //get from request
-		int people = 5; //get from request 3
+		int people = 3; //get from request
 		
 		boolean typeStandart = false; //get from request
 		boolean typeLux = false; //get from request
 		boolean typeDelux = false; //get from request
 
-		boolean foodNone = false; //get from request
-		boolean foodBreakfast = false; //get from request
+		boolean foodNone = true; //get from request
+		boolean foodBreakfast = true; //get from request
 		boolean foodTwice = false; //get from request
 		boolean foodFull = false; //get from request
 		
@@ -50,7 +50,7 @@ public class FindHotelsServlet extends HttpServlet {
 		boolean hasGym = false; //get from request
 		boolean hasBalcony = false; //get from request
 
-		boolean noDeposit = true; //get from request
+		boolean noDeposit = false; //get from request
 		
 		Timestamp startDate;
 		Timestamp endDate;
