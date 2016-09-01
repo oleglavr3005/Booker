@@ -1,6 +1,6 @@
 package com.epam.task.database.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import com.epam.task.database.dao.manager.DaoManager;
 import com.epam.task.database.model.HotelPhoto;
@@ -13,7 +13,7 @@ public class HotelPhotoService {
 		daoManager = new DaoManager();
 	}
 	
-	public Collection<HotelPhoto> getAllHotelPhotos(){
+	public List<HotelPhoto> getAllHotelPhotos(){
 		return daoManager.executeAndClose(() -> daoManager.getHotelPhotoDao().getAllHotelPhotos());
 	}
 	
@@ -21,7 +21,7 @@ public class HotelPhotoService {
 		return daoManager.executeAndClose(() -> daoManager.getHotelPhotoDao().insertHotelPhoto(element));
 	}
 	
-	public Collection<HotelPhoto> getHotelPhotosByHotel(int element){
+	public List<HotelPhoto> getHotelPhotosByHotel(int element){
 		return daoManager.executeAndClose(() -> daoManager.getHotelPhotoDao().getHotelPhotosByHotel(element));
 	}
 
@@ -32,4 +32,42 @@ public class HotelPhotoService {
 	public int deleteHotelPhoto(int element){
 		return daoManager.executeAndClose(() -> daoManager.getHotelPhotoDao().deleteHotelPhoto(element));
 	}
+	
+	public static void main(String[] args) {
+		HotelPhotoService service = new HotelPhotoService();
+		service.testing();
+	}
+	
+	private void testing(){
+		HotelPhotoService service = new HotelPhotoService();
+		System.out.println("ByHotel");
+		List<HotelPhoto> photos = service.getHotelPhotosByHotel(1111);
+		for (HotelPhoto photo : photos) {
+			System.out.println(photo.getId());
+		}
+		System.out.println("All");
+		photos = service.getAllHotelPhotos();
+		for (HotelPhoto photo : photos) {
+			System.out.println(photo.getId());
+		}
+
+		System.out.println("Insert");
+		HotelPhoto newPhoto = new HotelPhoto(100,"1.hjpg","the",1);
+		service.insertHotelPhoto(newPhoto);
+		System.out.println("All");
+		photos = service.getAllHotelPhotos();
+		for (HotelPhoto photo : photos) {
+			System.out.println(photo.getId());
+		}
+		
+		System.out.println("delete");
+		service.deleteHotelPhoto(3);
+
+		System.out.println("All");
+		photos = service.getAllHotelPhotos();
+		for (HotelPhoto photo : photos) {
+			System.out.println(photo.getId());
+		}
+	}
+
 }

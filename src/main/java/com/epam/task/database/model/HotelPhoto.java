@@ -9,11 +9,19 @@ public class HotelPhoto {
 	@DataBaseField(fieldName = "img")
 	private String img;
 
-	@DataBaseField(fieldName = "desk")	
+	@DataBaseField(fieldName = "desc")	
 	private String desc;
 
 	@DataBaseField(fieldName = "hotel_id")
 	private int hotelId;
+
+	public HotelPhoto(int id,String img, String desc, int hotelId) {
+		super();
+		this.id=id;
+		this.img = img;
+		this.desc = desc;
+		this.hotelId = hotelId;
+	}
 
 	public int getId() {
 		return id;

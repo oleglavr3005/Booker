@@ -1,0 +1,177 @@
+<!-- header -->
+body {
+	background-color: #F7F7F7;
+}
+
+img.logo {
+	width: 140px;
+	height: 50px;
+}
+
+.login {
+	margin-top: 5px;
+}
+
+.btn-large {
+	height: 30px;
+	line-height: 30px;
+}
+
+.navbar navbar-default navbar-static-top {
+	margin-bottom: 0px;
+	background: #0d0d0d;
+}
+
+.navbar-header {
+	margin-left: 30px;
+	margin-right: 50px;
+}
+
+.navbar {
+	margin-bottom: 0px;
+}
+
+.nav navbar-nav navbar-right {
+	padding-top: 5px;
+}
+
+.modal-content{
+	margin-top: -10px;
+}
+
+.modal-action modal-close waves-effect waves-red btn-flat col s2 offset-s1{
+	margin-left: 10px;
+}
+
+.waves-effect waves-white modal-trigger{
+	padding-right: 0;
+}
+
+.btn-flat btn-success login{
+	margin-left: 15px;
+}
+
+.btn-flat waves-effect waves-red{
+	margin-left: 15px;
+}
+
+.modal-action modal-close waves-effect waves-red btn-flat{
+	margin-left: 10px;
+}
+
+.nav navbar-nav navbar-right li a {
+	padding: 0px;
+}
+
+.nav navbar-nav navbar-right li a img{
+	width: 50px; 
+	height: 40px; 
+	padding: 0px; 
+	margin-top: 10; 
+	margin-left: 20px;
+}
+
+
+<!-- index -->
+div #sidebar-wrapper {
+	position: relative;
+	left: 0;
+	margin-top: 0px;
+}
+
+.bg-img {
+	border-style: solid;
+	border-width: 3px 0px 0px;
+	border-color: grey;
+	width: 100%;
+	/* 	background: */
+	/* 		url('http://3.bp.blogspot.com/-UXVFcPTKwrk/VC9-GaPAooI/AAAAAAAAFfo/g_uYO8A1PCo/s1600/black%2Bgrey%2Bgradient%2Bbackground%2Bfor%2Bweb.jpg') */
+	background:
+		url(${pageContext.servletContext.contextPath}/resources/images/foot.jpg)
+		center center no-repeat;
+	background-size: cover; &: before { content : '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image: linear-gradient(to bottom right, #002f4b, #dc4225);
+	opacity: .6;
+}
+
+.well {
+	padding: 0px;
+}
+
+.container h4{
+	text-align: center; 
+	margin-top: 20px;
+}
+
+.col s2 offset-s3{
+	margin-top: 18px;
+}
+
+.col s2 offset-s3 a{
+	background: #26A69A;
+	color: #F7F7F7; 
+	font-family: 'Times NewRoman', Times, serif;
+}
+.divider{
+	margin-bottom: 20px;
+}
+
+.col s12{
+	margin-top: 18px;
+}
+
+.waves-effect waves-light btn{
+	background: #26A69A; 
+	text-align:center; 
+	width: 100%; 
+	color: #F7F7F7; 
+	font-family: 'Times NewRoman', Times, serif;
+}
+
+.fa fa-angle-double-down col s1 fa-2x{
+	margin-left:45%;
+}
+
+.modal{
+	width: 25% !important; 
+	max-height: 40% !important;
+}
+
+.progress{
+	width: 275px;
+} 
+
+<!-- footer-->
+
+.bg-img{
+	background-color: #292b34;
+}
+
+.well well-sm main-footer{
+	background-color: transparent; 
+	border: 0px; 
+	margin-bottom: 0px;
+}
+
+.well well-sm main-footer .row{
+	margin-bottom: 0px;
+}
+
+.col-md-12 .row{
+	margin-bottom: 10px;
+}
+
+.title-footer{
+	font-size: 1.6rem; 
+	color: #e6e6e6;
+}
+
+.col s2 div a{
+	color: #e6e6e6;
+	font-size: 1rem;
+}
