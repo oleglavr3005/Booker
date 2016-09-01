@@ -37,6 +37,14 @@ public class RoomService {
 		return daoManager.executeAndClose(() -> daoManager.getRoomDao().restoreRoom(id));
 	}
 
+	public int getMinPrice() {
+		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getMinPrice());
+	}
+
+	public int getMaxPrice() {
+		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getMaxPrice());
+	}
+
 	public static void main(String[] args) {
 		RoomService service = new RoomService();
 		service.testing();
