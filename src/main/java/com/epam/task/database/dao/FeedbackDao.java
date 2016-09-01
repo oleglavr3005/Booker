@@ -3,7 +3,8 @@ package com.epam.task.database.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Collection;
+import java.sql.SQLException;
+import java.util.List;
 
 import com.epam.task.database.model.Feedback;
 import com.epam.task.database.transformers.UniversalTransformer;
@@ -14,7 +15,7 @@ public class FeedbackDao {
 	private final String INSERT_FEEDBACK = "INSERT INTO feedback VALUES (?, ?, ?, ?, ?, ?)";
 	private final String UPDATE_FEEDBACK = "UPDATE INTO feedback SET user_id = ?, hotel_id = ?, rating = ?, comment = ?, title = ?, date = ? WHERE feedback_id = ?";
 	private final String DELETE_FEEDBACK = "DELETE FROM feedback WHERE feedback_id = ?";
-
+	private final String SELECT_ALL_FEEDBACK_BY_HOTEL = "SELECT * FROM feedback WHERE hotel_id = ?;";
 	public FeedbackDao(Connection connection) {
 		super();
 		this.connection = connection;
@@ -24,7 +25,7 @@ public class FeedbackDao {
 		this.connection = connection;
 	}
 
-	public Collection<Feedback> getAllFeedbacks() {
+	public List<Feedback> getAllFeedbacks() {
 		try (PreparedStatement statment = connection.prepareStatement(SELECT_ALL_FEEDBACK)) {
 			ResultSet rs = statment.executeQuery();
 			return UniversalTransformer.getCollectionFromRS(rs, Feedback.class);
@@ -72,6 +73,17 @@ public class FeedbackDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return -1;
+		}
+	}
+	
+	public List<Feedback> getAllFeedbackByHotel(int id){
+		try (PreparedStatement statment = connection.prepareStatement(SELECT_ALL_FEEDBACK_BY_HOTEL)){
+			statment.setInt(1, id);
+			ResultSet rs = statment.executeQuery();
+			return UniversalTransformer.getCollectionFromRS(rs, Feedback.class);
+		} catch(SQLException e){
+			e.printStackTrace();
+			return null;
 		}
 	}
 }
