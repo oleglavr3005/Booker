@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.epam.task.database.dao.manager.DaoManager;
 import com.epam.task.database.model.Order;
-import com.epam.task.database.model.Order;
 import com.epam.task.database.model.enums.OrderStatus;
 
 public class OrderService {
