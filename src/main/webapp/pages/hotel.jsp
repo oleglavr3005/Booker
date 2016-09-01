@@ -58,16 +58,17 @@
 
 <!-- JTable -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
 
 <script type="text/javascript" charset="utf8"
 	src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
 <script type="text/javascript">
-$(document).ready( function () {
-    $('#example').DataTable();
-} );
+	$(document).ready(function() {
+		$('#example').DataTable();
+	});
 </script>
 <style>
 div #sidebar-wrapper {
@@ -156,26 +157,24 @@ div #sidebar-wrapper {
 		<div id="links">
 			<div class="row">
 				<div class="col s4">
-					<a
-						href='<c:out value="${mainPhoto.id}"></c:out>'
-						title="Banana" data-gallery> <img
-						src="<c:out value="${mainPhoto.img}"></c:out>"
-						alt="Banana">
+					<a href='<c:out value="${mainPhoto.id}"></c:out>' title="Banana"
+						data-gallery> <img
+						src="<c:out value="${mainPhoto.img}"></c:out>" alt="Banana">
 					</a>
 
 
 					<div style="overflow-x: auto;">
 						<div style="margin: 10px; white-space: nowrap;">
-						<c:forEach items="${hotelPhoto}" var="photo">
-						   <div style="display: inline-block;">
-								<a
-									href='<c:out value="${photo.img }"></c:out>'
-									title="<c:out value="${photo.img }"></c:out>" data-gallery> <img style="height: 60px;"
-									src="<c:out value="${photo.img }"></c:out>"
-									alt="<c:out value="${photo.img }"></c:out>">
-								</a>
-							</div>
-						</c:forEach>
+							<c:forEach items="${hotelPhotos}" var="photo">
+								<div style="display: inline-block;">
+									<a href='<c:out value="${photo.img }"></c:out>'
+										title="<c:out value="${photo.img }"></c:out>" data-gallery>
+										<img style="height: 60px;"
+										src="<c:out value="${photo.img }"></c:out>"
+										alt="<c:out value="${photo.img }"></c:out>">
+									</a>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
@@ -187,36 +186,36 @@ div #sidebar-wrapper {
 			</div>
 		</div>
 		<div class="row">
-		<table id="example" class="display">
-    <thead>
-        <tr>
-          	<th>Name</th>
+			<table id="example" class="display">
+				<thead>
+					<tr>
+						<th>Name</th>
 						<th>Position</th>
 						<th>Office</th>
-        </tr>
-    </thead>
+					</tr>
+				</thead>
 
-						<c:forEach items="${rooms}" var="room">
-						    <tbody>
-    <tr>
+				<c:forEach items="${rooms}" var="room">
+					<tbody>
+						<tr>
 							<td><c:out value="${ room.price}"></c:out></td>
 							<td><c:out value="${ room.price}"></c:out></td>
 							<td><c:out value="${ room.price}"></c:out></td>
-						
+
 						</tr>
-						</c:forEach>
-					
-        <tr>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-        </tr>
-        <tr>
-            <td>Row 2 Data 1</td>
-            <td>Row 2 Data 2</td>
-        </tr>
-    </tbody>
-</table>
-			
+				</c:forEach>
+
+				<tr>
+					<td>Row 1 Data 1</td>
+					<td>Row 1 Data 2</td>
+				</tr>
+				<tr>
+					<td>Row 2 Data 1</td>
+					<td>Row 2 Data 2</td>
+				</tr>
+				</tbody>
+			</table>
+
 		</div>
 	</div>
 
@@ -228,104 +227,8 @@ div #sidebar-wrapper {
 	<jsp:include page="foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
 
-	<div id="modal1" class="modal"
-		style="width: 25% !important; max-height: 40% !important">
-		<div class="modal-content">
-			<!-- 			<h4>VK auth</h4> -->
-			<p>
-				<img alt="Vk Log"
-					src="http://1863x.com/wp-content/uploads/2016/01/vk-vkontakte-logo-vk.jpg"
-					width="275px" height="200px;">
-			</p>
-			<div class="progress" style="width: 275px;">
-				<div class="indeterminate"></div>
-			</div>
-			<!-- 			<div class="modal-footer"> -->
-
-			<!-- 			</div> -->
-		</div>
-
-	</div>
-
-	<c:if test="${vkOAuth}">
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$(window).load(function() {
-
-					$('.modal-trigger').leanModal();
-					$('#modal1').openModal();
-
-					debugger;
-
-					var token = window.location.hash.substr(1);
-					$.post('vk_oauth', {
-						token : token.split("&")[0].split("=")[1],
-						user_id : token.split("&")[2].split("=")[1]
-					}, function() {
-						//NEED normal names
-						document.location.href = '/MainPage/';
-
-					});
-				});
-			});
-		</script>
-	</c:if>
-
-
-	<!-- 	<script type="text/javascript" -->
-	<%-- 		src="${pageContext.servletContext.contextPath}/resources/js/search/details.js"></script> --%>
-
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
-
-	<script>
-		var range = document.getElementById('rangeSlider');
-		noUiSlider.create(range, {
-			start : [ 1, 5 ], // Handle start position
-			step : 1, // Slider moves in increments of '1'
-			connect : true, // Display a colored bar between the handles
-			behaviour : 'tap-drag', // Move handle on tap, bar is draggable
-			range : { // Slider can select '1' to '5'
-				'min' : 1,
-				'max' : 5
-			}
-		});
-	</script>
-
-	<script>
-		var range2 = document.getElementById('priceSlider');
-		noUiSlider.create(range2, {
-			start : [ 100, 5000 ], // Handle start position
-			step : 1, // Slider moves in increments of '1'
-			connect : true, // Display a colored bar between the handles
-			behaviour : 'tap-drag', // Move handle on tap, bar is draggable
-			range : { // Slider can select '1' to '5'
-				'min' : 100,
-				'max' : 5000
-			}
-		});
-
-		function togle() {
-			var elem1 = document.getElementById("details_panel");
-			var style = document.defaultView.getComputedStyle(elem1, null)
-					.getPropertyValue("display");
-			if (style == 'none') {
-				document.getElementById('details_panel').style.display = "block";
-
-				$('#arrow_icon').removeClass("fa-angle-double-down");
-				$('#arrow_icon').addClass("fa-angle-double-up");
-			} else {
-				document.getElementById('details_panel').style.display = "none";
-
-				$('#arrow_icon').removeClass("fa-angle-double-up");
-				$('#arrow_icon').addClass("fa-angle-double-down");
-			}
-		}
-	</script>
 
 </body>
 

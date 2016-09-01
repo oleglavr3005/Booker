@@ -1,4 +1,5 @@
-function togle(){
+
+function togle3(){
 
 	if($('#details_panel').html() != null){
 		

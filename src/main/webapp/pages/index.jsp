@@ -150,7 +150,8 @@ div #sidebar-wrapper {
 
 			<div class="col s2 offset-s3" style="margin-top: 18px;">
 				<a id="search" class="waves-effect waves-light btn"
-					onclick="togle()" href="${pageContext.servletContext.contextPath}/search"
+					onclick="find()" 
+<%-- 					href="${pageContext.servletContext.contextPath}/search" --%>
 					style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
 						key="index.search.button" /></a>
 			</div>
@@ -169,9 +170,10 @@ div #sidebar-wrapper {
 
 						<div class="col s4 offset-s1 ">
 
+
 							<label id="room_type"> ROOM_TYPE </label>
 							<p>
-								<input type="checkbox" class="filled-in" id="room_standart" /> <label
+								<input type="checkbox" class="filled-in" id="room_standart" value="true"/> <label
 									for="room_standart">STANDART</label>
 							</p>
 							<p>
@@ -182,6 +184,7 @@ div #sidebar-wrapper {
 								<input type="checkbox" class="filled-in" id="room_delux" /> <label
 									for="room_delux">DELUX</label>
 							</p>
+
 
 							<label id="room_type"> ROOM_FOOD </label>
 							<p>
@@ -325,8 +328,9 @@ div #sidebar-wrapper {
 	</c:if>
 
 
-<!-- 	<script type="text/javascript" -->
-<%-- 		src="${pageContext.servletContext.contextPath}/resources/js/search/details.js"></script> --%>
+
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
 		
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
@@ -381,15 +385,18 @@ div #sidebar-wrapper {
 	
 	</script>
 
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$('.datepicker').pickadate({
-			    selectMonths: true, // Creates a dropdown to control month
-			    selectYears: 15 // Creates a dropdown of 15 years to control year
-		});
-	});
+
+<!-- 	DATEPICKER -->
+<!-- 	<script type="text/javascript"> -->
+// 	$(document).ready(function() {
+// 		$('.datepicker').pickadate({
+// 			    selectMonths: true, // Creates a dropdown to control month
+// 			    selectYears: 15 // Creates a dropdown of 15 years to control year
+// 		});
+// 	});
+<!-- 	</script> -->
 	
-	</script>
+	
 </body>
 
 </html>

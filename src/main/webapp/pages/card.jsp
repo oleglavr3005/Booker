@@ -43,7 +43,7 @@ b {
 
 					<div class="card-image col s4" style="position: relative;">
 						<a
-							href="${pageContext.servletContext.contextPath}/booker/hotel/${hotel.id}">
+							href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}">
 							<img src="<i:urlToImage url="${hotel.photo}" />"
 							style="height: 170px; width: 200px; padding: 10px;">
 						</a>
