@@ -25,6 +25,9 @@ public class FindHotelsServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		System.out.println(request.getParameter("typeStandart"));		
+		System.out.println(request.getParameter("typeLux"));
+		
 		String name = "Hotel"; //get from request
 		int minStars = 4; //get from request
 		int maxStars = 5; //get from request
@@ -81,7 +84,7 @@ public class FindHotelsServlet extends HttpServlet {
 		request.setAttribute("hotels", suitableHotels);
 		request.setAttribute("countOfHotels", suitableHotels.size());
 		
-		request.getRequestDispatcher("pages/index.jsp").forward(request, response);
+		request.getRequestDispatcher("pages/card.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
