@@ -159,7 +159,7 @@ div #sidebar-wrapper {
 
 			<div class="col s2 offset-s3" style="margin-top: 18px;">
 				<a id="search" class="waves-effect waves-light btn"
-					onclick="togle()" href="${pageContext.servletContext.contextPath}/booker/search"
+					onclick="togle()" href="${pageContext.servletContext.contextPath}/search"
 					style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
 						key="index.search.button" /></a>
 			</div>
