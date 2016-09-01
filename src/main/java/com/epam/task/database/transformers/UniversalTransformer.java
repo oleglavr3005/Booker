@@ -38,9 +38,8 @@ public class UniversalTransformer {
 		Field[] fields = clazz.getDeclaredFields();
 
 		Constructor<T>[] constructors = (Constructor<T>[]) clazz.getDeclaredConstructors();
-
-		Constructor<T> constructor = constructors[0];
-
+		//Constructor<T> constructor = constructors[0];
+		
 		List<Object> values = new ArrayList<Object>();
 		for (Field field : fields) {
 			DataBaseField anotation = field.getAnnotation(DataBaseField.class);
@@ -51,6 +50,13 @@ public class UniversalTransformer {
 			}
 		}
 
+		Constructor<T> constructor = constructors[0];
+		for(int i = 0; i<constructors.length; i++) {
+			if(constructors[i].getParameterCount() == values.toArray().length) {
+				constructor = constructors[i];
+			}
+		}
+		
 			try {
 				return constructor.newInstance(values.toArray());
 			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
