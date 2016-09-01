@@ -1,0 +1,15 @@
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.0</jsp-version>
+	<short-name>i18n</short-name>
+	<tag>
+		<name>urlToImage</name>
+		<tag-class>com.epam.task.util.tag.PrintImage</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>url</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

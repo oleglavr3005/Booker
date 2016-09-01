@@ -129,6 +129,11 @@ img.logo {
 
 							</c:when>
 							<c:otherwise>
+							<script type="text/javascript"
+									src="${pageContext.servletContext.contextPath}/resources/js/registration/registration.js"></script>
+								<script type="text/javascript"
+									src="${pageContext.servletContext.contextPath}/resources/js/authorization/authorization.js"></script>
+										
 								<li><a class="modal-trigger" href="#signupModal"><fmt:message
 											key="header.regist" /></a>
 									<div id="signupModal" class="modal">

@@ -2,7 +2,7 @@ function togle(){
 
 	if($('#details_panel').html() != null){
 		
-		$('#togle_place').html('<a id="togle" class="my-btn waves-effect waves-light btn" style="background: #2A2A2A; text-align:center; width: 100%; color: #F7F7F7; font-family: Times NewRoman, Times, serif;"'
+		$('#togle_place').html('<a id="togle" class="my-btn waves-effect waves-light btn" style="background: #26A69A; text-align:center; width: 100%; color: #F7F7F7; font-family: Times NewRoman, Times, serif;"'
 				+ ' onclick="togle()"><i class="fa fa-angle-double-down col s1 fa-2x" aria-hidden="true" style="margin-left:45%"></i></a></div>');
 		
 //		$('#hide_togle').remove();
@@ -41,22 +41,22 @@ function togle(){
 	'<div class="col s4 offset-s2 ">'+
 	
 	' <p style="margin-top:20px;"><input type="checkbox" class="filled-in" id="wifi"/>'+
-		'<label for="room_standart">WIFI</label></p>' +
-   	' <p><input type="checkbox" class="filled-in" id="room_lux" />'+
-   		'<label for="room_lux">SHOWER</label></p>' +
-	' <p><input type="checkbox" class="filled-in" id="room_delux" />'+
-    	'<label for="room_delux">PARKING</label></p>' +
-    ' <p><input type="checkbox" class="filled-in" id="food_none" />'+
-    		'<label for="food_none">AIR CONDITION</label></p>' +
+		'<label for="wifi">WIFI</label></p>' +
+   	' <p><input type="checkbox" class="filled-in" id="shower" />'+
+   		'<label for="shower">SHOWER</label></p>' +
+	' <p><input type="checkbox" class="filled-in" id="parking" />'+
+    	'<label for="parking">PARKING</label></p>' +
+    ' <p><input type="checkbox" class="filled-in" id="condition" />'+
+    		'<label for="condition">AIR CONDITION</label></p>' +
     
-   	' <p><input type="checkbox" class="filled-in" id="food_breakfast" />'+
-   		'<label for="food_breakfast">SWIM POOL</label></p>' +
-	' <p><input type="checkbox" class="filled-in" id="food_twice" />'+
-    	'<label for="food_twice">FIT GYM</label></p>' +
-    ' <p><input type="checkbox" class="filled-in" id="food_full" />'+
-    	'<label for="food_full">BALCONY</label></p>' +	
-    ' <p><input type="checkbox" class="filled-in" id="food_none" />'+
-		'<label for="food_none">NO DEPOSIT</label></p>' +
+   	' <p><input type="checkbox" class="filled-in" id="pool" />'+
+   		'<label for="pool">SWIM POOL</label></p>' +
+	' <p><input type="checkbox" class="filled-in" id="gym" />'+
+    	'<label for="gym">FIT GYM</label></p>' +
+    ' <p><input type="checkbox" class="filled-in" id="balcony" />'+
+    	'<label for="balcony">BALCONY</label></p>' +	
+    ' <p><input type="checkbox" class="filled-in" id="no_deposit" />'+
+		'<label for="no_deposit">NO DEPOSIT</label></p>' +
 	
 	'</div>'+
 	
