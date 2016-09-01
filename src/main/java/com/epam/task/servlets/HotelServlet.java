@@ -33,10 +33,12 @@ public class HotelServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String hotelId = request.getPathInfo().substring(1);
+		if(hotelId.length() > 1) {
+			return;
+		}
 		int id = 0;
 		try {
 			id = Integer.parseInt(hotelId);
-			System.out.println(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			LOGGER.info("Bad user id for hotel");
