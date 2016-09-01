@@ -1,6 +1,6 @@
 package com.epam.task.database.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import com.epam.task.database.dao.manager.DaoManager;
 import com.epam.task.database.model.Feedback;
@@ -13,7 +13,7 @@ public class FeedbackService {
 		daoManager = new DaoManager();
 	}
 	
-	public Collection<Feedback> getAllFeedbacks(){
+	public List<Feedback> getAllFeedbacks(){
 		return daoManager.executeAndClose(() -> daoManager.getFeedbackDao().getAllFeedbacks());
 	}
 	
@@ -29,5 +29,7 @@ public class FeedbackService {
 		return daoManager.executeAndClose(() -> daoManager.getFeedbackDao().deleteFeedback(element));
 	}
 	
-	
+	public List<Feedback> getAllFeedbacksByHotel(int id){
+		return daoManager.executeAndClose(() -> daoManager.getFeedbackDao().getAllFeedbackByHotel(id));
+	}
 }
