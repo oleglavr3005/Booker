@@ -1,16 +1,25 @@
 var mapping = $('#mapping').val();
 
 function auth(){
-	$.post(mapping == null ? '':mapping + 'auth', {
-		email : $('#emailAuth').val(),
-		password : $('#passwordAuth').val()
-	}, function(result){
-		if(result == 'false'){
-			invalid('passwordAuth');
-		}else{
-			document.location.href = '/booker/' + result + '/home';
-		}
-	});
+		var emailField = $("#emailAuth");
+		var passwordField = $("#passwordAuth");
+
+			$.ajax({
+				data : {
+					email : emailField.val(),
+					password : passwordField.val()
+				},
+				dataType : 'json',
+				url : 'auth',
+				type : 'POST',
+				success : function(respond) {
+					if (respond.logged) {
+						location.reload();
+					} else {
+						invalid('passwordAuth');
+					}
+				}
+			});
 }
 
 function invalid(field) {
