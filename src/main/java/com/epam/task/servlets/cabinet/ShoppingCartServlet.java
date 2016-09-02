@@ -8,9 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.epam.task.database.model.Room;
-import com.epam.task.database.service.RoomService;
+import com.epam.task.database.model.Order;
+import com.epam.task.database.model.User;
+import com.epam.task.database.model.enums.OrderStatus;
+import com.epam.task.database.service.OrderService;
 
 /**
  * Servlet implementation class ShoppingCartServlet
@@ -31,10 +34,11 @@ public class ShoppingCartServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		//TESTING
-		List<Room> rooms = new RoomService().getAllActiveRoomsForHotel(1, 1);
-		request.setAttribute("rooms", rooms);
+		HttpSession session = request.getSession(true);
+		int userId = ((User) session.getAttribute("user")).getId();
+		
+		List<Order> orders = new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.ORDER);
+		request.setAttribute("orders", orders);
 		request.setAttribute("inCart", Boolean.TRUE);
 		
 		request.getRequestDispatcher("/pages/user/shopping_cart.jsp").forward(request, response);
