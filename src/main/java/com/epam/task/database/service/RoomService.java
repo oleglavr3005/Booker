@@ -13,12 +13,12 @@ public class RoomService {
 		daoManager = new DaoManager();
 	}
 
-	public List<Room> getAllActiveRoomsForHotel(int id) {
-		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllActiveRoomsForHotel(id));
+	public List<Room> getAllActiveRoomsForHotel(int id, int page) {
+		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllActiveRoomsForHotel(id, page));
 	}
 
-	public List<Room> getAllRoomsForHotel(int id) {
-		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllRoomsForHotel(id));
+	public List<Room> getAllRoomsForHotel(int id, int page) {
+		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllRoomsForHotel(id, page));
 	}
 
 	public Integer insertRoom(Room room) {
@@ -53,12 +53,12 @@ public class RoomService {
 	private void testing(){
 		RoomService service = new RoomService();
 		System.out.println("Active");
-		List<Room> rooms = service.getAllActiveRoomsForHotel(1);
+		List<Room> rooms = service.getAllActiveRoomsForHotel(1, 1);
 		for (Room room : rooms) {
 			System.out.println(room);
 		}
 		System.out.println("All");
-		rooms = service.getAllRoomsForHotel(1);
+		rooms = service.getAllRoomsForHotel(1, 1);
 		for (Room room : rooms) {
 			System.out.println(room);
 		}

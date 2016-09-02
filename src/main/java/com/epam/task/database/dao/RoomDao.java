@@ -15,6 +15,7 @@ public class RoomDao {
 	private Connection connection;
 
 	private final String GET_ALL_ACIVE_ROOMS_FOR_HOTEL = "SELECT * FROM room WHERE hotel_id = ? AND is_deleted = 'false'";
+	private final String PAGINATION = " LIMIT ?, 3";
 	
 	private final String GET_ALL_ROOMS_FOR_HOTEL = "SELECT * FROM room WHERE hotel_id = ?";
 
@@ -45,23 +46,25 @@ public class RoomDao {
 		this.connection = connection;
 	}
 	
-	public List<Room> getAllActiveRoomsForHotel(int id) {
-		try {
-			PreparedStatement ps = connection.prepareStatement(GET_ALL_ACIVE_ROOMS_FOR_HOTEL);
+	public List<Room> getAllActiveRoomsForHotel(int id, int page) {
+		try (PreparedStatement ps = connection.prepareStatement(GET_ALL_ACIVE_ROOMS_FOR_HOTEL + PAGINATION)) {
 			ps.setInt(1, id);
-			ResultSet rs = ps.executeQuery();
-			return UniversalTransformer.getCollectionFromRS(rs, Room.class);
+			ps.setInt(2, (page-1)*3);
+			try (ResultSet rs = ps.executeQuery()) {
+				return UniversalTransformer.getCollectionFromRS(rs, Room.class);
+			}
 		} catch (Exception e) {
 			return new ArrayList<Room>();
 		}
 	}
 	
-	public List<Room> getAllRoomsForHotel(int id) {
-		try {
-			PreparedStatement ps = connection.prepareStatement(GET_ALL_ROOMS_FOR_HOTEL);
+	public List<Room> getAllRoomsForHotel(int id, int page) {
+		try (PreparedStatement ps = connection.prepareStatement(GET_ALL_ROOMS_FOR_HOTEL + PAGINATION)) {
 			ps.setInt(1, id);
-			ResultSet rs = ps.executeQuery();
-			return UniversalTransformer.getCollectionFromRS(rs, Room.class);
+			ps.setInt(2, (page-1)*3);
+			try (ResultSet rs = ps.executeQuery()) {
+				return UniversalTransformer.getCollectionFromRS(rs, Room.class);
+			}			
 		} catch (Exception e) {
 			return new ArrayList<Room>();
 		}
@@ -162,8 +165,8 @@ public class RoomDao {
 	}
 	
 	public int getMinPrice(){
-		try(PreparedStatement st = connection.prepareStatement(GET_MIN_PRICE)){
-			ResultSet result = st.executeQuery();
+		try(PreparedStatement st = connection.prepareStatement(GET_MIN_PRICE);
+				ResultSet result = st.executeQuery()){
 			if(result.next()) {
 				return result.getInt(1);
 			} else {
@@ -177,8 +180,8 @@ public class RoomDao {
 	}
 	
 	public int getMaxPrice(){
-		try(PreparedStatement st = connection.prepareStatement(GET_MAX_PRICE)){
-			ResultSet result = st.executeQuery();
+		try(PreparedStatement st = connection.prepareStatement(GET_MAX_PRICE);
+				ResultSet result = st.executeQuery()){
 			if(result.next()) {
 				return result.getInt(1);
 			} else {

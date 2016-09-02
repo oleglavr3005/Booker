@@ -51,8 +51,11 @@ public class HotelServlet extends HttpServlet {
 			LOGGER.info("Bad user id for hotel, hotel not found");
 			return;
 		}
+		String pageString = request.getParameter("page");
+		int page = pageString == null ? 1 : Integer.parseInt(pageString);
+		
 		List<Feedback> feedbacks = new FeedbackService().getAllFeedbacksByHotel(id);
-		List<Room> rooms = new RoomService().getAllRoomsForHotel(id);
+		List<Room> rooms = new RoomService().getAllActiveRoomsForHotel(id, page);
 		List<HotelPhoto> hotelPhoto = new HotelPhotoService().getHotelPhotosByHotel(id);
 		request.setAttribute("hotel", hotel);
 		request.setAttribute("feedbacks", feedbacks);
