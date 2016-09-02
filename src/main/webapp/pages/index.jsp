@@ -367,8 +367,8 @@ div #sidebar-wrapper {
 	</c:if>
 	<!--  END OF VK REDIRECT -->
 
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<!-- 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.js"></script>
 	<script
