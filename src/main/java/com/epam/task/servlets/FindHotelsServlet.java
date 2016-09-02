@@ -28,7 +28,8 @@ public class FindHotelsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {				
 		HttpSession session = request.getSession(true);
 		
-		if(request.getParameter("name") == null) {
+		if(request.getParameter("name") == null || request.getParameter("name").equals("") ||
+				request.getParameter("people").equals("") || request.getParameter("startDate").equals("") || request.getParameter("endDate").equals("")) {
 			response.sendRedirect("home");
 			return;
 		}
@@ -113,8 +114,18 @@ public class FindHotelsServlet extends HttpServlet {
 
 		request.setAttribute("hotels", suitableHotels);
 		request.setAttribute("countOfHotels", suitableHotels.size());
+		request.setAttribute("countOfPages", new HotelService().getSuitableHotelsNumber(name, minStars, maxStars, people, 
+				typeStandart, typeLux, typeDelux, 
+				foodNone, foodBreakfast, foodTwice, foodFull, 
+				minPrice, maxPrice, 
+				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
+				startDate, endDate));
 		
-		request.getRequestDispatcher("pages/index.jsp").forward(request, response);
+		if(request.getParameter("flag").equals("true")) {
+			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("pages/index.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
