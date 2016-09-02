@@ -28,6 +28,11 @@ public class FindHotelsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {				
 		HttpSession session = request.getSession(true);
 		
+		if(request.getParameter("name") == null) {
+			response.sendRedirect("home");
+			return;
+		}
+		
 		String name = request.getParameter("name"); //get from request
 		int minStars = (int) Double.parseDouble(request.getParameter("minStars")); //get from request
 		int maxStars = (int) Double.parseDouble(request.getParameter("maxStars")); //get from request
