@@ -100,8 +100,9 @@ img.logo {
 		<div class="navbar-header"
 			style="margin-left: 30px; margin-right: 50px;">
 
-			<a class="brand" href="${pageContext.servletContext.contextPath}/">
+			<a class="brand" href="${pageContext.servletContext.contextPath}/home">
 				<img class="logo"
+				href="${pageContext.servletContext.contextPath}/home"
 				src="${pageContext.servletContext.contextPath}/resources/themes/images/logo.png"
 				alt="Periodicals" />
 			</a>
