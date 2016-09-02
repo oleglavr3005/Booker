@@ -39,7 +39,7 @@ b {
 		<div class="card">
 
 			<div class="container-fluid">
-				<div class="row" style="margin-top: 15px; margin-bottom: 10px;">
+				<div class="row" style="margin-top:15px; margin-bottom:10px;">
 
 					<div class="card-image col s4" style="position: relative;">
 						<a
@@ -51,34 +51,25 @@ b {
 					</div>
 
 					<div class="col s6">
-
-						<div class="row" style="margin-top: 15px;">
-							<div class="col s5">
-								<span>${hotel.name}</span>
-							</div>
-							<div class="col s6 offset-s1">
-								<c:forEach var="i" begin="1" end="${hotel.stars}">
-									<i class="fa fa-lg fa-star-o" aria-hidden="true"></i>
-								</c:forEach>
-							</div>
+						<div class="row">
+							<span>${hotel.name}</span> <span>STAR_ZONE</span>
 						</div>
 
-
 						<div class="row">
-							<i class="fa fa-lg icon-map-marker" aria-hidden="true"></i> <span>${hotel.city}
+							<i class="fa fa-2x icon-map-marker" aria-hidden="true"></i> <span>${hotel.city}
 								${hotel.street}</span>
 						</div>
 
-						<div class="row" style="margin-bottom: 5px">
-							<i class="material-icons"
-								style="font-size: 20px;">receipt</i>
+						<div class="row" style="margin-bottom:5px">
+							<i class="material-icons prefix"
+								style="margin-left: -5px; margin-right: 10px; margin-top: 14px;">receipt</i>
 							<span>${hotel.desc}</span>
 						</div>
 					</div>
 
 					<div class="col s2">
 						<div class="row">
-							<i class="fa fa-lg fa-star" aria-hidden="true"></i> <span>RATING
+							<i class="fa fa-2x fa-star" aria-hidden="true"></i> <span>RATING
 								: ${hotel.rating }</span>
 						</div>
 
@@ -96,7 +87,7 @@ b {
 
 
 		</div>
-	</div>
+	</div>	
 </c:forEach>
 
 <c:if test="${userState == 'admin'}">

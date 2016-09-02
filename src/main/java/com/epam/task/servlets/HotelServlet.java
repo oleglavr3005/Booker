@@ -1,8 +1,6 @@
 package com.epam.task.servlets;
 
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
@@ -54,51 +51,8 @@ public class HotelServlet extends HttpServlet {
 			LOGGER.info("Bad user id for hotel, hotel not found");
 			return;
 		}
-		String pageString = request.getParameter("page");
-		int page = pageString == null ? 1 : Integer.parseInt(pageString);
-		
-		HttpSession session = request.getSession(true);
-		boolean typeStandart = session.getAttribute("typeStandart") == null ? false : (boolean) session.getAttribute("typeStandart");
-		boolean typeLux = session.getAttribute("typeLux") == null ? false : (boolean) session.getAttribute("typeLux");
-		boolean typeDelux = session.getAttribute("typeDelux") == null ? false : (boolean) session.getAttribute("typeDelux");
-				
-		boolean foodNone = session.getAttribute("foodNone") == null ? false : (boolean) session.getAttribute("foodNone");
-		boolean foodBreakfast = session.getAttribute("foodBreakfast") == null ? false : (boolean) session.getAttribute("foodBreakfast");
-		boolean foodTwice = session.getAttribute("foodTwice") == null ? false : (boolean) session.getAttribute("foodTwice");
-		boolean foodFull = session.getAttribute("foodFull") == null ? false : (boolean) session.getAttribute("foodFull");
-		
-		int minPrice = session.getAttribute("minPrice") == null ? 0 : (int) session.getAttribute("minPrice");
-		int maxPrice = session.getAttribute("maxPrice") == null ? new RoomService().getMaxPrice() : (int) session.getAttribute("maxPrice");
-		
-		boolean hasWiFi = session.getAttribute("hasWiFi") == null ? false : (boolean) session.getAttribute("hasWiFi");
-		boolean hasShower = session.getAttribute("hasShower") == null ? false : (boolean) session.getAttribute("hasShower");
-		boolean hasParking = session.getAttribute("hasParking") == null ? false : (boolean) session.getAttribute("hasParking");
-		boolean hasCondition = session.getAttribute("hasCondition") == null ? false : (boolean) session.getAttribute("hasCondition");
-		boolean hasPool = session.getAttribute("hasPool") == null ? false : (boolean) session.getAttribute("hasPool");
-		boolean hasGym = session.getAttribute("hasGym") == null ? false : (boolean) session.getAttribute("hasGym");
-		boolean hasBalcony = session.getAttribute("hasBalcony") == null ? false : (boolean) session.getAttribute("hasBalcony");
-		boolean noDeposit = session.getAttribute("noDeposit") == null ? false : (boolean) session.getAttribute("noDeposit");
-		
-		Timestamp startDate;
-		Timestamp endDate;
-		try {
-			startDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(session.getAttribute("startDate").toString()).getTime());
-		} catch (Exception e) {
-			startDate = new Timestamp(0);
-		}
-		try {
-			endDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(session.getAttribute("endDate").toString()).getTime());
-		} catch (Exception e) {
-			endDate = new Timestamp(0);
-		}
-		
 		List<Feedback> feedbacks = new FeedbackService().getAllFeedbacksByHotel(id);
-		List<Room> rooms = new RoomService().getAllSuitableRoomsForHotel(id, page, 
-				typeStandart, typeLux, typeDelux, 
-				foodNone, foodBreakfast, foodTwice, foodFull, 
-				minPrice, maxPrice, 
-				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
-				startDate, endDate);
+		List<Room> rooms = new RoomService().getAllRoomsForHotel(id);
 		List<HotelPhoto> hotelPhoto = new HotelPhotoService().getHotelPhotosByHotel(id);
 		request.setAttribute("hotel", hotel);
 		request.setAttribute("feedbacks", feedbacks);
