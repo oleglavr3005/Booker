@@ -34,6 +34,10 @@
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/languages.min.css">
 
+
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/jPage/style.css">
+
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
 	rel="stylesheet">
@@ -94,7 +98,8 @@ div #sidebar-wrapper {
 		<h4 style="text-align: center; margin-top: 20px;">
 			<fmt:message key="index.search.header" />
 		</h4>
-
+	
+<!-- 		FORM START -->
 		<form action="search" method="post">
 
 			<div class="row">
@@ -282,6 +287,8 @@ div #sidebar-wrapper {
 				id="maxPrice" type="hidden" value="100" name="maxPrice" /> <input
 				type="submit" value="Submit">
 		</form>
+	
+<!-- 		FORM END -->
 
 	</div>
 
@@ -291,6 +298,22 @@ div #sidebar-wrapper {
 		<div id="switchContent" class="row">
 			<jsp:include page="card.jsp"></jsp:include>
 		</div>
+		
+		<div id="paginationdemo">
+                <div id="p1" class="pagedemo _current" style="">Page 1</div>
+				<div id="p2" class="pagedemo" style="display:none;">Page 2</div>
+				<div id="p3" class="pagedemo" style="display:none;">Page 3</div>
+				<div id="p4" class="pagedemo" style="display:none;">Page 4</div>
+				<div id="p5" class="pagedemo" style="display:none;">Page 5</div>
+				<div id="p6" class="pagedemo" style="display:none;">Page 6</div>
+				<div id="p7" class="pagedemo" style="display:none;">Page 7</div>
+				<div id="p8" class="pagedemo" style="display:none;">Page 8</div>
+				<div id="p9" class="pagedemo" style="display:none;">Page 9</div>
+				<div id="p10" class="pagedemo" style="display:none;">Page 10</div>
+				<div id="demo5">                   
+                </div>
+         </div>
+           
 	</div>
 
 	<!-- Footer ========================================================================== -->
@@ -346,9 +369,6 @@ div #sidebar-wrapper {
 	</c:if>
 	<!--  END OF VK REDIRECT -->
 
-
-
-
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 	<script
@@ -361,8 +381,9 @@ div #sidebar-wrapper {
 		src="${pageContext.servletContext.contextPath}/resources/js/noUIslider/slider.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
-	<script>	
-				
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
+	<script>			
 		$('#typeStandart').attr('checked', '${typeStandart}' == 'true');
 		$('#typeLux').attr('checked', '${typeLux}' == 'true');
 		$('#typeDelux').attr('checked', '${typeDelux}' == 'true');
@@ -381,8 +402,70 @@ div #sidebar-wrapper {
 		$('#hasGym').attr('checked', '${hasGym}' == 'true');
 		$('#hasBalcony').attr('checked', '${hasBalcony}' == 'true');
 		$('#noDeposit').attr('checked', '${noDeposit}' == 'true');
-		
 	</script>
+	
+	<script type="text/javascript">
+		var pagesCount = '${countOfPages}';
+		alert(pagesCount);
+	
+		jQuery(function() {
+			
+			//var pagesCount = 10;
+			
+			jQuery("#demo5").paginate({
+				count 		: pagesCount,
+				start 		: 1,
+				display     : 5,
+				border					: true,
+				border_color			: '#fff',
+				text_color  			: '#fff',
+				background_color    	: 'black',	
+				border_hover_color		: '#ccc',
+				text_hover_color  		: '#000',
+				background_hover_color	: '#fff', 
+				images					: false,
+				mouse					: 'press',
+				onChange     			: function(page){
+											$('._current','#paginationdemo').removeClass('_current').hide();
+											$('#p'+page).addClass('_current').show();
+											alert(page);
+											findPage(page);
+										  }
+			});
+		});
+
+		</script>
+		
+		
+<script>		
+	function checkDate(){	
+		if (checkDateFrom() && checkDateTo()){
+			alert("true");
+		}
+		else {
+			alert("false");
+		}
+	}
+		
+	function checkDateFrom(){
+		   var selectedText = document.getElementById('date_from').value;
+		   var selectedDate = new Date(selectedText);
+		   var now = new Date();
+		   var flag1 = now < selectedDate;
+		   return flag1;
+	}
+	
+	function checkDateTo(){
+		   var fromText = document.getElementById('date_from').value;
+		   var fromDate = new Date(fromText);
+		   var toText = document.getElementById('date_to').value;
+		   var toDate = new Date(toText);
+		   var flag1 = fromDate < toDate;
+		   return flag1;
+	}
+</script>
+		
+		
 
 
 	<!-- 	DATEPICKER -->

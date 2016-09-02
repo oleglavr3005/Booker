@@ -51,18 +51,27 @@ function find() {
 		minPrice : range2.noUiSlider.get()[0],
 		maxPrice : range2.noUiSlider.get()[1],
 		
-		wifi : document.getElementById('wifi').checked,
-		shower : document.getElementById('shower').checked,
-		parking : document.getElementById('parking').checked,
-		condition : document.getElementById('condition').checked,	
-		pool : document.getElementById('pool').checked,
-		gym : document.getElementById('gym').checked,
-		balcony : document.getElementById('balcony').checked,
-		no_deposit : document.getElementById('no_deposit').checked,	
+		hasWifi : document.getElementById('wifi').checked,
+		hasShower : document.getElementById('shower').checked,
+		hasParking : document.getElementById('parking').checked,
+		hasCondition : document.getElementById('condition').checked,	
+		hasPool : document.getElementById('pool').checked,
+		hasGym : document.getElementById('gym').checked,
+		hasBalcony : document.getElementById('balcony').checked,
+		noDeposit : document.getElementById('no_deposit').checked,	
 		
 		startDate : $('#date_from').val(),
 		endDate : $('#date_to').val(),	
 		
+	}, function(hotels) {
+		$('#switchContent').html(hotels);
+	});
+}
+
+function findPage(page) {
+	
+	$.get('search', {
+		flag : 'true'
 	}, function(hotels) {
 		$('#switchContent').html(hotels);
 	});
