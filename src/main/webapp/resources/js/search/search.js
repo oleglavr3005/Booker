@@ -1,5 +1,34 @@
 var mapping = $('#mapping').val();
 
+function checkBoxFiller() {
+	
+	alert("${typeStandart}");
+	
+//	$('.typeStandart').attr('checked', "${typeStandart}");
+//	$('.typeLux').attr('checked', "${typeLux}");
+//	$('.typeDelux').attr('checked', "${typeDelux}");
+	
+	$('.typeStandart').attr('checked', true);
+	$('.typeLux').attr('checked', false);
+	$('.typeDelux').attr('checked', true);
+
+	$('.foodNone').attr('checked', "${foodNone}");
+	$('.foodBreakfast').attr('checked', "${foodBreakfast}");
+	$('.foodTwice').attr('checked', "${foodTwice}");
+	$('.foodFull').attr('checked', "${foodFull}");
+
+	$('.hasWiFi').attr('checked', "${hasWiFi}");
+	$('.hasShower').attr('checked', "${hasShower}");
+	$('.hasParking').attr('checked', "${hasParking}");
+	$('.hasCondition').attr('checked', "${hasCondition}");
+
+	$('.hasPool').attr('checked', "${hasPool}");
+	$('.hasGym').attr('checked', "${hasGym}");
+	$('.hasBalcony').attr('checked', "${hasBalcony}");
+	$('.noDeposit').attr('checked', "${noDeposit}");
+}
+
+
 function find() {
 	var range = document.getElementById('rangeSlider');
 	var range2 = document.getElementById('priceSlider');
