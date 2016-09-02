@@ -16,6 +16,14 @@ b {
 }
 </style>
 
+<style>
+.invert:hover {
+	-webkit-filter: invert(70%);
+	filter: invert(70%);
+}
+</style>
+
+
 <h6>
 	<c:if test="${countOfRooms > 0 }">
 		<fmt:message key="card.header" />
@@ -67,43 +75,43 @@ b {
 						<div class="row">
 							<c:if test="${room.wifi == true}">
 								<div class="col s2" style="margin-top: 5px;">
-									<i class="material-icons">wifi</i>
+									<a class="tooltipped" data-position="icon" data-tooltip="Wifi" style="color: #0d0d0d;"><i  class="material-icons invert">wifi</i></a>
 								</div>
 							</c:if>
 
 							<c:if test="${room.shower == true}">
 								<div class="col s2" style="margin-top: 5px;">
-									<img style="max-width: 230%;" src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png"/>
+									<a class="tooltipped" data-position="icon" data-tooltip="Shower"><img class="invert" style="max-width: 230%;" src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png"/></a>
 								</div>
 							</c:if>
 
 							<c:if test="${room.parking == true}">
 								<div class="col s2" style="margin-top: 5px;">
-									<i class="material-icons">local_parking</i>
+									<a class="tooltipped" data-position="icon" data-tooltip="Parking" style="color: #0d0d0d;"><i class="material-icons invert">local_parking</i></a>
 								</div>
 							</c:if>
 
 							<c:if test="${room.condition == true}">
 								<div class="col s2" style="margin-top: 5px;">
-									<i class="material-icons">toys</i>
+								<a class="tooltipped" data-position="icon" data-tooltip="Condition" style="color: #0d0d0d;"><i class="material-icons invert">toys</i></a>
 								</div>
 							</c:if>
 
 							<c:if test="${room.pool == true}">
 								<div class="col s2" style="margin-top: 5px;">
-									<i class="material-icons">pool</i>
+								<a class="tooltipped" data-position="icon" data-tooltip="Pool" style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
 								</div>
 							</c:if>
 
 							<c:if test="${room.gym == true}">
 								<div class="col s2" style="margin-top: 5px;">
-									<i class="material-icons">fitness_center</i>
+								<a class="tooltipped" data-position="icon" data-tooltip="Gym" style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
 								</div>
 							</c:if>
 
 							<c:if test="${room.balcony == true}">
 								<div class="col s2" style="margin-top: 5px;">
-									<img style="max-width: 230%;" src="${pageContext.servletContext.contextPath}/resources/images/balcony.png"/>
+								<a class="tooltipped" data-position="icon" data-tooltip="Balcony"><img class="invert" style="max-width: 230%;" src="${pageContext.servletContext.contextPath}/resources/images/balcony.png"/></a>
 								</div>
 							</c:if>
 						</div>
