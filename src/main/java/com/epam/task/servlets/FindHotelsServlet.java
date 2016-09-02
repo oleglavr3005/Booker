@@ -24,14 +24,10 @@ public class FindHotelsServlet extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		System.out.println(request.getParameter("typeStandart"));		
-		System.out.println(request.getParameter("typeLux"));	
-		System.out.println(request.getParameter("startDate"));
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {				
 		String name = request.getParameter("name"); //get from request
-		int minStars = Integer.parseInt(request.getParameter("minStars")); //get from request
-		int maxStars = Integer.parseInt(request.getParameter("maxStars")); //get from request
+		int minStars = (int) Double.parseDouble(request.getParameter("minStars")); //get from request
+		int maxStars = (int) Double.parseDouble(request.getParameter("maxStars")); //get from request
 		int people = Integer.parseInt(request.getParameter("people")); //get from request
 		
 		boolean typeStandart = Boolean.parseBoolean(request.getParameter("typeStandart")); //get from request
@@ -78,9 +74,9 @@ public class FindHotelsServlet extends HttpServlet {
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
 				startDate, endDate, page);
 		
-		for(Hotel hotel : suitableHotels) {
-			System.out.println(hotel);
-		}
+//		for(Hotel hotel : suitableHotels) {
+//			System.out.println(hotel);
+//		}
 		
 		request.setAttribute("hotels", suitableHotels);
 		request.setAttribute("countOfHotels", suitableHotels.size());
