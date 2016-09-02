@@ -114,16 +114,16 @@ public class FindHotelsServlet extends HttpServlet {
 
 		request.setAttribute("hotels", suitableHotels);
 		request.setAttribute("countOfHotels", suitableHotels.size());
-		request.setAttribute("countOfPages", new HotelService().getSuitableHotelsNumber(name, minStars, maxStars, people, 
-				typeStandart, typeLux, typeDelux, 
-				foodNone, foodBreakfast, foodTwice, foodFull, 
-				minPrice, maxPrice, 
-				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
-				startDate, endDate) / 3);
 		
-		if(request.getParameter("flag").equals("true")) {
+		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
 		} else {
+			request.getSession(true).setAttribute("countOfPages", Math.ceil(new HotelService().getSuitableHotelsNumber(name, minStars, maxStars, people, 
+					typeStandart, typeLux, typeDelux, 
+					foodNone, foodBreakfast, foodTwice, foodFull, 
+					minPrice, maxPrice, 
+					hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
+					startDate, endDate) / 3));
 			request.getRequestDispatcher("pages/index.jsp").forward(request, response);
 		}
 	}
