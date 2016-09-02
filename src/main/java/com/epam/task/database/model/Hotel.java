@@ -23,6 +23,9 @@ public class Hotel {
 		this.isDeleted = isDeleted;
 		
 		photos = new HotelPhotoService().getHotelPhotosByHotel(id);
+		if(photos.size() == 0) {
+			photos.add(new HotelPhoto(0, "no-image.jpg", "", id));
+		}
 	}
 	
 	@DataBaseField(fieldName = "hotel_id")
