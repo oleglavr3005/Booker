@@ -23,4 +23,5 @@ public class —onveniencesService {
 	public List<—onveniences> get—onveniencesForSomeHotels(List<Hotel> hotelList) {
 		return daoManager.executeAndClose(() -> daoManager.get—onveniencesDao().get—onveniencesForSomeHotels(hotelList));
 	}
+	
 }
