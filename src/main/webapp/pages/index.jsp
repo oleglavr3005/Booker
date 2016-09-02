@@ -100,7 +100,7 @@ div #sidebar-wrapper {
 		<div class="row">
 
 			<div class="col s8 offset-s2">
-				<input id="name" type="text" class="validate" name="name"> <label
+				<input id="name" type="text" class="validate" name="name" value="${name}"> <label
 					id="nameLbl" data-error="${fmtName}" for="name"><fmt:message
 						key="index.search.name" /></label>
 			</div>
@@ -108,13 +108,13 @@ div #sidebar-wrapper {
 			<div class="col s3 offset-s2">
 				<label class="labelstyle"><fmt:message
 						key="concrete.date.from" /></label> <input type="date" name="startDate" id="date_from"
-					class="datepicker" onchange="checkDate()">
+					class="datepicker" onchange="checkDate()" value="${startDate}">
 			</div>
 
 			<div class="col s3 offset-s2">
 				<label class="labelstyle"><fmt:message
 						key="concrete.date.to" /></label> <input type="date" name="endDate" id="date_to"
-					class="datepicker" onchange="checkDate()">
+					class="datepicker" onchange="checkDate()" value="${endDate}">
 			</div>
 
 		</div>
@@ -145,14 +145,14 @@ div #sidebar-wrapper {
 			</div>
 
 			<div class="col s3 offset-s2">
-				<input id="pplCount" type="text" class="validate" name="people"> <label
+				<input id="pplCount" type="text" class="validate" name="people" value="${people}"> <label
 					id="pplLbl" data-error="${fmtPeople}" for="pplCount"><fmt:message
 						key="index.search.ppl" /></label>
 			</div>
 
 			<div class="col s2 offset-s3" style="margin-top: 18px;">
 				<a id="search" class="waves-effect waves-light btn"
-					onclick="find()" 
+					onclick="submit()" 
 <%-- 					href="${pageContext.servletContext.contextPath}/search" --%>
 					style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
 						key="index.search.button" /></a>
@@ -171,38 +171,43 @@ div #sidebar-wrapper {
 					<div class="row">
 
 						<div class="col s4 offset-s1 ">
-
+						
+						<script>
+						var a = '${typeStandart}';
+						alert(a);
+						alert('${typeLux}');
+						</script>
 
 							<label id="room_type"> ROOM_TYPE </label>
 							<p>
-								<input type="checkbox" class="filled-in" id="room_standart" name="room_standart" /> <label
+								<input type="checkbox" class="filled-in" id="room_standart" name="room_standart" value="${typeStandart}"/> <label
 									for="room_standart">STANDART</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="room_lux" name="room_lux" /> <label
+								<input type="checkbox" class="filled-in" id="room_lux" name="room_lux" value="${typeLux}"/> <label
 									for="room_lux">LUX</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="room_delux" name="room_delux" /> <label
+								<input type="checkbox" class="filled-in" id="room_delux" name="room_delux" value="${typeDelux}"/> <label
 									for="room_delux">DELUX</label>
 							</p>
 
 
 							<label id="room_type"> ROOM_FOOD </label>
 							<p>
-								<input type="checkbox" class="filled-in" id="food_none" name="food_none" /> <label
+								<input type="checkbox" class="filled-in" id="food_none" name="food_none" value="${foodNone}"/> <label
 									for="food_none">NONE</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="food_breakfast" name="food_breakfast" />
+								<input type="checkbox" class="filled-in" id="food_breakfast" name="food_breakfast" value="${foodBreakfast}"/>
 								<label for="food_breakfast">BREAKFAST</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="food_twice" name="food_twice" /> <label
+								<input type="checkbox" class="filled-in" id="food_twice" name="food_twice" value="${foodTwice}"/> <label
 									for="food_twice">TWICE</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="food_full" name="food_full" /> <label
+								<input type="checkbox" class="filled-in" id="food_full" name="food_full" value="${foodFull}" /> <label
 									for="food_full">FULL</label>
 							</p>
 
@@ -211,35 +216,35 @@ div #sidebar-wrapper {
 						<div class="col s4 offset-s2 ">
 
 							<p style="margin-top: 20px;">
-								<input type="checkbox" class="filled-in" id="wifi" name="wifi" /> <label
+								<input type="checkbox" class="filled-in" id="wifi" name="wifi" value="${hasWiFi}"/> <label
 									for="wifi">WIFI</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="shower" name="shower" /> <label
+								<input type="checkbox" class="filled-in" id="shower" name="shower" value="${hasShower}"/> <label
 									for="shower">SHOWER</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="parking" name="parking" /> <label
+								<input type="checkbox" class="filled-in" id="parking" name="parking" value="${hasParking}"/> <label
 									for="parking">PARKING</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="condition" name="condition" /> <label
+								<input type="checkbox" class="filled-in" id="condition" name="condition" value="${hasCondition}"/> <label
 									for="condition">AIR CONDITION</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="pool" name="pool" /> <label
+								<input type="checkbox" class="filled-in" id="pool" name="pool" value="${hasPool}"/> <label
 									for="pool">SWIM POOL</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="gym" name="gym" /> <label
+								<input type="checkbox" class="filled-in" id="gym" name="gym" value="${hasGym}"/> <label
 									for="gym">FIT GYM</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="balcony" name="balcony" /> <label
+								<input type="checkbox" class="filled-in" id="balcony" name="balcony" value="${hasBalcony}" /> <label
 									for="balcony">BALCONY</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="no_deposit" name="no_deposit" /> <label
+								<input type="checkbox" class="filled-in" id="no_deposit" name="no_deposit" value="${noDeposit}" /> <label
 									for="no_deposit">NO DEPOSIT</label>
 							</p>
 
@@ -260,8 +265,6 @@ div #sidebar-wrapper {
 					</div>
 				</div>
 
-
-
 				<a id="togle" class="waves-effect waves-light btn" onclick="togle()"
 					style="background: #26A69A; text-align: center; width: 100%; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><i
 					id="arrow_icon" class="fa fa-angle-double-down col s1 fa-2x" aria-hidden="true"
@@ -271,13 +274,13 @@ div #sidebar-wrapper {
 		</div>
 		
 		
-	<input id="minStars" type="hidden"
+	<input id="minStars" type="hidden" value="1"
 		 name="minStars"/>
-	<input id="maxStars" type="hidden"
+	<input id="maxStars" type="hidden" value="5"
 		 name="maxStars"/>
-	<input id="minPrice" type="hidden"
+	<input id="minPrice" type="hidden" value="0"
 		 name="minPrice"/>
-	<input id="maxPrice" type="hidden"
+	<input id="maxPrice" type="hidden" value="100"
 		 name="maxPrice"/>
 		
 
@@ -298,6 +301,8 @@ div #sidebar-wrapper {
 	<jsp:include page="foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
 
+
+<!-- 	VK MODAL LOADER -->
 	<div id="modal1" class="modal"
 		style="width: 25% !important; max-height: 40% !important">
 		<div class="modal-content">
@@ -316,7 +321,10 @@ div #sidebar-wrapper {
 		</div>
 
 	</div>
+<!-- 	END OF VK MODAL LOADER -->
 
+
+<!-- 	VK REDIRECT -->
 	<c:if test="${vkOAuth}">
 		<script type="text/javascript">
 			$(document).ready(function() {
@@ -340,11 +348,10 @@ div #sidebar-wrapper {
 			});
 		</script>
 	</c:if>
+<!--  END OF VK REDIRECT -->
 
 
 
-	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
 		
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
@@ -352,53 +359,13 @@ div #sidebar-wrapper {
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
-
-	<script>
-		var range = document.getElementById('rangeSlider');
-		noUiSlider.create(range, {
-			start : [ 1, 5 ], // Handle start position
-			step : 1, // Slider moves in increments of '1'
-			connect : true, // Display a colored bar between the handles
-			behaviour : 'tap-drag', // Move handle on tap, bar is draggable
-			range : { // Slider can select '1' to '5'
-				'min' : 1,
-				'max' : 5
-			}
-		});
-	</script>
-	
-	<script>
-	var range2 = document.getElementById('priceSlider');
-	noUiSlider.create(range2, {
-		start : [ 100, 5000 ], // Handle start position
-		step : 1, // Slider moves in increments of '1'
-		connect : true, // Display a colored bar between the handles
-		behaviour : 'tap-drag', // Move handle on tap, bar is draggable
-		range : { // Slider can select '1' to '5'
-			'min' : 100,
-			'max' : 5000
-		}
-	});
-	
-	function togle(){
-		var elem1 = document.getElementById("details_panel");
-		var style = document.defaultView.getComputedStyle(elem1, null).getPropertyValue("display");
-		if (style == 'none'){
-			document.getElementById('details_panel').style.display = "block";
-			
-			$('#arrow_icon').removeClass("fa-angle-double-down");
-			$('#arrow_icon').addClass("fa-angle-double-up");
-		}
-		else {
-			document.getElementById('details_panel').style.display = "none";
-			
-			$('#arrow_icon').removeClass("fa-angle-double-up");
-			$('#arrow_icon').addClass("fa-angle-double-down");
-		}
-	}
-	
-	</script>
-
+		
+		
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/noUIslider/slider.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
+		
 
 <!-- 	DATEPICKER -->
 <!-- 	<script type="text/javascript"> -->
