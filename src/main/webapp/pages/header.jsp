@@ -25,7 +25,16 @@
 	href="${pageContext.servletContext.contextPath}/resources/materialize/css/materialize.min.css"
 	media="screen,projection" />
 
+<!--  Scripts -->
+<script
+	src="${pageContext.servletContext.contextPath}/resources/themes/js/jquery.js"
+	type="text/javascript"></script>
+<script
+	src="${pageContext.servletContext.contextPath}/resources/themes/js/bootstrap.min.js"
+	type="text/javascript"></script>
 
+<script type="text/javascript"
+	src="${pageContext.servletContext.contextPath}/resources/materialize/js/materialize.min.js"></script>
 
 <!-- Slider stuff	 -->
 <link rel="stylesheet"
@@ -238,17 +247,6 @@ img.logo {
 		<!--/.nav-collapse -->
 	</div>
 </nav>
-
-<!--  Scripts -->
-<script
-	src="${pageContext.servletContext.contextPath}/resources/themes/js/jquery.js"
-	type="text/javascript"></script>
-<script
-	src="${pageContext.servletContext.contextPath}/resources/themes/js/bootstrap.min.js"
-	type="text/javascript"></script>
-
-<script type="text/javascript"
-	src="${pageContext.servletContext.contextPath}/resources/materialize/js/materialize.min.js"></script>
 
 <script>
 	$(document).ready(function() {
