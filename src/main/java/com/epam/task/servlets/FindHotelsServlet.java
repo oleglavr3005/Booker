@@ -114,8 +114,18 @@ public class FindHotelsServlet extends HttpServlet {
 
 		request.setAttribute("hotels", suitableHotels);
 		request.setAttribute("countOfHotels", suitableHotels.size());
+		request.setAttribute("countOfPages", new HotelService().getSuitableHotelsNumber(name, minStars, maxStars, people, 
+				typeStandart, typeLux, typeDelux, 
+				foodNone, foodBreakfast, foodTwice, foodFull, 
+				minPrice, maxPrice, 
+				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
+				startDate, endDate));
 		
-		request.getRequestDispatcher("pages/index.jsp").forward(request, response);
+		if(request.getParameter("flag").equals("true")) {
+			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("pages/index.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
