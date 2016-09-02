@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
+
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.UserStatus;
 import com.epam.task.database.model.enums.UserType;
@@ -42,7 +44,13 @@ public class AuthServlet extends HttpServlet {
 			}
 			request.getSession().setAttribute("user", user);
 			
-			response.getWriter().write(user.getType() != UserType.ADMIN ? "cabinet" : "admin");
+			JSONObject json = new JSONObject();
+			json.put("logged", true);
+			
+			response.getWriter().print(json.toString());
+			response.getWriter().flush();
+			
+//			response.getWriter().write(user.getType() != UserType.ADMIN ? "cabinet" : "admin");
 		} catch (Exception e) {
 			response.setContentType("text/plain");
 			response.setCharacterEncoding("UTF-8");
