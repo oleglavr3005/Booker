@@ -64,9 +64,9 @@ public class HomeServlet extends HttpServlet {
 //		}
 		
 		List<Hotel> hotels = hotelService.getAllHotelsByPage(page);
-		for(Hotel hotel : hotels){
-			hotel.setPhotos(hotelPhotoService.getHotelPhotosByHotel(hotel.getId()));
-		}
+//		for(Hotel hotel : hotels){
+//			hotel.setPhotos(hotelPhotoService.getHotelPhotosByHotel(hotel.getId()));
+//		}
 		
 		request.setAttribute("hotels", hotels);
 		request.setAttribute("countOfHotels", hotels.size());
