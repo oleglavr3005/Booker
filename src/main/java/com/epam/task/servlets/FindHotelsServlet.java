@@ -109,7 +109,7 @@ public class FindHotelsServlet extends HttpServlet {
 		request.setAttribute("hotels", suitableHotels);
 		request.setAttribute("countOfHotels", suitableHotels.size());
 		
-		request.getRequestDispatcher("pages/card.jsp").forward(request, response);
+		request.getRequestDispatcher("pages/index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
