@@ -1,5 +1,6 @@
 package com.epam.task.database.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 import com.epam.task.database.dao.manager.DaoManager;
 import com.epam.task.database.model.Room;
@@ -13,12 +14,28 @@ public class RoomService {
 		daoManager = new DaoManager();
 	}
 
-	public List<Room> getAllActiveRoomsForHotel(int id) {
-		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllActiveRoomsForHotel(id));
+	public List<Room> getAllActiveRoomsForHotel(int id, int page) {
+		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllActiveRoomsForHotel(id, page));
 	}
 
-	public List<Room> getAllRoomsForHotel(int id) {
-		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllRoomsForHotel(id));
+	public List<Room> getAllSuitableRoomsForHotel(int id, int page, 
+			boolean typeStandart, boolean typeLux, boolean typeDelux, 
+			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull,
+			int minPrice, int maxPrice,
+			boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, 
+			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit,
+			Timestamp startDate, Timestamp endDate) {
+		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllSuitableRoomsForHotel(id, page, 
+				typeStandart, typeLux, typeDelux, 
+				foodNone, foodBreakfast, foodTwice, foodFull,
+				minPrice, maxPrice,
+				hasWiFi, hasShower, hasParking, hasCondition, 
+				hasPool, hasGym, hasBalcony, noDeposit,
+				startDate, endDate));
+	}
+
+	public List<Room> getAllRoomsForHotel(int id, int page) {
+		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllRoomsForHotel(id, page));
 	}
 
 	public Integer insertRoom(Room room) {
@@ -53,12 +70,12 @@ public class RoomService {
 	private void testing(){
 		RoomService service = new RoomService();
 		System.out.println("Active");
-		List<Room> rooms = service.getAllActiveRoomsForHotel(1);
+		List<Room> rooms = service.getAllActiveRoomsForHotel(1, 1);
 		for (Room room : rooms) {
 			System.out.println(room);
 		}
 		System.out.println("All");
-		rooms = service.getAllRoomsForHotel(1);
+		rooms = service.getAllRoomsForHotel(1, 1);
 		for (Room room : rooms) {
 			System.out.println(room);
 		}
