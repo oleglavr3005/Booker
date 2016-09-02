@@ -1,6 +1,7 @@
 package com.epam.task.servlets;
 
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.service.HotelService;
@@ -34,7 +36,15 @@ public class HomeServlet extends HttpServlet {
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
 		} else {
-			request.getSession(true).setAttribute("countOfPages", Math.ceil(new HotelService().getAllHotels().size() / 3.0));
+			HttpSession session = request.getSession(true);
+			Enumeration<String> names = session.getAttributeNames();
+			while(names.hasMoreElements()) {
+				String name = names.nextElement();
+				if(!name.equals("user")) {
+					session.removeAttribute(name);
+				}
+			}
+			session.setAttribute("countOfPages", Math.ceil(new HotelService().getAllHotels().size() / 3.0));
 			request.getRequestDispatcher("pages/index.jsp").forward(request, response);
 		}
 	}
