@@ -38,6 +38,7 @@ public class FindHotelsServlet extends HttpServlet {
 		int maxStars = (int) Double.parseDouble(request.getParameter("maxStars")); //get from request
 		int people = Integer.parseInt(request.getParameter("people")); //get from request
 		
+		System.out.println(request.getParameter("typeStandart"));
 		boolean typeStandart = request.getParameter("typeStandart") != null; //get from request
 		boolean typeLux = request.getParameter("typeLux") != null; //get from request
 		boolean typeDelux = request.getParameter("typeDelux") != null; //get from request
@@ -99,8 +100,8 @@ public class FindHotelsServlet extends HttpServlet {
 		session.setAttribute("hasBalcony", hasBalcony);
 		session.setAttribute("noDeposit", noDeposit);
 		
-		session.setAttribute("startDate", startDate);
-		session.setAttribute("endDate", endDate);
+		session.setAttribute("startDate", request.getParameter("startDate"));
+		session.setAttribute("endDate", request.getParameter("endDate"));
 
 		String pageString = request.getParameter("page");
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
