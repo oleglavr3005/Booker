@@ -70,7 +70,13 @@ public class HomeServlet extends HttpServlet {
 		
 		request.setAttribute("hotels", hotels);
 		request.setAttribute("countOfHotels", hotels.size());
-		request.getRequestDispatcher("pages/index.jsp").forward(request, response);
+		request.setAttribute("countOfPages", new HotelService().getAllHotels().size());
+		
+		if(request.getParameter("flag").equals("true")) {
+			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("pages/index.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
