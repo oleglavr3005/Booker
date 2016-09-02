@@ -169,46 +169,35 @@ div #sidebar-wrapper {
 					</div>
 				</div>
 
-				<div class="col s6">
-					<h4>
-						<c:out value="${hotel.name }"></c:out>
-					</h4>
+				<div class="col s8">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col s6">
+								<h5>
+									<c:out value="${hotel.name }"></c:out>
+								</h5>
+							</div>
+							<div class="col s4 offset-s1" style="margin-top: 15px;">
+								<c:forEach var="i" begin="1" end="${hotel.stars}">
+									<i class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								</c:forEach>
+							</div>
+						</div>
+						<div class="row">
+							<i class="fa fa-lg icon-map-marker" aria-hidden="true"></i> <span>${hotel.city}
+								${hotel.street}</span>
+						</div>
+
+						<div class="row" style="margin-bottom: 5px">
+							<i class="material-icons"
+								style="font-size: 20px;">receipt</i>
+							<span>${hotel.desc}</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="row">
-			<!-- 			<table id="example" class="display"> -->
-			<!-- 				<thead> -->
-			<!-- 					<tr> -->
-			<!-- 						<th>Name</th> -->
-			<!-- 						<th>Position</th> -->
-			<!-- 						<th>Office</th> -->
-			<!-- 					</tr> -->
-			<!-- 				</thead> -->
-
-			<%-- 				<c:forEach items="${rooms}" var="room"> --%>
-			<!-- 					<tbody> -->
-			<!-- 						<tr> -->
-			<%-- 							<td><c:out value="${ room.price}"></c:out></td> --%>
-			<%-- 							<td><c:out value="${ room.price}"></c:out></td> --%>
-			<%-- 							<td><c:out value="${ room.price}"></c:out></td> --%>
-
-			<!-- 						</tr> -->
-			<%-- 				</c:forEach> --%>
-
-			<!-- 				<tr> -->
-			<!-- 					<td>Row 1 Data 1</td> -->
-			<!-- 					<td>Row 1 Data 2</td> -->
-			<!-- 				</tr> -->
-			<!-- 				<tr> -->
-			<!-- 					<td>Row 2 Data 1</td> -->
-			<!-- 					<td>Row 2 Data 2</td> -->
-			<!-- 				</tr> -->
-			<!-- 				</tbody> -->
-			<!-- 			</table> -->
-
-		</div>
 	</div>
 
 	<div class="container">

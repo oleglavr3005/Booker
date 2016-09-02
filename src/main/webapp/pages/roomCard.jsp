@@ -66,43 +66,43 @@ b {
 					<div class="col s3">
 						<div class="row">
 							<c:if test="${room.wifi == true}">
-								<div class="col s3" style="margin-top: 5px;">
+								<div class="col s2" style="margin-top: 5px;">
 									<i class="fa fa-lg fa-wifi" aria-hidden="true"></i>
 								</div>
 							</c:if>
 
 							<c:if test="${room.shower == true}">
-								<div class="col s3" style="margin-top: 5px;">
+								<div class="col s2" style="margin-top: 5px;">
 									<i class="fa fa-lg fa-tint" aria-hidden="true"></i>
 								</div>
 							</c:if>
 
 							<c:if test="${room.parking == true}">
-								<div class="col s3" style="margin-top: 5px;">
+								<div class="col s2" style="margin-top: 5px;">
 									<i class="fa fa-lg fa-car" aria-hidden="true"></i>
 								</div>
 							</c:if>
 
 							<c:if test="${room.condition == true}">
-								<div class="col s3" style="margin-top: 5px;">
+								<div class="col s2" style="margin-top: 5px;">
 									<i class="fa fa-lg fa-leaf" aria-hidden="true"></i>
 								</div>
 							</c:if>
 
 							<c:if test="${room.pool == true}">
-								<div class="col s3" style="margin-top: 5px;">
+								<div class="col s2" style="margin-top: 5px;">
 									<i class="fa fa-lg fa-life-saver" aria-hidden="true"></i>
 								</div>
 							</c:if>
 
 							<c:if test="${room.gym == true}">
-								<div class="col s3" style="margin-top: 5px;">
+								<div class="col s2" style="margin-top: 5px;">
 									<i class="fa fa-lg fa-wrench" aria-hidden="true"></i>
 								</div>
 							</c:if>
 
 							<c:if test="${room.balcony == true}">
-								<div class="col s3" style="margin-top: 5px;">
+								<div class="col s2" style="margin-top: 5px;">
 									<i class="fa fa-lg fa-home" aria-hidden="true"></i>
 								</div>
 							</c:if>
