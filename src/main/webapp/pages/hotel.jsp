@@ -169,18 +169,35 @@ div #sidebar-wrapper {
 					</div>
 				</div>
 
-				<div class="col s6">
-					<h4>
-						<c:out value="${hotel.name }"></c:out>
-					</h4>
+				<div class="col s8">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col s6">
+								<h5>
+									<c:out value="${hotel.name }"></c:out>
+								</h5>
+							</div>
+							<div class="col s4 offset-s1" style="margin-top: 15px;">
+								<c:forEach var="i" begin="1" end="${hotel.stars}">
+									<i class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								</c:forEach>
+							</div>
+						</div>
+						<div class="row">
+							<i class="fa fa-lg icon-map-marker" aria-hidden="true"></i> <span>${hotel.city}
+								${hotel.street}</span>
+						</div>
+
+						<div class="row" style="margin-bottom: 5px">
+							<i class="material-icons"
+								style="font-size: 20px;">receipt</i>
+							<span>${hotel.desc}</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="row">
-
-
-		</div>
 	</div>
 
 	<div class="container">
