@@ -70,7 +70,7 @@ public class HomeServlet extends HttpServlet {
 		
 		request.setAttribute("hotels", hotels);
 		request.setAttribute("countOfHotels", hotels.size());
-		request.setAttribute("countOfPages", new HotelService().getAllHotels().size());
+		request.setAttribute("countOfPages", new HotelService().getAllHotels().size() / 3);
 		
 		if(request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);

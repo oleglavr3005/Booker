@@ -119,7 +119,7 @@ public class FindHotelsServlet extends HttpServlet {
 				foodNone, foodBreakfast, foodTwice, foodFull, 
 				minPrice, maxPrice, 
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
-				startDate, endDate));
+				startDate, endDate) / 3);
 		
 		if(request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
