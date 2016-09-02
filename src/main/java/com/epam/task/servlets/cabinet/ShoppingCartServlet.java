@@ -33,7 +33,7 @@ public class ShoppingCartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//TESTING
-		List<Room> rooms = new RoomService().getAllActiveRoomsForHotel(1);
+		List<Room> rooms = new RoomService().getAllActiveRoomsForHotel(1, 1);
 		request.setAttribute("rooms", rooms);
 		request.setAttribute("inCart", Boolean.TRUE);
 		
