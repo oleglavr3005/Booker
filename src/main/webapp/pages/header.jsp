@@ -5,8 +5,6 @@
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="com.i18n.text" />
 
-
-
 <!-- Bootstrap style -->
 <link id="callCss" rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/themes/bootshop/bootstrap.min.css"
@@ -33,21 +31,6 @@
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 
-
-<!--  Scripts -->
-<script
-	src="${pageContext.servletContext.contextPath}/resources/themes/js/jquery.js"
-	type="text/javascript"></script>
-<script
-	src="${pageContext.servletContext.contextPath}/resources/themes/js/bootstrap.min.js"
-	type="text/javascript"></script>
-
-<script type="text/javascript"
-	src="${pageContext.servletContext.contextPath}/resources/materialize/js/materialize.min.js"></script>
-
-
-
-
 <style>
 body {
 	background-color: #F7F7F7;
@@ -65,6 +48,9 @@ img.logo {
 .btn-large {
 	height: 30px;
 	line-height: 30px;
+}
+.imageavatar:hover {
+	cursor:pointer;
 }
 </style>
 
@@ -100,9 +86,8 @@ img.logo {
 		<div class="navbar-header"
 			style="margin-left: 30px; margin-right: 50px;">
 
-			<a class="brand" href="${pageContext.servletContext.contextPath}/home">
+			<a href="${pageContext.servletContext.contextPath}/home" class="brand" >
 				<img class="logo"
-				href="${pageContext.servletContext.contextPath}/home"
 				src="${pageContext.servletContext.contextPath}/resources/themes/images/logo.png"
 				alt="Periodicals" />
 			</a>
@@ -113,23 +98,23 @@ img.logo {
 			<ul class="nav navbar-nav navbar-right" style="padding-top: 5px;">
 
 				<c:choose>
-					<c:when test="${userState == 'admin'}">
-
+					<c:when test="${user != null}">
+							<img id="imageavatar" src="http://www.desicomments.com/dc3/09/336028/336028.png" alt="img" 
+								style="margin-top: 5px; height: 50px; width: 50px; border-radius: 25px;"
+								class="imageavatar dropdown-button" data-activates='dropdown1' 
+								data-beloworigin="true" data-hover="true"/>
+								<ul id='dropdown1' class='dropdown-content'>
+								    <li><a href="#!">one</a></li>
+								    <li><a href="#!">two</a></li>
+								    <li class="divider"></li>
+								    <li><a href="#!">three</a></li>
+								 </ul>
+															
 						<li><a href="#" onclick="logout()" data-toggle="modal"
-							style="padding-right: 0"> <fmt:message key="header.logout" />
+							style="padding-right: 10"> <fmt:message key="header.logout" />
 								<i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
 					</c:when>
 					<c:otherwise>
-						<c:choose>
-							<c:when test="${userState == 'user'}">
-
-
-								<li><a href="#" onclick="logout()" data-toggle="modal"
-									style="padding-right: 0"> <fmt:message key="header.logout" />
-										<i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
-
-							</c:when>
-							<c:otherwise>
 							<script type="text/javascript"
 									src="${pageContext.servletContext.contextPath}/resources/js/registration/registration.js"></script>
 								<script type="text/javascript"
@@ -244,9 +229,6 @@ img.logo {
 										src="${pageContext.servletContext.contextPath}/resources/images/vk.png"
 										alt="vk" />
 								</a></li>
-
-							</c:otherwise>
-						</c:choose>
 					</c:otherwise>
 				</c:choose>
 
@@ -256,6 +238,17 @@ img.logo {
 		<!--/.nav-collapse -->
 	</div>
 </nav>
+
+<!--  Scripts -->
+<script
+	src="${pageContext.servletContext.contextPath}/resources/themes/js/jquery.js"
+	type="text/javascript"></script>
+<script
+	src="${pageContext.servletContext.contextPath}/resources/themes/js/bootstrap.min.js"
+	type="text/javascript"></script>
+
+<script type="text/javascript"
+	src="${pageContext.servletContext.contextPath}/resources/materialize/js/materialize.min.js"></script>
 
 <script>
 	$(document).ready(function() {
