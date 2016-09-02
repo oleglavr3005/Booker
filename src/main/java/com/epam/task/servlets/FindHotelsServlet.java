@@ -38,14 +38,14 @@ public class FindHotelsServlet extends HttpServlet {
 		int maxStars = (int) Double.parseDouble(request.getParameter("maxStars")); //get from request
 		int people = Integer.parseInt(request.getParameter("people")); //get from request
 		
-		boolean typeStandart = Boolean.parseBoolean(request.getParameter("typeStandart")); //get from request
-		boolean typeLux = Boolean.parseBoolean(request.getParameter("typeLux")); //get from request
-		boolean typeDelux = Boolean.parseBoolean(request.getParameter("typeDelux")); //get from request
+		boolean typeStandart = request.getParameter("typeStandart") != null; //get from request
+		boolean typeLux = request.getParameter("typeLux") != null; //get from request
+		boolean typeDelux = request.getParameter("typeDelux") != null; //get from request
 
-		boolean foodNone = Boolean.parseBoolean(request.getParameter("foodNone")); //get from request
-		boolean foodBreakfast = Boolean.parseBoolean(request.getParameter("foodBreakfast")); //get from request
-		boolean foodTwice = Boolean.parseBoolean(request.getParameter("foodTwice")); //get from request
-		boolean foodFull = Boolean.parseBoolean(request.getParameter("foodFull")); //get from request
+		boolean foodNone = request.getParameter("foodNone") != null; //get from request
+		boolean foodBreakfast = request.getParameter("foodBreakfast") != null; //get from request
+		boolean foodTwice = request.getParameter("foodTwice") != null; //get from request
+		boolean foodFull = request.getParameter("foodFull") != null; //get from request
 		
 		int minPrice = (int) Double.parseDouble(request.getParameter("minPrice")); //get from request
 		int maxPrice = (int) Double.parseDouble(request.getParameter("maxPrice")); //get from request
