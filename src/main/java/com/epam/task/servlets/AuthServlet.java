@@ -40,11 +40,7 @@ public class AuthServlet extends HttpServlet {
 					.equals(PasswordHasher.hash(request.getParameter("password") + (user.getFirstName())))) {
 				throw new Exception();
 			}
-			request.getSession().setAttribute("userID", user.getId());
-			
-	//		request.getSession().setAttribute("userState", user.getType());
-			
-			request.getSession().setAttribute("userState", "user");
+			request.getSession().setAttribute("user", user);
 			
 			response.getWriter().write(user.getType() != UserType.ADMIN ? "cabinet" : "admin");
 		} catch (Exception e) {
