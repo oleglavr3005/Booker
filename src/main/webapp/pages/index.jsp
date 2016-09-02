@@ -100,20 +100,20 @@ div #sidebar-wrapper {
 		<div class="row">
 
 			<div class="col s8 offset-s2">
-				<input id="name" type="text" class="validate"> <label
+				<input id="name" type="text" class="validate" name="name"> <label
 					id="nameLbl" data-error="${fmtName}" for="name"><fmt:message
 						key="index.search.name" /></label>
 			</div>
 
 			<div class="col s3 offset-s2">
 				<label class="labelstyle"><fmt:message
-						key="concrete.date.from" /></label> <input type="date" id="date_from"
+						key="concrete.date.from" /></label> <input type="date" name="startDate" id="date_from"
 					class="datepicker" onchange="checkDate()">
 			</div>
 
 			<div class="col s3 offset-s2">
 				<label class="labelstyle"><fmt:message
-						key="concrete.date.to" /></label> <input type="date" id="date_to"
+						key="concrete.date.to" /></label> <input type="date" name="endDate" id="date_to"
 					class="datepicker" onchange="checkDate()">
 			</div>
 
@@ -145,7 +145,7 @@ div #sidebar-wrapper {
 			</div>
 
 			<div class="col s3 offset-s2">
-				<input id="pplCount" type="text" class="validate"> <label
+				<input id="pplCount" type="text" class="validate" name="people"> <label
 					id="pplLbl" data-error="${fmtPeople}" for="pplCount"><fmt:message
 						key="index.search.ppl" /></label>
 			</div>
