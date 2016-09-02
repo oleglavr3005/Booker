@@ -1,7 +1,10 @@
 package com.epam.task.database.model;
 
+import java.util.List;
+
 import com.epam.task.database.model.enums.RoomFood;
 import com.epam.task.database.model.enums.RoomType;
+import com.epam.task.database.service.RoomPhotoService;
 import com.epam.task.database.transformers.DataBaseField;
 
 public class Room {
@@ -28,6 +31,8 @@ public class Room {
 		this.daysCount = daysCount;
 		this.percentage = percentage;
 		this.deleted = deleted;
+		
+		photos = new RoomPhotoService().getRoomPhotosByRoom(hotelId);
 	}
 
 	@DataBaseField(fieldName = "room_id")
@@ -83,6 +88,8 @@ public class Room {
 
 	@DataBaseField(fieldName = "is_deleted")
 	private boolean deleted;
+		
+	private List<RoomPhoto> photos;
 
 	public int getId() {
 		return id;
@@ -226,6 +233,18 @@ public class Room {
 
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
+	}
+	
+	public RoomPhoto getPhoto(){
+		return photos.get(0);
+	}
+	
+	public List<RoomPhoto> getPhotos() {
+		return photos;
+	}
+	
+	public void setPhotos(List<RoomPhoto> photos) {
+		this.photos = photos;
 	}
 
 	@Override

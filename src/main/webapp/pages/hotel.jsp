@@ -16,7 +16,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>Hotel Page</title>
+<title>${hotel.name}</title>
 
 <link
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/bootstrap.min.css"
@@ -142,17 +142,7 @@ div #sidebar-wrapper {
 	<jsp:include page="header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 
-
-	<!-- 	<div id="wrapper" style="position: relative; min-height: 100%;"> -->
-
-
-	<!-- SideBar ========================================================================= -->
-	<%-- 		<jsp:include page="side.jsp"></jsp:include> --%>
-	<!-- SideBar End====================================================================== -->
-
-
 	<div class="container" style="margin-top: 20px">
-
 
 		<div id="links">
 			<div class="row">
@@ -178,49 +168,54 @@ div #sidebar-wrapper {
 						</div>
 					</div>
 				</div>
-				<div class="col s6 offset-s1">
-					<h1>
+
+				<div class="col s6">
+					<h4>
 						<c:out value="${hotel.name }"></c:out>
-					</h1>
+					</h4>
 				</div>
 			</div>
 		</div>
+
 		<div class="row">
-			<table id="example" class="display">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Position</th>
-						<th>Office</th>
-					</tr>
-				</thead>
+			<!-- 			<table id="example" class="display"> -->
+			<!-- 				<thead> -->
+			<!-- 					<tr> -->
+			<!-- 						<th>Name</th> -->
+			<!-- 						<th>Position</th> -->
+			<!-- 						<th>Office</th> -->
+			<!-- 					</tr> -->
+			<!-- 				</thead> -->
 
-				<c:forEach items="${rooms}" var="room">
-					<tbody>
-						<tr>
-							<td><c:out value="${ room.price}"></c:out></td>
-							<td><c:out value="${ room.price}"></c:out></td>
-							<td><c:out value="${ room.price}"></c:out></td>
+			<%-- 				<c:forEach items="${rooms}" var="room"> --%>
+			<!-- 					<tbody> -->
+			<!-- 						<tr> -->
+			<%-- 							<td><c:out value="${ room.price}"></c:out></td> --%>
+			<%-- 							<td><c:out value="${ room.price}"></c:out></td> --%>
+			<%-- 							<td><c:out value="${ room.price}"></c:out></td> --%>
 
-						</tr>
-				</c:forEach>
+			<!-- 						</tr> -->
+			<%-- 				</c:forEach> --%>
 
-				<tr>
-					<td>Row 1 Data 1</td>
-					<td>Row 1 Data 2</td>
-				</tr>
-				<tr>
-					<td>Row 2 Data 1</td>
-					<td>Row 2 Data 2</td>
-				</tr>
-				</tbody>
-			</table>
+			<!-- 				<tr> -->
+			<!-- 					<td>Row 1 Data 1</td> -->
+			<!-- 					<td>Row 1 Data 2</td> -->
+			<!-- 				</tr> -->
+			<!-- 				<tr> -->
+			<!-- 					<td>Row 2 Data 1</td> -->
+			<!-- 					<td>Row 2 Data 2</td> -->
+			<!-- 				</tr> -->
+			<!-- 				</tbody> -->
+			<!-- 			</table> -->
 
 		</div>
 	</div>
 
-	<!-- 	</div> -->
-
+	<div class="container">
+		<div id="switchContent" class="row">
+			<jsp:include page="roomCard.jsp"></jsp:include>
+		</div>
+	</div>
 
 
 	<!-- Footer ========================================================================== -->
