@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,29 @@ public class RoomDao {
 	private Connection connection;
 
 	private final String GET_ALL_ACIVE_ROOMS_FOR_HOTEL = "SELECT * FROM room WHERE hotel_id = ? AND is_deleted = 'false'";
+	
+	private final String GET_ALL_SUITABLE_ROOMS_FOR_HOTEL = "SELECT DISTINCT r.* FROM room r LEFT JOIN `order` o ON o.room_id = r.room_id "
+			+ "WHERE r.hotel_id = ? AND r.price >= ? AND r.price <= ? AND r.is_deleted = false AND "
+			+ "(o.end_date IS NULL OR o.end_date <= ? OR o.start_date >= ? OR o.status LIKE 'canceled')";
+
+	private final String TYPE_STANDART = "r.type LIKE 'STANDART'";
+	private final String TYPE_LUX = "r.type LIKE 'LUX'";
+	private final String TYPE_DELUX = "r.type LIKE 'DELUX'";
+	
+	private final String FOOD_NONE = "r.food LIKE 'NONE'";
+	private final String FOOD_BREAKFAST = "r.food LIKE 'BREAKFAST'";
+	private final String FOOD_TWICE = "r.food LIKE 'TWICE'";
+	private final String FOOD_FULL = "r.food LIKE 'FULL'";
+	
+	private final String HAS_WIFI = " AND r.has_wifi = true";
+	private final String HAS_SHOWER = " AND r.has_shower = true";
+	private final String HAS_PARKING = " AND r.has_parking = true";
+	private final String HAS_CONDITION = " AND r.has_condition = true";
+	private final String HAS_POOL = " AND r.has_pool = true";
+	private final String HAS_GYM = " AND r.has_gym = true";
+	private final String HAS_BALCONY = " AND r.has_balcony = true";
+	private final String NO_DEPOSIT = " AND r.days_count < 0";
+	
 	private final String PAGINATION = " LIMIT ?, 3";
 	
 	private final String GET_ALL_ROOMS_FOR_HOTEL = "SELECT * FROM room WHERE hotel_id = ?";
@@ -51,6 +75,111 @@ public class RoomDao {
 			ps.setInt(1, id);
 			ps.setInt(2, (page-1)*3);
 			try (ResultSet rs = ps.executeQuery()) {
+				return UniversalTransformer.getCollectionFromRS(rs, Room.class);
+			}
+		} catch (Exception e) {
+			return new ArrayList<Room>();
+		}
+	}
+	
+	public List<Room> getAllSuitableRoomsForHotel(int id, int page, 
+			boolean typeStandart, boolean typeLux, boolean typeDelux, 
+			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull,
+			int minPrice, int maxPrice,
+			boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, 
+			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit,
+			Timestamp startDate, Timestamp endDate) {
+
+		StringBuilder SQL = new StringBuilder(GET_ALL_SUITABLE_ROOMS_FOR_HOTEL);
+		//ROOM TYPE
+		if (typeStandart == true || typeLux == true || typeDelux == true) {
+			SQL.append(" AND (");
+			if (typeStandart == true) {
+				SQL.append(TYPE_STANDART);
+			}
+			if (typeLux == true) {
+				if (!SQL.toString().endsWith("(")) {
+					SQL.append(" OR ");
+				}
+				SQL.append(TYPE_LUX);
+			}
+			if (typeDelux == true) {
+				if (!SQL.toString().endsWith("(")) {
+					SQL.append(" OR ");
+				}
+				SQL.append(TYPE_DELUX);
+			}
+			SQL.append(")");
+		}
+
+		// FOOD
+		if (foodNone == true || foodBreakfast == true || foodTwice == true || foodFull == true) {
+			SQL.append(" AND (");
+			if (foodNone == true) {
+				SQL.append(FOOD_NONE);
+			}
+			if (foodBreakfast == true) {
+				if (!SQL.toString().endsWith("(")) {
+					SQL.append(" OR ");
+				}
+				SQL.append(FOOD_BREAKFAST);
+			}
+			if (foodTwice == true) {
+				if (!SQL.toString().endsWith("(")) {
+					SQL.append(" OR ");
+				}
+				SQL.append(FOOD_TWICE);
+			}
+			if (foodFull == true) {
+				if (!SQL.toString().endsWith("(")) {
+					SQL.append(" OR ");
+				}
+				SQL.append(FOOD_FULL);
+			}
+			SQL.append(")");
+		}
+
+		// ADDITIONAL
+		if (hasWiFi) {
+			SQL.append(HAS_WIFI);
+		}
+		if (hasShower) {
+			SQL.append(HAS_SHOWER);
+		}
+		if (hasParking) {
+			SQL.append(HAS_PARKING);
+		}
+		if (hasCondition) {
+			SQL.append(HAS_CONDITION);
+		}
+		if (hasPool) {
+			SQL.append(HAS_POOL);
+		}
+		if (hasGym) {
+			SQL.append(HAS_GYM);
+		}
+		if (hasBalcony) {
+			SQL.append(HAS_BALCONY);
+		}
+		if (noDeposit) {
+			SQL.append(NO_DEPOSIT);
+		}
+
+		SQL.append(PAGINATION);
+				
+		try (PreparedStatement statement = connection.prepareStatement(SQL.toString())) {
+			int i = 1;
+			statement.setInt(i++, id);
+			
+			statement.setInt(i++, minPrice);
+			statement.setInt(i++, maxPrice);
+			
+			statement.setTimestamp(i++, startDate);
+			statement.setTimestamp(i++, endDate);
+			
+			statement.setInt(i, (page-1)*3);
+			
+			try (ResultSet rs = statement.executeQuery()) {
 				return UniversalTransformer.getCollectionFromRS(rs, Room.class);
 			}
 		} catch (Exception e) {
