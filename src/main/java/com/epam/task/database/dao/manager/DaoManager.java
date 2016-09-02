@@ -10,6 +10,7 @@ import com.epam.task.database.dao.OrderDAO;
 import com.epam.task.database.dao.RoomDao;
 import com.epam.task.database.dao.RoomPhotoDao;
 import com.epam.task.database.dao.UserDao;
+import com.epam.task.database.dao.—onveniencesDao;
 import com.epam.task.database.util.HikariConnManager;
 
 public class DaoManager {
@@ -22,7 +23,7 @@ public class DaoManager {
     private HotelDao hotelDao;
     private HotelPhotoDao hotelPhotoDao;
 	private RoomPhotoDao roomPhotoDao;
-
+	private —onveniencesDao conveniencesDao;
     
     public DaoManager() {
     }
@@ -86,6 +87,14 @@ public class DaoManager {
 		return roomPhotoDao;
 	}
 	
+
+	public —onveniencesDao get—onveniencesDao() {
+		if(conveniencesDao == null) {
+			conveniencesDao = new —onveniencesDao(getConnection());
+		} else conveniencesDao.setConnection(getConnection());
+    	return conveniencesDao;
+	}
+	
     public <T> T executeAndClose(DaoCommand<T> command){
         try{
             return command.execute();
@@ -109,4 +118,5 @@ public class DaoManager {
             }
         }
     }
+
 }
