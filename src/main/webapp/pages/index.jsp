@@ -172,42 +172,36 @@ div #sidebar-wrapper {
 
 						<div class="col s4 offset-s1 ">
 						
-						<script>
-						var a = '${typeStandart}';
-						alert(a);
-						alert('${typeLux}');
-						</script>
-
 							<label id="room_type"> ROOM_TYPE </label>
 							<p>
-								<input type="checkbox" class="filled-in" id="room_standart" name="room_standart" value="${typeStandart}"/> <label
+								<input type="checkbox" class="filled-in" id="room_standart" name="typeStandart" value="${typeStandart}"/> <label
 									for="room_standart">STANDART</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="room_lux" name="room_lux" value="${typeLux}"/> <label
+								<input type="checkbox" class="filled-in" id="room_lux" name="typeLux" value="${typeLux}"/> <label
 									for="room_lux">LUX</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="room_delux" name="room_delux" value="${typeDelux}"/> <label
+								<input type="checkbox" class="filled-in" id="room_delux" name="typeDelux" value="${typeDelux}"/> <label
 									for="room_delux">DELUX</label>
 							</p>
 
 
 							<label id="room_type"> ROOM_FOOD </label>
 							<p>
-								<input type="checkbox" class="filled-in" id="food_none" name="food_none" value="${foodNone}"/> <label
+								<input type="checkbox" class="filled-in" id="food_none" name="foodNone" value="${foodNone}"/> <label
 									for="food_none">NONE</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="food_breakfast" name="food_breakfast" value="${foodBreakfast}"/>
+								<input type="checkbox" class="filled-in" id="food_breakfast" name="foodBreakfast" value="${foodBreakfast}"/>
 								<label for="food_breakfast">BREAKFAST</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="food_twice" name="food_twice" value="${foodTwice}"/> <label
+								<input type="checkbox" class="filled-in" id="food_twice" name="foodTwice" value="${foodTwice}"/> <label
 									for="food_twice">TWICE</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="food_full" name="food_full" value="${foodFull}" /> <label
+								<input type="checkbox" class="filled-in" id="food_full" name="foodFull" value="${foodFull}" /> <label
 									for="food_full">FULL</label>
 							</p>
 
@@ -216,35 +210,35 @@ div #sidebar-wrapper {
 						<div class="col s4 offset-s2 ">
 
 							<p style="margin-top: 20px;">
-								<input type="checkbox" class="filled-in" id="wifi" name="wifi" value="${hasWiFi}"/> <label
+								<input type="checkbox" class="filled-in" id="wifi" name="hasWiFi" value="${hasWiFi}"/> <label
 									for="wifi">WIFI</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="shower" name="shower" value="${hasShower}"/> <label
+								<input type="checkbox" class="filled-in" id="shower" name="hasShower" value="${hasShower}"/> <label
 									for="shower">SHOWER</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="parking" name="parking" value="${hasParking}"/> <label
+								<input type="checkbox" class="filled-in" id="parking" name="hasParking" value="${hasParking}"/> <label
 									for="parking">PARKING</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="condition" name="condition" value="${hasCondition}"/> <label
+								<input type="checkbox" class="filled-in" id="condition" name="hasCondition" value="${hasCondition}"/> <label
 									for="condition">AIR CONDITION</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="pool" name="pool" value="${hasPool}"/> <label
+								<input type="checkbox" class="filled-in" id="pool" name="hasPool" value="${hasPool}"/> <label
 									for="pool">SWIM POOL</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="gym" name="gym" value="${hasGym}"/> <label
+								<input type="checkbox" class="filled-in" id="gym" name="hasGym" value="${hasGym}"/> <label
 									for="gym">FIT GYM</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="balcony" name="balcony" value="${hasBalcony}" /> <label
+								<input type="checkbox" class="filled-in" id="balcony" name="hasBalcony" value="${hasBalcony}" /> <label
 									for="balcony">BALCONY</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="no_deposit" name="no_deposit" value="${noDeposit}" /> <label
+								<input type="checkbox" class="filled-in" id="no_deposit" name="noDeposit" value="${noDeposit}" /> <label
 									for="no_deposit">NO DEPOSIT</label>
 							</p>
 
