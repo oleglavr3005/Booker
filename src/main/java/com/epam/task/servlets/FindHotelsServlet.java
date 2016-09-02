@@ -50,15 +50,15 @@ public class FindHotelsServlet extends HttpServlet {
 		int minPrice = (int) Double.parseDouble(request.getParameter("minPrice")); //get from request
 		int maxPrice = (int) Double.parseDouble(request.getParameter("maxPrice")); //get from request
 
-		boolean hasWiFi = request.getParameter("wifi") != null; //get from request
-		boolean hasShower = request.getParameter("shower") != null; //get from request
-		boolean hasParking = request.getParameter("parking") != null; //get from request
-		boolean hasCondition = request.getParameter("condition") != null; //get from request
-		boolean hasPool = request.getParameter("pool") != null; //get from request
-		boolean hasGym = request.getParameter("gym") != null; //get from request
-		boolean hasBalcony = request.getParameter("balcony") != null; //get from request
+		boolean hasWiFi = request.getParameter("hasWifi") != null; //get from request
+		boolean hasShower = request.getParameter("hasShower") != null; //get from request
+		boolean hasParking = request.getParameter("hasParking") != null; //get from request
+		boolean hasCondition = request.getParameter("hasCondition") != null; //get from request
+		boolean hasPool = request.getParameter("hasPool") != null; //get from request
+		boolean hasGym = request.getParameter("hasPym") != null; //get from request
+		boolean hasBalcony = request.getParameter("hasBalcony") != null; //get from request
 
-		boolean noDeposit = request.getParameter("no_deposit") != null; //get from request
+		boolean noDeposit = request.getParameter("noDeposit") != null; //get from request
 		
 		Timestamp startDate;
 		Timestamp endDate;
