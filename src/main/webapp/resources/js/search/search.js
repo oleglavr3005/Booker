@@ -4,8 +4,6 @@ function find() {
 	var range = document.getElementById('rangeSlider');
 	var range2 = document.getElementById('priceSlider');
 	
-	document.getElementById('room_standart').checked
-	
 	$.get('search', {
 		name : $('#name').val(),
 		minStars : range.noUiSlider.get()[0],

@@ -94,6 +94,8 @@ div #sidebar-wrapper {
 		<h4 style="text-align: center; margin-top: 20px;">
 			<fmt:message key="index.search.header" />
 		</h4>
+		
+		<form action="search" method="post">
 
 		<div class="row">
 
@@ -173,34 +175,34 @@ div #sidebar-wrapper {
 
 							<label id="room_type"> ROOM_TYPE </label>
 							<p>
-								<input type="checkbox" class="filled-in" id="room_standart" value="true"/> <label
+								<input type="checkbox" class="filled-in" id="room_standart" name="room_standart" /> <label
 									for="room_standart">STANDART</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="room_lux" /> <label
+								<input type="checkbox" class="filled-in" id="room_lux" name="room_lux" /> <label
 									for="room_lux">LUX</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="room_delux" /> <label
+								<input type="checkbox" class="filled-in" id="room_delux" name="room_delux" /> <label
 									for="room_delux">DELUX</label>
 							</p>
 
 
 							<label id="room_type"> ROOM_FOOD </label>
 							<p>
-								<input type="checkbox" class="filled-in" id="food_none" /> <label
+								<input type="checkbox" class="filled-in" id="food_none" name="food_none" /> <label
 									for="food_none">NONE</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="food_breakfast" />
+								<input type="checkbox" class="filled-in" id="food_breakfast" name="food_breakfast" />
 								<label for="food_breakfast">BREAKFAST</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="food_twice" /> <label
+								<input type="checkbox" class="filled-in" id="food_twice" name="food_twice" /> <label
 									for="food_twice">TWICE</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="food_full" /> <label
+								<input type="checkbox" class="filled-in" id="food_full" name="food_full" /> <label
 									for="food_full">FULL</label>
 							</p>
 
@@ -209,36 +211,35 @@ div #sidebar-wrapper {
 						<div class="col s4 offset-s2 ">
 
 							<p style="margin-top: 20px;">
-								<input type="checkbox" class="filled-in" id="wifi" /> <label
+								<input type="checkbox" class="filled-in" id="wifi" name="wifi" /> <label
 									for="wifi">WIFI</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="shower" /> <label
+								<input type="checkbox" class="filled-in" id="shower" name="shower" /> <label
 									for="shower">SHOWER</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="parking" /> <label
+								<input type="checkbox" class="filled-in" id="parking" name="parking" /> <label
 									for="parking">PARKING</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="condition" /> <label
+								<input type="checkbox" class="filled-in" id="condition" name="condition" /> <label
 									for="condition">AIR CONDITION</label>
 							</p>
-
 							<p>
-								<input type="checkbox" class="filled-in" id="pool" /> <label
+								<input type="checkbox" class="filled-in" id="pool" name="pool" /> <label
 									for="pool">SWIM POOL</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="gym" /> <label
+								<input type="checkbox" class="filled-in" id="gym" name="gym" /> <label
 									for="gym">FIT GYM</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="balcony" /> <label
+								<input type="checkbox" class="filled-in" id="balcony" name="balcony" /> <label
 									for="balcony">BALCONY</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="no_deposit" /> <label
+								<input type="checkbox" class="filled-in" id="no_deposit" name="no_deposit" /> <label
 									for="no_deposit">NO DEPOSIT</label>
 							</p>
 
@@ -268,7 +269,20 @@ div #sidebar-wrapper {
 			</div>
 
 		</div>
+		
+		
+	<input id="minStars" type="hidden"
+		 name="minStars"/>
+	<input id="maxStars" type="hidden"
+		 name="maxStars"/>
+	<input id="minPrice" type="hidden"
+		 name="minPrice"/>
+	<input id="maxPrice" type="hidden"
+		 name="maxPrice"/>
+		
 
+ 	 <input type="submit" value="Submit">
+	</form>
 
 	</div>
 
