@@ -8,8 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.epam.task.database.model.Order;
+import com.epam.task.database.model.User;
+import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.service.OrderService;
 
 /**
@@ -31,9 +34,18 @@ public class OrdersServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		List<Order> orders = new OrderService().getordersByUser(1);
-		request.setAttribute("orders", orders);
+		HttpSession session = request.getSession(true);
+		int userId = ((User) session.getAttribute("user")).getId();
+		
+		List<Order> allOrders = new OrderService().getOrdersByUser(userId);
+		List<Order> activeOrders = new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.ACTIVE);
+		List<Order> canceledOrders = new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.CANCELED);
+		List<Order> finishedOrders = new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.FINISHED);
+		
+		request.setAttribute("allOrders", allOrders);
+		request.setAttribute("activeOrders", activeOrders);
+		request.setAttribute("canceledOrders", canceledOrders);
+		request.setAttribute("finishedOrders", finishedOrders);
 		
 		request.getRequestDispatcher("/pages/user/orders.jsp").forward(request, response);
 	}
