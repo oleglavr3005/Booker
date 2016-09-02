@@ -38,11 +38,10 @@ public class FindHotelsServlet extends HttpServlet {
 		int maxStars = (int) Double.parseDouble(request.getParameter("maxStars")); //get from request
 		int people = Integer.parseInt(request.getParameter("people")); //get from request
 		
-		System.out.println(request.getParameter("typeStandart"));
 		boolean typeStandart = request.getParameter("typeStandart") != null; //get from request
 		boolean typeLux = request.getParameter("typeLux") != null; //get from request
 		boolean typeDelux = request.getParameter("typeDelux") != null; //get from request
-
+		
 		boolean foodNone = request.getParameter("foodNone") != null; //get from request
 		boolean foodBreakfast = request.getParameter("foodBreakfast") != null; //get from request
 		boolean foodTwice = request.getParameter("foodTwice") != null; //get from request
@@ -51,15 +50,15 @@ public class FindHotelsServlet extends HttpServlet {
 		int minPrice = (int) Double.parseDouble(request.getParameter("minPrice")); //get from request
 		int maxPrice = (int) Double.parseDouble(request.getParameter("maxPrice")); //get from request
 
-		boolean hasWiFi = Boolean.parseBoolean(request.getParameter("wifi")); //get from request
-		boolean hasShower = Boolean.parseBoolean(request.getParameter("shower")); //get from request
-		boolean hasParking = Boolean.parseBoolean(request.getParameter("parking")); //get from request
-		boolean hasCondition = Boolean.parseBoolean(request.getParameter("condition")); //get from request
-		boolean hasPool = Boolean.parseBoolean(request.getParameter("pool")); //get from request
-		boolean hasGym = Boolean.parseBoolean(request.getParameter("gym")); //get from request
-		boolean hasBalcony = Boolean.parseBoolean(request.getParameter("balcony")); //get from request
+		boolean hasWiFi = request.getParameter("wifi") != null; //get from request
+		boolean hasShower = request.getParameter("shower") != null; //get from request
+		boolean hasParking = request.getParameter("parking") != null; //get from request
+		boolean hasCondition = request.getParameter("condition") != null; //get from request
+		boolean hasPool = request.getParameter("pool") != null; //get from request
+		boolean hasGym = request.getParameter("gym") != null; //get from request
+		boolean hasBalcony = request.getParameter("balcony") != null; //get from request
 
-		boolean noDeposit = Boolean.parseBoolean(request.getParameter("no_deposit")); //get from request
+		boolean noDeposit = request.getParameter("no_deposit") != null; //get from request
 		
 		Timestamp startDate;
 		Timestamp endDate;
