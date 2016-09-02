@@ -39,8 +39,8 @@ public class FindHotelsServlet extends HttpServlet {
 		boolean foodTwice = Boolean.parseBoolean(request.getParameter("foodTwice")); //get from request
 		boolean foodFull = Boolean.parseBoolean(request.getParameter("foodFull")); //get from request
 		
-		int minPrice = Integer.parseInt(request.getParameter("minPrice")); //get from request
-		int maxPrice = Integer.parseInt(request.getParameter("maxPrice")); //get from request
+		int minPrice = (int) Double.parseDouble(request.getParameter("minPrice")); //get from request
+		int maxPrice = (int) Double.parseDouble(request.getParameter("maxPrice")); //get from request
 
 		boolean hasWiFi = Boolean.parseBoolean(request.getParameter("wifi")); //get from request
 		boolean hasShower = Boolean.parseBoolean(request.getParameter("shower")); //get from request
