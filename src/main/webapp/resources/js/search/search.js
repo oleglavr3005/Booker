@@ -68,10 +68,11 @@ function find() {
 	});
 }
 
-function findPage(page) {
-	
-	$.get('search', {
-		flag : 'true'
+function findPage(pageNumber) {
+	alert("findpage" + pageNumber);
+	$.get('home', {
+		flag : 'true',
+		page : pageNumber
 	}, function(hotels) {
 		$('#switchContent').html(hotels);
 	});

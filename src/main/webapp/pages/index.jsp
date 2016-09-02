@@ -292,8 +292,6 @@ div #sidebar-wrapper {
 
 	</div>
 
-
-
 	<div class="container">
 		<div id="switchContent" class="row">
 			<jsp:include page="card.jsp"></jsp:include>
@@ -405,13 +403,9 @@ div #sidebar-wrapper {
 	</script>
 	
 	<script type="text/javascript">
-		var pagesCount = '${countOfPages}';
-		alert(pagesCount);
+ 		var pagesCount = '${countOfPages}';
 	
 		jQuery(function() {
-			
-			//var pagesCount = 10;
-			
 			jQuery("#demo5").paginate({
 				count 		: pagesCount,
 				start 		: 1,
@@ -428,7 +422,6 @@ div #sidebar-wrapper {
 				onChange     			: function(page){
 											$('._current','#paginationdemo').removeClass('_current').hide();
 											$('#p'+page).addClass('_current').show();
-											alert(page);
 											findPage(page);
 										  }
 			});

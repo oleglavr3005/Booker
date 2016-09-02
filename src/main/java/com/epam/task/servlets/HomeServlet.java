@@ -70,9 +70,9 @@ public class HomeServlet extends HttpServlet {
 		
 		request.setAttribute("hotels", hotels);
 		request.setAttribute("countOfHotels", hotels.size());
-		request.setAttribute("countOfPages", new HotelService().getAllHotels().size() / 3);
+		request.setAttribute("countOfPages", Math.ceil(new HotelService().getAllHotels().size() / 3.0));
 		
-		if(request.getParameter("flag").equals("true")) {
+		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("pages/index.jsp").forward(request, response);
