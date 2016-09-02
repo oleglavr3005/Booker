@@ -20,6 +20,7 @@ b {
 .invert:hover {
 	-webkit-filter: invert(70%);
 	filter: invert(70%);
+	cursor: default;
 }
 </style>
 
@@ -62,11 +63,11 @@ b {
 						</div>
 
 						<div class="row">
-							<i class="fa fa-lg fa-cutlery" aria-hidden="true"></i> <span>${room.food}</span>
+							<a class="tooltipped" data-position="icon" data-tooltip="Food" style="color: #0d0d0d;"><i class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span>
 						</div>
 
 						<div class="row">
-							<i class="fa fa-lg fa-money" aria-hidden="true"></i> <span>${room.price}</span>
+							<a class="tooltipped" data-position="icon" data-tooltip="Price" style="color: #0d0d0d;"><i class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${room.price}</span>
 						</div>
 
 					</div>
