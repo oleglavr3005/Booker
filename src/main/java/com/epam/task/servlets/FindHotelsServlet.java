@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.service.HotelService;
@@ -25,6 +26,8 @@ public class FindHotelsServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {				
+		HttpSession session = request.getSession(true);
+		
 		String name = request.getParameter("name"); //get from request
 		int minStars = (int) Double.parseDouble(request.getParameter("minStars")); //get from request
 		int maxStars = (int) Double.parseDouble(request.getParameter("maxStars")); //get from request
@@ -64,6 +67,35 @@ public class FindHotelsServlet extends HttpServlet {
 		} catch (ParseException e) {
 			endDate = new Timestamp(new Date().getTime());
 		}
+		
+		session.setAttribute("name", name);
+		session.setAttribute("minStars", minStars);
+		session.setAttribute("maxStars", maxStars);
+		session.setAttribute("people", people);
+		
+		session.setAttribute("typeStandart", typeStandart);
+		session.setAttribute("typeLux", typeLux);
+		session.setAttribute("typeDelux", typeDelux);
+		
+		session.setAttribute("foodNone", foodNone);
+		session.setAttribute("foodBreakfast", foodBreakfast);
+		session.setAttribute("foodTwice", foodTwice);
+		session.setAttribute("foodFull", foodFull);
+		
+		session.setAttribute("minPrice", minPrice);
+		session.setAttribute("maxPrice", maxPrice);
+		
+		session.setAttribute("hasWiFi", hasWiFi);
+		session.setAttribute("hasShower", hasShower);
+		session.setAttribute("hasParking", hasParking);
+		session.setAttribute("hasCondition", hasCondition);
+		session.setAttribute("hasPool", hasPool);
+		session.setAttribute("hasGym", hasGym);
+		session.setAttribute("hasBalcony", hasBalcony);
+		session.setAttribute("noDeposit", noDeposit);
+		
+		session.setAttribute("startDate", startDate);
+		session.setAttribute("endDate", endDate);
 
 		String pageString = request.getParameter("page");
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
@@ -73,11 +105,7 @@ public class FindHotelsServlet extends HttpServlet {
 				minPrice, maxPrice, 
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
 				startDate, endDate, page);
-		
-//		for(Hotel hotel : suitableHotels) {
-//			System.out.println(hotel);
-//		}
-		
+
 		request.setAttribute("hotels", suitableHotels);
 		request.setAttribute("countOfHotels", suitableHotels.size());
 		
