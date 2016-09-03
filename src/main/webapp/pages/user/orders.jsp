@@ -192,7 +192,7 @@ div #sidebar-wrapper {
 											<td style="text-align: center;"><a
 												class="my-btn waves-effect waves-light btn"
 												style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-												onclick="deleteSub(${activeOrder.id})"><fmt:message
+												onclick="removeOrderTable(${activeOrder.id})"><fmt:message
 														key="subscribes.table.remove" /> </a></td>
 										</tr>
 									</c:forEach>
@@ -296,7 +296,7 @@ div #sidebar-wrapper {
 													<td style="text-align: center;"><a
 														class="my-btn waves-effect waves-light btn"
 														style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-														onclick="deleteSub(${allOrder.id})"><fmt:message
+														onclick="removeOrderTable(${allOrder.id})"><fmt:message
 																key="subscribes.table.remove" /> </a></td>
 												</c:when>
 												<c:when test="${allOrder.status == 'CANCELED'}">
@@ -377,29 +377,12 @@ div #sidebar-wrapper {
 	<jsp:include page="../foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
 
-
-	<script>
-		function deleteSub(orderId){
-			$.post('delete_order', {
-				orderId : orderId
-			}, function(){
-				$('.purchase' + orderId).animate({
-					right : '250px',
-					opacity : '0.5',
-					height : '-=150px',
-					width : '-=150px'
-				}, "slow", function() {
-					$('.purchase' + orderId).remove();
-				});
-			});
-		}
-	</script>
-
-
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/tablesorter/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/tablesorter/jquery.tablesorter.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/order/removeOrder.js"></script>
 
 	<script type="text/javascript">
 $(document).ready(function() 
