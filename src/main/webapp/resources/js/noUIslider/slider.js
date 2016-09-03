@@ -15,14 +15,12 @@ var starRange = document.getElementById('rangeSlider');
 	var maximum = $('#maxPrice').val();
 	var minimumUser = $('#minUserPrice').val();
 	var maximumUser = $('#maxUserPrice').val();
-	alert("vals: " + minimumUser + " " + maximumUser);
 	if (minimumUser == ""){
 		minimumUser = minimum;
 	}
 	if (maximumUser == ""){
 		maximumUser = maximum;
 	}
-	alert(parseInt(minimumUser) + " " + parseInt(maximumUser));
 	noUiSlider.create(priceRange, {
 		start : [ parseInt(minimumUser), parseInt(maximumUser) ], // Handle start position
 		step : 1, // Slider moves in increments of '1'
@@ -33,6 +31,9 @@ var starRange = document.getElementById('rangeSlider');
 			'max' : parseInt(maximum)
 		}
 	});
+	
+	$('#printMinPrice').html(parseInt(priceRange.noUiSlider.get()[0]));
+	$('#printMaxPrice').html(parseInt(priceRange.noUiSlider.get()[1]));
 	
 	starRange.noUiSlider.on('change', function(){
 		$('#minStars').val(starRange.noUiSlider.get()[0]);
