@@ -61,6 +61,23 @@ function find() {
 	});
 }
 
+function searchRooms(hotelId) {
+	var flag = true;
+	flag = peopleIsValid($('#people').val()) && flag;
+	flag = startDateIsValid() && flag;
+	flag = endDateIsValid() && flag;
+	if (flag) {
+		$.post('../find_rooms', {
+			hotelId : hotelId,
+			people : $('#people').val(),
+			startDate : $('#startDate').val(),
+			endDate : $('#endDate').val(),
+		}, function(hotels) {
+			$('#switchContent').html(hotels);
+		});
+	}
+}
+
 function searchForm() {
 	var flag = true;
 	flag = nameIsValid($('#nam').val()) && flag;
