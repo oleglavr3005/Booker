@@ -14,9 +14,6 @@ b {
 	margin-left: 8px;
 	font-size: 15px;
 }
-</style>
-
-<style>
 .invert:hover {
 	-webkit-filter: invert(70%);
 	filter: invert(70%);
@@ -24,7 +21,7 @@ b {
 }
 </style>
 
-
+<!-- MOVE TO HOTEL -->
 <h6>
 	<c:if test="${countOfRooms > 0 }">
 		<fmt:message key="card.header" />
@@ -41,6 +38,9 @@ b {
 		<fmt:message key="card.no.periodicals" />
 	</h5>
 </c:if>
+
+<!--END MOVE TO HOTEL -->
+
 
 <c:forEach var="room" items="${rooms}">
 
@@ -122,7 +122,7 @@ b {
 					</div>
 				</div>
 
-				<c:if test="${userState == 'user' && inCart == false}">
+				<c:if test="${userState == 'user'}">
 					<div class="row">
 						<div class="col s2 offset-s8">
 							<input id="count" type="text" class="validate"> <label
