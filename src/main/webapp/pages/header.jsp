@@ -129,17 +129,17 @@ img.logo {
 									alt="img"
 									style="margin-top: 5px; height: 50px; width: 50px; border-radius: 25px;"
 									class="imageavatar dropdown-toggle" data-toggle='dropdown'
-									data-beloworigin="true" data-hover="true" />
+									 />
 								<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="#" style="color: #26A69A">HTML</a></li>
+										href="${pageContext.servletContext.contextPath}/cabinet/cart" style="color: #26A69A">Shopping cart</a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="#" style="color: #26A69A">CSS</a></li>
+										href="${pageContext.servletContext.contextPath}/cabinet/orders" style="color: #26A69A">My orders</a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="#" style="color: #26A69A">JavaScript</a></li>
-									<li role="presentation" class="divider"></li>
+										href="${pageContext.servletContext.contextPath}/cabinet/info" style="color: #26A69A">Change info</a></li>
+									<li role="presentation" class="divider" style="border-color:lightgrey"></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="#" style="color: #26A69A">About Us</a></li>
+										href="${pageContext.servletContext.contextPath}/log-out" style="color: #26A69A"><i class="fa fa-sign-in" aria-hidden="true"></i> Log out</a></li>
 								</ul>
 							</div>
 <!-- 						</div> -->
