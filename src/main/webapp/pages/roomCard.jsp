@@ -14,6 +14,7 @@ b {
 	margin-left: 8px;
 	font-size: 15px;
 }
+
 .invert:hover {
 	-webkit-filter: invert(70%);
 	filter: invert(70%);
@@ -63,48 +64,70 @@ b {
 						</div>
 
 						<div class="row">
-							<a class="tooltipped" data-position="icon" data-tooltip="Food" style="color: #0d0d0d;"><i class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span>
+							<a class="tooltipped" data-position="icon" data-tooltip="Food"
+								style="color: #0d0d0d;"><i
+								class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span>
 						</div>
 
 						<div class="row">
-							<a class="tooltipped" data-position="icon" data-tooltip="Price" style="color: #0d0d0d;"><i class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${room.price}</span>
+							<a class="tooltipped" data-position="icon" data-tooltip="Price"
+								style="color: #0d0d0d;"><i class="fa fa-lg fa-money invert"
+								aria-hidden="true"></i></a> <span>${room.price}</span>
 						</div>
 
 						<div class="row">
-							<a class="tooltipped" data-position="icon" data-tooltip="Double beds" style="color: #0d0d0d;"><img class="invert" style="max-width: 10%;" src="${pageContext.servletContext.contextPath}/resources/images/double_bed.png"/></a> <span>${room.doubleBedsCount}</span>
-							<a class="tooltipped" data-position="icon" data-tooltip="Single beds" style="color: #0d0d0d;"><img class="invert" style="max-width: 10%;" src="${pageContext.servletContext.contextPath}/resources/images/single_bed.png"/></a> <span>${room.bedsCount}</span>
+							<a class="tooltipped" data-position="icon"
+								data-tooltip="Double beds" style="color: #0d0d0d;"><img
+								class="invert" style="max-width: 10%;"
+								src="${pageContext.servletContext.contextPath}/resources/images/double_bed.png" /></a>
+							<span>${room.doubleBedsCount}</span> <a class="tooltipped"
+								data-position="icon" data-tooltip="Single beds"
+								style="color: #0d0d0d;"><img class="invert"
+								style="max-width: 10%;"
+								src="${pageContext.servletContext.contextPath}/resources/images/single_bed.png" /></a>
+							<span>${room.bedsCount}</span>
 						</div>
 
 					</div>
 
 					<div class="col s3">
-						<div class="row" style="float:right">
+						<div class="row" style="float: right">
 							<c:if test="${room.wifi == true}">
-									<a class="tooltipped" data-position="icon" data-tooltip="Wifi" style="color: #0d0d0d;"><i  class="material-icons invert">wifi</i></a>
+								<a class="tooltipped" data-position="icon" data-tooltip="Wifi"
+									style="color: #0d0d0d;"><i class="material-icons invert">wifi</i></a>
 							</c:if>
 
 							<c:if test="${room.shower == true}">
-								<a class="tooltipped" data-position="icon" data-tooltip="Shower" style="color: #0d0d0d;"><i class="material-icons invert">invert_colors</i></a>
+								<a class="tooltipped" data-position="icon" data-tooltip="Shower"
+									style="color: #0d0d0d;"><i class="material-icons invert">invert_colors</i></a>
 							</c:if>
 
 							<c:if test="${room.parking == true}">
-									<a class="tooltipped" data-position="icon" data-tooltip="Parking" style="color: #0d0d0d;"><i class="material-icons invert">local_parking</i></a>
+								<a class="tooltipped" data-position="icon"
+									data-tooltip="Parking" style="color: #0d0d0d;"><i
+									class="material-icons invert">local_parking</i></a>
 							</c:if>
 
 							<c:if test="${room.condition == true}">
-								<a class="tooltipped" data-position="icon" data-tooltip="Condition" style="color: #0d0d0d;"><i class="material-icons invert">toys</i></a>
+								<a class="tooltipped" data-position="icon"
+									data-tooltip="Condition" style="color: #0d0d0d;"><i
+									class="material-icons invert">toys</i></a>
 							</c:if>
 
 							<c:if test="${room.pool == true}">
-								<a class="tooltipped" data-position="icon" data-tooltip="Pool" style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
+								<a class="tooltipped" data-position="icon" data-tooltip="Pool"
+									style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
 							</c:if>
 
 							<c:if test="${room.gym == true}">
-								<a class="tooltipped" data-position="icon" data-tooltip="Gym" style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
+								<a class="tooltipped" data-position="icon" data-tooltip="Gym"
+									style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
 							</c:if>
 
 							<c:if test="${room.balcony == true}">
-								<a class="tooltipped" data-position="icon" data-tooltip="Balcony" style="color: #0d0d0d;"><i class="material-icons invert">account_balance</i></a>
+								<a class="tooltipped" data-position="icon"
+									data-tooltip="Balcony" style="color: #0d0d0d;"><i
+									class="material-icons invert">account_balance</i></a>
 							</c:if>
 						</div>
 					</div>
@@ -112,17 +135,20 @@ b {
 
 				<c:if test="${user != null}">
 					<div class="row">
-						<div class="col s2" style="float:right">
-							<a class="waves-effect waves-light btn"
-								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>BOOK</span></a>
+						<div class="col s2" style="float: right">
+							<a id="btn${room.id}" class="waves-effect waves-light btn"
+								onclick="addToCart(${room.id})"
+								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>ADD
+									TO CART</span></a>
 						</div>
 					</div>
 				</c:if>
 				<c:if test="${user == null}">
 					<div class="row">
-						<div class="col s2" style="float:right">
+						<div class="col s2" style="float: right">
 							<a class="waves-effect waves-light btn" disabled
-								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>Please log in first</span></a>
+								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>U
+									NEED 2 LOGIN</span></a>
 						</div>
 					</div>
 				</c:if>
@@ -134,8 +160,6 @@ b {
 	</div>
 </c:forEach>
 
-<c:if test="${userState == 'admin'}">
-	<script
-		src="${pageContext.servletContext.contextPath}/resources/js/admin/index.js"
-		type="text/javascript"></script>
-</c:if>
+<script
+	src="${pageContext.servletContext.contextPath}/resources/js/order/createOrder.js"
+	type="text/javascript"></script>
