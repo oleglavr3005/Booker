@@ -25,14 +25,14 @@ public class RoomService {
 	public List<Room> getAllSuitableRoomsForHotel(int id, int page, 
 			boolean typeStandart, boolean typeLux, boolean typeDelux, 
 			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull,
-			int minPrice, int maxPrice,
+			int minPrice, int maxPrice, int people,
 			boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, 
 			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit,
 			Timestamp startDate, Timestamp endDate) {
 		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllSuitableRoomsForHotel(id, page, 
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull,
-				minPrice, maxPrice,
+				minPrice, maxPrice, people,
 				hasWiFi, hasShower, hasParking, hasCondition, 
 				hasPool, hasGym, hasBalcony, noDeposit,
 				startDate, endDate));

@@ -90,7 +90,7 @@ public class FindRooms extends HttpServlet {
 		List<Room> rooms = new RoomService().getAllSuitableRoomsForHotel(hotelId, page, 
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull, 
-				minPrice, maxPrice, 
+				minPrice, maxPrice, people,
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
 				startDate, endDate);
 		List<HotelPhoto> hotelPhoto = new HotelPhotoService().getHotelPhotosByHotel(hotelId); 
