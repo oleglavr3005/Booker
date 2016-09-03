@@ -89,7 +89,6 @@ img.logo {
 
 <!-- =================================================================== -->
 
-
 <nav class="navbar navbar-default navbar-static-top"
 	style="margin-bottom: 0px; background: #0d0d0d;">
 	<div class="container-fluid">
@@ -102,7 +101,7 @@ img.logo {
 			</a>
 		</div>
 
-		<div id="navbar" class="navbar" style="margin-bottom: 0px;">
+		<div id="navbar" class="navbar" style="margin-bottom: 0px; margin-left:300px">
 
 			<ul class="nav navbar-nav navbar-right" style="padding-top: 5px;">
 
