@@ -165,7 +165,13 @@ div #sidebar-wrapper {
 						</div>
 						<c:if test="${order.status != CANCELED}">
 						<div class="row col 12">
-						<input type="button" name="cancel" value="Cancel" style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+						<div class="col s2 offset-s3" style="margin-top: 18px; margin-left: 0;">
+					<a id="search" class="waves-effect waves-light btn"
+						onclick="searchForm()"
+						<%-- 					href="${pageContext.servletContext.contextPath}/search" --%>
+					style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
+							key="Cancel" /></a>
+				</div>
 						</div>
 						</c:if>
 						</div>
