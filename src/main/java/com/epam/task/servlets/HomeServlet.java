@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.service.HotelService;
+import com.epam.task.database.service.RoomService;
 
 @WebServlet("/home")
 public class HomeServlet extends HttpServlet {
@@ -31,11 +32,12 @@ public class HomeServlet extends HttpServlet {
 		List<Hotel> hotels = hotelService.getAllHotelsByPage(page);
 		
 		request.setAttribute("hotels", hotels);
-		request.setAttribute("countOfHotels", hotels.size());
+		
+		RoomService roomService = new RoomService();
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
-		} else {
+		} else {			
 			HttpSession session = request.getSession(true);
 			Enumeration<String> names = session.getAttributeNames();
 			while(names.hasMoreElements()) {
@@ -44,7 +46,11 @@ public class HomeServlet extends HttpServlet {
 					session.removeAttribute(name);
 				}
 			}
-			session.setAttribute("countOfPages", Math.ceil(new HotelService().getAllHotels().size() / 3.0));
+			session.setAttribute("minPrice", roomService.getMinPrice());
+			session.setAttribute("maxPrice", roomService.getMaxPrice());
+			int countOfHotels = new HotelService().getAllHotels().size();
+			session.setAttribute("countOfHotels", countOfHotels);
+			session.setAttribute("countOfPages", Math.ceil(countOfHotels / 3.0));
 			request.getRequestDispatcher("pages/index.jsp").forward(request, response);
 		}
 	}

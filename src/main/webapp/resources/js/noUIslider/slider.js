@@ -11,16 +11,29 @@ var starRange = document.getElementById('rangeSlider');
 	});
 		
 	var priceRange = document.getElementById('priceSlider');
+	var minimum = $('#minPrice').val();
+	var maximum = $('#maxPrice').val();
+	var minimumUser = $('#minUserPrice').val();
+	var maximumUser = $('#maxUserPrice').val();
+	if (minimumUser == ""){
+		minimumUser = minimum;
+	}
+	if (maximumUser == ""){
+		maximumUser = maximum;
+	}
 	noUiSlider.create(priceRange, {
-		start : [ 100, 5000 ], // Handle start position
+		start : [ parseInt(minimumUser), parseInt(maximumUser) ], // Handle start position
 		step : 1, // Slider moves in increments of '1'
 		connect : true, // Display a colored bar between the handles
 		behaviour : 'tap-drag', // Move handle on tap, bar is draggable
 		range : { // Slider can select '1' to '5'
-			'min' : 100,
-			'max' : 5000
+			'min' : parseInt(minimum),
+			'max' : parseInt(maximum)
 		}
 	});
+	
+	$('#printMinPrice').html(parseInt(priceRange.noUiSlider.get()[0]));
+	$('#printMaxPrice').html(parseInt(priceRange.noUiSlider.get()[1]));
 	
 	starRange.noUiSlider.on('change', function(){
 		$('#minStars').val(starRange.noUiSlider.get()[0]);
@@ -28,10 +41,15 @@ var starRange = document.getElementById('rangeSlider');
 	});
 	
 	priceRange.noUiSlider.on('change', function(){
-		$('#minPrice').val(priceRange.noUiSlider.get()[0]);
-		$('#maxPrice').val(priceRange.noUiSlider.get()[1]);
+		$('#minUserPrice').val(priceRange.noUiSlider.get()[0]);
+		$('#maxUserPrice').val(priceRange.noUiSlider.get()[1]);
 	});
 	
+	priceRange.noUiSlider.on('slide', function(){
+		$('#printMinPrice').html(parseInt(priceRange.noUiSlider.get()[0]));
+		$('#printMaxPrice').html(parseInt(priceRange.noUiSlider.get()[1]));
+	});
+
 	function togle(){
 		var elem1 = document.getElementById("details_panel");
 		var style = document.defaultView.getComputedStyle(elem1, null).getPropertyValue("display");
@@ -40,11 +58,13 @@ var starRange = document.getElementById('rangeSlider');
 			
 			$('#arrow_icon').removeClass("fa-angle-double-down");
 			$('#arrow_icon').addClass("fa-angle-double-up");
+			$('#togler').val("true");
 		}
 		else {
 			document.getElementById('details_panel').style.display = "none";
 			
 			$('#arrow_icon').removeClass("fa-angle-double-up");
 			$('#arrow_icon').addClass("fa-angle-double-down");
+			$('#togler').val("false");
 		}
 	}

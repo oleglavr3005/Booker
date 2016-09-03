@@ -23,9 +23,11 @@ public class Order {
 	private java.sql.Timestamp orderDate;
 	@DataBaseField(fieldName = "price")
 	private int price;
+	@DataBaseField(fieldName = "comment")
+	private String comment;
 
 	public Order(int id, int userId, int roomId, Timestamp startDate, Timestamp endDate,String status,
-			Timestamp orderDate, int price) {
+			Timestamp orderDate, int price, String comment) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -35,6 +37,7 @@ public class Order {
 		this.status =  status == null ? null : OrderStatus.valueOf(status);
 		this.orderDate = orderDate;
 		this.price = price;
+		this.comment = comment;
 	}
 
 	public int getId() {
@@ -101,4 +104,11 @@ public class Order {
 		this.price = price;
 	}
 
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 }

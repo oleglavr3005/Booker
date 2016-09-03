@@ -99,7 +99,7 @@ div #sidebar-wrapper {
 	<div class="container">
 
 <div id="links">
-			<div class="row" style="margin-bottom: 0;">
+			<div class="row s12" style="margin-bottom: 0;">
 				<div class="col s4">
 					<a href='<c:out value="${mainPhoto.id}"></c:out>' title="Banana"
 						data-gallery> <img
@@ -123,98 +123,104 @@ div #sidebar-wrapper {
 					</div>
 				</div>
 
-				<div class="col s8">
+				<div class="col s3">
 					<div class="container-fluid">
-						<div class="row" style="margin-bottom: 0;">
-							<div class="col s6" style="width: 30%;">
-								<h5>
+						<div class="row s4" style="margin-bottom: 0;">
+							<div class="row s8" style="width: 30%; padding-left: 10px;">
+								<h5 style="width: 300px;">
 									<c:out value="${hotel.name }"></c:out>
 								</h5>
 							</div>
-							<div class="row">
-							    <h5 style=" font-size: 1rem;     margin: 1.2rem 0 0.656rem 0;">
-									<c:out value="${room.type }"></c:out>
-								</h5>
 							</div>
-						</div>
-						<div class="row">
+						<div class="row s2">
 							<i class="fa fa-lg icon-map-marker" aria-hidden="true"></i> <span>${hotel.city}
 								${hotel.street}</span>
 						</div>
-						<div class="col s3">
-						<div class="row">
-							<c:if test="${room.wifi == true}">
-								<div class="row col s6" style="margin-top: 5px; width: 100%;">
-									<a class="tooltipped" data-position="icon" data-tooltip="Wifi" style="color: #0d0d0d;"><i  class="material-icons invert">wifi</i></a>
-									<span>Wifi</span>
-								</div>
-							</c:if>
-
-							<c:if test="${room.shower == true}">
-								<div class="row col s6" style="margin-top: 5px; width: 24%;">
-									<a class="tooltipped" data-position="icon" data-tooltip="Shower"><img class="invert" style="max-width: 230%;" src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png"/></a>
-								<span>Shower</span>
-								</div>
-							</c:if>
-
-							<c:if test="${room.parking == true}">
-								<div class="col s6" style="margin-top: 5px; width: 100%;">
-									<a class="tooltipped" data-position="icon" data-tooltip="Parking" style="color: #0d0d0d;"><i class="material-icons invert">local_parking</i></a>
-								<span>Parking</span>
-								</div>
-							</c:if>
-
-							<c:if test="${room.condition == true}">
-								<div class="col s6" style="margin-top: 5px; width: 100%;">
-								<a class="tooltipped" data-position="icon" data-tooltip="Condition" style="color: #0d0d0d;"><i class="material-icons invert">toys</i></a>
-								<span>Condition</span>
-								</div>
-							</c:if>
-
-							<c:if test="${room.pool == true}">
-								<div class="col s6" style="margin-top: 5px; width: 100%;">
-								<a class="tooltipped" data-position="icon" data-tooltip="Pool" style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
-								<span>Pool</span>
-								</div>
-							</c:if>
-
-							<c:if test="${room.gym == true}">
-								<div class="col s6" style="margin-top: 5px; width: 100%;">
-								<a class="tooltipped" data-position="icon" data-tooltip="Gym" style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
-								<span>Gym</span>
-								</div>
-							</c:if>
-
-							<c:if test="${room.balcony == true}">
-								<div class="col s6" style="margin-top: 5px; width: 23%;">
-								<a class="tooltipped" data-position="icon" data-tooltip="Balcony"><img class="invert" style="max-width: 230%;" src="${pageContext.servletContext.contextPath}/resources/images/balcony.png"/></a>
-								<span>Balcony</span>
-								</div>
-							</c:if>
-						</div>
-						</div>
+							<div class="row s2">
+							    <h5 style=" font-size: 1rem;     margin: 0 0 0 0;">
+									<c:out value="${room.type }"></c:out>
+								</h5>
+							</div>
+	
 						<div class="row col s12" style="margin-bottom: 0;">
-							<p>Start date ${order.startDate}</p>
+							<p>Start date <span id="start_date">${order.startDate}</span></p>
 						</div>
 						
 						<div class="row col s12" style="margin-bottom: 0;">
-							<p>End date ${order.endDate}</p>
+							<p>End date <span id="end_date">${order.endDate}</span></p>
 						</div>
 						
 						<div class="row col s12" style="margin-bottom: 0;">
-							<p>Order date ${order.orderDate}</p>
+							<p>Order date <span id="order_date">${order.orderDate}</span></p>
 						</div>
 						
 						<div class="row col s12" style="margin-bottom: 0;">
 							<p>Status ${order.status}</p>
 						</div>
-						
+						<div class="row col s12" style="margin-bottom: 0;">
+							<p>Food ${room.food}</p>
+						</div>
 						<div class="row col s12">
 							<p>Price ${order.price}</p>
 						</div>
+						<c:if test="${order.status != CANCELED}">
+						<div class="row col 12">
+						<div class="col s2 offset-s3" style="margin-top: 18px; margin-left: 0;">
+					<a id="search" class="waves-effect waves-light btn"
+						onclick="searchForm()"
+						<%-- 					href="${pageContext.servletContext.contextPath}/search" --%>
+					style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
+							key="Cancel" /></a>
+				</div>
+						</div>
+						</c:if>
+						</div>
+						</div>
+						<div class="row s4" style="padding-left: 0px;padding-right: 0px;">
+						<c:if test="${room.wifi == true}">
+								<div class="col s1" style="margin-top: 10px; width: 24px; cursor: default;">
+									<a class="tooltipped" data-position="icon" data-tooltip="Wifi" style="color: #0d0d0d;"><i  class="material-icons invert">wifi</i></a>
+								</div>
+							</c:if>
+
+							<c:if test="${room.shower == true}">
+								<div class="col s1" style="margin-top: 10px;     width: 32px; height: 32px;">
+									<a class="tooltipped" data-position="icon" data-tooltip="Shower"><img class="invert" style="max-width: 230%;" src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png"/></a>
+								</div>
+							</c:if>
+
+							<c:if test="${room.parking == true}">
+								<div class="col s1" style="margin-top: 10px;width: 24px; cursor: default;">
+									<a class="tooltipped" data-position="icon" data-tooltip="Parking" style="color: #0d0d0d;"><i class="material-icons invert">local_parking</i></a>
+								</div>
+							</c:if>
+
+							<c:if test="${room.condition == true}">
+								<div class="col s1" style="margin-top: 10px;width: 24px; cursor: default;">
+								<a class="tooltipped" data-position="icon" data-tooltip="Condition" style="color: #0d0d0d;"><i class="material-icons invert">toys</i></a>
+								</div>
+							</c:if>
+
+							<c:if test="${room.pool == true}">
+								<div class="col s1" style="margin-top: 10px;width: 24px; cursor: default;">
+								<a class="tooltipped" data-position="icon" data-tooltip="Pool" style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
+								</div>
+							</c:if>
+
+							<c:if test="${room.gym == true}">
+								<div class="col s1" style="margin-top: 10px;width: 24px; cursor: default;">
+								<a class="tooltipped" data-position="icon" data-tooltip="Gym" style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
+								</div>
+							</c:if>
+
+							<c:if test="${room.balcony == true}">
+								<div class="col s1" style="margin-top: 10px; width: 32px; height: 32px;">
+								<a class="tooltipped" data-position="icon" data-tooltip="Balcony"><img class="invert" style="max-width: 230%;" src="${pageContext.servletContext.contextPath}/resources/images/balcony.png"/></a>
+								</div>
+							</c:if>
 						</div>
 						
-					</div>
+
 				</div>
 			</div>
 		</div>
@@ -326,7 +332,57 @@ div #sidebar-wrapper {
 	}
 	
 	</script>
-
+<script type="text/javascript">
+$(document).ready(function (){	
+	var date = document.getElementById("start_date");
+	var dateObject = new Date(date.innerHTML);
+	var curr_date = dateObject.getDate();
+	if(curr_date < 10) {
+		curr_date = "0" + curr_date;
+	}
+	var curr_month = dateObject.getMonth() + 1;
+	if(curr_month < 10) {
+		curr_month = "0" + curr_month;
+	}
+	var curr_year = dateObject.getFullYear();
+	date.innerHTML = (curr_year + "-" + curr_month + "-" + curr_date);
+	// return date = (curr_year + "-" + curr_month + "-" + curr_date);
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function (){	
+	var date = document.getElementById("end_date");
+	var dateObject = new Date(date.innerHTML);
+	var curr_date = dateObject.getDate();
+	if(curr_date < 10) {
+		curr_date = "0" + curr_date;
+	}
+	var curr_month = dateObject.getMonth() + 1;
+	if(curr_month < 10) {
+		curr_month = "0" + curr_month;
+	}
+	var curr_year = dateObject.getFullYear();
+	date.innerHTML = (curr_year + "-" + curr_month + "-" + curr_date);
+	// return date = (curr_year + "-" + curr_month + "-" + curr_date);
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function (){	
+	var date = document.getElementById("order_date");
+	var dateObject = new Date(date.innerHTML);
+	var curr_date = dateObject.getDate();
+	if(curr_date < 10) {
+		curr_date = "0" + curr_date;
+	}
+	var curr_month = dateObject.getMonth() + 1;
+	if(curr_month < 10) {
+		curr_month = "0" + curr_month;
+	}
+	var curr_year = dateObject.getFullYear();
+	date.innerHTML = (curr_year + "-" + curr_month + "-" + curr_date);
+	// return date = (curr_year + "-" + curr_month + "-" + curr_date);
+});
+</script>
 
 
 	

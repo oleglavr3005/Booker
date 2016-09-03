@@ -12,18 +12,17 @@ import com.epam.task.database.service.RoomService;
 
 public class OrderDto extends Order {
 	
-	@SuppressWarnings("unused")
 	private Hotel hotel;
 	private Room room;
 	
 	public OrderDto(Order order){
 		this(order.getId(), order.getUserId(), order.getRoomId(), order.getStartDate(), order.getEndDate(), order.getStatus().toString(),
-				order.getOrderDate(), order.getPrice());
+				order.getOrderDate(), order.getPrice(), order.getComment());
 	}
 
 	public OrderDto(int id, int userId, int roomId, Timestamp startDate, Timestamp endDate, String status,
-			Timestamp orderDate, int price) {
-		super(id, userId, roomId, startDate, endDate, status, orderDate, price);
+			Timestamp orderDate, int price, String comment) {
+		super(id, userId, roomId, startDate, endDate, status, orderDate, price, comment);
 		room = new RoomService().getRoomById(roomId);
 		hotel = new HotelService().getHotelById(room.getHotelId());
 	}

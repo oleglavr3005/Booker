@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.epam.task.database.model.Order;
+import com.epam.task.database.dto.OrderDto;
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.service.OrderService;
@@ -37,9 +37,15 @@ public class ShoppingCartServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		int userId = ((User) session.getAttribute("user")).getId();
 		
-		List<Order> orders = new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.ORDER);
+		List<OrderDto> orders = OrderDto.listConverter(new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.ORDER));
+		
+		int summary = 0;
+		for(OrderDto order : orders){
+			summary += order.getPrice();
+		}
+		
 		request.setAttribute("orders", orders);
-		request.setAttribute("inCart", Boolean.TRUE);
+		request.setAttribute("summary", summary);
 		
 		request.getRequestDispatcher("/pages/user/shopping_cart.jsp").forward(request, response);
 	}

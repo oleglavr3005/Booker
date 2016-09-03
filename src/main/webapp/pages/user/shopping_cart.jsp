@@ -91,19 +91,32 @@
 
 		<div class="row">SHOP LIST</div>
 
-<!-- 		<div class="container"> -->
-			<div id="switchContent" class="row">
-				<jsp:include page="../roomCard.jsp"></jsp:include>
-			</div>
-<!-- 		</div> -->
+		<h6>
+			<c:if test="${countOfOrders > 0 }">
+				<fmt:message key="card.header" />
+				<span id="periodicals_number_for_all_users">${countOfOrders}</span>
+			</c:if>
+			<c:if test="${countOfOrders <= 0 }">
+				<fmt:message key="card.no.periodicals" />
+			</c:if>
+		</h6>
+		<div class="divider" style="margin-bottom: 20px;"></div>
+
+		<c:if test="${countOfOrders == 0}">
+			<h5 style="color: red; margin-bottom: 63px;">
+				<fmt:message key="card.no.periodicals" />
+			</h5>
+		</c:if>
+
+		<!-- 		<div class="container"> -->
+		<div id="switchContent" class="row">
+			<jsp:include page="../orderCard.jsp"></jsp:include>
+		</div>
+		<!-- 		</div> -->
 
 		<div class="row">
-			<div class="col s2 offset-s8">
-				TOTAL_PRICE
-			</div>
-			<div class="col s2">
-				BUY
-			</div>
+			<div class="col s3 offset-s7">TOTAL_PRICE : ${summary}</div>
+			<div class="col s2">BUY</div>
 		</div>
 
 	</div>

@@ -150,8 +150,6 @@ div #sidebar-wrapper {
 							style="color: #1A3D44"><b><p id="tab_active">ACTIVE</p></b></a></li>
 						<li class="tab col s3"><a href="#test2"
 							style="color: #1A3D44"><b><p id="tab_ended">ENDED</p></b></a></li>
-						<li class="tab col s3"><a href="#test4"
-							style="color: #1A3D44"><b><p id="tab_canceled">CANCELED</p></b></a></li>
 						<li class="tab col s3"><a href="#test3"
 							style="color: #1A3D44"><b><p id="tab_all">ALL</p></b></a></li>
 					</ul>
@@ -328,47 +326,47 @@ div #sidebar-wrapper {
 
 				
 <!-- 			Tab #4 -->						
-				<div id="test4" class="col s12">
-					<c:choose>
-						<c:when test="${removedSubsSize != 0}">
-							<table id="tab4" class="purchase-table">
-								<thead>
-									<tr>
-										<th style="text-align: center; border-radius: 0;"><p id="tb_head_id">ID</p></th>
- 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_date">HOTEL NAME</p></th>
-										<th style="text-align: center; border-radius: 0;"><p id="tb_head_room">ROOM_TYPE</p></th>
-										<th style="text-align: center; border-radius: 0;"><p id="tb_head_sdate">START_DATE</p></th>
-										<th style="text-align: center; border-radius: 0;"><p id="tb_head_edate">END_DATE</p></th>
-										<th style="text-align: center; border-radius: 0;"><p id="tb_head_price">PRICE</p></th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var="canceledOrder" items="${canceledOrders}">
-										<tr class="order${canceledOrder.id}">
-											<td class="lalign" style="text-align: center;"><a
-												href="${pageContext.servletContext.contextPath}/order/${canceledOrder.id}">#${canceledOrder.id}</a></td>
+<!-- 				<div id="test4" class="col s12"> -->
+<%-- 					<c:choose> --%>
+<%-- 						<c:when test="${removedSubsSize != 0}"> --%>
+<!-- 							<table id="tab4" class="purchase-table"> -->
+<!-- 								<thead> -->
+<!-- 									<tr> -->
+<!-- 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_id">ID</p></th> -->
+<!--  										<th style="text-align: center; border-radius: 0;"><p id="tb_head_date">HOTEL NAME</p></th> -->
+<!-- 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_room">ROOM_TYPE</p></th> -->
+<!-- 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_sdate">START_DATE</p></th> -->
+<!-- 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_edate">END_DATE</p></th> -->
+<!-- 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_price">PRICE</p></th> -->
+<!-- 									</tr> -->
+<!-- 								</thead> -->
+<!-- 								<tbody> -->
+<%-- 									<c:forEach var="canceledOrder" items="${canceledOrders}"> --%>
+<%-- 										<tr class="order${canceledOrder.id}"> --%>
+<!-- 											<td class="lalign" style="text-align: center;"><a -->
+<%-- 												href="${pageContext.servletContext.contextPath}/order/${canceledOrder.id}">#${canceledOrder.id}</a></td> --%>
 
-											<td style="text-align: center;">${canceledOrder.hotel.name}</td>
+<%-- 											<td style="text-align: center;">${canceledOrder.hotel.name}</td> --%>
 
-											<td style="text-align: center;">${canceledOrder.room.type}</td>
+<%-- 											<td style="text-align: center;">${canceledOrder.room.type}</td> --%>
 
-											<td style="text-align: center;">${canceledOrder.startDate}</td>
+<%-- 											<td style="text-align: center;">${canceledOrder.startDate}</td> --%>
 
-											<td style="text-align: center;">${canceledOrder.endDate}</td>
+<%-- 											<td style="text-align: center;">${canceledOrder.endDate}</td> --%>
 
-											<td style="text-align: center;">${canceledOrder.price}</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</c:when>
-						<c:otherwise>
-							<h5 style="color: red; margin-top: 55px; margin-left: 250px;">
-								<fmt:message key="subscribes.empty" />
-							</h5>
-						</c:otherwise>
-					</c:choose>
-				</div>
+<%-- 											<td style="text-align: center;">${canceledOrder.price}</td> --%>
+<!-- 										</tr> -->
+<%-- 									</c:forEach> --%>
+<!-- 								</tbody> -->
+<!-- 							</table> -->
+<%-- 						</c:when> --%>
+<%-- 						<c:otherwise> --%>
+<!-- 							<h5 style="color: red; margin-top: 55px; margin-left: 250px;"> -->
+<%-- 								<fmt:message key="subscribes.empty" /> --%>
+<!-- 							</h5> -->
+<%-- 						</c:otherwise> --%>
+<%-- 					</c:choose> --%>
+<!-- 				</div> -->
 <!-- 			End of Tab #4 -->
 
 

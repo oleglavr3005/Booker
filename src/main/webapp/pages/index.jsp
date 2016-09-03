@@ -19,6 +19,10 @@
 <title>MAIN PAGE</title>
 
 <link
+	href="${pageContext.servletContext.contextPath}/resources/css/rangeSlider/rangeStyle.css"
+	rel="stylesheet">
+
+<link
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
@@ -48,7 +52,7 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css"
 	rel="stylesheet">
-	
+
 <style>
 div #sidebar-wrapper {
 	position: relative;
@@ -84,11 +88,7 @@ div #sidebar-wrapper {
 
 
 <body>
-	<input id="mapping" type="hidden"
-		value="${pageContext.servletContext.contextPath}/" />
-
 	<input id="lang" type="hidden" value="${language}" />
-
 
 	<!-- Header ========================================================================= -->
 	<jsp:include page="header.jsp"></jsp:include>
@@ -101,6 +101,7 @@ div #sidebar-wrapper {
 
 		<!-- 		FORM START -->
 		<form id="myForm" action="search" method="post">
+			<input id="togler" type="hidden" name="togler" value="${togler}" />
 
 			<div class="row">
 
@@ -161,13 +162,7 @@ div #sidebar-wrapper {
 							key="index.search.ppl" /></label>
 				</div>
 
-				<div class="col s2 offset-s3" style="margin-top: 18px;">
-					<a id="search" class="waves-effect waves-light btn"
-						onclick="searchForm()"
-						<%-- 					href="${pageContext.servletContext.contextPath}/search" --%>
-					style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
-							key="index.search.button" /></a>
-				</div>
+
 
 			</div>
 
@@ -257,9 +252,11 @@ div #sidebar-wrapper {
 
 							</div>
 
+							<div class="col s1 offset-s1">
+								<div class="rangePrint" id="printMinPrice">${minPrice}</div>
+							</div>
 
-
-							<div class="col s8 offset-s2 ">
+							<div class="col s8">
 
 								<label class="labelstyle"><fmt:message
 										key="index.search.price" />PRICE</label>
@@ -269,25 +266,43 @@ div #sidebar-wrapper {
 
 							</div>
 
+							<div class="col s1">
+								<div class="rangePrint" id="printMaxPrice">${maxPrice}</div>
+							</div>
+
 
 						</div>
 					</div>
+					<div class="row">
+						<div class="col s10">
+							<a id="togle" class="waves-effect waves-light btn"
+								onclick="togle()"
+								style="background: #26A69A; text-align: center; width: 100%; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><i
+								id="arrow_icon" class="fa fa-angle-double-down col s1 fa-2x"
+								aria-hidden="true" style="margin-left: 45%"></i></a>
+						</div>
+						<div class="col s2">
+							<a id="search" class="waves-effect waves-light btn"
+								onclick="searchForm()"
+								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">SEARCH</a>
+						</div>
 
-					<a id="togle" class="waves-effect waves-light btn"
-						onclick="togle()"
-						style="background: #26A69A; text-align: center; width: 100%; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><i
-						id="arrow_icon" class="fa fa-angle-double-down col s1 fa-2x"
-						aria-hidden="true" style="margin-left: 45%"></i></a>
+
+					</div>
+
+
 				</div>
 
 			</div>
 
 
 			<input id="minStars" type="hidden" value="1" name="minStars" /> <input
-				id="maxStars" type="hidden" value="5" name="maxStars" /> <input
-				id="minPrice" type="hidden" value="0" name="minPrice" /> <input
-				id="maxPrice" type="hidden" value="100" name="maxPrice" /> <input
-				type="submit" value="Submit">
+				id="maxStars" type="hidden" value="5" name="maxStars" /> 
+				<input id="minPrice" type="hidden" value="${minPrice}" name="minPrice" />
+				<input id="maxPrice" type="hidden" value="${maxPrice}" name="maxPrice" />
+				<input id="minUserPrice" type="hidden" value="${minUserPrice}" name="minUserPrice" />
+				<input id="maxUserPrice" type="hidden" value="${maxUserPrice}" name="maxUserPrice" />
+			<!-- 				<input type="submit" value="Submit"> -->
 		</form>
 
 		<!-- 		FORM END -->
@@ -304,16 +319,14 @@ div #sidebar-wrapper {
 				<fmt:message key="card.no.hotels" />
 			</c:if>
 		</h6>
-		
+
 		<div id="switchContent" class="row">
 			<jsp:include page="card.jsp"></jsp:include>
 		</div>
-		
-<%-- 		<c:if test="${countOfPages} > 1"> --%>
-			<div id="paginationdemo" class="row">
-				<div id="demo5" class="col s4 offset-s5"></div>
-			</div>
-<%-- 		</c:if> --%>
+
+		<div id="paginationdemo" class="row">
+			<div id="demo5" class="col s4 offset-s5"></div>
+		</div>
 
 	</div>
 
@@ -371,7 +384,7 @@ div #sidebar-wrapper {
 	<!--  END OF VK REDIRECT -->
 
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
+	<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.js"></script>
 	<script
@@ -404,32 +417,42 @@ div #sidebar-wrapper {
 		$('#hasGym').attr('checked', '${hasGym}' == 'true');
 		$('#hasBalcony').attr('checked', '${hasBalcony}' == 'true');
 		$('#noDeposit').attr('checked', '${noDeposit}' == 'true');
+
+		var togler = $('#togler').val();
+		if (togler == 'true') {
+			$("#togle").click();
+		}
+		else {
+			$('#togler').val("false");
+		}
 	</script>
 
 	<script type="text/javascript">
 		var pagesCount = '${countOfPages}';
 
-		jQuery(function() {
-			jQuery("#demo5").paginate({
-				count : pagesCount,
-				start : 1,
-				display : 5,
-				border : false,
-				//		border_color			: '#fff',
-				text_color : '#fff',
-				background_color : '#26A69A',
-				//		border_hover_color		: '#ccc',
-				text_hover_color : '#000',
-				background_hover_color : '#CFCFCF',
-				images : false,
-				mouse : 'press',
-				onChange : function(page) {
-					// 											$('._current','#paginationdemo').removeClass('_current').hide();
-					// 											$('#p'+page).addClass('_current').show();
-					findPage(page);
-				}
+		if (pagesCount > 1) {
+			jQuery(function() {
+				jQuery("#demo5").paginate({
+					count : pagesCount,
+					start : 1,
+					display : 5,
+					border : false,
+					//		border_color			: '#fff',
+					text_color : '#fff',
+					background_color : '#26A69A',
+					//		border_hover_color		: '#ccc',
+					text_hover_color : '#000',
+					background_hover_color : '#CFCFCF',
+					images : false,
+					mouse : 'press',
+					onChange : function(page) {
+						// 											$('._current','#paginationdemo').removeClass('_current').hide();
+						// 											$('#p'+page).addClass('_current').show();
+						findPage(page);
+					}
+				});
 			});
-		});
+		}
 	</script>
 
 
