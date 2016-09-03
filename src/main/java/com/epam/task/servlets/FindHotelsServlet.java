@@ -35,61 +35,52 @@ public class FindHotelsServlet extends HttpServlet {
 			return;
 		}
 		
-		String name = request.getParameter("name"); //get from request
-		int minStars = (int) Double.parseDouble(request.getParameter("minStars")); //get from request
-		int maxStars = (int) Double.parseDouble(request.getParameter("maxStars")); //get from request
-		int people = Integer.parseInt(request.getParameter("people")); //get from request
-		
-		boolean typeStandart = request.getParameter("typeStandart") != null; //get from request
-		boolean typeLux = request.getParameter("typeLux") != null; //get from request
-		boolean typeDelux = request.getParameter("typeDelux") != null; //get from request
-		
-		boolean foodNone = request.getParameter("foodNone") != null; //get from request
-		boolean foodBreakfast = request.getParameter("foodBreakfast") != null; //get from request
-		boolean foodTwice = request.getParameter("foodTwice") != null; //get from request
-		boolean foodFull = request.getParameter("foodFull") != null; //get from request
-		
-		int minPrice = (int) Double.parseDouble(request.getParameter("minPrice")); //get from request
-		int maxPrice = (int) Double.parseDouble(request.getParameter("maxPrice")); //get from request
+		if(request.getParameter("flag") == null || !request.getParameter("flag").equals("true")) {
+			RoomService roomService = new RoomService();
+			boolean togler = Boolean.parseBoolean(request.getParameter("togler"));
+			
+			String name = request.getParameter("name"); //get from request
+			int minStars = (int) Double.parseDouble(request.getParameter("minStars")); //get from request
+			int maxStars = (int) Double.parseDouble(request.getParameter("maxStars")); //get from request
+			int people = Integer.parseInt(request.getParameter("people")); //get from request
+			
+			boolean typeStandart = togler == true? request.getParameter("typeStandart") != null : false; //get from request
+			boolean typeLux = togler == true? request.getParameter("typeLux") != null : false; //get from request
+			boolean typeDelux = togler == true? request.getParameter("typeDelux") != null : false; //get from request
+			
+			boolean foodNone = togler == true? request.getParameter("foodNone") != null : false; //get from request
+			boolean foodBreakfast = togler == true? request.getParameter("foodBreakfast") != null : false; //get from request
+			boolean foodTwice = togler == true? request.getParameter("foodTwice") != null : false; //get from request
+			boolean foodFull = togler == true? request.getParameter("foodFull") != null : false; //get from request
+			
+			int minPrice = togler == true? (int) Double.parseDouble(request.getParameter("minUserPrice")) : roomService.getMinPrice(); //get from request
+			int maxPrice = togler == true? (int) Double.parseDouble(request.getParameter("maxUserPrice")) : roomService.getMaxPrice(); //get from request
 
-		boolean hasWiFi = request.getParameter("hasWifi") != null; //get from request
-		boolean hasShower = request.getParameter("hasShower") != null; //get from request
-		boolean hasParking = request.getParameter("hasParking") != null; //get from request
-		boolean hasCondition = request.getParameter("hasCondition") != null; //get from request
-		boolean hasPool = request.getParameter("hasPool") != null; //get from request
-		boolean hasGym = request.getParameter("hasPym") != null; //get from request
-		boolean hasBalcony = request.getParameter("hasBalcony") != null; //get from request
+			boolean hasWiFi = togler == true? request.getParameter("hasWifi") != null : false; //get from request
+			boolean hasShower = togler == true? request.getParameter("hasShower") != null : false; //get from request
+			boolean hasParking = togler == true? request.getParameter("hasParking") != null : false; //get from request
+			boolean hasCondition = togler == true? request.getParameter("hasCondition") != null : false; //get from request
+			boolean hasPool = togler == true? request.getParameter("hasPool") != null : false; //get from request
+			boolean hasGym = togler == true? request.getParameter("hasPym") != null : false; //get from request
+			boolean hasBalcony = togler == true? request.getParameter("hasBalcony") != null : false; //get from request
 
-		boolean noDeposit = request.getParameter("noDeposit") != null; //get from request
-		
-		Timestamp startDate;
-		Timestamp endDate;
-		try {
-			startDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("startDate")).getTime());
-		} catch (ParseException e) {
-			startDate = new Timestamp(new Date().getTime());
-		}
-		try {
-			endDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("endDate")).getTime());
-		} catch (ParseException e) {
-			endDate = new Timestamp(new Date().getTime());
-		}
-
-		String pageString = request.getParameter("page");
-		int page = pageString == null ? 1 : Integer.parseInt(pageString);
-		List<Hotel> suitableHotels = new HotelService().getAllSuitableHotels(name, minStars, maxStars, people, 
-				typeStandart, typeLux, typeDelux, 
-				foodNone, foodBreakfast, foodTwice, foodFull, 
-				minPrice, maxPrice, 
-				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
-				startDate, endDate, page);
-
-		request.setAttribute("hotels", suitableHotels);
-		request.setAttribute("countOfHotels", suitableHotels.size());
-		
-		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
-			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
-		} else {
+			boolean noDeposit = togler == true? request.getParameter("noDeposit") != null : false; //get from request
+			
+			Timestamp startDate;
+			Timestamp endDate;
+			try {
+				startDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("startDate")).getTime());
+			} catch (ParseException e) {
+				startDate = new Timestamp(new Date().getTime());
+			}
+			try {
+				endDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("endDate")).getTime());
+			} catch (ParseException e) {
+				endDate = new Timestamp(new Date().getTime());
+			}
+			
+			session.setAttribute("togler", togler);
+			
 			session.setAttribute("name", name);
 			session.setAttribute("minStars", minStars);
 			session.setAttribute("maxStars", maxStars);
@@ -104,8 +95,8 @@ public class FindHotelsServlet extends HttpServlet {
 			session.setAttribute("foodTwice", foodTwice);
 			session.setAttribute("foodFull", foodFull);
 			
-			session.setAttribute("minPrice", minPrice);
-			session.setAttribute("maxPrice", maxPrice);
+			session.setAttribute("minUserPrice", minPrice);
+			session.setAttribute("maxUserPrice", maxPrice);
 			
 			session.setAttribute("hasWiFi", hasWiFi);
 			session.setAttribute("hasShower", hasShower);
@@ -119,7 +110,6 @@ public class FindHotelsServlet extends HttpServlet {
 			session.setAttribute("startDate", request.getParameter("startDate"));
 			session.setAttribute("endDate", request.getParameter("endDate"));
 			
-			RoomService roomService = new RoomService();
 			session.setAttribute("minPrice", roomService.getMinPrice());
 			session.setAttribute("maxPrice", roomService.getMaxPrice());
 			session.setAttribute("countOfPages", Math.ceil(new HotelService().getSuitableHotelsNumber(name, minStars, maxStars, people, 
@@ -128,6 +118,40 @@ public class FindHotelsServlet extends HttpServlet {
 					minPrice, maxPrice, 
 					hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
 					startDate, endDate) / 3));
+		}
+
+		String pageString = request.getParameter("page");
+		int page = pageString == null ? 1 : Integer.parseInt(pageString);
+		Timestamp startDate;
+		Timestamp endDate;
+		try {
+			startDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(session.getAttribute("startDate").toString()).getTime());
+		} catch (ParseException e) {
+			startDate = new Timestamp(new Date().getTime());
+		}
+		try {
+			endDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(session.getAttribute("endDate").toString()).getTime());
+		} catch (ParseException e) {
+			endDate = new Timestamp(new Date().getTime());
+		}
+		List<Hotel> suitableHotels = new HotelService().getAllSuitableHotels(session.getAttribute("name").toString(), 
+				(int) session.getAttribute("minStars"), (int) session.getAttribute("maxStars"), 
+				(int) session.getAttribute("people"), 
+				(boolean) session.getAttribute("typeStandart"), (boolean) session.getAttribute("typeLux"), (boolean) session.getAttribute("typeDelux"), 
+				(boolean) session.getAttribute("foodNone"), (boolean) session.getAttribute("foodBreakfast"), 
+				(boolean) session.getAttribute("foodTwice"), (boolean) session.getAttribute("foodFull"), 
+				(int) session.getAttribute("minUserPrice"), (int) session.getAttribute("maxUserPrice"), 
+				(boolean) session.getAttribute("hasWiFi"), (boolean) session.getAttribute("hasShower"), (boolean) session.getAttribute("hasParking"), 
+				(boolean) session.getAttribute("hasCondition"), (boolean) session.getAttribute("hasPool"), (boolean) session.getAttribute("hasGym"), 
+				(boolean) session.getAttribute("hasBalcony"), (boolean) session.getAttribute("noDeposit"), 
+				startDate, endDate, page);
+
+		request.setAttribute("hotels", suitableHotels);
+		request.setAttribute("countOfHotels", suitableHotels.size());
+		
+		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
+			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
+		} else {
 			request.getRequestDispatcher("pages/index.jsp").forward(request, response);
 		}
 	}
