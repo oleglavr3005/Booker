@@ -38,7 +38,7 @@ public class HomeServlet extends HttpServlet {
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
-		} else {
+		} else {			
 			HttpSession session = request.getSession(true);
 			Enumeration<String> names = session.getAttributeNames();
 			while(names.hasMoreElements()) {
