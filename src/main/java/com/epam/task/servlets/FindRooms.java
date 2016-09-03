@@ -47,8 +47,8 @@ public class FindRooms extends HttpServlet {
 		} catch (ParseException e) {
 			endDate = new Timestamp(new Date().getTime());
 		}
-		session.setAttribute("startDate", startDate);
-		session.setAttribute("endDate", endDate);
+		session.setAttribute("startDate", new SimpleDateFormat("yyyy-MM-dd").format(startDate));
+		session.setAttribute("endDate", new SimpleDateFormat("yyyy-MM-dd").format(endDate));
 		int hotelId = Integer.parseInt(request.getParameter("hotelId"));
 		
 		Hotel hotel = new HotelService().getHotelById(hotelId);

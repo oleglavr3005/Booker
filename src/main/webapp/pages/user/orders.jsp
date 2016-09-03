@@ -179,7 +179,7 @@ div #sidebar-wrapper {
 											<td class="lalign" style="text-align: center;"><a
 												href="${pageContext.servletContext.contextPath}/order/${activeOrder.id}">#${activeOrder.id}</a></td>
 
-											<td style="text-align: center;">${activeOrder.hotel.name}</td>
+											<td style="text-align: center;"><a href="${pageContext.servletContext.contextPath}/hotel/${activeOrder.hotel.id}">${activeOrder.hotel.name}</a></td>
 
 											<td style="text-align: center;">${activeOrder.room.type}</td>
 
@@ -231,7 +231,7 @@ div #sidebar-wrapper {
 											<td class="lalign" style="text-align: center;"><a
 												href="${pageContext.servletContext.contextPath}/order/${finishedOrder.id}">#${finishedOrder.id}</a></td>
 
-											<td style="text-align: center;">${finishedOrder.hotel.name}</td>
+											<td style="text-align: center;"><a href="${pageContext.servletContext.contextPath}/hotel/${finishedOrder.hotel.id}">${finishedOrder.hotel.name}</a></td>
 
 											<td style="text-align: center;">${finishedOrder.room.type}</td>
 
@@ -278,7 +278,7 @@ div #sidebar-wrapper {
 											<td class="lalign" style="text-align: center;"><a
 												href="${pageContext.servletContext.contextPath}/order/${allOrder.id}">#${allOrder.id}</a></td>
 
-											<td style="text-align: center;">${allOrder.hotel.name}</td>
+											<td style="text-align: center;"><a href="${pageContext.servletContext.contextPath}/hotel/${allOrder.hotel.id}">${allOrder.hotel.name}</a></td>
 
 											<td style="text-align: center;">${allOrder.room.type}</td>
 

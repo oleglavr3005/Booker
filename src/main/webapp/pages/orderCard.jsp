@@ -44,7 +44,7 @@ b {
 							<div class="col s7">
 
 								<div class="row" style="margin-top: 15px;">
-									<div class="col s5">${order.hotel.name}</div>
+									<div class="col s5"><a href="${pageContext.servletContext.contextPath}/hotel/${order.hotel.id}">${order.hotel.name}</a></div>
 									<div class="col s5 offset-s1">${order.room.type}</div>
 								</div>
 
