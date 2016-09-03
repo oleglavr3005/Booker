@@ -13,8 +13,18 @@ var starRange = document.getElementById('rangeSlider');
 	var priceRange = document.getElementById('priceSlider');
 	var minimum = $('#minPrice').val();
 	var maximum = $('#maxPrice').val();
+	var minimumUser = $('#minUserPrice').val();
+	var maximumUser = $('#maxUserPrice').val();
+	alert("vals: " + minimumUser + " " + maximumUser);
+	if (minimumUser == ""){
+		minimumUser = minimum;
+	}
+	if (maximumUser == ""){
+		maximumUser = maximum;
+	}
+	alert(parseInt(minimumUser) + " " + parseInt(maximumUser));
 	noUiSlider.create(priceRange, {
-		start : [ $('#minUserPrice').val(), $('#maxUserPrice').val() ], // Handle start position
+		start : [ parseInt(minimumUser), parseInt(maximumUser) ], // Handle start position
 		step : 1, // Slider moves in increments of '1'
 		connect : true, // Display a colored bar between the handles
 		behaviour : 'tap-drag', // Move handle on tap, bar is draggable
@@ -30,8 +40,8 @@ var starRange = document.getElementById('rangeSlider');
 	});
 	
 	priceRange.noUiSlider.on('change', function(){
-		$('#minPrice').val(priceRange.noUiSlider.get()[0]);
-		$('#maxPrice').val(priceRange.noUiSlider.get()[1]);
+		$('#minUserPrice').val(priceRange.noUiSlider.get()[0]);
+		$('#maxUserPrice').val(priceRange.noUiSlider.get()[1]);
 	});
 	
 	priceRange.noUiSlider.on('slide', function(){
@@ -47,8 +57,6 @@ var starRange = document.getElementById('rangeSlider');
 			
 			$('#arrow_icon').removeClass("fa-angle-double-down");
 			$('#arrow_icon').addClass("fa-angle-double-up");
-			alert("change" + 
-					$('#togler').val() + " to opposite");
 			$('#togler').val("true");
 		}
 		else {
@@ -56,7 +64,6 @@ var starRange = document.getElementById('rangeSlider');
 			
 			$('#arrow_icon').removeClass("fa-angle-double-up");
 			$('#arrow_icon').addClass("fa-angle-double-down");
-//			alert("change" + $('#togler').val() + " to opposite");
 			$('#togler').val("false");
 		}
 	}
