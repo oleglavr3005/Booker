@@ -70,8 +70,8 @@ function searchRooms(hotelId) {
 		$.post('../find_rooms', {
 			hotelId : hotelId,
 			people : $('#people').val(),
-			startDate : $('#startDate').val(),
-			endDate : $('#endDate').val(),
+			startDate : $('#date_from').val(),
+			endDate : $('#date_to').val(),
 		}, function(hotels) {
 			$('#switchContent').html(hotels);
 		});
