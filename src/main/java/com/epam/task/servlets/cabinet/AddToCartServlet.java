@@ -21,7 +21,7 @@ import com.epam.task.database.service.RoomService;
 /**
  * Servlet implementation class AddToCartServlet
  */
-@WebServlet("/add-to-cart")
+@WebServlet("/add_to_cart")
 public class AddToCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
