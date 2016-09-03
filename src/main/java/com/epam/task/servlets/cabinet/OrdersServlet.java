@@ -39,12 +39,10 @@ public class OrdersServlet extends HttpServlet {
 		
 		List<OrderDto> allOrders = OrderDto.listConverter(new OrderService().getOrdersByUser(userId));
 		List<OrderDto> activeOrders = OrderDto.listConverter(new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.ACTIVE));
-		List<OrderDto> canceledOrders = OrderDto.listConverter(new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.CANCELED));
 		List<OrderDto> finishedOrders = OrderDto.listConverter(new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.FINISHED));
 		
 		request.setAttribute("allOrders", allOrders);
 		request.setAttribute("activeOrders", activeOrders);
-		request.setAttribute("canceledOrders", canceledOrders);
 		request.setAttribute("finishedOrders", finishedOrders);
 		
 		request.getRequestDispatcher("/pages/user/orders.jsp").forward(request, response);
