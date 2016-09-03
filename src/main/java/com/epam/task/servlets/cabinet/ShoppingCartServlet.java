@@ -37,8 +37,14 @@ public class ShoppingCartServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		int userId = ((User) session.getAttribute("user")).getId();
 		
-		List<Order> orders = new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.ORDER);
+		OrderService orderService = new OrderService();
+		List<Order> orders = orderService.getOrdersByUserAndStatus(userId, OrderStatus.ORDER);
 		request.setAttribute("orders", orders);
+		int total = 0;
+		for(Order order : orders) {
+			total += order.getPrice();
+		}
+		request.setAttribute("totalPrice", total);
 		request.setAttribute("inCart", Boolean.TRUE);
 		
 		request.getRequestDispatcher("/pages/user/shopping_cart.jsp").forward(request, response);

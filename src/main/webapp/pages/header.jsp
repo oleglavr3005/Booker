@@ -124,22 +124,27 @@ img.logo {
 <!-- 						<div class="container"> -->
 
 							<div class="dropdown">
+							<span style="font-size:1.3rem; margin-right:0.5rem">${user.firstName} ${user.lastName}</span>
 								<img id="imageavatar"
 									src="http://www.desicomments.com/dc3/09/336028/336028.png"
 									alt="img"
-									style="margin-top: 5px; height: 50px; width: 50px; border-radius: 25px;"
+									style="margin: 5px 0px 15px 0px; height: 50px; width: 50px; border-radius: 25px;"
 									class="imageavatar dropdown-toggle" data-toggle='dropdown'
 									 />
 								<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="${pageContext.servletContext.contextPath}/cabinet/cart" style="color: #26A69A">Shopping cart</a></li>
+										href="${pageContext.servletContext.contextPath}/cabinet/cart" style="color: #26A69A">
+										<i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping cart</a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="${pageContext.servletContext.contextPath}/cabinet/orders" style="color: #26A69A">My orders</a></li>
+										href="${pageContext.servletContext.contextPath}/cabinet/orders" style="color: #26A69A">
+										<i class="fa fa-briefcase" aria-hidden="true"></i> My orders</a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="${pageContext.servletContext.contextPath}/cabinet/info" style="color: #26A69A">Change info</a></li>
+										href="${pageContext.servletContext.contextPath}/cabinet/settings" style="color: #26A69A">
+										<i class="fa fa-cog" aria-hidden="true"></i> Settings</a></li>
 									<li role="presentation" class="divider" style="border-color:lightgrey"></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="${pageContext.servletContext.contextPath}/log-out" style="color: #26A69A"><i class="fa fa-sign-in" aria-hidden="true"></i> Log out</a></li>
+										href="${pageContext.servletContext.contextPath}/log-out" style="color: #26A69A">
+										<i class="fa fa-sign-in" aria-hidden="true"></i> Log out</a></li>
 								</ul>
 							</div>
 <!-- 						</div> -->
