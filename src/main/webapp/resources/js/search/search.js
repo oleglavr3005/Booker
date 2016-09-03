@@ -1,13 +1,7 @@
 var mapping = $('#mapping').val();
 
 function checkBoxFiller() {
-
-	alert("${typeStandart}");
-
-	// $('.typeStandart').attr('checked', "${typeStandart}");
-	// $('.typeLux').attr('checked', "${typeLux}");
-	// $('.typeDelux').attr('checked', "${typeDelux}");
-
+	
 	$('.typeStandart').attr('checked', true);
 	$('.typeLux').attr('checked', false);
 	$('.typeDelux').attr('checked', true);
@@ -121,13 +115,11 @@ function validateEndDate() {
 }
 
 function nameIsValid(name) {
-	if (name.length >= 1 && name.length <= 45 && validateLetters(name)) {
-		alert("name valid");
-		valid('name');
+	if (name.length >= 2 && name.length <= 45 && validateLetters(name)) {
+		valid('nam');
 		return true;
 	} else {
-		alert("name valid");
-		invalid('name');
+		invalid('nam');
 		return false;
 	}
 }
