@@ -51,9 +51,11 @@ public class AddToCartServlet extends HttpServlet {
                 / (1000 * 60 * 60 * 24) );
 		int price = new RoomService().getRoomById(roomId).getPrice() * daysCount;
 		
-		int added = new OrderService().insertOrder(new Order(0, userId, roomId, startDate, endDate, "ORDER", orderDate, price, ""));
-
-		response.getWriter().write(added > 0 ? "true" : "false");
+		boolean available = new RoomService().isRoomAvailable(roomId, startDate, endDate);
+		if(available) {
+			new OrderService().insertOrder(new Order(0, userId, roomId, startDate, endDate, "ORDER", orderDate, price, ""));
+		}
+		response.getWriter().write(available ? "true" : "false");
 
 	}
 

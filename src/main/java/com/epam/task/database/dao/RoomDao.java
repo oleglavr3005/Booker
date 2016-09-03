@@ -63,6 +63,9 @@ public class RoomDao {
 	
 	private final String GET_MIN_PRICE = "SELECT MIN(price) FROM room WHERE is_deleted = false";
 	private final String GET_MAX_PRICE = "SELECT MAX(price) FROM room WHERE is_deleted = false";
+	
+	private final String GET_ROOM_BY_ID_IF_AVAILABLE = "SELECT DISTINCT * FROM room r LEFT JOIN `order` o ON r.room_id = o.room_id WHERE r.room_id = ? AND "
+			+ "(o.end_date IS NULL OR o.end_date <= ? OR o.start_date >= ? OR o.status LIKE 'canceled')";
 
 	public RoomDao(Connection connection) {
 		super();
@@ -338,5 +341,24 @@ public class RoomDao {
 			return -1;
 		}
 		
+	}
+
+	public boolean isRoomAvailable(int roomId, Timestamp startDate, Timestamp endDate) {
+		try (PreparedStatement st = connection.prepareStatement(GET_ROOM_BY_ID_IF_AVAILABLE)) {
+			int i = 1;
+			st.setInt(i++, roomId);
+			st.setTimestamp(i++, startDate);
+			st.setTimestamp(i++, endDate);
+			try (ResultSet result = st.executeQuery()) {
+				if (result.next()) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 }

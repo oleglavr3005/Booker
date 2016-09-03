@@ -139,4 +139,8 @@ public class RoomService {
 //		}
 	}
 
+	public boolean isRoomAvailable(int roomId, Timestamp startDate, Timestamp endDate) {
+		return daoManager.executeAndClose(() -> daoManager.getRoomDao().isRoomAvailable(roomId, startDate, endDate));
+	}
+
 }
