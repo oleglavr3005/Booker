@@ -42,6 +42,14 @@ b {
 
 <!--END MOVE TO HOTEL -->
 
+<input id="flag" type="hidden" value="true" />
+
+<script>
+		if ($('#date_from').val() == "" || $('#date_to').val() == ""){
+			$('#flag').val("false");
+		}
+	</script>
+
 
 <c:forEach var="room" items="${rooms}">
 
@@ -135,12 +143,23 @@ b {
 
 				<c:if test="${user != null}">
 					<div class="row">
-						<div class="col s2" style="float: right">
-							<a id="btn${room.id}" class="waves-effect waves-light btn"
-								onclick="addToCart(${room.id})"
-								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>ADD
-									TO CART</span></a>
-						</div>
+						<div class="col s3 offset-s8" id="cont"></div>
+
+						<c:if test="${startDate != null}">
+							<div class="col s2 offset-s10" style="float: right">
+								<a id="btn${room.id}" class="waves-effect waves-light btn"
+									onclick="addToCart(${room.id})"
+									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>ADD
+										TO CART</span></a>
+							</div>
+						</c:if>
+
+						<c:if test="${startDate == null}">
+							<div id="hiddenError" class="col s2 offset-s6">ERROR
+								WITH INFO</div>
+						</c:if>
+
+
 					</div>
 				</c:if>
 				<c:if test="${user == null}">
@@ -158,7 +177,11 @@ b {
 
 		</div>
 	</div>
+
 </c:forEach>
+
+
+
 
 <script
 	src="${pageContext.servletContext.contextPath}/resources/js/order/createOrder.js"
