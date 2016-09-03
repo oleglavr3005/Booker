@@ -34,14 +34,12 @@ public class HomeServlet extends HttpServlet {
 		request.setAttribute("hotels", hotels);
 		request.setAttribute("countOfHotels", hotels.size());
 		
-		HttpSession session = request.getSession(true);
 		RoomService roomService = new RoomService();
-		session.setAttribute("minPrice", roomService.getMinPrice());
-		session.setAttribute("maxPrice", roomService.getMaxPrice());
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
 		} else {
+			HttpSession session = request.getSession(true);
 			Enumeration<String> names = session.getAttributeNames();
 			while(names.hasMoreElements()) {
 				String name = names.nextElement();
@@ -49,6 +47,8 @@ public class HomeServlet extends HttpServlet {
 					session.removeAttribute(name);
 				}
 			}
+			session.setAttribute("minPrice", roomService.getMinPrice());
+			session.setAttribute("maxPrice", roomService.getMaxPrice());
 			session.setAttribute("countOfPages", Math.ceil(new HotelService().getAllHotels().size() / 3.0));
 			request.getRequestDispatcher("pages/index.jsp").forward(request, response);
 		}
