@@ -1,72 +1,69 @@
 package com.epam.task.database.model;
 
 public class Conveniences {
-	private boolean WiFi;
-	private boolean Shower;
-	private boolean Parking;
-	private boolean Condition;
-	private boolean Pool;
-	private boolean Gym;
-	private boolean Balcony;
-	
-	public Conveniences(boolean WiFi, boolean Shower, boolean Parking, boolean Condition, boolean Pool,
-			boolean Gym, boolean Balcony) {
+	private boolean wiFi;
+	private boolean shower;
+	private boolean parking;
+	private boolean condition;
+	private boolean pool;
+	private boolean gym;
+	private boolean balcony;
+	public Conveniences(boolean wiFi, boolean shower, boolean parking, boolean condition, boolean pool, boolean gym,
+			boolean balcony) {
 		super();
-		this.WiFi = WiFi;
-		this.Shower = Shower;
-		this.Parking = Parking;
-		this.Condition = Condition;
-		this.Pool = Pool;
-		this.Gym = Gym;
-		this.Balcony = Balcony;
+		this.wiFi = wiFi;
+		this.shower = shower;
+		this.parking = parking;
+		this.condition = condition;
+		this.pool = pool;
+		this.gym = gym;
+		this.balcony = balcony;
 	}
-	
 	public boolean isWiFi() {
-		return WiFi;
+		return wiFi;
 	}
-	public void setWiFi(boolean WiFi) {
-		this.WiFi = WiFi;
+	public void setWiFi(boolean wiFi) {
+		this.wiFi = wiFi;
 	}
 	public boolean isShower() {
-		return Shower;
+		return shower;
 	}
-	public void setShower(boolean Shower) {
-		this.Shower = Shower;
+	public void setShower(boolean shower) {
+		this.shower = shower;
 	}
 	public boolean isParking() {
-		return Parking;
+		return parking;
 	}
-	public void setParking(boolean Parking) {
-		this.Parking = Parking;
+	public void setParking(boolean parking) {
+		this.parking = parking;
 	}
 	public boolean isCondition() {
-		return Condition;
+		return condition;
 	}
-	public void setCondition(boolean Condition) {
-		this.Condition = Condition;
+	public void setCondition(boolean condition) {
+		this.condition = condition;
 	}
 	public boolean isPool() {
-		return Pool;
+		return pool;
 	}
-	public void setPool(boolean Pool) {
-		this.Pool = Pool;
+	public void setPool(boolean pool) {
+		this.pool = pool;
 	}
 	public boolean isGym() {
-		return Gym;
+		return gym;
 	}
-	public void setGym(boolean Gym) {
-		this.Gym = Gym;
+	public void setGym(boolean gym) {
+		this.gym = gym;
 	}
 	public boolean isBalcony() {
-		return Balcony;
+		return balcony;
 	}
-	public void setBalcony(boolean Balcony) {
-		this.Balcony = Balcony;
+	public void setBalcony(boolean balcony) {
+		this.balcony = balcony;
 	}
-
 	@Override
 	public String toString() {
-		return "Conveniences [WiFi=" + WiFi + ", Shower=" + Shower + ", Parking=" + Parking + ", Condition=" + Condition
-				+ ", Pool=" + Pool + ", Gym=" + Gym + ", Balcony=" + Balcony + "]";
+		return "Conveniences [wiFi=" + wiFi + ", shower=" + shower + ", parking=" + parking + ", condition=" + condition
+				+ ", pool=" + pool + ", gym=" + gym + ", balcony=" + balcony + "]";
 	}
 }
