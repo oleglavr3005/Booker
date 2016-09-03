@@ -296,6 +296,7 @@ div #sidebar-wrapper {
 	<jsp:include page="foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
 
+
 	<script
 		src="${pageContext.servletContext.contextPath}/resources/js/customerSlider.js"></script>
 	<script type="text/javascript"
