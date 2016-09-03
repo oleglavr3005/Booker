@@ -3,7 +3,6 @@ package com.epam.task.database.model;
 import java.sql.Timestamp;
 
 import com.epam.task.database.model.enums.OrderStatus;
-import com.epam.task.database.model.enums.RoomType;
 import com.epam.task.database.transformers.DataBaseField;
 
 public class Order {

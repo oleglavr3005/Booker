@@ -54,4 +54,19 @@ private DaoManager daoManager;
 	public int updateHotel(Hotel hotel){
 		return daoManager.executeAndClose(() -> daoManager.getHotelDao().updateHotel(hotel));
 	}
+
+	public int getSuitableHotelsNumber(String name, int minStars, int maxStars, int people, boolean typeStandart,
+			boolean typeLux, boolean typeDelux, boolean foodNone, boolean foodBreakfast, boolean foodTwice,
+			boolean foodFull, int minPrice, int maxPrice, boolean hasWiFi, boolean hasShower, boolean hasParking,
+			boolean hasCondition, boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit,
+			Timestamp startDate, Timestamp endDate) {
+		
+		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getSuitableHotelsNumber(
+				name, minStars, maxStars, people, 
+				typeStandart, typeLux, typeDelux, 
+				foodNone, foodBreakfast, foodTwice, foodFull, 
+				minPrice, maxPrice, 
+				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
+				startDate, endDate));
+	}
 }

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
 <c:set var="language"
 	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
 	scope="session" />
@@ -34,6 +35,30 @@
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/languages.min.css">
 
+
+<!-- Add local libraries for gallery -->
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/hotel/font-awesome.min.css">
+
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/hotel/jquery-ui.css">
+
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/hotel/nouislider.min.css">
+
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/hotel/blueimp-gallery.min.css">
+
+<script
+	src="${pageContext.servletContext.contextPath}/resources/js/hotel/jquery.min.js"></script>
+
+<script
+	src="${pageContext.servletContext.contextPath}/resources/js/hotel/jquery.blueimp-gallery.min.js"></script>
+<!--  
+not add
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+add
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
 	rel="stylesheet">
@@ -44,8 +69,7 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css"
 	rel="stylesheet">
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
 <link rel="stylesheet"
 	href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
 <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
@@ -55,21 +79,7 @@
 	src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
 
 
-
-<!-- JTable -->
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
-
-<script type="text/javascript" charset="utf8"
-	src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#example').DataTable();
-	});
-</script>
+-->
 <style>
 div #sidebar-wrapper {
 	position: relative;
@@ -147,26 +157,38 @@ div #sidebar-wrapper {
 		<div id="links">
 			<div class="row">
 				<div class="col s4">
-					<a href='<c:out value="${mainPhoto.id}"></c:out>' title="Banana"
-						data-gallery> <img
-						src="<c:out value="${mainPhoto.img}"></c:out>" alt="Banana">
-					</a>
+					<c:if test="${mainPhoto == null}">
+						<a
+							href='http://lindagalindotestenvironment.com.s179953.gridserver.com.s179953.gridserver.com/wp-content/uploads/2013/12/no.jpg'
+							title="http://lindagalindotestenvironment.com.s179953.gridserver.com.s179953.gridserver.com/wp-content/uploads/2013/12/no.jpg"
+							data-gallery> <img
+							src="http://lindagalindotestenvironment.com.s179953.gridserver.com.s179953.gridserver.com/wp-content/uploads/2013/12/no.jpg"
+							alt="http://lindagalindotestenvironment.com.s179953.gridserver.com.s179953.gridserver.com/wp-content/uploads/2013/12/no.jpg">
+						</a>
+					</c:if>
+					<c:if test="${mainPhoto != null}">
+						<a href='<i:urlToImage url="${mainPhoto.img}" />'
+							title="<c:out value="${mainPhoto.desc }"></c:out>" data-gallery>
+							<img src="<i:urlToImage url="${mainPhoto.img}" />"
+							alt="<c:out value="${mainPhoto.desc }"></c:out>">
+						</a>
 
 
-					<div style="overflow-x: auto;">
-						<div style="margin: 10px; white-space: nowrap;">
-							<c:forEach items="${hotelPhotos}" var="photo">
-								<div style="display: inline-block;">
-									<a href='<c:out value="${photo.img }"></c:out>'
-										title="<c:out value="${photo.img }"></c:out>" data-gallery>
-										<img style="height: 60px;"
-										src="<c:out value="${photo.img }"></c:out>"
-										alt="<c:out value="${photo.img }"></c:out>">
-									</a>
-								</div>
-							</c:forEach>
+						<div style="overflow-x: auto;">
+							<div style="margin: 10px; white-space: nowrap;">
+								<c:forEach items="${hotelPhotos}" var="photo">
+									<div style="display: inline-block;">
+										<a href='<i:urlToImage url="${photo.img}" />'
+											title="<c:out value="${photo.desc }"></c:out>" data-gallery>
+											<img style="height: 60px;"
+											src="<i:urlToImage url="${photo.img}" />"
+											alt="<c:out value="${photo.desc }"></c:out>">
+										</a>
+									</div>
+								</c:forEach>
+							</div>
 						</div>
-					</div>
+					</c:if>
 				</div>
 
 				<div class="col s8">
@@ -189,9 +211,7 @@ div #sidebar-wrapper {
 						</div>
 
 						<div class="row" style="margin-bottom: 5px">
-							<i class="material-icons"
-								style="font-size: 20px;">receipt</i>
-							<span>${hotel.desc}</span>
+							<i class="material-icons" style="font-size: 20px;">receipt</i> <span>${hotel.desc}</span>
 						</div>
 					</div>
 				</div>

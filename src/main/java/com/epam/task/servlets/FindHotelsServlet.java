@@ -28,7 +28,8 @@ public class FindHotelsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {				
 		HttpSession session = request.getSession(true);
 		
-		if(request.getParameter("name") == null) {
+		if(request.getParameter("name") == null || request.getParameter("name").equals("") ||
+				request.getParameter("people").equals("") || request.getParameter("startDate").equals("") || request.getParameter("endDate").equals("")) {
 			response.sendRedirect("home");
 			return;
 		}
@@ -38,27 +39,27 @@ public class FindHotelsServlet extends HttpServlet {
 		int maxStars = (int) Double.parseDouble(request.getParameter("maxStars")); //get from request
 		int people = Integer.parseInt(request.getParameter("people")); //get from request
 		
-		boolean typeStandart = Boolean.parseBoolean(request.getParameter("typeStandart")); //get from request
-		boolean typeLux = Boolean.parseBoolean(request.getParameter("typeLux")); //get from request
-		boolean typeDelux = Boolean.parseBoolean(request.getParameter("typeDelux")); //get from request
-
-		boolean foodNone = Boolean.parseBoolean(request.getParameter("foodNone")); //get from request
-		boolean foodBreakfast = Boolean.parseBoolean(request.getParameter("foodBreakfast")); //get from request
-		boolean foodTwice = Boolean.parseBoolean(request.getParameter("foodTwice")); //get from request
-		boolean foodFull = Boolean.parseBoolean(request.getParameter("foodFull")); //get from request
+		boolean typeStandart = request.getParameter("typeStandart") != null; //get from request
+		boolean typeLux = request.getParameter("typeLux") != null; //get from request
+		boolean typeDelux = request.getParameter("typeDelux") != null; //get from request
+		
+		boolean foodNone = request.getParameter("foodNone") != null; //get from request
+		boolean foodBreakfast = request.getParameter("foodBreakfast") != null; //get from request
+		boolean foodTwice = request.getParameter("foodTwice") != null; //get from request
+		boolean foodFull = request.getParameter("foodFull") != null; //get from request
 		
 		int minPrice = (int) Double.parseDouble(request.getParameter("minPrice")); //get from request
 		int maxPrice = (int) Double.parseDouble(request.getParameter("maxPrice")); //get from request
 
-		boolean hasWiFi = Boolean.parseBoolean(request.getParameter("wifi")); //get from request
-		boolean hasShower = Boolean.parseBoolean(request.getParameter("shower")); //get from request
-		boolean hasParking = Boolean.parseBoolean(request.getParameter("parking")); //get from request
-		boolean hasCondition = Boolean.parseBoolean(request.getParameter("condition")); //get from request
-		boolean hasPool = Boolean.parseBoolean(request.getParameter("pool")); //get from request
-		boolean hasGym = Boolean.parseBoolean(request.getParameter("gym")); //get from request
-		boolean hasBalcony = Boolean.parseBoolean(request.getParameter("balcony")); //get from request
+		boolean hasWiFi = request.getParameter("hasWifi") != null; //get from request
+		boolean hasShower = request.getParameter("hasShower") != null; //get from request
+		boolean hasParking = request.getParameter("hasParking") != null; //get from request
+		boolean hasCondition = request.getParameter("hasCondition") != null; //get from request
+		boolean hasPool = request.getParameter("hasPool") != null; //get from request
+		boolean hasGym = request.getParameter("hasPym") != null; //get from request
+		boolean hasBalcony = request.getParameter("hasBalcony") != null; //get from request
 
-		boolean noDeposit = Boolean.parseBoolean(request.getParameter("no_deposit")); //get from request
+		boolean noDeposit = request.getParameter("noDeposit") != null; //get from request
 		
 		Timestamp startDate;
 		Timestamp endDate;
@@ -99,8 +100,8 @@ public class FindHotelsServlet extends HttpServlet {
 		session.setAttribute("hasBalcony", hasBalcony);
 		session.setAttribute("noDeposit", noDeposit);
 		
-		session.setAttribute("startDate", startDate);
-		session.setAttribute("endDate", endDate);
+		session.setAttribute("startDate", request.getParameter("startDate"));
+		session.setAttribute("endDate", request.getParameter("endDate"));
 
 		String pageString = request.getParameter("page");
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
@@ -114,7 +115,17 @@ public class FindHotelsServlet extends HttpServlet {
 		request.setAttribute("hotels", suitableHotels);
 		request.setAttribute("countOfHotels", suitableHotels.size());
 		
-		request.getRequestDispatcher("pages/index.jsp").forward(request, response);
+		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
+			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
+		} else {
+			request.getSession(true).setAttribute("countOfPages", Math.ceil(new HotelService().getSuitableHotelsNumber(name, minStars, maxStars, people, 
+					typeStandart, typeLux, typeDelux, 
+					foodNone, foodBreakfast, foodTwice, foodFull, 
+					minPrice, maxPrice, 
+					hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
+					startDate, endDate) / 3));
+			request.getRequestDispatcher("pages/index.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
