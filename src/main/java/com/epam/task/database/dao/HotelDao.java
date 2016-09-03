@@ -43,7 +43,7 @@ public class HotelDao {
 	private final String HAS_BALCONY = " AND r.has_balcony = true";
 	private final String NO_DEPOSIT = " AND r.days_count < 0";
 	
-	private final String INSERT_HOTEL = "INSERT INTO `hotel` (name, city, street, stars, desc,"
+	private final String INSERT_HOTEL = "INSERT INTO `hotel` (name, city, street, stars, `desc`,"
 			+ " manager_id, x_coord, y_coord, rating,"
 			+ " is_deleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private final String SELECT_BY_ID = SELECT_ALL + " WHERE hotel_id = ?";
