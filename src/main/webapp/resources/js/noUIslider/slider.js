@@ -14,7 +14,7 @@ var starRange = document.getElementById('rangeSlider');
 	var minimum = $('#minPrice').val();
 	var maximum = $('#maxPrice').val();
 	noUiSlider.create(priceRange, {
-		start : [ $('#minPrice').val(), $('#maxPrice').val() ], // Handle start position
+		start : [ $('#minUserPrice').val(), $('#maxUserPrice').val() ], // Handle start position
 		step : 1, // Slider moves in increments of '1'
 		connect : true, // Display a colored bar between the handles
 		behaviour : 'tap-drag', // Move handle on tap, bar is draggable
