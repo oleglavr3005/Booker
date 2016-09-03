@@ -19,6 +19,7 @@ public class OrderDAO {
 	private final String SQL_CREATE_ORDER = "INSERT INTO `order`(user_id, room_id, start_date, end_date, status, order_date, price) VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private final String SQL_READ_ORDER_BY_ID = "SELECT * FROM `order` WHERE order_id = ?";
 	private final String SQL_UPDATE_ORDER = "UPDATE `order` SET user_id = ?, room_id = ?, start_date = ?, end_date = ?, status = ?, order_date = ?, price = ?";
+	private final String SQL_REMOVE_ORDER = "DELETE FROM `order` WHERE order_id = ?";
 	private final String SQL_GET_ALL_ORDERS_BY_USER_AND_STATUS = "SELECT * FROM `order` WHERE status LIKE ? AND user_id = ?";
 	private final String SQL_GET_ORDER_BY_USER_ID = "SELECT * FROM `order` WHERE user_id = ?";
 	private final String SQL_GET_ORDER_BY_ROOM_ID = "SELECT * FROM `order` WHERE room_id = ?";
@@ -57,6 +58,17 @@ public class OrderDAO {
 			st.setInt(7, order.getPrice());
 			result = st.executeUpdate();
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public int removeOrder(int id) { // he does create
+		int result = 0;
+		try (PreparedStatement st = connection.prepareStatement(SQL_REMOVE_ORDER)) {
+			st.setInt(1, id);
+			result = st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -102,4 +102,9 @@ public class OrderService {
 		}
 
 	}
+
+	public int removeOrder(int orderId) {
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().removeOrder(orderId));
+		
+	}
 }
