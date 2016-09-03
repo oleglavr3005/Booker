@@ -46,7 +46,7 @@ public class HotelDao {
 	private final String INSERT_HOTEL = "INSERT INTO `hotel` (name, city, street, stars, `desc`,"
 			+ " manager_id, x_coord, y_coord, rating,"
 			+ " is_deleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private final String SELECT_BY_ID = SELECT_ALL_NOT_DELETED + " WHERE hotel_id = ?";
+	private final String SELECT_BY_ID = "SELECT * FROM `hotel` WHERE hotel_id = ?";
 	private final String CHANGE_HOTEL_STATUS = "UPDATE `hotel` SET is_deleted = ? WHERE hotel_id = ?";
 	private final String UPDATE_HOTEL = "UPDATE `hotel` SET name = ?,"
 			+ " city = ?, street = ?, stars = ?, desc = ?, manager_id = ?,"
