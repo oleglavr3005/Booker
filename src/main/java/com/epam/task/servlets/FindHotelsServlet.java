@@ -55,7 +55,7 @@ public class FindHotelsServlet extends HttpServlet {
 			
 			int minPrice = togler == true? (int) Double.parseDouble(request.getParameter("minUserPrice")) : roomService.getMinPrice(); //get from request
 			int maxPrice = togler == true? (int) Double.parseDouble(request.getParameter("maxUserPrice")) : roomService.getMaxPrice(); //get from request
-
+			
 			boolean hasWiFi = togler == true? request.getParameter("hasWifi") != null : false; //get from request
 			boolean hasShower = togler == true? request.getParameter("hasShower") != null : false; //get from request
 			boolean hasParking = togler == true? request.getParameter("hasParking") != null : false; //get from request
