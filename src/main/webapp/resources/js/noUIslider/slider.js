@@ -38,7 +38,7 @@ var starRange = document.getElementById('rangeSlider');
 		$('#printMinPrice').html(parseInt(priceRange.noUiSlider.get()[0]));
 		$('#printMaxPrice').html(parseInt(priceRange.noUiSlider.get()[1]));
 	});
-	
+
 	function togle(){
 		var elem1 = document.getElementById("details_panel");
 		var style = document.defaultView.getComputedStyle(elem1, null).getPropertyValue("display");
@@ -47,11 +47,16 @@ var starRange = document.getElementById('rangeSlider');
 			
 			$('#arrow_icon').removeClass("fa-angle-double-down");
 			$('#arrow_icon').addClass("fa-angle-double-up");
+			alert("change" + 
+					$('#togler').val() + " to opposite");
+			$('#togler').val("true");
 		}
 		else {
 			document.getElementById('details_panel').style.display = "none";
 			
 			$('#arrow_icon').removeClass("fa-angle-double-up");
 			$('#arrow_icon').addClass("fa-angle-double-down");
+//			alert("change" + $('#togler').val() + " to opposite");
+			$('#togler').val("false");
 		}
 	}

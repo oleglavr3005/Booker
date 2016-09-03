@@ -88,11 +88,7 @@ div #sidebar-wrapper {
 
 
 <body>
-	<input id="mapping" type="hidden"
-		value="${pageContext.servletContext.contextPath}/" />
-
 	<input id="lang" type="hidden" value="${language}" />
-
 
 	<!-- Header ========================================================================= -->
 	<jsp:include page="header.jsp"></jsp:include>
@@ -105,6 +101,7 @@ div #sidebar-wrapper {
 
 		<!-- 		FORM START -->
 		<form id="myForm" action="search" method="post">
+			<input id="togler" type="hidden" name="togler" value="${togler}" />
 
 			<div class="row">
 
@@ -165,13 +162,7 @@ div #sidebar-wrapper {
 							key="index.search.ppl" /></label>
 				</div>
 
-				<div class="col s2 offset-s3" style="margin-top: 18px;">
-					<a id="search" class="waves-effect waves-light btn"
-						onclick="searchForm()"
-						<%-- 					href="${pageContext.servletContext.contextPath}/search" --%>
-					style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
-							key="index.search.button" /></a>
-				</div>
+
 
 			</div>
 
@@ -262,8 +253,7 @@ div #sidebar-wrapper {
 							</div>
 
 							<div class="col s1 offset-s1">
-							<div class="rangePrint" id="printMinPrice">
-							${minPrice}</div>
+								<div class="rangePrint" id="printMinPrice">${minPrice}</div>
 							</div>
 
 							<div class="col s8">
@@ -275,21 +265,32 @@ div #sidebar-wrapper {
 								</section>
 
 							</div>
-							
+
 							<div class="col s1">
-							<div class="rangePrint" id="printMaxPrice">
-							${maxPrice}</div>
+								<div class="rangePrint" id="printMaxPrice">${maxPrice}</div>
 							</div>
 
 
 						</div>
 					</div>
+					<div class="row">
+						<div class="col s10">
+							<a id="togle" class="waves-effect waves-light btn"
+								onclick="togle()"
+								style="background: #26A69A; text-align: center; width: 100%; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><i
+								id="arrow_icon" class="fa fa-angle-double-down col s1 fa-2x"
+								aria-hidden="true" style="margin-left: 45%"></i></a>
+						</div>
+						<div class="col s2">
+							<a id="search" class="waves-effect waves-light btn"
+								onclick="searchForm()"
+								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">SEARCH</a>
+						</div>
 
-					<a id="togle" class="waves-effect waves-light btn"
-						onclick="togle()"
-						style="background: #26A69A; text-align: center; width: 100%; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><i
-						id="arrow_icon" class="fa fa-angle-double-down col s1 fa-2x"
-						aria-hidden="true" style="margin-left: 45%"></i></a>
+
+					</div>
+
+
 				</div>
 
 			</div>
@@ -415,6 +416,14 @@ div #sidebar-wrapper {
 		$('#hasGym').attr('checked', '${hasGym}' == 'true');
 		$('#hasBalcony').attr('checked', '${hasBalcony}' == 'true');
 		$('#noDeposit').attr('checked', '${noDeposit}' == 'true');
+
+		var togler = $('#togler').val();
+		if (togler == 'true') {
+			$("#togle").click();
+		}
+		else {
+			$('#togler').val("false");
+		}
 	</script>
 
 	<script type="text/javascript">
