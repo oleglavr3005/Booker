@@ -8,38 +8,45 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
+    <title>${hotel.name}</title>
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link type="image/png" rel="icon" href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-    <title>${hotel.name}</title>
-
     <link href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <link href="${pageContext.servletContext.contextPath}/resources/css/styleMap.css" rel="stylesheet">
-
     <link href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/simple-sidebar.css" rel="stylesheet">
-
     <link type="text/css" rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/materialize/css/materialize.min.css" media="screen,projection" />
-
-
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/languages.min.css">
-
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
     <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
+    
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-
-
-
+    
+    <link href="${pageContext.servletContext.contextPath}/resources/css/styleMap.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU"></script>
+    <script>
+        points = [{
+            "id": "<c:out value="${hotel.id}"></c:out>",
+            "name": "<c:out value="${hotel.name}"></c:out>",
+            "photo": "${pageContext.servletContext.contextPath}/resources/images/${MainPhoto.img}",
+            "address": "<c:out value="${hotel.city}"></c:out> <c:out value="${hotel.street}"></c:out>",
+            "phone": "225-(254)220-5391",
+            "lat": "<c:out value="${hotel.XCoord}"></c:out>",
+            "lon": "<c:out value="${hotel.YCoord}"></c:out>",
+        }]
+    </script>
+    <script src="${pageContext.servletContext.contextPath}/resources/js/showHotels.js"></script>
+    
     <!-- JTable -->
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
 
@@ -79,13 +86,11 @@
             .well {
                 padding: 0px;
             }
-
     </style>
 </head>
 
-
 <body>
-    <div id="blueimp-gallery" class="blueimp-gallery">
+     <div id="blueimp-gallery" class="blueimp-gallery">
         <!-- The container for the modal slides -->
         <div class="slides"></div>
         <!-- Controls for the borderless lightbox -->
@@ -161,7 +166,7 @@
                         </div>
                         <div class="row">
                             <i class="fa fa-lg icon-map-marker" aria-hidden="true"></i>
-                            <span id="togle">${hotel.city}	${hotel.street}</span>
+                            <a id="togle">${hotel.city}	${hotel.street}</a>
                         </div>
 
                         <div class="row" style="margin-bottom: 5px">
@@ -172,7 +177,7 @@
             </div>
         </div>
         <div id="togle_place" class="col s12" style="margin-top: 18px;">
-            <div id="google_map" style="height: 400px; margin-left: 8.3333333333%; margin-right: 8.3333333333%;"></div>
+            <div id="google_map" style="height: 400px; width: 83%;"></div>
         </div>
     </div>
     <div class="container">
@@ -181,31 +186,12 @@
         </div>
     </div>
 
-
     <!-- Footer ========================================================================== -->
     <jsp:include page="foot.jsp"></jsp:include>
     <!-- Footer End====================================================================== -->
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-
-    <script>
-        points = [{
-            "id": 1,
-            "lat": "6.38309",
-            "lon": "-5.41759",
-            "name": "Voomm",
-            "photo": "http://maps.marnoto.com/en/5wayscustomizeinfowindow/images/vistalegre.jpg",
-            "description": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
-            "address": "5 Ilene Circle",
-            "phone": "225-(254)220-5391"
-        }]
-
-    </script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU&v=3.20&sensor=false"></script>
-    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/jquery.js"></script>
+    
     <script src="${pageContext.servletContext.contextPath}/resources/js/customerSlider.js"></script>
-    <script src="${pageContext.servletContext.contextPath}/resources/js/showHotels.js"></script>
+    
 </body>
 
 </html>

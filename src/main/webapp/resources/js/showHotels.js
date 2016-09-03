@@ -1,25 +1,27 @@
 var map;
 $(document).ready(function () {
-    var mapCenter = new google.maps.LatLng(points[0].lat, points[0].lon); //Google map Coordinates
+	
     map_initialize(); // load map
-    function map_initialize() {
-        //Google map option
-        var googleMapOptions = {
-            center: mapCenter, // map center
-            zoom: 5, //zoom level, 0 = earth view to higher value
-            panControl: true, //enable pan Control
-            zoomControl: true, //enable zoom control
-            zoomControlOptions: {
-                style: google.maps.ZoomControlStyle.SMALL //zoom control size
-            },
-            scaleControl: true, // enable scale control
-            mapTypeId: google.maps.MapTypeId.ROADMAP // google map type
-        };
-        map = new google.maps.Map(document.getElementById("google_map"), googleMapOptions);
-        addMarkers(points);
-    }
 });
 
+function map_initialize() {
+	console.log("map_initialize");
+    //Google map option
+	var mapCenter = new google.maps.LatLng(points[0].lat, points[0].lon); //Google map Coordinates
+    var googleMapOptions = {
+        center: mapCenter, // map center
+        zoom: 5, //zoom level, 0 = earth view to higher value
+        panControl: true, //enable pan Control
+        zoomControl: true, //enable zoom control
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL //zoom control size
+        },
+        scaleControl: true, // enable scale control
+        mapTypeId: google.maps.MapTypeId.ROADMAP // google map type
+    };
+    map = new google.maps.Map(document.getElementById("google_map"), googleMapOptions);
+    addMarkers(points);
+}
 
 function addMarkers(array) {
     for (var i = 0, result; result = array[i]; i++) {
@@ -34,21 +36,19 @@ function addMarker(place) {
         map: map,
         draggable: true, //set marker draggable 
         animation: google.maps.Animation.DROP, //bounce animation
-//        icon: {
-//            url: "../images/iconMarker.png"
-//            , anchor: new google.maps.Point(20, 20)
-//            , scaledSize: new google.maps.Size(32, 24)
-//        }
-    });
+        icon: {
+            url: "../resources/images/iconMarker.png"
+            , anchor: new google.maps.Point(20, 20)
+            , scaledSize: new google.maps.Size(32, 24)
+        }
+   });
 
     var contentString = $(
         '<div class="marker-info-win">' +
             '<div class="marker-inner-win">'+
                 '<span class="info-content">'+
-                    '<img src="' + place.photo + '" alt="ALT" height="115" width="83" style="float: right; margin: 0; margin-top: 26px;">'+
-                    '<h1 class="marker-heading">New Marker</h1>' +
-                    '<p>' + place.description + '</p>' +
-                    '<p><b>New Marker</b></p>' +
+                    '<img src="' + place.photo + '" alt="ALT" height="115" width="83" style="float: right; margin: 21px 5px 5px 5px;">'+
+                    '<h1 class="marker-heading">'+ place.name +'</h1>' +
                     '<p>' + place.address + '<br>Phone. ' + place.phone + '</p></span>'+
                 '</div></div>');
 
