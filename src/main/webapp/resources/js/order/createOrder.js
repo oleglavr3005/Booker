@@ -15,11 +15,11 @@ function addToCart(roomId) {
 		roomId : roomId
 	}, function(result) {
 		if (result == 'true') {
-			$('#btn' + roomid).text("SUCCES");
-			$('#btn' + roomId).prop('disabled', true);
+			$('#btn' + roomId).text("SUCCES");
+			$('#btn' + roomId).attr('disabled', true);
 		} else {
 			$('#btn' + roomId).text("FAIL");
-			$('#btn' + roomId).prop('disabled', true);
+			$('#btn' + roomId).attr('disabled', true);
 		}
 	});
 }

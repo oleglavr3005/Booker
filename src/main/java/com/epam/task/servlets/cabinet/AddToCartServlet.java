@@ -49,9 +49,6 @@ public class AddToCartServlet extends HttpServlet {
 
 		int daysCount = (int)( (endDate.getTime() - startDate.getTime()) 
                 / (1000 * 60 * 60 * 24) );
-		System.out.println(startDate);
-		System.out.println(endDate);
-		System.out.println(daysCount);
 		int price = new RoomService().getRoomById(roomId).getPrice() * daysCount;
 		
 		int added = new OrderService().insertOrder(new Order(0, userId, roomId, startDate, endDate, "ORDER", orderDate, price, ""));
