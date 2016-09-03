@@ -40,7 +40,7 @@ b {
 					</div>
 
 					<div class="col s8">
-						<div class="row">
+						<div class="row" style="margin-bottom: 0px;">
 							<div class="col s7">
 
 								<div class="row" style="margin-top: 15px;">
@@ -132,8 +132,7 @@ b {
 							<div class="col s4 offset-s8">
 								<a class="my-btn waves-effect waves-light btn"
 									style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-									onclick="deleteSub(${order.orderId})"><fmt:message
-										key="subscribes.table.remove" /> </a>
+									onclick="removeOrderCard(${order.id})">REMOVE</a>
 							</div>
 						</div>
 					</div>
@@ -164,8 +163,6 @@ b {
 	</div>
 </c:forEach>
 
-<c:if test="${userState == 'admin'}">
-	<script
-		src="${pageContext.servletContext.contextPath}/resources/js/admin/index.js"
-		type="text/javascript"></script>
-</c:if>
+
+<script type="text/javascript"
+	src="${pageContext.servletContext.contextPath}/resources/js/order/removeOrder.js"></script>

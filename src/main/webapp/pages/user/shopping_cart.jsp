@@ -115,11 +115,29 @@
 		<!-- 		</div> -->
 
 		<div class="row">
-			<div class="col s3 offset-s7">TOTAL_PRICE : ${summary}</div>
-			<div class="col s2">BUY</div>
+			<div class="col s3 offset-s1">TOTAL_PRICE : ${summary} UAH</div>
+			<div class="col s2 offset-s5">
+				<a class="my-btn waves-effect waves-light btn"
+					style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+					onclick="createOrder(${order.id})">ORDER</a>
+			</div>
 		</div>
 
 	</div>
+	
+	<!-- SUCCES MODAL  -->
+	<div id="modal1" class="modal"
+		style="width: 35% !important; max-height: 50% !important">
+		<div class="modal-content">
+			<h6>GZ WITH SUCCESFULL ORDER CREATION</h6>
+			<a href="href="${pageContext.servletContext.contextPath}/cabinet/orders">CLICK IF YOU WANT TO LOOK AT YOUR ORDER LIST : </a>
+		</div>
+
+	</div>
+	<!-- 	END OF SUCCES MODAL -->
+	
+	
+	
 
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="../foot.jsp"></jsp:include>
@@ -131,6 +149,8 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/order/createOrder.js"></script>
 
 </body>
 
