@@ -172,6 +172,29 @@
                         <div class="row" style="margin-bottom: 5px">
                             <i class="material-icons" style="font-size: 20px;">receipt</i> <span>${hotel.desc}</span>
                         </div>
+						<div class="row" style="height: 10px; margin: 0;">
+							<c:if test="${conveniences.wiFi == true}">
+								<a class="tooltipped" data-position="icon" data-tooltip="Wifi" style="color: #0d0d0d;"><i  class="material-icons invert">wifi</i></a>
+							</c:if>
+							<c:if test="${conveniences.shower == true}">
+								<a class="tooltipped" data-position="icon" data-tooltip="Shower"><img class="invert" style="max-width: 230%;" src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png"/></a>
+							</c:if>
+							<c:if test="${conveniences.parking == true}">
+								<a class="tooltipped" data-position="icon" data-tooltip="Parking" style="color: #0d0d0d;"><i class="material-icons invert">local_parking</i></a>
+							</c:if>
+							<c:if test="${conveniences.condition == true}">
+								<a class="tooltipped" data-position="icon" data-tooltip="Condition" style="color: #0d0d0d;"><i class="material-icons invert">toys</i></a>
+							</c:if>
+							<c:if test="${conveniences.pool == true}">
+								<a class="tooltipped" data-position="icon" data-tooltip="Pool" style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
+							</c:if>
+							<c:if test="${conveniences.gym == true}">
+								<a class="tooltipped" data-position="icon" data-tooltip="Gym" style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
+							</c:if>
+							<c:if test="${conveniences.balcony == true}">
+								<a class="tooltipped" data-position="icon" data-tooltip="Balcony"><img class="invert" style="max-width: 230%; height: 230%; margin-top: -18px;" src="${pageContext.servletContext.contextPath}/resources/images/balcony.png"/></a>
+							</c:if>
+						</div>
                     </div>
                 </div>
             </div>
