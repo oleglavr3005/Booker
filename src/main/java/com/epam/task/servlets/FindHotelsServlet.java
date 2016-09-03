@@ -112,12 +112,14 @@ public class FindHotelsServlet extends HttpServlet {
 			
 			session.setAttribute("minPrice", roomService.getMinPrice());
 			session.setAttribute("maxPrice", roomService.getMaxPrice());
-			session.setAttribute("countOfPages", Math.ceil(new HotelService().getSuitableHotelsNumber(name, minStars, maxStars, people, 
+			int countOfHotels = new HotelService().getSuitableHotelsNumber(name, minStars, maxStars, people, 
 					typeStandart, typeLux, typeDelux, 
 					foodNone, foodBreakfast, foodTwice, foodFull, 
 					minPrice, maxPrice, 
 					hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
-					startDate, endDate) / 3));
+					startDate, endDate);
+			session.setAttribute("countOfHotels", countOfHotels);
+			session.setAttribute("countOfPages", Math.ceil(countOfHotels / 3.0));
 		}
 
 		String pageString = request.getParameter("page");
@@ -147,7 +149,6 @@ public class FindHotelsServlet extends HttpServlet {
 				startDate, endDate, page);
 
 		request.setAttribute("hotels", suitableHotels);
-		request.setAttribute("countOfHotels", suitableHotels.size());
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
