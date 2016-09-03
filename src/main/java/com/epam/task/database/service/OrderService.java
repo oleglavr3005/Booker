@@ -67,7 +67,7 @@ public class OrderService {
 
 		System.out.println("Insert");
 		Order newPhoto = new Order(8, 2, 1, new Timestamp(7000000), new Timestamp(8070000), "ACTIVE",
-				new Timestamp(6070000), 2000);
+				new Timestamp(6070000), 2000, "");
 		service.insertOrder(newPhoto);
 		System.out.println("All");
 		photos = service.getAllOrders();

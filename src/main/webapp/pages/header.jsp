@@ -95,7 +95,6 @@ img.logo {
 	<div class="container-fluid">
 		<div class="navbar-header"
 			style="margin-left: 30px; margin-right: 50px;">
-
 			<a href="${pageContext.servletContext.contextPath}/home"
 				class="brand"> <img class="logo"
 				src="${pageContext.servletContext.contextPath}/resources/themes/images/logo.png"
