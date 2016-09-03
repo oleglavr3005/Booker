@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.service.HotelService;
+import com.epam.task.database.service.RoomService;
 
 @WebServlet("/search")
 public class FindHotelsServlet extends HttpServlet {
@@ -102,6 +103,10 @@ public class FindHotelsServlet extends HttpServlet {
 		
 		session.setAttribute("startDate", request.getParameter("startDate"));
 		session.setAttribute("endDate", request.getParameter("endDate"));
+		
+		RoomService roomService = new RoomService();
+		session.setAttribute("minPrice", roomService.getMinPrice());
+		session.setAttribute("maxPrice", roomService.getMaxPrice());
 
 		String pageString = request.getParameter("page");
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
@@ -118,7 +123,7 @@ public class FindHotelsServlet extends HttpServlet {
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
 		} else {
-			request.getSession(true).setAttribute("countOfPages", Math.ceil(new HotelService().getSuitableHotelsNumber(name, minStars, maxStars, people, 
+			session.setAttribute("countOfPages", Math.ceil(new HotelService().getSuitableHotelsNumber(name, minStars, maxStars, people, 
 					typeStandart, typeLux, typeDelux, 
 					foodNone, foodBreakfast, foodTwice, foodFull, 
 					minPrice, maxPrice, 

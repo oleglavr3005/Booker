@@ -285,8 +285,8 @@ div #sidebar-wrapper {
 
 			<input id="minStars" type="hidden" value="1" name="minStars" /> <input
 				id="maxStars" type="hidden" value="5" name="maxStars" /> <input
-				id="minPrice" type="hidden" value="0" name="minPrice" /> <input
-				id="maxPrice" type="hidden" value="100" name="maxPrice" /> <input
+				id="minPrice" type="hidden" value="${minPrice}" name="minPrice" /> <input
+				id="maxPrice" type="hidden" value="${maxPrice}" name="maxPrice" /> <input
 				type="submit" value="Submit">
 		</form>
 
