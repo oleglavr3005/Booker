@@ -14,7 +14,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>Periodicals | My Subscribes</title>
+<title>Booker | My Orders</title>
 <link rel="icon" type="image/ico"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.ico">
 <link
@@ -167,7 +167,7 @@ div #sidebar-wrapper {
 								<thead>
 									<tr>
 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_id">ID</p></th>
-										<th style="text-align: center; border-radius: 0;"><p id="tb_head_hotel">HOTEL</p></th>
+ 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_date">HOTEL NAME</p></th>
 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_room">ROOM_TYPE</p></th>
 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_sdate">START_DATE</p></th>
 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_edate">END_DATE</p></th>
@@ -176,40 +176,30 @@ div #sidebar-wrapper {
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="activePurchase" items="${activeSubs}">
-										<tr class="order${activePurchase.id}">
+									<c:forEach var="activeOrder" items="${activeOrders}">
+										<tr class="order${activeOrder.id}">
 											<td class="lalign" style="text-align: center;"><a
-												href="${pageContext.servletContext.contextPath}/periodical/${activePurchase.publishId}">${activePurchase.name}</a></td>
+												href="${pageContext.servletContext.contextPath}/order/${activeOrder.id}">#${activeOrder.id}</a></td>
 
-											<td style="text-align: center;">${activePurchase.start}</td>
+											<td style="text-align: center;">${activeOrder.hotel.name}</td>
 
-											<td style="text-align: center;">${activePurchase.end}</td>
+											<td style="text-align: center;">${activeOrder.room.type}</td>
 
-											<td style="text-align: center;">${activePurchase.summary}</td>
+											<td style="text-align: center;">${activeOrder.startDate}</td>
 
-											<%-- 											<c:choose> --%>
-											<%-- 												<c:when test="${activePurchase.status == 'ACTIVE'}"> --%>
-											<td style="text-align: center; color: #70C67C"><fmt:message key="card.status.active" /></td>
-											<%-- 												</c:when> --%>
-											<%-- 												<c:otherwise> --%>
-											<%-- 													<td style="text-align: center; color: #F55151">${activePurchase.status}</td> --%>
-											<%-- 												</c:otherwise> --%>
-											<%-- 											</c:choose> --%>
+											<td style="text-align: center;">${activeOrder.endDate}</td>
+
+											<td style="text-align: center;">${activeOrder.price}</td>
 
 											<td style="text-align: center;"><a
 												class="my-btn waves-effect waves-light btn"
 												style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-												onclick="deleteSub(${activePurchase.id})"><fmt:message
+												onclick="deleteSub(${activeOrder.id})"><fmt:message
 														key="subscribes.table.remove" /> </a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
-
-							<!-- 						<div class="col s4 offset-s8"> -->
-							<!-- 							<p style="color: red">*після видалення покупки гроші -->
-							<!-- 								повернуться на карточку</p> -->
-							<!-- 						</div> -->
 
 						</c:when>
 						<c:otherwise>
@@ -229,39 +219,29 @@ div #sidebar-wrapper {
 							<table id="tab2" class="purchase-table">
 								<thead>
 									<tr>
-										<th style="text-align: center; border-radius: 0;"><fmt:message
-												key="subscribes.table.name" /></th>
-										<th style="text-align: center; border-radius: 0;"><fmt:message
-												key="subscribes.table.startDate" /></th>
-										<th style="text-align: center; border-radius: 0;"><fmt:message
-												key="subscribes.table.endDate" /></th>
-										<th style="text-align: center; border-radius: 0;"><fmt:message
-												key="subscribes.table.price" /></th>
-										<th style="text-align: center; border-radius: 0;"><fmt:message
-												key="subscribes.table.status" /></th>
-										<th style="text-align: center; border-radius: 0;"></th>
+										<th style="text-align: center; border-radius: 0;"><p id="tb_head_id">ID</p></th>
+ 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_date">HOTEL NAME</p></th>
+										<th style="text-align: center; border-radius: 0;"><p id="tb_head_room">ROOM_TYPE</p></th>
+										<th style="text-align: center; border-radius: 0;"><p id="tb_head_sdate">START_DATE</p></th>
+										<th style="text-align: center; border-radius: 0;"><p id="tb_head_edate">END_DATE</p></th>
+										<th style="text-align: center; border-radius: 0;"><p id="tb_head_price">PRICE</p></th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="historyPurchase" items="${historySubs}">
-										<tr class="order${historyPurchase.id}">
+									<c:forEach var="finishedOrder" items="${finishedOrders}">
+										<tr class="order${finishedOrder.id}">
 											<td class="lalign" style="text-align: center;"><a
-												href="${pageContext.servletContext.contextPath}/periodical/${historyPurchase.publishId}">${historyPurchase.name}</a></td>
+												href="${pageContext.servletContext.contextPath}/order/${finishedOrder.id}">#${finishedOrder.id}</a></td>
 
-											<td style="text-align: center;">${historyPurchase.start}</td>
+											<td style="text-align: center;">${finishedOrder.hotel.name}</td>
 
-											<td style="text-align: center;">${historyPurchase.end}</td>
+											<td style="text-align: center;">${finishedOrder.room.type}</td>
 
-											<td style="text-align: center;">${historyPurchase.summary}</td>
+											<td style="text-align: center;">${finishedOrder.startDate}</td>
 
-											<%-- 											<c:choose> --%>
-											<%-- 												<c:when test="${historyPurchase.status == 'ACTIVE'}"> --%>
-											<%-- 													<td style="text-align: center; color: #70C67C">${historyPurchase.status}</td> --%>
-											<%-- 												</c:when> --%>
-											<%-- 												<c:otherwise> --%>
-											<td style="text-align: center; color: #F55151"><fmt:message key="card.status.ended" /></td>
-											<%-- 												</c:otherwise> --%>
-											<%-- 											</c:choose> --%>
+											<td style="text-align: center;">${finishedOrder.endDate}</td>
+
+											<td style="text-align: center;">${finishedOrder.price}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -284,43 +264,44 @@ div #sidebar-wrapper {
 							<table id="tab3" class="purchase-table">
 								<thead>
 									<tr>
-										<th style="text-align: center; border-radius: 0;"><fmt:message
-												key="subscribes.table.name" /></th>
-										<th style="text-align: center; border-radius: 0;"><fmt:message
-												key="subscribes.table.startDate" /></th>
-										<th style="text-align: center; border-radius: 0;"><fmt:message
-												key="subscribes.table.endDate" /></th>
-										<th style="text-align: center; border-radius: 0;"><fmt:message
-												key="subscribes.table.price" /></th>
-										<th style="text-align: center; border-radius: 0;"><fmt:message
-												key="subscribes.table.status" /></th>
+										<th style="text-align: center; border-radius: 0;"><p id="tb_head_id">ID</p></th>
+ 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_date">HOTEL NAME</p></th>
+										<th style="text-align: center; border-radius: 0;"><p id="tb_head_room">ROOM_TYPE</p></th>
+										<th style="text-align: center; border-radius: 0;"><p id="tb_head_sdate">START_DATE</p></th>
+										<th style="text-align: center; border-radius: 0;"><p id="tb_head_edate">END_DATE</p></th>
+										<th style="text-align: center; border-radius: 0;"><p id="tb_head_price">PRICE</p></th>
+										<th style="text-align: center; border-radius: 0;"><p id="tb_head_status">STATUS</p></th>
 										<th style="text-align: center; border-radius: 0;"></th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="allPurchase" items="${allSubs}">
-										<tr class="order${allPurchase.id}">
-											<td style="text-align: center;"><a
-												href="${pageContext.servletContext.contextPath}/periodical/${allPurchase.publishId}">${allPurchase.name}</a></td>
+									<c:forEach var="allOrder" items="${allOrders}">
+										<tr class="order${allOrder.id}">
+											<td class="lalign" style="text-align: center;"><a
+												href="${pageContext.servletContext.contextPath}/order/${allOrder.id}">#${allOrder.id}</a></td>
 
-											<td style="text-align: center;">${allPurchase.start}</td>
+											<td style="text-align: center;">${allOrder.hotel.name}</td>
 
-											<td style="text-align: center;">${allPurchase.end}</td>
+											<td style="text-align: center;">${allOrder.room.type}</td>
 
-											<td style="text-align: center;">${allPurchase.summary}</td>
+											<td style="text-align: center;">${allOrder.startDate}</td>
+
+											<td style="text-align: center;">${allOrder.endDate}</td>
+
+											<td style="text-align: center;">${allOrder.price}</td>
 
 											<c:choose>
-												<c:when test="${allPurchase.status == 'ACTIVE'}">
+												<c:when test="${allOrder.status == 'ACTIVE'}">
 													<td class="lalign"
 														style="text-align: center; color: #70C67C">
 												<fmt:message key="card.status.active" /></td>
 													<td style="text-align: center;"><a
 														class="my-btn waves-effect waves-light btn"
 														style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-														onclick="deleteSub(${allPurchase.id})"><fmt:message
+														onclick="deleteSub(${allOrder.id})"><fmt:message
 																key="subscribes.table.remove" /> </a></td>
 												</c:when>
-												<c:when test="${allPurchase.status == 'REMOVED'}">
+												<c:when test="${allOrder.status == 'CANCELED'}">
 													<td style="text-align: center; color: #666666">
 												<fmt:message key="card.status.removed" /></td>
 
@@ -353,53 +334,29 @@ div #sidebar-wrapper {
 							<table id="tab4" class="purchase-table">
 								<thead>
 									<tr>
-										<th style="text-align: center; border-radius: 0;"><fmt:message
-												key="subscribes.table.name" /></th>
-										<th style="text-align: center; border-radius: 0;"><fmt:message
-												key="subscribes.table.startDate" /></th>
-										<th style="text-align: center; border-radius: 0;"><fmt:message
-												key="subscribes.table.endDate" /></th>
-										<th style="text-align: center; border-radius: 0;"><fmt:message
-												key="subscribes.table.price" /></th>
-										<th style="text-align: center; border-radius: 0;"><fmt:message
-												key="subscribes.table.status" /></th>
-										<th style="text-align: center; border-radius: 0;"></th>
+										<th style="text-align: center; border-radius: 0;"><p id="tb_head_id">ID</p></th>
+ 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_date">HOTEL NAME</p></th>
+										<th style="text-align: center; border-radius: 0;"><p id="tb_head_room">ROOM_TYPE</p></th>
+										<th style="text-align: center; border-radius: 0;"><p id="tb_head_sdate">START_DATE</p></th>
+										<th style="text-align: center; border-radius: 0;"><p id="tb_head_edate">END_DATE</p></th>
+										<th style="text-align: center; border-radius: 0;"><p id="tb_head_price">PRICE</p></th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="allPurchase" items="${removedSubs}">
-										<tr class="order${allPurchase.id}">
+									<c:forEach var="canceledOrder" items="${canceledOrders}">
+										<tr class="order${canceledOrder.id}">
 											<td class="lalign" style="text-align: center;"><a
-												href="${pageContext.servletContext.contextPath}/periodical/${allPurchase.publishId}">${allPurchase.name}</a></td>
+												href="${pageContext.servletContext.contextPath}/order/${canceledOrder.id}">#${canceledOrder.id}</a></td>
 
-											<td style="text-align: center;">${allPurchase.start}</td>
+											<td style="text-align: center;">${canceledOrder.hotel.name}</td>
 
-											<td style="text-align: center;">${allPurchase.end}</td>
+											<td style="text-align: center;">${canceledOrder.room.type}</td>
 
-											<td style="text-align: center;">${allPurchase.summary}</td>
+											<td style="text-align: center;">${canceledOrder.startDate}</td>
 
-											<%-- 											<c:choose> --%>
-											<%-- 												<c:when test="${allPurchase.status == 'ACTIVE'}"> --%>
-											<%-- 													<td style="text-align: center; color: #70C67C">${allPurchase.status}</td> --%>
-											<!-- 													<td style="text-align: center;"><a -->
-											<!-- 														class="my-btn waves-effect waves-light btn" -->
-											<!-- 														style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;" -->
-											<%-- 														onclick="deleteSub(${activePurchase.id})"><fmt:message --%>
-											<%-- 																key="subscribes.table.remove" /> </a></td> --%>
-											<%-- 												</c:when> --%>
-											<%-- 												<c:when test="${allPurchase.status == 'REMOVED'}"> --%>
-											<td style="text-align: center; color: #666666">
-											<fmt:message key="card.status.removed" />
-<%-- 											${allPurchase.status} --%>
-											</td>
+											<td style="text-align: center;">${canceledOrder.endDate}</td>
 
-											<td style="text-align: center; color: #F55151"><b></b></td>
-											<%-- 												</c:when> --%>
-											<%-- 												<c:otherwise> --%>
-											<%-- 													<td style="text-align: center; color: #F55151">${allPurchase.status}</td> --%>
-											<!-- 													<td style="text-align: center; color: #F55151"><b></b></td> -->
-											<%-- 												</c:otherwise> --%>
-											<%-- 											</c:choose> --%>
+											<td style="text-align: center;">${canceledOrder.price}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
