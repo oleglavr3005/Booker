@@ -7,20 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.epam.task.database.model.User;
+import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.service.OrderService;
 
-@WebServlet("/remove_from_cart")
-public class RemoveFromCartServlet extends HttpServlet {
+@WebServlet("/clear_card")
+public class ClearCardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public RemoveFromCartServlet() {
+    public ClearCardServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int orderId = Integer.parseInt(request.getParameter("orderId"));
-		int removed = new OrderService().removeOrder(orderId);
-
+		int userId = ((User) request.getSession().getAttribute("user")).getId();
+		int removed = new OrderService().removeAllOrdersByStatus(userId, OrderStatus.ORDER);
+		
 		response.getWriter().write(removed > 0 ? "true" : "false");
 	}
 

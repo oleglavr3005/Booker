@@ -7,21 +7,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.epam.task.database.model.User;
 import com.epam.task.database.service.OrderService;
 
-@WebServlet("/remove_from_cart")
-public class RemoveFromCartServlet extends HttpServlet {
+@WebServlet("/book_all")
+public class BookAllServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public RemoveFromCartServlet() {
+    public BookAllServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int orderId = Integer.parseInt(request.getParameter("orderId"));
-		int removed = new OrderService().removeOrder(orderId);
-
-		response.getWriter().write(removed > 0 ? "true" : "false");
+		//TODO:
+		//if total price > 0, pay somehow
+		//imagine all orders were payed
+		//change all orders with status "order" to "active"
+		int userId = ((User) request.getSession().getAttribute("user")).getId();
+		int booked = new OrderService().bookAllByUser(userId);
+		
+		response.getWriter().write(booked > 0 ? "true" : "false");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

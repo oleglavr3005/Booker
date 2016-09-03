@@ -107,4 +107,16 @@ public class OrderService {
 		return daoManager.executeAndClose(() -> daoManager.getOrderDao().removeOrder(orderId));
 		
 	}
+
+	public int removeAllOrdersByStatus(int userId, OrderStatus order) {
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().removeAllOrdersByStatus(userId, order));
+	}
+
+	public int bookAllByUser(int userId) {
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().bookAllByUser(userId));
+	}
+
+	public int bookOrder(int orderId) {
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().bookOrder(orderId));
+	}
 }

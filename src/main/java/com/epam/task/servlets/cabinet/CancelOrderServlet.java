@@ -7,21 +7,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.epam.task.database.service.OrderService;
-
-@WebServlet("/remove_from_cart")
-public class RemoveFromCartServlet extends HttpServlet {
+@WebServlet("/cancel_order")
+public class CancelOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public RemoveFromCartServlet() {
+    public CancelOrderServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int orderId = Integer.parseInt(request.getParameter("orderId"));
-		int removed = new OrderService().removeOrder(orderId);
-
-		response.getWriter().write(removed > 0 ? "true" : "false");
+		//TODO i will do it tomorrow
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

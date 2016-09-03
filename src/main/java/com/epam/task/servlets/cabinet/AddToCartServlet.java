@@ -53,7 +53,10 @@ public class AddToCartServlet extends HttpServlet {
 		
 		boolean available = new RoomService().isRoomAvailable(roomId, startDate, endDate);
 		if(available) {
-			new OrderService().insertOrder(new Order(0, userId, roomId, startDate, endDate, "ORDER", orderDate, price, ""));
+			int result = new OrderService().insertOrder(new Order(0, userId, roomId, startDate, endDate, "ORDER", orderDate, price, ""));
+			if(result == 0) {
+				available = false;
+			}
 		}
 		response.getWriter().write(available ? "true" : "false");
 

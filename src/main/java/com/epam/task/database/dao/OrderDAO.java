@@ -16,11 +16,14 @@ public class OrderDAO {
 	private Connection connection;
 
 	private final String SQL_GET_ALL_ORDERS = "SELECT * FROM `order`";
-	private final String SQL_CREATE_ORDER = "INSERT INTO `order`(user_id, room_id, start_date, end_date, status, order_date, price) VALUES (?, ?, ?, ?, ?, ?, ?)";
+	private final String SQL_CREATE_ORDER = "INSERT INTO `order`(user_id, room_id, start_date, end_date, `status`, order_date, price) VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private final String SQL_READ_ORDER_BY_ID = "SELECT * FROM `order` WHERE order_id = ?";
-	private final String SQL_UPDATE_ORDER = "UPDATE `order` SET user_id = ?, room_id = ?, start_date = ?, end_date = ?, status = ?, order_date = ?, price = ?";
+	private final String SQL_UPDATE_ORDER = "UPDATE `order` SET user_id = ?, room_id = ?, start_date = ?, end_date = ?, `status` = ?, order_date = ?, price = ? WHERE order_id = ?";
+	private final String SQL_BOOK_ORDER_BY_ID = "UPDATE `order` SET `status` = 'ACTIVE' WHERE order_id = ?";
+	private final String SQL_BOOK_ALL_ORDERS_BY_USER = "UPDATE `order` SET `status` = 'ACTIVE' WHERE user_id = ? AND `status` LIKE 'ORDER'";
 	private final String SQL_REMOVE_ORDER = "DELETE FROM `order` WHERE order_id = ?";
-	private final String SQL_GET_ALL_ORDERS_BY_USER_AND_STATUS = "SELECT * FROM `order` WHERE status LIKE ? AND user_id = ?";
+	private final String SQL_REMOVE_ORDERS_BY_STATUS = "DELETE FROM `order` WHERE user_id = ? AND `status` LIKE ?";
+	private final String SQL_GET_ALL_ORDERS_BY_USER_AND_STATUS = "SELECT * FROM `order` WHERE `status` LIKE ? AND user_id = ?";
 	private final String SQL_GET_ORDER_BY_USER_ID = "SELECT * FROM `order` WHERE user_id = ?";
 	private final String SQL_GET_ORDER_BY_ROOM_ID = "SELECT * FROM `order` WHERE room_id = ?";
 
@@ -98,6 +101,7 @@ public class OrderDAO {
 			st.setString(5, order.getStatus().toString());
 			st.setTimestamp(6, order.getOrderDate());
 			st.setInt(7, order.getPrice());
+			st.setInt(8, order.getId());
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -140,5 +144,37 @@ public class OrderDAO {
 			e.printStackTrace();
 		}
 		return orders;
+	}
+
+	public int removeAllOrdersByStatus(int userId, OrderStatus order) {
+		int result = 0;
+		try (PreparedStatement st = connection.prepareStatement(SQL_REMOVE_ORDERS_BY_STATUS)) {
+			st.setInt(1, userId);
+			st.setString(2, order.toString());
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public int bookAllByUser(int userId) {
+		try (PreparedStatement st = connection.prepareStatement(SQL_BOOK_ALL_ORDERS_BY_USER)) {
+			st.setInt(1, userId);
+			return st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+
+	public int bookOrder(int orderId) {
+		try (PreparedStatement st = connection.prepareStatement(SQL_BOOK_ORDER_BY_ID)) {
+			st.setInt(1, orderId);
+			return st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
 	}
 }
