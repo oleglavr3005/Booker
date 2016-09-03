@@ -70,6 +70,11 @@ b {
 							<a class="tooltipped" data-position="icon" data-tooltip="Price" style="color: #0d0d0d;"><i class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${room.price}</span>
 						</div>
 
+						<div class="row">
+							<a class="tooltipped" data-position="icon" data-tooltip="Double beds" style="color: #0d0d0d;"><img class="invert" style="max-width: 10%;" src="${pageContext.servletContext.contextPath}/resources/images/double_bed.png"/></a> <span>${room.doubleBedsCount}</span>
+							<a class="tooltipped" data-position="icon" data-tooltip="Single beds" style="color: #0d0d0d;"><img class="invert" style="max-width: 10%;" src="${pageContext.servletContext.contextPath}/resources/images/single_bed.png"/></a> <span>${room.bedsCount}</span>
+						</div>
+
 					</div>
 
 					<div class="col s3">
@@ -122,7 +127,7 @@ b {
 					</div>
 				</div>
 
-				<c:if test="${userState == 'user'}">
+				<c:if test="${user != null}">
 					<div class="row">
 						<div class="col s2 offset-s8">
 							<input id="count" type="text" class="validate"> <label
