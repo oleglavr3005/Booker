@@ -309,11 +309,9 @@ div #sidebar-wrapper {
 			<jsp:include page="card.jsp"></jsp:include>
 		</div>
 		
-<%-- 		<c:if test="${countOfPages} > 1"> --%>
 			<div id="paginationdemo" class="row">
 				<div id="demo5" class="col s4 offset-s5"></div>
 			</div>
-<%-- 		</c:if> --%>
 
 	</div>
 
@@ -409,27 +407,29 @@ div #sidebar-wrapper {
 	<script type="text/javascript">
 		var pagesCount = '${countOfPages}';
 
-		jQuery(function() {
-			jQuery("#demo5").paginate({
-				count : pagesCount,
-				start : 1,
-				display : 5,
-				border : false,
-				//		border_color			: '#fff',
-				text_color : '#fff',
-				background_color : '#26A69A',
-				//		border_hover_color		: '#ccc',
-				text_hover_color : '#000',
-				background_hover_color : '#CFCFCF',
-				images : false,
-				mouse : 'press',
-				onChange : function(page) {
-					// 											$('._current','#paginationdemo').removeClass('_current').hide();
-					// 											$('#p'+page).addClass('_current').show();
-					findPage(page);
-				}
+		if(pagesCount > 1) {
+			jQuery(function() {
+				jQuery("#demo5").paginate({
+					count : pagesCount,
+					start : 1,
+					display : 5,
+					border : false,
+					//		border_color			: '#fff',
+					text_color : '#fff',
+					background_color : '#26A69A',
+					//		border_hover_color		: '#ccc',
+					text_hover_color : '#000',
+					background_hover_color : '#CFCFCF',
+					images : false,
+					mouse : 'press',
+					onChange : function(page) {
+						// 											$('._current','#paginationdemo').removeClass('_current').hide();
+						// 											$('#p'+page).addClass('_current').show();
+						findPage(page);
+					}
+				});
 			});
-		});
+		}
 	</script>
 
 
