@@ -19,6 +19,10 @@
 <title>MAIN PAGE</title>
 
 <link
+	href="${pageContext.servletContext.contextPath}/resources/css/rangeSlider/rangeStyle.css"
+	rel="stylesheet">
+
+<link
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
@@ -48,7 +52,7 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css"
 	rel="stylesheet">
-	
+
 <style>
 div #sidebar-wrapper {
 	position: relative;
@@ -257,9 +261,12 @@ div #sidebar-wrapper {
 
 							</div>
 
+							<div class="col s1 offset-s1">
+							<div class="rangePrint" id="printMinPrice">
+							${minPrice}</div>
+							</div>
 
-
-							<div class="col s8 offset-s2 ">
+							<div class="col s8">
 
 								<label class="labelstyle"><fmt:message
 										key="index.search.price" />PRICE</label>
@@ -267,6 +274,11 @@ div #sidebar-wrapper {
 									<div id="priceSlider"></div>
 								</section>
 
+							</div>
+							
+							<div class="col s1">
+							<div class="rangePrint" id="printMaxPrice">
+							${maxPrice}</div>
 							</div>
 
 
@@ -285,9 +297,10 @@ div #sidebar-wrapper {
 
 			<input id="minStars" type="hidden" value="1" name="minStars" /> <input
 				id="maxStars" type="hidden" value="5" name="maxStars" /> <input
-				id="minPrice" type="hidden" value="${minPrice}" name="minPrice" /> <input
-				id="maxPrice" type="hidden" value="${maxPrice}" name="maxPrice" /> <input
-				type="submit" value="Submit">
+				id="minPrice" type="hidden" value="${minPrice}" name="minPrice" />
+			<input id="maxPrice" type="hidden" value="${maxPrice}"
+				name="maxPrice" />
+			<!-- 				<input type="submit" value="Submit"> -->
 		</form>
 
 		<!-- 		FORM END -->
@@ -304,14 +317,14 @@ div #sidebar-wrapper {
 				<fmt:message key="card.no.hotels" />
 			</c:if>
 		</h6>
-		
+
 		<div id="switchContent" class="row">
 			<jsp:include page="card.jsp"></jsp:include>
 		</div>
-		
-			<div id="paginationdemo" class="row">
-				<div id="demo5" class="col s4 offset-s5"></div>
-			</div>
+
+		<div id="paginationdemo" class="row">
+			<div id="demo5" class="col s4 offset-s5"></div>
+		</div>
 
 	</div>
 
@@ -369,7 +382,7 @@ div #sidebar-wrapper {
 	<!--  END OF VK REDIRECT -->
 
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
+	<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.js"></script>
 	<script
@@ -407,7 +420,7 @@ div #sidebar-wrapper {
 	<script type="text/javascript">
 		var pagesCount = '${countOfPages}';
 
-		if(pagesCount > 1) {
+		if (pagesCount > 1) {
 			jQuery(function() {
 				jQuery("#demo5").paginate({
 					count : pagesCount,
