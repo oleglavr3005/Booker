@@ -67,8 +67,9 @@ public class HotelServlet extends HttpServlet {
 		boolean foodTwice = session.getAttribute("foodTwice") == null ? false : (boolean) session.getAttribute("foodTwice");
 		boolean foodFull = session.getAttribute("foodFull") == null ? false : (boolean) session.getAttribute("foodFull");
 		
-		int minPrice = session.getAttribute("minPrice") == null ? 0 : (int) session.getAttribute("minPrice");
-		int maxPrice = session.getAttribute("maxPrice") == null ? new RoomService().getMaxPrice() : (int) session.getAttribute("maxPrice");
+		RoomService roomService = new RoomService();
+		int minPrice = session.getAttribute("minUserPrice") == null ? roomService.getMinPrice() : (int) session.getAttribute("minUserPrice");
+		int maxPrice = session.getAttribute("maxUserPrice") == null ? roomService.getMaxPrice() : (int) session.getAttribute("maxUserPrice");
 		
 		boolean hasWiFi = session.getAttribute("hasWiFi") == null ? false : (boolean) session.getAttribute("hasWiFi");
 		boolean hasShower = session.getAttribute("hasShower") == null ? false : (boolean) session.getAttribute("hasShower");

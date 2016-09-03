@@ -32,7 +32,6 @@ public class HomeServlet extends HttpServlet {
 		List<Hotel> hotels = hotelService.getAllHotelsByPage(page);
 		
 		request.setAttribute("hotels", hotels);
-		request.setAttribute("countOfHotels", hotels.size());
 		
 		RoomService roomService = new RoomService();
 		
@@ -49,7 +48,9 @@ public class HomeServlet extends HttpServlet {
 			}
 			session.setAttribute("minPrice", roomService.getMinPrice());
 			session.setAttribute("maxPrice", roomService.getMaxPrice());
-			session.setAttribute("countOfPages", Math.ceil(new HotelService().getAllHotels().size() / 3.0));
+			int countOfHotels = new HotelService().getAllHotels().size();
+			session.setAttribute("countOfHotels", countOfHotels);
+			session.setAttribute("countOfPages", Math.ceil(countOfHotels / 3.0));
 			request.getRequestDispatcher("pages/index.jsp").forward(request, response);
 		}
 	}

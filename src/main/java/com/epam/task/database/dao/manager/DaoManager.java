@@ -3,6 +3,7 @@ package com.epam.task.database.dao.manager;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import com.epam.task.database.dao.ConveniencesDao;
 import com.epam.task.database.dao.FeedbackDao;
 import com.epam.task.database.dao.HotelDao;
 import com.epam.task.database.dao.HotelPhotoDao;
@@ -21,8 +22,8 @@ public class DaoManager {
     private OrderDAO orderDAO;
     private HotelDao hotelDao;
     private HotelPhotoDao hotelPhotoDao;
-	private RoomPhotoDao roomPhotoDao;
-
+	private RoomPhotoDao roomPhotoDao; 
+	private ConveniencesDao conveniencesDao;
     
     public DaoManager() {
     }
@@ -63,6 +64,12 @@ public class DaoManager {
         else orderDAO.setConnection(getConnection());
         return orderDAO;
 	}
+    
+    public ConveniencesDao getConveniencesDao(){
+    	if(conveniencesDao == null) conveniencesDao = new ConveniencesDao(getConnection());
+    	else conveniencesDao.setConnection(getConnection());
+    	return conveniencesDao;
+    }
     
     public HotelDao getHotelDao(){
     	if(hotelDao == null) hotelDao = new HotelDao(getConnection());

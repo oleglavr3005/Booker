@@ -55,7 +55,7 @@ public class FindHotelsServlet extends HttpServlet {
 			
 			int minPrice = togler == true? (int) Double.parseDouble(request.getParameter("minUserPrice")) : roomService.getMinPrice(); //get from request
 			int maxPrice = togler == true? (int) Double.parseDouble(request.getParameter("maxUserPrice")) : roomService.getMaxPrice(); //get from request
-
+			
 			boolean hasWiFi = togler == true? request.getParameter("hasWifi") != null : false; //get from request
 			boolean hasShower = togler == true? request.getParameter("hasShower") != null : false; //get from request
 			boolean hasParking = togler == true? request.getParameter("hasParking") != null : false; //get from request
@@ -112,12 +112,14 @@ public class FindHotelsServlet extends HttpServlet {
 			
 			session.setAttribute("minPrice", roomService.getMinPrice());
 			session.setAttribute("maxPrice", roomService.getMaxPrice());
-			session.setAttribute("countOfPages", Math.ceil(new HotelService().getSuitableHotelsNumber(name, minStars, maxStars, people, 
+			int countOfHotels = new HotelService().getSuitableHotelsNumber(name, minStars, maxStars, people, 
 					typeStandart, typeLux, typeDelux, 
 					foodNone, foodBreakfast, foodTwice, foodFull, 
 					minPrice, maxPrice, 
 					hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
-					startDate, endDate) / 3));
+					startDate, endDate);
+			session.setAttribute("countOfHotels", countOfHotels);
+			session.setAttribute("countOfPages", Math.ceil(countOfHotels / 3.0));
 		}
 
 		String pageString = request.getParameter("page");
@@ -147,7 +149,6 @@ public class FindHotelsServlet extends HttpServlet {
 				startDate, endDate, page);
 
 		request.setAttribute("hotels", suitableHotels);
-		request.setAttribute("countOfHotels", suitableHotels.size());
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
