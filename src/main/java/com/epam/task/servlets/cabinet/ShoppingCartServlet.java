@@ -41,7 +41,9 @@ public class ShoppingCartServlet extends HttpServlet {
 		
 		int summary = 0;
 		for(OrderDto order : orders){
-			summary += order.getPrice();
+			if(order.getRoom().getDaysCount() >= 0) {
+				summary += order.getPrice();
+			}
 		}
 		
 		request.setAttribute("orders", orders);
