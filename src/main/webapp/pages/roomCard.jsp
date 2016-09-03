@@ -122,19 +122,19 @@ b {
 					</div>
 				</div>
 
-				<%-- 						<c:if test="${userState == 'user'}"> --%>
-				<div class="row">
-					<div class="col s2 offset-s8">
-						<input id="count" type="text" class="validate"> <label
-							id="nameLbl" data-error="COUNT ERROR" for="count"><fmt:message
-								key="room.card.count" /></label>
+				<c:if test="${userState == 'user' && inCart == false}">
+					<div class="row">
+						<div class="col s2 offset-s8">
+							<input id="count" type="text" class="validate"> <label
+								id="nameLbl" data-error="COUNT ERROR" for="count"><fmt:message
+									key="room.card.count" /></label>
+						</div>
+						<div class="col s2">
+							<a class="waves-effect waves-light btn"
+								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>INFO</span></a>
+						</div>
 					</div>
-					<div class="col s2">
-						<a class="waves-effect waves-light btn"
-							style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>INFO</span></a>
-					</div>
-				</div>
-				<%-- 						</c:if> --%>
+				</c:if>
 
 			</div>
 

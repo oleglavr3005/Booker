@@ -17,8 +17,8 @@ var starRange = document.getElementById('rangeSlider');
 		connect : true, // Display a colored bar between the handles
 		behaviour : 'tap-drag', // Move handle on tap, bar is draggable
 		range : { // Slider can select '1' to '5'
-			'min' : 100,
-			'max' : 5000
+			'min' : $('#minPrice').val(),
+			'max' : $('#maxPrice').val()
 		}
 	});
 	
@@ -28,6 +28,7 @@ var starRange = document.getElementById('rangeSlider');
 	});
 	
 	priceRange.noUiSlider.on('change', function(){
+		alert(priceRange.noUiSlider.get());
 		$('#minPrice').val(priceRange.noUiSlider.get()[0]);
 		$('#maxPrice').val(priceRange.noUiSlider.get()[1]);
 	});
