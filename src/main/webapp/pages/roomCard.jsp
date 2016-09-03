@@ -78,65 +78,51 @@ b {
 					</div>
 
 					<div class="col s3">
-						<div class="row">
+						<div class="row" style="float:right">
 							<c:if test="${room.wifi == true}">
-								<div class="col s2" style="margin-top: 5px; cursor: default;">
 									<a class="tooltipped" data-position="icon" data-tooltip="Wifi" style="color: #0d0d0d;"><i  class="material-icons invert">wifi</i></a>
-								</div>
 							</c:if>
 
 							<c:if test="${room.shower == true}">
-								<div class="col s2" style="margin-top: 5px; cursor: default;">
-									<a class="tooltipped" data-position="icon" data-tooltip="Shower"><img class="invert" style="max-width: 230%;" src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png"/></a>
-								</div>
+								<a class="tooltipped" data-position="icon" data-tooltip="Shower" style="color: #0d0d0d;"><i class="material-icons invert">invert_colors</i></a>
 							</c:if>
 
 							<c:if test="${room.parking == true}">
-								<div class="col s2" style="margin-top: 5px; cursor: default;">
 									<a class="tooltipped" data-position="icon" data-tooltip="Parking" style="color: #0d0d0d;"><i class="material-icons invert">local_parking</i></a>
-								</div>
 							</c:if>
 
 							<c:if test="${room.condition == true}">
-								<div class="col s2" style="margin-top: 5px; cursor: default;">
 								<a class="tooltipped" data-position="icon" data-tooltip="Condition" style="color: #0d0d0d;"><i class="material-icons invert">toys</i></a>
-								</div>
 							</c:if>
 
 							<c:if test="${room.pool == true}">
-								<div class="col s2" style="margin-top: 5px; cursor: default;">
 								<a class="tooltipped" data-position="icon" data-tooltip="Pool" style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
-								</div>
 							</c:if>
 
 							<c:if test="${room.gym == true}">
-								<div class="col s2" style="margin-top: 5px; cursor: default;">
 								<a class="tooltipped" data-position="icon" data-tooltip="Gym" style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
-								</div>
 							</c:if>
 
 							<c:if test="${room.balcony == true}">
-								<div class="col s2" style="margin-top: 5px; cursor: default;">
-								<a class="tooltipped" data-position="icon" data-tooltip="Balcony"><img class="invert" style="max-width: 230%;" src="${pageContext.servletContext.contextPath}/resources/images/balcony.png"/></a>
-								</div>
+								<a class="tooltipped" data-position="icon" data-tooltip="Balcony" style="color: #0d0d0d;"><i class="material-icons invert">account_balance</i></a>
 							</c:if>
 						</div>
-
-
-
 					</div>
 				</div>
 
 				<c:if test="${user != null}">
 					<div class="row">
-						<div class="col s2 offset-s8">
-							<input id="count" type="text" class="validate"> <label
-								id="nameLbl" data-error="COUNT ERROR" for="count"><fmt:message
-									key="room.card.count" /></label>
-						</div>
-						<div class="col s2">
+						<div class="col s2" style="float:right">
 							<a class="waves-effect waves-light btn"
-								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>INFO</span></a>
+								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>BOOK</span></a>
+						</div>
+					</div>
+				</c:if>
+				<c:if test="${user == null}">
+					<div class="row">
+						<div class="col s2" style="float:right">
+							<a class="waves-effect waves-light btn" disabled
+								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>Please log in first</span></a>
 						</div>
 					</div>
 				</c:if>

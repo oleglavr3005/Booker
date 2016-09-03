@@ -143,7 +143,7 @@ b {
 
 				</div>
 
-				<c:if test="${userState == 'user' && inCart == false}">
+				<c:if test="${user != null && inCart == false}">
 					<div class="row">
 						<div class="col s2 offset-s8">
 							<input id="count" type="text" class="validate"> <label
@@ -156,7 +156,6 @@ b {
 						</div>
 					</div>
 				</c:if>
-
 			</div>
 
 
