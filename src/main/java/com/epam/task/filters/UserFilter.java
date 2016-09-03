@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.epam.task.database.model.User;
 
-@WebFilter({ "/cabinet/*", "/register" })
+@WebFilter({ "/cabinet/*" })
 public class UserFilter implements Filter {
 
     public UserFilter() {
