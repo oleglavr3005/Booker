@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.epam.task.database.model.Order;
+import com.epam.task.database.dto.OrderDto;
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.service.OrderService;
@@ -37,10 +37,10 @@ public class OrdersServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		int userId = ((User) session.getAttribute("user")).getId();
 		
-		List<Order> allOrders = new OrderService().getOrdersByUser(userId);
-		List<Order> activeOrders = new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.ACTIVE);
-		List<Order> canceledOrders = new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.CANCELED);
-		List<Order> finishedOrders = new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.FINISHED);
+		List<OrderDto> allOrders = OrderDto.listConverter(new OrderService().getOrdersByUser(userId));
+		List<OrderDto> activeOrders = OrderDto.listConverter(new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.ACTIVE));
+		List<OrderDto> canceledOrders = OrderDto.listConverter(new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.CANCELED));
+		List<OrderDto> finishedOrders = OrderDto.listConverter(new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.FINISHED));
 		
 		request.setAttribute("allOrders", allOrders);
 		request.setAttribute("activeOrders", activeOrders);

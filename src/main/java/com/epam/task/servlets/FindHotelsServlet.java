@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.service.HotelService;
+import com.epam.task.database.service.RoomService;
 
 @WebServlet("/search")
 public class FindHotelsServlet extends HttpServlet {
@@ -73,35 +74,6 @@ public class FindHotelsServlet extends HttpServlet {
 		} catch (ParseException e) {
 			endDate = new Timestamp(new Date().getTime());
 		}
-		
-		session.setAttribute("name", name);
-		session.setAttribute("minStars", minStars);
-		session.setAttribute("maxStars", maxStars);
-		session.setAttribute("people", people);
-		
-		session.setAttribute("typeStandart", typeStandart);
-		session.setAttribute("typeLux", typeLux);
-		session.setAttribute("typeDelux", typeDelux);
-		
-		session.setAttribute("foodNone", foodNone);
-		session.setAttribute("foodBreakfast", foodBreakfast);
-		session.setAttribute("foodTwice", foodTwice);
-		session.setAttribute("foodFull", foodFull);
-		
-		session.setAttribute("minPrice", minPrice);
-		session.setAttribute("maxPrice", maxPrice);
-		
-		session.setAttribute("hasWiFi", hasWiFi);
-		session.setAttribute("hasShower", hasShower);
-		session.setAttribute("hasParking", hasParking);
-		session.setAttribute("hasCondition", hasCondition);
-		session.setAttribute("hasPool", hasPool);
-		session.setAttribute("hasGym", hasGym);
-		session.setAttribute("hasBalcony", hasBalcony);
-		session.setAttribute("noDeposit", noDeposit);
-		
-		session.setAttribute("startDate", request.getParameter("startDate"));
-		session.setAttribute("endDate", request.getParameter("endDate"));
 
 		String pageString = request.getParameter("page");
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
@@ -118,7 +90,39 @@ public class FindHotelsServlet extends HttpServlet {
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
 		} else {
-			request.getSession(true).setAttribute("countOfPages", Math.ceil(new HotelService().getSuitableHotelsNumber(name, minStars, maxStars, people, 
+			session.setAttribute("name", name);
+			session.setAttribute("minStars", minStars);
+			session.setAttribute("maxStars", maxStars);
+			session.setAttribute("people", people);
+			
+			session.setAttribute("typeStandart", typeStandart);
+			session.setAttribute("typeLux", typeLux);
+			session.setAttribute("typeDelux", typeDelux);
+			
+			session.setAttribute("foodNone", foodNone);
+			session.setAttribute("foodBreakfast", foodBreakfast);
+			session.setAttribute("foodTwice", foodTwice);
+			session.setAttribute("foodFull", foodFull);
+			
+			session.setAttribute("minPrice", minPrice);
+			session.setAttribute("maxPrice", maxPrice);
+			
+			session.setAttribute("hasWiFi", hasWiFi);
+			session.setAttribute("hasShower", hasShower);
+			session.setAttribute("hasParking", hasParking);
+			session.setAttribute("hasCondition", hasCondition);
+			session.setAttribute("hasPool", hasPool);
+			session.setAttribute("hasGym", hasGym);
+			session.setAttribute("hasBalcony", hasBalcony);
+			session.setAttribute("noDeposit", noDeposit);
+			
+			session.setAttribute("startDate", request.getParameter("startDate"));
+			session.setAttribute("endDate", request.getParameter("endDate"));
+			
+			RoomService roomService = new RoomService();
+			session.setAttribute("minPrice", roomService.getMinPrice());
+			session.setAttribute("maxPrice", roomService.getMaxPrice());
+			session.setAttribute("countOfPages", Math.ceil(new HotelService().getSuitableHotelsNumber(name, minStars, maxStars, people, 
 					typeStandart, typeLux, typeDelux, 
 					foodNone, foodBreakfast, foodTwice, foodFull, 
 					minPrice, maxPrice, 

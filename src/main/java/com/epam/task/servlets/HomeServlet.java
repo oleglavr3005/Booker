@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.service.HotelService;
+import com.epam.task.database.service.RoomService;
 
 @WebServlet("/home")
 public class HomeServlet extends HttpServlet {
@@ -33,6 +34,8 @@ public class HomeServlet extends HttpServlet {
 		request.setAttribute("hotels", hotels);
 		request.setAttribute("countOfHotels", hotels.size());
 		
+		RoomService roomService = new RoomService();
+		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
 		} else {
@@ -44,6 +47,8 @@ public class HomeServlet extends HttpServlet {
 					session.removeAttribute(name);
 				}
 			}
+			session.setAttribute("minPrice", roomService.getMinPrice());
+			session.setAttribute("maxPrice", roomService.getMaxPrice());
 			session.setAttribute("countOfPages", Math.ceil(new HotelService().getAllHotels().size() / 3.0));
 			request.getRequestDispatcher("pages/index.jsp").forward(request, response);
 		}

@@ -19,6 +19,10 @@
 <title>MAIN PAGE</title>
 
 <link
+	href="${pageContext.servletContext.contextPath}/resources/css/rangeSlider/rangeStyle.css"
+	rel="stylesheet">
+
+<link
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
@@ -48,7 +52,7 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css"
 	rel="stylesheet">
-	
+
 <style>
 div #sidebar-wrapper {
 	position: relative;
@@ -98,31 +102,33 @@ div #sidebar-wrapper {
 		<h4 style="text-align: center; margin-top: 20px;">
 			<fmt:message key="index.search.header" />
 		</h4>
-	
-<!-- 		FORM START -->
-		<form action="search" method="post">
+
+		<!-- 		FORM START -->
+		<form id="myForm" action="search" method="post">
 
 			<div class="row">
 
 				<div class="col s8 offset-s2">
-					<input id="name" type="text" class="validate" name="name"
+					<input id="nam" type="text" class="validate" name="name"
 						value="${name}"> <label id="nameLbl"
-						data-error="${fmtName}" for="name"><fmt:message
+						data-error="${fmtName}" for="nam"><fmt:message
 							key="index.search.name" /></label>
 				</div>
 
 				<div class="col s3 offset-s2">
-					<label class="labelstyle"><fmt:message
-							key="concrete.date.from" /></label> <input type="date" name="startDate"
-						id="date_from" class="datepicker" onchange="checkDate()"
-						value="${startDate}">
+					<input type="date" name="startDate" id="date_from"
+						class="datepicker validate" onchange="checkDate()"
+						value="${startDate}"><label id="startLbl"
+						data-error="${fmtStart}" for="date_from"><fmt:message
+							key="index.search.start" /></label>
 				</div>
 
 				<div class="col s3 offset-s2">
-					<label class="labelstyle"><fmt:message
-							key="concrete.date.to" /></label> <input type="date" name="endDate"
-						id="date_to" class="datepicker" onchange="checkDate()"
-						value="${endDate}">
+					<input type="date" name="endDate" id="date_to"
+						class="datepicker validate" onchange="checkDate()"
+						value="${endDate}"><label id="endLbl"
+						data-error="${fmtEnd}" for="date_to"><fmt:message
+							key="index.search.end" /></label>
 				</div>
 
 			</div>
@@ -153,7 +159,7 @@ div #sidebar-wrapper {
 				</div>
 
 				<div class="col s3 offset-s2">
-					<input id="pplCount" type="text" class="validate" name="people"
+					<input id="people" type="text" class="validate" name="people"
 						value="${people}"> <label id="pplLbl"
 						data-error="${fmtPeople}" for="pplCount"><fmt:message
 							key="index.search.ppl" /></label>
@@ -161,7 +167,7 @@ div #sidebar-wrapper {
 
 				<div class="col s2 offset-s3" style="margin-top: 18px;">
 					<a id="search" class="waves-effect waves-light btn"
-						onclick="submit()"
+						onclick="searchForm()"
 						<%-- 					href="${pageContext.servletContext.contextPath}/search" --%>
 					style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
 							key="index.search.button" /></a>
@@ -255,9 +261,12 @@ div #sidebar-wrapper {
 
 							</div>
 
+							<div class="col s1 offset-s1">
+							<div class="rangePrint" id="printMinPrice">
+							${minPrice}</div>
+							</div>
 
-
-							<div class="col s8 offset-s2 ">
+							<div class="col s8">
 
 								<label class="labelstyle"><fmt:message
 										key="index.search.price" />PRICE</label>
@@ -265,6 +274,11 @@ div #sidebar-wrapper {
 									<div id="priceSlider"></div>
 								</section>
 
+							</div>
+							
+							<div class="col s1">
+							<div class="rangePrint" id="printMaxPrice">
+							${maxPrice}</div>
 							</div>
 
 
@@ -283,35 +297,35 @@ div #sidebar-wrapper {
 
 			<input id="minStars" type="hidden" value="1" name="minStars" /> <input
 				id="maxStars" type="hidden" value="5" name="maxStars" /> <input
-				id="minPrice" type="hidden" value="0" name="minPrice" /> <input
-				id="maxPrice" type="hidden" value="100" name="maxPrice" /> <input
-				type="submit" value="Submit">
+				id="minPrice" type="hidden" value="${minPrice}" name="minPrice" />
+			<input id="maxPrice" type="hidden" value="${maxPrice}"
+				name="maxPrice" />
+			<!-- 				<input type="submit" value="Submit"> -->
 		</form>
-	
-<!-- 		FORM END -->
+
+		<!-- 		FORM END -->
 
 	</div>
 
 	<div class="container">
+		<h6>
+			<c:if test="${countOfHotels > 0 }">
+				<fmt:message key="card.header" />
+				<span id="periodicals_number_for_all_users">${countOfHotels}</span>
+			</c:if>
+			<c:if test="${countOfHotels <= 0 }">
+				<fmt:message key="card.no.hotels" />
+			</c:if>
+		</h6>
+
 		<div id="switchContent" class="row">
 			<jsp:include page="card.jsp"></jsp:include>
 		</div>
-		
-		<div id="paginationdemo">
-                <div id="p1" class="pagedemo _current" style="">Page 1</div>
-				<div id="p2" class="pagedemo" style="display:none;">Page 2</div>
-				<div id="p3" class="pagedemo" style="display:none;">Page 3</div>
-				<div id="p4" class="pagedemo" style="display:none;">Page 4</div>
-				<div id="p5" class="pagedemo" style="display:none;">Page 5</div>
-				<div id="p6" class="pagedemo" style="display:none;">Page 6</div>
-				<div id="p7" class="pagedemo" style="display:none;">Page 7</div>
-				<div id="p8" class="pagedemo" style="display:none;">Page 8</div>
-				<div id="p9" class="pagedemo" style="display:none;">Page 9</div>
-				<div id="p10" class="pagedemo" style="display:none;">Page 10</div>
-				<div id="demo5">                   
-                </div>
-         </div>
-           
+
+		<div id="paginationdemo" class="row">
+			<div id="demo5" class="col s4 offset-s5"></div>
+		</div>
+
 	</div>
 
 	<!-- Footer ========================================================================== -->
@@ -368,7 +382,7 @@ div #sidebar-wrapper {
 	<!--  END OF VK REDIRECT -->
 
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
+	<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.js"></script>
 	<script
@@ -381,7 +395,8 @@ div #sidebar-wrapper {
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
-	<script>			
+
+	<script>
 		$('#typeStandart').attr('checked', '${typeStandart}' == 'true');
 		$('#typeLux').attr('checked', '${typeLux}' == 'true');
 		$('#typeDelux').attr('checked', '${typeDelux}' == 'true');
@@ -401,64 +416,34 @@ div #sidebar-wrapper {
 		$('#hasBalcony').attr('checked', '${hasBalcony}' == 'true');
 		$('#noDeposit').attr('checked', '${noDeposit}' == 'true');
 	</script>
-	
-	<script type="text/javascript">
- 		var pagesCount = '${countOfPages}';
-	
-		jQuery(function() {
-			jQuery("#demo5").paginate({
-				count 		: pagesCount,
-				start 		: 1,
-				display     : 5,
-				border					: true,
-				border_color			: '#fff',
-				text_color  			: '#fff',
-				background_color    	: 'black',	
-				border_hover_color		: '#ccc',
-				text_hover_color  		: '#000',
-				background_hover_color	: '#fff', 
-				images					: false,
-				mouse					: 'press',
-				onChange     			: function(page){
-											$('._current','#paginationdemo').removeClass('_current').hide();
-											$('#p'+page).addClass('_current').show();
-											findPage(page);
-										  }
-			});
-		});
 
-		</script>
-		
-		
-<script>		
-	function checkDate(){	
-		if (checkDateFrom() && checkDateTo()){
-			alert("true");
+	<script type="text/javascript">
+		var pagesCount = '${countOfPages}';
+
+		if (pagesCount > 1) {
+			jQuery(function() {
+				jQuery("#demo5").paginate({
+					count : pagesCount,
+					start : 1,
+					display : 5,
+					border : false,
+					//		border_color			: '#fff',
+					text_color : '#fff',
+					background_color : '#26A69A',
+					//		border_hover_color		: '#ccc',
+					text_hover_color : '#000',
+					background_hover_color : '#CFCFCF',
+					images : false,
+					mouse : 'press',
+					onChange : function(page) {
+						// 											$('._current','#paginationdemo').removeClass('_current').hide();
+						// 											$('#p'+page).addClass('_current').show();
+						findPage(page);
+					}
+				});
+			});
 		}
-		else {
-			alert("false");
-		}
-	}
-		
-	function checkDateFrom(){
-		   var selectedText = document.getElementById('date_from').value;
-		   var selectedDate = new Date(selectedText);
-		   var now = new Date();
-		   var flag1 = now < selectedDate;
-		   return flag1;
-	}
-	
-	function checkDateTo(){
-		   var fromText = document.getElementById('date_from').value;
-		   var fromDate = new Date(fromText);
-		   var toText = document.getElementById('date_to').value;
-		   var toDate = new Date(toText);
-		   var flag1 = fromDate < toDate;
-		   return flag1;
-	}
-</script>
-		
-		
+	</script>
 
 
 	<!-- 	DATEPICKER -->

@@ -42,6 +42,8 @@ public class RoomDao {
 	private final String PAGINATION = " LIMIT ?, 3";
 	
 	private final String GET_ALL_ROOMS_FOR_HOTEL = "SELECT * FROM room WHERE hotel_id = ?";
+	
+	private final String GET_ROOM_BY_ID = "SELECT * FROM room WHERE room_id = ?";
 
 	private final String SQL_INSERT_ROOM = "INSERT INTO room "
 			+ "(hotel_id, number, type, beds_count, double_beds_count, price, has_wifi, has_shower, has_parking,"
@@ -199,6 +201,18 @@ public class RoomDao {
 		}
 	}
 	
+	public Room getRoomById(int id) {
+		try (PreparedStatement statement = connection.prepareStatement(GET_ROOM_BY_ID)) {
+			statement.setInt(1, id);
+			try (ResultSet rs = statement.executeQuery()) {
+				return UniversalTransformer.getObjectFromRS(rs, Room.class);
+			}			
+		} catch (Exception e) {
+		//	return new ArrayList<Room>();
+			throw new NullPointerException("Cant get Room by id");
+		}
+	}
+		
 	public int insertRoom(Room room) { 
 		int result = 0;
 		try (PreparedStatement st = connection.prepareStatement(SQL_INSERT_ROOM)) {

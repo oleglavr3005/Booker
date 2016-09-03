@@ -11,14 +11,16 @@ var starRange = document.getElementById('rangeSlider');
 	});
 		
 	var priceRange = document.getElementById('priceSlider');
+	var minimum = $('#minPrice').val();
+	var maximum = $('#maxPrice').val();
 	noUiSlider.create(priceRange, {
-		start : [ 100, 5000 ], // Handle start position
+		start : [ $('#minPrice').val(), $('#maxPrice').val() ], // Handle start position
 		step : 1, // Slider moves in increments of '1'
 		connect : true, // Display a colored bar between the handles
 		behaviour : 'tap-drag', // Move handle on tap, bar is draggable
 		range : { // Slider can select '1' to '5'
-			'min' : 100,
-			'max' : 5000
+			'min' : parseInt(minimum),
+			'max' : parseInt(maximum)
 		}
 	});
 	
@@ -30,6 +32,11 @@ var starRange = document.getElementById('rangeSlider');
 	priceRange.noUiSlider.on('change', function(){
 		$('#minPrice').val(priceRange.noUiSlider.get()[0]);
 		$('#maxPrice').val(priceRange.noUiSlider.get()[1]);
+	});
+	
+	priceRange.noUiSlider.on('slide', function(){
+		$('#printMinPrice').html(parseInt(priceRange.noUiSlider.get()[0]));
+		$('#printMaxPrice').html(parseInt(priceRange.noUiSlider.get()[1]));
 	});
 	
 	function togle(){
