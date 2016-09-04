@@ -46,9 +46,15 @@ public class ShoppingCartServlet extends HttpServlet {
 			}
 		}
 		
-		request.setAttribute("orders", orders);
+		String pageString = request.getParameter("page");
+		int page = pageString == null ? 1 : Integer.parseInt(pageString);
+		
+		List<OrderDto> ordersByPage = OrderDto.listConverter(new OrderService().getOrdersByUserAndStatusAndPage(userId, OrderStatus.ORDER, page));
+		
+		request.setAttribute("orders", ordersByPage);
 		request.setAttribute("summary", summary);
 		request.setAttribute("countOfOrders", orders.size());
+		session.setAttribute("countOfPages", Math.ceil(orders.size() / 3.0));
 		
 		request.getRequestDispatcher("/pages/user/shopping_cart.jsp").forward(request, response);
 	}
