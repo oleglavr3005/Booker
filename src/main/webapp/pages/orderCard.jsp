@@ -130,7 +130,7 @@ b {
 						</div>
 						<div class="row">
 							<div class="col s4 offset-s8">
-								<a class="my-btn waves-effect waves-light btn"
+								<a id="btn${order.id}" class="my-btn waves-effect waves-light btn"
 									style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
 									onclick="removeOrderCard(${order.id})">REMOVE</a>
 							</div>

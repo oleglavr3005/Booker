@@ -1,8 +1,17 @@
 function removeOrderCard(orderId) {
-	$.post('cancel_order', {
+	$.post('../remove_from_cart', {
 		orderId : orderId
-	}, function(orders) {
-		$('#switchContent').html(orders);
+	}, function(result) {
+		
+		$('#btn'+orderId).onclick = null;
+		
+		if (result == 'true') {
+			$('#btn' + orderId).text("SUCCES");
+			$('#btn' + orderId).attr('disabled', true);
+		} else {
+			$('#btn' + orderId).text("FAIL");
+			$('#btn' + orderId).attr('disabled', true);
+		}
 	});
 }
 
