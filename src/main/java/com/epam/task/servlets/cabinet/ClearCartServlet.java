@@ -11,11 +11,11 @@ import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.service.OrderService;
 
-@WebServlet("/clear_card")
-public class ClearCardServlet extends HttpServlet {
+@WebServlet("/clear_cart")
+public class ClearCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ClearCardServlet() {
+    public ClearCartServlet() {
         super();
     }
 
