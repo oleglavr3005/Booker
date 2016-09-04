@@ -31,9 +31,12 @@ public class Feedback {
 	
 	@DataBaseField(fieldName = "last_name")
 	private String lastName;
+	
+	@DataBaseField(fieldName = "img")
+	private String img;
 
 	public Feedback(int id, Integer userId, Integer hotelId, Integer rating, String comment, String title,
-			Timestamp date, String firstName, String lastName) {
+			Timestamp date, String firstName, String lastName, String img) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -44,6 +47,7 @@ public class Feedback {
 		this.date = date;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.img = img;
 	}
 
 	public int getId() {
@@ -116,5 +120,13 @@ public class Feedback {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 }
