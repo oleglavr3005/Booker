@@ -22,17 +22,21 @@ public class ChangeInfoServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String lastName = request.getParameter("lastName");
 		String firstName = request.getParameter("firstName");
-		
+		String lastName = request.getParameter("lastName");
+
 		if(lastName == null || firstName == null) {
-			return;
+			return; //wtf
 		}
 		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		user.setLastName(lastName);
-		user.setFirstName(firstName);
+		if (firstName != "") {
+			user.setFirstName(firstName);
+		}
+		if (lastName != "") {
+			user.setLastName(lastName);
+		}
 		int result = new UserService().updateUser(user);
 		session.setAttribute("user", user);
 		response.getWriter().write(result > 0 ? "true" : "false");

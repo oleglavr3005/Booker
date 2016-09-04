@@ -4,26 +4,31 @@ var usedMail;
 function savePersonalData(wMail,uMail) {
 	wrongMail = wMail;
 	usedMail = uMail;
-	$.post('settings/personal', {
-		name : nameIsValid($('#name').val()),
-		surname : surnameIsValid($('#surname').val()),
-		email : emailIsValid($('#email').val())
+	var name = $('#name').val();
+	var surname = $('#surname').val();
+	$.post('../change_info', {
+		firstName : nameIsValid(name),
+		lastName : surnameIsValid(surname)
 	}, function(result) {
-		if (result.name != null && result.name != '') {
+		if (result == 'true') {			
 			$('#name').val('');
-			$('#name').attr("placeholder", result.name);
+			if (name != "") {
+				$('#name').attr("placeholder", name);
+			}
 			clearField('name');
-		}
-		if (result.surname != null && result.surname != '') {
+			
 			$('#surname').val('');
-			$('#surname').attr("placeholder", result.surname);
+			if (surname != ""){
+				$('#surname').attr("placeholder", surname);
+			}
 			clearField('surname');
 		}
-		if (result.email != null && result.email != '') {
-			$('#email').val('');
-			$('#email').attr("placeholder", result.email);
-			clearField('email');
-		}
+		
+//		if (result.email != null && result.email != '') {
+//			$('#email').val('');
+//			$('#email').attr("placeholder", result.email);
+//			clearField('email');
+//		}
 	});
 }
 

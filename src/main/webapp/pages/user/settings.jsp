@@ -155,19 +155,6 @@
 						</div>
 					</div>
 
-					<c:if test="${user.socialNetworkId == null}">
-						<div class="row">
-							<div class="input-field col s9">
-								<div class="ui pointing label">
-									<fmt:message key="settings.enter.mail" />
-								</div>
-								<input id="email" type="email" class="validate"
-									placeholder="${user.email}" length="80"> <label
-									id="emailLbl" data-error="${fmtMail}" for="email"> </label>
-							</div>
-						</div>
-					</c:if>
-
 					<div class="row" style="margin-top: 20px;">
 						<div class="col s3 offset-s7">
 							<a id="savePersonal" class="waves-effect waves-light btn"
