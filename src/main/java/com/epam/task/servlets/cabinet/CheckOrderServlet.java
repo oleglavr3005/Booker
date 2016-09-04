@@ -7,13 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.epam.task.database.model.Order;
 import com.epam.task.database.service.OrderService;
 
-@WebServlet("/remove_from_cart")
-public class RemoveFromCartServlet extends HttpServlet {
+@WebServlet("/check_order")
+public class CheckOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public RemoveFromCartServlet() {
+       
+    public CheckOrderServlet() {
         super();
     }
 
@@ -22,10 +23,11 @@ public class RemoveFromCartServlet extends HttpServlet {
 		if(orderIdString == null) {
 			return;
 		}
+		
 		int orderId = Integer.parseInt(orderIdString);
-		int removed = new OrderService().removeOrder(orderId);
-
-		response.getWriter().write(removed > 0 ? "true" : "false");
+		Order order = new OrderService().getOrderById(orderId);
+		
+		response.getWriter().write(order != null ? "true" : "false");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

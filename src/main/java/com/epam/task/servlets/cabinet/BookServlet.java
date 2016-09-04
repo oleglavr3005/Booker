@@ -21,7 +21,11 @@ public class BookServlet extends HttpServlet {
 		//if this room has days >=0, pay somehow
 		//imagine the order was payed
 		//change this order by setting status "active"
-		int orderId = Integer.parseInt(request.getParameter("orderId"));
+		String orderIdString = request.getParameter("orderId");
+		if(orderIdString == null) {
+			return;
+		}
+		int orderId = Integer.parseInt(orderIdString);
 		int booked = new OrderService().bookOrder(orderId);
 		
 		response.getWriter().write(booked > 0 ? "true" : "false");
