@@ -48,6 +48,7 @@ public class ShoppingCartServlet extends HttpServlet {
 		
 		request.setAttribute("orders", orders);
 		request.setAttribute("summary", summary);
+		request.setAttribute("countOfOrders", 0);
 		
 		request.getRequestDispatcher("/pages/user/shopping_cart.jsp").forward(request, response);
 	}
