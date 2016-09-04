@@ -67,19 +67,6 @@ public class FindHotelsServlet extends HttpServlet {
 
 			boolean noDeposit = togler == true? request.getParameter("noDeposit") != null : false; //get from request
 			
-			Timestamp startDate;
-			Timestamp endDate;
-			try {
-				startDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("startDate")).getTime());
-			} catch (ParseException e) {
-				startDate = new Timestamp(new Date().getTime());
-			}
-			try {
-				endDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("endDate")).getTime());
-			} catch (ParseException e) {
-				endDate = new Timestamp(new Date().getTime());
-			}
-			
 			session.setAttribute("togler", togler);
 			
 			session.setAttribute("name", name);
@@ -113,18 +100,8 @@ public class FindHotelsServlet extends HttpServlet {
 			
 			session.setAttribute("minPrice", roomService.getMinPrice());
 			session.setAttribute("maxPrice", roomService.getMaxPrice());
-			int countOfHotels = new HotelService().getSuitableHotelsNumber(name, minStars, maxStars, people, 
-					typeStandart, typeLux, typeDelux, 
-					foodNone, foodBreakfast, foodTwice, foodFull, 
-					minPrice, maxPrice, 
-					hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
-					startDate, endDate);
-			session.setAttribute("countOfHotels", countOfHotels);
-			session.setAttribute("countOfPages", Math.ceil(countOfHotels / 3.0));
 		}
-
-		String pageString = request.getParameter("page");
-		int page = pageString == null ? 1 : Integer.parseInt(pageString);
+		
 		Timestamp startDate;
 		Timestamp endDate;
 		try {
@@ -137,6 +114,30 @@ public class FindHotelsServlet extends HttpServlet {
 		} catch (ParseException e) {
 			endDate = new Timestamp(new Date().getTime());
 		}
+		
+		String pageString = request.getParameter("page");
+		int page = pageString == null ? 1 : Integer.parseInt(pageString);
+		
+		int countOfHotels = new HotelService().getSuitableHotelsNumber(session.getAttribute("name").toString(), 
+				(int) session.getAttribute("minStars"), (int) session.getAttribute("maxStars"), (int) session.getAttribute("people"), 
+				(boolean) session.getAttribute("typeStandart"), (boolean) session.getAttribute("typeLux"), (boolean) session.getAttribute("typeDelux"), 
+				(boolean) session.getAttribute("foodNone"), (boolean) session.getAttribute("foodBreakfast"), 
+				(boolean) session.getAttribute("foodTwice"), (boolean) session.getAttribute("foodFull"), 
+				(int) session.getAttribute("minUserPrice"), (int) session.getAttribute("maxUserPrice"), 
+				(boolean) session.getAttribute("hasWiFi"), (boolean) session.getAttribute("hasShower"), (boolean) session.getAttribute("hasParking"), 
+				(boolean) session.getAttribute("hasCondition"), (boolean) session.getAttribute("hasPool"), (boolean) session.getAttribute("hasGym"), 
+				(boolean) session.getAttribute("hasBalcony"), (boolean) session.getAttribute("noDeposit"), 
+				startDate, endDate);
+		
+		int countOfPages = (int) Math.ceil(countOfHotels / 3.0);
+		if (page > countOfPages) {
+			page--;
+		}
+		
+		request.setAttribute("countOfHotels", countOfHotels);
+		request.setAttribute("countOfPages", countOfPages);
+		request.setAttribute("currentPage", page);
+
 		List<Hotel> suitableHotels = new HotelService().getAllSuitableHotels(session.getAttribute("name").toString(), 
 				(int) session.getAttribute("minStars"), (int) session.getAttribute("maxStars"), 
 				(int) session.getAttribute("people"), 
@@ -148,7 +149,7 @@ public class FindHotelsServlet extends HttpServlet {
 				(boolean) session.getAttribute("hasCondition"), (boolean) session.getAttribute("hasPool"), (boolean) session.getAttribute("hasGym"), 
 				(boolean) session.getAttribute("hasBalcony"), (boolean) session.getAttribute("noDeposit"), 
 				startDate, endDate, page);
-
+		
 		request.setAttribute("hotels", suitableHotels);
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
