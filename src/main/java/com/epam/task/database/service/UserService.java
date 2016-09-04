@@ -44,7 +44,7 @@ public class UserService {
 	}
 
 	private void sendConfirmation(User user) {
-		String subject = "Register confirm";
+		String subject = "ϳ����������� ���������";
 		String link = "http://localhost:8080/booker/signup_confirmation?token=" + user.getConfirmCode();
 		String text = "<body style='background-color: #fff'>" +
 
