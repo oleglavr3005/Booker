@@ -59,7 +59,7 @@ public class ShoppingCartServlet extends HttpServlet {
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/roomCard.jsp").forward(request, response);
 		} else {	
-			request.getRequestDispatcher("pages/user/shopping_cart.jsp").forward(request, response);
+			request.getRequestDispatcher("/pages/user/shopping_cart.jsp").forward(request, response);
 		}
 	}
 

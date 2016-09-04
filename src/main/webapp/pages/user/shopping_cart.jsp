@@ -139,6 +139,8 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
 	
 	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
+	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
 		
 		
