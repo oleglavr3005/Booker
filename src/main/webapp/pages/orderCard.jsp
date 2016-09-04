@@ -213,7 +213,40 @@ b {
 
 </c:if>
 
+<!-- PAGINATOR 3000 -->
+		<div id="paginationdemo" class="row">
+			<div id="demo5" class="col s4 offset-s5"></div>
+		</div>
+<!-- END OF PAGINATOR 3000 -->
+
 <script type="text/javascript"
 	src="${pageContext.servletContext.contextPath}/resources/js/order/removeOrder.js"></script>
 <script type="text/javascript"
 	src="${pageContext.servletContext.contextPath}/resources/js/order/createOrder.js"></script>
+	
+<script type="text/javascript">
+		var pagesCount = '${countOfPages}';
+		var currentPage = '${currentPage}';
+		
+		if (pagesCount > 1) {
+			jQuery(function() {
+				jQuery("#demo5").paginate({
+					count : pagesCount,
+					start : currentPage,
+					display : 5,
+					border : false,
+					//		border_color			: '#fff',
+					text_color : '#fff',
+					background_color : '#26A69A',
+					//		border_hover_color		: '#ccc',
+					text_hover_color : '#000',
+					background_hover_color : '#CFCFCF',
+					images : true,
+					mouse : 'press',
+					onChange : function(page) {
+						findPage(window.location.href,page);
+					}
+				});
+			});
+		}
+	</script>
