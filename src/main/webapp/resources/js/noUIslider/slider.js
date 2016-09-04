@@ -49,7 +49,10 @@ $('#printMaxPrice').html(parseInt(priceRange.noUiSlider.get()[1]));
 starRange.noUiSlider.on('change', function() {
 	$('#minStars').val(starRange.noUiSlider.get()[0]);
 	$('#maxStars').val(starRange.noUiSlider.get()[1]);
-	starChanger(starRange.noUiSlider.get()[0], starRange.noUiSlider.get()[1])
+});
+
+starRange.noUiSlider.on('slide', function() {
+	starChanger(starRange.noUiSlider.get()[0], starRange.noUiSlider.get()[1]);
 });
 
 priceRange.noUiSlider.on('change', function() {

@@ -132,33 +132,25 @@ b {
 							</div>
 						</div>
 						<div class="row">
-							<div class="col s4 offset-s8">
-								<a id="btn${order.id}"
+							<div class="col s2 offset-s4">
+								<a id="remove${order.id}"
 									class="my-btn waves-effect waves-light btn"
 									style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
 									onclick="removeOrderCard(${order.id})">REMOVE</a>
 							</div>
+							<div class="col s2 offset-s2">
+								<a id="book${order.id}"
+									class="my-btn waves-effect waves-light btn"
+									style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+									onclick="bookOrderCard(${order.id},${order.room.daysCount})">ORDER</a>
+							</div>
 						</div>
 					</div>
 
-
-
+	<div id="field${order.id}" class="divider"
+				style="margin-bottom: 5px;"></div>
 
 				</div>
-
-				<c:if test="${user != null && inCart == false}">
-					<div class="row">
-						<div class="col s2 offset-s8">
-							<input id="count" type="text" class="validate"> <label
-								id="nameLbl" data-error="COUNT ERROR" for="count"><fmt:message
-									key="room.card.count" /></label>
-						</div>
-						<div class="col s2">
-							<a class="waves-effect waves-light btn"
-								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>INFO</span></a>
-						</div>
-					</div>
-				</c:if>
 			</div>
 
 
@@ -166,20 +158,25 @@ b {
 	</div>
 </c:forEach>
 
-<div class="row">
-	<div class="col s3 offset-s1">TOTAL_PRICE : ${summary} UAH</div>
-	<div class="col s2 offset-s3">
-		<a id="clearBtn" class="my-btn waves-effect waves-light btn"
-			style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-			onclick="clearCart()">CLEAR</a>
-	</div>
-	<div class="col s2 offset-s5">
-		<a class="my-btn waves-effect waves-light btn"
-			style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-			onclick="bookAll()">ORDER</a>
-	</div>
-</div>
+<c:if test="${countOfOrders > 0 }">
 
+	<div class="row">
+		<div class="col s3 offset-s1">TOTAL_PRICE : ${summary} UAH</div>
+		<div class="col s2 offset-s3">
+			<a id="clearBtn" class="my-btn waves-effect waves-light btn"
+				style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+				onclick="clearCart()">CLEAR</a>
+		</div>
+		<div class="col s2 offset-s1">
+			<a class="my-btn waves-effect waves-light btn"
+				style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+				onclick="bookOrderCard(null,${summary})">ORDER</a>
+		</div>
+	</div>
+	<div id="field" class="divider"
+				style="margin-bottom: 5px;"></div>
+
+</c:if>
 
 <script type="text/javascript"
 	src="${pageContext.servletContext.contextPath}/resources/js/order/removeOrder.js"></script>
