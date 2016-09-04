@@ -8,6 +8,7 @@ import com.epam.task.database.dao.FeedbackDao;
 import com.epam.task.database.dao.HotelDao;
 import com.epam.task.database.dao.HotelPhotoDao;
 import com.epam.task.database.dao.OrderDAO;
+import com.epam.task.database.dao.RequestDao;
 import com.epam.task.database.dao.RoomDao;
 import com.epam.task.database.dao.RoomPhotoDao;
 import com.epam.task.database.dao.UserDao;
@@ -24,6 +25,7 @@ public class DaoManager {
     private HotelPhotoDao hotelPhotoDao;
 	private RoomPhotoDao roomPhotoDao; 
 	private ConveniencesDao conveniencesDao;
+    private RequestDao requestDao;
     
     public DaoManager() {
     }
@@ -69,6 +71,12 @@ public class DaoManager {
     	if(conveniencesDao == null) conveniencesDao = new ConveniencesDao(getConnection());
     	else conveniencesDao.setConnection(getConnection());
     	return conveniencesDao;
+    }
+    
+    public RequestDao getRequestDao(){
+    	if(requestDao == null) requestDao = new RequestDao(getConnection());
+    	else requestDao.setConnection(getConnection());
+    	return requestDao;
     }
     
     public HotelDao getHotelDao(){

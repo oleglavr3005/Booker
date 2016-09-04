@@ -173,7 +173,7 @@ div #sidebar-wrapper {
 
 				<div id="togle_place" class="col s12" style="margin-top: 18px;">
 
-					<div id="details_panel" style="display: none">
+					<div id="details_panel">
 
 						<div class="row">
 
@@ -276,7 +276,7 @@ div #sidebar-wrapper {
 					<div class="row">
 						<div class="col s10">
 							<a id="togle" class="waves-effect waves-light btn"
-								onclick="togle()"
+								
 								style="background: #26A69A; text-align: center; width: 100%; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><i
 								id="arrow_icon" class="fa fa-angle-double-down col s1 fa-2x"
 								aria-hidden="true" style="margin-left: 45%"></i></a>
@@ -381,7 +381,9 @@ div #sidebar-wrapper {
 		</script>
 	</c:if>
 	<!--  END OF VK REDIRECT -->
-
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
 	<script
@@ -417,13 +419,32 @@ div #sidebar-wrapper {
 		$('#hasBalcony').attr('checked', '${hasBalcony}' == 'true');
 		$('#noDeposit').attr('checked', '${noDeposit}' == 'true');
 
-		var togler = $('#togler').val();
+		/* var togler = $('#togler').val();
 		if (togler == 'true') {
 			$("#togle").click();
 		}
 		else {
 			$('#togler').val("false");
-		}
+		} */
+	</script>
+	
+	<script>
+		(function() {
+			var flag = 0;
+			$('#details_panel').hide();
+			$('#togle').on('click', function() {
+				console.log("in");
+				if (flag == 0) {
+					$('#details_panel').slideDown(500);
+					$('#arrow_icon').css("transform", "rotate(180deg)");
+				    flag = 1;
+				} else {
+				    $('#details_panel').slideUp(500);
+				    $('#arrow_icon').css("transform", "rotate(0deg)");
+				    flag = 0;
+				}
+			});
+		})();
 	</script>
 
 	<!-- 	DATEPICKER -->
