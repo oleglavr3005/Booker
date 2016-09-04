@@ -3,9 +3,11 @@ var minimumStar = $('#minStars').val();
 var maximumStar = $('#maxStars').val();
 if (minimumStar == "") {
 	minimumStar = 1;
+	$('#minStars').val("1");
 }
 if (maximumStar == "") {
 	maximumStar = 5;
+	$('#minStars').val("5");
 }
 noUiSlider.create(starRange, {
 	start : [ parseInt(minimumStar), parseInt(maximumStar) ], // Handle start position
@@ -27,9 +29,11 @@ var minimumUser = $('#minUserPrice').val();
 var maximumUser = $('#maxUserPrice').val();
 if (minimumUser == "") {
 	minimumUser = minimum;
+	$('#minStars').val(minimum);
 }
 if (maximumUser == "") {
 	maximumUser = maximum;
+	$('#minStars').val(maximum);
 }
 noUiSlider.create(priceRange, {
 	start : [ parseInt(minimumUser), parseInt(maximumUser) ], // Handle start

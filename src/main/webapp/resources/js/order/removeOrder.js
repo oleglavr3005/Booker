@@ -1,23 +1,28 @@
 function removeOrderCard(orderId) {
-	$.post('../remove_from_cart', {
-		orderId : orderId
-	}, function(result) {
-		
-		$('#remove'+orderId).onclick = null;
-		
-		if (result == 'true') {
-			$('#remove' + orderId).text("SUCCES");
-			$('#remove' + orderId).attr('disabled', true);
-		} else {
-			$('#remove' + orderId).text("FAIL");
-			$('#remove' + orderId).attr('disabled', true);
-		}
-	});
+	if (!$('#remove' + orderId).attr('disabled')) {
+
+		$.post('../remove_from_cart', {
+			orderId : orderId
+		}, function(result) {
+
+			if (result == 'true') {
+				$('#remove' + orderId).text("SUCCES");
+				$('#remove' + orderId).attr('disabled', true);
+				$('#book' + orderId).text("REMOVED");
+				$('#book' + orderId).attr('disabled', true);
+				$('#book' + orderId).onclick = function() {
+					alert("s");
+				};
+			} else {
+				$('#remove' + orderId).text("FAIL");
+				$('#remove' + orderId).attr('disabled', true);
+			}
+		});
+	}
 }
 
 function clearCart() {
-	$.post('../clear_cart', {
-	}, function(orders) {
+	$.post('../clear_cart', {}, function(orders) {
 		$('#switchContent').html(orders);
 	});
 }
