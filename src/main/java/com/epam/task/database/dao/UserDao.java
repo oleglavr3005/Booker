@@ -23,8 +23,8 @@ public class UserDao {
 	private final String SELECT_BY_TYPE	 = SELECT_ALL + " WHERE type LIKE ?";
 	private final String SELECT_BY_CODE = "SELECT * FROM user u WHERE u.confirm_code LIKE ?;";
 	
-	private final String INSERT = "INSERT INTO `user` (first_name, last_name, e_mail, password, type, is_banned, confirm_code, status, phone_number, img, social_network, social_network_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private final String UPDATE = "UPDATE `user` SET first_name = ?, last_name = ?, e_mail = ?, password = ?, type = ?, is_banned = ?, confirm_code = ?, status = ?, phone_number = ?, img = ?, social_network = ?, social_network_id = ? WHERE user_id = ?";
+	private final String INSERT = "INSERT INTO `user` (first_name, last_name, e_mail, password, type, is_banned, confirm_code, status, phone_number, img, social_network, social_network_id, email_notif, phone_notif, language) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private final String UPDATE = "UPDATE `user` SET first_name = ?, last_name = ?, e_mail = ?, password = ?, type = ?, is_banned = ?, confirm_code = ?, status = ?, phone_number = ?, img = ?, social_network = ?, social_network_id = ?, email_notif = ?, phone_notif = ?, language = ? WHERE user_id = ?";
 
 	public UserDao(Connection connection) {
 		super();
@@ -118,7 +118,10 @@ public class UserDao {
 			statement.setString(i++, user.getPhoneNumber());
 			statement.setString(i++, user.getImage());
 			statement.setString(i++, user.getSocialNetwork().toString());			
-			statement.setString(i, user.getSocialNetworkId());
+			statement.setString(i++, user.getSocialNetworkId());
+			statement.setBoolean(i++, user.hasEmailNotif());
+			statement.setBoolean(i++, user.hasPhoneNotif());
+			statement.setString(i++, user.getLanguage());
 			return statement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -141,6 +144,9 @@ public class UserDao {
 			statement.setString(i++, user.getImage());
 			statement.setString(i++, user.getSocialNetwork().toString());
 			statement.setString(i++, user.getSocialNetworkId());
+			statement.setBoolean(i++, user.hasEmailNotif());
+			statement.setBoolean(i++, user.hasPhoneNotif());
+			statement.setString(i++, user.getLanguage());
 
 			statement.setInt(i, user.getId());
 			return statement.executeUpdate();
