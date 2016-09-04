@@ -28,7 +28,7 @@ public class ClearCartServlet extends HttpServlet {
 		
 //		response.getWriter().write(removed > 0 ? "true" : "false");
 		request.setAttribute("orders", new ArrayList<Order>());
-		request.getRequestDispatcher("/pages/user/shopping_cart.jsp").forward(request, response);
+		request.getRequestDispatcher("/pages/orderCard.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -44,7 +44,10 @@ b {
 							<div class="col s7">
 
 								<div class="row" style="margin-top: 15px;">
-									<div class="col s5"><a href="${pageContext.servletContext.contextPath}/hotel/${order.hotel.id}">${order.hotel.name}</a></div>
+									<div class="col s5">
+										<a
+											href="${pageContext.servletContext.contextPath}/hotel/${order.hotel.id}">${order.hotel.name}</a>
+									</div>
 									<div class="col s5 offset-s1">${order.room.type}</div>
 								</div>
 
@@ -130,7 +133,8 @@ b {
 						</div>
 						<div class="row">
 							<div class="col s4 offset-s8">
-								<a id="btn${order.id}" class="my-btn waves-effect waves-light btn"
+								<a id="btn${order.id}"
+									class="my-btn waves-effect waves-light btn"
 									style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
 									onclick="removeOrderCard(${order.id})">REMOVE</a>
 							</div>
@@ -161,6 +165,20 @@ b {
 		</div>
 	</div>
 </c:forEach>
+
+<div class="row">
+	<div class="col s3 offset-s1">TOTAL_PRICE : ${summary} UAH</div>
+	<div class="col s2 offset-s3">
+		<a id="clearBtn" class="my-btn waves-effect waves-light btn"
+			style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+			onclick="clearCart()">CLEAR</a>
+	</div>
+	<div class="col s2 offset-s5">
+		<a class="my-btn waves-effect waves-light btn"
+			style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+			onclick="bookAll()">ORDER</a>
+	</div>
+</div>
 
 
 <script type="text/javascript"
