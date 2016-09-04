@@ -177,7 +177,7 @@ div #sidebar-wrapper {
 									<c:forEach var="activeOrder" items="${activeOrders}">
 										<tr class="order${activeOrder.id}">
 											<td class="lalign" style="text-align: center;"><a
-												href="${pageContext.servletContext.contextPath}/order/${activeOrder.id}">#${activeOrder.id}</a></td>
+												href="${pageContext.servletContext.contextPath}/cabinet/order/${activeOrder.id}">#${activeOrder.id}</a></td>
 
 											<td style="text-align: center;"><a href="${pageContext.servletContext.contextPath}/hotel/${activeOrder.hotel.id}">${activeOrder.hotel.name}</a></td>
 
@@ -229,7 +229,7 @@ div #sidebar-wrapper {
 									<c:forEach var="finishedOrder" items="${finishedOrders}">
 										<tr class="order${finishedOrder.id}">
 											<td class="lalign" style="text-align: center;"><a
-												href="${pageContext.servletContext.contextPath}/order/${finishedOrder.id}">#${finishedOrder.id}</a></td>
+												href="${pageContext.servletContext.contextPath}/cabinet/order/${finishedOrder.id}">#${finishedOrder.id}</a></td>
 
 											<td style="text-align: center;"><a href="${pageContext.servletContext.contextPath}/hotel/${finishedOrder.hotel.id}">${finishedOrder.hotel.name}</a></td>
 
@@ -276,7 +276,7 @@ div #sidebar-wrapper {
 									<c:forEach var="allOrder" items="${allOrders}">
 										<tr class="order${allOrder.id}">
 											<td class="lalign" style="text-align: center;"><a
-												href="${pageContext.servletContext.contextPath}/order/${allOrder.id}">#${allOrder.id}</a></td>
+												href="${pageContext.servletContext.contextPath}/cabinet/order/${allOrder.id}">#${allOrder.id}</a></td>
 
 											<td style="text-align: center;"><a href="${pageContext.servletContext.contextPath}/hotel/${allOrder.hotel.id}">${allOrder.hotel.name}</a></td>
 

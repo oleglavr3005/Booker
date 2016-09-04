@@ -10,9 +10,6 @@ function removeOrderCard(orderId) {
 				$('#remove' + orderId).attr('disabled', true);
 				$('#book' + orderId).text("REMOVED");
 				$('#book' + orderId).attr('disabled', true);
-				$('#book' + orderId).onclick = function() {
-					alert("s");
-				};
 			} else {
 				$('#remove' + orderId).text("FAIL");
 				$('#remove' + orderId).attr('disabled', true);

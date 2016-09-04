@@ -32,6 +32,7 @@ function bookOrderCard(orderId, daysCount) {
 						if (result == 'true') {
 							$('#book' + orderId).text("SUCCES");
 							$('#book' + orderId).attr('disabled', true);
+							$('#remove' + orderId).attr('disabled', true);
 						} else {
 							$('#book' + orderId).text("FAIL");
 							$('#book' + orderId).attr('disabled', true);
@@ -101,6 +102,7 @@ function bookOrderCard(orderId, daysCount) {
 				if (result == 'true') {
 					$('#book' + orderId).text("SUCCES");
 					$('#book' + orderId).attr('disabled', true);
+					$('#remove' + orderId).attr('disabled', true);
 				} else {
 					$('#book' + orderId).text("FAIL");
 					$('#book' + orderId).attr('disabled', true);
