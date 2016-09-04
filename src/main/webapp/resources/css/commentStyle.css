@@ -1,41 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic);
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic);
-body {
-    background: #fff;
-    font: 14px/20px Lato, Arial, sans-serif;
-    color: #555;
-    -webkit-font-smoothing: antialiased!important
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin: 0 0 10px;
-    font-family: inherit;
-    font-weight: 700;
-    line-height: 20px;
-    color: inherit;
-    text-rendering: optimizelegibility;
-    -webkit-font-smoothing: antialiased!important
-}
-h2,
-h3,
-h4 {
-    color: #333
-}
-h1 {
-    font-weight: 900;
-    text-align: center;
-    font-family: Lato, Arial, sans-serif
-}
-h2 {
-    font-weight: 700;
-    text-align: center;
-    font-family: Lato, Arial, sans-serif
-}
+
 .main-title {
     text-shadow: 0 1px 1px rgba(0, 0, 0, .25);
     color: #fff
@@ -100,20 +66,6 @@ footer h3 {
     line-height: 48px;
     font-weight: 300;
     margin-bottom: 30px
-}
-h4 {
-    font-size: 18px;
-    ine-height: 22px
-}
-h5 {
-    font-size: 14px;
-    line-height: 14px
-}
-footer h5 {
-    color: #555
-}
-h6 {
-    font-size: 13px
 }
 #first_title {
     margin-top: 60px

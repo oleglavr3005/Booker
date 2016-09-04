@@ -172,9 +172,7 @@ function endDateIsValid() {
 }
 
 function findPage(url,pageNumber) {	
-	var path = url.substring(url.lastIndexOf("/") + 1,url.lenght);
-	alert("after - " + path);
-	
+	var path = url.substring(url.lastIndexOf("/") + 1,url.lenght);	
 	$.get(path, {
 		flag : 'true',
 		page : pageNumber

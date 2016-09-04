@@ -96,134 +96,178 @@ div #sidebar-wrapper {
 	<jsp:include page="/pages/header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 
-	<div class="container">
+	<div class="container-fluid">
 
-<div id="links">
-			<div class="row s12" style="margin-bottom: 0;">
-				<div class="col s4">
-					<a href='<c:out value="${mainPhoto.id}"></c:out>' title="Banana"
-						data-gallery> <img
-						src="<c:out value="${mainPhoto.img}"></c:out>" alt="Banana">
-					</a>
+		<div class="row" style="margin-top: 20px;">
+
+			<div class="col s3 offset-s1">
+				<a href='<c:out value="${mainPhoto.id}"></c:out>' title="Banana"
+					data-gallery> <img
+					src="<c:out value="${mainPhoto.img}"></c:out>" alt="Banana">
+				</a>
 
 
-					<div style="overflow-x: auto;">
-						<div style="margin: 10px; white-space: nowrap;">
-							<c:forEach items="${hotelPhotos}" var="photo">
-								<div style="display: inline-block;">
-									<a href='<c:out value="${photo.img }"></c:out>'
-										title="<c:out value="${photo.img }"></c:out>" data-gallery>
-										<img style="height: 60px;"
-										src="<c:out value="${photo.img }"></c:out>"
-										alt="<c:out value="${photo.img }"></c:out>">
-									</a>
-								</div>
-							</c:forEach>
-						</div>
+				<div style="overflow-x: auto;">
+					<div style="margin: 10px; white-space: nowrap;">
+						<c:forEach items="${hotelPhotos}" var="photo">
+							<div style="display: inline-block;">
+								<a href='<c:out value="${photo.img }"></c:out>'
+									title="<c:out value="${photo.img }"></c:out>" data-gallery>
+									<img style="height: 60px;"
+									src="<c:out value="${photo.img }"></c:out>"
+									alt="<c:out value="${photo.img }"></c:out>">
+								</a>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
+			</div>
 
-				<div class="col s3">
-					<div class="container-fluid">
-						<div class="row s4" style="margin-bottom: 0;">
-							<div class="row s8" style="width: 30%; padding-left: 10px;">
-								<h5 style="width: 300px;">
-									<c:out value="${hotel.name }"></c:out>
-								</h5>
-							</div>
-							</div>
-						<div class="row s2">
-							<i class="fa fa-lg icon-map-marker" aria-hidden="true"></i> <span>${hotel.city}
-								${hotel.street}</span>
+
+			<div class="col s8">
+				<div class="container-fluid">
+
+					<!-- HOTEL NAME + ICONS -->
+					<div class="row" style="margin-bottom: 0;">
+						<div class="col s8">
+							<h5>
+								<c:out value="${hotel.name }"></c:out>
+							</h5>
 						</div>
-							<div class="row s2">
-							    <h5 style=" font-size: 1rem;     margin: 0 0 0 0;">
-									<c:out value="${room.type }"></c:out>
-								</h5>
-							</div>
-	
-						<div class="row col s12" style="margin-bottom: 0;">
-							<p>Start date <span id="start_date">${order.startDate}</span></p>
-						</div>
-						
-						<div class="row col s12" style="margin-bottom: 0;">
-							<p>End date <span id="end_date">${order.endDate}</span></p>
-						</div>
-						
-						<div class="row col s12" style="margin-bottom: 0;">
-							<p>Order date <span id="order_date">${order.orderDate}</span></p>
-						</div>
-						
-						<div class="row col s12" style="margin-bottom: 0;">
-							<p>Status ${order.status}</p>
-						</div>
-						<div class="row col s12" style="margin-bottom: 0;">
-							<p>Food ${room.food}</p>
-						</div>
-						<div class="row col s12">
-							<p>Price ${order.price}</p>
-						</div>
-						<c:if test="${order.status != CANCELED}">
-						<div class="row col 12">
-						<div class="col s2 offset-s3" style="margin-top: 18px; margin-left: 0;">
-					<a id="search" class="waves-effect waves-light btn"
-						onclick="searchForm()"
-						<%-- 					href="${pageContext.servletContext.contextPath}/search" --%>
-					style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
-							key="Cancel" /></a>
-				</div>
-						</div>
-						</c:if>
-						</div>
-						</div>
-						<div class="row s4" style="padding-left: 0px;padding-right: 0px;">
-						<c:if test="${room.wifi == true}">
-								<div class="col s1" style="margin-top: 10px; width: 24px; cursor: default;">
-									<a class="tooltipped" data-position="icon" data-tooltip="Wifi" style="color: #0d0d0d;"><i  class="material-icons invert">wifi</i></a>
+
+						<div class="col s4" style="padding-left: 0px; padding-right: 0px;">
+							<c:if test="${room.wifi == true}">
+								<div class="col s1"
+									style="margin-top: 10px; width: 24px; cursor: default;">
+									<a class="tooltipped" data-position="icon" data-tooltip="Wifi"
+										style="color: #0d0d0d;"><i class="material-icons invert">wifi</i></a>
 								</div>
 							</c:if>
 
 							<c:if test="${room.shower == true}">
-								<div class="col s1" style="margin-top: 10px;     width: 32px; height: 32px;">
-									<a class="tooltipped" data-position="icon" data-tooltip="Shower"><img class="invert" style="max-width: 230%;" src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png"/></a>
+								<div class="col s1"
+									style="margin-top: 10px; width: 32px; height: 32px;">
+									<a class="tooltipped" data-position="icon"
+										data-tooltip="Shower"><img class="invert"
+										style="max-width: 230%;"
+										src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
 								</div>
 							</c:if>
 
 							<c:if test="${room.parking == true}">
-								<div class="col s1" style="margin-top: 10px;width: 24px; cursor: default;">
-									<a class="tooltipped" data-position="icon" data-tooltip="Parking" style="color: #0d0d0d;"><i class="material-icons invert">local_parking</i></a>
+								<div class="col s1"
+									style="margin-top: 10px; width: 24px; cursor: default;">
+									<a class="tooltipped" data-position="icon"
+										data-tooltip="Parking" style="color: #0d0d0d;"><i
+										class="material-icons invert">local_parking</i></a>
 								</div>
 							</c:if>
 
 							<c:if test="${room.condition == true}">
-								<div class="col s1" style="margin-top: 10px;width: 24px; cursor: default;">
-								<a class="tooltipped" data-position="icon" data-tooltip="Condition" style="color: #0d0d0d;"><i class="material-icons invert">toys</i></a>
+								<div class="col s1"
+									style="margin-top: 10px; width: 24px; cursor: default;">
+									<a class="tooltipped" data-position="icon"
+										data-tooltip="Condition" style="color: #0d0d0d;"><i
+										class="material-icons invert">toys</i></a>
 								</div>
 							</c:if>
 
 							<c:if test="${room.pool == true}">
-								<div class="col s1" style="margin-top: 10px;width: 24px; cursor: default;">
-								<a class="tooltipped" data-position="icon" data-tooltip="Pool" style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
+								<div class="col s1"
+									style="margin-top: 10px; width: 24px; cursor: default;">
+									<a class="tooltipped" data-position="icon" data-tooltip="Pool"
+										style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
 								</div>
 							</c:if>
 
 							<c:if test="${room.gym == true}">
-								<div class="col s1" style="margin-top: 10px;width: 24px; cursor: default;">
-								<a class="tooltipped" data-position="icon" data-tooltip="Gym" style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
+								<div class="col s1"
+									style="margin-top: 10px; width: 24px; cursor: default;">
+									<a class="tooltipped" data-position="icon" data-tooltip="Gym"
+										style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
 								</div>
 							</c:if>
 
 							<c:if test="${room.balcony == true}">
-								<div class="col s1" style="margin-top: 10px; width: 32px; height: 32px;">
-								<a class="tooltipped" data-position="icon" data-tooltip="Balcony"><img class="invert" style="max-width: 230%;" src="${pageContext.servletContext.contextPath}/resources/images/balcony.png"/></a>
+								<div class="col s1"
+									style="margin-top: 10px; width: 32px; height: 32px;">
+									<a class="tooltipped" data-position="icon"
+										data-tooltip="Balcony"><img class="invert"
+										style="max-width: 230%;"
+										src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
 								</div>
 							</c:if>
 						</div>
-						
+					</div>
+					<!-- END OF HOTEL NAME + ICONS -->
+
+
+					<!-- MAP MARKER -->
+					<div class="row">
+						<div class="col s12">
+							<i class="fa fa-lg icon-map-marker" aria-hidden="true"></i> <span>${hotel.city}
+								${hotel.street}</span>
+						</div>
+					</div>
+					<!-- END OF MAP MARKER -->
+
+
+					<div class="row ">
+						<div class="col s12">
+							<h5 style="font-size: 1rem; margin: 0 0 0 0;">
+								@icon for Room type@ ROOM_TYPE : <c:out value="${room.type }"></c:out>
+							</h5>
+						</div>
+					</div>
+
+					<div class="row col s12" style="margin-bottom: 0;">
+						<p>
+							Start date <span id="start_date">${order.startDate}</span>
+						</p>
+					</div>
+
+					<div class="row col s12" style="margin-bottom: 0;">
+						<p>
+							End date <span id="end_date">${order.endDate}</span>
+						</p>
+					</div>
+
+					<div class="row col s12" style="margin-bottom: 0;">
+						<p>
+							Order date <span id="order_date">${order.orderDate}</span>
+						</p>
+					</div>
+
+					<div class="row col s12" style="margin-bottom: 0;">
+						<p>Status ${order.status}</p>
+					</div>
+					<div class="row col s12" style="margin-bottom: 0;">
+						<p>Food ${room.food}</p>
+					</div>
+					<div class="row col s12">
+						<p>Price ${order.price}</p>
+					</div>
+					<c:if test="${order.status != CANCELED}">
+						<div class="row col 12">
+							<div class="col s2 offset-s3"
+								style="margin-top: 18px; margin-left: 0;">
+								<a id="search" class="waves-effect waves-light btn"
+									onclick="searchForm()"
+									<%-- 					href="${pageContext.servletContext.contextPath}/search" --%>
+					style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
+										key="Cancel" /></a>
+							</div>
+						</div>
+					</c:if>
 
 				</div>
 			</div>
+
+
+
+
 		</div>
+	</div>
 
 
 
@@ -279,7 +323,7 @@ div #sidebar-wrapper {
 
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
-		
+
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 	<script
@@ -287,62 +331,62 @@ div #sidebar-wrapper {
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
 
-	
-<script type="text/javascript">
-$(document).ready(function (){	
-	var date = document.getElementById("start_date");
-	var dateObject = new Date(date.innerHTML);
-	var curr_date = dateObject.getDate();
-	if(curr_date < 10) {
-		curr_date = "0" + curr_date;
-	}
-	var curr_month = dateObject.getMonth() + 1;
-	if(curr_month < 10) {
-		curr_month = "0" + curr_month;
-	}
-	var curr_year = dateObject.getFullYear();
-	date.innerHTML = (curr_year + "-" + curr_month + "-" + curr_date);
-	// return date = (curr_year + "-" + curr_month + "-" + curr_date);
-});
-</script>
-<script type="text/javascript">
-$(document).ready(function (){	
-	var date = document.getElementById("end_date");
-	var dateObject = new Date(date.innerHTML);
-	var curr_date = dateObject.getDate();
-	if(curr_date < 10) {
-		curr_date = "0" + curr_date;
-	}
-	var curr_month = dateObject.getMonth() + 1;
-	if(curr_month < 10) {
-		curr_month = "0" + curr_month;
-	}
-	var curr_year = dateObject.getFullYear();
-	date.innerHTML = (curr_year + "-" + curr_month + "-" + curr_date);
-	// return date = (curr_year + "-" + curr_month + "-" + curr_date);
-});
-</script>
-<script type="text/javascript">
-$(document).ready(function (){	
-	var date = document.getElementById("order_date");
-	var dateObject = new Date(date.innerHTML);
-	var curr_date = dateObject.getDate();
-	if(curr_date < 10) {
-		curr_date = "0" + curr_date;
-	}
-	var curr_month = dateObject.getMonth() + 1;
-	if(curr_month < 10) {
-		curr_month = "0" + curr_month;
-	}
-	var curr_year = dateObject.getFullYear();
-	date.innerHTML = (curr_year + "-" + curr_month + "-" + curr_date);
-	// return date = (curr_year + "-" + curr_month + "-" + curr_date);
-});
-</script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var date = document.getElementById("start_date");
+			var dateObject = new Date(date.innerHTML);
+			var curr_date = dateObject.getDate();
+			if (curr_date < 10) {
+				curr_date = "0" + curr_date;
+			}
+			var curr_month = dateObject.getMonth() + 1;
+			if (curr_month < 10) {
+				curr_month = "0" + curr_month;
+			}
+			var curr_year = dateObject.getFullYear();
+			date.innerHTML = (curr_year + "-" + curr_month + "-" + curr_date);
+			// return date = (curr_year + "-" + curr_month + "-" + curr_date);
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var date = document.getElementById("end_date");
+			var dateObject = new Date(date.innerHTML);
+			var curr_date = dateObject.getDate();
+			if (curr_date < 10) {
+				curr_date = "0" + curr_date;
+			}
+			var curr_month = dateObject.getMonth() + 1;
+			if (curr_month < 10) {
+				curr_month = "0" + curr_month;
+			}
+			var curr_year = dateObject.getFullYear();
+			date.innerHTML = (curr_year + "-" + curr_month + "-" + curr_date);
+			// return date = (curr_year + "-" + curr_month + "-" + curr_date);
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var date = document.getElementById("order_date");
+			var dateObject = new Date(date.innerHTML);
+			var curr_date = dateObject.getDate();
+			if (curr_date < 10) {
+				curr_date = "0" + curr_date;
+			}
+			var curr_month = dateObject.getMonth() + 1;
+			if (curr_month < 10) {
+				curr_month = "0" + curr_month;
+			}
+			var curr_year = dateObject.getFullYear();
+			date.innerHTML = (curr_year + "-" + curr_month + "-" + curr_date);
+			// return date = (curr_year + "-" + curr_month + "-" + curr_date);
+		});
+	</script>
 
 
-	
-	
+
+
 </body>
 
 </html>
