@@ -28,6 +28,8 @@ public class ClearCartServlet extends HttpServlet {
 		
 //		response.getWriter().write(removed > 0 ? "true" : "false");
 		request.setAttribute("orders", new ArrayList<Order>());
+		request.setAttribute("summary", 0);
+		request.setAttribute("countOfOrders", 0);
 		request.getRequestDispatcher("/pages/orderCard.jsp").forward(request, response);
 	}
 
