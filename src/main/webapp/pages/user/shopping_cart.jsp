@@ -34,6 +34,9 @@
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/languages.min.css">
 
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/jPage/style.css">
+
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
 	rel="stylesheet">
@@ -100,6 +103,14 @@
 
 <!-- END OF SWITCH CONTENT -->
 
+<!-- PAGINATOR 3000 -->
+		<div id="paginationdemo" class="row">
+			<div id="demo5" class="col s4 offset-s5"></div>
+		</div>
+<!-- END OF PAGINATOR 3000 -->
+
+	
+
 	</div>
 	
 	<!-- SUCCES MODAL  -->
@@ -126,6 +137,38 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
+	
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
+		
+		
+	<script type="text/javascript">
+		var pagesCount = '${countOfPages}';
+			pagesCount = 3;
+		if (pagesCount > 1) {
+			jQuery(function() {
+				jQuery("#demo5").paginate({
+					count : pagesCount,
+					start : 1,
+					display : 5,
+					border : false,
+					//		border_color			: '#fff',
+					text_color : '#fff',
+					background_color : '#26A69A',
+					//		border_hover_color		: '#ccc',
+					text_hover_color : '#000',
+					background_hover_color : '#CFCFCF',
+					images : false,
+					mouse : 'press',
+					onChange : function(page) {
+						// 											$('._current','#paginationdemo').removeClass('_current').hide();
+						// 											$('#p'+page).addClass('_current').show();
+						findPage(window.location.href,page);
+					}
+				});
+			});
+		}
+	</script>
 
 </body>
 

@@ -171,8 +171,11 @@ function endDateIsValid() {
 	}
 }
 
-function findPage(pageNumber) {
-	$.get('home', {
+function findPage(url,pageNumber) {
+	alert("before - " + url);
+	var path = url.substring(url.lastIndexOf("/") + 1,url.lenght);
+	alert("after - " + path);
+	$.get(path, {
 		flag : 'true',
 		page : pageNumber
 	}, function(hotels) {

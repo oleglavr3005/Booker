@@ -320,14 +320,19 @@ div #sidebar-wrapper {
 			</c:if>
 		</h6>
 
+
+<!-- SWITCH CONTENT -->
 		<div id="switchContent" class="row">
 			<jsp:include page="card.jsp"></jsp:include>
 		</div>
 
+<!-- END OF SWITCH CONTENT -->
+
+<!-- PAGINATOR 3000 -->
 		<div id="paginationdemo" class="row">
 			<div id="demo5" class="col s4 offset-s5"></div>
 		</div>
-
+<!-- END OFPAGINATOR 3000 -->
 	</div>
 
 	<!-- Footer ========================================================================== -->
@@ -423,7 +428,7 @@ div #sidebar-wrapper {
 
 	<script type="text/javascript">
 		var pagesCount = '${countOfPages}';
-
+		
 		if (pagesCount > 1) {
 			jQuery(function() {
 				jQuery("#demo5").paginate({
@@ -442,7 +447,7 @@ div #sidebar-wrapper {
 					onChange : function(page) {
 						// 											$('._current','#paginationdemo').removeClass('_current').hide();
 						// 											$('#p'+page).addClass('_current').show();
-						findPage(page);
+						findPage(window.location.href,page);
 					}
 				});
 			});
