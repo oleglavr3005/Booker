@@ -25,25 +25,33 @@ public class Feedback {
 	
 	@DataBaseField(fieldName = "date")
 	private Timestamp date;
+	
+	@DataBaseField(fieldName = "first_name")
+	private String firstName;
+	
+	@DataBaseField(fieldName = "last_name")
+	private String lastName;
 
-	public Feedback(int feedbackId, Integer userId, Integer hotelId, Integer rating, String comment, String title,
-			Timestamp date) {
+	public Feedback(int id, Integer userId, Integer hotelId, Integer rating, String comment, String title,
+			Timestamp date, String firstName, String lastName) {
 		super();
-		this.id = feedbackId;
+		this.id = id;
 		this.userId = userId;
 		this.hotelId = hotelId;
 		this.rating = rating;
 		this.comment = comment;
 		this.title = title;
 		this.date = date;
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int feedbackId) {
-		this.id = feedbackId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Integer getUserId() {
@@ -92,5 +100,21 @@ public class Feedback {
 
 	public void setDate(Timestamp date) {
 		this.date = date;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 }
