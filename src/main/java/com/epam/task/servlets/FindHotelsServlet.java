@@ -40,60 +40,33 @@ public class FindHotelsServlet extends HttpServlet {
 			RoomService roomService = new RoomService();
 			boolean togler = Boolean.parseBoolean(request.getParameter("togler"));
 			
-			String name = request.getParameter("name"); //get from request
-			int minStars = (int) Double.parseDouble(request.getParameter("minStars")); //get from request
-			int maxStars = (int) Double.parseDouble(request.getParameter("maxStars")); //get from request
-			int people = Integer.parseInt(request.getParameter("people")); //get from request
-			
-			boolean typeStandart = togler == true? request.getParameter("typeStandart") != null : false; //get from request
-			boolean typeLux = togler == true? request.getParameter("typeLux") != null : false; //get from request
-			boolean typeDelux = togler == true? request.getParameter("typeDelux") != null : false; //get from request
-			
-			boolean foodNone = togler == true? request.getParameter("foodNone") != null : false; //get from request
-			boolean foodBreakfast = togler == true? request.getParameter("foodBreakfast") != null : false; //get from request
-			boolean foodTwice = togler == true? request.getParameter("foodTwice") != null : false; //get from request
-			boolean foodFull = togler == true? request.getParameter("foodFull") != null : false; //get from request
-			
-			int minPrice = togler == true? (int) Double.parseDouble(request.getParameter("minUserPrice")) : roomService.getMinPrice(); //get from request
-			int maxPrice = togler == true? (int) Double.parseDouble(request.getParameter("maxUserPrice")) : roomService.getMaxPrice(); //get from request
-			
-			boolean hasWiFi = togler == true? request.getParameter("hasWifi") != null : false; //get from request
-			boolean hasShower = togler == true? request.getParameter("hasShower") != null : false; //get from request
-			boolean hasParking = togler == true? request.getParameter("hasParking") != null : false; //get from request
-			boolean hasCondition = togler == true? request.getParameter("hasCondition") != null : false; //get from request
-			boolean hasPool = togler == true? request.getParameter("hasPool") != null : false; //get from request
-			boolean hasGym = togler == true? request.getParameter("hasPym") != null : false; //get from request
-			boolean hasBalcony = togler == true? request.getParameter("hasBalcony") != null : false; //get from request
-
-			boolean noDeposit = togler == true? request.getParameter("noDeposit") != null : false; //get from request
-			
 			session.setAttribute("togler", togler);
 			
-			session.setAttribute("name", name);
-			session.setAttribute("minStars", minStars);
-			session.setAttribute("maxStars", maxStars);
-			session.setAttribute("people", people);
+			session.setAttribute("name", request.getParameter("name"));
+			session.setAttribute("minStars", (int) Double.parseDouble(request.getParameter("minStars")));
+			session.setAttribute("maxStars", (int) Double.parseDouble(request.getParameter("maxStars")));
+			session.setAttribute("people", Integer.parseInt(request.getParameter("people")));
 			
-			session.setAttribute("typeStandart", typeStandart);
-			session.setAttribute("typeLux", typeLux);
-			session.setAttribute("typeDelux", typeDelux);
+			session.setAttribute("typeStandart", togler == true? request.getParameter("typeStandart") != null : false);
+			session.setAttribute("typeLux", togler == true? request.getParameter("typeLux") != null : false);
+			session.setAttribute("typeDelux", togler == true? request.getParameter("typeDelux") != null : false);
 			
-			session.setAttribute("foodNone", foodNone);
-			session.setAttribute("foodBreakfast", foodBreakfast);
-			session.setAttribute("foodTwice", foodTwice);
-			session.setAttribute("foodFull", foodFull);
+			session.setAttribute("foodNone", togler == true? request.getParameter("foodNone") != null : false);
+			session.setAttribute("foodBreakfast", togler == true? request.getParameter("foodBreakfast") != null : false);
+			session.setAttribute("foodTwice", togler == true? request.getParameter("foodTwice") != null : false);
+			session.setAttribute("foodFull", togler == true? request.getParameter("foodFull") != null : false);
 			
-			session.setAttribute("minUserPrice", minPrice);
-			session.setAttribute("maxUserPrice", maxPrice);
+			session.setAttribute("minUserPrice", togler == true? (int) Double.parseDouble(request.getParameter("minUserPrice")) : roomService.getMinPrice());
+			session.setAttribute("maxUserPrice", togler == true? (int) Double.parseDouble(request.getParameter("maxUserPrice")) : roomService.getMaxPrice());
 			
-			session.setAttribute("hasWiFi", hasWiFi);
-			session.setAttribute("hasShower", hasShower);
-			session.setAttribute("hasParking", hasParking);
-			session.setAttribute("hasCondition", hasCondition);
-			session.setAttribute("hasPool", hasPool);
-			session.setAttribute("hasGym", hasGym);
-			session.setAttribute("hasBalcony", hasBalcony);
-			session.setAttribute("noDeposit", noDeposit);
+			session.setAttribute("hasWiFi", togler == true? request.getParameter("hasWifi") != null : false);
+			session.setAttribute("hasShower", togler == true? request.getParameter("hasShower") != null : false);
+			session.setAttribute("hasParking", togler == true? request.getParameter("hasParking") != null : false);
+			session.setAttribute("hasCondition", togler == true? request.getParameter("hasCondition") != null : false);
+			session.setAttribute("hasPool", togler == true? request.getParameter("hasPool") != null : false);
+			session.setAttribute("hasGym", togler == true? request.getParameter("hasGym") != null : false);
+			session.setAttribute("hasBalcony", togler == true? request.getParameter("hasBalcony") != null : false);
+			session.setAttribute("noDeposit", togler == true? request.getParameter("noDeposit") != null : false);
 			
 			session.setAttribute("startDate", request.getParameter("startDate"));
 			session.setAttribute("endDate", request.getParameter("endDate"));
