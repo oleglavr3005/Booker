@@ -27,6 +27,7 @@ public class OrderDAO {
 	private final String SQL_REMOVE_ORDERS_BY_STATUS = "DELETE FROM `order` WHERE user_id = ? AND `status` LIKE ?";
 	private final String SQL_GET_ALL_ORDERS_BY_USER_AND_STATUS = "SELECT * FROM `order` WHERE `status` LIKE ? AND user_id = ?";
 	private final String SQL_GET_ORDER_BY_USER_ID = "SELECT * FROM `order` WHERE user_id = ?";
+	private final String SQL_GET_ORDER_BY_USER_AND_ID = "SELECT * FROM `order` WHERE user_id = ? AND order_id = ?";
 	private final String SQL_GET_ORDER_BY_ROOM_ID = "SELECT * FROM `order` WHERE room_id = ?";
 
 	private final String SQL_CREATE_ORDER_EVENT = "CREATE EVENT eventname ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 MINUTE DO DELETE FROM `order` WHERE order_id = ? AND `status` LIKE 'ORDER'";
@@ -135,7 +136,7 @@ public class OrderDAO {
 
 	public List<Order> getOrdersByUser(int userId) {
 		List<Order> orders = new ArrayList<>();
-		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ORDER_BY_USER_ID);) {
+		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ORDER_BY_USER_ID)) {
 			statement.setInt(1, userId);
 			ResultSet rs = statement.executeQuery();
 			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
@@ -143,6 +144,18 @@ public class OrderDAO {
 			e.printStackTrace();
 		}
 		return orders;
+	}
+
+	public Order getOrderByUserAndId(int userId, int orderId) {
+		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ORDER_BY_USER_AND_ID);) {
+			statement.setInt(1, userId);
+			statement.setInt(2, orderId);
+			ResultSet rs = statement.executeQuery();
+			return UniversalTransformer.getObjectFromRS(rs, Order.class);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public List<Order> getOrdersByRoom(int roomId) {

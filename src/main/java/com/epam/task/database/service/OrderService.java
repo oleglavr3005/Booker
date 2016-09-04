@@ -36,6 +36,10 @@ public class OrderService {
 		return daoManager.executeAndClose(() -> daoManager.getOrderDao().getOrdersByUser(userId));
 	}
 
+	public Order getOrderByUserAndId(int userId, int orderId) {
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().getOrderByUserAndId(userId, orderId));
+	}
+
 	public List<Order> getOrdersByUserAndStatus(int userId, OrderStatus status) {
 		return daoManager.executeAndClose(() -> daoManager.getOrderDao().getOrdersByUserAndStatus(userId, status));
 	}
