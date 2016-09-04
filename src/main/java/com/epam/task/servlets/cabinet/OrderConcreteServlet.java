@@ -19,31 +19,23 @@ import com.epam.task.database.service.HotelPhotoService;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.OrderService;
 import com.epam.task.database.service.RoomService;
-import com.epam.task.util.Extracter;
 
-
-/**
- * Servlet implementation class OrderServlet
- */
 @WebServlet("/cabinet/order/*")
 public class OrderConcreteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = Logger.getLogger(OrderConcreteServlet.class);
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public OrderConcreteServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		Integer orderId = Integer.valueOf(Extracter.getLast(request.getPathInfo()));
+		int orderId;
+		try {
+			orderId = Integer.parseInt(request.getPathInfo().substring(1));
+		} catch (Exception e) {
+			return;
+		}
 		Order order = new OrderService().getOrderById(orderId);
 		Room room = new RoomService().getRoomById(order.getRoomId());
 		Hotel hotel = new HotelService().getHotelById(room.getHotelId());		
@@ -61,11 +53,7 @@ public class OrderConcreteServlet extends HttpServlet {
 		request.getRequestDispatcher("/pages/user/orderConcrete.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

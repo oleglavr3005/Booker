@@ -48,7 +48,7 @@ public class ShoppingCartServlet extends HttpServlet {
 		request.setAttribute("orders", ordersByPage);
 		request.setAttribute("summary", summary);
 		request.setAttribute("countOfOrders", orders.size());
-		session.setAttribute("countOfPages", countOfPages);
+		request.setAttribute("countOfPages", countOfPages);
 		request.setAttribute("currentPage", page);
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
