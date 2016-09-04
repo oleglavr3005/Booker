@@ -16,11 +16,7 @@ import com.epam.task.database.model.Order;
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.service.OrderService;
-import com.epam.task.util.Extracter;
 
-/**
- * Servlet Filter implementation class UserOrderFilter
- */
 @WebFilter("/cabinet/order/*")
 public class UserOrderFilter implements Filter {
 
@@ -35,7 +31,14 @@ public class UserOrderFilter implements Filter {
 		HttpSession httpSession = httpRequest.getSession(true);
 		
 		User user = (User) httpSession.getAttribute("user");
-		int orderId = Integer.valueOf(Extracter.getLast(httpRequest.getPathInfo()));
+		int orderId;
+		try {
+			orderId = Integer.parseInt(httpRequest.getPathInfo().substring(1));
+		} catch (Exception e) {
+			((HttpServletResponse) response).sendError(404);
+			return;
+		}
+		
 		if(user != null) {		
 			Order order = new OrderService().getOrderByUserAndId(user.getId(), orderId);
 			if(order != null && order.getStatus() != OrderStatus.ORDER && order.getStatus() != OrderStatus.CANCELED) {
