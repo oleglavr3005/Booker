@@ -296,8 +296,8 @@ div #sidebar-wrapper {
 			</div>
 
 
-			<input id="minStars" type="hidden" value="1" name="minStars" /> <input
-				id="maxStars" type="hidden" value="5" name="maxStars" /> 
+			<input id="minStars" type="hidden" value="${minStars}" name="minStars" /> <input
+				id="maxStars" type="hidden" value="${maxStars}" name="maxStars" /> 
 				<input id="minPrice" type="hidden" value="${minPrice}" name="minPrice" />
 				<input id="maxPrice" type="hidden" value="${maxPrice}" name="maxPrice" />
 				<input id="minUserPrice" type="hidden" value="${minUserPrice}" name="minUserPrice" />
@@ -339,7 +339,6 @@ div #sidebar-wrapper {
 	<div id="modal1" class="modal"
 		style="width: 25% !important; max-height: 40% !important">
 		<div class="modal-content">
-			<!-- 			<h4>VK auth</h4> -->
 			<p>
 				<img alt="Vk Log"
 					src="http://1863x.com/wp-content/uploads/2016/01/vk-vkontakte-logo-vk.jpg"
@@ -348,9 +347,6 @@ div #sidebar-wrapper {
 			<div class="progress" style="width: 275px;">
 				<div class="indeterminate"></div>
 			</div>
-			<!-- 			<div class="modal-footer"> -->
-
-			<!-- 			</div> -->
 		</div>
 
 	</div>
@@ -366,15 +362,13 @@ div #sidebar-wrapper {
 					$('.modal-trigger').leanModal();
 					$('#modal1').openModal();
 
-					debugger;
-
 					var token = window.location.hash.substr(1);
 					$.post('vk_oauth', {
 						token : token.split("&")[0].split("=")[1],
 						user_id : token.split("&")[2].split("=")[1]
 					}, function() {
 						//NEED normal names
-						document.location.href = '/MainPage/';
+						document.location.href = '/booker/home';
 
 					});
 				});
