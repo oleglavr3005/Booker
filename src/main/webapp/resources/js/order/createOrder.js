@@ -74,10 +74,11 @@ function bookOrderCard(orderId, daysCount) {
 						'</div>' + // form
 						'</div>'
 				if (orderId != null) {
-					$('#field' + orderId).after(content);
+					$('#field' + orderId).after(content); //book 1
 				} else {
-					$('#field').after(content);
+					$('#field').after(content); 		//book all
 				}
+				
 				var height = $('#subscribing_form').height();
 				$("#subscribing_form").animate({
 					height : "0px",

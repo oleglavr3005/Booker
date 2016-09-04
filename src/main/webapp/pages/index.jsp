@@ -173,7 +173,7 @@ div #sidebar-wrapper {
 
 				<div id="togle_place" class="col s12" style="margin-top: 18px;">
 
-					<div id="details_panel">
+					<div id="details_panel" style="display:none">
 
 						<div class="row">
 
@@ -276,7 +276,7 @@ div #sidebar-wrapper {
 					<div class="row">
 						<div class="col s10">
 							<a id="togle" class="waves-effect waves-light btn"
-								
+								onclick="togle()"
 								style="background: #26A69A; text-align: center; width: 100%; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><i
 								id="arrow_icon" class="fa fa-angle-double-down col s1 fa-2x"
 								aria-hidden="true" style="margin-left: 45%"></i></a>
@@ -325,13 +325,13 @@ div #sidebar-wrapper {
 		<div id="switchContent" class="row">
 			<jsp:include page="card.jsp"></jsp:include>
 		</div>
-
 <!-- END OF SWITCH CONTENT -->
 
+
 <!-- PAGINATOR 3000 -->
-		<div id="paginationdemo" class="row">
-			<div id="demo5" class="col s4 offset-s5"></div>
-		</div>
+<!-- 		<div id="paginationdemo" class="row"> -->
+<!-- 			<div id="demo5" class="col s4 offset-s5"></div> -->
+<!-- 		</div> -->
 <!-- END OFPAGINATOR 3000 -->
 	</div>
 
@@ -381,9 +381,9 @@ div #sidebar-wrapper {
 		</script>
 	</c:if>
 	<!--  END OF VK REDIRECT -->
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<!-- 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
+<!-- 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
 	<script
@@ -394,6 +394,8 @@ div #sidebar-wrapper {
 
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/noUIslider/slider.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/search/details.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
 	<script type="text/javascript"
@@ -419,17 +421,17 @@ div #sidebar-wrapper {
 		$('#hasBalcony').attr('checked', '${hasBalcony}' == 'true');
 		$('#noDeposit').attr('checked', '${noDeposit}' == 'true');
 
-		/* var togler = $('#togler').val();
+		 var togler = $('#togler').val();
 		if (togler == 'true') {
 			$("#togle").click();
 		}
 		else {
 			$('#togler').val("false");
-		} */
+		} 
 	</script>
 	
 	<script>
-		(function() {
+		/*(function() {
 			var flag = 0;
 			$('#details_panel').hide();
 			$('#togle').on('click', function() {
@@ -444,7 +446,7 @@ div #sidebar-wrapper {
 				    flag = 0;
 				}
 			});
-		})();
+		})();*/
 	</script>
 
 	<!-- 	DATEPICKER -->

@@ -106,7 +106,6 @@ b {
 <!-- END OF PAGINATOR 3000 -->
 
 
-
 <script type="text/javascript">
 		var pagesCount = '${countOfPages}';
 		var currentPage = '${currentPage}';
