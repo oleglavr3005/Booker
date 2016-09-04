@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.epam.task.database.model.Order;
 import com.epam.task.database.model.User;
+import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.service.OrderService;
 import com.epam.task.util.Extracter;
 
@@ -34,8 +36,13 @@ public class UserOrderFilter implements Filter {
 		
 		User user = (User) httpSession.getAttribute("user");
 		int orderId = Integer.valueOf(Extracter.getLast(httpRequest.getPathInfo()));
-		if(user != null && new OrderService().getOrderByUserAndId(user.getId(), orderId) != null) {			
-			chain.doFilter(request, response);
+		if(user != null) {		
+			Order order = new OrderService().getOrderByUserAndId(user.getId(), orderId);
+			if(order != null && order.getStatus() != OrderStatus.ORDER && order.getStatus() != OrderStatus.CANCELED) {
+				chain.doFilter(request, response);
+			} else {
+				((HttpServletResponse) response).sendError(404);
+			}
 		} else {		//throw the unexpected visitor on the error page
 			((HttpServletResponse) response).sendError(404);
 		}
