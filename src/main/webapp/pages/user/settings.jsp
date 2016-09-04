@@ -54,32 +54,6 @@
 	font-family: 'Times NewRoman', Times, serif;
 }
 
-tr {
-	height: 15px;
-}
-
-tr:nth-child(even) {
-	background-color: #eee;
-}
-
-tr:nth-child(odd) {
-	background-color: #fff;
-}
-
-th {
-	background-color: #E0C022;
-	color: white;
-}
-
-td, th {
-	text-align: center;
-}
-
-.purchase-table {
-	margin-top: 20px;
-	margin-bottom: 40px;
-}
-
 .tabs {
 	box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0
 		rgba(0, 0, 0, 0.12);
@@ -88,11 +62,6 @@ td, th {
 	background-color: #F3EAEA;
 }
 
-div #sidebar-wrapper {
-	position: relative;
-	left: 0;
-	margin-top: 0px;
-}
 
 .bg-img {
 	border-style: solid;
