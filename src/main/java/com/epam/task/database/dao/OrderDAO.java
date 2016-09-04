@@ -32,7 +32,7 @@ public class OrderDAO {
 	
 	private final String PAGINATION = " LIMIT ?, 3";
 
-	private final String SQL_CREATE_ORDER_EVENT = "CREATE EVENT eventname ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 MINUTE DO DELETE FROM `order` WHERE order_id = ? AND `status` LIKE 'ORDER'";
+	private final String SQL_CREATE_ORDER_EVENT = "CREATE EVENT eventname ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 HOUR DO DELETE FROM `order` WHERE order_id = ? AND `status` LIKE 'ORDER'";
 	
 	public OrderDAO(Connection connection) {
 		super();
