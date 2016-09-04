@@ -7,7 +7,7 @@ if (minimumStar == "") {
 }
 if (maximumStar == "") {
 	maximumStar = 5;
-	$('#minStars').val("5");
+	$('#maxStars').val("5");
 }
 noUiSlider.create(starRange, {
 	start : [ parseInt(minimumStar), parseInt(maximumStar) ], // Handle start position
