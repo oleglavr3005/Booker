@@ -287,51 +287,7 @@ div #sidebar-wrapper {
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
 
-	<script>
-		var range = document.getElementById('rangeSlider');
-		noUiSlider.create(range, {
-			start : [ 1, 5 ], // Handle start position
-			step : 1, // Slider moves in increments of '1'
-			connect : true, // Display a colored bar between the handles
-			behaviour : 'tap-drag', // Move handle on tap, bar is draggable
-			range : { // Slider can select '1' to '5'
-				'min' : 1,
-				'max' : 5
-			}
-		});
-	</script>
 	
-	<script>
-	var range2 = document.getElementById('priceSlider');
-	noUiSlider.create(range2, {
-		start : [ 100, 5000 ], // Handle start position
-		step : 1, // Slider moves in increments of '1'
-		connect : true, // Display a colored bar between the handles
-		behaviour : 'tap-drag', // Move handle on tap, bar is draggable
-		range : { // Slider can select '1' to '5'
-			'min' : 100,
-			'max' : 5000
-		}
-	});
-	
-	function togle(){
-		var elem1 = document.getElementById("details_panel");
-		var style = document.defaultView.getComputedStyle(elem1, null).getPropertyValue("display");
-		if (style == 'none'){
-			document.getElementById('details_panel').style.display = "block";
-			
-			$('#arrow_icon').removeClass("fa-angle-double-down");
-			$('#arrow_icon').addClass("fa-angle-double-up");
-		}
-		else {
-			document.getElementById('details_panel').style.display = "none";
-			
-			$('#arrow_icon').removeClass("fa-angle-double-up");
-			$('#arrow_icon').addClass("fa-angle-double-down");
-		}
-	}
-	
-	</script>
 <script type="text/javascript">
 $(document).ready(function (){	
 	var date = document.getElementById("start_date");

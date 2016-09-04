@@ -91,22 +91,7 @@
 
 		<div class="row">SHOP LIST</div>
 
-		<h6>
-			<c:if test="${countOfOrders > 0 }">
-				<fmt:message key="card.header" />
-				<span id="periodicals_number_for_all_users">${countOfOrders}</span>
-			</c:if>
-			<c:if test="${countOfOrders <= 0 }">
-				<fmt:message key="card.no.periodicals" />
-			</c:if>
-		</h6>
-		<div class="divider" style="margin-bottom: 20px;"></div>
-
-		<c:if test="${countOfOrders == 0}">
-			<h5 style="color: red; margin-bottom: 63px;">
-				<fmt:message key="card.no.periodicals" />
-			</h5>
-		</c:if>
+		
 
 <!-- SWITCH CONTENT -->
 		<div id="switchContent" class="row">
@@ -141,8 +126,6 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/order/createOrder.js"></script>
 
 </body>
 

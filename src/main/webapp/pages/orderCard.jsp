@@ -22,7 +22,22 @@ b {
 }
 </style>
 
+<h6>
+	<c:if test="${countOfOrders > 0 }">
+		<fmt:message key="card.header" />
+		<span id="periodicals_number_for_all_users">${countOfOrders}</span>
+	</c:if>
+	<c:if test="${countOfOrders <= 0 }">
+		<fmt:message key="card.no.periodicals" />
+	</c:if>
+</h6>
+<div class="divider" style="margin-bottom: 20px;"></div>
 
+<c:if test="${countOfOrders == 0}">
+	<h5 style="color: red; margin-bottom: 63px;">
+		<fmt:message key="card.no.periodicals" />
+	</h5>
+</c:if>
 
 
 <c:forEach var="order" items="${orders}">
@@ -51,7 +66,28 @@ b {
 									<div class="col s5 offset-s1">${order.room.type}</div>
 								</div>
 
-								<div class="row" style="margin-top: 15px;">TANYAS_DATE</div>
+								<div class="row" style="margin-top: 15px;">
+									<div>
+										<a class="tooltipped" data-position="icon"
+											data-tooltip="StartDate" style="color: #0d0d0d;"><i
+											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> Start
+										Date : <span id="start_date${order.id}">${order.startDate}</span>
+									</div>
+
+									<div>
+										<a class="tooltipped" data-position="icon"
+											data-tooltip="EndDate" style="color: #0d0d0d;"><i
+											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> End
+										Date : <span id="end_date${order.id}">${order.endDate}</span>
+									</div>
+									<script type="text/javascript"
+										src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
+
+									<script>
+									var id = ${order.id};
+									changeDate(id);</script>
+
+								</div>
 
 								<div class="row">
 									<a class="tooltipped" data-position="icon" data-tooltip="Price"
@@ -147,8 +183,8 @@ b {
 						</div>
 					</div>
 
-	<div id="field${order.id}" class="divider"
-				style="margin-bottom: 5px;"></div>
+					<div id="field${order.id}" class="divider"
+						style="margin-bottom: 5px;"></div>
 
 				</div>
 			</div>
@@ -173,10 +209,11 @@ b {
 				onclick="bookOrderCard(null,${summary})">ORDER</a>
 		</div>
 	</div>
-	<div id="field" class="divider"
-				style="margin-bottom: 5px;"></div>
+	<div id="field" class="divider" style="margin-bottom: 5px;"></div>
 
 </c:if>
 
 <script type="text/javascript"
 	src="${pageContext.servletContext.contextPath}/resources/js/order/removeOrder.js"></script>
+<script type="text/javascript"
+	src="${pageContext.servletContext.contextPath}/resources/js/order/createOrder.js"></script>
