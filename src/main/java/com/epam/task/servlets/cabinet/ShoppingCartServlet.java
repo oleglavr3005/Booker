@@ -48,16 +48,21 @@ public class ShoppingCartServlet extends HttpServlet {
 		
 		String pageString = request.getParameter("page");
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
+		int countOfPages = (int) Math.ceil(orders.size() / 3.0);
+		if (page > countOfPages) {
+			page--;
+		}
 				
 		List<OrderDto> ordersByPage = OrderDto.listConverter(new OrderService().getOrdersByUserAndStatusAndPage(userId, OrderStatus.ORDER, page));
 		
 		request.setAttribute("orders", ordersByPage);
 		request.setAttribute("summary", summary);
 		request.setAttribute("countOfOrders", orders.size());
-		session.setAttribute("countOfPages", Math.ceil(orders.size() / 3.0));
+		session.setAttribute("countOfPages", countOfPages);
+		
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
-			request.getRequestDispatcher("pages/orderCard.jsp").forward(request, response);
+			request.getRequestDispatcher("/pages/orderCard.jsp").forward(request, response);
 		} else {	
 			request.getRequestDispatcher("/pages/user/shopping_cart.jsp").forward(request, response);
 		}
