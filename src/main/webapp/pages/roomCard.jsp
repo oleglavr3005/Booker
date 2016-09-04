@@ -72,6 +72,19 @@ b {
 						</div>
 
 						<div class="row">
+							<a class="tooltipped" data-position="icon"
+								data-tooltip="Double beds" style="color: #0d0d0d;"><img
+								class="invert" style="max-width: 7%;"
+								src="${pageContext.servletContext.contextPath}/resources/images/double_bed.png" /></a>
+							<span>${room.doubleBedsCount}</span> <a class="tooltipped"
+								data-position="icon" data-tooltip="Single beds"
+								style="color: #0d0d0d;"><img class="invert"
+								style="max-width: 7%;"
+								src="${pageContext.servletContext.contextPath}/resources/images/single_bed.png" /></a>
+							<span>${room.bedsCount}</span>
+						</div>
+
+						<div class="row">
 							<a class="tooltipped" data-position="icon" data-tooltip="Food"
 								style="color: #0d0d0d;"><i
 								class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span>
@@ -81,33 +94,25 @@ b {
 							<a class="tooltipped" data-position="icon" data-tooltip="Price"
 								style="color: #0d0d0d;"><i class="fa fa-lg fa-money invert"
 								aria-hidden="true"></i></a> <span>${room.price}</span>
-						</div>
-
-						<div class="row">
-							<a class="tooltipped" data-position="icon"
-								data-tooltip="Double beds" style="color: #0d0d0d;"><img
-								class="invert" style="max-width: 10%;"
-								src="${pageContext.servletContext.contextPath}/resources/images/double_bed.png" /></a>
-							<span>${room.doubleBedsCount}</span> <a class="tooltipped"
-								data-position="icon" data-tooltip="Single beds"
-								style="color: #0d0d0d;"><img class="invert"
-								style="max-width: 10%;"
-								src="${pageContext.servletContext.contextPath}/resources/images/single_bed.png" /></a>
-							<span>${room.bedsCount}</span>
+									<c:if test="${room.daysCount == -1}">
+										<a class="tooltipped" data-position="icon" data-tooltip="No deposit"
+										style="color: #0d0d0d;"><i class="fa fa-2x fa-exclamation-circle invert" aria-hidden="true"></i></a>
+									</c:if>
 						</div>
 
 					</div>
 
 					<div class="col s3">
-						<div class="row" style="float: right">
+						<div class="row" style="float: right; text-align:right; font-size:0.3rem">
 							<c:if test="${room.wifi == true}">
 								<a class="tooltipped" data-position="icon" data-tooltip="Wifi"
 									style="color: #0d0d0d;"><i class="material-icons invert">wifi</i></a>
 							</c:if>
 
 							<c:if test="${room.shower == true}">
-								<a class="tooltipped" data-position="icon" data-tooltip="Shower"
-									style="color: #0d0d0d;"><i class="material-icons invert">invert_colors</i></a>
+								<a class="tooltipped" data-position="icon" data-tooltip="Shower"><img
+									class="invert" style="max-width: 10%; margin-top:-1.5rem"
+									src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
 							</c:if>
 
 							<c:if test="${room.parking == true}">
@@ -134,8 +139,9 @@ b {
 
 							<c:if test="${room.balcony == true}">
 								<a class="tooltipped" data-position="icon"
-									data-tooltip="Balcony" style="color: #0d0d0d;"><i
-									class="material-icons invert">account_balance</i></a>
+									data-tooltip="Balcony"><img class="invert"
+									style="max-width: 10%; margin-top:-1.5rem"
+									src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
 							</c:if>
 						</div>
 					</div>
