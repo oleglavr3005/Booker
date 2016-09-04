@@ -173,7 +173,7 @@ div #sidebar-wrapper {
 
 				<div id="togle_place" class="col s12" style="margin-top: 18px;">
 
-					<div id="details_panel" style="display: none">
+					<div id="details_panel" style="display:none">
 
 						<div class="row">
 
@@ -296,8 +296,8 @@ div #sidebar-wrapper {
 			</div>
 
 
-			<input id="minStars" type="hidden" value="1" name="minStars" /> <input
-				id="maxStars" type="hidden" value="5" name="maxStars" /> 
+			<input id="minStars" type="hidden" value="${minStars}" name="minStars" /> <input
+				id="maxStars" type="hidden" value="${maxStars}" name="maxStars" /> 
 				<input id="minPrice" type="hidden" value="${minPrice}" name="minPrice" />
 				<input id="maxPrice" type="hidden" value="${maxPrice}" name="maxPrice" />
 				<input id="minUserPrice" type="hidden" value="${minUserPrice}" name="minUserPrice" />
@@ -320,14 +320,19 @@ div #sidebar-wrapper {
 			</c:if>
 		</h6>
 
+
+<!-- SWITCH CONTENT -->
 		<div id="switchContent" class="row">
 			<jsp:include page="card.jsp"></jsp:include>
 		</div>
+<!-- END OF SWITCH CONTENT -->
 
-		<div id="paginationdemo" class="row">
-			<div id="demo5" class="col s4 offset-s5"></div>
-		</div>
 
+<!-- PAGINATOR 3000 -->
+<!-- 		<div id="paginationdemo" class="row"> -->
+<!-- 			<div id="demo5" class="col s4 offset-s5"></div> -->
+<!-- 		</div> -->
+<!-- END OFPAGINATOR 3000 -->
 	</div>
 
 	<!-- Footer ========================================================================== -->
@@ -339,7 +344,6 @@ div #sidebar-wrapper {
 	<div id="modal1" class="modal"
 		style="width: 25% !important; max-height: 40% !important">
 		<div class="modal-content">
-			<!-- 			<h4>VK auth</h4> -->
 			<p>
 				<img alt="Vk Log"
 					src="http://1863x.com/wp-content/uploads/2016/01/vk-vkontakte-logo-vk.jpg"
@@ -348,9 +352,6 @@ div #sidebar-wrapper {
 			<div class="progress" style="width: 275px;">
 				<div class="indeterminate"></div>
 			</div>
-			<!-- 			<div class="modal-footer"> -->
-
-			<!-- 			</div> -->
 		</div>
 
 	</div>
@@ -366,15 +367,13 @@ div #sidebar-wrapper {
 					$('.modal-trigger').leanModal();
 					$('#modal1').openModal();
 
-					debugger;
-
 					var token = window.location.hash.substr(1);
 					$.post('vk_oauth', {
 						token : token.split("&")[0].split("=")[1],
 						user_id : token.split("&")[2].split("=")[1]
 					}, function() {
 						//NEED normal names
-						document.location.href = '/MainPage/';
+						document.location.href = '/booker/home';
 
 					});
 				});
@@ -382,7 +381,9 @@ div #sidebar-wrapper {
 		</script>
 	</c:if>
 	<!--  END OF VK REDIRECT -->
-
+<!-- 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
+<!-- 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
 	<script
@@ -393,6 +394,8 @@ div #sidebar-wrapper {
 
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/noUIslider/slider.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/search/details.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
 	<script type="text/javascript"
@@ -418,43 +421,33 @@ div #sidebar-wrapper {
 		$('#hasBalcony').attr('checked', '${hasBalcony}' == 'true');
 		$('#noDeposit').attr('checked', '${noDeposit}' == 'true');
 
-		var togler = $('#togler').val();
+		 var togler = $('#togler').val();
 		if (togler == 'true') {
 			$("#togle").click();
 		}
 		else {
 			$('#togler').val("false");
-		}
+		} 
 	</script>
-
-	<script type="text/javascript">
-		var pagesCount = '${countOfPages}';
-
-		if (pagesCount > 1) {
-			jQuery(function() {
-				jQuery("#demo5").paginate({
-					count : pagesCount,
-					start : 1,
-					display : 5,
-					border : false,
-					//		border_color			: '#fff',
-					text_color : '#fff',
-					background_color : '#26A69A',
-					//		border_hover_color		: '#ccc',
-					text_hover_color : '#000',
-					background_hover_color : '#CFCFCF',
-					images : false,
-					mouse : 'press',
-					onChange : function(page) {
-						// 											$('._current','#paginationdemo').removeClass('_current').hide();
-						// 											$('#p'+page).addClass('_current').show();
-						findPage(page);
-					}
-				});
+	
+	<script>
+		/*(function() {
+			var flag = 0;
+			$('#details_panel').hide();
+			$('#togle').on('click', function() {
+				console.log("in");
+				if (flag == 0) {
+					$('#details_panel').slideDown(500);
+					$('#arrow_icon').css("transform", "rotate(180deg)");
+				    flag = 1;
+				} else {
+				    $('#details_panel').slideUp(500);
+				    $('#arrow_icon').css("transform", "rotate(0deg)");
+				    flag = 0;
+				}
 			});
-		}
+		})();*/
 	</script>
-
 
 	<!-- 	DATEPICKER -->
 	<!-- 	<script type="text/javascript"> -->

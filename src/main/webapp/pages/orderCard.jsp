@@ -22,7 +22,22 @@ b {
 }
 </style>
 
+<h6>
+	<c:if test="${countOfOrders > 0 }">
+		<fmt:message key="card.header" />
+		<span id="periodicals_number_for_all_users">${countOfOrders}</span>
+	</c:if>
+	<c:if test="${countOfOrders <= 0 }">
+		<fmt:message key="card.no.periodicals" />
+	</c:if>
+</h6>
+<div class="divider" style="margin-bottom: 20px;"></div>
 
+<c:if test="${countOfOrders == 0}">
+	<h5 style="color: red; margin-bottom: 63px;">
+		<fmt:message key="card.no.periodicals" />
+	</h5>
+</c:if>
 
 
 <c:forEach var="order" items="${orders}">
@@ -40,123 +55,137 @@ b {
 					</div>
 
 					<div class="col s8">
-						<div class="row">
+						<div class="row" style="margin-bottom: 0px;">
 							<div class="col s7">
 
 								<div class="row" style="margin-top: 15px;">
-									<div class="col s5">${order.hotel.name}</div>
+									<div class="col s5">
+										<a
+											href="${pageContext.servletContext.contextPath}/hotel/${order.hotel.id}">${order.hotel.name}</a>
+									</div>
 									<div class="col s5 offset-s1">${order.room.type}</div>
 								</div>
 
-								<div class="row" style="margin-top: 15px;">TANYAS_DATE</div>
+								<div class="row" style="margin-top: 15px;">
+									<div>
+										<a class="tooltipped" data-position="icon"
+											data-tooltip="StartDate" style="color: #0d0d0d;"><i
+											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> Start
+										Date : <span id="start_date${order.id}">${order.startDate}</span>
+									</div>
+
+									<div>
+										<a class="tooltipped" data-position="icon"
+											data-tooltip="EndDate" style="color: #0d0d0d;"><i
+											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> End
+										Date : <span id="end_date${order.id}">${order.endDate}</span>
+									</div>
+									<script type="text/javascript"
+										src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
+
+									<script>
+									var id = ${order.id};
+									changeDate(id);</script>
+								</div>
+
+								<div class="row">
+									<a class="tooltipped" data-position="icon"
+										data-tooltip="Double beds" style="color: #0d0d0d;"><img
+										class="invert" style="max-width: 7%;"
+										src="${pageContext.servletContext.contextPath}/resources/images/double_bed.png" /></a>
+									<span>${order.room.doubleBedsCount}</span> <a class="tooltipped"
+										data-position="icon" data-tooltip="Single beds"
+										style="color: #0d0d0d;"><img class="invert"
+										style="max-width: 7%;"
+										src="${pageContext.servletContext.contextPath}/resources/images/single_bed.png" /></a>
+									<span>${order.room.bedsCount}</span>
+								</div>
+
+								<div class="row">
+										<a class="tooltipped" data-position="icon" data-tooltip="Food"
+											style="color: #0d0d0d;"><i
+											class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${order.room.food}</span>
+								</div>
 
 								<div class="row">
 									<a class="tooltipped" data-position="icon" data-tooltip="Price"
 										style="color: #0d0d0d;"><i
 										class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${order.price}</span>
+									<c:if test="${order.room.daysCount == -1}">
+										<a class="tooltipped" data-position="icon" data-tooltip="No deposit"
+										style="color: #0d0d0d;"><i class="fa fa-2x fa-exclamation-circle invert" aria-hidden="true"></i></a>
+									</c:if>
 								</div>
 
 							</div>
 
 							<div class="col s5">
-								<div class="row">
+								<div class="row" style="float: right; text-align:right; font-size:0.3rem">
 									<c:if test="${order.room.wifi == true}">
-										<div class="col s2" style="margin-top: 5px;">
 											<a class="tooltipped" data-position="icon"
 												data-tooltip="Wifi" style="color: #0d0d0d;"><i
 												class="material-icons invert">wifi</i></a>
-										</div>
 									</c:if>
 
 									<c:if test="${order.room.shower == true}">
-										<div class="col s2" style="margin-top: 5px;">
-											<a class="tooltipped" data-position="icon"
-												data-tooltip="Shower"><img class="invert"
-												style="max-width: 230%;"
-												src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
-										</div>
+									<a class="tooltipped" data-position="icon" data-tooltip="Shower"><img
+										class="invert" style="max-width: 10%; margin-top:-1.5rem"
+										src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
 									</c:if>
 
 									<c:if test="${order.room.parking == true}">
-										<div class="col s2" style="margin-top: 5px;">
 											<a class="tooltipped" data-position="icon"
 												data-tooltip="Parking" style="color: #0d0d0d;"><i
 												class="material-icons invert">local_parking</i></a>
-										</div>
 									</c:if>
 
 									<c:if test="${order.room.condition == true}">
-										<div class="col s2" style="margin-top: 5px;">
 											<a class="tooltipped" data-position="icon"
 												data-tooltip="Condition" style="color: #0d0d0d;"><i
 												class="material-icons invert">toys</i></a>
-										</div>
 									</c:if>
 
 									<c:if test="${order.room.pool == true}">
-										<div class="col s2" style="margin-top: 5px;">
 											<a class="tooltipped" data-position="icon"
 												data-tooltip="Pool" style="color: #0d0d0d;"><i
 												class="material-icons invert">pool</i></a>
-										</div>
 									</c:if>
 
 									<c:if test="${order.room.gym == true}">
-										<div class="col s2" style="margin-top: 5px;">
 											<a class="tooltipped" data-position="icon" data-tooltip="Gym"
 												style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
-										</div>
 									</c:if>
 
 									<c:if test="${order.room.balcony == true}">
-										<div class="col s2" style="margin-top: 5px;">
 											<a class="tooltipped" data-position="icon"
 												data-tooltip="Balcony"><img class="invert"
-												style="max-width: 230%;"
+												style="max-width: 10%; margin-top:-1.5rem"
 												src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
-										</div>
 									</c:if>
-								</div>
-
-								<div class="row">
-									<div class="col s6 offset-s6">
-										<a class="tooltipped" data-position="icon" data-tooltip="Food"
-											style="color: #0d0d0d;"><i
-											class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${order.room.food}</span>
-									</div>
 								</div>
 
 							</div>
 						</div>
 						<div class="row">
-							<div class="col s4 offset-s8">
-								<a class="my-btn waves-effect waves-light btn"
+							<div class="col s2 offset-s4">
+								<a id="remove${order.id}"
+									class="my-btn waves-effect waves-light btn"
 									style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-									onclick="deleteSub(${order.orderId})"><fmt:message
-										key="subscribes.table.remove" /> </a>
+									onclick="removeOrderCard(${order.id})">REMOVE</a>
+							</div>
+							<div class="col s2 offset-s2">
+								<a id="book${order.id}"
+									class="my-btn waves-effect waves-light btn"
+									style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+									onclick="bookOrderCard(${order.id},${order.room.daysCount})">ORDER</a>
 							</div>
 						</div>
 					</div>
 
-
-
+					<div id="field${order.id}" class="divider"
+						style="margin-bottom: 5px;"></div>
 
 				</div>
-
-				<c:if test="${userState == 'user' && inCart == false}">
-					<div class="row">
-						<div class="col s2 offset-s8">
-							<input id="count" type="text" class="validate"> <label
-								id="nameLbl" data-error="COUNT ERROR" for="count"><fmt:message
-									key="room.card.count" /></label>
-						</div>
-						<div class="col s2">
-							<a class="waves-effect waves-light btn"
-								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>INFO</span></a>
-						</div>
-					</div>
-				</c:if>
-
 			</div>
 
 
@@ -164,8 +193,59 @@ b {
 	</div>
 </c:forEach>
 
-<c:if test="${userState == 'admin'}">
-	<script
-		src="${pageContext.servletContext.contextPath}/resources/js/admin/index.js"
-		type="text/javascript"></script>
+<c:if test="${countOfOrders > 0 }">
+
+	<div class="row">
+		<div class="col s3 offset-s1">TOTAL_PRICE : ${summary} UAH</div>
+		<div class="col s2 offset-s3">
+			<a id="clearBtn" class="my-btn waves-effect waves-light btn"
+				style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+				onclick="clearCart()">CLEAR</a>
+		</div>
+		<div class="col s2 offset-s1">
+			<a class="my-btn waves-effect waves-light btn"
+				style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+				onclick="bookOrderCard(null,${summary})">ORDER</a>
+		</div>
+	</div>
+	<div id="field" class="divider" style="margin-bottom: 5px;"></div>
+
 </c:if>
+
+<!-- PAGINATOR 3000 -->
+		<div id="paginationdemo" class="row">
+			<div id="demo5" class="col s4 offset-s5"></div>
+		</div>
+<!-- END OF PAGINATOR 3000 -->
+
+<script type="text/javascript"
+	src="${pageContext.servletContext.contextPath}/resources/js/order/removeOrder.js"></script>
+<script type="text/javascript"
+	src="${pageContext.servletContext.contextPath}/resources/js/order/createOrder.js"></script>
+	
+<script type="text/javascript">
+		var pagesCount = '${countOfPages}';
+		var currentPage = '${currentPage}';
+		
+		if (pagesCount > 1) {
+			jQuery(function() {
+				jQuery("#demo5").paginate({
+					count : pagesCount,
+					start : currentPage,
+					display : 5,
+					border : false,
+					//		border_color			: '#fff',
+					text_color : '#fff',
+					background_color : '#26A69A',
+					//		border_hover_color		: '#ccc',
+					text_hover_color : '#000',
+					background_hover_color : '#CFCFCF',
+					images : true,
+					mouse : 'press',
+					onChange : function(page) {
+						findPage(window.location.href,page);
+					}
+				});
+			});
+		}
+	</script>

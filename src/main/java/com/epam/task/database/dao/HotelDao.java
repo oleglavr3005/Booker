@@ -16,7 +16,7 @@ public class HotelDao {
 
 	private Connection connection;
 	
-	private final String SELECT_ALL = "SELECT * FROM `hotel`";
+	private final String SELECT_ALL_NOT_DELETED = "SELECT * FROM `hotel` WHERE is_deleted = false";
 	private final String PAGINATION = " LIMIT ?, 3";
 	
 	private final String SELECT_ALL_SUITABLE = "SELECT DISTINCT h.* FROM hotel h INNER JOIN room r ON h.hotel_id = r.hotel_id LEFT JOIN `order` o ON o.room_id = r.room_id "
@@ -46,7 +46,7 @@ public class HotelDao {
 	private final String INSERT_HOTEL = "INSERT INTO `hotel` (name, city, street, stars, `desc`,"
 			+ " manager_id, x_coord, y_coord, rating,"
 			+ " is_deleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private final String SELECT_BY_ID = SELECT_ALL + " WHERE hotel_id = ?";
+	private final String SELECT_BY_ID = "SELECT * FROM `hotel` WHERE hotel_id = ?";
 	private final String CHANGE_HOTEL_STATUS = "UPDATE `hotel` SET is_deleted = ? WHERE hotel_id = ?";
 	private final String UPDATE_HOTEL = "UPDATE `hotel` SET name = ?,"
 			+ " city = ?, street = ?, stars = ?, desc = ?, manager_id = ?,"
@@ -62,7 +62,7 @@ public class HotelDao {
 	}
 	
 	public List<Hotel> getAllHotels(){
-		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL);
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_NOT_DELETED);
 				ResultSet result = statement.executeQuery()) {
 			return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
 		} catch (SQLException e) {
@@ -72,7 +72,7 @@ public class HotelDao {
 	}
 
 	public List<Hotel> getAllHotelsByPage(int page) {
-		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL + PAGINATION)) {
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_NOT_DELETED + PAGINATION)) {
 			statement.setInt(1, (page-1)*3);
 			try (ResultSet result = statement.executeQuery()) {
 				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);

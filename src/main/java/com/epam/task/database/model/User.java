@@ -32,6 +32,12 @@ public class User {
 	private SocialNetwork socialNetwork; //enum
 	@DataBaseField(fieldName = "social_network_id")
 	private String socialNetworkId;
+	@DataBaseField(fieldName = "email_notif")
+	private boolean emailNotif;
+	@DataBaseField(fieldName = "phone_notif")
+	private boolean phoneNotif;
+	@DataBaseField(fieldName = "language")
+	private String language;
 	
 	public User(){
 		socialNetwork = SocialNetwork.NONE;
@@ -39,7 +45,7 @@ public class User {
 		
 	public User(int id, String firstName, String lastName, String email, String password, String type,
 			boolean isBanned, String confirmCode, String status, String phoneNumber, String image,
-			String socialNetwork, String socialNetworkId) {
+			String socialNetwork, String socialNetworkId, boolean emailNotif, boolean phoneNotif, String language) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -53,6 +59,9 @@ public class User {
 		this.image = image;
 		this.socialNetwork = socialNetwork == null ? null : SocialNetwork.valueOf(socialNetwork);
 		this.socialNetworkId = socialNetworkId;
+		this.emailNotif = emailNotif;
+		this.phoneNotif = phoneNotif;
+		this.language = language;
 	}
 	public int getId() {
 		return id;
@@ -132,12 +141,40 @@ public class User {
 	public void setSocialNetworkId(String socialNetworkId) {
 		this.socialNetworkId = socialNetworkId;
 	}
+
+	public boolean hasEmailNotif() {
+		return emailNotif;
+	}
+
+	public void setEmailNotif(boolean emailNotif) {
+		this.emailNotif = emailNotif;
+	}
+
+	public boolean hasPhoneNotif() {
+		return phoneNotif;
+	}
+
+	public void setPhoneNotif(boolean phoneNotif) {
+		this.phoneNotif = phoneNotif;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", password=" + password + ", type=" + type + ", isBanned=" + isBanned + ", confirmCode="
 				+ confirmCode + ", status=" + status + ", phoneNumber=" + phoneNumber + ", image=" + image
-				+ ", socialNetwork=" + socialNetwork + ", socialNetworkId=" + socialNetworkId + "]";
+				+ ", socialNetwork=" + socialNetwork + ", socialNetworkId=" + socialNetworkId + ", emailNotif="
+				+ emailNotif + ", phoneNotif=" + phoneNotif + ", language=" + language + "]";
 	}
+
+	
 	
 }

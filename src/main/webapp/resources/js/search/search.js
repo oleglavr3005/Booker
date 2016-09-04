@@ -61,6 +61,23 @@ function find() {
 	});
 }
 
+function searchRooms(hotelId) {
+	var flag = true;
+	flag = peopleIsValid($('#people').val()) && flag;
+	flag = startDateIsValid() && flag;
+	flag = endDateIsValid() && flag;
+	if (flag) {
+		$.post('../find_rooms', {
+			hotelId : hotelId,
+			people : $('#people').val(),
+			startDate : $('#date_from').val(),
+			endDate : $('#date_to').val(),
+		}, function(hotels) {
+			$('#switchContent').html(hotels);
+		});
+	}
+}
+
 function searchForm() {
 	var flag = true;
 	flag = nameIsValid($('#nam').val()) && flag;
@@ -154,11 +171,12 @@ function endDateIsValid() {
 	}
 }
 
-function findPage(pageNumber) {
-	$.get('home', {
+function findPage(url,pageNumber) {	
+	var path = url.substring(url.lastIndexOf("/") + 1,url.lenght);	
+	$.get(path, {
 		flag : 'true',
 		page : pageNumber
-	}, function(hotels) {
-		$('#switchContent').html(hotels);
+	}, function(orders) {
+		$('#switchContent').html(orders);
 	});
 }

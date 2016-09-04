@@ -14,10 +14,12 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import com.epam.task.database.model.Conveniences;
 import com.epam.task.database.model.Feedback;
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.HotelPhoto;
 import com.epam.task.database.model.Room;
+import com.epam.task.database.service.ConveniencesService;
 import com.epam.task.database.service.FeedbackService;
 import com.epam.task.database.service.HotelPhotoService;
 import com.epam.task.database.service.HotelService;
@@ -49,7 +51,10 @@ public class HotelServlet extends HttpServlet {
 			return;
 		}
 		Hotel hotel = new HotelService().getHotelById(id);
-		if (hotel == null) {
+		Conveniences conveniences = null;
+		if(hotel != null){
+			conveniences = new ConveniencesService().getConveniencesForHotel(hotel.getId());
+		} else {
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 			LOGGER.info("Bad user id for hotel, hotel not found");
 			return;
@@ -70,6 +75,7 @@ public class HotelServlet extends HttpServlet {
 		RoomService roomService = new RoomService();
 		int minPrice = session.getAttribute("minUserPrice") == null ? roomService.getMinPrice() : (int) session.getAttribute("minUserPrice");
 		int maxPrice = session.getAttribute("maxUserPrice") == null ? roomService.getMaxPrice() : (int) session.getAttribute("maxUserPrice");
+		int people = session.getAttribute("people") == null ? 1 : (int) session.getAttribute("people");
 		
 		boolean hasWiFi = session.getAttribute("hasWiFi") == null ? false : (boolean) session.getAttribute("hasWiFi");
 		boolean hasShower = session.getAttribute("hasShower") == null ? false : (boolean) session.getAttribute("hasShower");
@@ -97,11 +103,12 @@ public class HotelServlet extends HttpServlet {
 		List<Room> rooms = new RoomService().getAllSuitableRoomsForHotel(id, page, 
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull, 
-				minPrice, maxPrice, 
+				minPrice, maxPrice, people,
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
 				startDate, endDate);
-		List<HotelPhoto> hotelPhoto = new HotelPhotoService().getHotelPhotosByHotel(id);
+		List<HotelPhoto> hotelPhoto = new HotelPhotoService().getHotelPhotosByHotel(id); 
 		request.setAttribute("hotel", hotel);
+		request.setAttribute("conveniences", conveniences);
 		request.setAttribute("feedbacks", feedbacks);
 		request.setAttribute("rooms", rooms);
 		if (hotelPhoto.size() > 0) {

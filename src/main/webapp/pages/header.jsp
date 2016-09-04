@@ -107,26 +107,13 @@ img.logo {
 
 				<c:choose>
 					<c:when test="${user != null}">
-						<!-- 							<img id="imageavatar" src="http://www.desicomments.com/dc3/09/336028/336028.png" alt="img"  -->
-						<!-- 								style="margin-top: 5px; height: 50px; width: 50px; border-radius: 25px;" -->
-						<!-- 								class="imageavatar dropdown-button" data-activates='dropdown1'  -->
-						<!-- 								data-beloworigin="true" data-hover="true"/> -->
-						<!-- 								<ul id='dropdown1' class='dropdown-content'> -->
-						<!-- 								    <li><a href="#!">one</a></li> -->
-						<!-- 								    <li><a href="#!">two</a></li> -->
-						<!-- 								    <li class="divider"></li> -->
-						<!-- 								    <li><a href="#!">three</a></li> -->
-						<!-- 								 </ul> -->
-
-
-<!-- 						<div class="container"> -->
 
 							<div class="dropdown">
 							<span style="font-size:1.3rem; margin-right:0.5rem">${user.firstName} ${user.lastName}</span>
 								<img id="imageavatar"
 									src="http://www.desicomments.com/dc3/09/336028/336028.png"
 									alt="img"
-									style="margin: 5px 0px 15px 0px; height: 50px; width: 50px; border-radius: 25px;"
+									style="height: 50px; width: 50px; border-radius: 25px;"
 									class="imageavatar dropdown-toggle" data-toggle='dropdown'
 									 />
 								<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">

@@ -19,6 +19,7 @@ public class RoomDao {
 	
 	private final String GET_ALL_SUITABLE_ROOMS_FOR_HOTEL = "SELECT DISTINCT r.* FROM room r LEFT JOIN `order` o ON o.room_id = r.room_id "
 			+ "WHERE r.hotel_id = ? AND r.price >= ? AND r.price <= ? AND r.is_deleted = false AND "
+			+ "? <= (SELECT SUM(double_beds_count)*2 + SUM(beds_count) FROM room r2 WHERE r2.room_id = r.room_id GROUP BY r2.hotel_id) AND "
 			+ "(o.end_date IS NULL OR o.end_date <= ? OR o.start_date >= ? OR o.status LIKE 'canceled')";
 
 	private final String TYPE_STANDART = "r.type LIKE 'STANDART'";
@@ -62,6 +63,9 @@ public class RoomDao {
 	
 	private final String GET_MIN_PRICE = "SELECT MIN(price) FROM room WHERE is_deleted = false";
 	private final String GET_MAX_PRICE = "SELECT MAX(price) FROM room WHERE is_deleted = false";
+	
+	private final String GET_ROOM_BY_ID_IF_AVAILABLE = "SELECT DISTINCT * FROM room r LEFT JOIN `order` o ON r.room_id = o.room_id WHERE r.room_id = ? AND "
+			+ "(o.end_date IS NULL OR o.end_date <= ? OR o.start_date >= ? OR o.status LIKE 'canceled')";
 
 	public RoomDao(Connection connection) {
 		super();
@@ -87,7 +91,7 @@ public class RoomDao {
 	public List<Room> getAllSuitableRoomsForHotel(int id, int page, 
 			boolean typeStandart, boolean typeLux, boolean typeDelux, 
 			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull,
-			int minPrice, int maxPrice,
+			int minPrice, int maxPrice, int people,
 			boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, 
 			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit,
 			Timestamp startDate, Timestamp endDate) {
@@ -175,6 +179,8 @@ public class RoomDao {
 			
 			statement.setInt(i++, minPrice);
 			statement.setInt(i++, maxPrice);
+			
+			statement.setInt(i++, people);
 			
 			statement.setTimestamp(i++, startDate);
 			statement.setTimestamp(i++, endDate);
@@ -335,5 +341,24 @@ public class RoomDao {
 			return -1;
 		}
 		
+	}
+
+	public boolean isRoomAvailable(int roomId, Timestamp startDate, Timestamp endDate) {
+		try (PreparedStatement st = connection.prepareStatement(GET_ROOM_BY_ID_IF_AVAILABLE)) {
+			int i = 1;
+			st.setInt(i++, roomId);
+			st.setTimestamp(i++, startDate);
+			st.setTimestamp(i++, endDate);
+			try (ResultSet result = st.executeQuery()) {
+				if (result.next()) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 }

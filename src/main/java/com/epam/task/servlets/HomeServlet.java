@@ -28,17 +28,27 @@ public class HomeServlet extends HttpServlet {
 		
 		String pageString = request.getParameter("page");
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
+
+		int countOfHotels = new HotelService().getAllHotels().size();
+		
+		int countOfPages = (int) Math.ceil(countOfHotels / 3.0);
+		if (page > countOfPages) {
+			page--;
+		}
 	
 		List<Hotel> hotels = hotelService.getAllHotelsByPage(page);
-		
+
+		request.setAttribute("countOfHotels", countOfHotels);
+		request.setAttribute("countOfPages", countOfPages);
 		request.setAttribute("hotels", hotels);
+		request.setAttribute("currentPage", page);
 		
 		RoomService roomService = new RoomService();
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
-		} else {			
-			HttpSession session = request.getSession(true);
+		} else {	
+			HttpSession session = request.getSession(true);		
 			Enumeration<String> names = session.getAttributeNames();
 			while(names.hasMoreElements()) {
 				String name = names.nextElement();
@@ -48,9 +58,6 @@ public class HomeServlet extends HttpServlet {
 			}
 			session.setAttribute("minPrice", roomService.getMinPrice());
 			session.setAttribute("maxPrice", roomService.getMaxPrice());
-			int countOfHotels = new HotelService().getAllHotels().size();
-			session.setAttribute("countOfHotels", countOfHotels);
-			session.setAttribute("countOfPages", Math.ceil(countOfHotels / 3.0));
 			request.getRequestDispatcher("pages/index.jsp").forward(request, response);
 		}
 	}
