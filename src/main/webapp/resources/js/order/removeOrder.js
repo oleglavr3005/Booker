@@ -3,14 +3,14 @@ function removeOrderCard(orderId) {
 		orderId : orderId
 	}, function(result) {
 		
-		$('#btn'+orderId).onclick = null;
+		$('#remove'+orderId).onclick = null;
 		
 		if (result == 'true') {
-			$('#btn' + orderId).text("SUCCES");
-			$('#btn' + orderId).attr('disabled', true);
+			$('#remove' + orderId).text("SUCCES");
+			$('#remove' + orderId).attr('disabled', true);
 		} else {
-			$('#btn' + orderId).text("FAIL");
-			$('#btn' + orderId).attr('disabled', true);
+			$('#remove' + orderId).text("FAIL");
+			$('#remove' + orderId).attr('disabled', true);
 		}
 	});
 }
