@@ -29,13 +29,14 @@ public class FindHotelsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {				
 		HttpSession session = request.getSession(true);
 		
-		if(request.getParameter("name") == null || request.getParameter("name").equals("") ||
-				request.getParameter("people").equals("") || request.getParameter("startDate").equals("") || request.getParameter("endDate").equals("")) {
-			response.sendRedirect("home");
-			return;
-		}
-		
 		if(request.getParameter("flag") == null || !request.getParameter("flag").equals("true")) {
+			
+			if(request.getParameter("name") == null || request.getParameter("name").equals("") ||
+					request.getParameter("people").equals("") || request.getParameter("startDate").equals("") || request.getParameter("endDate").equals("")) {
+				response.sendRedirect("home");
+				return;
+			}
+			
 			RoomService roomService = new RoomService();
 			boolean togler = Boolean.parseBoolean(request.getParameter("togler"));
 			
