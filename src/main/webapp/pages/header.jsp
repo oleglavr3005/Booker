@@ -158,41 +158,41 @@ img.logo {
 						<script type="text/javascript"
 							src="${pageContext.servletContext.contextPath}/resources/js/authorization/authorization.js"></script>
 
-						<li><a class="modal-trigger" href="#signupModal"><fmt:message
-									key="header.regist" /></a>
+						<li><a class="modal-trigger" href="#signupModal">
+									<p id="header.regist"></p></a>
 							<div id="signupModal" class="modal">
 								<div class="modal-header">
 									<h4 id="registrationHeader">
-										<fmt:message key="header.regist" />
+									<p id="header.regist"></p>
 									</h4>
 								</div>
 								<div class="modal-content" style="margin-top: -10px">
 									<div class="form-horizontal registrationFrm">
 										<div class="input-field col">
 											<input id="name" type="text" class="validate"> <label
-												id="nameLbl" data-error="${fmtName}" for="name"><fmt:message
-													key="header.regist.name" /></label>
+												id="nameLbl" data-error="${fmtName}" for="name"><p
+													id="header.regist.name"> </p></label>
 										</div>
 										<div class="input-field col">
 											<input id="surname" type="text" class="validate"> <label
-												id="surnameLbl" data-error="${fmtSurname}" for="surname"><fmt:message
-													key="header.regist.surname" /></label>
+												id="surnameLbl" data-error="${fmtSurname}" for="surname"><p
+													id="header.regist.surname"> </p></label>
 										</div>
 										<div class="input-field col">
 											<input id="email" type="email" class="validate"> <label
-												id="emailLbl" data-error="${fmtMail}" for="email"><fmt:message
-													key="header.regist.mail" /></label>
+												id="emailLbl" data-error="${fmtMail}" for="email"><p
+													id="header.regist.mail" ></p></label>
 										</div>
 										<div class="input-field">
 											<input id="password" type="password" class="validate">
 											<label id="passwordLbl" data-error="${fmtPass}"
-												for="password"><fmt:message key="header.regist.pass" /></label>
+												for="password"><p id="header.regist.pass" /></label>
 										</div>
 										<div class="input-field">
 											<input id="сpassword" type="password" class="validate">
 											<label id="сpasswordLbl" data-error="${fmtCpass}"
-												for="сpassword"><fmt:message
-													key="header.regist.cpass" /></label>
+												for="сpassword"><p
+													id="header.regist.cpass"> </p></label>
 										</div>
 									</div>
 
@@ -204,13 +204,13 @@ img.logo {
 											class="btn-flat btn-success login col s2 offset-s1"
 											onclick="confirmRegistration('${fmtMail}', '${fmtMailUse}', '${fmtSucces}', '${fmtConfirm}', '${fmtFail}', '${fmtRegist}')"
 											style="margin-left: 15px;">
-											<fmt:message key="header.regist.confirm" />
+											<p id="header.regist.confirm"> </p>
 										</button>
 										<button
 											class="modal-action modal-close waves-effect waves-red btn-flat col s2 offset-s1"
 											data-dismiss="modal" aria-hidden="true"
 											style="margin-left: 10px;">
-											<fmt:message key="header.regist.close" />
+											<p id="header.regist.close"> </p>
 										</button>
 									</div>
 
@@ -219,25 +219,25 @@ img.logo {
 							</div></li>
 
 						<li><a class="waves-effect waves-white modal-trigger"
-							href="#login" role="button" style="padding-right: 0"><span><fmt:message
-										key="header.auth" /></span></a>
+							href="#login" role="button" style="padding-right: 0"><span><p
+										id="header.auth"></p></span></a>
 							<div id="login" class="modal">
 								<div class="modal-content">
 									<h4>
-										<fmt:message key="header.auth" />
+										<p id="header.auth"> </p>
 									</h4>
 									<div class="form-horizontal loginFrm">
 										<div class="input-field col">
 											<input id="emailAuth" type="email" class="validate">
 											<label id="emailAuthLbl" data-error="${fmtMail}"
-												for="emailAuth"><fmt:message
-													key="header.regist.mail" /></label>
+												for="emailAuth"><<p
+													id="header.regist.mail"> </p></label>
 										</div>
 										<div class="input-field">
 											<input id="passwordAuth" type="password"> <label
 												id="passwordLbl" data-error="${fmtMailPass}"
-												for="passwordAuth"><fmt:message
-													key="header.regist.pass" /></label>
+												for="passwordAuth"><p
+													id="header.regist.pass"> </p></label>
 										</div>
 									</div>
 								</div>
@@ -245,17 +245,17 @@ img.logo {
 									<button type="submit" id="sbm"
 										class="btn-flat btn-success login" onclick="auth()"
 										style="margin-left: 15px;">
-										<fmt:message key="header.auth.enter" />
+										<p id="header.auth.enter"> </p>
 									</button>
 									<button class="btn-flat waves-effect waves-red "
 										onclick="forgot()" style="margin-left: 15px;">
-										<fmt:message key="header.auth.forgot" />
+										<p id="header.auth.forgot"> </p>
 									</button>
 									<button
 										class="modal-action modal-close waves-effect waves-red btn-flat"
 										data-dismiss="modal" aria-hidden="true"
 										style="margin-left: 10px;">
-										<fmt:message key="header.regist.close" />
+										<p id="header.regist.close"> </p>
 									</button>
 								</div>
 							</div></li>
