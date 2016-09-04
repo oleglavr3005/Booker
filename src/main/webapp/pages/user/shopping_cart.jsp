@@ -116,6 +116,11 @@
 
 		<div class="row">
 			<div class="col s3 offset-s1">TOTAL_PRICE : ${summary} UAH</div>
+			<div class="col s2 offset-s3">
+				<a id="clearBtn" class="my-btn waves-effect waves-light btn"
+					style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+					onclick="clearCart()">CLEAR</a>
+			</div>
 			<div class="col s2 offset-s5">
 				<a class="my-btn waves-effect waves-light btn"
 					style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
