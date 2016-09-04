@@ -17,14 +17,18 @@ public class UserDao {
 	private Connection connection;
 	
 	private final String SELECT_ALL = "SELECT * FROM `user`";
+	private final String SELECT_ALL_WITH_EMAIL_NOTIF = SELECT_ALL + " WHERE email_notif = true";
+	private final String SELECT_ALL_WITH_EMAIL_NOTIF_IN_HOTEL = "SELECT DISTINCT u.* FROM `user` u INNER JOIN `order` o ON u.user_id = o.user_id INNER JOIN `room` r ON r.room_id = o.room_id WHERE r.id_hotel = ? AND u.email_notif = true";
+	private final String SELECT_ALL_WITH_PHONE_NOTIF = SELECT_ALL + " WHERE phone_notif = true";
+	private final String SELECT_ALL_WITH_PHONE_NOTIF_IN_HOTEL = "SELECT DISTINCT u.* FROM `user` u INNER JOIN `order` o ON u.user_id = o.user_id INNER JOIN `room` r ON r.room_id = o.room_id WHERE r.id_hotel = ? AND u.phone_notif = true";
 	private final String SELECT_BY_ID = SELECT_ALL + " WHERE user_id = ?";
 	private final String SELECT_BY_EMAIL = SELECT_ALL + " WHERE e_mail LIKE ?";
 	private final String SELECT_BY_STATUS = SELECT_ALL + " WHERE status LIKE ?";
 	private final String SELECT_BY_TYPE	 = SELECT_ALL + " WHERE type LIKE ?";
 	private final String SELECT_BY_CODE = "SELECT * FROM user u WHERE u.confirm_code LIKE ?;";
 	
-	private final String INSERT = "INSERT INTO `user` (first_name, last_name, e_mail, password, type, is_banned, confirm_code, status, phone_number, img, social_network, social_network_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private final String UPDATE = "UPDATE `user` SET first_name = ?, last_name = ?, e_mail = ?, password = ?, type = ?, is_banned = ?, confirm_code = ?, status = ?, phone_number = ?, img = ?, social_network = ?, social_network_id = ? WHERE user_id = ?";
+	private final String INSERT = "INSERT INTO `user` (first_name, last_name, e_mail, password, type, is_banned, confirm_code, status, phone_number, img, social_network, social_network_id, email_notif, phone_notif, language) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private final String UPDATE = "UPDATE `user` SET first_name = ?, last_name = ?, e_mail = ?, password = ?, type = ?, is_banned = ?, confirm_code = ?, status = ?, phone_number = ?, img = ?, social_network = ?, social_network_id = ?, email_notif = ?, phone_notif = ?, language = ? WHERE user_id = ?";
 
 	public UserDao(Connection connection) {
 		super();
@@ -39,6 +43,50 @@ public class UserDao {
 		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL);
 					ResultSet result = statement.executeQuery()) {
 			return UniversalTransformer.getCollectionFromRS(result, User.class);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new ArrayList<>();
+		}
+	}
+
+	public List<User> getAllUsersWithEmailNotification() {
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_WITH_EMAIL_NOTIF);
+					ResultSet result = statement.executeQuery()) {
+			return UniversalTransformer.getCollectionFromRS(result, User.class);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new ArrayList<>();
+		}
+	}
+
+	public List<User> getAllUsersWithEmailNotificationInHotel(int hotelId) {
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_WITH_EMAIL_NOTIF_IN_HOTEL)) {
+			statement.setInt(1, hotelId);
+			try (ResultSet result = statement.executeQuery()) {
+				return UniversalTransformer.getCollectionFromRS(result, User.class);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new ArrayList<>();
+		}
+	}
+
+	public List<User> getAllUsersWithPhoneNotification() {
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_WITH_PHONE_NOTIF);
+					ResultSet result = statement.executeQuery()) {
+			return UniversalTransformer.getCollectionFromRS(result, User.class);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new ArrayList<>();
+		}
+	}
+
+	public List<User> getAllUsersWithPhoneNotificationInHotel(int hotelId) {
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_WITH_PHONE_NOTIF_IN_HOTEL)) {
+			statement.setInt(1, hotelId);
+			try (ResultSet result = statement.executeQuery()) {
+				return UniversalTransformer.getCollectionFromRS(result, User.class);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return new ArrayList<>();
@@ -118,7 +166,10 @@ public class UserDao {
 			statement.setString(i++, user.getPhoneNumber());
 			statement.setString(i++, user.getImage());
 			statement.setString(i++, user.getSocialNetwork().toString());			
-			statement.setString(i, user.getSocialNetworkId());
+			statement.setString(i++, user.getSocialNetworkId());
+			statement.setBoolean(i++, user.hasEmailNotif());
+			statement.setBoolean(i++, user.hasPhoneNotif());
+			statement.setString(i++, user.getLanguage());
 			return statement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -141,6 +192,9 @@ public class UserDao {
 			statement.setString(i++, user.getImage());
 			statement.setString(i++, user.getSocialNetwork().toString());
 			statement.setString(i++, user.getSocialNetworkId());
+			statement.setBoolean(i++, user.hasEmailNotif());
+			statement.setBoolean(i++, user.hasPhoneNotif());
+			statement.setString(i++, user.getLanguage());
 
 			statement.setInt(i, user.getId());
 			return statement.executeUpdate();

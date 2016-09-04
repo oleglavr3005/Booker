@@ -21,6 +21,22 @@ public class UserService {
 	public List<User> getAllUsers() {
 		return daoManager.executeAndClose(() -> daoManager.getUserDao().getAllUsers());
 	}
+
+	public List<User> getAllUsersWithEmailNotification() {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getAllUsersWithEmailNotification());
+	}
+
+	public List<User> getAllUsersWithEmailNotificationInHotel(int hotelId) {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getAllUsersWithEmailNotificationInHotel(hotelId));
+	}
+
+	public List<User> getAllUsersWithPhoneNotification() {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getAllUsersWithPhoneNotification());
+	}
+
+	public List<User> getAllUsersWithPhoneNotificationInHotel(int hotelId) {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getAllUsersWithPhoneNotificationInHotel(hotelId));
+	}
 	
 	public User getUserById(int id) {
 		return daoManager.executeAndClose(() -> daoManager.getUserDao().getUserById(id));
