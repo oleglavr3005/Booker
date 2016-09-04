@@ -9,13 +9,21 @@ function createOrder(orders) {
 }
 
 function bookOrderCard(orderId, daysCount) {
+	var url;
+	if (orderId == null){
+		url = '../book_all';
+	}
+	else {
+		url = '../book';
+	}
+	
 	if (daysCount > 0) {
 		// need 2 pay at all
-
+		
 		// validate info for purchase
 		if ($('#subscribing_form').html() != null) {
 			if (validateFields()) {
-				$.post('../book', {
+				$.post(url, {
 					orderId : orderId
 				}, function(result) {
 
@@ -63,8 +71,13 @@ function bookOrderCard(orderId, daysCount) {
 					+ '</div>' + '</div>' + // row
 
 					'</div>' + // form
-					'<div class="divider" style="margin-bottom: 20px;"></div></div>'
-			$('#field' + orderId).after(content);
+					'</div>'
+			if (orderId != null) {
+				$('#field' + orderId).after(content);
+			}
+			else {
+				$('#field').after(content);
+			}
 			var height = $('#subscribing_form').height();
 			$("#subscribing_form").animate({
 				height : "0px",
