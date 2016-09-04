@@ -103,11 +103,7 @@
 
 <!-- END OF SWITCH CONTENT -->
 
-<!-- PAGINATOR 3000 -->
-		<div id="paginationdemo" class="row">
-			<div id="demo5" class="col s4 offset-s5"></div>
-		</div>
-<!-- END OF PAGINATOR 3000 -->
+
 
 	
 
@@ -146,7 +142,7 @@
 		
 	<script type="text/javascript">
 		var pagesCount = '${countOfPages}';
-			pagesCount = 3;
+		//	pagesCount = 3;
 		if (pagesCount > 1) {
 			jQuery(function() {
 				jQuery("#demo5").paginate({
