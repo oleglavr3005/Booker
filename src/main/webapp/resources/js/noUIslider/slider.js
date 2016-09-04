@@ -29,11 +29,11 @@ var minimumUser = $('#minUserPrice').val();
 var maximumUser = $('#maxUserPrice').val();
 if (minimumUser == "") {
 	minimumUser = minimum;
-	$('#minStars').val(minimum);
+	$('#minUserPrice').val(minimum);
 }
 if (maximumUser == "") {
 	maximumUser = maximum;
-	$('#minStars').val(maximum);
+	$('#maxUserPrice').val(maximum);
 }
 noUiSlider.create(priceRange, {
 	start : [ parseInt(minimumUser), parseInt(maximumUser) ], // Handle start
