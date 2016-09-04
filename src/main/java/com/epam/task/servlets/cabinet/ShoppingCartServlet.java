@@ -56,7 +56,11 @@ public class ShoppingCartServlet extends HttpServlet {
 		request.setAttribute("countOfOrders", orders.size());
 		session.setAttribute("countOfPages", Math.ceil(orders.size() / 3.0));
 		
-		request.getRequestDispatcher("/pages/user/shopping_cart.jsp").forward(request, response);
+		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
+			request.getRequestDispatcher("pages/roomCard.jsp").forward(request, response);
+		} else {	
+			request.getRequestDispatcher("pages/user/shopping_cart.jsp").forward(request, response);
+		}
 	}
 
 	/**
