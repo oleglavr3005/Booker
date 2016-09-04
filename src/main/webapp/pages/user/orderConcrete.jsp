@@ -212,61 +212,94 @@ div #sidebar-wrapper {
 					<!-- END OF MAP MARKER -->
 
 
+					<!-- ROOM TYPE MARKER -->
 					<div class="row ">
 						<div class="col s12">
 							<h5 style="font-size: 1rem; margin: 0 0 0 0;">
-								@icon for Room type@ ROOM_TYPE : <c:out value="${room.type }"></c:out>
+								@icon for Room type@ ROOM_TYPE :
+								<c:out value="${room.type }"></c:out>
 							</h5>
 						</div>
 					</div>
+					<!-- END OF ROOM TYPE MARKER -->
 
-					<div class="row col s12" style="margin-bottom: 0;">
-						<p>
-							Start date <span id="start_date">${order.startDate}</span>
-						</p>
-					</div>
-
-					<div class="row col s12" style="margin-bottom: 0;">
-						<p>
-							End date <span id="end_date">${order.endDate}</span>
-						</p>
-					</div>
-
-					<div class="row col s12" style="margin-bottom: 0;">
-						<p>
-							Order date <span id="order_date">${order.orderDate}</span>
-						</p>
-					</div>
-
-					<div class="row col s12" style="margin-bottom: 0;">
-						<p>Status ${order.status}</p>
-					</div>
-					<div class="row col s12" style="margin-bottom: 0;">
-						<p>Food ${room.food}</p>
-					</div>
-					<div class="row col s12">
-						<p>Price ${order.price}</p>
-					</div>
-					<c:if test="${order.status != CANCELED}">
-						<div class="row col 12">
-							<div class="col s2 offset-s3"
-								style="margin-top: 18px; margin-left: 0;">
-								<a id="search" class="waves-effect waves-light btn"
-									onclick="searchForm()"
-									<%-- 					href="${pageContext.servletContext.contextPath}/search" --%>
-					style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
-										key="Cancel" /></a>
-							</div>
+					<!-- ORDER DATE MARKER -->
+					<div class="row ">
+						<div class="col s12">
+							<p>
+								<i class="fa fa-lg fa-calendar" aria-hidden="true"></i> Order
+								date <span id="order_date">${order.orderDate}</span>
+							</p>
 						</div>
-					</c:if>
+					</div>
+					<!-- END OF ORDER DATE MARKER -->
+
+					<!-- START DATE MARKER -->
+					<div class="row ">
+						<div class="col s12">
+							<p>
+								<i class="fa fa-lg fa-calendar" aria-hidden="true"></i> Start
+								date <span id="start_date">${order.startDate}</span>
+							</p>
+						</div>
+					</div>
+					<!-- END OF START DATE MARKER -->
+
+					<!-- END DATE MARKER -->
+					<div class="row ">
+						<div class="col s12">
+							<p>
+								<i class="fa fa-lg fa-calendar" aria-hidden="true"></i> End date
+								<span id="end_date">${order.endDate}</span>
+							</p>
+						</div>
+					</div>
+					<!-- END OF END DATE MARKER -->
+
+
+					<!-- ROW WITH STATUS | FOOD | PRICE -->
+					<div class="row ">
+						<div class="col s4">
+							<!-- 						TWO DIFFERENT ICONS IF.ACTIVE OR IF.FINISHED -->
+							<span>Status ${order.status}</span>
+						</div>
+						<div class="col s4" style="margin-bottom: 0;">
+							<span> <i class="fa fa-lg fa-cutlery" aria-hidden="true"></i>
+								Food ${room.food}
+							</span>
+						</div>
+						<div class="col s4">
+							<span> <i class="fa fa-lg fa-money" aria-hidden="true"></i>
+								Price ${order.price}
+							</span>
+						</div>
+					</div>
+					<!-- END OF ROW WITH STATUS | FOOD | PRICE -->
+
+
+
 
 				</div>
 			</div>
+		</div>
 
-
-
+		<div class="row">
+			<div class="col s7 offset-s1" style="border: 1px solid">HUGE AF
+				COMENT ZONE</div>
+			<div class="col s4">
+				<c:if test="${order.status != ACTIVE}">
+					<div class="col s2 offset-s1"
+						style="margin-top: 18px; margin-left: 0;">
+						<a id="calceOrder" class="waves-effect waves-light btn"
+							style="background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
+								key="Cancel" /></a>
+					</div>
+				</c:if>
+			</div>
 
 		</div>
+
+
 	</div>
 
 
