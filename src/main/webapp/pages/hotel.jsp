@@ -71,7 +71,7 @@
 	} ]
 </script>
 <script
-	src="${pageContext.servletContext.contextPath}/resources/js/showHotels.js"></script>
+	src="${pageContext.servletContext.contextPath}/resources/js/hotel/showHotels.js"></script>
 
 <!-- JTable -->
 <script
@@ -304,6 +304,8 @@ div #sidebar-wrapper {
 
 	<script
 		src="${pageContext.servletContext.contextPath}/resources/js/customerSlider.js"></script>
+	<script
+		src="${pageContext.servletContext.contextPath}/resources/js/hotel/dropDownComments.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
 
