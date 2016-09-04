@@ -48,7 +48,7 @@ public class ShoppingCartServlet extends HttpServlet {
 		
 		String pageString = request.getParameter("page");
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
-		
+				
 		List<OrderDto> ordersByPage = OrderDto.listConverter(new OrderService().getOrdersByUserAndStatusAndPage(userId, OrderStatus.ORDER, page));
 		
 		request.setAttribute("orders", ordersByPage);
@@ -57,7 +57,7 @@ public class ShoppingCartServlet extends HttpServlet {
 		session.setAttribute("countOfPages", Math.ceil(orders.size() / 3.0));
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
-			request.getRequestDispatcher("pages/roomCard.jsp").forward(request, response);
+			request.getRequestDispatcher("pages/orderCard.jsp").forward(request, response);
 		} else {	
 			request.getRequestDispatcher("/pages/user/shopping_cart.jsp").forward(request, response);
 		}
