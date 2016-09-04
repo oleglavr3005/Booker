@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +20,6 @@ public class OrderDAO {
 	private final String SQL_GET_ALL_ORDERS = "SELECT * FROM `order`";
 	private final String SQL_CREATE_ORDER = "INSERT INTO `order`(user_id, room_id, start_date, end_date, `status`, order_date, price) VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private final String SQL_READ_ORDER_BY_ID = "SELECT * FROM `order` WHERE order_id = ?";
-	private final String SQL_READ_ORDER_BY_DATA = "SELECT * FROM `order` WHERE user_id = ? AND room_id = ? AND start_date LIKE ? AND end_date LIKE ?";
 	private final String SQL_UPDATE_ORDER = "UPDATE `order` SET user_id = ?, room_id = ?, start_date = ?, end_date = ?, `status` = ?, order_date = ?, price = ? WHERE order_id = ?";
 	private final String SQL_BOOK_ORDER_BY_ID = "UPDATE `order` SET `status` = 'ACTIVE' WHERE order_id = ?";
 	private final String SQL_BOOK_ALL_ORDERS_BY_USER = "UPDATE `order` SET `status` = 'ACTIVE' WHERE user_id = ? AND `status` LIKE 'ORDER'";
@@ -31,7 +29,7 @@ public class OrderDAO {
 	private final String SQL_GET_ORDER_BY_USER_ID = "SELECT * FROM `order` WHERE user_id = ?";
 	private final String SQL_GET_ORDER_BY_ROOM_ID = "SELECT * FROM `order` WHERE room_id = ?";
 
-	private final String SQL_CREATE_ORDER_EVENT = "CREATE EVENT eventname ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 HOUR DO DELETE FROM `order` WHERE order_id = user_id AND `status` LIKE 'ORDER'";
+	private final String SQL_CREATE_ORDER_EVENT = "CREATE EVENT eventname ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 MINUTE DO DELETE FROM `order` WHERE order_id = ? AND `status` LIKE 'ORDER'";
 	
 	public OrderDAO(Connection connection) {
 		super();
@@ -57,7 +55,7 @@ public class OrderDAO {
 
 	public int insertOrder(Order order) { // he does create
 		int result = 0;
-		try (PreparedStatement st = connection.prepareStatement(SQL_CREATE_ORDER)) {
+		try (PreparedStatement st = connection.prepareStatement(SQL_CREATE_ORDER, Statement.RETURN_GENERATED_KEYS)) {
 			st.setInt(1, order.getUserId());
 			st.setInt(2, order.getRoomId());
 			st.setTimestamp(3, order.getStartDate());
@@ -66,16 +64,17 @@ public class OrderDAO {
 			st.setTimestamp(6, order.getOrderDate());
 			st.setInt(7, order.getPrice());
 			result = st.executeUpdate();
+			
+			ResultSet rs = st.getGeneratedKeys();
+			rs.next();
+			int orderId = rs.getInt(1);
+			try (PreparedStatement st1 = connection.prepareStatement(SQL_CREATE_ORDER_EVENT.replaceAll("eventname", "ev" + new Date().getTime()))) {
+				st1.setInt(1, orderId);
+				st1.executeUpdate();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return -1;
-		}
-		Order newOrder = getOrderByData(order.getUserId(), order.getRoomId(), order.getStartDate(), order.getEndDate());
-		try (Statement st = connection.createStatement()) {
-			System.out.println(SQL_CREATE_ORDER_EVENT.replaceAll("user_id", "" + newOrder.getId()).replaceAll("eventname", "ev" + new Date().getTime()));
-			st.execute(SQL_CREATE_ORDER_EVENT.replaceAll("user_id", "" + newOrder.getId()).replaceAll("eventname", "ev" + new Date().getTime()));
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 		return result;
 	}
@@ -95,22 +94,6 @@ public class OrderDAO {
 		Order order = null;
 		try (PreparedStatement st = connection.prepareStatement(SQL_READ_ORDER_BY_ID)) {
 			st.setInt(1, id);
-			ResultSet rs = st.executeQuery();
-			order = UniversalTransformer.getObjectFromRS(rs, Order.class);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return order;
-	}
-
-	public Order getOrderByData(int userId, int roomId, Timestamp startDate, Timestamp endDate) {
-		Order order = null;
-		try (PreparedStatement st = connection.prepareStatement(SQL_READ_ORDER_BY_DATA)) {
-			int i = 1;
-			st.setInt(i++, userId);
-			st.setInt(i++, roomId);
-			st.setTimestamp(i++, startDate);
-			st.setTimestamp(i++, endDate);
 			ResultSet rs = st.executeQuery();
 			order = UniversalTransformer.getObjectFromRS(rs, Order.class);
 		} catch (SQLException e) {
