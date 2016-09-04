@@ -291,6 +291,11 @@ div #sidebar-wrapper {
 			<jsp:include page="roomCard.jsp"></jsp:include>
 		</div>
 	</div>
+	<div class="container">
+		<div id="switchContent" class="row">
+			<jsp:include page="commentCard.jsp"></jsp:include>
+		</div>
+	</div>
 
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="foot.jsp"></jsp:include>
