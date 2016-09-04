@@ -15,6 +15,13 @@ function removeOrderCard(orderId) {
 	});
 }
 
+function clearCart() {
+	$.post('../clear_cart', {
+	}, function(orders) {
+		$('#switchContent').html(orders);
+	});
+}
+
 function removeOrderTable(publishId) {
 	$.post('delete_sub', {
 		publishId : publishId
