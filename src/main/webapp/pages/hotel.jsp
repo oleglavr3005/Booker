@@ -209,11 +209,11 @@ div #sidebar-wrapper {
 								<a class="tooltipped" data-position="icon" data-tooltip="Wifi"
 									style="color: #0d0d0d;"><i class="material-icons invert">wifi</i></a>
 							</c:if>
-<%-- 							<c:if test="${conveniences.shower == true}"> --%>
-<!-- 								<a class="tooltipped" data-position="icon" data-tooltip="Shower"><img -->
-<!-- 									class="invert" style="max-width: 230%;" -->
-<%-- 									src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a> --%>
-<%-- 							</c:if> --%>
+							<c:if test="${conveniences.shower == true}">
+								<a class="tooltipped" data-position="icon" data-tooltip="Shower"><img
+									class="invert" style="max-width: 5%; margin-top:-1rem"
+									src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
+							</c:if>
 							<c:if test="${conveniences.parking == true}">
 								<a class="tooltipped" data-position="icon"
 									data-tooltip="Parking" style="color: #0d0d0d;"><i

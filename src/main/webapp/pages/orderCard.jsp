@@ -86,83 +86,82 @@ b {
 									<script>
 									var id = ${order.id};
 									changeDate(id);</script>
+								</div>
 
+								<div class="row">
+									<a class="tooltipped" data-position="icon"
+										data-tooltip="Double beds" style="color: #0d0d0d;"><img
+										class="invert" style="max-width: 7%;"
+										src="${pageContext.servletContext.contextPath}/resources/images/double_bed.png" /></a>
+									<span>${order.room.doubleBedsCount}</span> <a class="tooltipped"
+										data-position="icon" data-tooltip="Single beds"
+										style="color: #0d0d0d;"><img class="invert"
+										style="max-width: 7%;"
+										src="${pageContext.servletContext.contextPath}/resources/images/single_bed.png" /></a>
+									<span>${order.room.bedsCount}</span>
+								</div>
+
+								<div class="row">
+										<a class="tooltipped" data-position="icon" data-tooltip="Food"
+											style="color: #0d0d0d;"><i
+											class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${order.room.food}</span>
 								</div>
 
 								<div class="row">
 									<a class="tooltipped" data-position="icon" data-tooltip="Price"
 										style="color: #0d0d0d;"><i
 										class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${order.price}</span>
+									<c:if test="${order.room.daysCount == -1}">
+										<a class="tooltipped" data-position="icon" data-tooltip="No deposit"
+										style="color: #0d0d0d;"><i class="fa fa-2x fa-exclamation-circle invert" aria-hidden="true"></i></a>
+									</c:if>
 								</div>
 
 							</div>
 
 							<div class="col s5">
-								<div class="row">
+								<div class="row" style="float: right; text-align:right; font-size:0.3rem">
 									<c:if test="${order.room.wifi == true}">
-										<div class="col s2" style="margin-top: 5px;">
 											<a class="tooltipped" data-position="icon"
 												data-tooltip="Wifi" style="color: #0d0d0d;"><i
 												class="material-icons invert">wifi</i></a>
-										</div>
 									</c:if>
 
 									<c:if test="${order.room.shower == true}">
-										<div class="col s2" style="margin-top: 5px;">
-											<a class="tooltipped" data-position="icon"
-												data-tooltip="Shower"><img class="invert"
-												style="max-width: 230%;"
-												src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
-										</div>
+									<a class="tooltipped" data-position="icon" data-tooltip="Shower"><img
+										class="invert" style="max-width: 10%; margin-top:-1.5rem"
+										src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
 									</c:if>
 
 									<c:if test="${order.room.parking == true}">
-										<div class="col s2" style="margin-top: 5px;">
 											<a class="tooltipped" data-position="icon"
 												data-tooltip="Parking" style="color: #0d0d0d;"><i
 												class="material-icons invert">local_parking</i></a>
-										</div>
 									</c:if>
 
 									<c:if test="${order.room.condition == true}">
-										<div class="col s2" style="margin-top: 5px;">
 											<a class="tooltipped" data-position="icon"
 												data-tooltip="Condition" style="color: #0d0d0d;"><i
 												class="material-icons invert">toys</i></a>
-										</div>
 									</c:if>
 
 									<c:if test="${order.room.pool == true}">
-										<div class="col s2" style="margin-top: 5px;">
 											<a class="tooltipped" data-position="icon"
 												data-tooltip="Pool" style="color: #0d0d0d;"><i
 												class="material-icons invert">pool</i></a>
-										</div>
 									</c:if>
 
 									<c:if test="${order.room.gym == true}">
-										<div class="col s2" style="margin-top: 5px;">
 											<a class="tooltipped" data-position="icon" data-tooltip="Gym"
 												style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
-										</div>
 									</c:if>
 
 									<c:if test="${order.room.balcony == true}">
-										<div class="col s2" style="margin-top: 5px;">
 											<a class="tooltipped" data-position="icon"
 												data-tooltip="Balcony"><img class="invert"
-												style="max-width: 230%;"
+												style="max-width: 10%; margin-top:-1.5rem"
 												src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
-										</div>
 									</c:if>
-								</div>
-
-								<div class="row">
-									<div class="col s6 offset-s6">
-										<a class="tooltipped" data-position="icon" data-tooltip="Food"
-											style="color: #0d0d0d;"><i
-											class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${order.room.food}</span>
-									</div>
 								</div>
 
 							</div>
