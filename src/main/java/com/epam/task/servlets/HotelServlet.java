@@ -108,11 +108,6 @@ public class HotelServlet extends HttpServlet {
 		request.setAttribute("conveniences", conveniences);
 		request.setAttribute("feedbacks", feedbacks);
 		request.setAttribute("rooms", rooms);
-		if (hotel.getPhotos().size() > 0) {
-			request.setAttribute("MainPhoto", hotel.getPhotos().get(0));
-			hotel.getPhotos().remove(0);
-			request.setAttribute("hotelPhotos", hotel.getPhotos());
-		}
 		request.getRequestDispatcher("/pages/hotel.jsp").forward(request, response);
 
 	}

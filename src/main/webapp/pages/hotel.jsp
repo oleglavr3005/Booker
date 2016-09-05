@@ -71,7 +71,7 @@
 	} ]
 </script>
 <script
-	src="${pageContext.servletContext.contextPath}/resources/js/hotel/showHotels.js"></script>
+	src="${pageContext.servletContext.contextPath}/resources/js/map/showPointsOnMap.js"></script>
 
 <!-- JTable -->
 <script
@@ -162,9 +162,10 @@ div #sidebar-wrapper {
 		<div id="links" style="margin-right: 8.3333333333%;">
 			<div class="row">
 				<div class="col s4">
-					<a href='<c:out value="${mainPhoto.id}"></c:out>' title="Banana"
-						data-gallery> <img
-						src="<c:out value="${mainPhoto.img}"></c:out>" alt="Banana">
+					<a href='${pageContext.servletContext.contextPath}/resources/images/photoOfHotels/${hotel.photos[0].img}' title="Banana"
+						data-gallery> 
+						<img src="${pageContext.servletContext.contextPath}/resources/images/photoOfHotels/${hotel.photos[0].img}" 
+							alt="Banana" style="width: 100%; padding-top: 15px;">
 					</a>
 					<div style="overflow-x: auto;">
 						<div style="margin: 10px; white-space: nowrap;">
