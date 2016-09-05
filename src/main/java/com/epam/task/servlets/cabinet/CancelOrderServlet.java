@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.Order;
 import com.epam.task.database.model.Room;
+import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.service.OrderService;
 import com.epam.task.database.service.RoomService;
@@ -41,17 +42,34 @@ public class CancelOrderServlet extends HttpServlet {
 			int daysLeft = (int)( (order.getStartDate().getTime() - new Date().getTime()) 
 	                / (1000 * 60 * 60 * 24) );
 			
+			int moneyToReturn;
 			if (daysLeft >= days) { //return all money and cancel
-				int moneyToReturn = order.getPrice() / 2; 	//we are paying a half of the sum
+				moneyToReturn = order.getPrice() / 2; 	//we are paying a half of the sum
 			} else { //return %
-				int moneyToReturn = (order.getPrice() / 200) * room.getPercentage(); //same as above
+				moneyToReturn = (order.getPrice() / 200) * room.getPercentage(); //same as above
 			}
-			//TODO: RETURN MONEY
+			User user = ((User) request.getSession().getAttribute("user"));
+			String email = user.getEmail();
+			String phone = user.getPhoneNumber();
+			if(email != null) {
+				//TODO: SEND EMAIL WITH moneyToReturn
+			}
+			if(phone != null) {
+				//TODO: SEND SMS WITH moneyToReturn
+			}
 		}
 		
 		order.setStatus(OrderStatus.CANCELED);
 		int result = service.updateOrder(order);
 		response.getWriter().write(result > 0 ? "true" : "false");
+		
+		try {
+			if (Integer.parseInt(request.getPathInfo().substring(1)) == orderId) {
+				response.sendRedirect("/cabinet/orders");
+			}
+		} catch (Exception e) {
+			return;
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
