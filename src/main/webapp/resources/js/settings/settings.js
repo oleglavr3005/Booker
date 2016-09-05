@@ -27,14 +27,13 @@ function saveContactData() {
 			email : mail,
 			mailNotif : mailCheck,
 		}, function(result) {
-			alert("post comeback " + result);
 			var res = $.parseJSON(result);
 			if (result != null) {
 				$('#email').val(res.email);
 				clearField('email');
 			}
 			 else {
-				 alert("mailErr");
+					invalid('email');
 			 }
 		});
 	}
@@ -157,13 +156,10 @@ function validateNumber(field) {
 }
 
 function emailIsValid(email) {
-	debugger;
-	alert("emailIsValid()");
 	if (email == '') {
 		return null;
 	}
 	if (email.length < 5 || email.length > 45 || !validateEmail(email)) {
-		alert("regex");
 		invalid('email');
 		$('#emailLbl').attr("data-error", wrongMail);
 		return null;
@@ -177,7 +173,6 @@ function emailIsValid(email) {
 			"email" : email
 		}
 	}).success(function(data) {
-		alert("ajax" + data);
 		var isValid = (data == "false");
 		if (!isValid) {
 			invalid('email');
@@ -240,6 +235,42 @@ function savePassword(header, succesfull) {
 			}, 3000);
 		}
 	});
+}
+
+$("#avatarImg").click(function() {
+	$("input[id='newPhoto']").click();
+});
+
+function showPhoto() {
+	var preview = document.querySelector('#avatarImg');
+	var file = document.querySelector('input[type=file]').files[0];
+	if (file) {
+		var reader = new FileReader();
+		reader.onloadend = function() {
+			preview.src = reader.result;
+		}
+		reader.readAsDataURL(file);
+		var data = new FormData();
+		$.each($('#newPhoto')[0].files, function(i, file) {
+			data.append('file-' + i, file);
+		});
+		$.ajax({
+			url : '../photo',
+			dest : 'avatar',
+			data : data,
+			cache : false,
+			contentType : false,
+			processData : false,
+			type : 'POST',
+			success : function(result) {
+				if (result == 'error') {
+					alert("IMG ERROR");
+				}else{
+					image = result;
+				}
+			}
+		});
+	}
 }
 
 function clearPasswordFields() {

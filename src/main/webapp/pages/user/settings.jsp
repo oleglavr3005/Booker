@@ -133,6 +133,29 @@
 							<fmt:message key="settings.header.PERSONAL" />
 						</h4>
 					</div>
+
+					<div class="row">
+						<div class="col s4">
+							<a href="#!"><img id="avatarImg"
+								style="height: 100px; padding: 10px; width: 110px;"
+								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"></a>
+						</div>
+						<div class="col s8">
+
+<!-- 							<div class="file-field input-field"> -->
+<!-- 								<div class="waves-effect waves-light btn"> -->
+									<input style="margin-top:60px" type="file" id="avatarInput"
+								onchange="showPhoto()" accept="image/*" />
+<!-- 								</div> -->
+<!-- 								<div class="file-path-wrapper"> -->
+<!-- 									<input class="file-path validate" type="text"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+
+							
+						</div>
+					</div>
+
 					<div class="row fields">
 						<div class="input-field col s9">
 							<div class="ui pointing label">
@@ -231,14 +254,14 @@
 								value="${user.phoneNumber}" length="45"> <label
 								id="phoneLbl" data-error="${fmtName}" for="phoneNumber">
 							</label>
-							
-<!-- 							<div class="switch"> -->
-<!-- 								<label> Off <input type="checkbox" id="phoneCheckBox"> <span -->
-<!-- 									class="lever"></span> On -->
-<!-- 								</label> -->
-<!-- 								<label for="phoneCheckBox">I  -->
-<!--  									WANT RECEIVE MESSAGES ABOUT NEW ROOMS!</label>  -->
-<!-- 							</div> -->
+
+							<!-- 							<div class="switch"> -->
+							<!-- 								<label> Off <input type="checkbox" id="phoneCheckBox"> <span -->
+							<!-- 									class="lever"></span> On -->
+							<!-- 								</label> -->
+							<!-- 								<label for="phoneCheckBox">I  -->
+							<!--  									WANT RECEIVE MESSAGES ABOUT NEW ROOMS!</label>  -->
+							<!-- 							</div> -->
 
 
 
@@ -258,8 +281,8 @@
 									<fmt:message key="settings.enter.mail" />
 								</div>
 								<input id="email" type="email" class="validate"
-									value="${user.email}" length="80"> <label
-									id="emailLbl" data-error="${fmtMail}" for="email"> </label>
+									value="${user.email}" length="80"> <label id="emailLbl"
+									data-error="${fmtMail}" for="email"> </label>
 								<p>
 									<input type="checkbox" class="filled-in" id="eMailBox"
 										name="eMailBox" /> <label for="eMailBox">I WANT
@@ -308,7 +331,7 @@
 									<fmt:message key="settings.enter.request" />
 								</div>
 								<textarea id="requestForm" class="materialize-textarea"
-									value="${message}"></textarea>
+									value="${message}">${message}</textarea>
 							</div>
 						</div>
 
