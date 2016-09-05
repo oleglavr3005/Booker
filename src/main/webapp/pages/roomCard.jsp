@@ -189,8 +189,8 @@ b {
 </c:forEach>
 
 <!-- PAGINATOR 3000 -->
-<div id="paginationdemo" class="row">
-	<div id="demo5" class="col s4 offset-s5"></div>
+<div id="paginationdemo" class="row" style="margin-bottom: 0;">
+	<div id="demo5" class="col s4 offset-s5" style="margin-top: 10px;"></div>
 </div>
 <!-- END OF PAGINATOR 3000 -->
 

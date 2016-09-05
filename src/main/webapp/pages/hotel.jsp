@@ -69,26 +69,6 @@
 <script
 	src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
 
-<link
-	href="${pageContext.servletContext.contextPath}/resources/css/styleMap.css"
-	rel="stylesheet">
-
-<script type="text/javascript"
-	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU"></script>
-<script>
-	points = [ {
-		"id" : "<c:out value="${hotel.id}"></c:out>",
-		"name" : "<c:out value="${hotel.name}"></c:out>",
-		"photo" : "${pageContext.servletContext.contextPath}/resources/images/${MainPhoto.img}",
-		"address" : "<c:out value="${hotel.city}"></c:out> <c:out value="${hotel.street}"></c:out>",
-		"phone" : "225-(254)220-5391",
-		"lat" : "<c:out value="${hotel.XCoord}"></c:out>",
-		"lon" : "<c:out value="${hotel.YCoord}"></c:out>",
-	} ]
-</script>
-<script
-	src="${pageContext.servletContext.contextPath}/resources/js/map/showPointsOnMap.js"></script>
-
 <!-- JTable -->
 <!-- <script -->
 <!-- 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
@@ -318,7 +298,7 @@ div #sidebar-wrapper {
 		<!-- MAP End======================================================================= -->
 	</div>
 	<div class="container">
-		<div id="switchContent" class="row">
+		<div id="switchContent" class="row" style="margin-bottom: 0;">
 			<jsp:include page="roomCard.jsp"></jsp:include>
 		</div>
 	</div>
@@ -329,7 +309,7 @@ div #sidebar-wrapper {
 	</div>
 
 	<!-- Footer ========================================================================== -->
-	<jsp:include page="foot.jsp"></jsp:include>
+		<jsp:include page="foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
 
 
