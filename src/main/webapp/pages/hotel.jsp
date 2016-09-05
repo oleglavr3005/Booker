@@ -191,18 +191,25 @@ div #sidebar-wrapper {
 								</h5>
 							</div>
 							<div class="col s4 offset-s1" style="margin-top: 15px;">
+							<a class="tooltipped" data-position="icon" data-tooltip="Stars"
+										style="color: #0d0d0d;">
 								<c:forEach var="i" begin="1" end="${hotel.stars}">
 									<i class="fa fa-lg fa-star-o" aria-hidden="true"></i>
 								</c:forEach>
+							</a>
 							</div>
 						</div>
 						<div class="row">
-							<i class="fa fa-lg icon-map-marker" aria-hidden="true"></i> <a
-								id="togle">${hotel.city} ${hotel.street}</a>
+							<a class="tooltipped" data-position="icon" data-tooltip="Location"
+								style="color: #0d0d0d;"><i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
+							<a id="togle" class="tooltipped" data-position="icon" data-tooltip="Show map"
+								style="cursor: pointer;">${hotel.city} ${hotel.street}</a>
 						</div>
 
 						<div class="row" style="margin-bottom: 5px">
-							<i class="material-icons" style="font-size: 20px;">receipt</i> <span>${hotel.desc}</span>
+							<a class="tooltipped" data-position="icon" data-tooltip="Description"
+								style="color: #0d0d0d; cursor:default"><i class="material-icons invert" style="font-size: 20px;">receipt</i></a>
+							 <span>${hotel.desc}</span>
 						</div>
 						<div class="row" style="height: 10px; margin: 0;">
 							<c:if test="${conveniences.wiFi == true}">
