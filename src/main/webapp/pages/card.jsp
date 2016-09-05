@@ -32,12 +32,18 @@ b {
 <%-- 	</c:if> --%>
 <!-- </h6> -->
 <div class="divider" style="margin-bottom: 20px;"></div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col s3">
+			<c:if test="${countOfHotels == 0}">
+				<h5 style="color: red; margin-bottom: 63px;">
+					<fmt:message key="card.no.periodicals" />
+				</h5>
+			</c:if>
+		</div>
+	</div>
 
-<c:if test="${countOfHotels == 0}">
-	<h5 style="color: red; margin-bottom: 63px;">
-		<fmt:message key="card.no.periodicals" />
-	</h5>
-</c:if>
+</div>
 
 <c:forEach var="hotel" items="${hotels}">
 
@@ -50,7 +56,8 @@ b {
 					<div class="card-image col s4" style="position: relative;">
 						<a
 							href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}">
-							<img src="${pageContext.servletContext.contextPath}/resources/images/photoOfHotels/${hotel.photos[0].img}"
+							<img
+							src="${pageContext.servletContext.contextPath}/resources/images/photoOfHotels/${hotel.photos[0].img}"
 							style="height: 170px; width: 200px; padding: 10px;">
 						</a>
 
@@ -60,47 +67,51 @@ b {
 
 						<div class="row" style="margin-top: 15px;">
 							<div class="col s5">
-								<a href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}">${hotel.name}</a>
+								<a
+									href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}">${hotel.name}</a>
 							</div>
 							<div class="col s6 offset-s1">
-							<a class="tooltipped" data-position="icon" data-tooltip="Stars"
-										style="color: #0d0d0d;text-decoration: none;">
-								<c:forEach var="i" begin="1" end="${hotel.stars}">
-									<i class="fa fa-lg fa-star invert" aria-hidden="true"></i> 
-								</c:forEach>
-								<c:forEach var="i" begin="${hotel.stars}" end="4">
-									<i class="fa fa-lg fa-star-o" aria-hidden="true"></i>
-								</c:forEach>
-							</a>
+								<a class="tooltipped" data-position="icon" data-tooltip="Stars"
+									style="color: #0d0d0d; text-decoration: none;"> <c:forEach
+										var="i" begin="1" end="${hotel.stars}">
+										<i class="fa fa-lg fa-star invert" aria-hidden="true"></i>
+									</c:forEach> <c:forEach var="i" begin="${hotel.stars}" end="4">
+										<i class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+									</c:forEach>
+								</a>
 							</div>
 						</div>
 
 
 						<div class="row">
-							<a class="tooltipped" data-position="icon" data-tooltip="Location"
-								style="color: #0d0d0d;text-decoration: none;"><i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
-							<span>${hotel.city}
-								${hotel.street}</span>
+							<a class="tooltipped" data-position="icon"
+								data-tooltip="Location"
+								style="color: #0d0d0d; text-decoration: none;"><i
+								class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
+							<span>${hotel.city} ${hotel.street}</span>
 						</div>
 
 						<div class="row" style="margin-bottom: 5px">
-							<a class="tooltipped" data-position="icon" data-tooltip="Description"
-								style="color: #0d0d0d; cursor:default"><i class="material-icons invert" style="font-size: 20px;">receipt</i></a>
+							<a class="tooltipped" data-position="icon"
+								data-tooltip="Description"
+								style="color: #0d0d0d; cursor: default"><i
+								class="material-icons invert" style="font-size: 20px;">receipt</i></a>
 							<span id="hotelInfo${hotel.id}">${hotel.desc.substring(0, hotel.desc.length() < 150 ? hotel.desc.length() : 150)}</span>
-							<a onclick="changeInfo(${hotel.id})" style="cursor:pointer"
-								class="tooltipped" data-position="icon" data-tooltip="Show full info" id="dots${hotel.id}">...</a>
-							
-							<input id="infoOpened${hotel.id}" type="hidden" value="false"/>
-							<input id="fullInfo${hotel.id}" type="hidden" value="${hotel.desc}"/>
-							<input id="shortInfo${hotel.id}" type="hidden" value="${hotel.desc.substring(0, hotel.desc.length() < 150 ? hotel.desc.length() : 150)}"/>
+							<a onclick="changeInfo(${hotel.id})" style="cursor: pointer"
+								class="tooltipped" data-position="icon"
+								data-tooltip="Show full info" id="dots${hotel.id}">...</a> <input
+								id="infoOpened${hotel.id}" type="hidden" value="false" /> <input
+								id="fullInfo${hotel.id}" type="hidden" value="${hotel.desc}" />
+							<input id="shortInfo${hotel.id}" type="hidden"
+								value="${hotel.desc.substring(0, hotel.desc.length() < 150 ? hotel.desc.length() : 150)}" />
 						</div>
 					</div>
 
 					<div class="col s2">
 						<div class="row">
-						<a class="tooltipped" data-position="icon" data-tooltip="Rating"
-							style="color: #0d0d0d;text-decoration: none;">
-							<i class="fa fa-lg fa-star invert" aria-hidden="true"></i> <span>${hotel.rating }</span>
+							<a class="tooltipped" data-position="icon" data-tooltip="Rating"
+								style="color: #0d0d0d; text-decoration: none;"> <i
+								class="fa fa-lg fa-star invert" aria-hidden="true"></i> <span>${hotel.rating }</span>
 							</a>
 						</div>
 
@@ -122,9 +133,9 @@ b {
 </c:forEach>
 
 <!-- PAGINATOR 3000 -->
-		<div id="paginationdemo" class="row">
-			<div id="demo5" class="col s4 offset-s5"></div>
-		</div>
+<div id="paginationdemo" class="row">
+	<div id="demo5" class="col s4 offset-s5"></div>
+</div>
 <!-- END OF PAGINATOR 3000 -->
 
 
@@ -154,8 +165,8 @@ b {
 			});
 		}
 	</script>
-	
-	<script type="text/javascript">
+
+<script type="text/javascript">
 	function changeInfo(hotelId) {
 		var infoOpened = document.getElementById("infoOpened" + hotelId);
 		var fullInfo = document.getElementById("fullInfo" + hotelId).value;
