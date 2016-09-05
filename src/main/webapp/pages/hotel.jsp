@@ -226,7 +226,7 @@ div #sidebar-wrapper {
 						<div class="row">
 							<a class="tooltipped" data-position="icon" data-tooltip="Location"
 								style="color: #0d0d0d;text-decoration: none;"><i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
-							<a id="togle" class="tooltipped" data-position="icon" data-tooltip="Show map"
+							<a id="map_button" class="tooltipped" data-position="icon" data-tooltip="Show map"
 								style="cursor: pointer;">${hotel.city} ${hotel.street}</a>
 						</div>
 
@@ -313,9 +313,9 @@ div #sidebar-wrapper {
 
 
 		</div>
-		<div id="togle_place" class="col s12" style="margin-top: 18px;">
-			<div id="google_map" style="height: 400px; width: 83%;"></div>
-		</div>
+		<!-- MAP ========================================================================== -->
+	 		<jsp:include page="map.jsp"></jsp:include>
+		<!-- MAP End======================================================================= -->
 	</div>
 	<div class="container">
 		<div id="switchContent" class="row">
