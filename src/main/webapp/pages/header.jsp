@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="com.i18n.text" />
 
@@ -111,7 +112,8 @@ img.logo {
 							<div class="dropdown" style="padding-top:0.5rem;">
 							<span id="userNameSpan" style="font-size:1.3rem; margin-right:0.5rem; margin-top:20px">${user.firstName} ${user.lastName}</span>
 								<img id="imageavatar"
-									src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"
+<%-- 									src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}" --%>
+									src="<i:urlToImage url="${user.image}" />"
 									alt="img"
 									style="height: 50px; width: 50px; border-radius: 25px; margin-top:-0.5rem"
 									class="imageavatar dropdown-toggle" data-toggle='dropdown'

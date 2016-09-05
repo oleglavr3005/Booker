@@ -12,7 +12,6 @@ function auth(){
 				url : 'auth',
 				type : 'POST',
 				success : function(respond) {
-					alert(respond);
 					if (respond.logged) {
 						location.reload();
 					} else {

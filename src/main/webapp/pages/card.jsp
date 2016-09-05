@@ -57,7 +57,8 @@ b {
 						<a
 							href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}">
 							<img
-							src="${pageContext.servletContext.contextPath}/resources/images/photoOfHotels/${hotel.photos[0].img}"
+<%-- 							src="${pageContext.servletContext.contextPath}/resources/images/photoOfHotels/${hotel.photos[0].img}" --%>
+							src="<i:urlToImage url="${hotel.photos[0].img}" />"
 							style="height: 170px; width: 200px; padding: 10px;">
 						</a>
 
