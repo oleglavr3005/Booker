@@ -9,6 +9,8 @@ function createOrder(orders) {
 }
 
 function bookOrderCard(orderId, daysCount) {
+	var localComment = orderId == null ? $('#comment').val() : $('#comment' + orderId).val();
+	alert(localComment);
 	var code = value($('#cardnum1').val()) + value($('#cardnum2').val())
 	+ value($('#cardnum3').val()) + value($('#cardnum4').val());
 	alert(code);
@@ -28,7 +30,8 @@ function bookOrderCard(orderId, daysCount) {
 				if (validateFields()) {
 					$.post(url, {
 						orderId : orderId,
-						cardNumber : code
+						cardNumber : code,
+						comment : localComment
 					}, function(result) {
 
 						$('#book' + orderId).onclick = null;
@@ -100,7 +103,8 @@ function bookOrderCard(orderId, daysCount) {
 		} else {
 			$.post('../book', {
 				orderId : orderId,
-				cardNumber : code
+				cardNumber : code,
+				comment : localComment
 			}, function(result) {
 
 				$('#book' + orderId).onclick = null;

@@ -331,7 +331,7 @@
 									<fmt:message key="settings.enter.request" />
 								</div>
 								<textarea id="requestForm" class="materialize-textarea"
-									value="${message}">${message}</textarea>
+									>${message}</textarea>
 							</div>
 						</div>
 
