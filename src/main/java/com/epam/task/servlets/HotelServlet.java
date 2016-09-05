@@ -90,14 +90,15 @@ public class HotelServlet extends HttpServlet {
 		} catch (Exception e) {
 			endDate = new Timestamp(0);
 		}
-		
+
+		String compareBy = request.getParameter("compareBy");
 		List<Feedback> feedbacks = new FeedbackService().getAllFeedbacksByHotel(id);
 		List<Room> rooms = new RoomService().getAllSuitableRoomsForHotel(id, page, 
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull, 
 				minPrice, maxPrice, people,
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
-				startDate, endDate);
+				startDate, endDate, compareBy);
 		request.setAttribute("hotel", hotel);
 		request.setAttribute("conveniences", conveniences);
 		request.setAttribute("feedbacks", feedbacks);

@@ -39,6 +39,11 @@ public class RoomDao {
 	private final String HAS_GYM = " AND r.has_gym = true";
 	private final String HAS_BALCONY = " AND r.has_balcony = true";
 	private final String NO_DEPOSIT = " AND r.days_count < 0";
+
+	private final String ORDER_BY_PRICE_ASC = " ORDER BY price ASC";
+	private final String ORDER_BY_PRICE_DESC = " ORDER BY price DESC";
+	private final String ORDER_BY_PEOPLE_ASC = " ORDER BY double_beds_count*2 + beds_count ASC";
+	private final String ORDER_BY_PEOPLE_DESC = " ORDER BY double_beds_count*2 + beds_count DESC";
 	
 	private final String PAGINATION = " LIMIT ?, 3";
 	
@@ -94,7 +99,7 @@ public class RoomDao {
 			int minPrice, int maxPrice, int people,
 			boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, 
 			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit,
-			Timestamp startDate, Timestamp endDate) {
+			Timestamp startDate, Timestamp endDate, String orderBy) {
 
 		StringBuilder SQL = new StringBuilder(GET_ALL_SUITABLE_ROOMS_FOR_HOTEL);
 		//ROOM TYPE
@@ -170,7 +175,19 @@ public class RoomDao {
 		if (noDeposit) {
 			SQL.append(NO_DEPOSIT);
 		}
-
+		
+		String ORDER_BY;
+		if("compareByPriceAsc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_PRICE_ASC;
+		} else if ("compareByPriceDesc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_PRICE_DESC;
+			
+		} else if ("compareByPeopleAsc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_PEOPLE_ASC;
+		} else { //compareByPeopleDesc = default
+			ORDER_BY = ORDER_BY_PEOPLE_DESC;
+		}
+		SQL.append(ORDER_BY);
 		SQL.append(PAGINATION);
 				
 		try (PreparedStatement statement = connection.prepareStatement(SQL.toString())) {
