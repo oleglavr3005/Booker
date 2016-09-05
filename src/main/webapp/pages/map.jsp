@@ -9,13 +9,13 @@
 
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU"></script>
 <script>
-	points = [ 
+	hotelsJson = [ 
 	<c:forEach var="hotel" items="${hotels}">
 	    {"id" : "<c:out value="${hotel.id}"></c:out>",
 		"name" : "<c:out value="${hotel.name}"></c:out>",
 		"photo" : "${pageContext.servletContext.contextPath}/resources/images/photoOfHotels/${hotel.photos[0].img}",
 		"address" : "<c:out value="${hotel.city}"></c:out> <c:out value="${hotel.street}"></c:out>",
-		"phone" : "225-(254)220-5391",
+		"phone" : "<c:out value="${hotel.phone}"></c:out>",
 		"lat" : "<c:out value="${hotel.XCoord}"></c:out>",
 		"lon" : "<c:out value="${hotel.YCoord}"></c:out>"},
 	</c:forEach>

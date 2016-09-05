@@ -3,6 +3,7 @@ package com.epam.task.servlets;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -112,6 +113,10 @@ public class HotelServlet extends HttpServlet {
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
 				startDate, endDate, compareBy);
 		request.setAttribute("hotel", hotel);
+		
+		List<Hotel> hotels = new ArrayList<Hotel>();  		// —”œ≈–  Œ—“»À‹ œŒ◊¿“Œ 
+		hotels.add(hotel);
+		request.setAttribute("hotels", hotels);				// —”œ≈–  Œ—“»À‹  ≤Õ≈÷‹
 		request.setAttribute("conveniences", conveniences);
 		request.setAttribute("feedbacks", feedbacks);
 		request.setAttribute("rooms", rooms);

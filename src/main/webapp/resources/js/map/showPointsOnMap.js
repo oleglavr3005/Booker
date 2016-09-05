@@ -19,7 +19,7 @@ function map_initialize() {
         mapTypeId: google.maps.MapTypeId.ROADMAP // google map type
     };
     map = new google.maps.Map(document.getElementById("google_map"), googleMapOptions);
-    addMarkers(points);
+    addMarkers(hotelsJson);
 }
 
 function addMarkers(array) {
