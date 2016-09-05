@@ -24,11 +24,11 @@ public class ChangePhoneServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String phoneNumber = request.getParameter("phoneNumber");
-		Boolean phoneNotif = Boolean.parseBoolean(request.getParameter("phoneNotif"));
 
 		if(phoneNumber == null) {
 			return;
 		}
+		Boolean phoneNotif = Boolean.parseBoolean(request.getParameter("phoneNotif"));
 		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
