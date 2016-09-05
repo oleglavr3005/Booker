@@ -70,15 +70,15 @@ b {
 									<div>
 										<a class="tooltipped" data-position="icon"
 											data-tooltip="StartDate" style="color: #0d0d0d;"><i
-											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> Start
-										Date : <span id="start_date${order.id}">${order.startDate}</span>
+											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> From: 
+											<span id="start_date${order.id}">${order.startDate}</span>
 									</div>
 
 									<div>
 										<a class="tooltipped" data-position="icon"
 											data-tooltip="EndDate" style="color: #0d0d0d;"><i
-											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> End
-										Date : <span id="end_date${order.id}">${order.endDate}</span>
+											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> To: 
+											<span id="end_date${order.id}">${order.endDate}</span>
 									</div>
 									<script type="text/javascript"
 										src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
