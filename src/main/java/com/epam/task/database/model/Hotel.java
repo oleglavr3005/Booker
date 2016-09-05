@@ -8,7 +8,7 @@ import com.epam.task.database.transformers.DataBaseField;
 public class Hotel {
 
 	public Hotel(int id, String name, String city, String street, int stars, String desc, int managerId,
-			double xCoord, double yCoord, double rating, boolean isDeleted) {
+			double xCoord, double yCoord, double rating, boolean isDeleted, String phoneNumber) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -21,6 +21,7 @@ public class Hotel {
 		this.yCoord = yCoord;
 		this.rating = rating;
 		this.isDeleted = isDeleted;
+		this.phoneNumber = phoneNumber;
 		
 		photos = new HotelPhotoService().getHotelPhotosByHotel(id);
 		if(photos.size() == 0) {
@@ -50,6 +51,8 @@ public class Hotel {
 	private double rating;
 	@DataBaseField(fieldName = "is_deleted")
 	private boolean isDeleted;
+	@DataBaseField(fieldName = "phone_number")
+	private String phoneNumber;
 	
 	private List<HotelPhoto> photos;
 	
@@ -131,12 +134,19 @@ public class Hotel {
 	public void setPhotos(List<HotelPhoto> photos) {
 		this.photos = photos;
 	}
-	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 	@Override
 	public String toString() {
-		return "Hotel [hotelId=" + id + ", name=" + name + ", city=" + city + ", street=" + street + ", stars="
-				+ stars + ", desc=" + desc + ", managerId=" + managerId + ", xCoord=" + xCoord + ", yCoord=" + yCoord
-				+ ", rating=" + rating + ", isDeleted=" + isDeleted + "]";
+		return "Hotel [id=" + id + ", name=" + name + ", city=" + city + ", street=" + street + ", stars=" + stars
+				+ ", desc=" + desc + ", managerId=" + managerId + ", xCoord=" + xCoord + ", yCoord=" + yCoord
+				+ ", rating=" + rating + ", isDeleted=" + isDeleted + ", phoneNumber=" + phoneNumber + ", photos="
+				+ photos + "]";
 	}
+	
 	
 }
