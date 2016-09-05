@@ -21,8 +21,8 @@ public class OrderDAO {
 	private final String SQL_CREATE_ORDER = "INSERT INTO `order`(user_id, room_id, start_date, end_date, `status`, order_date, price, card_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 	private final String SQL_READ_ORDER_BY_ID = "SELECT * FROM `order` WHERE order_id = ?";
 	private final String SQL_UPDATE_ORDER = "UPDATE `order` SET user_id = ?, room_id = ?, start_date = ?, end_date = ?, `status` = ?, order_date = ?, price = ?, card_number = ? WHERE order_id = ?";
-	private final String SQL_BOOK_ORDER_BY_ID = "UPDATE `order` SET `status` = 'ACTIVE', card_number = ? WHERE order_id = ?";
-	private final String SQL_BOOK_ALL_ORDERS_BY_USER = "UPDATE `order` SET `status` = 'ACTIVE', card_number = ? WHERE user_id = ? AND `status` LIKE 'ORDER'";
+	private final String SQL_BOOK_ORDER_BY_ID = "UPDATE `order` SET `status` = 'ACTIVE', card_number = ?, comment = ? WHERE order_id = ?";
+	private final String SQL_BOOK_ALL_ORDERS_BY_USER = "UPDATE `order` SET `status` = 'ACTIVE', card_number = ?, comment = ? WHERE user_id = ? AND `status` LIKE 'ORDER'";
 	private final String SQL_REMOVE_ORDER = "DELETE FROM `order` WHERE order_id = ?";
 	private final String SQL_REMOVE_ORDERS_BY_STATUS = "DELETE FROM `order` WHERE user_id = ? AND `status` LIKE ?";
 	private final String SQL_GET_ALL_ORDERS_BY_USER_AND_STATUS = "SELECT * FROM `order` WHERE `status` LIKE ? AND user_id = ?";
@@ -200,10 +200,11 @@ public class OrderDAO {
 		return result;
 	}
 
-	public int bookAllByUser(int userId, String cardNumber) {
+	public int bookAllByUser(int userId, String cardNumber, String comment) {
 		try (PreparedStatement st = connection.prepareStatement(SQL_BOOK_ALL_ORDERS_BY_USER)) {
 			st.setString(1, cardNumber);
-			st.setInt(2, userId);
+			st.setString(2, comment);
+			st.setInt(3, userId);
 			return st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -211,10 +212,11 @@ public class OrderDAO {
 		}
 	}
 
-	public int bookOrder(int orderId, String cardNumber) {
+	public int bookOrder(int orderId, String cardNumber, String comment) {
 		try (PreparedStatement st = connection.prepareStatement(SQL_BOOK_ORDER_BY_ID)) {
 			st.setString(1, cardNumber);
-			st.setInt(2, orderId);
+			st.setString(2, comment);
+			st.setInt(3, orderId);
 			return st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

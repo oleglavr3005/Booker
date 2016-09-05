@@ -18,16 +18,15 @@ public class BookServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//if this room has days >=0, pay somehow
-		//imagine the order was payed
-		//change this order by setting status "active"
 		String orderIdString = request.getParameter("orderId");
-		if(orderIdString == null) {
+		String cardNumber = request.getParameter("cardNumber");
+		String comment = request.getParameter("comment");
+		
+		if(orderIdString == null || cardNumber == null) {
 			return;
 		}
-		String cardNumber = request.getParameter("cardNumber");
 		int orderId = Integer.parseInt(orderIdString);
-		int booked = new OrderService().bookOrder(orderId, cardNumber);
+		int booked = new OrderService().bookOrder(orderId, cardNumber, comment);
 		
 		response.getWriter().write(booked > 0 ? "true" : "false");
 	}

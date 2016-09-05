@@ -120,11 +120,11 @@ public class OrderService {
 		return daoManager.executeAndClose(() -> daoManager.getOrderDao().removeAllOrdersByStatus(userId, order));
 	}
 
-	public int bookAllByUser(int userId, String cardNumber) {
-		return daoManager.executeAndClose(() -> daoManager.getOrderDao().bookAllByUser(userId, cardNumber));
+	public int bookAllByUser(int userId, String cardNumber, String comment) {
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().bookAllByUser(userId, cardNumber, comment));
 	}
 
-	public int bookOrder(int orderId, String cardNumber) {
-		return daoManager.executeAndClose(() -> daoManager.getOrderDao().bookOrder(orderId, cardNumber));
+	public int bookOrder(int orderId, String cardNumber, String comment) {
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().bookOrder(orderId, cardNumber, comment));
 	}
 }

@@ -1,7 +1,6 @@
 package com.epam.task.servlets;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.epam.task.comparators.RatingHotelComparator;
-import com.epam.task.comparators.StarsHotelComparator;
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.RoomService;
@@ -40,19 +37,6 @@ public class HomeServlet extends HttpServlet {
 
 		String compareBy = request.getParameter("compareBy");
 		List<Hotel> hotels = hotelService.getAllHotelsByPage(page, compareBy);
-
-//		if("compareByStarsAsc".equals(compareBy)) {
-//			hotels.sort(new StarsHotelComparator());
-//			Collections.reverse(hotels);
-//		} else if ("compareByStarsDesc".equals(compareBy)) {
-//			hotels.sort(new StarsHotelComparator());
-//			
-//		} else if ("compareByRatingAsc".equals(compareBy)) {
-//			hotels.sort(new RatingHotelComparator());
-//			Collections.reverse(hotels);
-//		} else { //compareByRatingDesc = default
-//			hotels.sort(new RatingHotelComparator());
-//		}
 
 		request.setAttribute("countOfHotels", countOfHotels);
 		request.setAttribute("countOfPages", countOfPages);
