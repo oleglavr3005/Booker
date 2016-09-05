@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.epam.task.database.model.User;
+import com.epam.task.database.service.UserService;
 import com.epam.task.util.ImageSetter;
 
 @WebServlet("/change_image")
@@ -21,10 +23,12 @@ public class ChangeImageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//somehow load image on server
 		//will do it tomorrow :P
-
-        System.out.println(System.getProperty("user.dir"));
 		try {
-			String photo = new ImageSetter(request, "avatar").uploadImage();
+			String photo = new ImageSetter(request).uploadImage();
+			User user = (User) request.getSession().getAttribute("user");
+			user.setImage(photo);
+			new UserService().updateUser(user);
+			
 			response.setContentType("application/text");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(photo);

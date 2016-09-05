@@ -10,10 +10,8 @@ function createOrder(orders) {
 
 function bookOrderCard(orderId, daysCount) {
 	var localComment = orderId == null ? $('#comment').val() : $('#comment' + orderId).val();
-	alert(localComment);
 	var code = value($('#cardnum1').val()) + value($('#cardnum2').val())
 	+ value($('#cardnum3').val()) + value($('#cardnum4').val());
-	alert(code);
 	if (!$('#book' + orderId).attr('disabled')) {
 		var url;
 		if (orderId == null) {
