@@ -1,8 +1,7 @@
 var map;
-var $j = jQuery.noConflict();
-$j(document).ready(function () {
-    map_initialize(); // load map
-});
+(function(){
+	map_initialize();
+})();
 
 function map_initialize() {
 	console.log("map_initialize");
