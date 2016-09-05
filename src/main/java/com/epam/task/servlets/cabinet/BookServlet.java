@@ -25,8 +25,9 @@ public class BookServlet extends HttpServlet {
 		if(orderIdString == null) {
 			return;
 		}
+		String cardNumber = request.getParameter("cardNumber");
 		int orderId = Integer.parseInt(orderIdString);
-		int booked = new OrderService().bookOrder(orderId);
+		int booked = new OrderService().bookOrder(orderId, cardNumber);
 		
 		response.getWriter().write(booked > 0 ? "true" : "false");
 	}
