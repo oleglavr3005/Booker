@@ -42,7 +42,9 @@ public class ChangeInfoServlet extends HttpServlet {
 		}
 		int result = new UserService().updateUser(user);
 		session.setAttribute("user", user);
-		
+
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
 		try {
 			JSONObject json = new JSONObject();
 			json.put("changed", result > 0 ? "true" : "false");
@@ -51,8 +53,6 @@ public class ChangeInfoServlet extends HttpServlet {
 			response.getWriter().print(json.toString());
 			response.getWriter().flush();
 		} catch (JSONException e) {
-			response.setContentType("text/plain");
-			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write("false");
 		}
 	}
