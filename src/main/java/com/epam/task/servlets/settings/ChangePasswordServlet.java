@@ -37,21 +37,22 @@ public class ChangePasswordServlet extends HttpServlet {
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
 		
-		
-		// add "shortNewPass" result if havent complete validation
-		
 		try {
 			if(user.getPassword().equals(PasswordHasher.hash(oldPassword))) {
-				if(newPassword.equals(newPasswordConfirm)) {
-					user.setPassword(PasswordHasher.hash(newPassword));
-					new UserService().updateUser(user);
-					session.setAttribute("user", user);
-					response.getWriter().write("true");
+				if (newPassword.length() > 5) {
+					if(newPassword.equals(newPasswordConfirm)) {
+						user.setPassword(PasswordHasher.hash(newPassword));
+						new UserService().updateUser(user);
+						session.setAttribute("user", user);
+						response.getWriter().write("true");
+					} else {
+						response.getWriter().write("passwordsDontMatch");
+					}
 				} else {
-					response.getWriter().write("passwordsDontMatch"); //or return false
+					response.getWriter().write("shortNewPass");
 				}
 			} else {
-				response.getWriter().write("wrongOldPass"); //or return false
+				response.getWriter().write("wrongOldPass");
 			}
 		} catch (NoSuchAlgorithmException e) {
 			response.getWriter().write("false");

@@ -32,7 +32,7 @@ public class ChangeEmailServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		if (email != "") {		//super validation
+		if (email.length() > 0) {		//super validation
 			user.setEmail(email);
 		}
 		user.setEmailNotif(mailNotif);
