@@ -51,8 +51,6 @@ public class HotelServlet extends HttpServlet {
 			LOGGER.info("Bad user id for hotel, hotel not found");
 			return;
 		}
-		String pageString = request.getParameter("page");
-		int page = pageString == null ? 1 : Integer.parseInt(pageString);
 		
 		HttpSession session = request.getSession(true);
 		boolean typeStandart = session.getAttribute("typeStandart") == null ? false : (boolean) session.getAttribute("typeStandart");
@@ -90,7 +88,21 @@ public class HotelServlet extends HttpServlet {
 		} catch (Exception e) {
 			endDate = new Timestamp(0);
 		}
-
+	//////////////////////	
+		String pageString = request.getParameter("page");
+		int page = pageString == null ? 1 : Integer.parseInt(pageString);
+		int countOfRooms = new RoomService().getSuitableRoomsNumber(id, 
+				typeStandart, typeLux, typeDelux, 
+				foodNone, foodBreakfast, foodTwice, foodFull, 
+				minPrice, maxPrice, people,
+				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
+				startDate, endDate);
+		
+		int countOfPages = (int) Math.ceil(countOfRooms / 3.0);
+		if (page > countOfPages) {
+			page--;
+		}
+////////////
 		String compareBy = request.getParameter("compareBy");
 		List<Feedback> feedbacks = new FeedbackService().getAllFeedbacksByHotel(id);
 		List<Room> rooms = new RoomService().getAllSuitableRoomsForHotel(id, page, 
@@ -103,8 +115,20 @@ public class HotelServlet extends HttpServlet {
 		request.setAttribute("conveniences", conveniences);
 		request.setAttribute("feedbacks", feedbacks);
 		request.setAttribute("rooms", rooms);
-		request.getRequestDispatcher("/pages/hotel.jsp").forward(request, response);
+		//request.getRequestDispatcher("/pages/hotel.jsp").forward(request, response);
 
+		
+		
+		
+		request.setAttribute("countOfRooms", countOfRooms);
+		request.setAttribute("countOfPages", countOfPages);
+		request.setAttribute("currentPage", page);
+		
+		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
+			request.getRequestDispatcher("pages/roomCard.jsp").forward(request, response);
+		} else {	
+			request.getRequestDispatcher("/pages/hotel.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

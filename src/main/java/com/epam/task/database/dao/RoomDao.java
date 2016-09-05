@@ -378,4 +378,105 @@ public class RoomDao {
 			return false;
 		}
 	}
+
+	public int getSuitableRoomsNumber(int id, boolean typeStandart, boolean typeLux, boolean typeDelux,
+			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull, int minPrice, int maxPrice,
+			int people, boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, boolean hasPool,
+			boolean hasGym, boolean hasBalcony, boolean noDeposit, Timestamp startDate, Timestamp endDate) {
+		
+		StringBuilder SQL = new StringBuilder(GET_ALL_SUITABLE_ROOMS_FOR_HOTEL);
+		//ROOM TYPE
+		if (typeStandart == true || typeLux == true || typeDelux == true) {
+			SQL.append(" AND (");
+			if (typeStandart == true) {
+				SQL.append(TYPE_STANDART);
+			}
+			if (typeLux == true) {
+				if (!SQL.toString().endsWith("(")) {
+					SQL.append(" OR ");
+				}
+				SQL.append(TYPE_LUX);
+			}
+			if (typeDelux == true) {
+				if (!SQL.toString().endsWith("(")) {
+					SQL.append(" OR ");
+				}
+				SQL.append(TYPE_DELUX);
+			}
+			SQL.append(")");
+		}
+
+		// FOOD
+		if (foodNone == true || foodBreakfast == true || foodTwice == true || foodFull == true) {
+			SQL.append(" AND (");
+			if (foodNone == true) {
+				SQL.append(FOOD_NONE);
+			}
+			if (foodBreakfast == true) {
+				if (!SQL.toString().endsWith("(")) {
+					SQL.append(" OR ");
+				}
+				SQL.append(FOOD_BREAKFAST);
+			}
+			if (foodTwice == true) {
+				if (!SQL.toString().endsWith("(")) {
+					SQL.append(" OR ");
+				}
+				SQL.append(FOOD_TWICE);
+			}
+			if (foodFull == true) {
+				if (!SQL.toString().endsWith("(")) {
+					SQL.append(" OR ");
+				}
+				SQL.append(FOOD_FULL);
+			}
+			SQL.append(")");
+		}
+
+		// ADDITIONAL
+		if (hasWiFi) {
+			SQL.append(HAS_WIFI);
+		}
+		if (hasShower) {
+			SQL.append(HAS_SHOWER);
+		}
+		if (hasParking) {
+			SQL.append(HAS_PARKING);
+		}
+		if (hasCondition) {
+			SQL.append(HAS_CONDITION);
+		}
+		if (hasPool) {
+			SQL.append(HAS_POOL);
+		}
+		if (hasGym) {
+			SQL.append(HAS_GYM);
+		}
+		if (hasBalcony) {
+			SQL.append(HAS_BALCONY);
+		}
+		if (noDeposit) {
+			SQL.append(NO_DEPOSIT);
+		}
+				
+		try (PreparedStatement statement = connection.prepareStatement(SQL.toString())) {
+			int i = 1;
+			statement.setInt(i++, id);
+			
+			statement.setInt(i++, minPrice);
+			statement.setInt(i++, maxPrice);
+			
+			statement.setInt(i++, people);
+			
+			statement.setTimestamp(i++, startDate);
+			statement.setTimestamp(i++, endDate);
+			
+			try (ResultSet rs = statement.executeQuery()) {
+				return UniversalTransformer.getCollectionFromRS(rs, Room.class).size();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
 }
