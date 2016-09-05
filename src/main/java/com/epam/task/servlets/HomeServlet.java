@@ -1,6 +1,7 @@
 package com.epam.task.servlets;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.epam.task.comparators.RatingHotelComparator;
+import com.epam.task.comparators.StarsHotelComparator;
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.RoomService;
@@ -35,8 +38,22 @@ public class HomeServlet extends HttpServlet {
 		if (page > countOfPages) {
 			page--;
 		}
-	
+		
 		List<Hotel> hotels = hotelService.getAllHotelsByPage(page);
+
+		String compareBy = request.getParameter("compareBy");
+		if("compareByStarsAsc".equals(compareBy)) {
+			hotels.sort(new StarsHotelComparator());
+			Collections.reverse(hotels);
+		} else if ("compareByStarsDesc".equals(compareBy)) {
+			hotels.sort(new StarsHotelComparator());
+			
+		} else if ("compareByRatingAsc".equals(compareBy)) {
+			hotels.sort(new RatingHotelComparator());
+			Collections.reverse(hotels);
+		} else { //compareByRatingDesc = default
+			hotels.sort(new RatingHotelComparator());
+		}
 
 		request.setAttribute("countOfHotels", countOfHotels);
 		request.setAttribute("countOfPages", countOfPages);
@@ -49,13 +66,13 @@ public class HomeServlet extends HttpServlet {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
 		} else {	
 			HttpSession session = request.getSession(true);		
-			Enumeration<String> names = session.getAttributeNames();
-			while(names.hasMoreElements()) {
-				String name = names.nextElement();
-				if(!name.equals("user")) {
-					session.removeAttribute(name);
-				}
-			}
+//			Enumeration<String> names = session.getAttributeNames();
+//			while(names.hasMoreElements()) {
+//				String name = names.nextElement();
+//				if(!name.equals("user")) {
+//					session.removeAttribute(name);
+//				}
+//			}
 			session.setAttribute("minPrice", roomService.getMinPrice());
 			session.setAttribute("maxPrice", roomService.getMaxPrice());
 			request.getRequestDispatcher("pages/index.jsp").forward(request, response);
