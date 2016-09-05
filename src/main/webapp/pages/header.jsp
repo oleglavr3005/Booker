@@ -109,7 +109,7 @@ img.logo {
 					<c:when test="${user != null}">
 
 							<div class="dropdown">
-							<span style="font-size:1.3rem; margin-right:0.5rem">${user.firstName} ${user.lastName}</span>
+							<span id="userName" style="font-size:1.3rem; margin-right:0.5rem">${user.firstName} ${user.lastName}</span>
 								<img id="imageavatar"
 									src="http://www.desicomments.com/dc3/09/336028/336028.png"
 									alt="img"
