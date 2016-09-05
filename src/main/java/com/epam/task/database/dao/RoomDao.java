@@ -19,7 +19,7 @@ public class RoomDao {
 	
 	private final String GET_ALL_SUITABLE_ROOMS_FOR_HOTEL = "SELECT DISTINCT r.* FROM room r LEFT JOIN `order` o ON o.room_id = r.room_id "
 			+ "WHERE r.hotel_id = ? AND r.price >= ? AND r.price <= ? AND r.is_deleted = false AND "
-			+ "? <= (SELECT SUM(double_beds_count)*2 + SUM(beds_count) FROM room r2 WHERE r2.room_id = r.room_id GROUP BY r2.hotel_id) AND "
+			+ "? <= (SELECT SUM(double_beds_count)*2 + SUM(beds_count) FROM room r2 WHERE r2.hotel_id = r.hotel_id GROUP BY r2.hotel_id) AND "
 			+ "(o.end_date IS NULL OR o.end_date <= ? OR o.start_date >= ? OR o.status LIKE 'canceled')";
 
 	private final String TYPE_STANDART = "r.type LIKE 'STANDART'";
