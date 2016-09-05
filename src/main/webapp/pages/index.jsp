@@ -278,11 +278,11 @@ div #sidebar-wrapper {
 					</div>
 
 					<div class="row">
-						<div class="col s2 offset-s2">
+						<div class="col s2 offset-s1">
 							<a id="map_button" class="waves-effect waves-light btn"
 								style="width: 100%; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">MAP</a>
 						</div>
-						<div class="col s5">
+						<div class="col s6">
 							<!-- onclick="togle()" -->
 							<a id="togle" class="waves-effect waves-light btn"
 								style="background: #26A69A; text-align: center; width: 100%; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><i

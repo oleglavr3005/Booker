@@ -9,7 +9,7 @@
 <div class="col s10 offset-s1">
 	<div class="card">
 		<div class="container-fluid">
-			<c:forEach var="comment" items="${feedbacks}">
+			<c:forEach var="comment" items="${feedbacks}"> comment.toString
 				<div class="comment_card" id="comment_id_${comment.id}" style="margin: 20px; display: none">
 					<div class="row" style="margin-bottom: 0;">
 						<div class="media">
