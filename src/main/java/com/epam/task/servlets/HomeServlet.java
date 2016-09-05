@@ -2,7 +2,6 @@ package com.epam.task.servlets;
 
 import java.io.IOException;
 import java.util.Collections;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -38,22 +37,22 @@ public class HomeServlet extends HttpServlet {
 		if (page > countOfPages) {
 			page--;
 		}
-		
-		List<Hotel> hotels = hotelService.getAllHotelsByPage(page);
 
 		String compareBy = request.getParameter("compareBy");
-		if("compareByStarsAsc".equals(compareBy)) {
-			hotels.sort(new StarsHotelComparator());
-			Collections.reverse(hotels);
-		} else if ("compareByStarsDesc".equals(compareBy)) {
-			hotels.sort(new StarsHotelComparator());
-			
-		} else if ("compareByRatingAsc".equals(compareBy)) {
-			hotels.sort(new RatingHotelComparator());
-			Collections.reverse(hotels);
-		} else { //compareByRatingDesc = default
-			hotels.sort(new RatingHotelComparator());
-		}
+		List<Hotel> hotels = hotelService.getAllHotelsByPage(page, compareBy);
+
+//		if("compareByStarsAsc".equals(compareBy)) {
+//			hotels.sort(new StarsHotelComparator());
+//			Collections.reverse(hotels);
+//		} else if ("compareByStarsDesc".equals(compareBy)) {
+//			hotels.sort(new StarsHotelComparator());
+//			
+//		} else if ("compareByRatingAsc".equals(compareBy)) {
+//			hotels.sort(new RatingHotelComparator());
+//			Collections.reverse(hotels);
+//		} else { //compareByRatingDesc = default
+//			hotels.sort(new RatingHotelComparator());
+//		}
 
 		request.setAttribute("countOfHotels", countOfHotels);
 		request.setAttribute("countOfPages", countOfPages);
