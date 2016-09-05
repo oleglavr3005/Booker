@@ -42,12 +42,30 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
-<link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
 
-<script
-	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- GALERY -->
+
+<!-- <link rel="stylesheet" -->
+<!-- 	href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css"> -->
+<!-- <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css"> -->
+
+<!-- END OFGALERY -->
+
+<!-- <script -->
+<!-- 	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+
+
+
+<!-- IMPORTED -->
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+
+<!-- END OF IMPORTED -->
+
+
+
 <script
 	src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
 
@@ -72,16 +90,17 @@
 	src="${pageContext.servletContext.contextPath}/resources/js/map/showPointsOnMap.js"></script>
 
 <!-- JTable -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!-- <script -->
+<!-- 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
 <link rel="stylesheet" type="text/css"
 	href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
 
 <script type="text/javascript" charset="utf8"
 	src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('#example').DataTable();
+var $j = jQuery.noConflict();
+$j(document).ready(function () {
+		$j('#example').DataTable();
 	});
 </script>
 <style>
@@ -118,35 +137,38 @@ div #sidebar-wrapper {
 </head>
 
 <body>
-	<div id="blueimp-gallery" class="blueimp-gallery">
-		<!-- The container for the modal slides -->
-		<div class="slides"></div>
-		<!-- Controls for the borderless lightbox -->
-		<h3 class="title"></h3>
-		<a class="prev">‹</a> <a class="next">›</a> <a class="close">×</a> <a
-			class="play-pause"></a>
-		<ol class="indicator"></ol>
-		<!-- The modal dialog, which will be used to wrap the lightbox content -->
-		<div class="modal fade">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" aria-hidden="true">&times;</button>
-						<h4 class="modal-title"></h4>
-					</div>
-					<div class="modal-body next"></div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default pull-left prev">
-							<i class="glyphicon glyphicon-chevron-left"></i> Previous
-						</button>
-						<button type="button" class="btn btn-primary next">
-							Next <i class="glyphicon glyphicon-chevron-right"></i>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- 	<div id="blueimp-gallery" class="blueimp-gallery"> -->
+		
+		
+<!-- 		<div class="slides"></div> -->
+		
+
+<!-- 		<h3 class="title"></h3> -->
+<!-- 		<a class="prev">‹</a> <a class="next">›</a> <a class="close">×</a> <a -->
+<!-- 			class="play-pause"></a> -->
+<!-- 		<ol class="indicator"></ol> -->
+		
+
+<!-- 		<div class="modal fade"> -->
+<!-- 			<div class="modal-dialog"> -->
+<!-- 				<div class="modal-content"> -->
+<!-- 					<div class="modal-header"> -->
+<!-- 						<button type="button" class="close" aria-hidden="true">&times;</button> -->
+<!-- 						<h4 class="modal-title"></h4> -->
+<!-- 					</div> -->
+<!-- 					<div class="modal-body next"></div> -->
+<!-- 					<div class="modal-footer"> -->
+<!-- 						<button type="button" class="btn btn-default pull-left prev"> -->
+<!-- 							<i class="glyphicon glyphicon-chevron-left"></i> Previous -->
+<!-- 						</button> -->
+<!-- 						<button type="button" class="btn btn-primary next"> -->
+<!-- 							Next <i class="glyphicon glyphicon-chevron-right"></i> -->
+<!-- 						</button> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 
 	<input id="lang" type="hidden" value="${language}" />
 

@@ -3,8 +3,7 @@ var mapping = $('#mapping').val();
 function auth(){
 		var emailField = $("#emailAuth");
 		var passwordField = $("#passwordAuth");
-
-			$.ajax({
+		$.ajax({
 				data : {
 					email : emailField.val(),
 					password : passwordField.val()
@@ -13,6 +12,7 @@ function auth(){
 				url : 'auth',
 				type : 'POST',
 				success : function(respond) {
+					alert(respond);
 					if (respond.logged) {
 						location.reload();
 					} else {

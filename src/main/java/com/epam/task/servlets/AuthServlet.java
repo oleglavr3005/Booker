@@ -19,7 +19,7 @@ import com.epam.task.util.PasswordHasher;
 /**
  * Servlet implementation class AuthServlet
  */
-@WebServlet("/auth")
+@WebServlet({ "/auth/*","/hotel/auth"})
 public class AuthServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

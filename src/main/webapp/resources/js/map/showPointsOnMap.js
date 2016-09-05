@@ -1,5 +1,6 @@
 var map;
-$(document).ready(function () {
+var $j = jQuery.noConflict();
+$j(document).ready(function () {
     map_initialize(); // load map
 });
 
