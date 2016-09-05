@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
 <c:set var="language"
 	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
 	scope="session" />
@@ -98,7 +99,7 @@
 
 
 	<!-- Header ========================================================================= -->
-	<jsp:include page="../header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 
 	<div class="container">
@@ -138,7 +139,9 @@
 						<div class="col s4">
 							<a href="#!"><img id="avatarImg"
 								style="height: 100px; padding: 10px; width: 110px;"
-								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"></a>
+<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
+								src="<i:urlToImage url="${user.image}" />">
+								</a>
 						</div>
 						<div class="col s8">
 
@@ -354,7 +357,7 @@
 	</div>
 
 	<!-- Footer ========================================================================== -->
-	<jsp:include page="../foot.jsp"></jsp:include>
+	<jsp:include page="foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
 
 	<script type="text/javascript"

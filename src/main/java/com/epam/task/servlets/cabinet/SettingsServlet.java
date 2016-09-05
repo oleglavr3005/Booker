@@ -27,7 +27,7 @@ public class SettingsServlet extends HttpServlet {
 		Request req = new RequestService().getRequestByUserId(user.getId());
 		
 		request.setAttribute("message", req == null ? "" : req.getMessage());
-		request.getRequestDispatcher("/pages/user/settings.jsp").forward(request, response);
+		request.getRequestDispatcher("/pages/settings.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

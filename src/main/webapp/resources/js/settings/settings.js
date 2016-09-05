@@ -44,7 +44,6 @@ function savePersonalData(wMail, uMail) {
 	usedMail = uMail;
 	var name = $('#name').val();
 	var surname = $('#surname').val();
-	alert($('#userNameSpan').html());
 	$.post('../change_info', {
 		firstName : nameIsValid(name),
 		lastName : surnameIsValid(surname)

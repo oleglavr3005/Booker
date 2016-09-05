@@ -292,9 +292,9 @@ div #sidebar-wrapper {
 				<c:if test="${order.status != ACTIVE}">
 					<div class="col s2 offset-s1"
 						style="margin-top: 18px; margin-left: 0;">
-						<a id="calceOrder" class="waves-effect waves-light btn" onclick="removeOrder(${order.id})"
-							style="background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
-								key="Cancel" /></a>
+<%-- 						<a id="calceOrder" class="waves-effect waves-light btn" onclick="removeOrder(${order.id})" --%>
+<%-- 							style="background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message --%>
+<%-- 								key="Cancel" /></a> --%>
 					</div>
 				</c:if>
 			</div>
