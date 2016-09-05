@@ -74,7 +74,7 @@ b {
 								<a class="tooltipped" data-position="icon" data-tooltip="Stars"
 									style="color: #0d0d0d; text-decoration: none;"> <c:forEach
 										var="i" begin="1" end="${hotel.stars}">
-										<i class="fa fa-lg fa-star invert" aria-hidden="true"></i>
+										<i class="fa fa-lg fa-star" aria-hidden="true"></i>
 									</c:forEach> <c:forEach var="i" begin="${hotel.stars}" end="4">
 										<i class="fa fa-lg fa-star-o" aria-hidden="true"></i>
 									</c:forEach>
