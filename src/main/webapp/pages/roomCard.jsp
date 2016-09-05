@@ -60,7 +60,7 @@ b {
 				<div class="row" style="margin-top: 15px; margin-bottom: 10px;">
 
 					<div class="card-image col s4" style="position: relative;">
-						<a><img src="<i:urlToImage url="${room.photo}" />"
+						<a><img src="${pageContext.servletContext.contextPath}/resources/images/photoOfHotelsRoom/${room.photos[0].img}"
 							style="height: 170px; width: 200px; padding: 10px;"> </a>
 
 					</div>
