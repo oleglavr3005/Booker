@@ -5,7 +5,7 @@ var comments = jQuery(".comment_card");
 for(var i = 0; i < comments.length; i++){
 	arrayComment[i] = comments[i].getAttribute('id');
 }
-setTimeout('addComments(5)', 200)
+addComments(5);
  
 function addComments(delta) {
 	var max = indexShowComments + delta;
