@@ -31,6 +31,10 @@ public class OrderDAO {
 	private final String SQL_GET_ORDER_BY_ROOM_ID = "SELECT * FROM `order` WHERE room_id = ?";
 	
 	private final String PAGINATION = " LIMIT ?, 3";
+	private final String ORDER_BY_PRICE_ASC = " ORDER BY price ASC";
+	private final String ORDER_BY_PRICE_DESC = " ORDER BY price DESC";
+	private final String ORDER_BY_DATE_ASC = " ORDER BY start_date ASC";
+	private final String ORDER_BY_DATE_DESC = " ORDER BY start_date DESC";
 
 	private final String SQL_CREATE_ORDER_EVENT = "CREATE EVENT eventname ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 HOUR DO DELETE FROM `order` WHERE order_id = ? AND `status` LIKE 'ORDER'";
 	
@@ -138,9 +142,20 @@ public class OrderDAO {
 		return orders;
 	}
 
-	public List<Order> getOrdersByUserAndStatusAndPage(int userId, OrderStatus status, int page) {
+	public List<Order> getOrdersByUserAndStatusAndPage(int userId, OrderStatus status, int page, String orderBy) {
 		List<Order> orders = new ArrayList<>();
-		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ALL_ORDERS_BY_USER_AND_STATUS + PAGINATION)) {
+		String ORDER_BY;
+		if("compareByPriceAsc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_PRICE_ASC;
+		} else if ("compareByPriceDesc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_PRICE_DESC;
+			
+		} else if ("compareByDateAsc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_DATE_ASC;
+		} else { //compareByDateDesc = default
+			ORDER_BY = ORDER_BY_DATE_DESC;
+		}
+		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ALL_ORDERS_BY_USER_AND_STATUS + ORDER_BY + PAGINATION)) {
 			statement.setString(1, status.toString());
 			statement.setInt(2, userId);
 			statement.setInt(3, (page-1)*3);
