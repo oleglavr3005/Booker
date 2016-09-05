@@ -32,4 +32,8 @@ public class FeedbackService {
 	public List<Feedback> getAllFeedbacksByHotel(int id){
 		return daoManager.executeAndClose(() -> daoManager.getFeedbackDao().getAllFeedbackByHotel(id));
 	}
+
+	public Feedback getFeedBackByUserAndHotel(int userId, int hotelId) {
+		return daoManager.executeAndClose(() -> daoManager.getFeedbackDao().getFeedBackByUserAndHotel(userId, hotelId));
+	}
 }
