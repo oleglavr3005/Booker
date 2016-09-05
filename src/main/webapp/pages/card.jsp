@@ -83,7 +83,13 @@ b {
 						<div class="row" style="margin-bottom: 5px">
 							<a class="tooltipped" data-position="icon" data-tooltip="Description"
 								style="color: #0d0d0d; cursor:default"><i class="material-icons invert" style="font-size: 20px;">receipt</i></a>
-							<span>${hotel.desc}</span>
+							<span id="hotelInfo${hotel.id}">${hotel.desc.substring(0, hotel.desc.length() < 150 ? hotel.desc.length() : 150)}</span>
+							<a onclick="changeInfo(${hotel.id})" style="cursor:pointer"
+								class="tooltipped" data-position="icon" data-tooltip="Show full info" id="dots${hotel.id}">...</a>
+							
+							<input id="infoOpened${hotel.id}" type="hidden" value="false"/>
+							<input id="fullInfo${hotel.id}" type="hidden" value="${hotel.desc}"/>
+							<input id="shortInfo${hotel.id}" type="hidden" value="${hotel.desc.substring(0, hotel.desc.length() < 150 ? hotel.desc.length() : 150)}"/>
 						</div>
 					</div>
 
@@ -144,4 +150,24 @@ b {
 				});
 			});
 		}
+	</script>
+	
+	<script type="text/javascript">
+	function changeInfo(hotelId) {
+		var infoOpened = document.getElementById("infoOpened" + hotelId);
+		var fullInfo = document.getElementById("fullInfo" + hotelId).value;
+		var shortInfo = document.getElementById("shortInfo" + hotelId).value;
+		var span = document.getElementById("hotelInfo" + hotelId);
+		
+		if(infoOpened.value != 'true') {
+			span.innerHTML = fullInfo;
+			$("#dots" + hotelId).attr("data-tooltip", "Hide info");
+			infoOpened.value = true;
+		} else {
+			span.innerHTML = shortInfo;
+			$("#dots" + hotelId).attr("data-tooltip", "Show full info");
+			infoOpened.value = false;
+		}
+		
+	}
 	</script>
