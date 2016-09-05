@@ -64,7 +64,7 @@ public class AddCommentServlet extends HttpServlet {
 		hotel.setRating(newRating);
 		hotelService.updateHotel(hotel);
 		
-		//return something ???????????
+		//return something ??????????? yes key, OK or key error 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
