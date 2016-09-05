@@ -41,16 +41,6 @@ b {
 				</h5>
 			</c:if>
 		</div>
-		<div class="col s4 offset-s5">
-			<select id="compare" class="chosen-select optionstyle" onchange="findPage(window.location.href,1)">
-				<option class="optionstyle"><fmt:message
-						key="index.card.compare" /></option>
-					<option class="optionstyle" value="compareByStarsAsc">star asc</option>
-					<option class="optionstyle" value="compareByStarsDesc">star desc</option>
-					<option class="optionstyle" value="compareByRatingAsc">rating asc</option>
-					<option class="optionstyle" value="compareByRatingDesc">rating asc desc</option>
-			</select>
-		</div>
 	</div>
 
 </div>
