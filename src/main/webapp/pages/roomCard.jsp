@@ -32,7 +32,7 @@ b {
 		<fmt:message key="card.no.periodicals" />
 	</c:if>
 </h6>
-<div class="divider" style="margin-bottom: 20px;"></div>
+<div class="divider" style="margin: 0;"></div>
 
 <c:if test="${countOfRooms == 0}">
 	<h5 style="color: red; margin-bottom: 63px;">
