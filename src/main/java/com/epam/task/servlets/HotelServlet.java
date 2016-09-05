@@ -17,11 +17,9 @@ import org.apache.log4j.Logger;
 import com.epam.task.database.model.Conveniences;
 import com.epam.task.database.model.Feedback;
 import com.epam.task.database.model.Hotel;
-import com.epam.task.database.model.HotelPhoto;
 import com.epam.task.database.model.Room;
 import com.epam.task.database.service.ConveniencesService;
 import com.epam.task.database.service.FeedbackService;
-import com.epam.task.database.service.HotelPhotoService;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.RoomService;
 
@@ -106,15 +104,14 @@ public class HotelServlet extends HttpServlet {
 				minPrice, maxPrice, people,
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
 				startDate, endDate);
-		List<HotelPhoto> hotelPhoto = new HotelPhotoService().getHotelPhotosByHotel(id); 
 		request.setAttribute("hotel", hotel);
 		request.setAttribute("conveniences", conveniences);
 		request.setAttribute("feedbacks", feedbacks);
 		request.setAttribute("rooms", rooms);
-		if (hotelPhoto.size() > 0) {
-			request.setAttribute("MainPhoto", hotelPhoto.get(0));
-			hotelPhoto.remove(0);
-			request.setAttribute("hotelPhotos", hotelPhoto);
+		if (hotel.getPhotos().size() > 0) {
+			request.setAttribute("MainPhoto", hotel.getPhotos().get(0));
+			hotel.getPhotos().remove(0);
+			request.setAttribute("hotelPhotos", hotel.getPhotos());
 		}
 		request.getRequestDispatcher("/pages/hotel.jsp").forward(request, response);
 
