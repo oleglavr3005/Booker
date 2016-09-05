@@ -15,7 +15,7 @@
 		"name" : "<c:out value="${hotel.name}"></c:out>",
 		"photo" : "${pageContext.servletContext.contextPath}/resources/images/photoOfHotels/${hotel.photos[0].img}",
 		"address" : "<c:out value="${hotel.city}"></c:out> <c:out value="${hotel.street}"></c:out>",
-		"phone" : "<c:out value="${hotel.phone}"></c:out>",
+		"phone" : "<c:out value="${hotel.phoneNumber}"></c:out>",
 		"lat" : "<c:out value="${hotel.XCoord}"></c:out>",
 		"lon" : "<c:out value="${hotel.YCoord}"></c:out>"},
 	</c:forEach>

@@ -93,35 +93,62 @@
 		</h4>
 
 		<div class="row">SHOP LIST</div>
+		<div class="row">
+			<div class="col s3">
+				<h6>
+					<c:if test="${countOfOrders > 0 }">
+						<fmt:message key="card.header" />
+						<span id="periodicals_number_for_all_users">${countOfOrders}</span>
+					</c:if>
+					<c:if test="${countOfOrders <= 0 }">
+						<fmt:message key="card.no.hotels" />
+					</c:if>
+				</h6>
+			</div>
+			<div class="col s4 offset-s5">
+				<select id="compare" class="chosen-select optionstyle"
+					onchange="findPage(window.location.href,1)">
+					<option class="optionstyle" value="compareByDateAsc">date
+						asc</option>
+					<option class="optionstyle" value="compareByDateDesc"
+						selected="selected">date desc</option>
+					<option class="optionstyle" value="compareByPriceAsc">price
+						asc</option>
+					<option class="optionstyle" value="compareByPriceDesc">price
+						desc</option>
+				</select>
+			</div>
+		</div>
 
-		
 
-<!-- SWITCH CONTENT -->
+
+		<!-- SWITCH CONTENT -->
 		<div id="switchContent" class="row">
 			<jsp:include page="../orderCard.jsp"></jsp:include>
 		</div>
 
-<!-- END OF SWITCH CONTENT -->
+		<!-- END OF SWITCH CONTENT -->
 
 
 
-	
+
 
 	</div>
-	
+
 	<!-- SUCCES MODAL  -->
 	<div id="modal1" class="modal"
 		style="width: 35% !important; max-height: 50% !important">
 		<div class="modal-content">
 			<h6>GZ WITH SUCCESFULL ORDER CREATION</h6>
-			<a href="href="${pageContext.servletContext.contextPath}/cabinet/orders">CLICK IF YOU WANT TO LOOK AT YOUR ORDER LIST : </a>
+			<a href="href="${pageContext.servletContext.contextPath}/cabinet/orders">CLICK
+				IF YOU WANT TO LOOK AT YOUR ORDER LIST : </a>
 		</div>
 
 	</div>
 	<!-- 	END OF SUCCES MODAL -->
-	
-	
-	
+
+
+
 
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="../foot.jsp"></jsp:include>
@@ -133,13 +160,13 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
-	
+
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
-		
-		
+
+
 	<script type="text/javascript">
 		var pagesCount = '${countOfPages}';
 		//	pagesCount = 3;
@@ -161,7 +188,7 @@
 					onChange : function(page) {
 						// 											$('._current','#paginationdemo').removeClass('_current').hide();
 						// 											$('#p'+page).addClass('_current').show();
-						findPage(window.location.href,page);
+						findPage(window.location.href, page);
 					}
 				});
 			});
