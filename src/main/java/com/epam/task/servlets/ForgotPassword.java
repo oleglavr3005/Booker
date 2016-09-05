@@ -35,7 +35,7 @@ public class ForgotPassword extends HttpServlet {
 		try {
 			UserService userService = new UserService();
 			User user = userService.getUserByEmail(request.getParameter("email"));
-			String newPass = new ConfirmCodeGenerator().getCode();
+			String newPass = ConfirmCodeGenerator.getCode();
 			user.setPassword(PasswordHasher.hash(newPass));
 			userService.updateUser(user);
 			userService.sendPass(user, newPass);

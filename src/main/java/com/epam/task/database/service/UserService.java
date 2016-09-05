@@ -74,7 +74,7 @@ public class UserService {
 	}
 
 	public void sendPass(User user, String pass) {
-		String subject = "³��������� ������";
+		String subject = "Password Restore";
 		String text = "<body style='background-color: #fff'>" +
 		
 				"<div style='width: 100%; height:20px; background-color: #00000 position: relative color:white;'>Mail Confirmation"
