@@ -13,7 +13,7 @@
 	<c:forEach var="hotel" items="${hotels}">
 	    {"id" : "<c:out value="${hotel.id}"></c:out>",
 		"name" : "<c:out value="${hotel.name}"></c:out>",
-		"photo" : "${pageContext.servletContext.contextPath}/resources/images/${hotel.photos[0].img}",
+		"photo" : "${pageContext.servletContext.contextPath}/resources/images/photoOfHotels/${hotel.photos[0].img}",
 		"address" : "<c:out value="${hotel.city}"></c:out> <c:out value="${hotel.street}"></c:out>",
 		"phone" : "225-(254)220-5391",
 		"lat" : "<c:out value="${hotel.XCoord}"></c:out>",
