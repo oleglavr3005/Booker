@@ -279,7 +279,7 @@ div #sidebar-wrapper {
 
 					<div class="row" > 
   						<div class="col s2 offset-s2">
-							<a id="MAP" class="waves-effect waves-light btn" onclick="searchForm()" style="width: 100%;background: #26A69A;color: #F7F7F7;font-family: 'Times NewRoman', Times, serif;">MAP</a>
+							<a id="map_button" class="waves-effect waves-light btn" onclick="searchForm()" style="width: 100%;background: #26A69A;color: #F7F7F7;font-family: 'Times NewRoman', Times, serif;">MAP</a>
 						</div>
 						<div class="col s5"> <!-- onclick="togle()" -->
 							<a id="togle" class="waves-effect waves-light btn" style="background: #26A69A; text-align: center; width: 100%; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><i id="arrow_icon" class="fa fa-angle-double-down col s1 fa-2x" aria-hidden="true" style="margin-left: 45%"></i></a>
@@ -288,6 +288,9 @@ div #sidebar-wrapper {
 							<a id="search" class="waves-effect waves-light btn" onclick="searchForm()" style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">SEARCH</a>
 						</div>
 					</div>
+					<!-- MAP ========================================================================== -->
+						<jsp:include page="map.jsp"></jsp:include>
+					<!-- MAP End======================================================================= -->
 				</div>
 			</div>
 
@@ -445,6 +448,25 @@ div #sidebar-wrapper {
 				}
 			});
 		})();
+		
+		(function() {
+			var flag = 0;
+			var fladTwo = 0;
+			jQuery('#google_map').hide();
+			jQuery('#map_button').on('click', function() {
+				if (flag == 0) {
+					jQuery('#google_map').slideDown(500);
+			        flag = 1;
+			        if(fladTwo == 0){
+			        	setTimeout(map_initialize, 500);
+			            fladTwo = 1;
+			        }
+			    } else {
+			    	jQuery('#google_map').slideUp(500);
+			        flag = 0;
+			    }
+				});
+			})();
 	</script>
 
 	<!-- 	DATEPICKER -->

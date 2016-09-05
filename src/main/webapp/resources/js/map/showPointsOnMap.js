@@ -1,6 +1,5 @@
 var map;
 $(document).ready(function () {
-	
     map_initialize(); // load map
 });
 
@@ -28,7 +27,6 @@ function addMarkers(array) {
         addMarker(result);
     }
 }
-
 function addMarker(place) {
     var pos = new google.maps.LatLng(place.lat, place.lon);
     var marker = new google.maps.Marker({
@@ -37,7 +35,7 @@ function addMarker(place) {
         draggable: true, //set marker draggable 
         animation: google.maps.Animation.DROP, //bounce animation
         icon: {
-            url: "../resources/images/iconMarker.png"
+            url: "../booker/resources/images/iconMarker.png"
             , anchor: new google.maps.Point(20, 20)
             , scaledSize: new google.maps.Size(32, 24)
         }
@@ -51,21 +49,17 @@ function addMarker(place) {
                     '<h1 class="marker-heading">'+ place.name +'</h1>' +
                     '<p>' + place.address + '<br>Phone. ' + place.phone + '</p></span>'+
                 '</div></div>');
-
     //Create an infoWindow
     var infowindow = new google.maps.InfoWindow();
-
     //set the content of infoWindow
     infowindow.setContent(contentString[0]);
-
     //add click listner to marker which will open infoWindow 		 
     google.maps.event.addListener(marker, 'click', function () {
         infowindow.open(map, marker); // click on marker opens info window 
     });
-
-    //###### remove marker #########/
+    /*//###### remove marker #########/
     var removeBtn = contentString.find('button.remove-marker')[0];
     google.maps.event.addDomListener(removeBtn, "click", function (event) {
         marker.setMap(null);
-    });
+    });*/
 }
