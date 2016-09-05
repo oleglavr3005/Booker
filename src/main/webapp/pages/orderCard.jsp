@@ -60,8 +60,7 @@ b {
 
 								<div class="row" style="margin-top: 15px;">
 									<div class="col s5">
-										<a
-											href="${pageContext.servletContext.contextPath}/hotel/${order.hotel.id}">${order.hotel.name}</a>
+										<a href="${pageContext.servletContext.contextPath}/hotel/${order.hotel.id}">${order.hotel.name}</a>
 									</div>
 									<div class="col s5 offset-s1">${order.room.type}</div>
 								</div>
@@ -70,15 +69,15 @@ b {
 									<div>
 										<a class="tooltipped" data-position="icon"
 											data-tooltip="StartDate" style="color: #0d0d0d;"><i
-											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> Start
-										Date : <span id="start_date${order.id}">${order.startDate}</span>
+											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> From: 
+											<span id="start_date${order.id}">${order.startDate}</span>
 									</div>
 
 									<div>
 										<a class="tooltipped" data-position="icon"
 											data-tooltip="EndDate" style="color: #0d0d0d;"><i
-											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> End
-										Date : <span id="end_date${order.id}">${order.endDate}</span>
+											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> To: 
+											<span id="end_date${order.id}">${order.endDate}</span>
 									</div>
 									<script type="text/javascript"
 										src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
@@ -111,6 +110,17 @@ b {
 									<a class="tooltipped" data-position="icon" data-tooltip="Price"
 										style="color: #0d0d0d;"><i
 										class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${order.price}</span>
+									<a class="tooltipped" data-position="icon" data-tooltip="Money to pay"
+										style="color: #0d0d0d;"><i
+										class="fa fa-lg fa-money invert" aria-hidden="true"></i></a>
+										<c:choose>
+											<c:when test="${order.room.daysCount == -1}">
+												<span>0</span>
+											</c:when>
+											<c:otherwise>
+												<span>${order.price / 2}</span>
+											</c:otherwise>
+										</c:choose>
 									<c:if test="${order.room.daysCount == -1}">
 										<a class="tooltipped" data-position="icon" data-tooltip="No deposit"
 										style="color: #0d0d0d;"><i class="fa fa-2x fa-exclamation-circle invert" aria-hidden="true"></i></a>
@@ -196,7 +206,12 @@ b {
 <c:if test="${countOfOrders > 0 }">
 
 	<div class="row">
-		<div class="col s3 offset-s1">TOTAL_PRICE : ${summary} UAH</div>
+		<div class="col s3 offset-s1"><span>TOTAL_PRICE : ${summary/2} UAH</span>
+		
+		<a class="tooltipped" data-position="icon" data-tooltip="You pay a half of the sum for orders with deposit. And no money for orders with no deposit"
+			style="color: #0d0d0d;"><i class="fa fa-2x fa-exclamation-circle invert" aria-hidden="true"></i></a>
+		
+		</div>
 		<div class="col s2 offset-s3">
 			<a id="clearBtn" class="my-btn waves-effect waves-light btn"
 				style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"

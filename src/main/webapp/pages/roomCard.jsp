@@ -91,7 +91,7 @@ b {
 						</div>
 
 						<div class="row">
-							<a class="tooltipped" data-position="icon" data-tooltip="Price"
+							<a class="tooltipped" data-position="icon" data-tooltip="Price for one day"
 								style="color: #0d0d0d;"><i class="fa fa-lg fa-money invert"
 								aria-hidden="true"></i></a> <span>${room.price}</span>
 									<c:if test="${room.daysCount == -1}">

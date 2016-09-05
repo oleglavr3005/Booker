@@ -29,15 +29,15 @@ public class ChangeInfoServlet extends HttpServlet {
 		String lastName = request.getParameter("lastName");
 
 		if(lastName == null || firstName == null) {
-			return; //wtf
+			return;
 		}
 		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		if (firstName != "") {
+		if (firstName.length() > 0) {
 			user.setFirstName(firstName);
 		}
-		if (lastName != "") {
+		if (lastName.length() > 0) {
 			user.setLastName(lastName);
 		}
 		int result = new UserService().updateUser(user);
