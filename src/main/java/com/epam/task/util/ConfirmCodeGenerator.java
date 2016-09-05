@@ -3,7 +3,7 @@ package com.epam.task.util;
 import java.util.Random;
 
 public class ConfirmCodeGenerator {
-	public String getCode(){
+	public static String getCode(){
 		Integer temp;
 		do {
 			temp = new Random().nextInt(10000000);

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.UserService;
+import com.epam.task.util.ConfirmCodeGenerator;
 import com.epam.task.util.PasswordHasher;
 
 /**
@@ -41,7 +42,7 @@ public class RegisterServlet extends HttpServlet {
 			user.setType("USER");
 			user.setStatus("PENDING");
 			user.setPassword(PasswordHasher.hash(request.getParameter("password")));
-			user.setConfirmCode(PasswordHasher.hash(request.getParameter("email")));
+			user.setConfirmCode(ConfirmCodeGenerator.getCode());
 			
 			user.setLanguage("en");
 			
