@@ -289,7 +289,7 @@ div #sidebar-wrapper {
 						</div>
 					</div>
 					<!-- MAP ========================================================================== -->
-						<%-- <jsp:include page="map.jsp"></jsp:include> --%>
+						<jsp:include page="map.jsp"></jsp:include>
 					<!-- MAP End======================================================================= -->
 				</div>
 			</div>
