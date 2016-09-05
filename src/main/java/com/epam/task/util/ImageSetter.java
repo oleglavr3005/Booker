@@ -19,12 +19,12 @@ public class ImageSetter {
 
 	public ImageSetter(HttpServletRequest request) {
 		this.request = request;
-		UPLOAD_PATH = request.getServletContext().getContextPath() + "/resources/images/";
+		UPLOAD_PATH = request.getServletContext().getInitParameter("file-upload") + "/resources/images/";
 	}
 	
 	public ImageSetter(HttpServletRequest request, String destination){
 		this.request = request;
-		UPLOAD_PATH = request.getServletContext().getContextPath() + "/resources/images/" + destination+"/";
+		UPLOAD_PATH = request.getServletContext().getInitParameter("file-upload") + "/resources/images/" + destination+"/";
 	}
 	
 	@SuppressWarnings("rawtypes")
