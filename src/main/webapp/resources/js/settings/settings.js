@@ -44,6 +44,7 @@ function savePersonalData(wMail, uMail) {
 	usedMail = uMail;
 	var name = $('#name').val();
 	var surname = $('#surname').val();
+	alert($('#userNameSpan').html());
 	$.post('../change_info', {
 		firstName : nameIsValid(name),
 		lastName : surnameIsValid(surname)
@@ -55,6 +56,7 @@ function savePersonalData(wMail, uMail) {
 
 			$('#surname').val(res.lastName);
 			clearField('surname');
+			$('#userNameSpan').html(res.firstName + " " + res.lastName);
 		}
 	});
 }
@@ -238,7 +240,7 @@ function savePassword(header, succesfull) {
 }
 
 $("#avatarImg").click(function() {
-	$("input[id='newPhoto']").click();
+	$("input[id='avatarInput']").click();
 });
 
 function showPhoto() {
@@ -251,12 +253,11 @@ function showPhoto() {
 		}
 		reader.readAsDataURL(file);
 		var data = new FormData();
-		$.each($('#newPhoto')[0].files, function(i, file) {
+		$.each($('#avatarInput')[0].files, function(i, file) {
 			data.append('file-' + i, file);
 		});
 		$.ajax({
-			url : '../photo',
-			dest : 'avatar',
+			url : '../change_image',
 			data : data,
 			cache : false,
 			contentType : false,
