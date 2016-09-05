@@ -89,6 +89,9 @@ div #sidebar-wrapper {
 
 <body>
 	<input id="lang" type="hidden" value="${language}" />
+	<input id="mapping" type="hidden"
+		value="${pageContext.servletContext.contextPath}/" />
+	
 
 	<!-- Header ========================================================================= -->
 	<jsp:include page="header.jsp"></jsp:include>

@@ -7,8 +7,8 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 
 public class MailInit {
-	public static final String username = "100dilko.da@gmail.com";
-	private static final String password = "Danulo1995power";
+	public static final String username = "wegafww@gmail.com";
+	private static final String password = "PassWord";
 	private static final Properties props = new Properties();
 
 	static {

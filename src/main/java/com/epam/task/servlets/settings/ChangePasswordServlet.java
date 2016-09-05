@@ -37,6 +37,9 @@ public class ChangePasswordServlet extends HttpServlet {
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
 		
+		
+		// add "shortNewPass" result if havent complete validation
+		
 		try {
 			if(user.getPassword().equals(PasswordHasher.hash(oldPassword))) {
 				if(newPassword.equals(newPasswordConfirm)) {

@@ -62,7 +62,6 @@
 	background-color: #F3EAEA;
 }
 
-
 .bg-img {
 	border-style: solid;
 	border-width: 3px 0px 0px;
@@ -259,10 +258,16 @@
 						</div>
 					</c:if>
 
+					<script>
+						$('#phoneCheckBox').attr('checked',
+								'${user.phoneNotif}' == 'true');
+						$('#eMailBox').attr('checked', '${user.emailNotif}' == 'true');
+					</script>
+
 					<div class="row" style="margin-top: 20px;">
 						<div class="col s3 offset-s7">
 							<a id="savePersonal" class="waves-effect waves-light btn"
-								onclick="saveContactData('${fmtMail}','${fmtMailExist}')"
+								onclick="saveContactData()"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
 									key="settings.enter.save" /></a>
 						</div>
@@ -290,14 +295,14 @@
 								<div class="ui pointing label">
 									<fmt:message key="settings.enter.request" />
 								</div>
-								<textarea id="requestForm" class="materialize-textarea"></textarea>
+								<textarea id="requestForm" class="materialize-textarea" placeholder="${message}"></textarea>
 							</div>
 						</div>
 
 						<div class="row" style="margin-top: 20px;">
 							<div class="col s12">
 								<a id="savePersonal" class="waves-effect waves-light btn"
-									onclick="saveContactData('${fmtMail}','${fmtMailExist}')"
+									onclick="createRequest()"
 									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
 										key="settings.enter.save" /></a>
 							</div>

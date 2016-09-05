@@ -34,15 +34,17 @@ public class RegisterServlet extends HttpServlet {
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
 		try {
-			System.out.println("in servlet");
 			User user = new User();
 			user.setLastName(request.getParameter("surname"));
 			user.setFirstName(request.getParameter("name"));
 			user.setEmail(request.getParameter("email"));
 			user.setType("USER");
 			user.setStatus("PENDING");
-			user.setPassword(PasswordHasher.hash(request.getParameter("password") + request.getParameter("name")));
+			user.setPassword(PasswordHasher.hash(request.getParameter("password")));
 			user.setConfirmCode(PasswordHasher.hash(request.getParameter("email")));
+			
+			user.setLanguage("en");
+			
 			UserService userService = new UserService();
 			userService.insertUser(user);
 

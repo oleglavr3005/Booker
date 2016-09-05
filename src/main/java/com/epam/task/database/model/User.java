@@ -142,7 +142,7 @@ public class User {
 		this.socialNetworkId = socialNetworkId;
 	}
 
-	public boolean hasEmailNotif() {
+	public boolean getEmailNotif() {
 		return emailNotif;
 	}
 
@@ -150,7 +150,7 @@ public class User {
 		this.emailNotif = emailNotif;
 	}
 
-	public boolean hasPhoneNotif() {
+	public boolean getPhoneNotif() {
 		return phoneNotif;
 	}
 

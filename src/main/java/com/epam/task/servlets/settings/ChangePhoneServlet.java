@@ -21,14 +21,18 @@ public class ChangePhoneServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String phoneNumber = request.getParameter("phoneNumber");
-		
+		Boolean phoneNotif = Boolean.parseBoolean(request.getParameter("phoneNotif"));
+
 		if(phoneNumber == null) {
 			return;
 		}
 		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		user.setPhoneNumber(phoneNumber);
+		if (phoneNumber != "") {		//super validation
+			user.setPhoneNumber(phoneNumber);
+		}
+		user.setPhoneNotif(phoneNotif);
 		int result = new UserService().updateUser(user);
 		session.setAttribute("user", user);
 		response.getWriter().write(result > 0 ? "true" : "false");

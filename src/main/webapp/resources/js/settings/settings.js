@@ -1,6 +1,36 @@
 var wrongMail;
 var usedMail;
 
+function saveContactData(){
+	var phone = $('#phoneNumber').val();
+	var mail = $('#email').val();
+	$.post('../change_phone', {
+		phoneNumber : phone,
+		phoneNotif : document.getElementById('phoneCheckBox').checked,
+	}, function(result) {
+		if (result == 'true') {			
+			$('#phoneNumber').val('');
+			if (phone != "") {
+				$('#phoneNumber').attr("placeholder", phone);
+			}
+			clearField('phoneNumber');
+		}
+	});
+	
+	$.post('../change_email', {
+		email : mail,
+		mailNotif : document.getElementById('eMailBox').checked,
+	}, function(result) {
+		if (result == 'true') {			
+			$('#email').val('');
+			if (mail != "") {
+				$('#email').attr("placeholder", mail);
+			}
+			clearField('email');
+		}
+	});
+}
+
 function savePersonalData(wMail,uMail) {
 	wrongMail = wMail;
 	usedMail = uMail;
@@ -23,14 +53,24 @@ function savePersonalData(wMail,uMail) {
 			}
 			clearField('surname');
 		}
-		
-//		if (result.email != null && result.email != '') {
-//			$('#email').val('');
-//			$('#email').attr("placeholder", result.email);
-//			clearField('email');
-//		}
 	});
 }
+
+function createRequest() {
+	var req = $('#requestForm').val();
+	$.post('../create_request', {
+		message : req
+	}, function(result) {
+		if (result == 'true') {			
+			$('#requestForm').val('');
+			if (req != "") {
+				$('#requestForm').attr("placeholder", req);
+			}
+			clearField('requestForm');
+		}
+	});
+}
+
 
 function nameIsValid(name) {
 	if (name == '') {
@@ -113,40 +153,53 @@ function emailIsValid(email) {
 
 
 function savePassword(header,succesfull) {
-	if ($('#currentPassword').val() == '' || $('#newPassword').val() == ''
-			|| $('#repeatPassword').val() == '')
+//	if ($('#currentPassword').val() == '' || $('#newPassword').val() == ''
+//			|| $('#repeatPassword').val() == '')
+//		return;
+	if ($('#currentPassword').val().length < 6){
+		invalid('currentPassword');
 		return;
-	$.post('settings/password', {
-		currentPassword : $('#currentPassword').val(),
+	}
+	if ($('#newPassword').val().length < 6){
+		invalid('newPassword');
+		return;
+	}
+	if ($('#repeatPassword').val().length < 6){
+		invalid('repeatPassword');
+		return;		
+	}
+	$.post('../change_password', {
+		oldPassword : $('#currentPassword').val(),
 		newPassword : $('#newPassword').val(),
-		repeatPassword : $('#repeatPassword').val()
+		newPasswordConfirm : $('#repeatPassword').val()
 	}, function(result) {
 		clearPasswordFields();
-		if (result.currentPassword == null) {
+		if (result == 'wrongOldPass') {
 			invalid('currentPassword');
-		} else if (result.currentPassword != '') {
-			valid('currentPassword');
-		}
-		if (result.newPassword == null) {
+		} 
+//		else if (result.currentPassword != '') {
+//			valid('currentPassword');
+//		}
+		if (result == 'shortNewPass') {
 			invalid('newPassword');
-		} else if (result.newPassword != '') {
-			valid('newPassword');
-		}
-		if (result.repeatPassword == null) {
+		} 
+//		else if (result.newPassword != '') {
+//			valid('newPassword');
+//		}
+		if (result == 'passwordsDontMatch') {
 			invalid('repeatPassword');
-		} else if (result.repeatPassword != '') {
-			valid('repeatPassword');
-		}
-		if (result.currentPassword == 'succes'
-				&& result.newPassword == 'succes'
-				&& result.repeatPassword == 'succes') {
+		} 
+//		else if (result.repeatPassword != '') {
+//			valid('repeatPassword');
+//		}
+		if (result == 'true') {
 			$('#currentPassword').val('');
 			$('#newPassword').val('');
 			$('#repeatPassword').val('');
-			$('#pwd_title').text(succesfull);
+			$('#pwd_title').text("SUCCESFULLY CHANGED PASSWORD");
 			$('#pwd_title').css('color', 'green');
 			setTimeout(function() {
-				$('#pwd_title').text(header);
+				$('#pwd_title').text("OLD HEADER TEXT INSERT HERE");
 				$('#pwd_title').css('color', '#333333');
 			}, 3000);
 		}

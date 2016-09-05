@@ -259,10 +259,10 @@ div #sidebar-wrapper {
 										<td style="text-align: center;">${finishedOrder.room.type}</td>
 
 										<td style="text-align: center;"><span
-											id="start_date${activeOrder.id}">${finishedOrder.startDate}</span></td>
+											id="start_date${finishedOrder.id}">${finishedOrder.startDate}</span></td>
 
 										<td style="text-align: center;"><span
-											id="end_date${activeOrder.id}">${finishedOrder.endDate}</span></td>
+											id="end_date${finishedOrder.id}">${finishedOrder.endDate}</span></td>
 
 										<script type="text/javascript"
 											src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
@@ -323,10 +323,10 @@ div #sidebar-wrapper {
 										<td style="text-align: center;">${allOrder.room.type}</td>
 
 										<td style="text-align: center;"><span
-											id="start_date${activeOrder.id}">${allOrder.startDate}</span></td>
+											id="start_date${allOrder.id}">${allOrder.startDate}</span></td>
 
 										<td style="text-align: center;"><span
-											id="end_date${activeOrder.id}">${allOrder.endDate}</span></td>
+											id="end_date${allOrder.id}">${allOrder.endDate}</span></td>
 
 										<script type="text/javascript"
 											src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
@@ -374,52 +374,6 @@ div #sidebar-wrapper {
 			</div>
 			<!-- 			End of Tab #3 -->
 
-
-			<!-- 			Tab #4 -->
-			<!-- 				<div id="test4" class="col s12"> -->
-			<%-- 					<c:choose> --%>
-			<%-- 						<c:when test="${removedSubsSize != 0}"> --%>
-			<!-- 							<table id="tab4" class="purchase-table"> -->
-			<!-- 								<thead> -->
-			<!-- 									<tr> -->
-			<!-- 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_id">ID</p></th> -->
-			<!--  										<th style="text-align: center; border-radius: 0;"><p id="tb_head_date">HOTEL NAME</p></th> -->
-			<!-- 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_room">ROOM_TYPE</p></th> -->
-			<!-- 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_sdate">START_DATE</p></th> -->
-			<!-- 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_edate">END_DATE</p></th> -->
-			<!-- 										<th style="text-align: center; border-radius: 0;"><p id="tb_head_price">PRICE</p></th> -->
-			<!-- 									</tr> -->
-			<!-- 								</thead> -->
-			<!-- 								<tbody> -->
-			<%-- 									<c:forEach var="canceledOrder" items="${canceledOrders}"> --%>
-			<%-- 										<tr class="order${canceledOrder.id}"> --%>
-			<!-- 											<td class="lalign" style="text-align: center;"><a -->
-			<%-- 												href="${pageContext.servletContext.contextPath}/order/${canceledOrder.id}">#${canceledOrder.id}</a></td> --%>
-
-			<%-- 											<td style="text-align: center;">${canceledOrder.hotel.name}</td> --%>
-
-			<%-- 											<td style="text-align: center;">${canceledOrder.room.type}</td> --%>
-
-			<%-- 											<td style="text-align: center;">${canceledOrder.startDate}</td> --%>
-
-			<%-- 											<td style="text-align: center;">${canceledOrder.endDate}</td> --%>
-
-			<%-- 											<td style="text-align: center;">${canceledOrder.price}</td> --%>
-			<!-- 										</tr> -->
-			<%-- 									</c:forEach> --%>
-			<!-- 								</tbody> -->
-			<!-- 							</table> -->
-			<%-- 						</c:when> --%>
-			<%-- 						<c:otherwise> --%>
-			<!-- 							<h5 style="color: red; margin-top: 55px; margin-left: 250px;"> -->
-			<%-- 								<fmt:message key="subscribes.empty" /> --%>
-			<!-- 							</h5> -->
-			<%-- 						</c:otherwise> --%>
-			<%-- 					</c:choose> --%>
-			<!-- 				</div> -->
-			<!-- 			End of Tab #4 -->
-
-
 		</div>
 	</div>
 
@@ -452,13 +406,6 @@ $(document).ready(function()
 $(document).ready(function() 
 	    { 
 	        $("#tab3").tablesorter(); 
-	    } 
-	); 
-</script>
-	<script type="text/javascript">
-$(document).ready(function() 
-	    { 
-	        $("#tab4").tablesorter(); 
 	    } 
 	); 
 </script>

@@ -39,7 +39,7 @@ public class AuthServlet extends HttpServlet {
 			UserService userService = new UserService();
 			User user = userService.getUserByEmail(request.getParameter("email"));
 			if (user.getStatus().equals(UserStatus.PENDING) || !user.getPassword()
-					.equals(PasswordHasher.hash(request.getParameter("password") + (user.getFirstName())))) {
+					.equals(PasswordHasher.hash(request.getParameter("password")))) {
 				throw new Exception();
 			}
 			request.getSession().setAttribute("user", user);
