@@ -42,8 +42,8 @@ public class RoomDao {
 
 	private final String ORDER_BY_PRICE_ASC = " ORDER BY price ASC";
 	private final String ORDER_BY_PRICE_DESC = " ORDER BY price DESC";
-	private final String ORDER_BY_PEOPLE_ASC = " ORDER BY SUM(double_beds_count)*2 + SUM(beds_count) ASC";
-	private final String ORDER_BY_PEOPLE_DESC = " ORDER BY SUM(double_beds_count)*2 + SUM(beds_count) DESC";
+	private final String ORDER_BY_PEOPLE_ASC = " ORDER BY double_beds_count*2 + beds_count ASC";
+	private final String ORDER_BY_PEOPLE_DESC = " ORDER BY double_beds_count*2 + beds_count DESC";
 	
 	private final String PAGINATION = " LIMIT ?, 3";
 	
