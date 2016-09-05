@@ -129,4 +129,12 @@ public class Feedback {
 	public void setImg(String img) {
 		this.img = img;
 	}
+
+	@Override
+	public String toString() {
+		return "Feedback [id=" + id + ", userId=" + userId + ", hotelId=" + hotelId + ", rating=" + rating
+				+ ", comment=" + comment + ", title=" + title + ", date=" + date + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", img=" + img + "]";
+	}
+	
 }
