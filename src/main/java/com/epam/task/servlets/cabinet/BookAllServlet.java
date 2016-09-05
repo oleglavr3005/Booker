@@ -23,8 +23,12 @@ public class BookAllServlet extends HttpServlet {
 		//if total price > 0, pay somehow
 		//imagine all orders were payed
 		//change all orders with status "order" to "active"
+		String cardNumber = request.getParameter("cardNumber");
+		if(cardNumber == null) {
+			return;
+		}
 		int userId = ((User) request.getSession().getAttribute("user")).getId();
-		int booked = new OrderService().bookAllByUser(userId);
+		int booked = new OrderService().bookAllByUser(userId, cardNumber);
 		
 		response.getWriter().write(booked > 0 ? "true" : "false");
 	}

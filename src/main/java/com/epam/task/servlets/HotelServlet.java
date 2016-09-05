@@ -35,19 +35,16 @@ public class HotelServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String hotelId = request.getPathInfo().substring(1);
-		if(hotelId.length() > 1) {
-			return;
-		}
-		int id = 0;
+		int id;
 		try {
-			id = Integer.parseInt(hotelId);
+			id = Integer.parseInt(request.getPathInfo().substring(1));
 		} catch (Exception e) {
 			e.printStackTrace();
 			LOGGER.info("Bad user id for hotel");
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 			return;
 		}
+
 		Hotel hotel = new HotelService().getHotelById(id);
 		Conveniences conveniences = null;
 		if(hotel != null){

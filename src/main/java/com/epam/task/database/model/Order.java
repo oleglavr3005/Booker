@@ -25,9 +25,11 @@ public class Order {
 	private int price;
 	@DataBaseField(fieldName = "comment")
 	private String comment;
+	@DataBaseField(fieldName = "card_number")
+	private String cardNumber;
 
 	public Order(int id, int userId, int roomId, Timestamp startDate, Timestamp endDate,String status,
-			Timestamp orderDate, int price, String comment) {
+			Timestamp orderDate, int price, String comment, String cardNumber) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -38,6 +40,7 @@ public class Order {
 		this.orderDate = orderDate;
 		this.price = price;
 		this.comment = comment;
+		this.cardNumber = cardNumber;
 	}
 
 	public int getId() {
@@ -111,4 +114,20 @@ public class Order {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+
+	public String getCardNumber() {
+		return cardNumber;
+	}
+
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", userId=" + userId + ", roomId=" + roomId + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", status=" + status + ", orderDate=" + orderDate + ", price=" + price
+				+ ", comment=" + comment + ", cardNumber=" + cardNumber + "]";
+	}
+	
 }
