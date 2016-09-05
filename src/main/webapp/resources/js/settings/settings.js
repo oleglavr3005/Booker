@@ -244,11 +244,14 @@ $("#avatarImg").click(function() {
 
 function showPhoto() {
 	var preview = document.querySelector('#avatarImg');
+	var avatar = document.querySelector('#imageavatar');
 	var file = document.querySelector('input[type=file]').files[0];
 	if (file) {
 		var reader = new FileReader();
+		debugger;
 		reader.onloadend = function() {
 			preview.src = reader.result;
+			avatar.src = reader.result;
 		}
 		reader.readAsDataURL(file);
 		var data = new FormData();
