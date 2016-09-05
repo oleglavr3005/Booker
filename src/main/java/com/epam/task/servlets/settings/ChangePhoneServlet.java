@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.UserService;
 
@@ -32,10 +35,23 @@ public class ChangePhoneServlet extends HttpServlet {
 		if (phoneNumber != "") {		//super validation
 			user.setPhoneNumber(phoneNumber);
 		}
-		user.setPhoneNotif(phoneNotif);
+		if(phoneNumber != "" || phoneNotif == false) {
+			user.setPhoneNotif(phoneNotif);
+		}
 		int result = new UserService().updateUser(user);
 		session.setAttribute("user", user);
-		response.getWriter().write(result > 0 ? "true" : "false");
+		
+		try {
+			JSONObject json = new JSONObject();
+			json.put("changed", result > 0 ? "true" : "false");
+			json.put("phoneNumber", user.getPhoneNumber());
+			response.getWriter().print(json.toString());
+			response.getWriter().flush();
+		} catch (JSONException e) {
+			response.setContentType("text/plain");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write("false");
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
