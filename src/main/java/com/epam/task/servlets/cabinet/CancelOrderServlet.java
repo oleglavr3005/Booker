@@ -58,18 +58,16 @@ public class CancelOrderServlet extends HttpServlet {
 				//TODO: SEND SMS WITH moneyToReturn
 			}
 		}
-		
 		order.setStatus(OrderStatus.CANCELED);
 		int result = service.updateOrder(order);
 		response.getWriter().write(result > 0 ? "true" : "false");
 		
-		try {
-			if (Integer.parseInt(request.getPathInfo().substring(1)) == orderId) {
-				response.sendRedirect("/cabinet/orders");
-			}
-		} catch (Exception e) {
-			return;
-		}
+//		String fromOrderPage = request.getParameter("fromOrderPage");
+//		if(fromOrderPage != null && Boolean.parseBoolean(fromOrderPage)) {
+//			response.sendRedirect("/cabinet/orders");
+//		} else {
+//			response.getWriter().write(result > 0 ? "true" : "false");
+//		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
