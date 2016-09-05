@@ -1,37 +1,46 @@
 var wrongMail;
 var usedMail;
 
-function saveContactData(){
+function saveContactData() {
 	var phone = $('#phoneNumber').val();
+	var phoneCheck = document.getElementById('phoneCheckBox').checked;
 	var mail = $('#email').val();
-	$.post('../change_phone', {
-		phoneNumber : phone,
-		phoneNotif : document.getElementById('phoneCheckBox').checked,
-	}, function(result) {
-		if (result == 'true') {			
-			$('#phoneNumber').val('');
-			if (phone != "") {
-				$('#phoneNumber').attr("placeholder", phone);
-			}
+	var mailCheck = document.getElementById('eMailBox').checked;
+	if (phoneIsValid(phone, phoneCheck)) {
+		$.post('../change_phone', {
+			phoneNumber : phone,
+			phoneNotif : phoneCheck,
+		}, function(result) {
+			var res = $.parseJSON(result);
+			 if (result != null) {
+			$('#phoneNumber').val(res.phoneNumber);
 			clearField('phoneNumber');
-		}
-	});
-	
-	$.post('../change_email', {
-		email : mail,
-		mailNotif : document.getElementById('eMailBox').checked,
-	}, function(result) {
-		if (result == 'true') {			
-			$('#email').val('');
-			if (mail != "") {
-				$('#email').attr("placeholder", mail);
+			 }
+			 else {
+					invalid('phoneNumber');
+			 }
+		});
+	}
+
+	if (mailIsValid(mail,mailCheck)) {
+		$.post('../change_email', {
+			email : mail,
+			mailNotif : mailCheck,
+		}, function(result) {
+			alert("post comeback " + result);
+			var res = $.parseJSON(result);
+			if (result != null) {
+				$('#email').val(res.email);
+				clearField('email');
 			}
-			clearField('email');
-		}
-	});
+			 else {
+				 alert("mailErr");
+			 }
+		});
+	}
 }
 
-function savePersonalData(wMail,uMail) {
+function savePersonalData(wMail, uMail) {
 	wrongMail = wMail;
 	usedMail = uMail;
 	var name = $('#name').val();
@@ -40,17 +49,12 @@ function savePersonalData(wMail,uMail) {
 		firstName : nameIsValid(name),
 		lastName : surnameIsValid(surname)
 	}, function(result) {
-		if (result == 'true') {			
-			$('#name').val('');
-			if (name != "") {
-				$('#name').attr("placeholder", name);
-			}
+		var res = $.parseJSON(result);
+		if (result != null) {
+			$('#name').val(res.firstName);
 			clearField('name');
-			
-			$('#surname').val('');
-			if (surname != ""){
-				$('#surname').attr("placeholder", surname);
-			}
+
+			$('#surname').val(res.lastName);
 			clearField('surname');
 		}
 	});
@@ -61,16 +65,11 @@ function createRequest() {
 	$.post('../create_request', {
 		message : req
 	}, function(result) {
-		if (result == 'true') {			
-			$('#requestForm').val('');
-			if (req != "") {
-				$('#requestForm').attr("placeholder", req);
-			}
+		if (result == 'true') {
 			clearField('requestForm');
 		}
 	});
 }
-
 
 function nameIsValid(name) {
 	if (name == '') {
@@ -82,6 +81,35 @@ function nameIsValid(name) {
 	} else {
 		invalid('name');
 		return null;
+	}
+}
+
+function phoneIsValid(phone,check) {
+	if (phone == '') {
+		document.getElementById('phoneCheckBox').checked = false;
+		valid('phoneNumber');
+		return true;
+	}
+	if ((phone == '') || phone.length <= 15 && phone.length >= 8 && validateNumber(phone)) {
+		valid('phoneNumber');
+		return true;
+	} else {
+		invalid('phoneNumber');
+		return false;
+	}
+}
+
+function mailIsValid(mail,check) {
+	if (mail == '') {
+		invalid('email');
+		return false;
+	}
+	if (mail.length <= 45 && emailIsValid(mail)) {
+		valid('email');
+		return true;
+	} else {
+		invalid('email');
+		return false;
 	}
 }
 
@@ -123,11 +151,19 @@ function validateLetters(field) {
 	return re.test(field);
 }
 
+function validateNumber(field) {
+	var re = /^([0-9]*)$/;
+	return re.test(field);
+}
+
 function emailIsValid(email) {
+	debugger;
+	alert("emailIsValid()");
 	if (email == '') {
 		return null;
 	}
 	if (email.length < 5 || email.length > 45 || !validateEmail(email)) {
+		alert("regex");
 		invalid('email');
 		$('#emailLbl').attr("data-error", wrongMail);
 		return null;
@@ -141,32 +177,32 @@ function emailIsValid(email) {
 			"email" : email
 		}
 	}).success(function(data) {
-		var isValid = (data == "true");
+		alert("ajax" + data);
+		var isValid = (data == "false");
 		if (!isValid) {
 			invalid('email');
 			$('#emailLbl').attr("data-error", usedMail);
-			email = null;
+			return false;
 		}
 	});
-	return email;
+	return true;
 }
 
-
-function savePassword(header,succesfull) {
-//	if ($('#currentPassword').val() == '' || $('#newPassword').val() == ''
-//			|| $('#repeatPassword').val() == '')
-//		return;
-	if ($('#currentPassword').val().length < 6){
+function savePassword(header, succesfull) {
+	// if ($('#currentPassword').val() == '' || $('#newPassword').val() == ''
+	// || $('#repeatPassword').val() == '')
+	// return;
+	if ($('#currentPassword').val().length < 6) {
 		invalid('currentPassword');
 		return;
 	}
-	if ($('#newPassword').val().length < 6){
+	if ($('#newPassword').val().length < 6) {
 		invalid('newPassword');
 		return;
 	}
-	if ($('#repeatPassword').val().length < 6){
+	if ($('#repeatPassword').val().length < 6) {
 		invalid('repeatPassword');
-		return;		
+		return;
 	}
 	$.post('../change_password', {
 		oldPassword : $('#currentPassword').val(),
@@ -176,22 +212,22 @@ function savePassword(header,succesfull) {
 		clearPasswordFields();
 		if (result == 'wrongOldPass') {
 			invalid('currentPassword');
-		} 
-//		else if (result.currentPassword != '') {
-//			valid('currentPassword');
-//		}
+		}
+		// else if (result.currentPassword != '') {
+		// valid('currentPassword');
+		// }
 		if (result == 'shortNewPass') {
 			invalid('newPassword');
-		} 
-//		else if (result.newPassword != '') {
-//			valid('newPassword');
-//		}
+		}
+		// else if (result.newPassword != '') {
+		// valid('newPassword');
+		// }
 		if (result == 'passwordsDontMatch') {
 			invalid('repeatPassword');
-		} 
-//		else if (result.repeatPassword != '') {
-//			valid('repeatPassword');
-//		}
+		}
+		// else if (result.repeatPassword != '') {
+		// valid('repeatPassword');
+		// }
 		if (result == 'true') {
 			$('#currentPassword').val('');
 			$('#newPassword').val('');

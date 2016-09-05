@@ -14,6 +14,12 @@ b {
 	margin-left: 8px;
 	font-size: 15px;
 }
+
+.invert:hover {
+	-webkit-filter: invert(70%);
+	filter: invert(70%);
+	cursor: default;
+}
 </style>
 
 <!-- <h6> -->
@@ -54,32 +60,39 @@ b {
 
 						<div class="row" style="margin-top: 15px;">
 							<div class="col s5">
-								<span>${hotel.name}</span>
+								<a href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}">${hotel.name}</a>
 							</div>
 							<div class="col s6 offset-s1">
+							<a class="tooltipped" data-position="icon" data-tooltip="Stars"
+										style="color: #0d0d0d;text-decoration: none;">
 								<c:forEach var="i" begin="1" end="${hotel.stars}">
 									<i class="fa fa-lg fa-star-o" aria-hidden="true"></i>
 								</c:forEach>
+							</a>
 							</div>
 						</div>
 
 
 						<div class="row">
-							<i class="fa fa-lg icon-map-marker" aria-hidden="true"></i> <span>${hotel.city}
+							<a class="tooltipped" data-position="icon" data-tooltip="Location"
+								style="color: #0d0d0d;text-decoration: none;"><i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
+							<span>${hotel.city}
 								${hotel.street}</span>
 						</div>
 
 						<div class="row" style="margin-bottom: 5px">
-							<i class="material-icons"
-								style="font-size: 20px;">receipt</i>
+							<a class="tooltipped" data-position="icon" data-tooltip="Description"
+								style="color: #0d0d0d; cursor:default"><i class="material-icons invert" style="font-size: 20px;">receipt</i></a>
 							<span>${hotel.desc}</span>
 						</div>
 					</div>
 
 					<div class="col s2">
 						<div class="row">
-							<i class="fa fa-lg fa-star" aria-hidden="true"></i> <span>RATING
-								: ${hotel.rating }</span>
+						<a class="tooltipped" data-position="icon" data-tooltip="Rating"
+							style="color: #0d0d0d;text-decoration: none;">
+							<i class="fa fa-lg fa-star invert" aria-hidden="true"></i> <span>${hotel.rating }</span>
+							</a>
 						</div>
 
 

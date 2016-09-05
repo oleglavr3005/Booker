@@ -24,20 +24,23 @@ public class ChangePhoneServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String phoneNumber = request.getParameter("phoneNumber");
-		Boolean phoneNotif = Boolean.parseBoolean(request.getParameter("phoneNotif"));
 
 		if(phoneNumber == null) {
 			return;
 		}
+		Boolean phoneNotif = Boolean.parseBoolean(request.getParameter("phoneNotif"));
 		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		if (phoneNumber != "") {		//super validation
-			user.setPhoneNumber(phoneNumber);
-		}
-		if(phoneNumber != "" || phoneNotif == false) {
+		
+		user.setPhoneNumber(phoneNumber);
+			
+		if(phoneNumber.length() == 0) {
+			user.setPhoneNotif(false);
+		} else {
 			user.setPhoneNotif(phoneNotif);
 		}
+		
 		int result = new UserService().updateUser(user);
 		session.setAttribute("user", user);
 		

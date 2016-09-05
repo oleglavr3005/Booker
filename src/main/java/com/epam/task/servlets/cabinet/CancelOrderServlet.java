@@ -42,11 +42,9 @@ public class CancelOrderServlet extends HttpServlet {
 	                / (1000 * 60 * 60 * 24) );
 			
 			if (daysLeft >= days) { //return all money and cancel
-				int moneyToReturn = order.getPrice(); 	//if we are paying the whole sum (like we are doing now)
-														//if we are paying a half of the sum (like I want to), 
-														//than change this value
+				int moneyToReturn = order.getPrice() / 2; 	//we are paying a half of the sum
 			} else { //return %
-				int moneyToReturn = (order.getPrice() / 100) * room.getPercentage(); //same as above
+				int moneyToReturn = (order.getPrice() / 200) * room.getPercentage(); //same as above
 			}
 			//TODO: RETURN MONEY
 		}

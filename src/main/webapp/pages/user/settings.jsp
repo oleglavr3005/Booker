@@ -14,7 +14,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>Booker | My Orders</title>
+<title>Booker | Settings</title>
 <link rel="icon" type="image/ico"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.ico">
 <link
@@ -139,7 +139,7 @@
 								<fmt:message key="settings.enter.name" />
 							</div>
 							<input id="name" type="text" class="validate"
-								placeholder="${user.firstName}" length="45"> <label
+								value="${user.firstName}" length="45"> <label
 								id="nameLbl" data-error="${fmtName}" for="name"> </label>
 						</div>
 					</div>
@@ -149,7 +149,7 @@
 								<fmt:message key="settings.enter.surname" />
 							</div>
 							<input id="surname" type="text" class="validate"
-								placeholder="${user.lastName}" length="45"> <label
+								value="${user.lastName}" length="45"> <label
 								id="surnameLbl" data-error="${fmtSurname}" for="surname"></label>
 						</div>
 					</div>
@@ -228,9 +228,20 @@
 								<fmt:message key="settings.enter.phone" />
 							</div>
 							<input id="phoneNumber" type="text" class="validate"
-								placeholder="${user.phoneNumber}" length="45"> <label
+								value="${user.phoneNumber}" length="45"> <label
 								id="phoneLbl" data-error="${fmtName}" for="phoneNumber">
 							</label>
+							
+<!-- 							<div class="switch"> -->
+<!-- 								<label> Off <input type="checkbox" id="phoneCheckBox"> <span -->
+<!-- 									class="lever"></span> On -->
+<!-- 								</label> -->
+<!-- 								<label for="phoneCheckBox">I  -->
+<!--  									WANT RECEIVE MESSAGES ABOUT NEW ROOMS!</label>  -->
+<!-- 							</div> -->
+
+
+
 							<p>
 								<input type="checkbox" class="filled-in" id="phoneCheckBox"
 									name="phonoCheckBox" /> <label for="phoneCheckBox">I
@@ -247,7 +258,7 @@
 									<fmt:message key="settings.enter.mail" />
 								</div>
 								<input id="email" type="email" class="validate"
-									placeholder="${user.email}" length="80"> <label
+									value="${user.email}" length="80"> <label
 									id="emailLbl" data-error="${fmtMail}" for="email"> </label>
 								<p>
 									<input type="checkbox" class="filled-in" id="eMailBox"
@@ -261,7 +272,8 @@
 					<script>
 						$('#phoneCheckBox').attr('checked',
 								'${user.phoneNotif}' == 'true');
-						$('#eMailBox').attr('checked', '${user.emailNotif}' == 'true');
+						$('#eMailBox').attr('checked',
+								'${user.emailNotif}' == 'true');
 					</script>
 
 					<div class="row" style="margin-top: 20px;">
@@ -295,7 +307,8 @@
 								<div class="ui pointing label">
 									<fmt:message key="settings.enter.request" />
 								</div>
-								<textarea id="requestForm" class="materialize-textarea" placeholder="${message}"></textarea>
+								<textarea id="requestForm" class="materialize-textarea"
+									value="${message}"></textarea>
 							</div>
 						</div>
 

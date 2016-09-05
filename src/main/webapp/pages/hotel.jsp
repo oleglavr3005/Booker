@@ -201,7 +201,7 @@ div #sidebar-wrapper {
 						</div>
 						<div class="row">
 							<a class="tooltipped" data-position="icon" data-tooltip="Location"
-								style="color: #0d0d0d;"><i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
+								style="color: #0d0d0d;text-decoration: none;"><i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
 							<a id="togle" class="tooltipped" data-position="icon" data-tooltip="Show map"
 								style="cursor: pointer;">${hotel.city} ${hotel.street}</a>
 						</div>

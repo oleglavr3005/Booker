@@ -24,15 +24,16 @@ public class ChangeEmailServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
-		Boolean mailNotif = Boolean.parseBoolean(request.getParameter("mailNotif"));
 		
 		if(email == null) {
 			return;
 		}
 		
+		Boolean mailNotif = Boolean.parseBoolean(request.getParameter("mailNotif"));
+		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		if (email != "") {		//super validation
+		if (email.length() > 0) {		//super validation
 			user.setEmail(email);
 		}
 		user.setEmailNotif(mailNotif);
