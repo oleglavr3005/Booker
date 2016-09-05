@@ -17,6 +17,10 @@ public class HotelDao {
 	private Connection connection;
 	
 	private final String SELECT_ALL_NOT_DELETED = "SELECT * FROM `hotel` WHERE is_deleted = false";
+	private final String ORDER_BY_STARS_ASC = " ORDER BY h.stars ASC";
+	private final String ORDER_BY_STARS_DESC = " ORDER BY h.stars DESC";
+	private final String ORDER_BY_RATING_ASC = " ORDER BY h.rating ASC";
+	private final String ORDER_BY_RATING_DESC = " ORDER BY h.rating DESC";
 	private final String PAGINATION = " LIMIT ?, 3";
 	
 	private final String SELECT_ALL_SUITABLE = "SELECT DISTINCT h.* FROM hotel h INNER JOIN room r ON h.hotel_id = r.hotel_id LEFT JOIN `order` o ON o.room_id = r.room_id "
@@ -71,8 +75,19 @@ public class HotelDao {
 		}
 	}
 
-	public List<Hotel> getAllHotelsByPage(int page) {
-		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_NOT_DELETED + PAGINATION)) {
+	public List<Hotel> getAllHotelsByPage(int page, String orderBy) {
+		String ORDER_BY;
+		if("compareByStarsAsc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_STARS_ASC;
+		} else if ("compareByStarsDesc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_STARS_DESC;
+			
+		} else if ("compareByRatingAsc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_RATING_ASC;
+		} else { //compareByRatingDesc = default
+			ORDER_BY = ORDER_BY_RATING_DESC;
+		}
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_NOT_DELETED + ORDER_BY + PAGINATION)) {
 			statement.setInt(1, (page-1)*3);
 			try (ResultSet result = statement.executeQuery()) {
 				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
@@ -89,7 +104,7 @@ public class HotelDao {
 			int minPrice, int maxPrice,																//price
 			boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, 			//additional
 			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit, 
-			Timestamp startDate, Timestamp endDate, int page){												//dates
+			Timestamp startDate, Timestamp endDate, int page, String orderBy){												//dates
 		
 		StringBuilder SQL = new StringBuilder(SELECT_ALL_SUITABLE);
 		//ROOM TYPE
@@ -166,6 +181,18 @@ public class HotelDao {
 			SQL.append(NO_DEPOSIT);
 		}
 		
+		String ORDER_BY;
+		if("compareByStarsAsc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_STARS_ASC;
+		} else if ("compareByStarsDesc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_STARS_DESC;
+			
+		} else if ("compareByRatingAsc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_RATING_ASC;
+		} else { //compareByRatingDesc = default
+			ORDER_BY = ORDER_BY_RATING_DESC;
+		}
+		SQL.append(ORDER_BY);
 		SQL.append(PAGINATION);
 		try (PreparedStatement statement = connection.prepareStatement(SQL.toString())) {
 			int i = 1;

@@ -114,6 +114,7 @@ public class FindHotelsServlet extends HttpServlet {
 		request.setAttribute("countOfPages", countOfPages);
 		request.setAttribute("currentPage", page);
 
+		String compareBy = request.getParameter("compareBy");
 		List<Hotel> suitableHotels = new HotelService().getAllSuitableHotels(session.getAttribute("name").toString(), 
 				(int) session.getAttribute("minStars"), (int) session.getAttribute("maxStars"), 
 				(int) session.getAttribute("people"), 
@@ -124,21 +125,20 @@ public class FindHotelsServlet extends HttpServlet {
 				(boolean) session.getAttribute("hasWiFi"), (boolean) session.getAttribute("hasShower"), (boolean) session.getAttribute("hasParking"), 
 				(boolean) session.getAttribute("hasCondition"), (boolean) session.getAttribute("hasPool"), (boolean) session.getAttribute("hasGym"), 
 				(boolean) session.getAttribute("hasBalcony"), (boolean) session.getAttribute("noDeposit"), 
-				startDate, endDate, page);
-
-		String compareBy = request.getParameter("compareBy");
-		if("compareByStarsAsc".equals(compareBy)) {
-			suitableHotels.sort(new StarsHotelComparator());
-			Collections.reverse(suitableHotels);
-		} else if ("compareByStarsDesc".equals(compareBy)) {
-			suitableHotels.sort(new StarsHotelComparator());
-			
-		} else if ("compareByRatingAsc".equals(compareBy)) {
-			suitableHotels.sort(new RatingHotelComparator());
-			Collections.reverse(suitableHotels);
-		} else { //compareByRatingDesc = default
-			suitableHotels.sort(new RatingHotelComparator());
-		}
+				startDate, endDate, page, compareBy);
+//
+//		if("compareByStarsAsc".equals(compareBy)) {
+//			suitableHotels.sort(new StarsHotelComparator());
+//			Collections.reverse(suitableHotels);
+//		} else if ("compareByStarsDesc".equals(compareBy)) {
+//			suitableHotels.sort(new StarsHotelComparator());
+//			
+//		} else if ("compareByRatingAsc".equals(compareBy)) {
+//			suitableHotels.sort(new RatingHotelComparator());
+//			Collections.reverse(suitableHotels);
+//		} else { //compareByRatingDesc = default
+//			suitableHotels.sort(new RatingHotelComparator());
+//		}
 		
 		request.setAttribute("hotels", suitableHotels);
 		
