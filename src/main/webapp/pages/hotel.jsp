@@ -54,9 +54,7 @@
 <link
 	href="${pageContext.servletContext.contextPath}/resources/css/styleMap.css"
 	rel="stylesheet">
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
 <script type="text/javascript"
 	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU"></script>
 <script>

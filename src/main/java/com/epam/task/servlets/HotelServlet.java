@@ -39,9 +39,6 @@ public class HotelServlet extends HttpServlet {
 		try {
 			id = Integer.parseInt(request.getPathInfo().substring(1));
 		} catch (Exception e) {
-			e.printStackTrace();
-			LOGGER.info("Bad user id for hotel");
-			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 			return;
 		}
 
