@@ -9,6 +9,12 @@
 <div class="col s10 offset-s1">
 	<div class="card">
 		<div class="container-fluid">
+			<div style="margin: 20px; overflow: hidden;">
+				<textarea style="height: 80px;"></textarea>
+				<div style="margin-top: 20px;">
+					<a id="createComment" class="waves-effect waves-light btn" style="width: 25%;background: #26A69A;text-align: center;color: #F7F7F7;margin-left: 37.5%;">Add comment</a>
+				</div>
+			</div>
 			<c:forEach var="comment" items="${feedbacks}">
 				<div class="comment_card" id="comment_id_${comment.id}" style="margin: 20px; display: none">
 					<div class="row" style="margin-bottom: 0;">
