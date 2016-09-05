@@ -25,7 +25,7 @@
 			    </div>
 			</c:forEach>
 			<div style="margin:20px">
-				<a id="togle" class="waves-effect waves-light btn" onclick="addComments(1)" style="width: 14%;background: #26A69A;text-align: center;color: #F7F7F7;margin-left: 43%;">
+				<a id="commentButton" class="waves-effect waves-light btn" onclick="addComments(5)" style="width: 14%;background: #26A69A;text-align: center;color: #F7F7F7;margin-left: 43%;">
 					<i id="arrow_icon" class="fa fa-angle-double-down col s1 fa-2x" aria-hidden="true"></i>
 				</a>
  			</div>

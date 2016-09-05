@@ -1,17 +1,20 @@
-$('.comment_card').hide();
+jQuery('.comment_card').hide();
 var indexShowComments = 0;
 var arrayComment = [];
-var comments = $(".comment_card");
+var comments = jQuery(".comment_card");
 for(var i = 0; i < comments.length; i++){
 	arrayComment[i] = comments[i].getAttribute('id');
 }
-setTimeout('addComments(1)', 200)
+setTimeout('addComments(5)', 200)
  
 function addComments(delta) {
 	var max = indexShowComments + delta;
-	if(max > comments.length){ max = comments.length}
+	if(max >= comments.length){ 
+		max = comments.length;
+		jQuery("#commentButton").addClass("disabled");
+	}
 	for(var i = 0; i < max; i++){
-		$("#" + arrayComment[i]).slideDown(250);
+		jQuery("#" + arrayComment[i]).slideDown(250);
 	}
 	indexShowComments = indexShowComments + delta;
 }
