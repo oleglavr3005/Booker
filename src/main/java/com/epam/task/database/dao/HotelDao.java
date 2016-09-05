@@ -45,12 +45,12 @@ public class HotelDao {
 	
 	private final String INSERT_HOTEL = "INSERT INTO `hotel` (name, city, street, stars, `desc`,"
 			+ " manager_id, x_coord, y_coord, rating,"
-			+ " is_deleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			+ " is_deleted, phone_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private final String SELECT_BY_ID = "SELECT * FROM `hotel` WHERE hotel_id = ?";
 	private final String CHANGE_HOTEL_STATUS = "UPDATE `hotel` SET is_deleted = ? WHERE hotel_id = ?";
 	private final String UPDATE_HOTEL = "UPDATE `hotel` SET name = ?,"
 			+ " city = ?, street = ?, stars = ?, desc = ?, manager_id = ?,"
-			+ " x_coord = ?, y_coord = ?, rating = ? WHERE hotel_id = ?";
+			+ " x_coord = ?, y_coord = ?, rating = ?, is_deleted = ?, phone_number = ? WHERE hotel_id = ?";
 	
 	public HotelDao(Connection connection){
 		super();
@@ -220,6 +220,7 @@ public class HotelDao {
 			statement.setDouble(i++, hotel.getYCoord());
 			statement.setDouble(i++, hotel.getRating());
 			statement.setBoolean(i++, hotel.isDeleted());
+			statement.setString(i++, hotel.getPhoneNumber());
 			return statement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -262,6 +263,7 @@ public class HotelDao {
 			statement.setDouble(i++, hotel.getYCoord());
 			statement.setDouble(i++, hotel.getRating());
 			statement.setBoolean(i++, hotel.isDeleted());
+			statement.setString(i++, hotel.getPhoneNumber());
 
 			statement.setInt(i, hotel.getId());
 			return statement.executeUpdate();

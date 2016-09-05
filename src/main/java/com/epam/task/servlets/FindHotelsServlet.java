@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.epam.task.comparators.RatingHotelComparator;
+import com.epam.task.comparators.StarsHotelComparator;
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.RoomService;
@@ -122,6 +125,20 @@ public class FindHotelsServlet extends HttpServlet {
 				(boolean) session.getAttribute("hasCondition"), (boolean) session.getAttribute("hasPool"), (boolean) session.getAttribute("hasGym"), 
 				(boolean) session.getAttribute("hasBalcony"), (boolean) session.getAttribute("noDeposit"), 
 				startDate, endDate, page);
+
+		String compareBy = request.getParameter("compareBy");
+		if("compareByStarsAsc".equals(compareBy)) {
+			suitableHotels.sort(new StarsHotelComparator());
+			Collections.reverse(suitableHotels);
+		} else if ("compareByStarsDesc".equals(compareBy)) {
+			suitableHotels.sort(new StarsHotelComparator());
+			
+		} else if ("compareByRatingAsc".equals(compareBy)) {
+			suitableHotels.sort(new RatingHotelComparator());
+			Collections.reverse(suitableHotels);
+		} else { //compareByRatingDesc = default
+			suitableHotels.sort(new RatingHotelComparator());
+		}
 		
 		request.setAttribute("hotels", suitableHotels);
 		

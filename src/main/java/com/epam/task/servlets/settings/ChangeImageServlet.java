@@ -21,8 +21,10 @@ public class ChangeImageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//somehow load image on server
 		//will do it tomorrow :P
+
+        System.out.println(System.getProperty("user.dir"));
 		try {
-			String photo = new ImageSetter(request,request.getParameter("dest")).uploadImage();
+			String photo = new ImageSetter(request, "avatar").uploadImage();
 			response.setContentType("application/text");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(photo);
