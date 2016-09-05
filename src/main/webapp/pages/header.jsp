@@ -108,12 +108,12 @@ img.logo {
 				<c:choose>
 					<c:when test="${user != null}">
 
-							<div class="dropdown">
-							<span id="userName" style="font-size:1.3rem; margin-right:0.5rem">${user.firstName} ${user.lastName}</span>
+							<div class="dropdown" style="padding-top:0.5rem;">
+							<span id="userNameSpan" style="font-size:1.3rem; margin-right:0.5rem; margin-top:20px">${user.firstName} ${user.lastName}</span>
 								<img id="imageavatar"
-									src="http://www.desicomments.com/dc3/09/336028/336028.png"
+									src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"
 									alt="img"
-									style="height: 50px; width: 50px; border-radius: 25px;"
+									style="height: 50px; width: 50px; border-radius: 25px; margin-top:-0.5rem"
 									class="imageavatar dropdown-toggle" data-toggle='dropdown'
 									 />
 								<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
