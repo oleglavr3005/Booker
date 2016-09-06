@@ -29,13 +29,13 @@ function removeOrderTable(orderId) {
 	$.post('../cancel_order', {
 		orderId : orderId
 	}, function() {
-		$('.purchase' + orderId).animate({
+		$('.order' + orderId).animate({
 			right : '250px',
 			opacity : '0.5',
 			height : '-=150px',
 			width : '-=150px'
 		}, "slow", function() {
-			$('.purchase' + orderId).remove();
+			$('.order' + orderId).remove();
 		});
 	});
 }
@@ -44,13 +44,13 @@ function removeOrder(orderId) {
 	$.post(mapping + '/cancel_order', {
 		orderId : orderId
 	}, function() {
-		$('.purchase' + orderId).animate({
+		$('.order' + orderId).animate({
 			right : '250px',
 			opacity : '0.5',
 			height : '-=150px',
 			width : '-=150px'
 		}, "slow", function() {
-			$('.purchase' + orderId).remove();
+			$('.order' + orderId).remove();
 		});
 	});
 }

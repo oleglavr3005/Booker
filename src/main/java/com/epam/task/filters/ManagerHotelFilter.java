@@ -45,7 +45,7 @@ public class ManagerHotelFilter implements Filter {
 		
 		Hotel hotel = new HotelService().getHotelById(hotelId);
 		
-		if(manager != null && manager.getType() == UserType.MANAGER && hotel != null && hotel.getManagerId() == manager.getId()) {
+		if(hotel != null && hotel.getManagerId() == manager.getId()) {
 			chain.doFilter(request, response);
 		} else {		//throw the unexpected visitor on the error page
 			((HttpServletResponse) response).sendError(404);

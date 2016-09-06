@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
+<%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
 <c:set var="language"
 	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
 	scope="session" />
@@ -106,7 +106,7 @@
 	<input id="lang" type="hidden" value="${language}" />
 
 	<!-- Header ========================================================================= -->
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="../header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 
 	<div class="container" style="margin-top: 20px">
@@ -289,7 +289,7 @@
 
 		<!-- SWITCH CONTENT -->
 		<div id="switchContent" class="row">
-			<jsp:include page="card.jsp"></jsp:include>
+			<jsp:include page="../card.jsp"></jsp:include>
 		</div>
 		<!-- END OF SWITCH CONTENT -->
 
@@ -297,7 +297,7 @@
 
 
 	<!-- Footer ========================================================================== -->
-	<jsp:include page="foot.jsp"></jsp:include>
+	<jsp:include page="../foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
 
 	<script type="text/javascript"
