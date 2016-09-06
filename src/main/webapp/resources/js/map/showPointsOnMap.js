@@ -6,7 +6,7 @@ var map;
 function map_initialize() {
 	console.log("map_initialize");
     //Google map option
-	var mapCenter = new google.maps.LatLng(points[0].lat, points[0].lon); //Google map Coordinates
+	var mapCenter = new google.maps.LatLng(hotelsJson[0].lat, hotelsJson[0].lon); //Google map Coordinates
     var googleMapOptions = {
         center: mapCenter, // map center
         zoom: 5, //zoom level, 0 = earth view to higher value
