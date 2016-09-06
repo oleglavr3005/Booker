@@ -125,9 +125,9 @@
 				<%-- 					onchange="showPhoto()" accept="image/*" /> --%>
 				<!-- 				END OF INPUT -->
 
-				<a class="waves-effect waves-light btn" onclick="createHotel()"
+				<a class="waves-effect waves-light btn" id="create_button" onclick="createHotel()"
 					style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>CREATE</span></a>
-
+<p id="create_error" style="color: red"></p>
 
 
 
