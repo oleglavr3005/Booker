@@ -40,9 +40,9 @@ public class AddHotelServlet extends HttpServlet {
 		double xCoord = Double.parseDouble(xCoordString);
 		double yCoord = Double.parseDouble(yCoordString);
 		
-		int added = new HotelService().insertHotel(new Hotel(0, name, city, street, stars, description, manager.getId(), xCoord, yCoord, 0, false, phoneNumber));
+		int id = new HotelService().insertHotel(new Hotel(0, name, city, street, stars, description, manager.getId(), xCoord, yCoord, 0, false, phoneNumber));
 	
-		response.getWriter().write(added > 0 ? "true" : "false");
+		response.getWriter().write(id > 0 ? ""+id : "error");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

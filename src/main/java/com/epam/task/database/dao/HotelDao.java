@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -236,7 +237,7 @@ public class HotelDao {
 	}
 	
 	public int insertHotel(Hotel hotel){
-		try (PreparedStatement statement = connection.prepareStatement(INSERT_HOTEL)) {
+		try (PreparedStatement statement = connection.prepareStatement(INSERT_HOTEL, Statement.RETURN_GENERATED_KEYS)) {
 			int i = 1;
 			statement.setString(i++, hotel.getName());
 			statement.setString(i++, hotel.getCity());
@@ -249,7 +250,14 @@ public class HotelDao {
 			statement.setDouble(i++, hotel.getRating());
 			statement.setBoolean(i++, hotel.isDeleted());
 			statement.setString(i++, hotel.getPhoneNumber());
-			return statement.executeUpdate();
+			statement.executeUpdate();
+			
+			ResultSet rs = statement.getGeneratedKeys();
+			if(rs.next()) {
+				return rs.getInt(1);
+			} else {
+				return 0;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return -1;
