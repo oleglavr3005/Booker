@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.Room;
 import com.epam.task.database.model.User;
@@ -45,12 +48,23 @@ public class BookServlet extends HttpServlet {
 		
 		List<Hotel> recomendedHotels = HotelUtil.getRecomendedHotelsForUser(hotelIds, userId);
 		
-		request.setAttribute("recomendedHotels", recomendedHotels);
-		request.setAttribute("recomendedHotelsSize", recomendedHotels.size());
-		
 		int booked = orderService.bookOrder(orderId, cardNumber, comment);
 		
-		response.getWriter().write(booked > 0 ? "true" : "false");
+//		request.setAttribute("recomendedHotels", recomendedHotels);
+//		request.setAttribute("recomendedHotelsSize", recomendedHotels.size());
+
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		try {
+			JSONObject json = new JSONObject();
+			json.put("hotels", recomendedHotels);
+			json.put("countOfHotels", recomendedHotels.size());
+			json.put("booked", booked > 0 ? "true" : "false");
+			response.getWriter().print(json.toString());
+			response.getWriter().flush();
+		} catch (JSONException e) {
+			response.getWriter().write("false");
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

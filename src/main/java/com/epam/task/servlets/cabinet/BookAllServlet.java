@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.Order;
 import com.epam.task.database.model.Room;
@@ -44,15 +47,27 @@ public class BookAllServlet extends HttpServlet {
 		}
 		List<Hotel> recomendedHotels = HotelUtil.getRecomendedHotelsForUser(hotelIds, userId);
 
-		request.setAttribute("recomendedHotels", recomendedHotels);
-		request.setAttribute("recomendedHotelsSize", recomendedHotels.size());
-		
 		int booked = new OrderService().bookAllByUser(userId, cardNumber, comment);
+
+//		request.setAttribute("recomendedHotels", recomendedHotels);
+//		request.setAttribute("recomendedHotelsSize", recomendedHotels.size());
 		
-		response.getWriter().write(booked > 0 ? "true" : "false");
-		if(booked > 0) {
-			request.getRequestDispatcher("/pages/orderCard.jsp").forward(request, response);
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		try {
+			JSONObject json = new JSONObject();
+			json.put("hotels", recomendedHotels);
+			json.put("countOfHotels", recomendedHotels.size());
+			json.put("booked", booked > 0 ? "true" : "false");
+			response.getWriter().print(json.toString());
+			response.getWriter().flush();
+		} catch (JSONException e) {
+			response.getWriter().write("false");
 		}
+		
+//		if(booked > 0) {
+//			request.getRequestDispatcher("/pages/orderCard.jsp").forward(request, response);
+//		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
