@@ -14,7 +14,7 @@ import com.epam.task.database.service.ConveniencesService;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.RoomService;
 
-@WebServlet("/my_hotels/*")
+@WebServlet("/cabinet/my_hotels/*")
 public class ManagerHotelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
   
