@@ -173,7 +173,7 @@ img.logo {
 										<div class="input-field">
 											<input id="password" type="password" class="validate">
 											<label id="passwordLbl" data-error="${fmtPass}"
-												for="password"><p id="header.regist.pass" /></label>
+												for="password"><p id="header.regist.pass"> </p></label>
 										</div>
 										<div class="input-field">
 											<input id="сpassword" type="password" class="validate">
