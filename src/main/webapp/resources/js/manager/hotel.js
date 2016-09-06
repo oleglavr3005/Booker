@@ -51,8 +51,9 @@ function updateHotel(hotelId){
 		}, function(result){
 			if(result != 'false'){
 				$('#create_error').css('color', 'green');
-				$('#create_error').text("SUCCES");
-				$('#create_button').attr("disabled", true);
+				$('#create_error').text("SUCCES");setTimeout(function() {
+					$('#create_error').visibility = "none";
+				}, 2000);
 			}else{
 				$('#create_error').text("FAIL");
 			}
@@ -71,6 +72,11 @@ function validate(){
 	ok = phoneIsValid($('#phone').val()) && ok;
 	ok = descIsValid($('#desc').val()) && ok;
 	return ok;
+}
+
+function engLetIsValid(field) {
+	var re = /^([a-zA-Z ]*)$/;
+	return re.test(field);
 }
 
 function textIsValid(field) {
@@ -101,6 +107,17 @@ function valid(field) {
 function invalid(field) {
 	$('#' + field).removeClass("valid");
 	$('#' + field).addClass("invalid");
+}
+
+function nameIsValid(name) {
+	if (name.length >= 2 && name.length <= 45
+			&& engLetIsValid(name)) {
+		valid('name');
+		return true;
+	} else {
+		invalid('name');
+		return false;
+	}
 }
 
 function cityIsValid(name) {
