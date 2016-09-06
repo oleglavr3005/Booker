@@ -29,7 +29,7 @@ public class BookAllServlet extends HttpServlet {
 		
 		response.getWriter().write(booked > 0 ? "true" : "false");
 		if(booked > 0) {
-			request.getRequestDispatcher("/pages/order.jsp").forward(request, response);
+			request.getRequestDispatcher("/pages/orderCard.jsp").forward(request, response);
 		}
 	}
 

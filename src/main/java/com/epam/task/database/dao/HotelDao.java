@@ -6,9 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.epam.task.database.model.Hotel;
+import com.epam.task.database.model.Order;
+import com.epam.task.database.service.OrderService;
 import com.epam.task.database.transformers.UniversalTransformer;
 
 public class HotelDao {
@@ -406,5 +410,24 @@ public class HotelDao {
 			return -1;
 		}
 		
+	}
+
+	public List<Hotel> getRecomendedHotels(int hotelId) {
+		//get all orders by hotel
+		//get all user id's from this list (distinct, add to set)
+		//for every user get his orders and add to map (hotel id, times)
+		//sort map by value get first three elements
+		
+		List<Order> orders = new OrderService().getOrdersByHotel(hotelId);		//all orders in this hotel
+		Set<Integer> userIds = new HashSet<>();
+		for (Order order : orders) {		//all users, who were in this hotel
+			userIds.add(order.getUserId());
+		}
+		
+		for (Integer userId : userIds) {
+			
+		}
+		
+		return null;
 	}
 }
