@@ -29,13 +29,14 @@ function addMarkers(array) {
 }
 function addMarker(place) {
     var pos = new google.maps.LatLng(place.lat, place.lon);
+    var newURL = window.location.protocol + "//" + window.location.host + "/booker/resources/images/iconMarker.png";
     var marker = new google.maps.Marker({
         position:  pos,
         map: map,
         draggable: true, //set marker draggable 
         animation: google.maps.Animation.DROP, //bounce animation
         icon: {
-            url: "../booker/resources/images/iconMarker.png"
+            url: newURL
             , anchor: new google.maps.Point(20, 20)
             , scaledSize: new google.maps.Size(32, 24)
         }
