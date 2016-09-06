@@ -7,7 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.epam.task.database.model.Room;
+import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.OrderService;
+import com.epam.task.database.service.RoomService;
 
 @WebServlet("/book")
 public class BookServlet extends HttpServlet {
@@ -25,8 +28,13 @@ public class BookServlet extends HttpServlet {
 		if(orderIdString == null || cardNumber == null) {
 			return;
 		}
+		OrderService orderService = new OrderService();
 		int orderId = Integer.parseInt(orderIdString);
-		int booked = new OrderService().bookOrder(orderId, cardNumber, comment);
+		int booked = orderService.bookOrder(orderId, cardNumber, comment);
+		int roomId = orderService.getOrderById(orderId).getRoomId();
+		Room room = new RoomService().getRoomById(roomId);
+		
+		request.setAttribute("recomendedHotels", new HotelService().getRecomendedHotels(room.getHotelId()));
 		
 		response.getWriter().write(booked > 0 ? "true" : "false");
 	}

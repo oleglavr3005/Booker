@@ -29,6 +29,7 @@ public class OrderDAO {
 	private final String SQL_GET_ORDER_BY_USER_ID = "SELECT * FROM `order` WHERE user_id = ?";
 	private final String SQL_GET_ORDER_BY_USER_AND_ID = "SELECT * FROM `order` WHERE user_id = ? AND order_id = ?";
 	private final String SQL_GET_ORDER_BY_ROOM_ID = "SELECT * FROM `order` WHERE room_id = ?";
+	private final String SQL_GET_ORDER_BY_HOTEL_ID = "SELECT o.* FROM `order` o INNER JOIN `room` r ON o.room_id = r.room_id WHERE r.hotel_id = ?";
 	
 	private final String PAGINATION = " LIMIT ?, 3";
 	private final String ORDER_BY_PRICE_ASC = " ORDER BY price ASC";
@@ -237,5 +238,17 @@ public class OrderDAO {
 			e.printStackTrace();
 			return -1;
 		}
+	}
+
+	public List<Order> getOrdersByHotel(int hotelId) {
+		List<Order> orders = new ArrayList<>();
+		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ORDER_BY_HOTEL_ID)) {
+			statement.setInt(1, hotelId);
+			ResultSet rs = statement.executeQuery();
+			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return orders;
 	}
 }

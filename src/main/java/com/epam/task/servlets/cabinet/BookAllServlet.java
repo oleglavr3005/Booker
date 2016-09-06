@@ -28,6 +28,9 @@ public class BookAllServlet extends HttpServlet {
 		int booked = new OrderService().bookAllByUser(userId, cardNumber, comment);
 		
 		response.getWriter().write(booked > 0 ? "true" : "false");
+		if(booked > 0) {
+			request.getRequestDispatcher("/pages/orderCard.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

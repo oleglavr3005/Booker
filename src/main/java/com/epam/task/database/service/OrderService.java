@@ -127,4 +127,8 @@ public class OrderService {
 	public int bookOrder(int orderId, String cardNumber, String comment) {
 		return daoManager.executeAndClose(() -> daoManager.getOrderDao().bookOrder(orderId, cardNumber, comment));
 	}
+
+	public List<Order> getOrdersByHotel(int hotelId) {
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().getOrdersByHotel(hotelId));
+	}
 }
