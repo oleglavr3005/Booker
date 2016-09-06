@@ -296,7 +296,7 @@ div #sidebar-wrapper {
 						</div>
 					</div>
 					<!-- MAP ========================================================================== -->
-	 					<jsp:include page="map.jsp"></jsp:include>
+					<jsp:include page="map.jsp"></jsp:include>
 					<!-- MAP End======================================================================= -->
 				</div>
 			</div>
@@ -331,17 +331,19 @@ div #sidebar-wrapper {
 				</h6>
 			</div>
 			<div class="col s4 offset-s5">
-				<select id="compare" class="chosen-select optionstyle"
-					onchange="findPage(window.location.href,1)">
-					<option class="optionstyle" value="compareByStarsAsc">star
-						asc</option>
-					<option class="optionstyle" value="compareByStarsDesc">star
-						desc</option>
-					<option class="optionstyle" value="compareByRatingAsc">rating
-						asc</option>
-					<option class="optionstyle" value="compareByRatingDesc"
-						selected="selected">rating desc</option>
-				</select>
+				<c:if test="${countOfHotels > 0 }">
+					<select id="compare" class="chosen-select optionstyle"
+						onchange="findPage(window.location.href,1)">
+						<option class="optionstyle" value="compareByStarsAsc">star
+							asc</option>
+						<option class="optionstyle" value="compareByStarsDesc">star
+							desc</option>
+						<option class="optionstyle" value="compareByRatingAsc">rating
+							asc</option>
+						<option class="optionstyle" value="compareByRatingDesc"
+							selected="selected">rating desc</option>
+					</select>
+				</c:if>
 			</div>
 		</div>
 
