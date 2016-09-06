@@ -69,4 +69,12 @@ private DaoManager daoManager;
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
 				startDate, endDate));
 	}
+
+	public List<Hotel> getAllHotelsByManager(int managerId) {
+		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getAllHotelsByManager(managerId));
+	}
+
+	public List<Hotel> getAllHotelsByManagerAndPage(int managerId, int page, String orderBy) {
+		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getAllHotelsByManagerAndPage(managerId, page, orderBy));
+	}
 }
