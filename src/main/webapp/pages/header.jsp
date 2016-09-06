@@ -219,7 +219,7 @@ img.logo {
 										<div class="input-field col">
 											<input id="emailAuth" type="email" class="validate">
 											<label id="emailAuthLbl" data-error="${fmtMail}"
-												for="emailAuth"><<p
+												for="emailAuth"><p
 													id="header.regist.mail"> </p></label>
 										</div>
 										<div class="input-field">
