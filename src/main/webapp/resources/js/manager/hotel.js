@@ -17,20 +17,51 @@ function createHotel(){
 			yCoord : y
 		}, function(result){
 			if(result != 'error'){
-//				$('#create_error').css('color', 'green');
-//				$('#create_error').text(succes);
-//				$('#create_button').attr("disabled", true);
+				$('#create_error').css('color', 'green');
+				$('#create_error').text("SUCCES");
+				$('#create_button').attr("disabled", true);
 				setTimeout(function() {
 					document.location.href = '/booker/my_hotels/' + result;
 				}, 2000);
 			}else{
-//				$('#create_error').text(fail);
+				$('#create_error').text("FAIL");
 			}
 		});
 	}else{
-		$('#create_error').text(full);
+		$('#create_error').text("INVALID DATA");
 	}
 }
+
+function updateHotel(hotelId){
+	var img = image == null ? 'new_hotel.jpg':image;
+	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
+	var x = 0;
+	var y = 0;
+	if (validate()){
+		$.get('../edit_hotel',{
+			hotelId : hotelId,
+			name : $('#name').val(),
+			stars : star,
+			city : $('#city').val(),
+			street : $('#street').val(),
+			description : $('#desc').val(),
+			phoneNumber : $('#phone').val(),
+			xCoord : x,
+			yCoord : y
+		}, function(result){
+			if(result != 'false'){
+				$('#create_error').css('color', 'green');
+				$('#create_error').text("SUCCES");
+				$('#create_button').attr("disabled", true);
+			}else{
+				$('#create_error').text("FAIL");
+			}
+		});
+	}else{
+		$('#create_error').text("INVALID DATA");
+	}
+}
+
 
 function validate(){
 	var ok = true;

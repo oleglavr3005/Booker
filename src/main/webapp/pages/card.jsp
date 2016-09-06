@@ -111,17 +111,23 @@ b {
 					<div class="col s2">
 						<div class="row" style="margin-top: 14px">
 							<a class="tooltipped" data-position="icon" data-tooltip="Rating"
-								style=" margin-left: 50px; color: #0d0d0d; text-decoration: none;"> <i
-								class="fa fa-lg fa-star invert" aria-hidden="true"></i> <span>${hotel.rating }</span>
+								style="margin-left: 50px; color: #0d0d0d; text-decoration: none;">
+								<i class="fa fa-lg fa-star invert" aria-hidden="true"></i> <span>${hotel.rating }</span>
 							</a>
 						</div>
 
 
-						<div class="row" style="margin-top: 90px">
+						<div class="row" style="margin-top: 30px">
 
 							<a class="waves-effect waves-light btn"
+								href="${pageContext.servletContext.contextPath}/cabinet/my_hotels/${hotel.id}"
+								style="margin-left: 10px; background: #e68a00; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;
+								<c:if test="${user.type != 'MANAGER'}">visibility: hidden</c:if>
+								
+								"><span>EDIT</span></a>
+							<a class="waves-effect waves-light btn"
 								href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"
-								style="margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>INFO</span></a>
+								style="margin-top: 30px; margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>INFO</span></a>
 						</div>
 
 					</div>
