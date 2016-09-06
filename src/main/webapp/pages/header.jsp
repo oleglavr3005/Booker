@@ -256,12 +256,15 @@ img.logo {
 									</button>
 								</div>
 							</div></li>
-						<li><a style="padding: 0px;"
-							href="${pageContext.servletContext.contextPath}/vkLogin"> <img
-								style="width: 50px; height: 40px; padding: 0px; margin-top: 10; margin-left: 20px;"
-								src="${pageContext.servletContext.contextPath}/resources/images/vk.png"
-								alt="vk" />
-						</a></li>
+						<li>
+						<a href="${pageContext.servletContext.contextPath}/facebookLogin" style="color: #e6e6e6; font-size: 1rem;"><i
+										class="fa fa-2x fa-facebook" aria-hidden="true"></i></a>
+						</li>
+						<li>
+						<a href="${pageContext.servletContext.contextPath}/googleLogin" style="color: #e6e6e6; font-size: 1rem;"><i
+										class="fa fa-2x fa-google-plus" aria-hidden="true"
+										></i></a>
+						</li>
 					</c:otherwise>
 				</c:choose>
 
