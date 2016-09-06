@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.UserType;
 
-@WebFilter("/cabinet/my_hotels")
+@WebFilter({ "/cabinet/my_hotels", "/add_hotel" })
 public class ManagerFilter implements Filter {
 
     public ManagerFilter() {
