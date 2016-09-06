@@ -69,8 +69,4 @@ private DaoManager daoManager;
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
 				startDate, endDate));
 	}
-
-	public List<Hotel> getRecomendedHotels(int hotelId) {
-		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getRecomendedHotels(hotelId));
-	}
 }
