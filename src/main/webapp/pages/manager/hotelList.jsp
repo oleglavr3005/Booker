@@ -289,7 +289,7 @@
 
 		<!-- SWITCH CONTENT -->
 		<div id="switchContent" class="row">
-			<jsp:include page="../card.jsp"></jsp:include>
+			<jsp:include page="../cards/managerHotelCard.jsp"></jsp:include>
 		</div>
 		<!-- END OF SWITCH CONTENT -->
 

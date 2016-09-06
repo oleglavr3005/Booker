@@ -116,7 +116,7 @@ public class Hotel {
 	public void setRating(double rating) {
 		this.rating = rating;
 	}
-	public boolean isDeleted() {
+	public boolean getIsDeleted() {
 		return isDeleted;
 	}
 	public void setDeleted(boolean isDeleted) {
