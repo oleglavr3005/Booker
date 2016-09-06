@@ -6,7 +6,6 @@ function removeOrderCard(orderId) {
 		$.post('../remove_from_cart', {
 			orderId : orderId
 		}, function(result) {
-
 			if (result == 'true') {
 				$('#remove' + orderId).text("SUCCES");
 				$('#remove' + orderId).attr('disabled', true);
