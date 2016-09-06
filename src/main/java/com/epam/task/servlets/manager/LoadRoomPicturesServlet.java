@@ -16,7 +16,7 @@ import com.epam.task.util.ImageSetter;
 /**
  * Servlet implementation class LoadRoomPicturesServlet
  */
-@WebServlet("/uploadRoom")
+@WebServlet("/upload_room")
 public class LoadRoomPicturesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
