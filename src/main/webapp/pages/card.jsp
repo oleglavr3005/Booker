@@ -122,7 +122,7 @@ b {
 							<a class="waves-effect waves-light btn"
 								href="${pageContext.servletContext.contextPath}/cabinet/my_hotels/${hotel.id}"
 								style="margin-left: 10px; background: #e68a00; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;
-								<c:if test="${user.type != 'MANAGER'}">visibility: hidden</c:if>
+								<c:if test="${user.id != hotel.managerId}">visibility: hidden</c:if>
 								
 								"><span>EDIT</span></a>
 							<a class="waves-effect waves-light btn"
