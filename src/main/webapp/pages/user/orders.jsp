@@ -8,6 +8,7 @@
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="com.i18n.text" />
 <html lang="en">
+
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet"
@@ -36,9 +37,15 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
 	rel="stylesheet">
-
-<link rel="stylesheet" type="text/css" media="all"
+<!-- <link rel="stylesheet" type="text/css" media="all"
 	href="${pageContext.servletContext.contextPath}/resources/css/tablesorter/styles.css">
+	 -->
+
+	
+	
+<link
+	href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"
+	rel="stylesheet">
 
 <style>
 .btn {
@@ -214,7 +221,21 @@ div #sidebar-wrapper {
 								</c:forEach>
 							</tbody>
 						</table>
-
+						<!--<div class="pager" id="pager1">
+							<form>
+								<img src="first.png" class="first" /> <img src="prev.png"
+									class="prev" /> <span class="pagedisplay"></span>
+								 this can be any element, including an input
+								<img src="next.png" class="next" /> <img src="last.png"
+									class="last" /> <select class="pagesize">
+									<option value="10">10</option>
+									<option value="20">20</option>
+									<option value="30">30</option>
+									<option value="40">40</option>
+									<option value="all">All Rows</option>
+								</select>
+							</form>
+						</div> -->
 					</c:when>
 					<c:otherwise>
 						<h5 style="color: red; margin-top: 55px; margin-left: 250px;">
@@ -270,12 +291,27 @@ div #sidebar-wrapper {
 										<script>
 									var id = ${finishedOrder.id};
 									changeDate(id);</script>
-									
+
 										<td style="text-align: center;">${finishedOrder.price}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
+					<!-- 	<div class="pager" id="pager2">
+							<form>
+								<img src="first.png" class="first" /> <img src="prev.png"
+									class="prev" /> <span class="pagedisplay"></span>
+								<!-- this can be any element, including an input 
+								<img src="next.png" class="next" /> <img src="last.png"
+									class="last" /> <select class="pagesize">
+									<option value="10">10</option>
+									<option value="20">20</option>
+									<option value="30">30</option>
+									<option value="40">40</option>
+									<option value="all">All Rows</option>
+								</select>
+							</form>
+						</div> -->
 					</c:when>
 					<c:otherwise>
 						<h5 style="color: red; margin-top: 55px; margin-left: 250px;">
@@ -334,7 +370,7 @@ div #sidebar-wrapper {
 										<script>
 									var id = ${allOrder.id};
 									changeDate(id);</script>
-								
+
 										<td style="text-align: center;">${allOrder.price}</td>
 
 										<c:choose>
@@ -364,6 +400,21 @@ div #sidebar-wrapper {
 								</c:forEach>
 							</tbody>
 						</table>
+				<!-- 		<div class="pager" id="pager3">
+							<form>
+								<img src="first.png" class="first" /> <img src="prev.png"
+									class="prev" /> <span class="pagedisplay"></span>
+								<!-- this can be any element, including an input 
+								<img src="next.png" class="next" /> <img src="last.png"
+									class="last" /> <select class="pagesize">
+									<option value="10">10</option>
+									<option value="20">20</option>
+									<option value="30">30</option>
+									<option value="40">40</option>
+									<option value="all">All Rows</option>
+								</select>
+							</form>
+						</div> -->
 					</c:when>
 					<c:otherwise>
 						<h5 style="color: red; margin-top: 55px; margin-left: 250px;">
@@ -380,35 +431,66 @@ div #sidebar-wrapper {
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="../foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
+<!--  
+	<script type="text/javascript">
+$(document).ready(function() 
+	    { 	
+// 	var pagerOptions = {
+// 		    container: $("#pager1"),
+// 		    // Number of visible rows - default is 10
+// 		    size: 10,
+// 		  };	
+	        $("#tab1").tablesorter(); 
+	        $("#tab1").tablesorterPager({container: $("#pager1"),size: 10}); 
+	        $("#tab3").tablesorter();
+	        $("#tab3").tablesorterPager({container: $("#pager3"),size: 10});  
+	    } 
+	); 
+</script>
 
+<script type="text/javascript">
+$(document).ready(function() 
+	    { 	
+    $("#tab2").tablesorter(); 
+    $("#tab3").tablesorterPager({container: $("#pager2"),size: 10}); 
+} 
+); 
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() 
+	    { 	
+    $("#tab3").tablesorter();
+    $("#tab3").tablesorterPager({container: $("#pager3"),size: 10});  
+} 
+); 
+</script>
+
+ --><script type="text/javascript"
+		src="//code.jquery.com/jquery-1.12.3.js"></script>
 	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/tablesorter/jquery-1.10.2.min.js"></script>
+		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#tab1').DataTable();
+	} );
+	$(document).ready(function() {
+	    $('#tab2').DataTable();
+	} );
+	$(document).ready(function() {
+	    $('#tab3').DataTable();
+	} );
+	</script>
+ 
+
+	<!--  <script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/tablesorter/jquery.tablesorter.min.js"></script>
+		src="${pageContext.servletContext.contextPath}/resources/js/tablesorter/jquery.tablesorter.min.js"></script>-->
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/order/removeOrder.js"></script>
 
-	<script type="text/javascript">
-$(document).ready(function() 
-	    { 
-	        $("#tab1").tablesorter(); 
-	    } 
-	); 
-</script>
-	<script type="text/javascript">
-$(document).ready(function() 
-	    { 
-	        $("#tab2").tablesorter(); 
-	    } 
-	); 
-</script>
-	<script type="text/javascript">
-$(document).ready(function() 
-	    { 
-	        $("#tab3").tablesorter(); 
-	    } 
-	); 
-</script>
+
 
 
 
