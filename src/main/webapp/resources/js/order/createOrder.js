@@ -42,6 +42,9 @@ function bookOrderCard(orderId, daysCount) {
 							$('#book' + orderId).text("FAIL");
 							$('#book' + orderId).attr('disabled', true);
 						}
+						if (orderId == null){
+							$('#switchContent').html(result);
+						}
 					});
 					closeBuyContent();
 				} else {
