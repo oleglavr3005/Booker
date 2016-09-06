@@ -106,17 +106,19 @@
 				</h6>
 			</div>
 			<div class="col s4 offset-s5">
-				<select id="compare" class="chosen-select optionstyle"
-					onchange="findPage(window.location.href,1)">
-					<option class="optionstyle" value="compareByDateAsc">date
-						asc</option>
-					<option class="optionstyle" value="compareByDateDesc"
-						selected="selected">date desc</option>
-					<option class="optionstyle" value="compareByPriceAsc">price
-						asc</option>
-					<option class="optionstyle" value="compareByPriceDesc">price
-						desc</option>
-				</select>
+				<c:if test="${countOfOrders > 0 }">
+					<select id="compare" class="chosen-select optionstyle"
+						onchange="findPage(window.location.href,1)">
+						<option class="optionstyle" value="compareByDateAsc">date
+							asc</option>
+						<option class="optionstyle" value="compareByDateDesc"
+							selected="selected">date desc</option>
+						<option class="optionstyle" value="compareByPriceAsc">price
+							asc</option>
+						<option class="optionstyle" value="compareByPriceDesc">price
+							desc</option>
+					</select>
+				</c:if>
 			</div>
 		</div>
 
