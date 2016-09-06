@@ -121,13 +121,13 @@ public class FindRooms extends HttpServlet {
 			hotelPhoto.remove(0);
 			request.setAttribute("hotelPhotos", hotelPhoto);
 		}
-		//request.getRequestDispatcher("/pages/roomCard.jsp").forward(request, response);
+		request.getRequestDispatcher("/pages/roomCard.jsp").forward(request, response);
 		
-		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
-			request.getRequestDispatcher("/pages/roomCard.jsp").forward(request, response);
-		} else {	
-			request.getRequestDispatcher("/pages/hotel.jsp").forward(request, response);
-		}
+//		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
+//			request.getRequestDispatcher("/pages/roomCard.jsp").forward(request, response);
+//		} else {	
+//			request.getRequestDispatcher("/pages/hotel.jsp").forward(request, response);
+//		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
