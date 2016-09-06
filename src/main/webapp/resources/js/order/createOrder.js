@@ -35,6 +35,8 @@ function bookOrderCard(orderId, daysCount) {
 						$('#book' + orderId).onclick = null;
 
 						if (result == 'true') {
+							 jQuery('#modal1').openModal();
+							
 							$('#book' + orderId).text("SUCCES");
 							$('#book' + orderId).attr('disabled', true);
 							$('#remove' + orderId).attr('disabled', true);
@@ -43,7 +45,8 @@ function bookOrderCard(orderId, daysCount) {
 							$('#book' + orderId).attr('disabled', true);
 						}
 						if (orderId == null){
-							$('#switchContent').html(result);
+							
+				//			$('#switchContent').html(result);
 						}
 					});
 					closeBuyContent();
@@ -102,7 +105,7 @@ function bookOrderCard(orderId, daysCount) {
 			}
 
 		} else {
-			$.post('../book', {
+			$.post(url, {
 				orderId : orderId,
 				cardNumber : code,
 				comment : localComment

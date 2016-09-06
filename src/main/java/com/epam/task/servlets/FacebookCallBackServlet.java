@@ -70,21 +70,21 @@ public class FacebookCallBackServlet extends HttpServlet {
 		String code = request.getParameter("code");
 		final OAuth2AccessToken accessToken = s.getAccessToken(code);
 		// testing login
-		System.out.println(accessToken + ", 'rawResponse'='" + accessToken.getRawResponse() + "')");
+	//	System.out.println(accessToken + ", 'rawResponse'='" + accessToken.getRawResponse() + "')");
 		// Now we're going to access a protected resource...
 		final OAuthRequest req = new OAuthRequest(Verb.GET, "https://graph.facebook.com/me", s);
 		s.signRequest(accessToken, req);
 		final Response res = req.send();
 		// get user facebook id
 		User socUser = getFacebookUser(res);
-		System.out.println(socUser);
+	//	System.out.println(socUser);
 		// find user by email
 		UserService userService = new UserService();
 		User user = userService.getUserByEmail(socUser.getEmail());
 
 		if (user == null) {
 			// set user picture
-			System.out.println("Print image");
+//			System.out.println("Print image");
 //			saveImage(socUser.getSocialNetworkId());
 			socUser.setImage(saveFacebookPhoto(socUser.getSocialNetworkId()));
 			userService.insertUser(socUser);
@@ -136,15 +136,15 @@ public class FacebookCallBackServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		System.out.println(url);
-		  String savePath = "C://epam//images";
+		//System.out.println(url);
+		  String savePath = getServletContext().getInitParameter("images-folder");
 		  File fileSaveDir = new File(savePath);
 	        if (!fileSaveDir.exists()) {
 	            fileSaveDir.mkdir();
 	        }		
 	//	String savePath = Paths.get(".").toAbsolutePath().normalize().toFile() + "/resources/images" + File.separator
       //          + socId + ".jpg";
-		System.out.println(savePath);
+		//System.out.println(savePath);
 		 URL imageUrl = null;
 		try {
 			imageUrl = new URL(url);
