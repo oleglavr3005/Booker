@@ -6,14 +6,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.Order;
+import com.epam.task.database.model.Room;
+import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.OrderService;
+import com.epam.task.database.service.RoomService;
 import com.epam.task.database.transformers.UniversalTransformer;
+import com.epam.task.util.MapUtil;
 
 public class HotelDao {
 
@@ -423,11 +429,36 @@ public class HotelDao {
 		for (Order order : orders) {		//all users, who were in this hotel
 			userIds.add(order.getUserId());
 		}
+		System.out.println("Users visited this hotel: " + userIds);
 		
+		Map<Integer, Integer> hotelsVisited  = new HashMap<>();		//contains all visited hotels and how many times
 		for (Integer userId : userIds) {
-			
+			List<Order> userOrders = new OrderService().getOrdersByUser(userId); //get all user's orders
+			for (Order order : userOrders) {
+				int roomId = order.getRoomId();
+				int holelId = new RoomService().getRoomById(roomId).getHotelId();
+				if(hotelsVisited.containsKey(holelId)) {	//increment
+					hotelsVisited.put(holelId, hotelsVisited.get(hotelId) + 1);
+				} else {									//put
+					hotelsVisited.put(holelId, 1);
+				}
+			}
 		}
+		System.out.println("Hotels visited, how many times: " + hotelsVisited);
 		
-		return null;
+		hotelsVisited = MapUtil.sortByValue(hotelsVisited); //sort map by values
+		System.out.println("Hotels visited, how many times, sorted: " + hotelsVisited);
+		List<Hotel> result = new ArrayList<>();
+		int i = 0;
+		for (Integer resultHotelId : hotelsVisited.keySet()) {	//get first three elements
+			if (i < 3) {
+				result.add(new HotelService().getHotelById(resultHotelId));
+				i++;
+			} else {
+				break;
+			}
+		}		
+		System.out.println("First three or less hotels: " + result);
+		return result;
 	}
 }
