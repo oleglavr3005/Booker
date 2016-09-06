@@ -59,8 +59,7 @@ public class FindRooms extends HttpServlet {
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 			return;
 		}
-		String pageString = request.getParameter("page");
-		int page = pageString == null ? 1 : Integer.parseInt(pageString);
+		
 		int people = Integer.parseInt(request.getParameter("people"));
 		session.setAttribute("people", people);
 		
@@ -85,14 +84,33 @@ public class FindRooms extends HttpServlet {
 		boolean hasGym = session.getAttribute("hasGym") == null ? false : (boolean) session.getAttribute("hasGym");
 		boolean hasBalcony = session.getAttribute("hasBalcony") == null ? false : (boolean) session.getAttribute("hasBalcony");
 		boolean noDeposit = session.getAttribute("noDeposit") == null ? false : (boolean) session.getAttribute("noDeposit");
+
+		String pageString = request.getParameter("page");
+		int page = pageString == null ? 1 : Integer.parseInt(pageString);
+		int countOfRooms = new RoomService().getSuitableRoomsNumber(hotelId, 
+				typeStandart, typeLux, typeDelux, 
+				foodNone, foodBreakfast, foodTwice, foodFull, 
+				minPrice, maxPrice, people,
+				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
+				startDate, endDate);
 		
+		int countOfPages = (int) Math.ceil(countOfRooms / 3.0);
+		if (page > countOfPages) {
+			page--;
+		}
+
+		request.setAttribute("countOfRooms", countOfRooms);
+		request.setAttribute("countOfPages", countOfPages);
+		request.setAttribute("currentPage", page);
+		
+		String compareBy = request.getParameter("compareBy");
 		List<Feedback> feedbacks = new FeedbackService().getAllFeedbacksByHotel(hotelId);
 		List<Room> rooms = new RoomService().getAllSuitableRoomsForHotel(hotelId, page, 
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull, 
 				minPrice, maxPrice, people,
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
-				startDate, endDate);
+				startDate, endDate, compareBy);
 		List<HotelPhoto> hotelPhoto = new HotelPhotoService().getHotelPhotosByHotel(hotelId); 
 		request.setAttribute("hotel", hotel);
 		request.setAttribute("conveniences", conveniences);
@@ -103,7 +121,13 @@ public class FindRooms extends HttpServlet {
 			hotelPhoto.remove(0);
 			request.setAttribute("hotelPhotos", hotelPhoto);
 		}
-		request.getRequestDispatcher("/pages/roomCard.jsp").forward(request, response);
+		//request.getRequestDispatcher("/pages/roomCard.jsp").forward(request, response);
+		
+		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
+			request.getRequestDispatcher("/pages/roomCard.jsp").forward(request, response);
+		} else {	
+			request.getRequestDispatcher("/pages/hotel.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

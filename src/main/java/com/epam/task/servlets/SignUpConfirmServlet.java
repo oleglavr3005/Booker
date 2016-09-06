@@ -38,8 +38,7 @@ public class SignUpConfirmServlet extends HttpServlet {
 			if (user != null && user.getStatus().equals(UserStatus.PENDING)) {
 				user.setStatus("ACTIVE");
 				userService.updateUser(user);
-				request.getSession().setAttribute("userID", user.getId());
-				request.getSession().setAttribute("userState", "user");
+				request.getSession().setAttribute("user", user);
 				response.sendRedirect(request.getContextPath() + "/");
 			} else {
 				response.sendError(404);

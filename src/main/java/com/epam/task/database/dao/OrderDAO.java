@@ -18,19 +18,24 @@ public class OrderDAO {
 	private Connection connection;
 
 	private final String SQL_GET_ALL_ORDERS = "SELECT * FROM `order`";
-	private final String SQL_CREATE_ORDER = "INSERT INTO `order`(user_id, room_id, start_date, end_date, `status`, order_date, price) VALUES (?, ?, ?, ?, ?, ?, ?)";
+	private final String SQL_CREATE_ORDER = "INSERT INTO `order`(user_id, room_id, start_date, end_date, `status`, order_date, price, card_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 	private final String SQL_READ_ORDER_BY_ID = "SELECT * FROM `order` WHERE order_id = ?";
-	private final String SQL_UPDATE_ORDER = "UPDATE `order` SET user_id = ?, room_id = ?, start_date = ?, end_date = ?, `status` = ?, order_date = ?, price = ? WHERE order_id = ?";
-	private final String SQL_BOOK_ORDER_BY_ID = "UPDATE `order` SET `status` = 'ACTIVE' WHERE order_id = ?";
-	private final String SQL_BOOK_ALL_ORDERS_BY_USER = "UPDATE `order` SET `status` = 'ACTIVE' WHERE user_id = ? AND `status` LIKE 'ORDER'";
+	private final String SQL_UPDATE_ORDER = "UPDATE `order` SET user_id = ?, room_id = ?, start_date = ?, end_date = ?, `status` = ?, order_date = ?, price = ?, card_number = ? WHERE order_id = ?";
+	private final String SQL_BOOK_ORDER_BY_ID = "UPDATE `order` SET `status` = 'ACTIVE', card_number = ?, comment = ? WHERE order_id = ?";
+	private final String SQL_BOOK_ALL_ORDERS_BY_USER = "UPDATE `order` SET `status` = 'ACTIVE', card_number = ?, comment = ? WHERE user_id = ? AND `status` LIKE 'ORDER'";
 	private final String SQL_REMOVE_ORDER = "DELETE FROM `order` WHERE order_id = ?";
 	private final String SQL_REMOVE_ORDERS_BY_STATUS = "DELETE FROM `order` WHERE user_id = ? AND `status` LIKE ?";
 	private final String SQL_GET_ALL_ORDERS_BY_USER_AND_STATUS = "SELECT * FROM `order` WHERE `status` LIKE ? AND user_id = ?";
 	private final String SQL_GET_ORDER_BY_USER_ID = "SELECT * FROM `order` WHERE user_id = ?";
 	private final String SQL_GET_ORDER_BY_USER_AND_ID = "SELECT * FROM `order` WHERE user_id = ? AND order_id = ?";
 	private final String SQL_GET_ORDER_BY_ROOM_ID = "SELECT * FROM `order` WHERE room_id = ?";
+	private final String SQL_GET_ORDER_BY_HOTEL_ID = "SELECT o.* FROM `order` o INNER JOIN `room` r ON o.room_id = r.room_id WHERE r.hotel_id = ?";
 	
 	private final String PAGINATION = " LIMIT ?, 3";
+	private final String ORDER_BY_PRICE_ASC = " ORDER BY price ASC";
+	private final String ORDER_BY_PRICE_DESC = " ORDER BY price DESC";
+	private final String ORDER_BY_DATE_ASC = " ORDER BY start_date ASC";
+	private final String ORDER_BY_DATE_DESC = " ORDER BY start_date DESC";
 
 	private final String SQL_CREATE_ORDER_EVENT = "CREATE EVENT eventname ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 HOUR DO DELETE FROM `order` WHERE order_id = ? AND `status` LIKE 'ORDER'";
 	
@@ -66,6 +71,7 @@ public class OrderDAO {
 			st.setString(5, order.getStatus().toString());
 			st.setTimestamp(6, order.getOrderDate());
 			st.setInt(7, order.getPrice());
+			st.setString(8, order.getCardNumber());
 			result = st.executeUpdate();
 			
 			ResultSet rs = st.getGeneratedKeys();
@@ -115,7 +121,8 @@ public class OrderDAO {
 			st.setString(5, order.getStatus().toString());
 			st.setTimestamp(6, order.getOrderDate());
 			st.setInt(7, order.getPrice());
-			st.setInt(8, order.getId());
+			st.setString(8, order.getCardNumber());
+			st.setInt(9, order.getId());
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -136,9 +143,20 @@ public class OrderDAO {
 		return orders;
 	}
 
-	public List<Order> getOrdersByUserAndStatusAndPage(int userId, OrderStatus status, int page) {
+	public List<Order> getOrdersByUserAndStatusAndPage(int userId, OrderStatus status, int page, String orderBy) {
 		List<Order> orders = new ArrayList<>();
-		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ALL_ORDERS_BY_USER_AND_STATUS + PAGINATION)) {
+		String ORDER_BY;
+		if("compareByPriceAsc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_PRICE_ASC;
+		} else if ("compareByPriceDesc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_PRICE_DESC;
+			
+		} else if ("compareByDateAsc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_DATE_ASC;
+		} else { //compareByDateDesc = default
+			ORDER_BY = ORDER_BY_DATE_DESC;
+		}
+		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ALL_ORDERS_BY_USER_AND_STATUS + ORDER_BY + PAGINATION)) {
 			statement.setString(1, status.toString());
 			statement.setInt(2, userId);
 			statement.setInt(3, (page-1)*3);
@@ -198,9 +216,11 @@ public class OrderDAO {
 		return result;
 	}
 
-	public int bookAllByUser(int userId) {
+	public int bookAllByUser(int userId, String cardNumber, String comment) {
 		try (PreparedStatement st = connection.prepareStatement(SQL_BOOK_ALL_ORDERS_BY_USER)) {
-			st.setInt(1, userId);
+			st.setString(1, cardNumber);
+			st.setString(2, comment);
+			st.setInt(3, userId);
 			return st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -208,13 +228,27 @@ public class OrderDAO {
 		}
 	}
 
-	public int bookOrder(int orderId) {
+	public int bookOrder(int orderId, String cardNumber, String comment) {
 		try (PreparedStatement st = connection.prepareStatement(SQL_BOOK_ORDER_BY_ID)) {
-			st.setInt(1, orderId);
+			st.setString(1, cardNumber);
+			st.setString(2, comment);
+			st.setInt(3, orderId);
 			return st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return -1;
 		}
+	}
+
+	public List<Order> getOrdersByHotel(int hotelId) {
+		List<Order> orders = new ArrayList<>();
+		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ORDER_BY_HOTEL_ID)) {
+			statement.setInt(1, hotelId);
+			ResultSet rs = statement.executeQuery();
+			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return orders;
 	}
 }

@@ -70,15 +70,15 @@ b {
 									<div>
 										<a class="tooltipped" data-position="icon"
 											data-tooltip="StartDate" style="color: #0d0d0d;"><i
-											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> Start
-										Date : <span id="start_date${order.id}">${order.startDate}</span>
+											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
+										From: <span id="start_date${order.id}">${order.startDate}</span>
 									</div>
 
 									<div>
 										<a class="tooltipped" data-position="icon"
 											data-tooltip="EndDate" style="color: #0d0d0d;"><i
-											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> End
-										Date : <span id="end_date${order.id}">${order.endDate}</span>
+											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
+										To: <span id="end_date${order.id}">${order.endDate}</span>
 									</div>
 									<script type="text/javascript"
 										src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
@@ -87,116 +87,155 @@ b {
 									var id = ${order.id};
 									changeDate(id);</script>
 								</div>
-
-								<div class="row">
-									<a class="tooltipped" data-position="icon"
-										data-tooltip="Double beds" style="color: #0d0d0d;"><img
-										class="invert" style="max-width: 7%;"
-										src="${pageContext.servletContext.contextPath}/resources/images/double_bed.png" /></a>
-									<span>${order.room.doubleBedsCount}</span> <a class="tooltipped"
-										data-position="icon" data-tooltip="Single beds"
-										style="color: #0d0d0d;"><img class="invert"
-										style="max-width: 7%;"
-										src="${pageContext.servletContext.contextPath}/resources/images/single_bed.png" /></a>
-									<span>${order.room.bedsCount}</span>
-								</div>
-
-								<div class="row">
-										<a class="tooltipped" data-position="icon" data-tooltip="Food"
-											style="color: #0d0d0d;"><i
-											class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${order.room.food}</span>
-								</div>
-
-								<div class="row">
-									<a class="tooltipped" data-position="icon" data-tooltip="Price"
-										style="color: #0d0d0d;"><i
-										class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${order.price}</span>
-									<c:if test="${order.room.daysCount == -1}">
-										<a class="tooltipped" data-position="icon" data-tooltip="No deposit"
-										style="color: #0d0d0d;"><i class="fa fa-2x fa-exclamation-circle invert" aria-hidden="true"></i></a>
-									</c:if>
-								</div>
-
 							</div>
 
 							<div class="col s5">
-								<div class="row" style="float: right; text-align:right; font-size:0.3rem">
+								<div class="row"
+									style="float: right; text-align: right; font-size: 0.3rem">
 									<c:if test="${order.room.wifi == true}">
-											<a class="tooltipped" data-position="icon"
-												data-tooltip="Wifi" style="color: #0d0d0d;"><i
-												class="material-icons invert">wifi</i></a>
+										<a class="tooltipped" data-position="icon" data-tooltip="Wifi"
+											style="color: #0d0d0d;"><i class="material-icons invert">wifi</i></a>
 									</c:if>
 
 									<c:if test="${order.room.shower == true}">
-									<a class="tooltipped" data-position="icon" data-tooltip="Shower"><img
-										class="invert" style="max-width: 10%; margin-top:-1.5rem"
-										src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
+										<a class="tooltipped" data-position="icon"
+											data-tooltip="Shower"><img class="invert"
+											style="max-width: 10%; margin-top: -1.5rem"
+											src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
 									</c:if>
 
 									<c:if test="${order.room.parking == true}">
-											<a class="tooltipped" data-position="icon"
-												data-tooltip="Parking" style="color: #0d0d0d;"><i
-												class="material-icons invert">local_parking</i></a>
+										<a class="tooltipped" data-position="icon"
+											data-tooltip="Parking" style="color: #0d0d0d;"><i
+											class="material-icons invert">local_parking</i></a>
 									</c:if>
 
 									<c:if test="${order.room.condition == true}">
-											<a class="tooltipped" data-position="icon"
-												data-tooltip="Condition" style="color: #0d0d0d;"><i
-												class="material-icons invert">toys</i></a>
+										<a class="tooltipped" data-position="icon"
+											data-tooltip="Condition" style="color: #0d0d0d;"><i
+											class="material-icons invert">toys</i></a>
 									</c:if>
 
 									<c:if test="${order.room.pool == true}">
-											<a class="tooltipped" data-position="icon"
-												data-tooltip="Pool" style="color: #0d0d0d;"><i
-												class="material-icons invert">pool</i></a>
+										<a class="tooltipped" data-position="icon" data-tooltip="Pool"
+											style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
 									</c:if>
 
 									<c:if test="${order.room.gym == true}">
-											<a class="tooltipped" data-position="icon" data-tooltip="Gym"
-												style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
+										<a class="tooltipped" data-position="icon" data-tooltip="Gym"
+											style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
 									</c:if>
 
 									<c:if test="${order.room.balcony == true}">
-											<a class="tooltipped" data-position="icon"
-												data-tooltip="Balcony"><img class="invert"
-												style="max-width: 10%; margin-top:-1.5rem"
-												src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
+										<a class="tooltipped" data-position="icon"
+											data-tooltip="Balcony"><img class="invert"
+											style="max-width: 10%; margin-top: -1.5rem"
+											src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
 									</c:if>
 								</div>
 
 							</div>
 						</div>
 						<div class="row">
-							<div class="col s2 offset-s4">
-								<a id="remove${order.id}"
-									class="my-btn waves-effect waves-light btn"
-									style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-									onclick="removeOrderCard(${order.id})">REMOVE</a>
+							<div class="col s4">
+								<div class="row">
+									<a class="tooltipped" data-position="icon"
+										data-tooltip="Double beds" style="color: #0d0d0d;"><img
+										class="invert" style="max-width: 7%;"
+										src="${pageContext.servletContext.contextPath}/resources/images/double_bed.png" /></a>
+									<span>${order.room.doubleBedsCount}</span> <a
+										class="tooltipped" data-position="icon"
+										data-tooltip="Single beds" style="color: #0d0d0d;"><img
+										class="invert" style="max-width: 7%;"
+										src="${pageContext.servletContext.contextPath}/resources/images/single_bed.png" /></a>
+									<span>${order.room.bedsCount}</span>
+								</div>
+
+								<div class="row">
+									<a class="tooltipped" data-position="icon" data-tooltip="Food"
+										style="color: #0d0d0d;"><i
+										class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${order.room.food}</span>
+								</div>
+
+								<div class="row">
+									<a class="tooltipped" data-position="icon" data-tooltip="Price"
+										style="color: #0d0d0d;"><i
+										class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${order.price}</span>
+									<a class="tooltipped" data-position="icon"
+										data-tooltip="Money to pay" style="color: #0d0d0d;"><i
+										class="fa fa-lg fa-money invert" aria-hidden="true"></i></a>
+									<c:choose>
+										<c:when test="${order.room.daysCount == -1}">
+											<span>0</span>
+										</c:when>
+										<c:otherwise>
+											<span>${order.price / 2}</span>
+										</c:otherwise>
+									</c:choose>
+									<c:if test="${order.room.daysCount == -1}">
+										<a class="tooltipped" data-position="icon"
+											data-tooltip="No deposit" style="color: #0d0d0d;"><i
+											class="fa fa-2x fa-exclamation-circle invert"
+											aria-hidden="true"></i></a>
+									</c:if>
+								</div>
+
+								<!-- 							</div> -->
 							</div>
-							<div class="col s2 offset-s2">
-								<a id="book${order.id}"
-									class="my-btn waves-effect waves-light btn"
-									style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-									onclick="bookOrderCard(${order.id},${order.room.daysCount})">ORDER</a>
+							<div class="col s8">
+								<textarea id="comment${order.id}" class="materialize-textarea"
+									placeholder="enter comment to order here"></textarea>
 							</div>
 						</div>
 					</div>
 
-					<div id="field${order.id}" class="divider"
-						style="margin-bottom: 5px;"></div>
 
+
+					<div class="row">
+						<div class="col s2 offset-s4">
+							<a id="remove${order.id}"
+								class="my-btn waves-effect waves-light btn"
+								style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+								onclick="removeOrderCard(${order.id})">REMOVE</a>
+						</div>
+						<div class="col s2 offset-s2">
+							<a id="book${order.id}"
+								class="my-btn waves-effect waves-light btn"
+								style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+								onclick="bookOrderCard(${order.id},${order.room.daysCount})">ORDER</a>
+						</div>
+					</div>
 				</div>
+
+				<div id="field${order.id}" class="divider"
+					style="margin-bottom: 5px;"></div>
+
 			</div>
-
-
 		</div>
+
+
 	</div>
+	<!-- 	</div> -->
 </c:forEach>
 
 <c:if test="${countOfOrders > 0 }">
-
+	
 	<div class="row">
-		<div class="col s3 offset-s1">TOTAL_PRICE : ${summary} UAH</div>
+		<div class="col s8 offset-s2">
+			<textarea id="comment" class="materialize-textarea"
+									placeholder="enter comment to orders here"></textarea>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col s3 offset-s1">
+			<span>TOTAL_PRICE : ${summary/2} UAH</span> <a class="tooltipped"
+				data-position="icon"
+				data-tooltip="You pay a half of the sum for orders with deposit. And no money for orders with no deposit"
+				style="color: #0d0d0d;"><i
+				class="fa fa-2x fa-exclamation-circle invert" aria-hidden="true"></i></a>
+
+		</div>
 		<div class="col s2 offset-s3">
 			<a id="clearBtn" class="my-btn waves-effect waves-light btn"
 				style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
@@ -213,16 +252,16 @@ b {
 </c:if>
 
 <!-- PAGINATOR 3000 -->
-		<div id="paginationdemo" class="row">
-			<div id="demo5" class="col s4 offset-s5"></div>
-		</div>
+<div id="paginationdemo" class="row">
+	<div id="demo5" class="col s4 offset-s5"></div>
+</div>
 <!-- END OF PAGINATOR 3000 -->
 
 <script type="text/javascript"
 	src="${pageContext.servletContext.contextPath}/resources/js/order/removeOrder.js"></script>
 <script type="text/javascript"
 	src="${pageContext.servletContext.contextPath}/resources/js/order/createOrder.js"></script>
-	
+
 <script type="text/javascript">
 		var pagesCount = '${countOfPages}';
 		var currentPage = '${currentPage}';

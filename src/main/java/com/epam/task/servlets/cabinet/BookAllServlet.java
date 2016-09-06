@@ -19,14 +19,18 @@ public class BookAllServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//TODO:
-		//if total price > 0, pay somehow
-		//imagine all orders were payed
-		//change all orders with status "order" to "active"
+		String cardNumber = request.getParameter("cardNumber");
+		String comment = request.getParameter("comment");
+		if(cardNumber == null) {
+			return;
+		}
 		int userId = ((User) request.getSession().getAttribute("user")).getId();
-		int booked = new OrderService().bookAllByUser(userId);
+		int booked = new OrderService().bookAllByUser(userId, cardNumber, comment);
 		
 		response.getWriter().write(booked > 0 ? "true" : "false");
+		if(booked > 0) {
+			request.getRequestDispatcher("/pages/orderCard.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

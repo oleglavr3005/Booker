@@ -9,6 +9,9 @@ function createOrder(orders) {
 }
 
 function bookOrderCard(orderId, daysCount) {
+	var localComment = orderId == null ? $('#comment').val() : $('#comment' + orderId).val();
+	var code = value($('#cardnum1').val()) + value($('#cardnum2').val())
+	+ value($('#cardnum3').val()) + value($('#cardnum4').val());
 	if (!$('#book' + orderId).attr('disabled')) {
 		var url;
 		if (orderId == null) {
@@ -24,7 +27,9 @@ function bookOrderCard(orderId, daysCount) {
 			if ($('#subscribing_form').html() != null) {
 				if (validateFields()) {
 					$.post(url, {
-						orderId : orderId
+						orderId : orderId,
+						cardNumber : code,
+						comment : localComment
 					}, function(result) {
 
 						$('#book' + orderId).onclick = null;
@@ -95,7 +100,9 @@ function bookOrderCard(orderId, daysCount) {
 
 		} else {
 			$.post('../book', {
-				orderId : orderId
+				orderId : orderId,
+				cardNumber : code,
+				comment : localComment
 			}, function(result) {
 
 				$('#book' + orderId).onclick = null;

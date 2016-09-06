@@ -42,8 +42,9 @@ public class ShoppingCartServlet extends HttpServlet {
 		if (page > countOfPages) {
 			page--;
 		}
-				
-		List<OrderDto> ordersByPage = OrderDto.listConverter(new OrderService().getOrdersByUserAndStatusAndPage(userId, OrderStatus.ORDER, page));
+
+		String compareBy = request.getParameter("compareBy"); //compareByDateAsc compareByDateDesc compareByPriceAsc compareByPriceDesc
+		List<OrderDto> ordersByPage = OrderDto.listConverter(new OrderService().getOrdersByUserAndStatusAndPage(userId, OrderStatus.ORDER, page, compareBy));
 		
 		request.setAttribute("orders", ordersByPage);
 		request.setAttribute("summary", summary);

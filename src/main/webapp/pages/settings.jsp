@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
 <c:set var="language"
 	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
 	scope="session" />
@@ -14,7 +15,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>Booker | My Orders</title>
+<title>Booker | Settings</title>
 <link rel="icon" type="image/ico"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.ico">
 <link
@@ -62,7 +63,6 @@
 	background-color: #F3EAEA;
 }
 
-
 .bg-img {
 	border-style: solid;
 	border-width: 3px 0px 0px;
@@ -99,7 +99,7 @@
 
 
 	<!-- Header ========================================================================= -->
-	<jsp:include page="../header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 
 	<div class="container">
@@ -134,13 +134,38 @@
 							<fmt:message key="settings.header.PERSONAL" />
 						</h4>
 					</div>
+
+					<div class="row">
+						<div class="col s4">
+							<a href="#!"><img id="avatarImg"
+								style="height: 100px; padding: 10px; width: 110px;"
+<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
+								src="<i:urlToImage url="${user.image}" />">
+								</a>
+						</div>
+						<div class="col s8">
+
+<!-- 							<div class="file-field input-field"> -->
+<!-- 								<div class="waves-effect waves-light btn"> -->
+									<input style="margin-top:60px" type="file" id="avatarInput"
+								onchange="showPhoto()" accept="image/*" />
+<!-- 								</div> -->
+<!-- 								<div class="file-path-wrapper"> -->
+<!-- 									<input class="file-path validate" type="text"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+
+							
+						</div>
+					</div>
+
 					<div class="row fields">
 						<div class="input-field col s9">
 							<div class="ui pointing label">
 								<fmt:message key="settings.enter.name" />
 							</div>
 							<input id="name" type="text" class="validate"
-								placeholder="${user.firstName}" length="45"> <label
+								value="${user.firstName}" length="45"> <label
 								id="nameLbl" data-error="${fmtName}" for="name"> </label>
 						</div>
 					</div>
@@ -150,23 +175,10 @@
 								<fmt:message key="settings.enter.surname" />
 							</div>
 							<input id="surname" type="text" class="validate"
-								placeholder="${user.lastName}" length="45"> <label
+								value="${user.lastName}" length="45"> <label
 								id="surnameLbl" data-error="${fmtSurname}" for="surname"></label>
 						</div>
 					</div>
-
-					<c:if test="${user.socialNetworkId == null}">
-						<div class="row">
-							<div class="input-field col s9">
-								<div class="ui pointing label">
-									<fmt:message key="settings.enter.mail" />
-								</div>
-								<input id="email" type="email" class="validate"
-									placeholder="${user.email}" length="80"> <label
-									id="emailLbl" data-error="${fmtMail}" for="email"> </label>
-							</div>
-						</div>
-					</c:if>
 
 					<div class="row" style="margin-top: 20px;">
 						<div class="col s3 offset-s7">
@@ -242,9 +254,20 @@
 								<fmt:message key="settings.enter.phone" />
 							</div>
 							<input id="phoneNumber" type="text" class="validate"
-								placeholder="${user.phoneNumber}" length="45"> <label
+								value="${user.phoneNumber}" length="45"> <label
 								id="phoneLbl" data-error="${fmtName}" for="phoneNumber">
 							</label>
+
+							<!-- 							<div class="switch"> -->
+							<!-- 								<label> Off <input type="checkbox" id="phoneCheckBox"> <span -->
+							<!-- 									class="lever"></span> On -->
+							<!-- 								</label> -->
+							<!-- 								<label for="phoneCheckBox">I  -->
+							<!--  									WANT RECEIVE MESSAGES ABOUT NEW ROOMS!</label>  -->
+							<!-- 							</div> -->
+
+
+
 							<p>
 								<input type="checkbox" class="filled-in" id="phoneCheckBox"
 									name="phonoCheckBox" /> <label for="phoneCheckBox">I
@@ -261,8 +284,8 @@
 									<fmt:message key="settings.enter.mail" />
 								</div>
 								<input id="email" type="email" class="validate"
-									placeholder="${user.email}" length="80"> <label
-									id="emailLbl" data-error="${fmtMail}" for="email"> </label>
+									value="${user.email}" length="80"> <label id="emailLbl"
+									data-error="${fmtMail}" for="email"> </label>
 								<p>
 									<input type="checkbox" class="filled-in" id="eMailBox"
 										name="eMailBox" /> <label for="eMailBox">I WANT
@@ -272,10 +295,17 @@
 						</div>
 					</c:if>
 
+					<script>
+						$('#phoneCheckBox').attr('checked',
+								'${user.phoneNotif}' == 'true');
+						$('#eMailBox').attr('checked',
+								'${user.emailNotif}' == 'true');
+					</script>
+
 					<div class="row" style="margin-top: 20px;">
 						<div class="col s3 offset-s7">
 							<a id="savePersonal" class="waves-effect waves-light btn"
-								onclick="saveContactData('${fmtMail}','${fmtMailExist}')"
+								onclick="saveContactData()"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
 									key="settings.enter.save" /></a>
 						</div>
@@ -303,14 +333,15 @@
 								<div class="ui pointing label">
 									<fmt:message key="settings.enter.request" />
 								</div>
-								<textarea id="requestForm" class="materialize-textarea"></textarea>
+								<textarea id="requestForm" class="materialize-textarea"
+									>${message}</textarea>
 							</div>
 						</div>
 
 						<div class="row" style="margin-top: 20px;">
 							<div class="col s12">
 								<a id="savePersonal" class="waves-effect waves-light btn"
-									onclick="saveContactData('${fmtMail}','${fmtMailExist}')"
+									onclick="createRequest()"
 									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
 										key="settings.enter.save" /></a>
 							</div>
@@ -326,7 +357,7 @@
 	</div>
 
 	<!-- Footer ========================================================================== -->
-	<jsp:include page="../foot.jsp"></jsp:include>
+	<jsp:include page="foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
 
 	<script type="text/javascript"

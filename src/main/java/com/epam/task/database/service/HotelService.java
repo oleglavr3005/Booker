@@ -18,8 +18,8 @@ private DaoManager daoManager;
 		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getAllHotels());
 	}
 
-	public List<Hotel> getAllHotelsByPage(int page) {
-		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getAllHotelsByPage(page));
+	public List<Hotel> getAllHotelsByPage(int page, String compareBy) {
+		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getAllHotelsByPage(page, compareBy));
 	}
 	
 	public List<Hotel> getAllSuitableHotels(String name, int minStars, int maxStars, int people,	//main search
@@ -28,7 +28,7 @@ private DaoManager daoManager;
 			int minPrice, int maxPrice,																//price
 			boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, 			//additional
 			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit, 
-			Timestamp startDate, Timestamp endDate, int page) {
+			Timestamp startDate, Timestamp endDate, int page, String compareBy) {
 		
 		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getAllSuitableHotels(
 				name, minStars, maxStars, people, 
@@ -36,7 +36,7 @@ private DaoManager daoManager;
 				foodNone, foodBreakfast, foodTwice, foodFull, 
 				minPrice, maxPrice, 
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
-				startDate, endDate, page));
+				startDate, endDate, page, compareBy));
 	}
 	
 	public Hotel getHotelById(int id) {
@@ -68,5 +68,9 @@ private DaoManager daoManager;
 				minPrice, maxPrice, 
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
 				startDate, endDate));
+	}
+
+	public List<Hotel> getRecomendedHotels(int hotelId) {
+		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getRecomendedHotels(hotelId));
 	}
 }

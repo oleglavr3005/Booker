@@ -9,13 +9,13 @@ public class Feedback {
 	private int id;
 	
 	@DataBaseField(fieldName = "user_id")
-	private Integer userId;
+	private int userId;
 	
 	@DataBaseField(fieldName = "hotel_id")
-	private Integer hotelId;
+	private int hotelId;
 	
 	@DataBaseField(fieldName = "rating")
-	private Integer rating;
+	private int rating;
 		
 	@DataBaseField(fieldName = "comment")
 	private String comment;
@@ -35,8 +35,8 @@ public class Feedback {
 	@DataBaseField(fieldName = "img")
 	private String img;
 
-	public Feedback(int id, Integer userId, Integer hotelId, Integer rating, String comment, String title,
-			Timestamp date, String firstName, String lastName, String img) {
+	public Feedback(int id, int userId, int hotelId, int rating, String comment, String title, Timestamp date,
+			String firstName, String lastName, String img) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -58,27 +58,27 @@ public class Feedback {
 		this.id = id;
 	}
 
-	public Integer getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
-	public Integer getHotelId() {
+	public int getHotelId() {
 		return hotelId;
 	}
 
-	public void setHotelId(Integer hotelId) {
+	public void setHotelId(int hotelId) {
 		this.hotelId = hotelId;
 	}
 
-	public Integer getRating() {
+	public int getRating() {
 		return rating;
 	}
 
-	public void setRating(Integer rating) {
+	public void setRating(int rating) {
 		this.rating = rating;
 	}
 
@@ -128,5 +128,12 @@ public class Feedback {
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+	@Override
+	public String toString() {
+		return "Feedback [id=" + id + ", userId=" + userId + ", hotelId=" + hotelId + ", rating=" + rating
+				+ ", comment=" + comment + ", title=" + title + ", date=" + date + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", img=" + img + "]";
 	}
 }

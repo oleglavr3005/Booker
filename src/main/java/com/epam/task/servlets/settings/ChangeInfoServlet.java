@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.UserService;
 
@@ -22,20 +25,36 @@ public class ChangeInfoServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String lastName = request.getParameter("lastName");
 		String firstName = request.getParameter("firstName");
-		
+		String lastName = request.getParameter("lastName");
+
 		if(lastName == null || firstName == null) {
 			return;
 		}
 		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		user.setLastName(lastName);
-		user.setFirstName(firstName);
+		if (firstName.length() > 0) {
+			user.setFirstName(firstName);
+		}
+		if (lastName.length() > 0) {
+			user.setLastName(lastName);
+		}
 		int result = new UserService().updateUser(user);
 		session.setAttribute("user", user);
-		response.getWriter().write(result > 0 ? "true" : "false");
+
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		try {
+			JSONObject json = new JSONObject();
+			json.put("changed", result > 0 ? "true" : "false");
+			json.put("firstName", user.getFirstName());
+			json.put("lastName", user.getLastName());
+			response.getWriter().print(json.toString());
+			response.getWriter().flush();
+		} catch (JSONException e) {
+			response.getWriter().write("false");
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

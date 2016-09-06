@@ -19,7 +19,7 @@ import com.epam.task.util.PasswordHasher;
 /**
  * Servlet implementation class AuthServlet
  */
-@WebServlet("/auth")
+@WebServlet({ "/auth/*","/hotel/auth"})
 public class AuthServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -39,7 +39,7 @@ public class AuthServlet extends HttpServlet {
 			UserService userService = new UserService();
 			User user = userService.getUserByEmail(request.getParameter("email"));
 			if (user.getStatus().equals(UserStatus.PENDING) || !user.getPassword()
-					.equals(PasswordHasher.hash(request.getParameter("password") + (user.getFirstName())))) {
+					.equals(PasswordHasher.hash(request.getParameter("password")))) {
 				throw new Exception();
 			}
 			request.getSession().setAttribute("user", user);

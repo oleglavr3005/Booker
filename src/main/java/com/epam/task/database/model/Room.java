@@ -34,7 +34,7 @@ public class Room {
 		
 		photos = new RoomPhotoService().getRoomPhotosByRoom(hotelId);
 		if(photos.size() == 0) {
-			photos.add(new RoomPhoto(0, "no-image.jpg", "", hotelId));
+			photos.add(new RoomPhoto(0, "no-image.png", "", hotelId));
 		}
 	}
 

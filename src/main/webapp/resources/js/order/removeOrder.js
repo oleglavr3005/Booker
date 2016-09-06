@@ -1,3 +1,5 @@
+var mapping = $('#mapping').val();
+
 function removeOrderCard(orderId) {
 	if (!$('#remove' + orderId).attr('disabled')) {
 
@@ -24,17 +26,32 @@ function clearCart() {
 	});
 }
 
-function removeOrderTable(publishId) {
-	$.post('delete_sub', {
-		publishId : publishId
+function removeOrderTable(orderId) {
+	$.post('../cancel_order', {
+		orderId : orderId
 	}, function() {
-		$('.purchase' + publishId).animate({
+		$('.purchase' + orderId).animate({
 			right : '250px',
 			opacity : '0.5',
 			height : '-=150px',
 			width : '-=150px'
 		}, "slow", function() {
-			$('.purchase' + publishId).remove();
+			$('.purchase' + orderId).remove();
+		});
+	});
+}
+
+function removeOrder(orderId) {
+	$.post(mapping + '/cancel_order', {
+		orderId : orderId
+	}, function() {
+		$('.purchase' + orderId).animate({
+			right : '250px',
+			opacity : '0.5',
+			height : '-=150px',
+			width : '-=150px'
+		}, "slow", function() {
+			$('.purchase' + orderId).remove();
 		});
 	});
 }

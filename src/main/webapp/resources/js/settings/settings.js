@@ -1,28 +1,72 @@
 var wrongMail;
 var usedMail;
 
-function savePersonalData(wMail,uMail) {
+function saveContactData() {
+	var phone = $('#phoneNumber').val();
+	var phoneCheck = document.getElementById('phoneCheckBox').checked;
+	var mail = $('#email').val();
+	var mailCheck = document.getElementById('eMailBox').checked;
+	if (phoneIsValid(phone, phoneCheck)) {
+		$.post('../change_phone', {
+			phoneNumber : phone,
+			phoneNotif : phoneCheck,
+		}, function(result) {
+			var res = $.parseJSON(result);
+			 if (result != null) {
+			$('#phoneNumber').val(res.phoneNumber);
+			clearField('phoneNumber');
+			 }
+			 else {
+					invalid('phoneNumber');
+			 }
+		});
+	}
+
+	if (mailIsValid(mail,mailCheck)) {
+		$.post('../change_email', {
+			email : mail,
+			mailNotif : mailCheck,
+		}, function(result) {
+			var res = $.parseJSON(result);
+			if (result != null) {
+				$('#email').val(res.email);
+				clearField('email');
+			}
+			 else {
+					invalid('email');
+			 }
+		});
+	}
+}
+
+function savePersonalData(wMail, uMail) {
 	wrongMail = wMail;
 	usedMail = uMail;
-	$.post('settings/personal', {
-		name : nameIsValid($('#name').val()),
-		surname : surnameIsValid($('#surname').val()),
-		email : emailIsValid($('#email').val())
+	var name = $('#name').val();
+	var surname = $('#surname').val();
+	$.post('../change_info', {
+		firstName : nameIsValid(name),
+		lastName : surnameIsValid(surname)
 	}, function(result) {
-		if (result.name != null && result.name != '') {
-			$('#name').val('');
-			$('#name').attr("placeholder", result.name);
+		var res = $.parseJSON(result);
+		if (result != null) {
+			$('#name').val(res.firstName);
 			clearField('name');
-		}
-		if (result.surname != null && result.surname != '') {
-			$('#surname').val('');
-			$('#surname').attr("placeholder", result.surname);
+
+			$('#surname').val(res.lastName);
 			clearField('surname');
+			$('#userNameSpan').html(res.firstName + " " + res.lastName);
 		}
-		if (result.email != null && result.email != '') {
-			$('#email').val('');
-			$('#email').attr("placeholder", result.email);
-			clearField('email');
+	});
+}
+
+function createRequest() {
+	var req = $('#requestForm').val();
+	$.post('../create_request', {
+		message : req
+	}, function(result) {
+		if (result == 'true') {
+			clearField('requestForm');
 		}
 	});
 }
@@ -37,6 +81,35 @@ function nameIsValid(name) {
 	} else {
 		invalid('name');
 		return null;
+	}
+}
+
+function phoneIsValid(phone,check) {
+	if (phone == '') {
+		document.getElementById('phoneCheckBox').checked = false;
+		valid('phoneNumber');
+		return true;
+	}
+	if ((phone == '') || phone.length <= 15 && phone.length >= 8 && validateNumber(phone)) {
+		valid('phoneNumber');
+		return true;
+	} else {
+		invalid('phoneNumber');
+		return false;
+	}
+}
+
+function mailIsValid(mail,check) {
+	if (mail == '') {
+		invalid('email');
+		return false;
+	}
+	if (mail.length <= 45 && emailIsValid(mail)) {
+		valid('email');
+		return true;
+	} else {
+		invalid('email');
+		return false;
 	}
 }
 
@@ -78,6 +151,11 @@ function validateLetters(field) {
 	return re.test(field);
 }
 
+function validateNumber(field) {
+	var re = /^([0-9]*)$/;
+	return re.test(field);
+}
+
 function emailIsValid(email) {
 	if (email == '') {
 		return null;
@@ -96,56 +174,106 @@ function emailIsValid(email) {
 			"email" : email
 		}
 	}).success(function(data) {
-		var isValid = (data == "true");
+		var isValid = (data == "false");
 		if (!isValid) {
 			invalid('email');
 			$('#emailLbl').attr("data-error", usedMail);
-			email = null;
+			return false;
 		}
 	});
-	return email;
+	return true;
 }
 
-
-function savePassword(header,succesfull) {
-	if ($('#currentPassword').val() == '' || $('#newPassword').val() == ''
-			|| $('#repeatPassword').val() == '')
+function savePassword(header, succesfull) {
+	// if ($('#currentPassword').val() == '' || $('#newPassword').val() == ''
+	// || $('#repeatPassword').val() == '')
+	// return;
+	if ($('#currentPassword').val().length < 6) {
+		invalid('currentPassword');
 		return;
-	$.post('settings/password', {
-		currentPassword : $('#currentPassword').val(),
+	}
+	if ($('#newPassword').val().length < 6) {
+		invalid('newPassword');
+		return;
+	}
+	if ($('#repeatPassword').val().length < 6) {
+		invalid('repeatPassword');
+		return;
+	}
+	$.post('../change_password', {
+		oldPassword : $('#currentPassword').val(),
 		newPassword : $('#newPassword').val(),
-		repeatPassword : $('#repeatPassword').val()
+		newPasswordConfirm : $('#repeatPassword').val()
 	}, function(result) {
 		clearPasswordFields();
-		if (result.currentPassword == null) {
+		if (result == 'wrongOldPass') {
 			invalid('currentPassword');
-		} else if (result.currentPassword != '') {
-			valid('currentPassword');
 		}
-		if (result.newPassword == null) {
+		// else if (result.currentPassword != '') {
+		// valid('currentPassword');
+		// }
+		if (result == 'shortNewPass') {
 			invalid('newPassword');
-		} else if (result.newPassword != '') {
-			valid('newPassword');
 		}
-		if (result.repeatPassword == null) {
+		// else if (result.newPassword != '') {
+		// valid('newPassword');
+		// }
+		if (result == 'passwordsDontMatch') {
 			invalid('repeatPassword');
-		} else if (result.repeatPassword != '') {
-			valid('repeatPassword');
 		}
-		if (result.currentPassword == 'succes'
-				&& result.newPassword == 'succes'
-				&& result.repeatPassword == 'succes') {
+		// else if (result.repeatPassword != '') {
+		// valid('repeatPassword');
+		// }
+		if (result == 'true') {
 			$('#currentPassword').val('');
 			$('#newPassword').val('');
 			$('#repeatPassword').val('');
-			$('#pwd_title').text(succesfull);
+			$('#pwd_title').text("SUCCESFULLY CHANGED PASSWORD");
 			$('#pwd_title').css('color', 'green');
 			setTimeout(function() {
-				$('#pwd_title').text(header);
+				$('#pwd_title').text("OLD HEADER TEXT INSERT HERE");
 				$('#pwd_title').css('color', '#333333');
 			}, 3000);
 		}
 	});
+}
+
+$("#avatarImg").click(function() {
+	$("input[id='avatarInput']").click();
+});
+
+function showPhoto() {
+	var preview = document.querySelector('#avatarImg');
+	var avatar = document.querySelector('#imageavatar');
+	var file = document.querySelector('input[type=file]').files[0];
+	if (file) {
+		var reader = new FileReader();
+		debugger;
+		reader.onloadend = function() {
+			preview.src = reader.result;
+			avatar.src = reader.result;
+		}
+		reader.readAsDataURL(file);
+		var data = new FormData();
+		$.each($('#avatarInput')[0].files, function(i, file) {
+			data.append('file-' + i, file);
+		});
+		$.ajax({
+			url : '../change_image',
+			data : data,
+			cache : false,
+			contentType : false,
+			processData : false,
+			type : 'POST',
+			success : function(result) {
+				if (result == 'error') {
+					alert("IMG ERROR");
+				}else{
+					image = result;
+				}
+			}
+		});
+	}
 }
 
 function clearPasswordFields() {

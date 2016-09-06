@@ -3,6 +3,7 @@ package com.epam.task.servlets;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -17,11 +18,9 @@ import org.apache.log4j.Logger;
 import com.epam.task.database.model.Conveniences;
 import com.epam.task.database.model.Feedback;
 import com.epam.task.database.model.Hotel;
-import com.epam.task.database.model.HotelPhoto;
 import com.epam.task.database.model.Room;
 import com.epam.task.database.service.ConveniencesService;
 import com.epam.task.database.service.FeedbackService;
-import com.epam.task.database.service.HotelPhotoService;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.RoomService;
 
@@ -37,19 +36,13 @@ public class HotelServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String hotelId = request.getPathInfo().substring(1);
-		if(hotelId.length() > 1) {
-			return;
-		}
-		int id = 0;
+		int id;
 		try {
-			id = Integer.parseInt(hotelId);
+			id = Integer.parseInt(request.getPathInfo().substring(1));
 		} catch (Exception e) {
-			e.printStackTrace();
-			LOGGER.info("Bad user id for hotel");
-			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 			return;
 		}
+
 		Hotel hotel = new HotelService().getHotelById(id);
 		Conveniences conveniences = null;
 		if(hotel != null){
@@ -59,8 +52,6 @@ public class HotelServlet extends HttpServlet {
 			LOGGER.info("Bad user id for hotel, hotel not found");
 			return;
 		}
-		String pageString = request.getParameter("page");
-		int page = pageString == null ? 1 : Integer.parseInt(pageString);
 		
 		HttpSession session = request.getSession(true);
 		boolean typeStandart = session.getAttribute("typeStandart") == null ? false : (boolean) session.getAttribute("typeStandart");
@@ -98,26 +89,51 @@ public class HotelServlet extends HttpServlet {
 		} catch (Exception e) {
 			endDate = new Timestamp(0);
 		}
+	//////////////////////	
+		String pageString = request.getParameter("page");
+		int page = pageString == null ? 1 : Integer.parseInt(pageString);
+		int countOfRooms = new RoomService().getSuitableRoomsNumber(id, 
+				typeStandart, typeLux, typeDelux, 
+				foodNone, foodBreakfast, foodTwice, foodFull, 
+				minPrice, maxPrice, people,
+				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
+				startDate, endDate);
 		
+		int countOfPages = (int) Math.ceil(countOfRooms / 3.0);
+		if (page > countOfPages) {
+			page--;
+		}
+////////////
+		String compareBy = request.getParameter("compareBy");
 		List<Feedback> feedbacks = new FeedbackService().getAllFeedbacksByHotel(id);
 		List<Room> rooms = new RoomService().getAllSuitableRoomsForHotel(id, page, 
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull, 
 				minPrice, maxPrice, people,
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
-				startDate, endDate);
-		List<HotelPhoto> hotelPhoto = new HotelPhotoService().getHotelPhotosByHotel(id); 
+				startDate, endDate, compareBy);
 		request.setAttribute("hotel", hotel);
+		
+		List<Hotel> hotels = new ArrayList<Hotel>();  		// ÑÓÏÅÐ ÊÎÑÒÈËÜ ÏÎ×ÀÒÎÊ
+		hotels.add(hotel);
+		request.setAttribute("hotels", hotels);				// ÑÓÏÅÐ ÊÎÑÒÈËÜ Ê²ÍÅÖÜ
 		request.setAttribute("conveniences", conveniences);
 		request.setAttribute("feedbacks", feedbacks);
 		request.setAttribute("rooms", rooms);
-		if (hotelPhoto.size() > 0) {
-			request.setAttribute("MainPhoto", hotelPhoto.get(0));
-			hotelPhoto.remove(0);
-			request.setAttribute("hotelPhotos", hotelPhoto);
-		}
-		request.getRequestDispatcher("/pages/hotel.jsp").forward(request, response);
+		//request.getRequestDispatcher("/pages/hotel.jsp").forward(request, response);
 
+		
+		
+		
+		request.setAttribute("countOfRooms", countOfRooms);
+		request.setAttribute("countOfPages", countOfPages);
+		request.setAttribute("currentPage", page);
+		
+		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
+			request.getRequestDispatcher("/pages/roomCard.jsp").forward(request, response);
+		} else {	
+			request.getRequestDispatcher("/pages/hotel.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

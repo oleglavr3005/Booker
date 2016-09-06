@@ -89,6 +89,9 @@ div #sidebar-wrapper {
 
 <body>
 	<input id="lang" type="hidden" value="${language}" />
+	<input id="mapping" type="hidden"
+		value="${pageContext.servletContext.contextPath}/" />
+
 
 	<!-- Header ========================================================================= -->
 	<jsp:include page="header.jsp"></jsp:include>
@@ -173,7 +176,7 @@ div #sidebar-wrapper {
 
 				<div id="togle_place" class="col s12" style="margin-top: 18px;">
 
-					<div id="details_panel" style="display:none">
+					<div id="details_panel" style="display: none">
 
 						<div class="row">
 
@@ -273,10 +276,15 @@ div #sidebar-wrapper {
 
 						</div>
 					</div>
+
 					<div class="row">
-						<div class="col s10">
+						<div class="col s2 offset-s1">
+							<a id="map_button" class="waves-effect waves-light btn"
+								style="width: 100%; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">MAP</a>
+						</div>
+						<div class="col s6">
+							<!-- onclick="togle()" -->
 							<a id="togle" class="waves-effect waves-light btn"
-								onclick="togle()"
 								style="background: #26A69A; text-align: center; width: 100%; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><i
 								id="arrow_icon" class="fa fa-angle-double-down col s1 fa-2x"
 								aria-hidden="true" style="margin-left: 45%"></i></a>
@@ -286,22 +294,22 @@ div #sidebar-wrapper {
 								onclick="searchForm()"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">SEARCH</a>
 						</div>
-
-
 					</div>
-
-
+					<!-- MAP ========================================================================== -->
+					<jsp:include page="map.jsp"></jsp:include>
+					<!-- MAP End======================================================================= -->
 				</div>
-
 			</div>
 
 
-			<input id="minStars" type="hidden" value="${minStars}" name="minStars" /> <input
-				id="maxStars" type="hidden" value="${maxStars}" name="maxStars" /> 
-				<input id="minPrice" type="hidden" value="${minPrice}" name="minPrice" />
-				<input id="maxPrice" type="hidden" value="${maxPrice}" name="maxPrice" />
-				<input id="minUserPrice" type="hidden" value="${minUserPrice}" name="minUserPrice" />
-				<input id="maxUserPrice" type="hidden" value="${maxUserPrice}" name="maxUserPrice" />
+			<input id="minStars" type="hidden" value="${minStars}"
+				name="minStars" /> <input id="maxStars" type="hidden"
+				value="${maxStars}" name="maxStars" /> <input id="minPrice"
+				type="hidden" value="${minPrice}" name="minPrice" /> <input
+				id="maxPrice" type="hidden" value="${maxPrice}" name="maxPrice" />
+			<input id="minUserPrice" type="hidden" value="${minUserPrice}"
+				name="minUserPrice" /> <input id="maxUserPrice" type="hidden"
+				value="${maxUserPrice}" name="maxUserPrice" />
 			<!-- 				<input type="submit" value="Submit"> -->
 		</form>
 
@@ -310,29 +318,48 @@ div #sidebar-wrapper {
 	</div>
 
 	<div class="container">
-		<h6>
-			<c:if test="${countOfHotels > 0 }">
-				<fmt:message key="card.header" />
-				<span id="periodicals_number_for_all_users">${countOfHotels}</span>
-			</c:if>
-			<c:if test="${countOfHotels <= 0 }">
-				<fmt:message key="card.no.hotels" />
-			</c:if>
-		</h6>
+		<div class="row">
+			<div class="col s3">
+				<h6>
+					<c:if test="${countOfHotels > 0 }">
+						<fmt:message key="card.header" />
+						<span id="periodicals_number_for_all_users">${countOfHotels}</span>
+					</c:if>
+					<c:if test="${countOfHotels <= 0 }">
+						<fmt:message key="card.no.hotels" />
+					</c:if>
+				</h6>
+			</div>
+			<div class="col s4 offset-s5">
+				<c:if test="${countOfHotels > 0 }">
+					<select id="compare" class="chosen-select optionstyle"
+						onchange="findPage(window.location.href,1)">
+						<option class="optionstyle" value="compareByStarsAsc">star
+							asc</option>
+						<option class="optionstyle" value="compareByStarsDesc">star
+							desc</option>
+						<option class="optionstyle" value="compareByRatingAsc">rating
+							asc</option>
+						<option class="optionstyle" value="compareByRatingDesc"
+							selected="selected">rating desc</option>
+					</select>
+				</c:if>
+			</div>
+		</div>
 
 
-<!-- SWITCH CONTENT -->
+		<!-- SWITCH CONTENT -->
 		<div id="switchContent" class="row">
 			<jsp:include page="card.jsp"></jsp:include>
 		</div>
-<!-- END OF SWITCH CONTENT -->
+		<!-- END OF SWITCH CONTENT -->
 
 
-<!-- PAGINATOR 3000 -->
-<!-- 		<div id="paginationdemo" class="row"> -->
-<!-- 			<div id="demo5" class="col s4 offset-s5"></div> -->
-<!-- 		</div> -->
-<!-- END OFPAGINATOR 3000 -->
+		<!-- PAGINATOR 3000 -->
+		<!-- 		<div id="paginationdemo" class="row"> -->
+		<!-- 			<div id="demo5" class="col s4 offset-s5"></div> -->
+		<!-- 		</div> -->
+		<!-- END OFPAGINATOR 3000 -->
 	</div>
 
 	<!-- Footer ========================================================================== -->
@@ -381,9 +408,9 @@ div #sidebar-wrapper {
 		</script>
 	</c:if>
 	<!--  END OF VK REDIRECT -->
-<!-- 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
-<!-- 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
-<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
+	<!-- 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
+	<!-- 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+	<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
 	<script
@@ -420,33 +447,54 @@ div #sidebar-wrapper {
 		$('#hasGym').attr('checked', '${hasGym}' == 'true');
 		$('#hasBalcony').attr('checked', '${hasBalcony}' == 'true');
 		$('#noDeposit').attr('checked', '${noDeposit}' == 'true');
-
+		/* 
 		 var togler = $('#togler').val();
-		if (togler == 'true') {
-			$("#togle").click();
-		}
-		else {
-			$('#togler').val("false");
-		} 
+		 if (togler == 'true') {
+		 $("#togle").click();
+		 }
+		 else {
+		 $('#togler').val("false");
+		 }  */
 	</script>
-	
+
 	<script>
-		/*(function() {
+		(function() {
 			var flag = 0;
-			$('#details_panel').hide();
-			$('#togle').on('click', function() {
-				console.log("in");
+			jQuery('#details_panel').hide();
+			$('#togler').val("false");
+			jQuery('#togle').on('click', function() {
 				if (flag == 0) {
-					$('#details_panel').slideDown(500);
-					$('#arrow_icon').css("transform", "rotate(180deg)");
-				    flag = 1;
+					jQuery('#details_panel').slideDown(500);
+					jQuery('#arrow_icon').css("transform", "rotate(180deg)");
+					$('#togler').val("true");
+					flag = 1;
 				} else {
-				    $('#details_panel').slideUp(500);
-				    $('#arrow_icon').css("transform", "rotate(0deg)");
-				    flag = 0;
+					jQuery('#details_panel').slideUp(500);
+					jQuery('#arrow_icon').css("transform", "rotate(0deg)");
+					$('#togler').val("false");
+					flag = 0;
 				}
 			});
-		})();*/
+		})();
+
+		(function() {
+			var flag = 0;
+			var fladTwo = 0;
+			jQuery('#google_map').hide();
+			jQuery('#map_button').on('click', function() {
+				if (flag == 0) {
+					jQuery('#google_map').slideDown(500);
+					flag = 1;
+					if (fladTwo == 0) {
+						setTimeout(map_initialize, 500);
+						fladTwo = 1;
+					}
+				} else {
+					jQuery('#google_map').slideUp(500);
+					flag = 0;
+				}
+			});
+		})();
 	</script>
 
 	<!-- 	DATEPICKER -->

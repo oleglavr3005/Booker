@@ -131,7 +131,7 @@ div #sidebar-wrapper {
 					<div class="row" style="margin-bottom: 0;">
 						<div class="col s8">
 							<h5>
-								<c:out value="${hotel.name }"></c:out>
+								<a href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"><c:out value="${hotel.name}"></c:out></a>
 							</h5>
 						</div>
 
@@ -205,8 +205,9 @@ div #sidebar-wrapper {
 					<!-- MAP MARKER -->
 					<div class="row">
 						<div class="col s12">
-							<i class="fa fa-lg icon-map-marker" aria-hidden="true"></i> <span>${hotel.city}
-								${hotel.street}</span>
+							<a class="tooltipped" data-position="icon" data-tooltip="Location"
+								style="color: #0d0d0d;"><i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
+							 <span>${hotel.city} ${hotel.street}</span>
 						</div>
 					</div>
 					<!-- END OF MAP MARKER -->
@@ -226,10 +227,9 @@ div #sidebar-wrapper {
 					<!-- ORDER DATE MARKER -->
 					<div class="row ">
 						<div class="col s12">
-							<p>
-								<i class="fa fa-lg fa-calendar" aria-hidden="true"></i> Order
-								date <span id="order_date">${order.orderDate}</span>
-							</p>
+							<a class="tooltipped" data-position="icon" data-tooltip="Order date"
+								style="color: #0d0d0d;"><i class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
+							 Order date <span id="order_date">${order.orderDate}</span>
 						</div>
 					</div>
 					<!-- END OF ORDER DATE MARKER -->
@@ -237,10 +237,9 @@ div #sidebar-wrapper {
 					<!-- START DATE MARKER -->
 					<div class="row ">
 						<div class="col s12">
-							<p>
-								<i class="fa fa-lg fa-calendar" aria-hidden="true"></i> Start
-								date <span id="start_date">${order.startDate}</span>
-							</p>
+							<a class="tooltipped" data-position="icon" data-tooltip="Start date"
+								style="color: #0d0d0d;"><i class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
+							 From: <span id="start_date">${order.startDate}</span>
 						</div>
 					</div>
 					<!-- END OF START DATE MARKER -->
@@ -248,10 +247,9 @@ div #sidebar-wrapper {
 					<!-- END DATE MARKER -->
 					<div class="row ">
 						<div class="col s12">
-							<p>
-								<i class="fa fa-lg fa-calendar" aria-hidden="true"></i> End date
-								<span id="end_date">${order.endDate}</span>
-							</p>
+							<a class="tooltipped" data-position="icon" data-tooltip="End date"
+								style="color: #0d0d0d;"><i class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
+							To: <span id="end_date">${order.endDate}</span>
 						</div>
 					</div>
 					<!-- END OF END DATE MARKER -->
@@ -264,14 +262,18 @@ div #sidebar-wrapper {
 							<span>Status ${order.status}</span>
 						</div>
 						<div class="col s4" style="margin-bottom: 0;">
-							<span> <i class="fa fa-lg fa-cutlery" aria-hidden="true"></i>
-								Food ${room.food}
-							</span>
+							<a class="tooltipped" data-position="icon" data-tooltip="Food type"
+								style="color: #0d0d0d;"><i class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a>
+							<span>${room.food}</span>
 						</div>
 						<div class="col s4">
-							<span> <i class="fa fa-lg fa-money" aria-hidden="true"></i>
-								Price ${order.price}
-							</span>
+							<a class="tooltipped" data-position="icon" data-tooltip="Price"
+								style="color: #0d0d0d;"><i class="fa fa-lg fa-money invert" aria-hidden="true"></i></a>
+							<span>${order.price}</span>
+							<c:if test="${room.daysCount == -1}">
+								<a class="tooltipped" data-position="icon" data-tooltip="No deposit"
+									style="color: #0d0d0d;"><i class="fa fa-2x fa-exclamation-circle invert" aria-hidden="true"></i></a>
+							</c:if>
 						</div>
 					</div>
 					<!-- END OF ROW WITH STATUS | FOOD | PRICE -->
@@ -284,15 +286,15 @@ div #sidebar-wrapper {
 		</div>
 
 		<div class="row">
-			<div class="col s7 offset-s1" style="border: 1px solid">HUGE AF
-				COMENT ZONE</div>
+<!-- 		here will be labedfor text area, comment ill be editable -->
+			<div class="col s7 offset-s1" style="border: 1px solid">${order.comment}</div>
 			<div class="col s4">
 				<c:if test="${order.status != ACTIVE}">
 					<div class="col s2 offset-s1"
 						style="margin-top: 18px; margin-left: 0;">
-						<a id="calceOrder" class="waves-effect waves-light btn"
-							style="background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
-								key="Cancel" /></a>
+<%-- 						<a id="calceOrder" class="waves-effect waves-light btn" onclick="removeOrder(${order.id})" --%>
+<%-- 							style="background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message --%>
+<%-- 								key="Cancel" /></a> --%>
 					</div>
 				</c:if>
 			</div>
@@ -418,6 +420,8 @@ div #sidebar-wrapper {
 	</script>
 
 
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/order/removeOrder.js"></script>
 
 
 </body>

@@ -3,8 +3,7 @@ var mapping = $('#mapping').val();
 function auth(){
 		var emailField = $("#emailAuth");
 		var passwordField = $("#passwordAuth");
-
-			$.ajax({
+		$.ajax({
 				data : {
 					email : emailField.val(),
 					password : passwordField.val()
@@ -30,7 +29,7 @@ function invalid(field) {
 
 
 function forgot(){
-	$.post(mapping == null ? '':mapping + 'forgot', {
+	$.post('forgot', {
 		email : $('#emailAuth').val()
 	}, function(result){
 		if(result == 'false'){

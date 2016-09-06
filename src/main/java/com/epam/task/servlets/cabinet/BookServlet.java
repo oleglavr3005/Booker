@@ -7,7 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.epam.task.database.model.Room;
+import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.OrderService;
+import com.epam.task.database.service.RoomService;
 
 @WebServlet("/book")
 public class BookServlet extends HttpServlet {
@@ -18,15 +21,20 @@ public class BookServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//if this room has days >=0, pay somehow
-		//imagine the order was payed
-		//change this order by setting status "active"
 		String orderIdString = request.getParameter("orderId");
-		if(orderIdString == null) {
+		String cardNumber = request.getParameter("cardNumber");
+		String comment = request.getParameter("comment");
+		
+		if(orderIdString == null || cardNumber == null) {
 			return;
 		}
+		OrderService orderService = new OrderService();
 		int orderId = Integer.parseInt(orderIdString);
-		int booked = new OrderService().bookOrder(orderId);
+		int booked = orderService.bookOrder(orderId, cardNumber, comment);
+		int roomId = orderService.getOrderById(orderId).getRoomId();
+		Room room = new RoomService().getRoomById(roomId);
+		
+		request.setAttribute("recomendedHotels", new HotelService().getRecomendedHotels(room.getHotelId()));
 		
 		response.getWriter().write(booked > 0 ? "true" : "false");
 	}

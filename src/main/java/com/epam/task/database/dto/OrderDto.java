@@ -17,12 +17,12 @@ public class OrderDto extends Order {
 	
 	public OrderDto(Order order){
 		this(order.getId(), order.getUserId(), order.getRoomId(), order.getStartDate(), order.getEndDate(), order.getStatus().toString(),
-				order.getOrderDate(), order.getPrice(), order.getComment());
+				order.getOrderDate(), order.getPrice(), order.getComment(), order.getCardNumber());
 	}
 
 	public OrderDto(int id, int userId, int roomId, Timestamp startDate, Timestamp endDate, String status,
-			Timestamp orderDate, int price, String comment) {
-		super(id, userId, roomId, startDate, endDate, status, orderDate, price, comment);
+			Timestamp orderDate, int price, String comment, String cardNumber) {
+		super(id, userId, roomId, startDate, endDate, status, orderDate, price, comment, cardNumber);
 		room = new RoomService().getRoomById(roomId);
 		hotel = new HotelService().getHotelById(room.getHotelId());
 	}

@@ -167,8 +167,8 @@ public class UserDao {
 			statement.setString(i++, user.getImage());
 			statement.setString(i++, user.getSocialNetwork().toString());			
 			statement.setString(i++, user.getSocialNetworkId());
-			statement.setBoolean(i++, user.hasEmailNotif());
-			statement.setBoolean(i++, user.hasPhoneNotif());
+			statement.setBoolean(i++, user.getEmailNotif());
+			statement.setBoolean(i++, user.getPhoneNotif());
 			statement.setString(i++, user.getLanguage());
 			return statement.executeUpdate();
 		} catch (SQLException e) {
@@ -192,8 +192,8 @@ public class UserDao {
 			statement.setString(i++, user.getImage());
 			statement.setString(i++, user.getSocialNetwork().toString());
 			statement.setString(i++, user.getSocialNetworkId());
-			statement.setBoolean(i++, user.hasEmailNotif());
-			statement.setBoolean(i++, user.hasPhoneNotif());
+			statement.setBoolean(i++, user.getEmailNotif());
+			statement.setBoolean(i++, user.getPhoneNotif());
 			statement.setString(i++, user.getLanguage());
 
 			statement.setInt(i, user.getId());
