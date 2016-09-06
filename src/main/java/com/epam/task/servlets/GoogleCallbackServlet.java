@@ -59,19 +59,19 @@ public class GoogleCallbackServlet extends HttpServlet {
 		String code = request.getParameter("code");
 		OAuth2AccessToken accessToken = s.getAccessToken(code);
 		// testing login
-		System.out.println(accessToken + ", 'rawResponse'='" + accessToken.getRawResponse() + "')");
+		//System.out.println(accessToken + ", 'rawResponse'='" + accessToken.getRawResponse() + "')");
 		//accessToken = s.refreshAccessToken(accessToken.getRefreshToken());
-	        System.out.println("Refreshed the Access Token!");
-	        System.out.println("(if your curious it looks like this: " + accessToken
-	                + ", 'rawResponse'='" + accessToken.getRawResponse() + "')");
-	        System.out.println();
+	   //     System.out.println("Refreshed the Access Token!");
+	     //   System.out.println("(if your curious it looks like this: " + accessToken
+	       //         + ", 'rawResponse'='" + accessToken.getRawResponse() + "')");
+	       // System.out.println();
 	        final OAuthRequest req = new OAuthRequest(Verb.GET, PROTECTED_RESOURCE_URL, s);
 			s.signRequest(accessToken, req);
 			final Response res = req.send();
-			System.out.println(res.getBody());
+		//	System.out.println(res.getBody());
 			//
 			User socUser = getGoogleUser(res);
-			System.out.println(socUser);
+			//System.out.println(socUser);
 			// find user by email
 			UserService userService = new UserService();
 			User user = userService.getUserByEmail(socUser.getEmail());
