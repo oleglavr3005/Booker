@@ -79,7 +79,10 @@ public class GoogleCallbackServlet extends HttpServlet {
 			if (user == null) {
 				// set user picture
 			//	System.out.println("Print image");
-				saveGooglePhoto(socUser);
+				if(socUser.getImage() != null){
+				saveGooglePhoto(socUser);} else {
+					socUser.setImage("no.jpg");
+				}
 				userService.insertUser(socUser);
 			}
 			user = userService.getUserByEmail(socUser.getEmail());
