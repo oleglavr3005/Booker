@@ -125,6 +125,7 @@ public class FacebookCallBackServlet extends HttpServlet {
 		user.setStatus("ACTIVE");
 		user.setType("USER");
 		user.setPassword("pass");
+		user.setLanguage("en"); // change lang
 		return user;
 	}
 	private String saveFacebookPhoto(String socId)  {

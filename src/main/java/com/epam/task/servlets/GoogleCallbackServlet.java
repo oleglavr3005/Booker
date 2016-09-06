@@ -116,6 +116,7 @@ public class GoogleCallbackServlet extends HttpServlet {
 		user.setStatus("ACTIVE");
 		user.setType("USER");
 		user.setPassword("pass");
+		user.setLanguage("en"); // change Lang
 		return user;
 	}
 	private void saveGooglePhoto(User socUser)  {
