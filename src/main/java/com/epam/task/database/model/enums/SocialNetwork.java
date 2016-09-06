@@ -1,5 +1,5 @@
 package com.epam.task.database.model.enums;
 
 public enum SocialNetwork {
-	NONE,VK
+	NONE,VK, FB
 }
