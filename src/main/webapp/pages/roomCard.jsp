@@ -8,6 +8,8 @@
 <fmt:setBundle basename="com.i18n.text" />
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/jPage/style.css">
 
 <style>
 b {
@@ -32,7 +34,7 @@ b {
 		<fmt:message key="card.no.periodicals" />
 	</c:if>
 </h6>
-<div class="divider" style="margin-bottom: 20px;"></div>
+<div class="divider" style="margin: 0;"></div>
 
 <c:if test="${countOfRooms == 0}">
 	<h5 style="color: red; margin-bottom: 63px;">
@@ -60,7 +62,7 @@ b {
 				<div class="row" style="margin-top: 15px; margin-bottom: 10px;">
 
 					<div class="card-image col s4" style="position: relative;">
-						<a><img src="<i:urlToImage url="${room.photo}" />"
+						<a><img src="${pageContext.servletContext.contextPath}/resources/images/photoOfHotelsRoom/${room.photos[0].img}"
 							style="height: 170px; width: 200px; padding: 10px;"> </a>
 
 					</div>
@@ -72,42 +74,47 @@ b {
 						</div>
 
 						<div class="row">
+							<a class="tooltipped" data-position="icon"
+								data-tooltip="Double beds" style="color: #0d0d0d;"><img
+								class="invert" style="max-width: 7%;"
+								src="${pageContext.servletContext.contextPath}/resources/images/double_bed.png" /></a>
+							<span>${room.doubleBedsCount}</span> <a class="tooltipped"
+								data-position="icon" data-tooltip="Single beds"
+								style="color: #0d0d0d;"><img class="invert"
+								style="max-width: 7%;"
+								src="${pageContext.servletContext.contextPath}/resources/images/single_bed.png" /></a>
+							<span>${room.bedsCount}</span>
+						</div>
+
+						<div class="row">
 							<a class="tooltipped" data-position="icon" data-tooltip="Food"
 								style="color: #0d0d0d;"><i
 								class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span>
 						</div>
 
 						<div class="row">
-							<a class="tooltipped" data-position="icon" data-tooltip="Price"
+							<a class="tooltipped" data-position="icon" data-tooltip="Price for one day"
 								style="color: #0d0d0d;"><i class="fa fa-lg fa-money invert"
 								aria-hidden="true"></i></a> <span>${room.price}</span>
-						</div>
-
-						<div class="row">
-							<a class="tooltipped" data-position="icon"
-								data-tooltip="Double beds" style="color: #0d0d0d;"><img
-								class="invert" style="max-width: 10%;"
-								src="${pageContext.servletContext.contextPath}/resources/images/double_bed.png" /></a>
-							<span>${room.doubleBedsCount}</span> <a class="tooltipped"
-								data-position="icon" data-tooltip="Single beds"
-								style="color: #0d0d0d;"><img class="invert"
-								style="max-width: 10%;"
-								src="${pageContext.servletContext.contextPath}/resources/images/single_bed.png" /></a>
-							<span>${room.bedsCount}</span>
+									<c:if test="${room.daysCount == -1}">
+										<a class="tooltipped" data-position="icon" data-tooltip="No deposit"
+										style="color: #0d0d0d;"><i class="fa fa-2x fa-exclamation-circle invert" aria-hidden="true"></i></a>
+									</c:if>
 						</div>
 
 					</div>
 
 					<div class="col s3">
-						<div class="row" style="float: right">
+						<div class="row" style="float: right; text-align:right; font-size:0.3rem">
 							<c:if test="${room.wifi == true}">
 								<a class="tooltipped" data-position="icon" data-tooltip="Wifi"
 									style="color: #0d0d0d;"><i class="material-icons invert">wifi</i></a>
 							</c:if>
 
 							<c:if test="${room.shower == true}">
-								<a class="tooltipped" data-position="icon" data-tooltip="Shower"
-									style="color: #0d0d0d;"><i class="material-icons invert">invert_colors</i></a>
+								<a class="tooltipped" data-position="icon" data-tooltip="Shower"><img
+									class="invert" style="max-width: 10%; margin-top:-1.5rem"
+									src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
 							</c:if>
 
 							<c:if test="${room.parking == true}">
@@ -134,8 +141,9 @@ b {
 
 							<c:if test="${room.balcony == true}">
 								<a class="tooltipped" data-position="icon"
-									data-tooltip="Balcony" style="color: #0d0d0d;"><i
-									class="material-icons invert">account_balance</i></a>
+									data-tooltip="Balcony"><img class="invert"
+									style="max-width: 10%; margin-top:-1.5rem"
+									src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
 							</c:if>
 						</div>
 					</div>
@@ -180,7 +188,51 @@ b {
 
 </c:forEach>
 
+<!-- PAGINATOR 3000 -->
+<div id="paginationdemo" class="row" style="margin-bottom: 0;">
+	<div id="demo5" class="col s4 offset-s5" style="margin-top: 10px;"></div>
+</div>
+<!-- END OF PAGINATOR 3000 -->
 
+
+<!-- IMPORTED -->
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+
+<!-- END OF IMPORTED -->
+
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
+
+<script type="text/javascript">
+		var pagesCount = '${countOfPages}';
+		var currentPage = '${currentPage}';
+		
+		if (pagesCount > 1) {
+			jQuery(function() {
+				jQuery("#demo5").paginate({
+					count : pagesCount,
+					start : currentPage,
+					display : 5,
+					border : false,
+					//		border_color			: '#fff',
+					text_color : '#fff',
+					background_color : '#26A69A',
+					//		border_hover_color		: '#ccc',
+					text_hover_color : '#000',
+					background_hover_color : '#CFCFCF',
+					images : true,
+					mouse : 'press',
+					onChange : function(page) {
+						findPage(window.location.href,page);
+					}
+				});
+			});
+		}
+ 	</script> 
 
 
 <script

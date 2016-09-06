@@ -1,7 +1,6 @@
 package com.epam.task.servlets;
 
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -28,29 +27,37 @@ public class HomeServlet extends HttpServlet {
 		
 		String pageString = request.getParameter("page");
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
-	
-		List<Hotel> hotels = hotelService.getAllHotelsByPage(page);
+
+		int countOfHotels = new HotelService().getAllHotels().size();
 		
+		int countOfPages = (int) Math.ceil(countOfHotels / 3.0);
+		if (page > countOfPages) {
+			page--;
+		}
+
+		String compareBy = request.getParameter("compareBy");
+		List<Hotel> hotels = hotelService.getAllHotelsByPage(page, compareBy);
+
+		request.setAttribute("countOfHotels", countOfHotels);
+		request.setAttribute("countOfPages", countOfPages);
 		request.setAttribute("hotels", hotels);
+		request.setAttribute("currentPage", page);
 		
 		RoomService roomService = new RoomService();
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
-		} else {			
-			HttpSession session = request.getSession(true);
-			Enumeration<String> names = session.getAttributeNames();
-			while(names.hasMoreElements()) {
-				String name = names.nextElement();
-				if(!name.equals("user")) {
-					session.removeAttribute(name);
-				}
-			}
+		} else {	
+			HttpSession session = request.getSession(true);		
+//			Enumeration<String> names = session.getAttributeNames();
+//			while(names.hasMoreElements()) {
+//				String name = names.nextElement();
+//				if(!name.equals("user")) {
+//					session.removeAttribute(name);
+//				}
+//			}
 			session.setAttribute("minPrice", roomService.getMinPrice());
 			session.setAttribute("maxPrice", roomService.getMaxPrice());
-			int countOfHotels = new HotelService().getAllHotels().size();
-			session.setAttribute("countOfHotels", countOfHotels);
-			session.setAttribute("countOfPages", Math.ceil(countOfHotels / 3.0));
 			request.getRequestDispatcher("pages/index.jsp").forward(request, response);
 		}
 	}

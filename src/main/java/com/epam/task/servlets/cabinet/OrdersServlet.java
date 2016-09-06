@@ -37,9 +37,10 @@ public class OrdersServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		int userId = ((User) session.getAttribute("user")).getId();
 		
-		List<OrderDto> allOrders = OrderDto.listConverter(new OrderService().getOrdersByUser(userId));
 		List<OrderDto> activeOrders = OrderDto.listConverter(new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.ACTIVE));
 		List<OrderDto> finishedOrders = OrderDto.listConverter(new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.FINISHED));
+		List<OrderDto> allOrders = OrderDto.listConverter(new OrderService().getOrdersByUserAndStatus(userId, OrderStatus.ACTIVE));
+		allOrders.addAll(finishedOrders);
 		
 		request.setAttribute("allOrders", allOrders);
 		request.setAttribute("activeOrders", activeOrders);

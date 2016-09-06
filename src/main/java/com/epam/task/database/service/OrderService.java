@@ -36,8 +36,16 @@ public class OrderService {
 		return daoManager.executeAndClose(() -> daoManager.getOrderDao().getOrdersByUser(userId));
 	}
 
+	public Order getOrderByUserAndId(int userId, int orderId) {
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().getOrderByUserAndId(userId, orderId));
+	}
+
 	public List<Order> getOrdersByUserAndStatus(int userId, OrderStatus status) {
 		return daoManager.executeAndClose(() -> daoManager.getOrderDao().getOrdersByUserAndStatus(userId, status));
+	}
+
+	public List<Order> getOrdersByUserAndStatusAndPage(int userId, OrderStatus status, int page, String compareBy) {
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().getOrdersByUserAndStatusAndPage(userId, status, page, compareBy));
 	}
 
 	public List<Order> getOrdersByRoom(int roomId) {
@@ -67,7 +75,7 @@ public class OrderService {
 
 		System.out.println("Insert");
 		Order newPhoto = new Order(8, 2, 1, new Timestamp(7000000), new Timestamp(8070000), "ACTIVE",
-				new Timestamp(6070000), 2000, "");
+				new Timestamp(6070000), 2000, "", "");
 		service.insertOrder(newPhoto);
 		System.out.println("All");
 		photos = service.getAllOrders();
@@ -112,11 +120,11 @@ public class OrderService {
 		return daoManager.executeAndClose(() -> daoManager.getOrderDao().removeAllOrdersByStatus(userId, order));
 	}
 
-	public int bookAllByUser(int userId) {
-		return daoManager.executeAndClose(() -> daoManager.getOrderDao().bookAllByUser(userId));
+	public int bookAllByUser(int userId, String cardNumber, String comment) {
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().bookAllByUser(userId, cardNumber, comment));
 	}
 
-	public int bookOrder(int orderId) {
-		return daoManager.executeAndClose(() -> daoManager.getOrderDao().bookOrder(orderId));
+	public int bookOrder(int orderId, String cardNumber, String comment) {
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().bookOrder(orderId, cardNumber, comment));
 	}
 }

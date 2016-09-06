@@ -171,11 +171,14 @@ function endDateIsValid() {
 	}
 }
 
-function findPage(pageNumber) {
-	$.get('home', {
+function findPage(url,pageNumber) {	
+	var path = url.substring(url.lastIndexOf("/") + 1,url.lenght);	
+	var compare = $('#compare').val();
+	$.get(path, {
 		flag : 'true',
-		page : pageNumber
-	}, function(hotels) {
-		$('#switchContent').html(hotels);
+		page : pageNumber,
+		compareBy : compare
+	}, function(orders) {
+		$('#switchContent').html(orders);
 	});
 }

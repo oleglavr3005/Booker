@@ -18,7 +18,11 @@ public class RemoveFromCartServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int orderId = Integer.parseInt(request.getParameter("orderId"));
+		String orderIdString = request.getParameter("orderId");
+		if(orderIdString == null) {
+			return;
+		}
+		int orderId = Integer.parseInt(orderIdString);
 		int removed = new OrderService().removeOrder(orderId);
 
 		response.getWriter().write(removed > 0 ? "true" : "false");

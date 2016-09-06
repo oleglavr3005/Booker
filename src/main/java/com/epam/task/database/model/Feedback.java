@@ -9,13 +9,13 @@ public class Feedback {
 	private int id;
 	
 	@DataBaseField(fieldName = "user_id")
-	private Integer userId;
+	private int userId;
 	
 	@DataBaseField(fieldName = "hotel_id")
-	private Integer hotelId;
+	private int hotelId;
 	
 	@DataBaseField(fieldName = "rating")
-	private Integer rating;
+	private int rating;
 		
 	@DataBaseField(fieldName = "comment")
 	private String comment;
@@ -25,48 +25,60 @@ public class Feedback {
 	
 	@DataBaseField(fieldName = "date")
 	private Timestamp date;
+	
+	@DataBaseField(fieldName = "first_name")
+	private String firstName;
+	
+	@DataBaseField(fieldName = "last_name")
+	private String lastName;
+	
+	@DataBaseField(fieldName = "img")
+	private String img;
 
-	public Feedback(int feedbackId, Integer userId, Integer hotelId, Integer rating, String comment, String title,
-			Timestamp date) {
+	public Feedback(int id, int userId, int hotelId, int rating, String comment, String title, Timestamp date,
+			String firstName, String lastName, String img) {
 		super();
-		this.id = feedbackId;
+		this.id = id;
 		this.userId = userId;
 		this.hotelId = hotelId;
 		this.rating = rating;
 		this.comment = comment;
 		this.title = title;
 		this.date = date;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.img = img;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int feedbackId) {
-		this.id = feedbackId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public Integer getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
-	public Integer getHotelId() {
+	public int getHotelId() {
 		return hotelId;
 	}
 
-	public void setHotelId(Integer hotelId) {
+	public void setHotelId(int hotelId) {
 		this.hotelId = hotelId;
 	}
 
-	public Integer getRating() {
+	public int getRating() {
 		return rating;
 	}
 
-	public void setRating(Integer rating) {
+	public void setRating(int rating) {
 		this.rating = rating;
 	}
 
@@ -92,5 +104,36 @@ public class Feedback {
 
 	public void setDate(Timestamp date) {
 		this.date = date;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	@Override
+	public String toString() {
+		return "Feedback [id=" + id + ", userId=" + userId + ", hotelId=" + hotelId + ", rating=" + rating
+				+ ", comment=" + comment + ", title=" + title + ", date=" + date + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", img=" + img + "]";
 	}
 }

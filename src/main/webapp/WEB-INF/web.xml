@@ -13,6 +13,13 @@
     <param-name>controllers</param-name>
     <param-value>com.epam.task.controller</param-value>
   </context-param>
+  <context-param>
+    <description>Location for images</description>
+    <param-name>images-folder</param-name>
+    <param-value>
+			C:/epam/images/
+		</param-value>
+  </context-param>
   <session-config>
     <session-timeout>-1</session-timeout>
   </session-config>

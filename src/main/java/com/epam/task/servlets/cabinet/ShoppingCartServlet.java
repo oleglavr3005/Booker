@@ -15,24 +15,14 @@ import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.service.OrderService;
 
-/**
- * Servlet implementation class ShoppingCartServlet
- */
 @WebServlet("/cabinet/cart")
 public class ShoppingCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public ShoppingCartServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		int userId = ((User) session.getAttribute("user")).getId();
@@ -46,18 +36,31 @@ public class ShoppingCartServlet extends HttpServlet {
 			}
 		}
 		
-		request.setAttribute("orders", orders);
+		String pageString = request.getParameter("page");
+		int page = pageString == null ? 1 : Integer.parseInt(pageString);
+		int countOfPages = (int) Math.ceil(orders.size() / 3.0);
+		if (page > countOfPages) {
+			page--;
+		}
+
+		String compareBy = request.getParameter("compareBy"); //compareByDateAsc compareByDateDesc compareByPriceAsc compareByPriceDesc
+		List<OrderDto> ordersByPage = OrderDto.listConverter(new OrderService().getOrdersByUserAndStatusAndPage(userId, OrderStatus.ORDER, page, compareBy));
+		
+		request.setAttribute("orders", ordersByPage);
 		request.setAttribute("summary", summary);
 		request.setAttribute("countOfOrders", orders.size());
+		request.setAttribute("countOfPages", countOfPages);
+		request.setAttribute("currentPage", page);
 		
-		request.getRequestDispatcher("/pages/user/shopping_cart.jsp").forward(request, response);
+		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
+			request.getRequestDispatcher("/pages/orderCard.jsp").forward(request, response);
+		} else {	
+			request.getRequestDispatcher("/pages/user/shopping_cart.jsp").forward(request, response);
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

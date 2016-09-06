@@ -21,6 +21,22 @@ public class UserService {
 	public List<User> getAllUsers() {
 		return daoManager.executeAndClose(() -> daoManager.getUserDao().getAllUsers());
 	}
+
+	public List<User> getAllUsersWithEmailNotification() {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getAllUsersWithEmailNotification());
+	}
+
+	public List<User> getAllUsersWithEmailNotificationInHotel(int hotelId) {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getAllUsersWithEmailNotificationInHotel(hotelId));
+	}
+
+	public List<User> getAllUsersWithPhoneNotification() {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getAllUsersWithPhoneNotification());
+	}
+
+	public List<User> getAllUsersWithPhoneNotificationInHotel(int hotelId) {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getAllUsersWithPhoneNotificationInHotel(hotelId));
+	}
 	
 	public User getUserById(int id) {
 		return daoManager.executeAndClose(() -> daoManager.getUserDao().getUserById(id));
@@ -44,7 +60,7 @@ public class UserService {
 	}
 
 	private void sendConfirmation(User user) {
-		String subject = "ϳ����������� ���������";
+		String subject = "Mail Confirmation";
 		String link = "http://localhost:8080/booker/signup_confirmation?token=" + user.getConfirmCode();
 		String text = "<body style='background-color: #fff'>" +
 
@@ -58,7 +74,7 @@ public class UserService {
 	}
 
 	public void sendPass(User user, String pass) {
-		String subject = "³��������� ������";
+		String subject = "Password Restore";
 		String text = "<body style='background-color: #fff'>" +
 		
 				"<div style='width: 100%; height:20px; background-color: #00000 position: relative color:white;'>Mail Confirmation"

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="com.i18n.text" />
 
@@ -90,7 +91,7 @@ img.logo {
 <!-- =================================================================== -->
 
 <nav class="navbar navbar-default navbar-static-top"
-	style="margin-bottom: 0px; background: #0d0d0d;">
+	style="margin-bottom: 0px; background: #000033;">
 	<div class="container-fluid">
 		<div class="navbar-header"
 			style="margin-left: 30px; margin-right: 50px;">
@@ -107,26 +108,14 @@ img.logo {
 
 				<c:choose>
 					<c:when test="${user != null}">
-						<!-- 							<img id="imageavatar" src="http://www.desicomments.com/dc3/09/336028/336028.png" alt="img"  -->
-						<!-- 								style="margin-top: 5px; height: 50px; width: 50px; border-radius: 25px;" -->
-						<!-- 								class="imageavatar dropdown-button" data-activates='dropdown1'  -->
-						<!-- 								data-beloworigin="true" data-hover="true"/> -->
-						<!-- 								<ul id='dropdown1' class='dropdown-content'> -->
-						<!-- 								    <li><a href="#!">one</a></li> -->
-						<!-- 								    <li><a href="#!">two</a></li> -->
-						<!-- 								    <li class="divider"></li> -->
-						<!-- 								    <li><a href="#!">three</a></li> -->
-						<!-- 								 </ul> -->
 
-
-<!-- 						<div class="container"> -->
-
-							<div class="dropdown">
-							<span style="font-size:1.3rem; margin-right:0.5rem">${user.firstName} ${user.lastName}</span>
+							<div class="dropdown" style="padding-top:0.7rem;">
+							<span id="userNameSpan" style="font-size:1.3rem; margin-right:0.5rem; margin-top:20px">${user.firstName} ${user.lastName}</span>
 								<img id="imageavatar"
-									src="http://www.desicomments.com/dc3/09/336028/336028.png"
+<%-- 									src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}" --%>
+									src="<i:urlToImage url="${user.image}" />"
 									alt="img"
-									style="margin: 5px 0px 15px 0px; height: 50px; width: 50px; border-radius: 25px;"
+									style="height: 50px; width: 50px; border-radius: 25px; margin-top:-0.5rem"
 									class="imageavatar dropdown-toggle" data-toggle='dropdown'
 									 />
 								<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">

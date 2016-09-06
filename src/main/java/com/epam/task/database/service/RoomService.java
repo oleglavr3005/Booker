@@ -28,14 +28,14 @@ public class RoomService {
 			int minPrice, int maxPrice, int people,
 			boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, 
 			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit,
-			Timestamp startDate, Timestamp endDate) {
+			Timestamp startDate, Timestamp endDate, String compareBy) {
 		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllSuitableRoomsForHotel(id, page, 
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull,
 				minPrice, maxPrice, people,
 				hasWiFi, hasShower, hasParking, hasCondition, 
 				hasPool, hasGym, hasBalcony, noDeposit,
-				startDate, endDate));
+				startDate, endDate, compareBy));
 	}
 
 	public List<Room> getAllRoomsForHotel(int id, int page) {
@@ -141,6 +141,20 @@ public class RoomService {
 
 	public boolean isRoomAvailable(int roomId, Timestamp startDate, Timestamp endDate) {
 		return daoManager.executeAndClose(() -> daoManager.getRoomDao().isRoomAvailable(roomId, startDate, endDate));
+	}
+
+	public int getSuitableRoomsNumber(int id, boolean typeStandart, boolean typeLux, boolean typeDelux,
+			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull, int minPrice, int maxPrice,
+			int people, boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, boolean hasPool,
+			boolean hasGym, boolean hasBalcony, boolean noDeposit, Timestamp startDate, Timestamp endDate) {
+		
+		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getSuitableRoomsNumber(id,
+				typeStandart, typeLux, typeDelux, 
+				foodNone, foodBreakfast, foodTwice, foodFull,
+				minPrice, maxPrice, people,
+				hasWiFi, hasShower, hasParking, hasCondition, 
+				hasPool, hasGym, hasBalcony, noDeposit,
+				startDate, endDate));
 	}
 
 }
