@@ -298,6 +298,37 @@ div #sidebar-wrapper {
 		<!-- MAP End======================================================================= -->
 	</div>
 	<div class="container">
+		<div class="row">
+			<div class="col s3">
+				<h6>
+					<c:if test="${countOfRooms > 0 }">
+						<fmt:message key="card.header" />
+						<span id="periodicals_number_for_all_users">${countOfRooms}</span>
+					</c:if>
+					<c:if test="${countOfRooms <= 0 }">
+						<fmt:message key="card.no.hotels" />
+					</c:if>
+				</h6>
+			</div>
+			<div class="col s4 offset-s5">
+				<c:if test="${countOfRooms > 0 }">
+					<select id="compare" class="chosen-select optionstyle"
+						onchange="findPage(window.location.href,1)">price
+						<option class="optionstyle" value="compareByPriceAsc">star
+							asc</option>
+						<option class="optionstyle" value="compareByPriceDesc">price
+							desc</option>
+						<option class="optionstyle" value="compareByPeopleAsc">ppl
+							asc</option>
+						<option class="optionstyle" value="compareByPeopleDesc"
+							selected="selected">ppl desc</option>
+					</select>
+				</c:if>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
 		<div id="switchContent" class="row" style="margin-bottom: 0;">
 			<jsp:include page="roomCard.jsp"></jsp:include>
 		</div>

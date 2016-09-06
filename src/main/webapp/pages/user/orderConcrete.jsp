@@ -286,8 +286,8 @@ div #sidebar-wrapper {
 		</div>
 
 		<div class="row">
-			<div class="col s7 offset-s1" style="border: 1px solid">HUGE AF
-				COMENT ZONE</div>
+<!-- 		here will be labedfor text area, comment ill be editable -->
+			<div class="col s7 offset-s1" style="border: 1px solid">${order.comment}</div>
 			<div class="col s4">
 				<c:if test="${order.status != ACTIVE}">
 					<div class="col s2 offset-s1"
