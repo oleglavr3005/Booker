@@ -152,16 +152,24 @@
 
 
 
+
+
+
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="../foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
 
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
+	
+	
+<!-- 	<script type="text/javascript" -->
+<%-- 		src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script> --%>
+	
+<!-- 	<script -->
+<!-- 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.js"></script> -->
+<!-- 	<script -->
+<!-- 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script> -->
 
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
@@ -188,8 +196,6 @@
 					images : false,
 					mouse : 'press',
 					onChange : function(page) {
-						// 											$('._current','#paginationdemo').removeClass('_current').hide();
-						// 											$('#p'+page).addClass('_current').show();
 						findPage(window.location.href, page);
 					}
 				});

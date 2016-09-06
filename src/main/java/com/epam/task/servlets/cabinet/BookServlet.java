@@ -1,16 +1,25 @@
 package com.epam.task.servlets.cabinet;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.Room;
-import com.epam.task.database.service.HotelService;
+import com.epam.task.database.model.User;
 import com.epam.task.database.service.OrderService;
 import com.epam.task.database.service.RoomService;
+import com.epam.task.util.HotelUtil;
 
 @WebServlet("/book")
 public class BookServlet extends HttpServlet {
@@ -30,13 +39,32 @@ public class BookServlet extends HttpServlet {
 		}
 		OrderService orderService = new OrderService();
 		int orderId = Integer.parseInt(orderIdString);
-		int booked = orderService.bookOrder(orderId, cardNumber, comment);
+		
 		int roomId = orderService.getOrderById(orderId).getRoomId();
 		Room room = new RoomService().getRoomById(roomId);
+		int userId = ((User) request.getSession().getAttribute("user")).getId();
+		Set<Integer> hotelIds = new HashSet<>();
+		hotelIds.add(room.getHotelId());
 		
-		request.setAttribute("recomendedHotels", new HotelService().getRecomendedHotels(room.getHotelId()));
+		List<Hotel> recomendedHotels = HotelUtil.getRecomendedHotelsForUser(hotelIds, userId);
 		
-		response.getWriter().write(booked > 0 ? "true" : "false");
+		int booked = orderService.bookOrder(orderId, cardNumber, comment);
+		
+//		request.setAttribute("recomendedHotels", recomendedHotels);
+//		request.setAttribute("recomendedHotelsSize", recomendedHotels.size());
+
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		try {
+			JSONObject json = new JSONObject();
+			json.put("hotels", recomendedHotels);
+			json.put("countOfHotels", recomendedHotels.size());
+			json.put("booked", booked > 0 ? "true" : "false");
+			response.getWriter().print(json.toString());
+			response.getWriter().flush();
+		} catch (JSONException e) {
+			response.getWriter().write("false");
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
