@@ -10,15 +10,14 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.epam.task.database.model.User;
-import com.epam.task.database.model.enums.UserType;
+import com.epam.task.database.model.Hotel;
+import com.epam.task.database.service.HotelService;
 
-@WebFilter({ "/add_hotel", "/edit_hotel" })
-public class ManagerFilter implements Filter {
+@WebFilter("/hotel/*")
+public class UserHotelFilter implements Filter {
 
-    public ManagerFilter() {
+    public UserHotelFilter() {
     }
 
 	public void destroy() {
@@ -26,13 +25,19 @@ public class ManagerFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		HttpSession httpSession = httpRequest.getSession(true);
+
+		int hotelId;
+		try {
+			hotelId = Integer.parseInt(httpRequest.getPathInfo().substring(1));
+		} catch (Exception e) {
+			((HttpServletResponse) response).sendError(404);
+			return;
+		}
 		
-		User user = (User) httpSession.getAttribute("user");
-		
-		if(user != null && user.getType() == UserType.MANAGER) {
+		Hotel hotel = new HotelService().getHotelById(hotelId);
+		if(hotel != null && hotel.isDeleted() == false) {
 			chain.doFilter(request, response);
-		} else {		//throw the unexpected visitor on the error page
+		} else {
 			((HttpServletResponse) response).sendError(404);
 		}
 	}
