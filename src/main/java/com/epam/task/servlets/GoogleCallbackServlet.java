@@ -107,7 +107,7 @@ public class GoogleCallbackServlet extends HttpServlet {
 		String img = jsonNode.get("image").get("url").asText().split("\\?sz=")[0]; // Little fix
 		// return idNode.asText();
 		User user = new User();
-		user.setSocialNetwork("FB"); // change to G+
+		user.setSocialNetwork("GP"); // change to G+
 		user.setSocialNetworkId(userId); // set GoogleId
 		user.setLastName(surname);
 		user.setFirstName(name);
@@ -121,7 +121,7 @@ public class GoogleCallbackServlet extends HttpServlet {
 	}
 	private void saveGooglePhoto(User socUser)  {
 		String url = socUser.getImage();
-		 String SAVE_DIR = "C://epam//images";
+		 String SAVE_DIR = getServletContext().getInitParameter("images-folder");
 //		  String appPath = getServletContext().getRealPath("");
 //		  String savePath = appPath + SAVE_DIR;
 		  File fileSaveDir = new File(SAVE_DIR);
