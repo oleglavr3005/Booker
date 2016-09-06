@@ -128,6 +128,14 @@ img.logo {
 									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/cabinet/settings" style="color: #26A69A">
 										<i class="fa fa-cog" aria-hidden="true"></i> Settings</a></li>
+									
+									<c:if test="${user.type == 'MANAGER'}">			
+										<li role="presentation" class="divider" style="border-color:lightgrey"></li>						
+										<li role="presentation"><a role="menuitem" tabindex="-1"
+										href="${pageContext.servletContext.contextPath}/cabinet/my_hotels" style="color: #26A69A">
+										<i class="fa fa-building" aria-hidden="true"></i> My hotels</a></li>
+									</c:if>
+									
 									<li role="presentation" class="divider" style="border-color:lightgrey"></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/log-out" style="color: #26A69A">
