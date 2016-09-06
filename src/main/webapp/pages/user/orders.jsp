@@ -37,9 +37,15 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
 	rel="stylesheet">
-
-<link rel="stylesheet" type="text/css" media="all"
+<!-- <link rel="stylesheet" type="text/css" media="all"
 	href="${pageContext.servletContext.contextPath}/resources/css/tablesorter/styles.css">
+	 -->
+
+	
+	
+<link
+	href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"
+	rel="stylesheet">
 
 <style>
 .btn {
@@ -215,11 +221,11 @@ div #sidebar-wrapper {
 								</c:forEach>
 							</tbody>
 						</table>
-						<div class="pager" id="pager1">
+						<!--<div class="pager" id="pager1">
 							<form>
 								<img src="first.png" class="first" /> <img src="prev.png"
 									class="prev" /> <span class="pagedisplay"></span>
-								<!-- this can be any element, including an input -->
+								 this can be any element, including an input
 								<img src="next.png" class="next" /> <img src="last.png"
 									class="last" /> <select class="pagesize">
 									<option value="10">10</option>
@@ -229,7 +235,7 @@ div #sidebar-wrapper {
 									<option value="all">All Rows</option>
 								</select>
 							</form>
-						</div>
+						</div> -->
 					</c:when>
 					<c:otherwise>
 						<h5 style="color: red; margin-top: 55px; margin-left: 250px;">
@@ -291,11 +297,11 @@ div #sidebar-wrapper {
 								</c:forEach>
 							</tbody>
 						</table>
-						<div class="pager" id="pager2">
+					<!-- 	<div class="pager" id="pager2">
 							<form>
 								<img src="first.png" class="first" /> <img src="prev.png"
 									class="prev" /> <span class="pagedisplay"></span>
-								<!-- this can be any element, including an input -->
+								<!-- this can be any element, including an input 
 								<img src="next.png" class="next" /> <img src="last.png"
 									class="last" /> <select class="pagesize">
 									<option value="10">10</option>
@@ -305,7 +311,7 @@ div #sidebar-wrapper {
 									<option value="all">All Rows</option>
 								</select>
 							</form>
-						</div>
+						</div> -->
 					</c:when>
 					<c:otherwise>
 						<h5 style="color: red; margin-top: 55px; margin-left: 250px;">
@@ -394,11 +400,11 @@ div #sidebar-wrapper {
 								</c:forEach>
 							</tbody>
 						</table>
-						<div class="pager" id="pager3">
+				<!-- 		<div class="pager" id="pager3">
 							<form>
 								<img src="first.png" class="first" /> <img src="prev.png"
 									class="prev" /> <span class="pagedisplay"></span>
-								<!-- this can be any element, including an input -->
+								<!-- this can be any element, including an input 
 								<img src="next.png" class="next" /> <img src="last.png"
 									class="last" /> <select class="pagesize">
 									<option value="10">10</option>
@@ -408,7 +414,7 @@ div #sidebar-wrapper {
 									<option value="all">All Rows</option>
 								</select>
 							</form>
-						</div>
+						</div> -->
 					</c:when>
 					<c:otherwise>
 						<h5 style="color: red; margin-top: 55px; margin-left: 250px;">
@@ -425,7 +431,7 @@ div #sidebar-wrapper {
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="../foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
-
+<!--  
 	<script type="text/javascript">
 $(document).ready(function() 
 	    { 	
@@ -460,12 +466,27 @@ $(document).ready(function()
 ); 
 </script>
 
-
-
+ --><script type="text/javascript"
+		src="//code.jquery.com/jquery-1.12.3.js"></script>
 	<script type="text/javascript"
+		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#tab1').DataTable();
+	} );
+	$(document).ready(function() {
+	    $('#tab2').DataTable();
+	} );
+	$(document).ready(function() {
+	    $('#tab3').DataTable();
+	} );
+	</script>
+ 
+
+	<!--  <script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/tablesorter/jquery.tablesorter.min.js"></script>
+		src="${pageContext.servletContext.contextPath}/resources/js/tablesorter/jquery.tablesorter.min.js"></script>-->
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/order/removeOrder.js"></script>
 
