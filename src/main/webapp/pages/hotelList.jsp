@@ -36,6 +36,8 @@
 <link
 	href="${pageContext.servletContext.contextPath}/resources/css/star-rating/star-rating.css"
 	rel="stylesheet">
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/jPage/style.css">
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
 	rel="stylesheet">
@@ -157,10 +159,11 @@
 								/ 5 |</span>
 							<script>
 								function rate() {
-									
-									 var count = document.getElementById("rate_span");
-									 count.innerHTML = $('#rating').val();
-					
+
+									var count = document
+											.getElementById("rate_span");
+									count.innerHTML = $('#rating').val();
+
 								}
 							</script>
 
@@ -243,45 +246,49 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="container">
-			<div class="row">
-				<div class="col s3">
-					<h6>
-						<c:if test="${countOfRooms > 0 }">
-							<fmt:message key="card.header" />
-							<span id="periodicals_number_for_all_users">${countOfRooms}</span>
-						</c:if>
-						<c:if test="${countOfRooms <= 0 }">
-							<fmt:message key="card.no.hotels" />
-						</c:if>
-					</h6>
-				</div>
-				<div class="col s4 offset-s5">
-					<c:if test="${countOfRooms > 0 }">
-						<select id="compare" class="chosen-select optionstyle"
-							onchange="findPage(window.location.href,1)">price
-							<option class="optionstyle" value="compareByPriceAsc">star
-								asc</option>
-							<option class="optionstyle" value="compareByPriceDesc">price
-								desc</option>
-							<option class="optionstyle" value="compareByPeopleAsc">ppl
-								asc</option>
-							<option class="optionstyle" value="compareByPeopleDesc"
-								selected="selected">ppl desc</option>
-						</select>
+	</div>
+	
+	
+	<div class="container">
+		<div class="row">
+			<div class="col s3">
+				<h6>
+					<c:if test="${countOfHotels > 0 }">
+						<fmt:message key="card.header" />
+						<span id="periodicals_number_for_all_users">${countOfHotels}</span>
 					</c:if>
-				</div>
+					<c:if test="${countOfHotels <= 0 }">
+						<fmt:message key="card.no.hotels" />
+					</c:if>
+				</h6>
+			</div>
+			<div class="col s4 offset-s5">
+				<c:if test="${countOfHotels > 0 }">
+					<select id="compare" class="chosen-select optionstyle"
+						onchange="findPage(window.location.href,1)">
+						<option class="optionstyle" value="compareByStarsAsc">star
+							asc</option>
+						<option class="optionstyle" value="compareByStarsDesc">star
+							desc</option>
+						<option class="optionstyle" value="compareByRatingAsc">rating
+							asc</option>
+						<option class="optionstyle" value="compareByRatingDesc"
+							selected="selected">rating desc</option>
+					</select>
+				</c:if>
 			</div>
 		</div>
 
-		<div class="container">
-			<div id="switchContent" class="row" style="margin-bottom: 0;">
-				<jsp:include page="card.jsp"></jsp:include>
-			</div>
+
+		<!-- SWITCH CONTENT -->
+		<div id="switchContent" class="row">
+			<jsp:include page="card.jsp"></jsp:include>
 		</div>
+		<!-- END OF SWITCH CONTENT -->
+
 	</div>
-	</div>
+	
+	
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
@@ -290,6 +297,8 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/star-rating/star-rating.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
 
 </body>
 
