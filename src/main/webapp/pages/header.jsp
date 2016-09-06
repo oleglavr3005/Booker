@@ -6,6 +6,9 @@
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="com.i18n.text" />
 
+<script>
+	jQuery.noConflict();
+</script>
 <!-- Bootstrap style -->
 <link id="callCss" rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/themes/bootshop/bootstrap.min.css"
@@ -108,7 +111,7 @@ img.logo {
 
 				<c:choose>
 					<c:when test="${user != null}">
-
+						<script>$(document).ready(function() {jQuery.noConflict();});</script>
 							<div class="dropdown" style="padding-top:0.7rem;">
 							<span id="userNameSpan" style="font-size:1.3rem; margin-right:0.5rem; margin-top:20px">${user.firstName} ${user.lastName}</span>
 								<img id="imageavatar"
