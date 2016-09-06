@@ -256,46 +256,6 @@
 	</div>
 
 
-	<div class="container">
-		<div class="row">
-			<div class="col s3">
-				<h6>
-					<c:if test="${countOfHotels > 0 }">
-						<fmt:message key="card.header" />
-						<span id="periodicals_number_for_all_users">${countOfHotels}</span>
-					</c:if>
-					<c:if test="${countOfHotels <= 0 }">
-						<fmt:message key="card.no.hotels" />
-					</c:if>
-				</h6>
-			</div>
-			<div class="col s4 offset-s5">
-				<c:if test="${countOfHotels > 0 }">
-					<select id="compare" class="chosen-select optionstyle"
-						onchange="findPage(window.location.href,1)">
-						<option class="optionstyle" value="compareByStarsAsc">star
-							asc</option>
-						<option class="optionstyle" value="compareByStarsDesc">star
-							desc</option>
-						<option class="optionstyle" value="compareByRatingAsc">rating
-							asc</option>
-						<option class="optionstyle" value="compareByRatingDesc"
-							selected="selected">rating desc</option>
-					</select>
-				</c:if>
-			</div>
-		</div>
-
-
-		<!-- SWITCH CONTENT -->
-		<div id="switchContent" class="row">
-			<jsp:include page="../card.jsp"></jsp:include>
-		</div>
-		<!-- END OF SWITCH CONTENT -->
-
-	</div>
-
-
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="../foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->

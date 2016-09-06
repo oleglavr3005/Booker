@@ -7,18 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.epam.task.database.model.Conveniences;
-import com.epam.task.database.model.Hotel;
+import com.epam.task.database.model.Room;
 import com.epam.task.database.model.User;
-import com.epam.task.database.service.ConveniencesService;
-import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.RoomService;
 
-@WebServlet("/cabinet/my_hotels/*")
-public class ManagerHotelServlet extends HttpServlet {
+@WebServlet("/cabinet/room/*" )
+public class ManagerRoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-  
-    public ManagerHotelServlet() {
+
+    public ManagerRoomServlet() {
         super();
     }
 
@@ -32,21 +29,10 @@ public class ManagerHotelServlet extends HttpServlet {
 			return;
 		}
 		
-		Hotel hotel = new HotelService().getHotelById(id);
-		Conveniences conveniences = null;
-		if(hotel != null && hotel.getManagerId() == manager.getId() ){
-			conveniences = new ConveniencesService().getConveniencesForHotel(hotel.getId());
-		} else {
-			response.sendError(HttpServletResponse.SC_NOT_FOUND);
-			return;
-		}
-
-		request.setAttribute("conveniences", conveniences);
-		request.setAttribute("hotel", hotel);
-		request.setAttribute("rooms", new RoomService().getAllRoomsForHotel(id));
+		Room room = new RoomService().getRoomById(id);
 		
-		request.getRequestDispatcher("/pages/manager/hotelEdit.jsp").forward(request, response);
-
+		request.setAttribute("room", room);
+		request.getRequestDispatcher("/pages/manager/roomConcret.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

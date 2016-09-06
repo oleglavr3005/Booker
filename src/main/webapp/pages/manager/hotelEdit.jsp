@@ -21,6 +21,9 @@
 <link
 	href="${pageContext.servletContext.contextPath}/resources/css/rangeSlider/rangeStyle.css"
 	rel="stylesheet">
+<link
+	href="${pageContext.servletContext.contextPath}/resources/css/star-rating/star-rating.css"
+	rel="stylesheet">
 
 <link
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/bootstrap.min.css"
@@ -98,6 +101,154 @@ div #sidebar-wrapper {
 	<jsp:include page="../header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 
+	<div class="container" style="margin-top: 20px">
+
+		<div class="row">
+			<div class="col s3">
+				<!-- 					PHOTO -->
+				<a href="#!"><img id="avatarImg"
+					style="height: 100px; padding: 10px; width: 110px;"
+					<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
+								src="<i:urlToImage url="${hotel.photos }" />">
+				</a>
+				<!-- 					END OF PHOTO -->
+				<!-- 				INPUT -->
+				<%-- 				<input style="margin-top: 60px" type="file" id="avatarInput" --%>
+				<%-- 					onchange="showPhoto()" accept="image/*" /> --%>
+				<!-- 				END OF INPUT -->
+
+				<a class="waves-effect waves-light btn" id="create_button"
+					onclick="updateHotel()"
+					style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>UPDATE</span></a>
+				<p id="create_error" style="color: red"></p>
+
+
+
+			</div>
+
+
+			<div class="col s9">
+				<div class="container-fluid">
+
+					<div class="row">
+						<div class="col s6">
+
+							<!-- 						NAME -->
+
+							<div class="input-field">
+								<input id="name" type="text" class="validate" length="45" value="${hotel.name}"
+									placeholder="Name of Hotel"> <label id="nameLbl"
+									data-error="${fmtName}" for="name"><fmt:message
+										key="admin.edit.name" /></label>
+							</div>
+
+							<!-- 							END OF NAME -->
+
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col s7">
+
+							<!-- 						STARS -->
+							<input id="rating" onchange="rate()" type="number"  value="${hotel.stars}"
+								class="rating" min=0 max=5 step=1 data-size="xs" data-stars="5">
+							<span
+								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><fmt:message
+									key="manager.hotel.star" />STAR : <span id="rate_span">0</span>
+								/ 5 |</span>
+							<script>
+								function rate() {
+
+									var count = document
+											.getElementById("rate_span");
+									count.innerHTML = $('#rating').val();
+
+								}
+							</script>
+
+							<!-- 							END OF STARS -->
+
+						</div>
+					</div>
+
+					<div class="row">
+
+						<div class="col s4">
+
+							<!-- 						CITY -->
+
+							<div class="input-field">
+								<input id="city" type="text" class="validate" length="45"
+									placeholder="Name of city" value="${hotel.city}"> <label id="cityLbl"
+									data-error="${fmtName}" for="city"><fmt:message
+										key="admin.edit.city" /></label>
+							</div>
+
+							<!-- 							END OF CITY -->
+
+						</div>
+
+						<div class="col s4">
+
+							<!-- 						STREET -->
+
+							<div class="input-field">
+								<input id="street" type="text" class="validate" length="45"
+									placeholder="Name of street" value="${hotel.street}"> <label id="streetLbl"
+									data-error="${fmtName}" for="street"><fmt:message
+										key="admin.edit.street" /></label>
+							</div>
+
+							<!-- 							END OF STREET -->
+
+						</div>
+
+
+						<div class="col s4">
+
+							<!-- 						PHONE -->
+
+							<div class="input-field">
+								<input id="phone" type="text" class="validate" length="45"
+									placeholder="Name of phone" value="${hotel.phoneNumber}"> <label id="phoneLbl"
+									data-error="${fmtName}" for="phone"><fmt:message
+										key="admin.edit.phone" /></label>
+							</div>
+
+							<!-- 							END OF PHONE -->
+
+						</div>
+
+
+
+
+					</div>
+
+					<div class="row">
+
+						<div class="col s12">
+
+							<!-- 						DESC -->
+
+							<div class="input-field">
+								<textarea placeholder="Desc" id="desc"
+									class="materialize-textarea" class="validate" length="999">${hotel.desc}</textarea>
+								<label id="descLbl" data-error="${fmtName}" for="desc"><fmt:message
+										key="admin.edit.desc" /></label>
+							</div>
+
+							<!-- 							END OF DESC -->
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 
 	<div class="container">
 		<div class="row">
@@ -162,14 +313,14 @@ div #sidebar-wrapper {
 												style="max-width: 15%; margin-top: -1rem"
 												src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
 										</c:if></td>
-									<td><a class="tooltipped" data-position="icon" data-tooltip="Food"
-								style="color: #0d0d0d;"><i
-								class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span></td>
-									<td> <c:if test="${room.percentage >= 0}">
+									<td><a class="tooltipped" data-position="icon"
+										data-tooltip="Food" style="color: #0d0d0d;"><i
+											class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span></td>
+									<td><c:if test="${room.percentage >= 0}">
 											<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-										</c:if>
-										<c:if test="${room.percentage < 0}">
-											<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+										</c:if> <c:if test="${room.percentage < 0}">
+											<span class="glyphicon glyphicon-remove-sign"
+												aria-hidden="true"></span>
 										</c:if></td>
 									<td><c:out value="${room.price }"></c:out></td>
 								</tr>
@@ -191,6 +342,12 @@ div #sidebar-wrapper {
 		src="  http://demo.geekslabs.com/materialize/v2.1/layout03/js/materialize.js"></script>
 	<script
 		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/star-rating/star-rating.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
+		
 	<script type="text/javascript">
 		(function(window, document, undefined) {
 
@@ -393,11 +550,18 @@ div #sidebar-wrapper {
 															+ '<option value="-1">All</option>'
 															+ '</select></div>'
 												},
-												bAutoWidth : false, 
-												aoColumnDefs: [{ sWidth: "18%", aTargets: [ 3] },{ sWidth: "7%", aTargets: [ 0]}, { sWidth: "7%", aTargets: [ 6]}
-												                             ]
-												                             
-										
+												bAutoWidth : false,
+												aoColumnDefs : [ {
+													sWidth : "18%",
+													aTargets : [ 3 ]
+												}, {
+													sWidth : "7%",
+													aTargets : [ 0 ]
+												}, {
+													sWidth : "7%",
+													aTargets : [ 6 ]
+												} ]
+
 											});
 						});
 	</script>
