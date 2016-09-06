@@ -19,9 +19,9 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
- <link
+<link
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet"> 
+	rel="stylesheet">
 <link
 	href="${pageContext.servletContext.contextPath}/resources/css/styleMap.css"
 	rel="stylesheet">
@@ -34,6 +34,9 @@
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/languages.min.css">
 <link
+	href="${pageContext.servletContext.contextPath}/resources/css/star-rating/star-rating.css"
+	rel="stylesheet">
+<link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -41,8 +44,6 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css"
 	rel="stylesheet">
-<!--  <link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
 
 
 <!-- GALERY -->
@@ -65,74 +66,13 @@
 
 <script
 	src="${pageContext.servletContext.contextPath}/resources/js/hotel/jquery.blueimp-gallery.min.js"></script>
-<!--   
-not add 
-<link rel="stylesheet" 
-  href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
-add 
-<link 
-  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" 
-  rel="stylesheet"> 
- 
-<link rel="stylesheet" 
-  href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css"> 
- 
-<link 
-  href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css" 
-  rel="stylesheet"> 
- 
-<link rel="stylesheet" 
-  href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css"> 
-<link rel="stylesheet" href="css/bootstrap-image-gallery.min.css"> 
-<script 
-  src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
-<script 
-  src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script> 
- 
- 
--->
-<!-- <link rel="stylesheet" -->
-<!-- 	href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css"> -->
-<!-- <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css"> -->
-
-<!-- END OFGALERY -->
-
-<!-- <script -->
-<!-- 	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-
-
-
-<!-- IMPORTED -->
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 
-<!-- END OF IMPORTED -->
 
 
-
-
-<!-- JTable -->
-<!-- <script -->
-<!-- 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
-<link rel="stylesheet" type="text/css"
-	href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
-
-<script type="text/javascript" charset="utf8"
-	src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
-<script type="text/javascript">
-var $j = jQuery.noConflict();
-$j(document).ready(function () {
-		$j('#example').DataTable();
-	});
-</script>
 <style>
-div #sidebar-wrapper {
-	position: relative;
-	left: 0;
-	margin-top: 0px;
-}
-
 .bg-img {
 	border-style: solid;
 	border-width: 3px 0px 0px;
@@ -169,168 +109,187 @@ div #sidebar-wrapper {
 
 	<div class="container" style="margin-top: 20px">
 
-		<div id="links">
-			<div class="row">
-				<div class="col s4">
-					<c:if test="${mainPhoto == null}">
-						<a
-							href="<i:urlToImage url="no.jpg" />"
-							title="No image"
-							data-gallery> <img
-							src="<i:urlToImage url="no.jpg" />"
-							alt="No image">
-						</a>
-					</c:if>
-					<c:if test="${mainPhoto != null}">
-						<a href='<i:urlToImage url="${mainPhoto.img}" />'
-							title="<c:out value="${mainPhoto.desc }"></c:out>" data-gallery>
-							<img src="<i:urlToImage url="${mainPhoto.img}" />"
-							alt="<c:out value="${mainPhoto.desc }"></c:out>">
-						</a>
-
-
-						<div style="overflow-x: auto;">
-							<div style="margin: 10px; white-space: nowrap;">
-								<c:forEach items="${hotelPhotos}" var="photo">
-									<div style="display: inline-block;">
-										<a href='<i:urlToImage url="${photo.img}" />'
-											title="<c:out value="${photo.desc }"></c:out>" data-gallery>
-											<img style="height: 60px;"
-											src="<i:urlToImage url="${photo.img}" />"
-											alt="<c:out value="${photo.desc }"></c:out>">
-										</a>
-									</div>
-								</c:forEach>
-							</div>
-						</div>
-					</c:if>
-				</div>
-				
-				
-		<div class="col s8">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col s6">
-						<h5>
-							<c:out value="${hotel.name }"></c:out>
-						</h5>
-					</div>
-					<div class="col s4 offset-s1" style="margin-top: 15px;">
-						<a class="tooltipped" data-position="icon" data-tooltip="Stars"
-							style="color: #0d0d0d;"> <c:forEach var="i" begin="1"
-								end="${hotel.stars}">
-								<i class="fa fa-lg fa-star" aria-hidden="true"></i>
-							</c:forEach> <c:forEach var="i" begin="${hotel.stars}" end="4">
-								<i class="fa fa-lg fa-star-o" aria-hidden="true"></i>
-							</c:forEach>
-						</a>
-					</div>
-				</div>
-				<div class="row">
-					<a class="tooltipped" data-position="icon" data-tooltip="Location"
-						style="color: #0d0d0d; text-decoration: none;"><i
-						class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a> <a
-						id="map_button" class="tooltipped" data-position="icon"
-						data-tooltip="Show map" style="cursor: pointer;">${hotel.city}
-						${hotel.street}</a>
-				</div>
-
-				<div class="row" style="margin-bottom: 5px">
-					<a class="tooltipped" data-position="icon"
-						data-tooltip="Description" style="color: #0d0d0d; cursor: default"><i
-						class="material-icons invert" style="font-size: 20px;">receipt</i></a>
-					<span>${hotel.desc}</span>
-				</div>
-				<div class="row" style="height: 10px; margin: 0;">
-					<c:if test="${conveniences.wiFi == true}">
-						<a class="tooltipped" data-position="icon" data-tooltip="Wifi"
-							style="color: #0d0d0d;"><i class="material-icons invert">wifi</i></a>
-					</c:if>
-					<c:if test="${conveniences.shower == true}">
-						<a class="tooltipped" data-position="icon" data-tooltip="Shower"><img
-							class="invert" style="max-width: 5%; margin-top: -1rem"
-							src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
-					</c:if>
-					<c:if test="${conveniences.parking == true}">
-						<a class="tooltipped" data-position="icon" data-tooltip="Parking"
-							style="color: #0d0d0d;"><i class="material-icons invert">local_parking</i></a>
-					</c:if>
-					<c:if test="${conveniences.condition == true}">
-						<a class="tooltipped" data-position="icon"
-							data-tooltip="Condition" style="color: #0d0d0d;"><i
-							class="material-icons invert">toys</i></a>
-					</c:if>
-					<c:if test="${conveniences.pool == true}">
-						<a class="tooltipped" data-position="icon" data-tooltip="Pool"
-							style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
-					</c:if>
-					<c:if test="${conveniences.gym == true}">
-						<a class="tooltipped" data-position="icon" data-tooltip="Gym"
-							style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
-					</c:if>
-					<c:if test="${conveniences.balcony == true}">
-						<a class="tooltipped" data-position="icon" data-tooltip="Balcony"><img
-							class="invert"
-							style="max-width: 230%; height: 230%; margin-top: -18px;"
-							src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
-					</c:if>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-	</div>
-		
-	<div class="container">
 		<div class="row">
 			<div class="col s3">
-				<h6>
-					<c:if test="${countOfRooms > 0 }">
-						<fmt:message key="card.header" />
-						<span id="periodicals_number_for_all_users">${countOfRooms}</span>
-					</c:if>
-					<c:if test="${countOfRooms <= 0 }">
-						<fmt:message key="card.no.hotels" />
-					</c:if>
-				</h6>
+				<!-- 					PHOTO -->
+				<a href="#!"><img id="avatarImg"
+					style="height: 100px; padding: 10px; width: 110px;"
+					<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
+								src="<i:urlToImage url="new_hotel.jpg" />">
+				</a>
+				<!-- 					END OF PHOTO -->
+				<!-- 				INPUT -->
+				<%-- 				<input style="margin-top: 60px" type="file" id="avatarInput" --%>
+				<%-- 					onchange="showPhoto()" accept="image/*" /> --%>
+				<!-- 				END OF INPUT -->
 			</div>
-			<div class="col s4 offset-s5">
-				<c:if test="${countOfRooms > 0 }">
-					<select id="compare" class="chosen-select optionstyle"
-						onchange="findPage(window.location.href,1)">price
-						<option class="optionstyle" value="compareByPriceAsc">star
-							asc</option>
-						<option class="optionstyle" value="compareByPriceDesc">price
-							desc</option>
-						<option class="optionstyle" value="compareByPeopleAsc">ppl
-							asc</option>
-						<option class="optionstyle" value="compareByPeopleDesc"
-							selected="selected">ppl desc</option>
-					</select>
-				</c:if>
-			</div>
-		</div>
-	</div>
 
-	<div class="container">
-		<div id="switchContent" class="row" style="margin-bottom: 0;">
-			<jsp:include page="card.jsp"></jsp:include>
+
+			<div class="col s9">
+				<div class="container-fluid">
+
+					<div class="row">
+						<div class="col s6">
+
+							<!-- 						NAME -->
+
+							<div class="input-field">
+								<input id="name" type="text" class="validate" length="45"
+									placeholder="Name of Hotel"> <label id="nameLbl"
+									data-error="${fmtName}" for="name"><fmt:message
+										key="admin.edit.name" /></label>
+							</div>
+
+							<!-- 							END OF NAME -->
+
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col s7">
+
+							<!-- 						STARS -->
+							<input id="rating" onchange="rate()" value="0" type="number"
+								class="rating" min=0 max=5 step=1 data-size="xs" data-stars="5">
+							<span
+								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><fmt:message
+									key="manager.hotel.star" />STAR : <span id="rate_span">0</span>
+								/ 5 |</span>
+							<script>
+								function rate() {
+									
+									 var count = document.getElementById("rate_span");
+									 count.innerHTML = $('#rating').val();
+					
+								}
+							</script>
+
+							<!-- 							END OF STARS -->
+
+						</div>
+					</div>
+
+					<div class="row">
+
+						<div class="col s4">
+
+							<!-- 						CITY -->
+
+							<div class="input-field">
+								<input id="city" type="text" class="validate" length="45"
+									placeholder="Name of city"> <label id="cityLbl"
+									data-error="${fmtName}" for="city"><fmt:message
+										key="admin.edit.city" /></label>
+							</div>
+
+							<!-- 							END OF CITY -->
+
+						</div>
+
+						<div class="col s4">
+
+							<!-- 						STREET -->
+
+							<div class="input-field">
+								<input id="street" type="text" class="validate" length="45"
+									placeholder="Name of street"> <label id="streetLbl"
+									data-error="${fmtName}" for="street"><fmt:message
+										key="admin.edit.street" /></label>
+							</div>
+
+							<!-- 							END OF STREET -->
+
+						</div>
+
+
+						<div class="col s4">
+
+							<!-- 						PHONE -->
+
+							<div class="input-field">
+								<input id="phone" type="text" class="validate" length="45"
+									placeholder="Name of phone"> <label id="phoneLbl"
+									data-error="${fmtName}" for="phone"><fmt:message
+										key="admin.edit.phone" /></label>
+							</div>
+
+							<!-- 							END OF PHONE -->
+
+						</div>
+
+
+
+
+					</div>
+
+					<div class="row">
+
+						<div class="col s12">
+
+							<!-- 						DESC -->
+
+							<div class="input-field">
+								<input id="desc" type="text" class="validate" length="999"
+									placeholder="Name of desc"> <label id="descLbl"
+									data-error="${fmtName}" for="desc"><fmt:message
+										key="admin.edit.desc" /></label>
+							</div>
+
+							<!-- 							END OF DESC -->
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col s3">
+					<h6>
+						<c:if test="${countOfRooms > 0 }">
+							<fmt:message key="card.header" />
+							<span id="periodicals_number_for_all_users">${countOfRooms}</span>
+						</c:if>
+						<c:if test="${countOfRooms <= 0 }">
+							<fmt:message key="card.no.hotels" />
+						</c:if>
+					</h6>
+				</div>
+				<div class="col s4 offset-s5">
+					<c:if test="${countOfRooms > 0 }">
+						<select id="compare" class="chosen-select optionstyle"
+							onchange="findPage(window.location.href,1)">price
+							<option class="optionstyle" value="compareByPriceAsc">star
+								asc</option>
+							<option class="optionstyle" value="compareByPriceDesc">price
+								desc</option>
+							<option class="optionstyle" value="compareByPeopleAsc">ppl
+								asc</option>
+							<option class="optionstyle" value="compareByPeopleDesc"
+								selected="selected">ppl desc</option>
+						</select>
+					</c:if>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div id="switchContent" class="row" style="margin-bottom: 0;">
+				<jsp:include page="card.jsp"></jsp:include>
+			</div>
 		</div>
 	</div>
-	
+	</div>
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
 
-
-	<script
-		src="${pageContext.servletContext.contextPath}/resources/js/customerSlider.js"></script>
-	<script
-		src="${pageContext.servletContext.contextPath}/resources/js/hotel/dropDownComments.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/star-rating/star-rating.js"></script>
 
 </body>
 
