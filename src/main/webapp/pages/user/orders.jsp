@@ -26,11 +26,11 @@
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/simple-sidebar.css"
 	rel="stylesheet">
 
-<link type="text/css" rel="stylesheet"
+<!--  <link type="text/css" rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/materialize/css/materialize.min.css"
-	media="screen,projection" />
+	media="screen,projection" /> 
 
-
+ -->
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/languages.min.css">
 
@@ -41,11 +41,7 @@
 	href="${pageContext.servletContext.contextPath}/resources/css/tablesorter/styles.css">
 	 -->
 
-	
-	
-<link
-	href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"
-	rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.6/dt-1.10.12/af-2.1.2/b-colvis-1.2.2/b-flash-1.2.2/rr-1.1.2/sc-1.4.2/se-1.2.0/datatables.min.css"/>
 
 <style>
 .btn {
@@ -127,6 +123,9 @@ div #sidebar-wrapper {
 .well {
 	padding: 0px;
 }
+.container .row {margin-bottom: 0px;}
+.dataTables_length {margin-top: 20px;}
+.row {margin-bottom: 0px;}
 </style>
 
 </head>
@@ -468,8 +467,8 @@ $(document).ready(function()
 
  --><script type="text/javascript"
 		src="//code.jquery.com/jquery-1.12.3.js"></script>
-	<script type="text/javascript"
-		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.6/dt-1.10.12/af-2.1.2/b-colvis-1.2.2/b-flash-1.2.2/rr-1.1.2/sc-1.4.2/se-1.2.0/datatables.min.js"></script>
+
 	<script type="text/javascript">
 	$(document).ready(function() {
 	    $('#tab1').DataTable();

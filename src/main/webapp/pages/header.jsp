@@ -128,6 +128,14 @@ img.logo {
 									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/cabinet/settings" style="color: #26A69A">
 										<i class="fa fa-cog" aria-hidden="true"></i> Settings</a></li>
+									
+									<c:if test="${user.type == 'MANAGER'}">			
+										<li role="presentation" class="divider" style="border-color:lightgrey"></li>						
+										<li role="presentation"><a role="menuitem" tabindex="-1"
+										href="${pageContext.servletContext.contextPath}/cabinet/my_hotels" style="color: #26A69A">
+										<i class="fa fa-building" aria-hidden="true"></i> My hotels</a></li>
+									</c:if>
+									
 									<li role="presentation" class="divider" style="border-color:lightgrey"></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/log-out" style="color: #26A69A">
@@ -248,12 +256,15 @@ img.logo {
 									</button>
 								</div>
 							</div></li>
-						<li><a style="padding: 0px;"
-							href="${pageContext.servletContext.contextPath}/vkLogin"> <img
-								style="width: 50px; height: 40px; padding: 0px; margin-top: 10; margin-left: 20px;"
-								src="${pageContext.servletContext.contextPath}/resources/images/vk.png"
-								alt="vk" />
-						</a></li>
+						<li>
+						<a href="${pageContext.servletContext.contextPath}/facebookLogin" style="color: #e6e6e6; font-size: 1rem;"><i
+										class="fa fa-2x fa-facebook" aria-hidden="true"></i></a>
+						</li>
+						<li>
+						<a href="${pageContext.servletContext.contextPath}/googleLogin" style="color: #e6e6e6; font-size: 1rem;"><i
+										class="fa fa-2x fa-google-plus" aria-hidden="true"
+										></i></a>
+						</li>
 					</c:otherwise>
 				</c:choose>
 

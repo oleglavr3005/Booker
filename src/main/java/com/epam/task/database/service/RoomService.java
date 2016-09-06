@@ -17,6 +17,10 @@ public class RoomService {
 	public List<Room> getAllActiveRoomsForHotel(int id, int page) {
 		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllActiveRoomsForHotel(id, page));
 	}
+
+	public List<Room> getAllRoomsForHotel(int hotelId) {
+		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllRoomsForHotel(hotelId));
+	}
 	
 	public Room getRoomById(int id) {
 		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getRoomById(id));
