@@ -17,7 +17,7 @@ public class HotelDao {
 	private Connection connection;
 	
 	private final String SELECT_ALL_NOT_DELETED = "SELECT * FROM `hotel` WHERE is_deleted = false";
-	private final String SELECT_ALL_BY_MANAGER = "SELECT * FROM `hotel` WHERE id_manager = ?";
+	private final String SELECT_ALL_BY_MANAGER = "SELECT * FROM `hotel` WHERE manager_id = ?";
 	private final String ORDER_BY_STARS_ASC = " ORDER BY stars ASC";
 	private final String ORDER_BY_STARS_DESC = " ORDER BY stars DESC";
 	private final String ORDER_BY_RATING_ASC = " ORDER BY rating ASC";
