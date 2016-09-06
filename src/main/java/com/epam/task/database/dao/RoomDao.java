@@ -80,6 +80,17 @@ public class RoomDao {
 	public void setConnection(Connection connection) {
 		this.connection = connection;
 	}
+
+	public List<Room> getAllRoomsForHotel(int hotelId) {
+		try (PreparedStatement ps = connection.prepareStatement(GET_ALL_ROOMS_FOR_HOTEL)) {
+			ps.setInt(1, hotelId);
+			try (ResultSet rs = ps.executeQuery()) {
+				return UniversalTransformer.getCollectionFromRS(rs, Room.class);
+			}
+		} catch (Exception e) {
+			return new ArrayList<Room>();
+		}
+	}
 	
 	public List<Room> getAllActiveRoomsForHotel(int id, int page) {
 		try (PreparedStatement ps = connection.prepareStatement(GET_ALL_ACIVE_ROOMS_FOR_HOTEL + PAGINATION)) {
