@@ -124,6 +124,13 @@
 				<%-- 				<input style="margin-top: 60px" type="file" id="avatarInput" --%>
 				<%-- 					onchange="showPhoto()" accept="image/*" /> --%>
 				<!-- 				END OF INPUT -->
+
+				<a class="waves-effect waves-light btn" onclick="createHotel()"
+					style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>CREATE</span></a>
+
+
+
+
 			</div>
 
 
@@ -232,9 +239,9 @@
 							<!-- 						DESC -->
 
 							<div class="input-field">
-								<input id="desc" type="text" class="validate" length="999"
-									placeholder="Name of desc"> <label id="descLbl"
-									data-error="${fmtName}" for="desc"><fmt:message
+								<textarea placeholder="Desc" id="desc"
+									class="materialize-textarea" class="validate" length="999">${message}</textarea>
+								<label id="descLbl" data-error="${fmtName}" for="desc"><fmt:message
 										key="admin.edit.desc" /></label>
 							</div>
 
@@ -247,8 +254,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	<div class="container">
 		<div class="row">
 			<div class="col s3">
@@ -287,8 +294,8 @@
 		<!-- END OF SWITCH CONTENT -->
 
 	</div>
-	
-	
+
+
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
@@ -299,6 +306,8 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/star-rating/star-rating.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
 
 </body>
 
