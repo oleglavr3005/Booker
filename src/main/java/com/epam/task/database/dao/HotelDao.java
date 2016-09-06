@@ -17,6 +17,7 @@ public class HotelDao {
 	private Connection connection;
 	
 	private final String SELECT_ALL_NOT_DELETED = "SELECT * FROM `hotel` WHERE is_deleted = false";
+	private final String SELECT_ALL_BY_MANAGER = "SELECT * FROM `hotel` WHERE id_manager = ?";
 	private final String ORDER_BY_STARS_ASC = " ORDER BY stars ASC";
 	private final String ORDER_BY_STARS_DESC = " ORDER BY stars DESC";
 	private final String ORDER_BY_RATING_ASC = " ORDER BY rating ASC";
@@ -406,5 +407,41 @@ public class HotelDao {
 			return -1;
 		}
 		
+	}
+
+	public List<Hotel> getAllHotelsByManager(int managerId) {
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BY_MANAGER)) {
+			statement.setInt(1, managerId);
+			try (ResultSet result = statement.executeQuery()) {
+				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new ArrayList<>();
+		}
+	}
+
+	public List<Hotel> getAllHotelsByManagerAndPage(int managerId, int page, String orderBy) {
+		String ORDER_BY;
+		if("compareByStarsAsc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_STARS_ASC;
+		} else if ("compareByStarsDesc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_STARS_DESC;
+			
+		} else if ("compareByRatingAsc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_RATING_ASC;
+		} else { //compareByRatingDesc = default
+			ORDER_BY = ORDER_BY_RATING_DESC;
+		}
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BY_MANAGER + ORDER_BY + PAGINATION)) {
+			statement.setInt(1, managerId);
+			statement.setInt(2, (page-1)*3);
+			try (ResultSet result = statement.executeQuery()) {
+				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new ArrayList<>();
+		}
 	}
 }
