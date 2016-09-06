@@ -91,7 +91,7 @@ img.logo {
 <!-- =================================================================== -->
 
 <nav class="navbar navbar-default navbar-static-top"
-	style="margin-bottom: 0px; background: #0d0d0d;">
+	style="margin-bottom: 0px; background: #000033;">
 	<div class="container-fluid">
 		<div class="navbar-header"
 			style="margin-left: 30px; margin-right: 50px;">
@@ -109,7 +109,7 @@ img.logo {
 				<c:choose>
 					<c:when test="${user != null}">
 
-							<div class="dropdown" style="padding-top:0.5rem;">
+							<div class="dropdown" style="padding-top:0.7rem;">
 							<span id="userNameSpan" style="font-size:1.3rem; margin-right:0.5rem; margin-top:20px">${user.firstName} ${user.lastName}</span>
 								<img id="imageavatar"
 <%-- 									src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}" --%>

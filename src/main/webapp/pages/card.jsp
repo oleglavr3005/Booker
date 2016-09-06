@@ -57,7 +57,7 @@ b {
 						<a
 							href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}">
 							<img
-<%-- 							src="${pageContext.servletContext.contextPath}/resources/images/photoOfHotels/${hotel.photos[0].img}" --%>
+							<%-- 							src="${pageContext.servletContext.contextPath}/resources/images/photoOfHotels/${hotel.photos[0].img}" --%>
 							src="<i:urlToImage url="${hotel.photos[0].img}" />"
 							style="height: 170px; width: 200px; padding: 10px;">
 						</a>
@@ -109,19 +109,19 @@ b {
 					</div>
 
 					<div class="col s2">
-						<div class="row">
+						<div class="row" style="margin-top: 14px">
 							<a class="tooltipped" data-position="icon" data-tooltip="Rating"
-								style="color: #0d0d0d; text-decoration: none;"> <i
+								style=" margin-left: 50px; color: #0d0d0d; text-decoration: none;"> <i
 								class="fa fa-lg fa-star invert" aria-hidden="true"></i> <span>${hotel.rating }</span>
 							</a>
 						</div>
 
 
-						<div class="row" style="margin-top: 130px">
+						<div class="row" style="margin-top: 90px">
 
 							<a class="waves-effect waves-light btn"
 								href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"
-								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>INFO</span></a>
+								style="margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>INFO</span></a>
 						</div>
 
 					</div>
