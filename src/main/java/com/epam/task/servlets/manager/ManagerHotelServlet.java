@@ -45,7 +45,7 @@ public class ManagerHotelServlet extends HttpServlet {
 		request.setAttribute("hotel", hotel);
 		request.setAttribute("rooms", new RoomService().getAllRoomsForHotel(id));
 		
-		request.getRequestDispatcher("/pages/hotelEdit.jsp").forward(request, response);
+		request.getRequestDispatcher("/pages/manager/hotelEdit.jsp").forward(request, response);
 
 	}
 
