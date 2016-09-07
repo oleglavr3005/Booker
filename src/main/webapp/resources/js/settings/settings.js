@@ -266,11 +266,11 @@ function showPhoto() {
 			processData : false,
 			type : 'POST',
 			success : function(result) {
-				if (result == 'error') {
-					alert("IMG ERROR");
-				}else{
-					image = result;
-				}
+//				if (result == 'error') {
+//					alert("IMG ERROR");
+//				}else{
+//					image = result;
+//				}
 			}
 		});
 	}

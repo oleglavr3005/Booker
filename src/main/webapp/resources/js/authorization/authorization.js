@@ -1,6 +1,7 @@
 var mapping = $('#mapping').val();
 
 function auth(){
+	alert($('#mapping').val());
 		var emailField = $("#emailAuth");
 		var passwordField = $("#passwordAuth");
 		$.ajax({
