@@ -107,7 +107,8 @@ div #sidebar-wrapper {
 <!-- 	</ul> -->
 <!-- </div> -->
 
-
+<div style="background: url('../resources/header.jpg'); height: 700px;">
+</div>
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
