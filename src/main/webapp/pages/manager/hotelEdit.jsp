@@ -92,6 +92,8 @@ div #sidebar-wrapper {
 
 
 <body>
+	<input id="photos" type="hidden"
+		value="${pageContext.servletContext.contextPath}/" />
 	<input id="lang" type="hidden" value="${language}" />
 	<input id="mapping" type="hidden"
 		value="${pageContext.servletContext.contextPath}/" />
@@ -105,23 +107,36 @@ div #sidebar-wrapper {
 
 		<div class="row">
 			<div class="col s3">
-				<!-- 					PHOTO -->
-				<a href="#!"><img id="avatarImg"
-					style="height: 100px; padding: 10px; width: 110px;"
-					<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
+				<div class="row">
+					<!-- 					PHOTO -->
+					<a href="#!"><img id="avatarImg"
+						style="height: 100px; padding: 10px; width: 110px;"
+						<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
 								src="<i:urlToImage url="${hotel.photos }" />">
-				</a>
-				<!-- 					END OF PHOTO -->
-				<!-- 				INPUT -->
-				<%-- 				<input style="margin-top: 60px" type="file" id="avatarInput" --%>
-				<%-- 					onchange="showPhoto()" accept="image/*" /> --%>
-				<!-- 				END OF INPUT -->
+					</a>
+					<!-- 					END OF PHOTO -->
+					<!-- 				INPUT -->
+					<%-- 				<input style="margin-top: 60px" type="file" id="avatarInput" --%>
+					<%-- 					onchange="showPhoto()" accept="image/*" /> --%>
+					<!-- 				END OF INPUT -->
 
-				<a class="waves-effect waves-light btn" id="create_button"
-					onclick="updateHotel()"
-					style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>UPDATE</span></a>
-				<p id="create_error" style="color: red"></p>
-
+					<a class="waves-effect waves-light btn" id="create_button"
+						onclick="updateHotel()"
+						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>UPDATE</span></a>
+					<p id="create_error" style="color: red"></p>
+				</div>
+				<div class="row">
+					<p>
+						<input type="checkbox" class="filled-in" id="isDeleted"
+							name="isDeleted" /> <label for="isDeleted">DELETED</label>
+					</p>
+					
+					<script>
+						$('#isDeleted').attr('checked',
+								'${hotel.isDeleted}' == 'true');
+					</script>
+					
+				</div>
 
 
 			</div>
@@ -136,9 +151,9 @@ div #sidebar-wrapper {
 							<!-- 						NAME -->
 
 							<div class="input-field">
-								<input id="name" type="text" class="validate" length="45" value="${hotel.name}"
-									placeholder="Name of Hotel"> <label id="nameLbl"
-									data-error="${fmtName}" for="name"><fmt:message
+								<input id="name" type="text" class="validate" length="45"
+									value="${hotel.name}" placeholder="Name of Hotel"> <label
+									id="nameLbl" data-error="${fmtName}" for="name"><fmt:message
 										key="admin.edit.name" /></label>
 							</div>
 
@@ -151,9 +166,9 @@ div #sidebar-wrapper {
 						<div class="col s7">
 
 							<!-- 						STARS -->
-							<input id="rating" onchange="rate()" type="number"  value="${hotel.stars}"
-								class="rating" min=0 max=5 step=1 data-size="xs" data-stars="5">
-							<span
+							<input id="rating" onchange="rate()" type="number"
+								value="${hotel.stars}" class="rating" min=0 max=5 step=1
+								data-size="xs" data-stars="5"> <span
 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><fmt:message
 									key="manager.hotel.star" />STAR : <span id="rate_span">0</span>
 								/ 5 |</span>
@@ -180,8 +195,8 @@ div #sidebar-wrapper {
 
 							<div class="input-field">
 								<input id="city" type="text" class="validate" length="45"
-									placeholder="Name of city" value="${hotel.city}"> <label id="cityLbl"
-									data-error="${fmtName}" for="city"><fmt:message
+									placeholder="Name of city" value="${hotel.city}"> <label
+									id="cityLbl" data-error="${fmtName}" for="city"><fmt:message
 										key="admin.edit.city" /></label>
 							</div>
 
@@ -195,8 +210,8 @@ div #sidebar-wrapper {
 
 							<div class="input-field">
 								<input id="street" type="text" class="validate" length="45"
-									placeholder="Name of street" value="${hotel.street}"> <label id="streetLbl"
-									data-error="${fmtName}" for="street"><fmt:message
+									placeholder="Name of street" value="${hotel.street}"> <label
+									id="streetLbl" data-error="${fmtName}" for="street"><fmt:message
 										key="admin.edit.street" /></label>
 							</div>
 
@@ -211,8 +226,8 @@ div #sidebar-wrapper {
 
 							<div class="input-field">
 								<input id="phone" type="text" class="validate" length="45"
-									placeholder="Name of phone" value="${hotel.phoneNumber}"> <label id="phoneLbl"
-									data-error="${fmtName}" for="phone"><fmt:message
+									placeholder="Name of phone" value="${hotel.phoneNumber}">
+								<label id="phoneLbl" data-error="${fmtName}" for="phone"><fmt:message
 										key="admin.edit.phone" /></label>
 							</div>
 
@@ -342,12 +357,12 @@ div #sidebar-wrapper {
 		src="  http://demo.geekslabs.com/materialize/v2.1/layout03/js/materialize.js"></script>
 	<script
 		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-	
+
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/star-rating/star-rating.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
-		
+
 	<script type="text/javascript">
 		(function(window, document, undefined) {
 

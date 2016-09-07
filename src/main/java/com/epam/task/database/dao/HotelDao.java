@@ -248,7 +248,7 @@ public class HotelDao {
 			statement.setDouble(i++, hotel.getXCoord());
 			statement.setDouble(i++, hotel.getYCoord());
 			statement.setDouble(i++, hotel.getRating());
-			statement.setBoolean(i++, hotel.isDeleted());
+			statement.setBoolean(i++, hotel.getIsDeleted());
 			statement.setString(i++, hotel.getPhoneNumber());
 			statement.executeUpdate();
 			
@@ -298,7 +298,7 @@ public class HotelDao {
 			statement.setDouble(i++, hotel.getXCoord());
 			statement.setDouble(i++, hotel.getYCoord());
 			statement.setDouble(i++, hotel.getRating());
-			statement.setBoolean(i++, hotel.isDeleted());
+			statement.setBoolean(i++, hotel.getIsDeleted());
 			statement.setString(i++, hotel.getPhoneNumber());
 
 			statement.setInt(i, hotel.getId());
