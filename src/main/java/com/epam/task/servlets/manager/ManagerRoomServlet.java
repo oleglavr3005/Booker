@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.Room;
+import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.RoomService;
 
 @WebServlet("/cabinet/room/*" )
@@ -27,7 +28,8 @@ public class ManagerRoomServlet extends HttpServlet {
 		}
 		
 		Room room = new RoomService().getRoomById(id);
-		
+
+		request.setAttribute("hotelName", new HotelService().getHotelById(room.getHotelId()).getName());
 		request.setAttribute("room", room);
 		request.getRequestDispatcher("/pages/manager/roomConcret.jsp").forward(request, response);
 	}

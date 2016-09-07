@@ -7,24 +7,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.epam.task.database.model.enums.RequestStatus;
-import com.epam.task.database.service.RequestService;
+import com.epam.task.database.model.enums.UserStatus;
 import com.epam.task.database.service.UserService;
 
-@WebServlet("/cabinet/admin")
-public class AdminPageServlet extends HttpServlet {
+@WebServlet("/change_user_status")
+public class ChangeUserStatusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AdminPageServlet() {
+    public ChangeUserStatusServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String userIdString = request.getParameter("userId");
+		String status = request.getParameter("status"); //BANNED ACTIVE
 		
-		request.setAttribute("users", new UserService().getAllUsers());
-		request.setAttribute("requests", new RequestService().getAllRequests());
+		if(userIdString == null || status == null) {
+			return;
+		}
 		
-		request.getRequestDispatcher("/pages/admin/adminPage.jsp").forward(request, response);
+		int changed = new UserService()
+				.updateUserStatus(Integer.parseInt(userIdString), UserStatus.valueOf(status));
+		
+		response.getWriter().write(changed > 0 ? "true" : "false");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

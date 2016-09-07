@@ -9,22 +9,27 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.enums.RequestStatus;
 import com.epam.task.database.service.RequestService;
-import com.epam.task.database.service.UserService;
 
-@WebServlet("/cabinet/admin")
-public class AdminPageServlet extends HttpServlet {
+@WebServlet("/change_request_status")
+public class ChangeRequestStatusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AdminPageServlet() {
+    public ChangeRequestStatusServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String requestIdString = request.getParameter("requestId");
+		String status = request.getParameter("status"); //APPROVED DECLINED
 		
-		request.setAttribute("users", new UserService().getAllUsers());
-		request.setAttribute("requests", new RequestService().getAllRequests());
+		if(requestIdString == null || status == null) {
+			return;
+		}
 		
-		request.getRequestDispatcher("/pages/admin/adminPage.jsp").forward(request, response);
+		int changed = new RequestService()
+				.updateRequestStatus(Integer.parseInt(requestIdString), RequestStatus.valueOf(status));
+		
+		response.getWriter().write(changed > 0 ? "true" : "false");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

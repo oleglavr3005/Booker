@@ -18,8 +18,6 @@ public class User {
 	private String password;
 	@DataBaseField(fieldName = "type")
 	private UserType type; //enum
-	@DataBaseField(fieldName = "is_banned")
-	private boolean isBanned;
 	@DataBaseField(fieldName = "confirm_code")
 	private String confirmCode;
 	@DataBaseField(fieldName = "status")
@@ -44,7 +42,7 @@ public class User {
 	}
 		
 	public User(int id, String firstName, String lastName, String email, String password, String type,
-			boolean isBanned, String confirmCode, String status, String phoneNumber, String image,
+			String confirmCode, String status, String phoneNumber, String image,
 			String socialNetwork, String socialNetworkId, boolean emailNotif, boolean phoneNotif, String language) {
 		this.id = id;
 		this.firstName = firstName;
@@ -52,7 +50,6 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.type = type == null ? null : UserType.valueOf(type);
-		this.isBanned = isBanned;
 		this.confirmCode = confirmCode;
 		this.status = status == null ? null : UserStatus.valueOf(status);
 		this.phoneNumber = phoneNumber;
@@ -98,12 +95,6 @@ public class User {
 	}
 	public void setType(String type) {
 		this.type = type == null ? null : UserType.valueOf(type);
-	}
-	public boolean isBanned() {
-		return isBanned;
-	}
-	public void setBanned(boolean isBanned) {
-		this.isBanned = isBanned;
 	}
 	public String getConfirmCode() {
 		return confirmCode;
@@ -169,7 +160,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", password=" + password + ", type=" + type + ", isBanned=" + isBanned + ", confirmCode="
+				+ ", password=" + password + ", type=" + type + ", confirmCode="
 				+ confirmCode + ", status=" + status + ", phoneNumber=" + phoneNumber + ", image=" + image
 				+ ", socialNetwork=" + socialNetwork + ", socialNetworkId=" + socialNetworkId + ", emailNotif="
 				+ emailNotif + ", phoneNotif=" + phoneNotif + ", language=" + language + "]";
