@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
 <c:set var="language"
 	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
 	scope="session" />
@@ -296,7 +297,7 @@ div #sidebar-wrapper {
 
 							<c:forEach var="room" items="${rooms}">
 								<tr>
-									<td><c:out value="${room.number }"></c:out></td>
+									<td><a href="${pageContext.servletContext.contextPath}/cabinet/room/${room.id}"><c:out value="${room.number }"></c:out></a></td>
 									<td><c:out value="${room.type }"></c:out></td>
 									<td>${room.doubleBedsCount * 2 + room.bedsCount}</td>
 									<td><c:if test="${room.wifi == true}">
@@ -346,6 +347,7 @@ div #sidebar-wrapper {
 										</c:if></td>
 									<td><c:out value="${room.price }"></c:out></td>
 								</tr>
+								
 							</c:forEach>
 						</tbody>
 					</table>
