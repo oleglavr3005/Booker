@@ -131,7 +131,7 @@
 					<!-- 				END OF INPUT -->
 
 					<a class="waves-effect waves-light btn" id="create_button"
-						onclick="updateRoom()"
+						onclick="updateRoom(${room.id})"
 						style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>SAVE</span></a>
 					<p id="create_error" style="color: red"></p>
 				</div>
@@ -398,6 +398,10 @@
 		$('#hasGym').attr('checked', '${room.gym}' == 'true');
 		$('#hasBalcony').attr('checked', '${room.balcony}' == 'true');
 	</script>
+	
+	
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/manager/room.js"></script>
 
 </body>
 

@@ -197,19 +197,20 @@
 									<c:if test="${request.status == 'PENDING'}">
    					style="background: white;"
 </c:if>>
-									<td><c:out value="${request.id }"></c:out></td>
+									<td><a
+										href="${pageContext.servletContext.contextPath}/cabinet/admin/request/${request.id}"><c:out
+												value="${request.id }"></c:out></a></td>
 									<td><c:out value="${request.userId}"></c:out></td>
 									<td><c:out value="${request.requestDate}"></c:out></td>
 									<td><c:out value="${request.message}"></c:out></td>
-									<td style="text-align: center;"><c:if test="${request.status == 'PENDING'}">
-									<a
-											class="my-btn waves-effect waves-light btn"
-											style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-											onclick="removeOrderTable(${activeOrder.id})">APPROVE</a>
-											<a
-											class="my-btn waves-effect waves-light btn"
-											style="background: #3c763d; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-											onclick="removeOrderTable(${activeOrder.id})">DECLINED</a>
+									<td style="text-align: center;"><c:if
+											test="${request.status == 'PENDING'}">
+											<a class="my-btn waves-effect waves-light btn"
+												style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+												onclick="removeOrderTable(${activeOrder.id})">APPROVE</a>
+											<a class="my-btn waves-effect waves-light btn"
+												style="background: #3c763d; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+												onclick="removeOrderTable(${activeOrder.id})">DECLINED</a>
 										</c:if> <c:if test="${request.status == 'DECLINED'}">
 											<div style="color: #F55151;">
 												<strong>DeCIde!</strong>

@@ -112,8 +112,8 @@ public class RequestDao {
 	public int updateRequestStatus(int requestId, RequestStatus status) {
 		try (PreparedStatement statement = connection.prepareStatement(CHANGE_REQUEST_STATUS)) {
 			int i = 1;
-			statement.setInt(i++, requestId);
 			statement.setString(i++, status.toString());
+			statement.setInt(i++, requestId);
 			return statement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

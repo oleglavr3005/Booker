@@ -98,12 +98,12 @@ public class UserService {
 		return daoManager.executeAndClose(() -> daoManager.getUserDao().getUserByConfirmCode(code));
 	}
 	
-	public User getUserByStatus(UserStatus status) {
-		return daoManager.executeAndClose(() -> daoManager.getUserDao().getUserByStatus(status));
+	public List<User> getUsersByStatus(UserStatus status) {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getUsersByStatus(status));
 	}
 	
-	public User getUserByType(UserType type) {
-		return daoManager.executeAndClose(() -> daoManager.getUserDao().getUserByType(type));
+	public List<User> getUsersByType(UserType type) {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getUsersByType(type));
 	}
 	
 	public static void main(String[] args) {
@@ -119,5 +119,9 @@ public class UserService {
 
 	public int updateUserType(int userId, UserType type) {
 		return daoManager.executeAndClose(() -> daoManager.getUserDao().updateUserType(userId, type));
+	}
+
+	public List<User> getAllNotAdmins() {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getAllNotAdmins());
 	}
 }

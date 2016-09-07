@@ -1,7 +1,6 @@
 
 function createRoom(){
 	var hotel = $('#hotelId').val();
-	alert(hotel);
 //	if (validate()){
 		$.get('../add_room',{
 			hotelId : hotel,
@@ -13,7 +12,7 @@ function createRoom(){
 			roomImages :  $('#photos').val(),
 			food : $('#foodType').val(),
 			
-			hasWifi : document.getElementById('hasWiFi').checked,
+			hasWiFi : document.getElementById('hasWiFi').checked,
 			hasShower : document.getElementById('hasShower').checked,
 			hasParking : document.getElementById('hasParking').checked,
 			hasCondition : document.getElementById('hasCondition').checked,
@@ -48,7 +47,7 @@ function updateRoom(room){
 	var x = 0;
 	var y = 0;
 //	if (validate()){
-		$.get('../edit_hotel',{
+		$.get('../../edit_room',{
 			roomId : room,
 			hotelId : hotel,
 			type : $('#roomType').val(),
@@ -59,13 +58,13 @@ function updateRoom(room){
 			roomImages :  $('#photos').val(),
 			food : $('#foodType').val(),
 			
-			hasWifi : document.getElementById('wifi').checked,
-			hasShower : document.getElementById('shower').checked,
-			hasParking : document.getElementById('parking').checked,
-			hasCondition : document.getElementById('condition').checked,
-			hasPool : document.getElementById('pool').checked,
-			hasGym : document.getElementById('gym').checked,
-			hasBalcony : document.getElementById('balcony').checked,
+			hasWiFi : document.getElementById('hasWiFi').checked,
+			hasShower : document.getElementById('hasShower').checked,
+			hasParking : document.getElementById('hasParking').checked,
+			hasCondition : document.getElementById('hasCondition').checked,
+			hasPool : document.getElementById('hasPool').checked,
+			hasGym : document.getElementById('hasGym').checked,
+			hasBalcony : document.getElementById('hasBalcony').checked,
 			freeBook : document.getElementById('freeBook').checked,
 			
 			daysCount : $('#days').val(),

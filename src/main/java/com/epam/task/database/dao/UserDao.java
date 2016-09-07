@@ -17,6 +17,7 @@ public class UserDao {
 	private Connection connection;
 	
 	private final String SELECT_ALL = "SELECT * FROM `user`";
+	private final String SELECT_ALL_NOT_ADMINS = SELECT_ALL + " WHERE type NOT LIKE 'ADMIN'";
 	private final String SELECT_ALL_WITH_EMAIL_NOTIF = SELECT_ALL + " WHERE email_notif = true";
 	private final String SELECT_ALL_WITH_EMAIL_NOTIF_IN_HOTEL = "SELECT DISTINCT u.* FROM `user` u INNER JOIN `order` o ON u.user_id = o.user_id INNER JOIN `room` r ON r.room_id = o.room_id WHERE r.id_hotel = ? AND u.email_notif = true";
 	private final String SELECT_ALL_WITH_PHONE_NOTIF = SELECT_ALL + " WHERE phone_notif = true";
@@ -130,27 +131,27 @@ public class UserDao {
 		}
 	}
 
-	public User getUserByStatus(UserStatus status) {
+	public List<User> getUsersByStatus(UserStatus status) {
 		try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_STATUS)) {
 			statement.setString(1, status.toString());
 			try (ResultSet result = statement.executeQuery()) {
-				return UniversalTransformer.getObjectFromRS(result, User.class);
+				return UniversalTransformer.getCollectionFromRS(result, User.class);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return null;
+			return new ArrayList<>();
 		}
 	}
 
-	public User getUserByType(UserType type) {
+	public List<User> getUsersByType(UserType type) {
 		try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_TYPE)) {
 			statement.setString(1, type.toString());
 			try (ResultSet result = statement.executeQuery()) {
-				return UniversalTransformer.getObjectFromRS(result, User.class);
+				return UniversalTransformer.getCollectionFromRS(result, User.class);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return null;
+			return new ArrayList<>();
 		}
 	}
 	
@@ -224,5 +225,15 @@ public class UserDao {
 			e.printStackTrace();
 			return -1;
 		}
+	}
+
+	public List<User> getAllNotAdmins() {
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_NOT_ADMINS);
+				ResultSet result = statement.executeQuery()) {
+		return UniversalTransformer.getCollectionFromRS(result, User.class);
+	} catch (SQLException e) {
+		e.printStackTrace();
+		return new ArrayList<>();
+	}
 	}
 }

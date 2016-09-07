@@ -10,7 +10,7 @@ function uploadRoom() {
 		var reader = new FileReader();
 		reader.onloadend = function() {
 			preview.src = reader.result;
-			avatar.src = reader.result;
+//			avatar.src = reader.result;
 		}
 		reader.readAsDataURL(file);
 		var data = new FormData();
@@ -25,7 +25,8 @@ function uploadRoom() {
 			processData : false,
 			type : 'POST',
 			success : function(result) {
-				picture.val(result);
+				$('#photos').val(result);
+			//	picture.val(result);
 			}
 		});
 	}
@@ -39,7 +40,7 @@ function uploadHotel() {
 		var reader = new FileReader();
 		reader.onloadend = function() {
 			preview.src = reader.result;
-			avatar.src = reader.result;
+		//	avatar.src = reader.result;
 		}
 		reader.readAsDataURL(file);
 		var data = new FormData();
@@ -54,7 +55,8 @@ function uploadHotel() {
 			processData : false,
 			type : 'POST',
 			success : function(result) {
-				picture.val(result);
+				$('#photos').val(result);
+				//picture.val(result);
 			}
 		});
 	}
