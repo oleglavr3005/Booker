@@ -98,6 +98,11 @@
 	padding: 0px;
 }
 </style>
+
+
+<link
+	href="${pageContext.servletContext.contextPath}/resources/js/image-picker/image-picker.css"
+	rel="stylesheet">
 </head>
 
 <body>
@@ -308,34 +313,20 @@
 			</div>
 		</div>
 	</div>
+	
+	
 	<div class="container">
-		<div class="row">
-			<div class="col s8">
-				<table id="photos">
-					<thead>
-						<tr>
-							<th>Img</th>
-							<th>Description</th>
-							<th>Delete</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="photo" items="${room.photos}">
-							<tr>
-								<td><img src="<i:urlToImage url="${photo.img }" />" alt=""></td>
-								<td><c:out value="${photo.desc }"></c:out></td>
-								<td><a class="my-btn waves-effect waves-light btn"
-									style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-									onclick="removeOrderTable(${photo.id})"><fmt:message
-											key="subscribes.table.remove" /> </a></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-
+	
+<select class="image-picker masonry show-html" id="images" multiple="multiple">
+<c:forEach var="photo" items="${room.photos}">
+   <option data-img-src="<i:urlToImage url="${photo.img }" />" value="${photo.id}">${photo.desc }</option>
+</c:forEach>
+</select>
+<a class="my-btn waves-effect waves-light btn"
+									style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
+									onclick="remove()"><fmt:message
+											key="subscribes.table.remove" /> </a>
+</div>
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="../foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
@@ -354,7 +345,31 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
-
+		
+		<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
+		
+		
+				<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/image-picker/image-picker.js"></script>
+				<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/image-picker/image-picker.min.js"></script>
+		<script src="http://rvera.github.io/image-picker/js/jquery.masonry.min.js"></script>
+<script type="text/javascript">
+		$("select").imagepicker();
+		var container = jQuery("select.image-picker.masonry").next("ul.thumbnails");
+    container.imagesLoaded(function(){
+      container.masonry({
+        itemSelector:   "li",
+      });
+    });
+    
+    
+    function remove() {
+    	var values = $('#images').val();
+    	alert(values);
+	}
+    </script>
 	<script>
 						function changeFreeBook(){
 							var freeBook = document.getElementById('freeBook').checked;
