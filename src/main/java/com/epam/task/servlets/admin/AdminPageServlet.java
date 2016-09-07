@@ -27,7 +27,7 @@ public class AdminPageServlet extends HttpServlet {
 		List<User> usersWithoutAdmins = userService.getAllUsers();
 		usersWithoutAdmins.removeAll(userService.getUsersByType(UserType.ADMIN));
 		
-		request.setAttribute("users", userService.getAllUsers().removeAll(usersWithoutAdmins));
+		request.setAttribute("users", usersWithoutAdmins);
 		request.setAttribute("requests", new RequestService().getAllRequests());
 		
 		request.getRequestDispatcher("/pages/admin/adminPage.jsp").forward(request, response);
