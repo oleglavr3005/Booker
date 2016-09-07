@@ -356,15 +356,25 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
 
 	<script>
-						function changeFreeBook(){
-							var freeBook = document.getElementById('freeBook').checked;
-							$('#percentage').prop('disabled', freeBook);
-							$('#days').prop('disabled', freeBook);
-						}
-					
-						$('#freeBook').attr('checked',
-								'${room.daysCount}' < 0);
-					</script>
+		function changeFreeBook(){
+			var freeBook = document.getElementById('freeBook').checked;
+			$('#percentage').prop('disabled', freeBook);
+			$('#days').prop('disabled', freeBook);
+		}
+		$('#freeBook').attr('checked',
+				'${room.daysCount}' < 0);
+	</script>
+	
+	<script>
+		$('#hasWiFi').attr('checked', '${room.wifi}' == 'true');
+		$('#hasShower').attr('checked', '${room.shower}' == 'true');
+		$('#hasParking').attr('checked', '${room.parking}' == 'true');
+		$('#hasCondition').attr('checked', '${room.condition}' == 'true');
+
+		$('#hasPool').attr('checked', '${room.pool}' == 'true');
+		$('#hasGym').attr('checked', '${room.gym}' == 'true');
+		$('#hasBalcony').attr('checked', '${room.balcony}' == 'true');
+	</script>
 
 
 </body>
