@@ -22,9 +22,7 @@ public class AdminPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setAttribute("users", new UserService().getAllUsers());
-		request.setAttribute("requestsPending", new RequestService().getAllRequestsByStatus(RequestStatus.PENDING));
-		request.setAttribute("requestsApproved", new RequestService().getAllRequestsByStatus(RequestStatus.APPROVED));
-		request.setAttribute("requestsDeclined", new RequestService().getAllRequestsByStatus(RequestStatus.DECLINED));
+		request.setAttribute("requests", new RequestService().getAllRequests());
 		
 		request.getRequestDispatcher("/pages/admin/adminPage.jsp").forward(request, response);
 	}

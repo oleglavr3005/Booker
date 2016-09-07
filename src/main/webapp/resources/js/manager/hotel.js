@@ -14,7 +14,8 @@ function createHotel(){
 			description : $('#desc').val(),
 			phoneNumber : $('#phone').val(),
 			xCoord : x,
-			yCoord : y
+			yCoord : y,
+			hotelImages : $('#photos').val()
 		}, function(result){
 			if(result != 'error'){
 				$('#create_error').css('color', 'green');
@@ -47,7 +48,8 @@ function updateHotel(hotelId){
 			description : $('#desc').val(),
 			phoneNumber : $('#phone').val(),
 			xCoord : x,
-			yCoord : y
+			yCoord : y,
+			hotelImages : $('#photos').val()
 		}, function(result){
 			if(result != 'false'){
 				$('#create_error').css('color', 'green');
