@@ -112,4 +112,8 @@ public class UserService {
 		System.out.println(i + " " + s.getUserById(1));
 		}
 	}
+
+	public int updateUserStatus(int userId, UserStatus status) {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().updateUserStatus(userId, status));
+	}
 }
