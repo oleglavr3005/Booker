@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
+<%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <fmt:setLocale value="${language}" />
@@ -66,7 +66,7 @@ b {
 
 					<div class="col s6">
 
-						<div class="row" style="margin-top: 15px; margin-bottom:10px">
+						<div class="row" style="margin-top: 15px; margin-bottom: 0px">
 							<div class="col s5">
 								<a
 									href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}">${hotel.name}</a>
@@ -83,16 +83,15 @@ b {
 							</div>
 						</div>
 
-
-						<div class="row" style="margin-bottom:10px;">
+						<div class="row" style="margin-bottom: 10px;">
 							<a class="tooltipped" data-position="icon"
 								data-tooltip="Location"
 								style="color: #0d0d0d; text-decoration: none;"><i
 								class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
 							<span>${hotel.city} ${hotel.street}</span>
 						</div>
-						
-						<div class="row" style="margin-bottom:10px">
+
+						<div class="row" style="margin-bottom: 10px">
 							<a class="tooltipped" data-position="icon"
 								data-tooltip="phone number"
 								style="color: #0d0d0d; text-decoration: none;"><i
@@ -117,15 +116,29 @@ b {
 					</div>
 
 					<div class="col s2">
-						<div class="row" style="margin-top: 14px">
+						<div class="row" style="margin-top: 14px; margin-bottom:5px;">
 							<a class="tooltipped" data-position="icon" data-tooltip="Rating"
 								style="margin-left: 50px; color: #0d0d0d; text-decoration: none;">
 								<i class="fa fa-lg fa-star invert" aria-hidden="true"></i> <span>${hotel.rating }</span>
 							</a>
 						</div>
 
+						<div class="row">
+							<c:choose>
+								<c:when test="${hotel.isDeleted == true}">
+									<div class="col s6 offset-s3" style="color: red">
+										REMOVED
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="col s6 offset-s4" style="color: green">
+										ACTIVE
+									</div>
+								</c:otherwise>
+							</c:choose>
+						</div>
 
-						<div class="row" style="margin-top: 30px">
+						<div class="row" style="margin-top: 20px">
 
 							<a class="waves-effect waves-light btn"
 								href="${pageContext.servletContext.contextPath}/cabinet/my_hotels/${hotel.id}"

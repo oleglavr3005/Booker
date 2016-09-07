@@ -92,6 +92,8 @@ div #sidebar-wrapper {
 
 
 <body>
+	<input id="photos" type="hidden"
+		value="${pageContext.servletContext.contextPath}/" />
 	<input id="lang" type="hidden" value="${language}" />
 	<input id="mapping" type="hidden"
 		value="${pageContext.servletContext.contextPath}/" />
@@ -105,23 +107,36 @@ div #sidebar-wrapper {
 
 		<div class="row">
 			<div class="col s3">
-				<!-- 					PHOTO -->
-				<a href="#!"><img id="avatarImg"
-					style="height: 100px; padding: 10px; width: 110px;"
-					<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
+				<div class="row">
+					<!-- 					PHOTO -->
+					<a href="#!"><img id="avatarImg"
+						style="height: 100px; padding: 10px; width: 110px;"
+						<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
 								src="<i:urlToImage url="${hotel.photos }" />">
-				</a>
-				<!-- 					END OF PHOTO -->
-				<!-- 				INPUT -->
-				<%-- 				<input style="margin-top: 60px" type="file" id="avatarInput" --%>
-				<%-- 					onchange="showPhoto()" accept="image/*" /> --%>
-				<!-- 				END OF INPUT -->
+					</a>
+					<!-- 					END OF PHOTO -->
+					<!-- 				INPUT -->
+					<%-- 				<input style="margin-top: 60px" type="file" id="avatarInput" --%>
+					<%-- 					onchange="showPhoto()" accept="image/*" /> --%>
+					<!-- 				END OF INPUT -->
 
-				<a class="waves-effect waves-light btn" id="create_button"
-					onclick="updateHotel()"
-					style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>UPDATE</span></a>
-				<p id="create_error" style="color: red"></p>
-
+					<a class="waves-effect waves-light btn" id="create_button"
+						onclick="updateHotel()"
+						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>UPDATE</span></a>
+					<p id="create_error" style="color: red"></p>
+				</div>
+				<div class="row">
+					<p>
+						<input type="checkbox" class="filled-in" id="isDeleted"
+							name="isDeleted" /> <label for="isDeleted">DELETED</label>
+					</p>
+					
+					<script>
+						$('#isDeleted').attr('checked',
+								'${hotel.isDeleted}' == 'true');
+					</script>
+					
+				</div>
 
 
 			</div>

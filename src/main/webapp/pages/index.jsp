@@ -159,8 +159,11 @@ div #sidebar-wrapper {
 				</div>
 
 				<div class="col s3 offset-s2">
-					<input id="people" type="text" class="validate" name="people"
-						value="${people}"> <label id="pplLbl"
+					<input id="people" value="${people}" type="number"
+								class="rating validate" name="people" min=1 max=1000>
+<!-- 					<input id="" type="text" class=""  -->
+<!-- 						value="">  -->
+						<label id="pplLbl"
 						data-error="${fmtPeople}" for="pplCount"><fmt:message
 							key="index.search.ppl" /></label>
 				</div>

@@ -1,6 +1,7 @@
 package com.epam.task.util;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -11,6 +12,9 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
+
+import com.epam.task.database.model.HotelPhoto;
+import com.epam.task.database.model.RoomPhoto;
 
 public class ImageSetter {
 
@@ -60,5 +64,81 @@ public class ImageSetter {
 			throw ex;
 		}
 		return null;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public List<RoomPhoto> uploadRoomImages() throws Exception {
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+		factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		File uploadDir = new File(UPLOAD_PATH);
+		List<RoomPhoto> roomPhoto = new ArrayList<>();
+		if (!uploadDir.exists()) {
+			uploadDir.mkdir();
+		}
+		try {
+			List formItems = upload.parseRequest(request);
+			Iterator iter = formItems.iterator();
+			FileItem item;
+			while(iter.hasNext()){
+				item = (FileItem) iter.next();
+			if (!item.isFormField()) {
+				String fileName = new File(item.getName()).getName().replaceAll("%20", "").replaceAll(" ", "");
+				String extension = FilenameUtils.getExtension(fileName);
+				if (!extension.equalsIgnoreCase("jpg") && !extension.equalsIgnoreCase("jpeg")
+						&& !extension.equalsIgnoreCase("png") && !extension.equalsIgnoreCase("raw")
+						 && !extension.equalsIgnoreCase("tiff") && !extension.equalsIgnoreCase("wmf")
+						 && !extension.equalsIgnoreCase("jp2") && !extension.equalsIgnoreCase("gif")
+						 && !extension.equalsIgnoreCase("psd")) throw new Exception();
+				File storeFile;
+				while(true){
+					storeFile = new File(UPLOAD_PATH + new Random().nextInt(10000000) + fileName);
+					if(!storeFile.exists()) break;
+				}
+				item.write(storeFile);
+				roomPhoto.add(new RoomPhoto(0, "room/" + storeFile.getName(), "", 0));
+			}}
+		} catch (Exception ex) {
+			throw ex;
+		}
+		return roomPhoto;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public List<HotelPhoto> uploadHotelImages() throws Exception {
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+		factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		File uploadDir = new File(UPLOAD_PATH);
+		List<HotelPhoto> hotelPhoto = new ArrayList<>();
+		if (!uploadDir.exists()) {
+			uploadDir.mkdir();
+		}
+		try {
+			List formItems = upload.parseRequest(request);
+			Iterator iter = formItems.iterator();
+			FileItem item;
+			while(iter.hasNext()){
+				item = (FileItem) iter.next();
+			if (!item.isFormField()) {
+				String fileName = new File(item.getName()).getName().replaceAll("%20", "").replaceAll(" ", "");
+				String extension = FilenameUtils.getExtension(fileName);
+				if (!extension.equalsIgnoreCase("jpg") && !extension.equalsIgnoreCase("jpeg")
+						&& !extension.equalsIgnoreCase("png") && !extension.equalsIgnoreCase("raw")
+						 && !extension.equalsIgnoreCase("tiff") && !extension.equalsIgnoreCase("wmf")
+						 && !extension.equalsIgnoreCase("jp2") && !extension.equalsIgnoreCase("gif")
+						 && !extension.equalsIgnoreCase("psd")) throw new Exception();
+				File storeFile;
+				while(true){
+					storeFile = new File(UPLOAD_PATH + new Random().nextInt(10000000) + fileName);
+					if(!storeFile.exists()) break;
+				}
+				item.write(storeFile);
+				hotelPhoto.add(new HotelPhoto(0, "hotel/" + storeFile.getName(), "", 0));
+			}}
+		} catch (Exception ex) {
+			throw ex;
+		}
+		return hotelPhoto;
 	}
 }

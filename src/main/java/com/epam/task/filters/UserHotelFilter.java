@@ -35,7 +35,7 @@ public class UserHotelFilter implements Filter {
 		}
 		
 		Hotel hotel = new HotelService().getHotelById(hotelId);
-		if(hotel != null && hotel.isDeleted() == false) {
+		if(hotel != null && hotel.getIsDeleted() == false) {
 			chain.doFilter(request, response);
 		} else {
 			((HttpServletResponse) response).sendError(404);

@@ -102,7 +102,8 @@
 </head>
 
 <body>
-
+	<input id="photos" type="hidden"
+		value="${pageContext.servletContext.contextPath}/" />
 	<input id="lang" type="hidden" value="${language}" />
 
 	<!-- Header ========================================================================= -->
@@ -114,15 +115,14 @@
 		<div class="row">
 			<div class="col s3">
 				<!-- 					PHOTO -->
-				<a href="#!"><img id="avatarImg"
+				<a href="#!"><img id="Img"
 					style="height: 100px; padding: 10px; width: 110px;"
-					<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
 								src="<i:urlToImage url="new_hotel.jpg" />">
 				</a>
 				<!-- 					END OF PHOTO -->
 				<!-- 				INPUT -->
-				<%-- 				<input style="margin-top: 60px" type="file" id="avatarInput" --%>
-				<%-- 					onchange="showPhoto()" accept="image/*" /> --%>
+								<input multiple style="margin-top: 60px" type="file" id="imgInput"
+				 					onchange="uploadHotel()" accept="image/*" /> 
 				<!-- 				END OF INPUT -->
 
 				<a class="waves-effect waves-light btn" id="create_button" onclick="createHotel()"
@@ -289,7 +289,7 @@
 
 		<!-- SWITCH CONTENT -->
 		<div id="switchContent" class="row">
-			<jsp:include page="../card.jsp"></jsp:include>
+			<jsp:include page="../cards/managerHotelCard.jsp"></jsp:include>
 		</div>
 		<!-- END OF SWITCH CONTENT -->
 
@@ -308,6 +308,8 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/manager/image.js"></script>
 
 </body>
 
