@@ -116,4 +116,8 @@ public class UserService {
 	public int updateUserStatus(int userId, UserStatus status) {
 		return daoManager.executeAndClose(() -> daoManager.getUserDao().updateUserStatus(userId, status));
 	}
+
+	public int updateUserType(int userId, UserType type) {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().updateUserType(userId, type));
+	}
 }
