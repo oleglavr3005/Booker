@@ -103,6 +103,7 @@
 
 <body>
 	<input id="photos" type="hidden" />
+	<input id="hotelId" type="hidden" value="${hotelId}" />
 	<input id="lang" type="hidden" value="${language}" />
 
 	<!-- Header ========================================================================= -->
