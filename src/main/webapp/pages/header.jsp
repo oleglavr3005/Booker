@@ -64,27 +64,8 @@ img.logo {
 </style>
 
 <!-- =================================================================== -->
-<fmt:message key="header.error.name" var="fmtName" />
-
-<fmt:message key="header.error.surname" var="fmtSurname" />
-
-<fmt:message key="header.error.pass" var="fmtPass" />
-
-<fmt:message key="header.error.cpass" var="fmtCpass" />
-
-<fmt:message key="header.error.mail" var="fmtMail" />
-
-<fmt:message key="header.error.mailpass" var="fmtMailPass" />
 
 <fmt:message key="header.error.mailuse" var="fmtMailUse" />
-
-<fmt:message key="header.regist" var="fmtRegist" />
-
-<fmt:message key="header.regist.succes" var="fmtSucces" />
-
-<fmt:message key="header.regist.confirmmail" var="fmtConfirm" />
-
-<fmt:message key="header.error.fail" var="fmtFail" />
 
 <!-- =================================================================== -->
 
@@ -172,31 +153,31 @@ img.logo {
 									<div class="form-horizontal registrationFrm">
 										<div class="input-field col">
 											<input id="name" type="text" class="validate"> <label
-												id="nameLbl" data-error="${fmtName}" for="name">
+												id="nameLbl" data-error="" for="name">
 												<span id="header_regist_name"> </span>
 											</label>
 										</div>
 										<div class="input-field col">
 											<input id="surname" type="text" class="validate"> <label
-												id="surnameLbl" data-error="${fmtSurname}" for="surname">
+												id="surnameLbl" data-error="" for="surname">
 												<span id="header_regist_surname"> </span>
 											</label>
 										</div>
 										<div class="input-field col">
 											<input id="email" type="email" class="validate"> <label
-												id="emailLbl" data-error="${fmtMail}" for="email">
+												id="emailLbl" data-error="" for="email">
 												<span id="header_regist_mail"> </span>
 											</label>
 										</div>
 										<div class="input-field">
 											<input id="password" type="password" class="validate">
-											<label id="passwordLbl" data-error="${fmtPass}"
+											<label id="passwordLbl" data-error=""
 												for="password">
 												<span id="header_regist_pass"> </span></label>
 										</div>
 										<div class="input-field">
 											<input id="сpassword" type="password" class="validate">
-											<label id="сpasswordLbl" data-error="${fmtCpass}"
+											<label id="сpasswordLbl" data-error=""
 												for="сpassword">
 												<span id="header_regist_cpass"> </span>
 											</label>
@@ -209,7 +190,7 @@ img.logo {
 									<div class="row">
 										<button id="registrationConfirmButton" type="submit"
 											class="btn-flat btn-success login col s2 offset-s1"
-											onclick="confirmRegistration('${fmtMail}', '${fmtMailUse}', '${fmtSucces}', '${fmtConfirm}', '${fmtFail}', '${fmtRegist}')"
+											onclick="confirmRegistration(languages.error.current.emailLbl, languages.error.current.mailPasswordLbl, languages.error.current.header_regist_succes, languages.error.current.header_regist_confirmmail, languages.error.current.header_error_fail, languages.error.current.header_regist);"
 											style="margin-left: 15px;">
 											<span id="header_regist_confirm"> </span>
 										</button>
@@ -244,7 +225,7 @@ img.logo {
 										</div>
 										<div class="input-field">
 											<input id="passwordAuth" type="password"> <label
-												id="passwordLbl" data-error="${fmtMailPass}"
+												id="mailPasswordLbl" data-error="${fmtMailPass}"
 												for="passwordAuth">
 												<span id="header_regist_pass"> </span>
 											</label>

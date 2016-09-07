@@ -123,13 +123,13 @@
 									<a href="https://www.pinterest.com/proquest/" style="color: #e6e6e6; font-size: 1rem;"><i
 										class="fa fa-lg fa-pinterest-p " aria-hidden="true"
 										style="margin-right: 11px;"></i> 
-										<span id="footer_social_pinteres"> </span></a>
+										<span id="footer_social_pinterest"> </span></a>
 								</div>
 								<div>
 									<a href="https://plus.google.com/+proquest" style="color: #e6e6e6; font-size: 1rem;"><i
 										class="fa fa-lg fa-google-plus " aria-hidden="true"
 										style="margin-right: 7px;"></i> 
-										<span id="footer_social_wordpress"> </span></a>
+										<span id="footer_social_google_plus"> </span></a>
 								</div>
 							</div>
 
