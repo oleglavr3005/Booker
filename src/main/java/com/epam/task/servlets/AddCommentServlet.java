@@ -45,13 +45,14 @@ public class AddCommentServlet extends HttpServlet {
 		int userId = ((User) request.getSession().getAttribute("user")).getId();
 		Feedback userFeedback = feedbackService.getFeedBackByUserAndHotel(userId, hotelId);
 		
+		int success;
 		if(userFeedback != null) { //modify
 			userFeedback.setComment(comment);
 			userFeedback.setRating(rating);
-			feedbackService.updateFeedback(userFeedback);
+			success = feedbackService.updateFeedback(userFeedback);
 		} else { 	//create new
 			userFeedback = new Feedback(0, userId, hotelId, rating, comment, title, new Timestamp(new Date().getTime()));
-			feedbackService.insertFeedback(userFeedback);
+			success = feedbackService.insertFeedback(userFeedback);
 		}
 		
 		//calculate new rating
@@ -64,7 +65,7 @@ public class AddCommentServlet extends HttpServlet {
 		hotel.setRating(newRating);
 		hotelService.updateHotel(hotel);
 		
-		//return something ??????????? yes key, OK or key error 
+		response.getWriter().write(success > 0 ? "true" : "false");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
