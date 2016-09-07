@@ -10,29 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.HotelPhoto;
-import com.epam.task.database.service.HotelPhotoService;
 import com.epam.task.util.ImageSetter;
 
-/**
- * Servlet implementation class LoadHotelPicturesServlet
- */
 @WebServlet("/upload_hotel")
 public class LoadHotelPicturesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public LoadHotelPicturesServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String spliterator = "***";
+		String spliterator = ":::";
     	try {
 			List<HotelPhoto> photos = new ImageSetter(request,"/hotel").uploadHotelImages();
 			if (photos.isEmpty()){
@@ -55,11 +44,7 @@ public class LoadHotelPicturesServlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

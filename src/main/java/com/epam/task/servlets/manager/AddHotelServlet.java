@@ -43,7 +43,8 @@ public class AddHotelServlet extends HttpServlet {
 			System.out.println("wtf");
 		}
 		
-		String[] hotelImagesArray = hotelImagesString.split("\\*\\*\\*");
+		System.out.println(hotelImagesString);
+		String[] hotelImagesArray = hotelImagesString.split(":::");
 		
 		int stars = Integer.parseInt(starsString);		
 		double xCoord = Double.parseDouble(xCoordString);
@@ -53,6 +54,7 @@ public class AddHotelServlet extends HttpServlet {
 		HotelPhotoService hotelPhotoService = new HotelPhotoService();
 		if (hotelId > 0) {
 			for (int i = 0; i<hotelImagesArray.length; i++) {
+				System.out.println(hotelImagesArray[i]);
 				hotelPhotoService.insertHotelPhoto(new HotelPhoto(0, hotelImagesArray[i], "", hotelId));
 			}
 		}
