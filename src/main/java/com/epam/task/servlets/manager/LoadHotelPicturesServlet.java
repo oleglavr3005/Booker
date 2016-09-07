@@ -32,20 +32,28 @@ public class LoadHotelPicturesServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			List<HotelPhoto> photo = new ImageSetter(request,"/hotel").uploadHotelImages();
-			if (photo.isEmpty()){
-				photo.add(new HotelPhoto(0,"hotel/no_image.jpg", "", 0));
+		String spliterator = "***";
+    	try {
+			List<HotelPhoto> photos = new ImageSetter(request,"/hotel").uploadHotelImages();
+			if (photos.isEmpty()){
+				photos.add(new HotelPhoto(0,"hotel/no_image.jpg", "", 0));
+			}
+			StringBuilder hotelImages = new StringBuilder();
+			for(HotelPhoto hotelPhoto : photos) {
+				if(hotelImages.length() != 0) {
+					hotelImages.append(spliterator);
+				}
+				hotelImages.append(hotelPhoto.getImg());
 			}
 			int roomId = Integer.parseInt(request.getParameter("roomId"));
 			HotelPhotoService service = new HotelPhotoService();
-			for( HotelPhoto hotelPhoto : photo){
+			for( HotelPhoto hotelPhoto : photos){
 				hotelPhoto.setHotelId(roomId);
 				service.insertHotelPhoto(hotelPhoto);
 			}			
 			response.setContentType("application/text");
 			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(photo.get(0).getImg());
+			response.getWriter().write(hotelImages.toString());
 		} catch (Exception e) {
 			response.setContentType("application/text");
 			response.setCharacterEncoding("UTF-8");
