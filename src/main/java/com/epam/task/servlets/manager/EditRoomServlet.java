@@ -41,7 +41,7 @@ public class EditRoomServlet extends HttpServlet {
 		String freeBook = request.getParameter("freeBook");
 		
 		if (roomIdString == null || number == null || type == null || doubleBedsCountString == null || bedsCountString == null ||
-				priceString == null || food == null) {
+				priceString == null || food == null || freeBook == null) {
 			return;
 		}
 
@@ -50,17 +50,17 @@ public class EditRoomServlet extends HttpServlet {
 		int bedsCount = Integer.parseInt(bedsCountString);
 		int price = Integer.parseInt(priceString);
 		
-		boolean hasWifi = hasWiFiString == null ? false : true;
-		boolean hasShower = hasShowerString == null ? false : true;
-		boolean hasParking = hasParkingString == null ? false : true;
-		boolean hasCondition = hasConditionString == null ? false : true;
-		boolean hasPool = hasPoolString == null ? false : true;
-		boolean hasGym = hasGymString == null ? false : true;
-		boolean hasBalcony = hasBalconyString == null ? false : true;
+		boolean hasWifi = Boolean.parseBoolean(hasWiFiString);
+		boolean hasShower = Boolean.parseBoolean(hasShowerString);
+		boolean hasParking = Boolean.parseBoolean(hasParkingString);
+		boolean hasCondition = Boolean.parseBoolean(hasConditionString);
+		boolean hasPool = Boolean.parseBoolean(hasPoolString);
+		boolean hasGym = Boolean.parseBoolean(hasGymString);
+		boolean hasBalcony = Boolean.parseBoolean(hasBalconyString);
 		int daysCount;
 		int percentage;
 		
-		if(freeBook != null) {
+		if(!Boolean.parseBoolean(freeBook)) {
 			daysCount = Integer.parseInt(request.getParameter("daysCount"));
 			percentage = Integer.parseInt(request.getParameter("percentage"));
 		} else {
