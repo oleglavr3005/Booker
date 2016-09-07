@@ -36,12 +36,12 @@
 		footer_social_wordpress : "WordPress",
 		footer_copyright : "All rights Reserved",
 			
-		header_regist_name : "Імя",
-		header_regist_surname : "Прізвище",
-		header_regist_mail : "Емейл",
-		header_regist_pass : "Пароль",
-		header_regist_cpass : "Підтвердити пароль",
-		header_regist_confirm : "Завершити реєстрацію",
+		header_regist_name : "First Name",
+		header_regist_surname : "Last Name",
+		header_regist_mail : "Email",
+		header_regist_pass : "Password",
+		header_regist_cpass : "Confirm password",
+		header_regist_confirm : "Finish registration",
 		
 
 		// authorization
