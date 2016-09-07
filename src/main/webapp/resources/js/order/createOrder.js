@@ -274,6 +274,12 @@ function modalMaker(result){
 			totalContent += contentMaker(result.hotels[i]);
 		}
 	}
+	else {
+		totalContent = '<img alt="thank you for order"'+
+			'src="<i:urlToImage url="order.jpg"'+
+			'class="img-responsive center-block"'+
+			'style="max-width: 150px; max-height: 150px; margin-bottom: 10px; margin-top: 30px">';
+	}
 	return totalContent;
 }
 

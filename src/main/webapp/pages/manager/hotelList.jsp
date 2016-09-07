@@ -115,10 +115,10 @@
 				<!-- 					PHOTO -->
 				<a href="#!"><img id="Img"
 					style="height: 100px; padding: 10px; width: 110px;"
-					src="<i:urlToImage url="new_hotel.jpg" />"> </a>
+					src="<i:urlToImage url="new_hotel.png" />"> </a>
 				<!-- 					END OF PHOTO -->
 				<!-- 				INPUT -->
-				<input multiple style="margin-top: 60px" type="file" id="imgInput"
+				<input multiple style="margin-top: 60px; display: none" type="file" id="imgInput"
 					onchange="uploadHotel()" accept="image/*" />
 				<!-- 				END OF INPUT -->
 

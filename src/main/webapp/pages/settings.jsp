@@ -147,7 +147,7 @@
 
 <!-- 							<div class="file-field input-field"> -->
 <!-- 								<div class="waves-effect waves-light btn"> -->
-									<input multiple style="margin-top:60px" type="file" id="avatarInput"
+									<input multiple style="margin-top:60px; display: none" type="file" id="avatarInput"
 								onchange="showPhoto()" accept="image/*" />
 <!-- 								</div> -->
 <!-- 								<div class="file-path-wrapper"> -->

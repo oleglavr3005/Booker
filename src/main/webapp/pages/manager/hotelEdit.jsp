@@ -58,8 +58,8 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/css/table.css">
-	
-	
+
+
 <!-- 	Image picker -->
 <link
 	href="${pageContext.servletContext.contextPath}/resources/js/image-picker/image-picker.css"
@@ -94,8 +94,6 @@ div #sidebar-wrapper {
 .well {
 	padding: 0px;
 }
-
-
 </style>
 
 </head>
@@ -119,18 +117,18 @@ div #sidebar-wrapper {
 			<div class="col s3">
 				<div class="row">
 					<!-- 					PHOTO -->
-					
-					
-					
+
+
+
 					<a href="#!"><img id="avatarImg"
-						style="height: 100px; padding: 10px; width: 110px;" 
-<%-- 														src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
- 								src="<i:urlToImage url="${hotel.photos }" />"> 
+						style="height: 100px; padding: 10px; width: 110px;"
+						<%-- 														src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
+ 								src="<i:urlToImage url="${hotel.photos[0].img }" />">
 					</a>
 					<!-- 					END OF PHOTO -->
 					<!-- 				INPUT -->
-					<%-- 				<input style="margin-top: 60px" type="file" id="avatarInput" --%>
-					<%-- 					onchange="showPhoto()" accept="image/*" /> --%>
+									<input style="margin-top: 60px" type="file" id="avatarInput"
+					 					onchange="showPhoto()" accept="image/*" /> 
 					<!-- 				END OF INPUT -->
 
 					<a class="waves-effect waves-light btn" id="create_button"
@@ -143,21 +141,20 @@ div #sidebar-wrapper {
 						<input type="checkbox" class="filled-in" id="isDeleted"
 							name="isDeleted" /> <label for="isDeleted">DELETED</label>
 					</p>
-					
+
 					<form id="myForm" action="../create_room" method="post">
-					<input id="hotId" name=hotelId type="hidden"
-		value="${hotel.id}" />
-					<a class="waves-effect waves-light btn" id="create_room_button"
-<%-- 					href="${pageContext.servletContext.contextPath}/cabinet/create_room" --%>
+						<input id="hotId" name=hotelId type="hidden" value="${hotel.id}" />
+						<a class="waves-effect waves-light btn" id="create_room_button"
+							<%-- 					href="${pageContext.servletContext.contextPath}/cabinet/create_room" --%>
 						onclick="redirect(${hotel.id})"
-						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>CREATE_ROOM</span></a>
+							style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>CREATE_ROOM</span></a>
 					</form>
-					
+
 					<script>
 						$('#isDeleted').attr('checked',
 								'${hotel.isDeleted}' == 'true');
 					</script>
-					
+
 				</div>
 
 
@@ -182,10 +179,8 @@ div #sidebar-wrapper {
 							<!-- 							END OF NAME -->
 
 						</div>
-					</div>
 
-					<div class="row">
-						<div class="col s7">
+						<div class="col s6" style="margin-top: 15px;">
 
 							<!-- 						STARS -->
 							<input id="rating" onchange="rate()" type="number"
@@ -284,21 +279,22 @@ div #sidebar-wrapper {
 			</div>
 		</div>
 	</div>
-	
-	
 
-<div class="container">
-	
-<select class="image-picker masonry show-html" id="images" multiple="multiple">
-<c:forEach var="photo" items="${hotel.photos}">
-   <option data-img-src="<i:urlToImage url="${photo.img }" />" value="${photo.id}">${photo.desc }</option>
-</c:forEach>
-</select>
-<a class="my-btn waves-effect waves-light btn"
-									style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
-									onclick="remove()"><fmt:message
-											key="subscribes.table.remove" /> </a>
-</div>
+
+
+	<div class="container">
+
+		<select class="image-picker masonry show-html" id="images"
+			multiple="multiple">
+			<c:forEach var="photo" items="${hotel.photos}">
+				<option data-img-src="<i:urlToImage url="${photo.img }" />"
+					value="${photo.id}">${photo.desc }</option>
+			</c:forEach>
+		</select> <a class="my-btn waves-effect waves-light btn"
+			style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
+			onclick="remove()"><fmt:message key="subscribes.table.remove" />
+		</a>
+	</div>
 
 	<div class="container-fluid">
 		<div class="row">
@@ -331,7 +327,9 @@ div #sidebar-wrapper {
 
 							<c:forEach var="room" items="${rooms}">
 								<tr>
-									<td><a href="${pageContext.servletContext.contextPath}/cabinet/room/${room.id}"><c:out value="${room.number }"></c:out></a></td>
+									<td><a
+										href="${pageContext.servletContext.contextPath}/cabinet/room/${room.id}"><c:out
+												value="${room.number }"></c:out></a></td>
 									<td><c:out value="${room.type }"></c:out></td>
 									<td>${room.doubleBedsCount * 2 + room.bedsCount}</td>
 									<td><c:if test="${room.wifi == true}">
@@ -381,7 +379,7 @@ div #sidebar-wrapper {
 										</c:if></td>
 									<td><c:out value="${room.price }"></c:out></td>
 								</tr>
-								
+
 							</c:forEach>
 						</tbody>
 					</table>
@@ -403,16 +401,19 @@ div #sidebar-wrapper {
 		src="${pageContext.servletContext.contextPath}/resources/js/star-rating/star-rating.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
-		
-		
-		
-		
-<script type="text/javascript"
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/manager/image.js"></script>
+
+
+
+
+	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/image-picker/image-picker.js"></script>
-				<script type="text/javascript"
+	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/image-picker/image-picker.min.js"></script>
-		<script src="http://rvera.github.io/image-picker/js/jquery.masonry.min.js"></script>
-<script type="text/javascript">
+	<script
+		src="http://rvera.github.io/image-picker/js/jquery.masonry.min.js"></script>
+	<script type="text/javascript">
 		$("select").imagepicker();
 		var container = jQuery("select.image-picker.masonry").next("ul.thumbnails");
     container.imagesLoaded(function(){
@@ -428,7 +429,8 @@ div #sidebar-wrapper {
 	}
     </script>
 
-	<script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/manager/hotelEdit.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotelEdit.js"></script>
 
 
 

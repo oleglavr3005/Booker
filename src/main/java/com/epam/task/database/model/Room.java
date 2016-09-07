@@ -32,7 +32,7 @@ public class Room {
 		this.percentage = percentage;
 		this.deleted = deleted;
 		
-		photos = new RoomPhotoService().getRoomPhotosByRoom(hotelId);
+		photos = new RoomPhotoService().getRoomPhotosByRoom(id);
 		if(photos.size() == 0) {
 			photos.add(new RoomPhoto(0, "no-image.png", "", hotelId));
 		}

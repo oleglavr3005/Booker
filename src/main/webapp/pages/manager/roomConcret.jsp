@@ -122,11 +122,11 @@
 					<a href="#!"><img id="Img"
 						style="height: 100px; padding: 10px; width: 110px;"
 						<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
-								src="<i:urlToImage url="new_hotel.jpg" />">
+								src="<i:urlToImage url="${room.photos[0].img }" />">
 					</a>
 					<!-- 					END OF PHOTO -->
 					<!-- 				INPUT -->
-					<input style="margin-top: 5px" type="file" id="imgInput"
+					<input style="margin-top: 5px; display:none" type="file" id="imgInput" 
 						onchange="uploadRoom()" accept="image/*" />
 					<!-- 				END OF INPUT -->
 

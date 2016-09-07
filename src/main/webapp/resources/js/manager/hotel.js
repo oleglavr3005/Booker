@@ -1,6 +1,7 @@
 var image = null;
 
 function createHotel(){
+	alert($('#photos').val());
 	var img = image == null ? 'new_hotel.jpg':image;
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
 	var x = 0;

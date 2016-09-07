@@ -119,41 +119,70 @@
 					<a href="#!"><img id="Img"
 						style="height: 100px; padding: 10px; width: 110px;"
 						<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
-								src="<i:urlToImage url="new_room.jpg" />">
+								src="<i:urlToImage url="new_room.png" />">
 					</a>
 					<!-- 					END OF PHOTO -->
 					<!-- 				INPUT -->
-					<input multiple style="margin-top: 5px" type="file" id="imgInput"
-						onchange="uploadRoom()" accept="image/*" />
+					<input multiple style="margin-top: 5px; display: none" type="file"
+						id="imgInput" onchange="uploadRoom()" accept="image/*" />
 					<!-- 				END OF INPUT -->
 
-					<a class="waves-effect waves-light btn" id="create_button"
-						onclick="createRoom()"
-						style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>SAVE</span></a>
-					<p id="create_error" style="color: red"></p>
 				</div>
+
+
+
+				<!-- 				HOTEL NAME -->
 
 				<div class="row">
-
-					<p>
-						<input type="checkbox" class="filled-in" id="freeBook"
-							onclick="changeFreeBook()" name="freeBook" /> <label
-							for="freeBook">FREEBOOK</label>
-					</p>
-
-					<script>
-						function changeFreeBook() {
-							var freeBook = document.getElementById('freeBook').checked;
-							$('#percentage').prop('disabled', freeBook);
-							$('#days').prop('disabled', freeBook);
-						}
-						$('#freeBook').attr('checked', '${room.daysCount}' < 0);
-					</script>
-
-
-
+					<label class="labelstyle"><fmt:message
+							key="roomCreate_hotel" /></label> <select id="hotel_name"
+						class="chosen-select optionstyle">
+						<option class="optionstyle"><fmt:message
+								key="roomCreate_chooseHotel" /></option>
+						<c:forEach var="hotel" items="${hotels}">
+							<option class="optionstyle">${hotel}</option>
+						</c:forEach>
+					</select>
 				</div>
 
+				<!-- 			END OF HOTEL NAME -->
+
+
+				<!-- 						ROOM TYPE -->
+				<div class="row">
+					<select id="roomType" class="chosen-select optionstyle">
+						<option class="optionstyle" value="STANDART" selected="selected">STANDART</option>
+						<option class="optionstyle" value="LUX">LUX</option>
+						<option class="optionstyle" value="DELUX">DELUX</option>
+					</select>
+				</div>
+				<!-- 						END OF ROOM TYPE -->
+
+
+
+				<!-- 						FOOD TYPE -->
+				<div class="row">
+					<select id="foodType" class="chosen-select optionstyle">
+						<option class="optionstyle" value="NONE" selected="selected">NONE
+						</option>
+						<option class="optionstyle" value="BREAKFAST">BREAKFAST</option>
+						<option class="optionstyle" value="TWICE">TWICE</option>
+						<option class="optionstyle" value="FULL">FULL</option>
+					</select>
+				</div>
+				<!-- 						END OF FOOD TYPE -->
+
+				<!-- DAYS COUNT -->
+
+				<div class="row">
+					<input id="days" type="number"
+						<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
+						class="validate" name="days" min=1 max=365> <label
+						id="daysLbl" data-error="${fmtPeople}" for="days"><fmt:message
+							key="room.concrete.days" /></label>
+				</div>
+
+				<!-- 							END OF DAYS COUNT -->
 
 			</div>
 
@@ -162,51 +191,27 @@
 				<div class="container-fluid">
 
 					<div class="row">
-						<div class="col s4 offset-s2" style="margin-top: 20px;">
-
-							<!-- 						ROOM TYPE -->
-							<div class="row">
-								<select id="roomType" class="chosen-select optionstyle">
-									<option class="optionstyle" value="STANDART"
-										selected="selected">STANDART</option>
-									<option class="optionstyle" value="LUX">LUX</option>
-									<option class="optionstyle" value="DELUX">DELUX</option>
-								</select>
-							</div>
-							<!-- 						END OF ROOM TYPE -->
-
+						<div class="col s5 offset-s1" style="margin-top: 20px;">
 
 
 
 							<!-- 1 BEDS COUNT -->
 
 							<div class="row">
-								<input id="single" type="number"
-									class="validate" name="single" min=1 max=100> <label
-									id="singleLbl" data-error="${fmtPeople}" for="single"><fmt:message
+								<input id="single" type="number" class="validate" name="single"
+									min=1 max=100> <label id="singleLbl"
+									data-error="${fmtPeople}" for="single"><fmt:message
 										key="room.concrete.single" /></label>
 							</div>
 
 							<!-- 							END OF 1 BEDS COUNT -->
 
-							<!-- DAYS COUNT -->
-
-							<div class="row">
-								<input id="days" type="number"
-									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
-									class="validate" name="days" min=1 max=365> <label
-									id="daysLbl" data-error="${fmtPeople}" for="days"><fmt:message
-										key="room.concrete.days" /></label>
-							</div>
-
-							<!-- 							END OF DAYS COUNT -->
-
 							<!-- NUMBER -->
 
 							<div class="row">
-								<input id="number" type="number"
-									class="validate" name="days" min=1 max=365> <label
-									id="daysLbl" data-error="${fmtPeople}" for="days"><fmt:message
+								<input id="number" type="number" class="validate" name="days"
+									min=1 max=365> <label id="daysLbl"
+									data-error="${fmtPeople}" for="days"><fmt:message
 										key="room.concrete.number" /></label>
 							</div>
 
@@ -215,40 +220,13 @@
 							<!-- PRICE -->
 
 							<div class="row">
-								<input id="price" type="number"
-									class="validate" name="percentage" min=1 max=1000000> <label
+								<input id="price" type="number" class="validate"
+									name="percentage" min=1 max=1000000> <label
 									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><fmt:message
 										key="room.concrete.price" /></label>
 							</div>
 
 							<!-- 							END OF PRICE -->
-
-						</div>
-
-						<div class="col s4 offset-s2" style="margin-top: 20px;">
-
-							<!-- 						FOOD TYPE -->
-							<div class="row">
-								<select id="foodType" class="chosen-select optionstyle">
-									<option class="optionstyle" value="NONE" selected="selected">NONE
-									</option>
-									<option class="optionstyle" value="BREAKFAST">BREAKFAST</option>
-									<option class="optionstyle" value="TWICE">TWICE</option>
-									<option class="optionstyle" value="FULL">FULL</option>
-								</select>
-							</div>
-							<!-- 						END OF FOOD TYPE -->
-
-							<!-- 2 BEDS COUNT -->
-
-							<div class="row">
-								<input id="double" type="number"
-									class="validate" name="single" min=1 max=100> <label
-									id="doubleLbl" data-error="${fmtPeople}" for="double"><fmt:message
-										key="room.concrete.double" /></label>
-							</div>
-
-							<!-- 							END OF 2 BEDS COUNT -->
 
 							<!-- PERCENTAGE COUNT -->
 
@@ -262,9 +240,20 @@
 
 							<!-- 							END OF PERCENTAGE COUNT -->
 
+						</div>
 
+						<div class="col s5 offset-s1" style="margin-top: 20px;">
 
+							<!-- 2 BEDS COUNT -->
 
+							<div class="row">
+								<input id="double" type="number" class="validate" name="single"
+									min=1 max=100> <label id="doubleLbl"
+									data-error="${fmtPeople}" for="double"><fmt:message
+										key="room.concrete.double" /></label>
+							</div>
+
+							<!-- 							END OF 2 BEDS COUNT -->
 
 
 							<!-- 								CHECKBOX -->
@@ -299,7 +288,30 @@
 									name="hasBalcony" /> <label for="hasBalcony">BALCONY</label>
 							</p>
 
+							<!-- 							FREE BOOK -->
+
+							<p>
+								<input type="checkbox" class="filled-in" id="freeBook"
+									onclick="changeFreeBook()" name="freeBook" /> <label
+									for="freeBook">FREEBOOK</label>
+							</p>
+							<script>
+								function changeFreeBook() {
+									var freeBook = document
+											.getElementById('freeBook').checked;
+									$('#percentage').prop('disabled', freeBook);
+									$('#days').prop('disabled', freeBook);
+								}
+								$('#freeBook').attr('checked',
+										'${room.daysCount}' < 0);
+							</script>
+
+							<!-- 				END OF FREE BOOK -->
+
 							<!-- 								END OF CHECKBOX -->
+
+
+
 
 						</div>
 
@@ -308,6 +320,16 @@
 
 				</div>
 			</div>
+		</div>
+		<div class="row">
+			<div class="col s10 offset-s1">
+				<a class="waves-effect waves-light btn" id="create_button"
+					onclick="createRoom()"
+					style="margin-left: 10px; text-align: center; width: 100%;margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>SAVE</span></a>
+				<p id="create_error" style="color: red"></p>
+			</div>
+			<div class="col s1">.</div>
+
 		</div>
 	</div>
 
