@@ -43,7 +43,7 @@ public class AddHotelServlet extends HttpServlet {
 			System.out.println("wtf");
 		}
 		
-		String[] hotelImagesArray = hotelImagesString.split("***");
+		String[] hotelImagesArray = hotelImagesString.split("\\*\\*\\*");
 		
 		int stars = Integer.parseInt(starsString);		
 		double xCoord = Double.parseDouble(xCoordString);
