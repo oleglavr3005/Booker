@@ -26,7 +26,7 @@ public class AdminPageServlet extends HttpServlet {
 		request.setAttribute("requestsApproved", new RequestService().getAllRequestsByStatus(RequestStatus.APPROVED));
 		request.setAttribute("requestsDeclined", new RequestService().getAllRequestsByStatus(RequestStatus.DECLINED));
 		
-		request.getRequestDispatcher("pages/admin/adminPage.jsp").forward(request, response);
+		request.getRequestDispatcher("/pages/admin/adminPage.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
