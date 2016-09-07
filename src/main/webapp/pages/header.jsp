@@ -139,6 +139,13 @@ img.logo {
 										<i class="fa fa-building" aria-hidden="true"></i> My hotels</a></li>
 									</c:if>
 									
+									<c:if test="${user.type == 'ADMIN'}">			
+										<li role="presentation" class="divider" style="border-color:lightgrey"></li>						
+										<li role="presentation"><a role="menuitem" tabindex="-1"
+										href="${pageContext.servletContext.contextPath}/cabinet/admin" style="color: #26A69A">
+										<i class="fa fa-trash" aria-hidden="true"></i> Admin stuff</a></li>
+									</c:if>
+									
 									<li role="presentation" class="divider" style="border-color:lightgrey"></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/log-out" style="color: #26A69A">
