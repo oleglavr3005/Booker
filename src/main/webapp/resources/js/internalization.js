@@ -35,6 +35,14 @@
 		footer_social_pinterest : "Pinterest",
 		footer_social_wordpress : "WordPress",
 		footer_copyright : "All rights Reserved",
+		
+		header_regist_name : "Імя",
+		header_regist_surname : "Прізвище",
+		header_regist_mail : "Емейл",
+		header_regist_pass : "Пароль",
+		header_regist_cpass : "Підтвердити пароль",
+		header_regist_confirm : "Завершити реєстрацію",
+		
 
 		// authorization
 		header_error_mail : "Invalid email",
