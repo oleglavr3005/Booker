@@ -86,7 +86,7 @@
 	<!-- Header ========================================================================= -->
 	<jsp:include page="../header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
-
+<script>$(document).ready(function() {jQuery.noConflict();});</script>
 	<div class="container">
 		<h4 style="text-align: center; margin-top: 20px;">
 			<fmt:message key="user.cart.header" />
