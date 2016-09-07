@@ -123,7 +123,7 @@
 					</a>
 					<!-- 					END OF PHOTO -->
 					<!-- 				INPUT -->
-					<input style="margin-top: 5px" type="file" id="imgInput"
+					<input multiple style="margin-top: 5px" type="file" id="imgInput"
 						onchange="uploadRoom()" accept="image/*" />
 					<!-- 				END OF INPUT -->
 
@@ -181,7 +181,7 @@
 							<!-- 1 BEDS COUNT -->
 
 							<div class="row">
-								<input id="single" value="${room.bedsCount}" type="number"
+								<input id="single" type="number"
 									class="validate" name="single" min=1 max=100> <label
 									id="singleLbl" data-error="${fmtPeople}" for="single"><fmt:message
 										key="room.concrete.single" /></label>
@@ -192,7 +192,7 @@
 							<!-- DAYS COUNT -->
 
 							<div class="row">
-								<input id="days" value="${room.daysCount}" type="number"
+								<input id="days" type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="days" min=1 max=365> <label
 									id="daysLbl" data-error="${fmtPeople}" for="days"><fmt:message
@@ -204,7 +204,7 @@
 							<!-- NUMBER -->
 
 							<div class="row">
-								<input id="number" value="${room.number}" type="number"
+								<input id="number" type="number"
 									class="validate" name="days" min=1 max=365> <label
 									id="daysLbl" data-error="${fmtPeople}" for="days"><fmt:message
 										key="room.concrete.number" /></label>
@@ -215,8 +215,8 @@
 							<!-- PRICE -->
 
 							<div class="row">
-								<input id="price" value="${room.price}" type="number"
-									class="validate" name="percentage" min=1 max=100> <label
+								<input id="price" type="number"
+									class="validate" name="percentage" min=1 max=1000000> <label
 									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><fmt:message
 										key="room.concrete.price" /></label>
 							</div>
@@ -242,7 +242,7 @@
 							<!-- 2 BEDS COUNT -->
 
 							<div class="row">
-								<input id="double" value="${room.doubleBedsCount}" type="number"
+								<input id="double" type="number"
 									class="validate" name="single" min=1 max=100> <label
 									id="doubleLbl" data-error="${fmtPeople}" for="double"><fmt:message
 										key="room.concrete.double" /></label>
@@ -253,7 +253,7 @@
 							<!-- PERCENTAGE COUNT -->
 
 							<div class="row">
-								<input id="percentage" value="${room.percentage}" type="number"
+								<input id="percentage" type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="percentage" min=1 max=100> <label
 									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><fmt:message
