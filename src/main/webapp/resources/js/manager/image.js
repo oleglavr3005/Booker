@@ -28,6 +28,7 @@ function uploadRoom() {
 					alert(result);
 				}else{
 					image = result;
+					//SET JSON STRIN TO HIDDEN INPUT photo
 				}
 			}
 		});
@@ -60,9 +61,9 @@ function uploadHotel() {
 					alert(result);
 				}else{
 					image = result;
+					//SET JSON STRIN TO HIDDEN INPUT photo
 				}
 			}
 		});
 	}
 }
-

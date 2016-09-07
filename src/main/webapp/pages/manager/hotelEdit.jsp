@@ -92,6 +92,8 @@ div #sidebar-wrapper {
 
 
 <body>
+	<input id="photos" type="hidden"
+		value="${pageContext.servletContext.contextPath}/" />
 	<input id="lang" type="hidden" value="${language}" />
 	<input id="mapping" type="hidden"
 		value="${pageContext.servletContext.contextPath}/" />

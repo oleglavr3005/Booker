@@ -31,10 +31,10 @@ function bookOrderCard(orderId, daysCount) {
 						cardNumber : code,
 						comment : localComment
 					}, function(result) {
-
+						var res = $.parseJSON(result);
 						$('#book' + orderId).onclick = null;
 
-						if (result == 'true') {
+						if (res.booked == 'true') {
 							 jQuery('#modal1').openModal();
 							
 							$('#book' + orderId).text("SUCCES");
@@ -90,18 +90,18 @@ function bookOrderCard(orderId, daysCount) {
 					$('#field').after(content); 		//book all
 				}
 				
-				var height = $('#subscribing_form').height();
-				$("#subscribing_form").animate({
-					height : "0px",
-					opacity : 0
-				}, 0, function() {
-					$("#subscribing_form").animate({
-						height : height + 'px',
-						opacity : 1
-					}, 500, function() {
+//				var height = $('#subscribing_form').height();
+//				$("#subscribing_form").animate({
+//					height : "0px",
+//					opacity : 0
+//				}, 0, function() {
+//					$("#subscribing_form").animate({
+//						height : height + 'px',
+//						opacity : 1
+//					}, 500, function() {
 						$("#subscribing_form").html(content);
-					});
-				});
+//					});
+//				});
 			}
 
 		} else {
@@ -110,10 +110,10 @@ function bookOrderCard(orderId, daysCount) {
 				cardNumber : code,
 				comment : localComment
 			}, function(result) {
-
+				var res = $.parseJSON(result);
 				$('#book' + orderId).onclick = null;
 
-				if (result == 'true') {
+				if (res.booked == 'true') {
 					$('#book' + orderId).text("SUCCES");
 					$('#book' + orderId).attr('disabled', true);
 					$('#remove' + orderId).attr('disabled', true);
