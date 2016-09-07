@@ -22,7 +22,7 @@ function createHotel(){
 				$('#create_error').text("SUCCES");
 				$('#create_button').attr("disabled", true);
 				setTimeout(function() {
-					document.location.href = '/booker/my_hotels/' + result;
+					document.location.href = '/booker/cabinet/my_hotels/' + result;
 				}, 2000);
 			}else{
 				$('#create_error').text("FAIL");
