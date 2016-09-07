@@ -132,6 +132,11 @@ div #sidebar-wrapper {
 							name="isDeleted" /> <label for="isDeleted">DELETED</label>
 					</p>
 					
+					<a class="waves-effect waves-light btn" id="create_room_button"
+					href="${pageContext.servletContext.contextPath}/cabinet/create_room"
+						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>CREATE_ROOM</span></a>
+					
+					
 					<script>
 						$('#isDeleted').attr('checked',
 								'${hotel.isDeleted}' == 'true');

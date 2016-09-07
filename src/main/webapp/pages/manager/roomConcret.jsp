@@ -166,9 +166,11 @@
 							<div class="row">
 								<select id="roomType" class="chosen-select optionstyle">
 									<option class="optionstyle" value="STANDART"
-										selected="selected">STANDART</option>
-									<option class="optionstyle" value="LUX">LUX</option>
-									<option class="optionstyle" value="DELUXE">DELUXE</option>
+										<c:if test="${room.type == 'STANDART'}"> selected="selected"</c:if>>STANDART</option>
+									<option class="optionstyle" value="LUX"
+										<c:if test="${room.type == 'LUX'}"> selected="selected"</c:if>>LUX</option>
+									<option class="optionstyle" value="DELUX"
+										<c:if test="${room.type == 'DELUX'}"> selected="selected"</c:if>>DELUX</option>
 								</select>
 							</div>
 							<!-- 						END OF ROOM TYPE -->
@@ -228,11 +230,15 @@
 							<!-- 						FOOD TYPE -->
 							<div class="row">
 								<select id="foodType" class="chosen-select optionstyle">
-									<option class="optionstyle" value="NONE" selected="selected">NONE
+									<option class="optionstyle" value="NONE" selected="selected"
+										<c:if test="${room.food == 'NONE'}"> selected="selected"</c:if>>NONE
 									</option>
-									<option class="optionstyle" value="BREAKFAST">BREAKFAST</option>
-									<option class="optionstyle" value="TWICE">TWICE</option>
-									<option class="optionstyle" value="FULL">FULL</option>
+									<option class="optionstyle" value="BREAKFAST"
+										<c:if test="${room.food == 'BREAKFAST'}"> selected="selected"</c:if>>BREAKFAST</option>
+									<option class="optionstyle" value="TWICE"
+										<c:if test="${room.food == 'TWICE'}"> selected="selected"</c:if>>TWICE</option>
+									<option class="optionstyle" value="FULL"
+										<c:if test="${room.food == 'FULL'}"> selected="selected"</c:if>>FULL</option>
 								</select>
 							</div>
 							<!-- 						END OF FOOD TYPE -->
@@ -308,10 +314,10 @@
 			</div>
 		</div>
 	</div>
-	
-	
-	
-	
+
+
+
+
 	<div class="container">
 		<div class="row">
 			<div class="col s8">
@@ -368,7 +374,7 @@
 		$('#freeBook').attr('checked',
 				'${room.daysCount}' < 0);
 	</script>
-	
+
 	<script>
 		$('#hasWiFi').attr('checked', '${room.wifi}' == 'true');
 		$('#hasShower').attr('checked', '${room.shower}' == 'true');
