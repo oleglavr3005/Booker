@@ -115,10 +115,10 @@
 			<!-- 			Tab Holder -->
 			<div class="col s8 offset-s2">
 				<ul class="tabs" style="background: #638F98;">
-					<li class="tab col s5 offset-s1"><a class="active" href="#test1"
-						style="color: #1A3D44"><b><p id="tab_users">USERS</p></b></a></li>
-					<li class="tab col s5 offset-s1"><a href="#test2" style="color: #1A3D44"><b><p
-									id="tab_contact">CONTACT</p></b></a></li>
+					<li class="tab col s5 offset-s1"><a class="active"
+						href="#test1" style="color: #1A3D44"><b><p id="tab_users">USERS</p></b></a></li>
+					<li class="tab col s5 offset-s1"><a href="#test2"
+						style="color: #1A3D44"><b><p id="tab_contact">CONTACT</p></b></a></li>
 				</ul>
 			</div>
 			<!-- 			End of Tab Holder -->
@@ -133,39 +133,39 @@
 						</h4>
 					</div>
 
-				<table id="users">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>fNane</th>
-							<th>lName</th>
-							<th>Mail</th>
-							<th>Phone</th>
-							<th>Type</th>
-							<th>Status</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="user" items="${users}">
+					<table id="users">
+						<thead>
 							<tr>
-								<td><c:out value="${user.id }"></c:out></td>
-								<td><c:out value="${user.firstName}"></c:out></td>
-								<td><c:out value="${user.lastName}"></c:out></td>
-								<td><c:out value="${user.email}"></c:out></td>
-								<td><c:out value="${user.phoneNumber}"></c:out></td>
-								<td><c:out value="${user.type}"></c:out></td>
-								<td><select class="combobox">
-  <option value="PA">Pennsylvania</option>
-  <option value="CT">Connecticut</option>
-</select></td>
+								<th>ID</th>
+								<th>fNane</th>
+								<th>lName</th>
+								<th>Mail</th>
+								<th>Phone</th>
+								<th>Type</th>
+								<th>Status</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-	
+						</thead>
+						<tbody>
+							<c:forEach var="user" items="${users}">
+								<tr>
+									<td><c:out value="${user.id }"></c:out></td>
+									<td><c:out value="${user.firstName}"></c:out></td>
+									<td><c:out value="${user.lastName}"></c:out></td>
+									<td><c:out value="${user.email}"></c:out></td>
+									<td><c:out value="${user.phoneNumber}"></c:out></td>
+									<td><c:out value="${user.type}"></c:out></td>
+									<td><select class="combobox">
+											<option value="PA">Pennsylvania</option>
+											<option value="CT">Connecticut</option>
+									</select></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 
-        
-					
+
+
+
 				</div>
 			</div>
 			<!-- 			End of Tab #1 -->
@@ -181,37 +181,49 @@
 					</div>
 
 
-TABS WITH MAILS
-ID | userId | reqDate | message | status | 			(status == 'PENDING' => whiteBackground + 2 button (APPROVE(GREEN)) / DECLINE(RED))ELSE grey) 
-<table id="users">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>fNane</th>
-							<th>lName</th>
-							<th>Mail</th>
-							<th>Phone</th>
-							<th>Type</th>
-							<th>Status</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="user" items="${users}">
+					<table id="requests">
+						<thead>
 							<tr>
-								<td><c:out value="${user.id }"></c:out></td>
-								<td><c:out value="${user.firstName}"></c:out></td>
-								<td><c:out value="${user.lastName}"></c:out></td>
-								<td><c:out value="${user.email}"></c:out></td>
-								<td><c:out value="${user.phoneNumber}"></c:out></td>
-								<td><c:out value="${user.type}"></c:out></td>
-								<td><select class="combobox">
-  <option value="PA">Pennsylvania</option>
-  <option value="CT">Connecticut</option>
-</select></td>
+								<th>ID</th>
+								<th>userId</th>
+								<th>reqDate</th>
+								<th>message</th>
+								<th>status</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							<c:forEach var="request" items="${requests}">
+								<tr
+									<c:if test="${request.status == 'PENDING'}">
+   					style="background: white;"
+</c:if>>
+									<td><c:out value="${request.id }"></c:out></td>
+									<td><c:out value="${request.userId}"></c:out></td>
+									<td><c:out value="${request.requestDate}"></c:out></td>
+									<td><c:out value="${request.message}"></c:out></td>
+									<td style="text-align: center;"><c:if test="${request.status == 'PENDING'}">
+									<a
+											class="my-btn waves-effect waves-light btn"
+											style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+											onclick="removeOrderTable(${activeOrder.id})">APPROVE</a>
+											<a
+											class="my-btn waves-effect waves-light btn"
+											style="background: #3c763d; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+											onclick="removeOrderTable(${activeOrder.id})">DECLINED</a>
+										</c:if> <c:if test="${request.status == 'DECLINED'}">
+											<div style="color: #F55151;">
+												<strong>DeCIde!</strong>
+											</div>
+										</c:if> <c:if test="${request.status == 'APPROVED'}">
+											<div style="color: #3c763d;">
+												<strong>Success!</strong>
+											</div>
+
+										</c:if></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 				</div>
 
 			</div>
@@ -219,7 +231,7 @@ ID | userId | reqDate | message | status | 			(status == 'PENDING' => whiteBackg
 
 		</div>
 	</div>
-		
+
 
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="../foot.jsp"></jsp:include>
@@ -236,13 +248,17 @@ ID | userId | reqDate | message | status | 			(status == 'PENDING' => whiteBackg
 		});
 	</script>
 	<script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
-$(document).ready(function() {
-    $('#users').DataTable( {
-        stateSave: true
-    } );
-} );
-</script>
+		$(document).ready(function() {
+			$('#users').DataTable({
+				stateSave : true
+			});
+			$('#requests').DataTable({
+				stateSave : true
+			});
+		});
+	</script>
 </body>
 </html>
