@@ -44,13 +44,7 @@ public class LoadHotelPicturesServlet extends HttpServlet {
 					hotelImages.append(spliterator);
 				}
 				hotelImages.append(hotelPhoto.getImg());
-			}
-			int roomId = Integer.parseInt(request.getParameter("roomId"));
-			HotelPhotoService service = new HotelPhotoService();
-			for( HotelPhoto hotelPhoto : photos){
-				hotelPhoto.setHotelId(roomId);
-				service.insertHotelPhoto(hotelPhoto);
-			}			
+			}		
 			response.setContentType("application/text");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(hotelImages.toString());
