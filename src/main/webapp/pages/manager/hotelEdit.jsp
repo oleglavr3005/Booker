@@ -263,6 +263,35 @@ div #sidebar-wrapper {
 			</div>
 		</div>
 	</div>
+	
+	
+		<div class="container">
+		<div class="row">
+			<div class="col s8">
+				<table id="photos">
+					<thead>
+						<tr>
+							<th>Img</th>
+							<th>Description</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="photo" items="${hotel.photos}">
+							<tr>
+								<td><img src="<i:urlToImage url="${photo.img }" />" alt=""></td>
+								<td><c:out value="${photo.desc }"></c:out></td>
+								<td><a class="my-btn waves-effect waves-light btn"
+									style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+									onclick="removeOrderTable(${photo.id})"><fmt:message
+											key="subscribes.table.remove" /> </a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 
 
 
@@ -369,6 +398,10 @@ div #sidebar-wrapper {
 		src="${pageContext.servletContext.contextPath}/resources/js/star-rating/star-rating.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
+
+<script type="text/javascript">$(document).ready(function() {
+	    $('#photos').DataTable();
+	} );</script>
 
 	<script type="text/javascript">
 		(function(window, document, undefined) {
