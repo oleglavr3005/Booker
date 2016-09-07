@@ -23,9 +23,9 @@ public class LoadHotelPicturesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String spliterator = ":::";
     	try {
-			List<HotelPhoto> photos = new ImageSetter(request,"/hotel").uploadHotelImages();
+			List<HotelPhoto> photos = new ImageSetter(request).uploadHotelImages();
 			if (photos.isEmpty()){
-				photos.add(new HotelPhoto(0,"hotel/no_image.jpg", "", 0));
+				photos.add(new HotelPhoto(0,"no_image.jpg", "", 0));
 			}
 			StringBuilder hotelImages = new StringBuilder();
 			for(HotelPhoto hotelPhoto : photos) {

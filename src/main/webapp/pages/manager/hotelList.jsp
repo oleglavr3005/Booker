@@ -102,8 +102,7 @@
 </head>
 
 <body>
-	<input id="photos" type="hidden"
-		value="${pageContext.servletContext.contextPath}/" />
+	<input id="photos" type="hidden"/>
 	<input id="lang" type="hidden" value="${language}" />
 
 	<!-- Header ========================================================================= -->
@@ -117,17 +116,17 @@
 				<!-- 					PHOTO -->
 				<a href="#!"><img id="Img"
 					style="height: 100px; padding: 10px; width: 110px;"
-								src="<i:urlToImage url="new_hotel.jpg" />">
-				</a>
+					src="<i:urlToImage url="new_hotel.jpg" />"> </a>
 				<!-- 					END OF PHOTO -->
 				<!-- 				INPUT -->
-								<input multiple style="margin-top: 60px" type="file" id="imgInput"
-				 					onchange="uploadHotel()" accept="image/*" /> 
+				<input multiple style="margin-top: 60px" type="file" id="imgInput"
+					onchange="uploadHotel()" accept="image/*" />
 				<!-- 				END OF INPUT -->
 
-				<a class="waves-effect waves-light btn" id="create_button" onclick="createHotel()"
+				<a class="waves-effect waves-light btn" id="create_button"
+					onclick="createHotel()"
 					style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>CREATE</span></a>
-<p id="create_error" style="color: red"></p>
+				<p id="create_error" style="color: red"></p>
 
 
 

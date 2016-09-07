@@ -1,12 +1,11 @@
 var image = null;
 
-function createHotel(){
+function createRoom(){
 	var img = image == null ? 'new_hotel.jpg':image;
-	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
-	var x = 0;
-	var y = 0;
+	var hotel = $('#hotelId').val();
 	if (validate()){
-		$.get('../add_hotel',{
+		$.get('../create_room',{
+			hotelId : hotel,
 			name : $('#name').val(),
 			stars : star,
 			city : $('#city').val(),
@@ -22,7 +21,7 @@ function createHotel(){
 				$('#create_error').text("SUCCES");
 				$('#create_button').attr("disabled", true);
 				setTimeout(function() {
-					document.location.href = '/booker/cabinet/my_hotels/' + result;
+					document.location.href = '/booker/cabinet/room/' + result;
 				}, 2000);
 			}else{
 				$('#create_error').text("FAIL");
@@ -33,9 +32,8 @@ function createHotel(){
 	}
 }
 
-function updateHotel(hotelId){
+function updateRoom(roomId,hotelId){
 	var img = image == null ? 'new_hotel.jpg':image;
-	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
 	var x = 0;
 	var y = 0;
 	if (validate()){

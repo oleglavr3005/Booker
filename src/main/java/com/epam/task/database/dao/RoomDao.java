@@ -268,9 +268,14 @@ public class RoomDao {
 			st.setInt(i++, room.getDaysCount());
 			st.setInt(i++, room.getPercentage());
 			st.setBoolean(i++, room.getDeleted());
-	
-			result = st.executeUpdate();
-
+			st.executeUpdate();
+			
+			ResultSet rs = st.getGeneratedKeys();
+			if(rs.next()) {
+				return rs.getInt(1);
+			} else {
+				return 0;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
