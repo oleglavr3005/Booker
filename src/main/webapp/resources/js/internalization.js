@@ -35,6 +35,14 @@
 		footer_social_pinterest : "Pinterest",
 		footer_social_wordpress : "WordPress",
 		footer_copyright : "All rights Reserved",
+			
+		header_regist_name : "First Name",
+		header_regist_surname : "Last Name",
+		header_regist_mail : "Email",
+		header_regist_pass : "Password",
+		header_regist_cpass : "Confirm password",
+		header_regist_confirm : "Finish registration",
+		
 
 		// authorization
 		header_error_mail : "Invalid email",

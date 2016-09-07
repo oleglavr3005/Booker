@@ -15,10 +15,16 @@ public class ImageGetter {
 		String imageUrl = Extracter.getLast(request.getPathInfo());
 		path += imageUrl;
 		response.addHeader("Content-Type", "image/jpeg, image/jpg, image/png, image/gif");
+		try{
 		FileInputStream fileInputStream = new FileInputStream(path);
+		
 		byte[] bytes = IOUtils.toByteArray(fileInputStream);
 		ServletOutputStream s = response.getOutputStream();
 		s.write(bytes);
 		s.close();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 }
