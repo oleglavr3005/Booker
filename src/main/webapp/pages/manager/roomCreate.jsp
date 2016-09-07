@@ -13,7 +13,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>HOTEL_NAME ${room.number}</title>
+<title>HOTEL LIST</title>
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -70,8 +70,9 @@
 	src="${pageContext.servletContext.contextPath}/resources/js/hotel/jquery.blueimp-gallery.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<link rel="stylesheet"
-	href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+
+
+
 
 <style>
 .bg-img {
@@ -101,7 +102,7 @@
 </head>
 
 <body>
-
+	<input id="photos" type="hidden" />
 	<input id="lang" type="hidden" value="${language}" />
 
 	<!-- Header ========================================================================= -->
@@ -117,7 +118,7 @@
 					<a href="#!"><img id="Img"
 						style="height: 100px; padding: 10px; width: 110px;"
 						<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
-								src="<i:urlToImage url="new_hotel.jpg" />">
+								src="<i:urlToImage url="new_room.jpg" />">
 					</a>
 					<!-- 					END OF PHOTO -->
 					<!-- 				INPUT -->
@@ -126,27 +127,27 @@
 					<!-- 				END OF INPUT -->
 
 					<a class="waves-effect waves-light btn" id="create_button"
-						onclick="updateRoom()"
+						onclick="createRoom()"
 						style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>SAVE</span></a>
 					<p id="create_error" style="color: red"></p>
 				</div>
 
 				<div class="row">
-					<p>
-						<input type="checkbox" class="filled-in" id="isDeleted"
-							name="isDeleted" /> <label for="isDeleted">DELETED</label>
-					</p>
-
-					<script>
-						$('#isDeleted').attr('checked',
-								'${room.deleted}' == 'true');
-					</script>
 
 					<p>
 						<input type="checkbox" class="filled-in" id="freeBook"
 							onclick="changeFreeBook()" name="freeBook" /> <label
 							for="freeBook">FREEBOOK</label>
 					</p>
+
+					<script>
+						function changeFreeBook() {
+							var freeBook = document.getElementById('freeBook').checked;
+							$('#percentage').prop('disabled', freeBook);
+							$('#days').prop('disabled', freeBook);
+						}
+						$('#freeBook').attr('checked', '${room.daysCount}' < 0);
+					</script>
 
 
 
@@ -308,77 +309,18 @@
 			</div>
 		</div>
 	</div>
-	
-	
-	
-	
-	<div class="container">
-		<div class="row">
-			<div class="col s8">
-				<table id="photos">
-					<thead>
-						<tr>
-							<th>Img</th>
-							<th>Description</th>
-							<th>Delete</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="photo" items="${room.photos}">
-							<tr>
-								<td><img src="<i:urlToImage url="${photo.img }" />" alt=""></td>
-								<td><c:out value="${photo.desc }"></c:out></td>
-								<td><a class="my-btn waves-effect waves-light btn"
-									style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-									onclick="removeOrderTable(${photo.id})"><fmt:message
-											key="subscribes.table.remove" /> </a></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+
 
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="../foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
-	<script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.js"></script>
-	<script type="text/javascript"
-		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
-	<script type="text/javascript">$(document).ready(function() {
-	    $('#photos').DataTable();
-	} );</script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
 	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/star-rating/star-rating.js"></script>
+		src="${pageContext.servletContext.contextPath}/resources/js/manager/room.js"></script>
 	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
-
-	<script>
-		function changeFreeBook(){
-			var freeBook = document.getElementById('freeBook').checked;
-			$('#percentage').prop('disabled', freeBook);
-			$('#days').prop('disabled', freeBook);
-		}
-		$('#freeBook').attr('checked',
-				'${room.daysCount}' < 0);
-	</script>
-	
-	<script>
-		$('#hasWiFi').attr('checked', '${room.wifi}' == 'true');
-		$('#hasShower').attr('checked', '${room.shower}' == 'true');
-		$('#hasParking').attr('checked', '${room.parking}' == 'true');
-		$('#hasCondition').attr('checked', '${room.condition}' == 'true');
-
-		$('#hasPool').attr('checked', '${room.pool}' == 'true');
-		$('#hasGym').attr('checked', '${room.gym}' == 'true');
-		$('#hasBalcony').attr('checked', '${room.balcony}' == 'true');
-	</script>
+		src="${pageContext.servletContext.contextPath}/resources/js/manager/image.js"></script>
 
 </body>
 
