@@ -155,7 +155,7 @@
 	<c:choose>
 		<c:when test="${user == null}">
 			<script>
-				changeLanguageOnPage('EN');
+				changeLanguageOnPage('en');
 			</script>
 		</c:when>
 		<c:otherwise>
