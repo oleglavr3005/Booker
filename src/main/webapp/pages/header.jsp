@@ -6,9 +6,7 @@
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="com.i18n.text" />
 
-<script>
-	jQuery.noConflict();
-</script>
+
 <!-- Bootstrap style -->
 <link id="callCss" rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/themes/bootshop/bootstrap.min.css"
