@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.Room;
-import com.epam.task.database.model.User;
 import com.epam.task.database.service.RoomService;
 
 @WebServlet("/cabinet/room/*" )
@@ -20,8 +19,6 @@ public class ManagerRoomServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User manager = (User) request.getSession().getAttribute("user");
-
 		int id;
 		try {
 			id = Integer.parseInt(request.getPathInfo().substring(1));
