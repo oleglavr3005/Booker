@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="com.i18n.text" />
+<%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
 
 <!-- Bootstrap style -->
 <link id="callCss" rel="stylesheet"
@@ -58,8 +57,9 @@ img.logo {
 	height: 30px;
 	line-height: 30px;
 }
+
 .imageavatar:hover {
-	cursor:pointer;
+	cursor: pointer;
 }
 </style>
 
@@ -88,156 +88,196 @@ img.logo {
 
 <!-- =================================================================== -->
 
-
 <nav class="navbar navbar-default navbar-static-top"
-	style="margin-bottom: 0px; background: #0d0d0d;">
+	style="margin-bottom: 0px; background: #000033;">
 	<div class="container-fluid">
 		<div class="navbar-header"
 			style="margin-left: 30px; margin-right: 50px;">
-
-			<a href="${pageContext.servletContext.contextPath}/home" class="brand" >
-				<img class="logo"
+			<a href="${pageContext.servletContext.contextPath}/home"
+				class="brand"> <img class="logo"
 				src="${pageContext.servletContext.contextPath}/resources/themes/images/logo.png"
 				alt="Periodicals" />
 			</a>
 		</div>
 
-		<div id="navbar" class="navbar" style="margin-bottom: 0px;">
+		<div id="navbar" class="navbar" style="margin-bottom: 0px; margin-left:300px">
 
 			<ul class="nav navbar-nav navbar-right" style="padding-top: 5px;">
 
 				<c:choose>
 					<c:when test="${user != null}">
-							<img id="imageavatar" src="http://www.desicomments.com/dc3/09/336028/336028.png" alt="img" 
-								style="margin-top: 5px; height: 50px; width: 50px; border-radius: 25px;"
-								class="imageavatar dropdown-button" data-activates='dropdown1' 
-								data-beloworigin="true" data-hover="true"/>
-								<ul id='dropdown1' class='dropdown-content'>
-								    <li><a href="#!">one</a></li>
-								    <li><a href="#!">two</a></li>
-								    <li class="divider"></li>
-								    <li><a href="#!">three</a></li>
-								 </ul>
-															
-						<li><a href="#" onclick="logout()" data-toggle="modal"
-							style="padding-right: 10"> <fmt:message key="header.logout" />
-								<i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+						
+							<div class="dropdown" style="padding-top:0.7rem;">
+							<span id="userNameSpan" style="font-size:1.3rem; margin-right:0.5rem; margin-top:20px">${user.firstName} ${user.lastName}</span>
+								<img id="imageavatar"
+<%-- 									src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}" --%>
+									src="<i:urlToImage url="${user.image}" />"
+									alt="img"
+									style="height: 50px; width: 50px; border-radius: 25px; margin-top:-0.5rem"
+									class="imageavatar dropdown-toggle" data-toggle='dropdown'
+									 />
+								<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+									<li role="presentation"><a role="menuitem" tabindex="-1"
+										href="${pageContext.servletContext.contextPath}/cabinet/cart" style="color: #26A69A">
+										<i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping cart</a></li>
+									<li role="presentation"><a role="menuitem" tabindex="-1"
+										href="${pageContext.servletContext.contextPath}/cabinet/orders" style="color: #26A69A">
+										<i class="fa fa-briefcase" aria-hidden="true"></i> My orders</a></li>
+									<li role="presentation"><a role="menuitem" tabindex="-1"
+										href="${pageContext.servletContext.contextPath}/cabinet/settings" style="color: #26A69A">
+										<i class="fa fa-cog" aria-hidden="true"></i> Settings</a></li>
+									
+									<c:if test="${user.type == 'MANAGER'}">			
+										<li role="presentation" class="divider" style="border-color:lightgrey"></li>						
+										<li role="presentation"><a role="menuitem" tabindex="-1"
+										href="${pageContext.servletContext.contextPath}/cabinet/my_hotels" style="color: #26A69A">
+										<i class="fa fa-building" aria-hidden="true"></i> My hotels</a></li>
+									</c:if>
+									
+									<c:if test="${user.type == 'ADMIN'}">			
+										<li role="presentation" class="divider" style="border-color:lightgrey"></li>						
+										<li role="presentation"><a role="menuitem" tabindex="-1"
+										href="${pageContext.servletContext.contextPath}/cabinet/admin" style="color: #26A69A">
+										<i class="fa fa-trash" aria-hidden="true"></i> Admin stuff</a></li>
+									</c:if>
+									
+									<li role="presentation" class="divider" style="border-color:lightgrey"></li>
+									<li role="presentation"><a role="menuitem" tabindex="-1"
+										href="${pageContext.servletContext.contextPath}/log-out" style="color: #26A69A">
+										<i class="fa fa-sign-in" aria-hidden="true"></i> Log out</a></li>
+								</ul>
+							</div>
+<!-- 						</div> -->
+
+
+<!-- 						<li><a href="#" onclick="logout()" data-toggle="modal" -->
+<%-- 							style="padding-right: 10"> <fmt:message key="header.logout" /> --%>
+<!-- 								<i class="fa fa-sign-in" aria-hidden="true"></i></a></li> -->
 					</c:when>
 					<c:otherwise>
-							<script type="text/javascript"
-									src="${pageContext.servletContext.contextPath}/resources/js/registration/registration.js"></script>
-								<script type="text/javascript"
-									src="${pageContext.servletContext.contextPath}/resources/js/authorization/authorization.js"></script>
-										
-								<li><a class="modal-trigger" href="#signupModal"><fmt:message
-											key="header.regist" /></a>
-									<div id="signupModal" class="modal">
-										<div class="modal-header">
-											<h4 id="registrationHeader">
-												<fmt:message key="header.regist" />
-											</h4>
+						<script type="text/javascript"
+							src="${pageContext.servletContext.contextPath}/resources/js/registration/registration.js"></script>
+						<script type="text/javascript"
+							src="${pageContext.servletContext.contextPath}/resources/js/authorization/authorization.js"></script>
+
+						<li><a class="modal-trigger" href="#signupModal">
+						<span id="header_regist"> </span></a>
+							<div id="signupModal" class="modal">
+								<div class="modal-header">
+									<h4 id="registrationHeader">
+										<span id="header_regist"> </span>
+									</h4>
+								</div>
+								<div class="modal-content" style="margin-top: -10px">
+									<div class="form-horizontal registrationFrm">
+										<div class="input-field col">
+											<input id="name" type="text" class="validate"> <label
+												id="nameLbl" data-error="${fmtName}" for="name">
+												<span id="header_regist_name"> </span>
+											</label>
 										</div>
-										<div class="modal-content" style="margin-top: -10px">
-											<div class="form-horizontal registrationFrm">
-												<div class="input-field col">
-													<input id="name" type="text" class="validate"> <label
-														id="nameLbl" data-error="${fmtName}" for="name"><fmt:message
-															key="header.regist.name" /></label>
-												</div>
-												<div class="input-field col">
-													<input id="surname" type="text" class="validate"> <label
-														id="surnameLbl" data-error="${fmtSurname}" for="surname"><fmt:message
-															key="header.regist.surname" /></label>
-												</div>
-												<div class="input-field col">
-													<input id="email" type="email" class="validate"> <label
-														id="emailLbl" data-error="${fmtMail}" for="email"><fmt:message
-															key="header.regist.mail" /></label>
-												</div>
-												<div class="input-field">
-													<input id="password" type="password" class="validate">
-													<label id="passwordLbl" data-error="${fmtPass}"
-														for="password"><fmt:message
-															key="header.regist.pass" /></label>
-												</div>
-												<div class="input-field">
-													<input id="сpassword" type="password" class="validate">
-													<label id="сpasswordLbl" data-error="${fmtCpass}"
-														for="сpassword"><fmt:message
-															key="header.regist.cpass" /></label>
-												</div>
-											</div>
-
-
-											<!-- 											<div class="modal-footer"> -->
-
-											<div class="row">
-												<button id="registrationConfirmButton" type="submit"
-													class="btn-flat btn-success login col s2 offset-s1"
-													onclick="confirmRegistration('${fmtMail}', '${fmtMailUse}', '${fmtSucces}', '${fmtConfirm}', '${fmtFail}', '${fmtRegist}')"
-													style="margin-left: 15px;">
-													<fmt:message key="header.regist.confirm" />
-												</button>
-												<button
-													class="modal-action modal-close waves-effect waves-red btn-flat col s2 offset-s1"
-													data-dismiss="modal" aria-hidden="true"
-													style="margin-left: 10px;">
-													<fmt:message key="header.regist.close" />
-												</button>
-											</div>
-
-											<!-- 											</div> -->
+										<div class="input-field col">
+											<input id="surname" type="text" class="validate"> <label
+												id="surnameLbl" data-error="${fmtSurname}" for="surname">
+												<span id="header_regist_surname"> </span>
+											</label>
 										</div>
-									</div></li>
+										<div class="input-field col">
+											<input id="email" type="email" class="validate"> <label
+												id="emailLbl" data-error="${fmtMail}" for="email">
+												<span id="header_regist_mail"> </span>
+											</label>
+										</div>
+										<div class="input-field">
+											<input id="password" type="password" class="validate">
+											<label id="passwordLbl" data-error="${fmtPass}"
+												for="password">
+												<span id="header_regist_pass"> </span></label>
+										</div>
+										<div class="input-field">
+											<input id="сpassword" type="password" class="validate">
+											<label id="сpasswordLbl" data-error="${fmtCpass}"
+												for="сpassword">
+												<span id="header_regist_cpass"> </span>
+											</label>
+										</div>
+									</div>
 
-								<li><a class="waves-effect waves-white modal-trigger"
-									href="#login" role="button" style="padding-right: 0"><span><fmt:message
-												key="header.auth" /></span></a>
-									<div id="login" class="modal">
-										<div class="modal-content">
-											<h4>
-												<fmt:message key="header.auth" />
-											</h4>
-											<div class="form-horizontal loginFrm">
-												<div class="input-field col">
-													<input id="emailAuth" type="email" class="validate">
-													<label id="emailAuthLbl" data-error="${fmtMail}"
-														for="emailAuth"><fmt:message
-															key="header.regist.mail" /></label>
-												</div>
-												<div class="input-field">
-													<input id="passwordAuth" type="password"> <label
-														id="passwordLbl" data-error="${fmtMailPass}"
-														for="passwordAuth"><fmt:message
-															key="header.regist.pass" /></label>
-												</div>
-											</div>
+
+									<!-- 											<div class="modal-footer"> -->
+
+									<div class="row">
+										<button id="registrationConfirmButton" type="submit"
+											class="btn-flat btn-success login col s2 offset-s1"
+											onclick="confirmRegistration('${fmtMail}', '${fmtMailUse}', '${fmtSucces}', '${fmtConfirm}', '${fmtFail}', '${fmtRegist}')"
+											style="margin-left: 15px;">
+											<span id="header_regist_confirm"> </span>
+										</button>
+										<button
+											class="modal-action modal-close waves-effect waves-red btn-flat col s2 offset-s1"
+											data-dismiss="modal" aria-hidden="true"
+											style="margin-left: 10px;">
+											<span id="header_regist_close"> </span>
+										</button>
+									</div>
+
+									<!-- 											</div> -->
+								</div>
+							</div></li>
+
+						<li><a class="waves-effect waves-white modal-trigger"
+							href="#login" role="button" style="padding-right: 0">
+								<span id="header_auth"> </span>
+							</a>
+							<div id="login" class="modal">
+								<div class="modal-content">
+									<h4>
+										<span id="header_auth"> </span>
+									</h4>
+									<div class="form-horizontal loginFrm">
+										<div class="input-field col">
+											<input id="emailAuth" type="email" class="validate">
+											<label id="emailAuthLbl" data-error="${fmtMail}"
+												for="emailAuth">
+												<span id="header_regist_mail"> </span>
+											</label>
 										</div>
-										<div class="modal-footer">
-											<button type="submit" id="sbm"
-												class="btn-flat btn-success login" onclick="auth()"
-												style="margin-left: 15px;">
-												<fmt:message key="header.auth.enter" />
-											</button>
-											<button class="btn-flat waves-effect waves-red "
-												onclick="forgot()" style="margin-left: 15px;">
-												<fmt:message key="header.auth.forgot" />
-											</button>
-											<button
-												class="modal-action modal-close waves-effect waves-red btn-flat"
-												data-dismiss="modal" aria-hidden="true"
-												style="margin-left: 10px;">
-												<fmt:message key="header.regist.close" />
-											</button>
+										<div class="input-field">
+											<input id="passwordAuth" type="password"> <label
+												id="passwordLbl" data-error="${fmtMailPass}"
+												for="passwordAuth">
+												<span id="header_regist_pass"> </span>
+											</label>
 										</div>
-									</div></li>
-								<li><a style="padding: 0px;"
-									href="${pageContext.servletContext.contextPath}/vkLogin">
-										<img
-										style="width: 50px; height: 40px; padding: 0px; margin-top: 10; margin-left: 20px;"
-										src="${pageContext.servletContext.contextPath}/resources/images/vk.png"
-										alt="vk" />
-								</a></li>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="submit" id="sbm"
+										class="btn-flat btn-success login" onclick="auth()"
+										style="margin-left: 15px;">
+										<span id="header_auth_enter"> </span>
+									</button>
+									<button class="btn-flat waves-effect waves-red "
+										onclick="forgot()" style="margin-left: 15px;">
+										<span id="header_auth_forgot"> </span>
+									</button>
+									<button
+										class="modal-action modal-close waves-effect waves-red btn-flat"
+										data-dismiss="modal" aria-hidden="true"
+										style="margin-left: 10px;">
+										<span id="header_auth_close"> </span>
+									</button>
+								</div>
+							</div></li>
+						<li>
+						<a href="${pageContext.servletContext.contextPath}/facebookLogin" style="color: #e6e6e6; font-size: 1rem;"><i
+										class="fa fa-2x fa-facebook" aria-hidden="true"></i></a>
+						</li>
+						<li>
+						<a href="${pageContext.servletContext.contextPath}/googleLogin" style="color: #e6e6e6; font-size: 1rem;"><i
+										class="fa fa-2x fa-google-plus" aria-hidden="true"
+										></i></a>
+						</li>
 					</c:otherwise>
 				</c:choose>
 
