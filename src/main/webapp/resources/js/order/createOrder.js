@@ -114,6 +114,8 @@ function bookOrderCard(orderId, daysCount) {
 				$('#book' + orderId).onclick = null;
 
 				if (res.booked == 'true') {
+					 $('#modal1').openModal();
+					
 					$('#book' + orderId).text("SUCCES");
 					$('#book' + orderId).attr('disabled', true);
 					$('#remove' + orderId).attr('disabled', true);

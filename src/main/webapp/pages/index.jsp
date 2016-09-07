@@ -349,11 +349,6 @@ div #sidebar-wrapper {
 		<!-- END OF SWITCH CONTENT -->
 
 
-		<!-- PAGINATOR 3000 -->
-		<!-- 		<div id="paginationdemo" class="row"> -->
-		<!-- 			<div id="demo5" class="col s4 offset-s5"></div> -->
-		<!-- 		</div> -->
-		<!-- END OFPAGINATOR 3000 -->
 	</div>
 
 	<!-- Footer ========================================================================== -->
@@ -361,50 +356,6 @@ div #sidebar-wrapper {
 	<!-- Footer End====================================================================== -->
 
 
-	<!-- 	VK MODAL LOADER -->
-	<div id="modal1" class="modal"
-		style="width: 25% !important; max-height: 40% !important">
-		<div class="modal-content">
-			<p>
-				<img alt="Vk Log"
-					src="http://1863x.com/wp-content/uploads/2016/01/vk-vkontakte-logo-vk.jpg"
-					width="275px" height="200px;">
-			</p>
-			<div class="progress" style="width: 275px;">
-				<div class="indeterminate"></div>
-			</div>
-		</div>
-
-	</div>
-	<!-- 	END OF VK MODAL LOADER -->
-
-
-	<!-- 	VK REDIRECT -->
-	<c:if test="${vkOAuth}">
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$(window).load(function() {
-
-					$('.modal-trigger').leanModal();
-					$('#modal1').openModal();
-
-					var token = window.location.hash.substr(1);
-					$.post('vk_oauth', {
-						token : token.split("&")[0].split("=")[1],
-						user_id : token.split("&")[2].split("=")[1]
-					}, function() {
-						//NEED normal names
-						document.location.href = '/booker/home';
-
-					});
-				});
-			});
-		</script>
-	</c:if>
-	<!--  END OF VK REDIRECT -->
-	<!-- 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
-	<!-- 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
-	<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<!-- 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
 	<script

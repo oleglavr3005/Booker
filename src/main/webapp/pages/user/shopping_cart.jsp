@@ -139,7 +139,7 @@
 
 	<!-- SUCCES MODAL  -->
 	<div id="modal1" class="modal"
-		style="width: 35% !important; max-height: 50% !important">
+		style="width: 65% !important; max-height: 70% !important">
 		<div class="modal-content">
 			<h6>GZ WITH SUCCESFULL ORDER CREATION</h6>
 			<a href="href="${pageContext.servletContext.contextPath}/cabinet/orders">CLICK
@@ -148,6 +148,40 @@
 
 	</div>
 	<!-- 	END OF SUCCES MODAL -->
+
+
+<div id="signupModal" class="modal">
+								<div class="modal-header">
+									<h4 id="registrationHeader">
+										<span id="header_regist"> </span>
+									</h4>
+								</div>
+								<div class="modal-content" style="margin-top: -10px">
+									<div class="form-horizontal registrationFrm">
+										<div class="input-field">
+											<input id="сpassword" type="password" class="validate">
+											<label id="сpasswordLbl" data-error=""
+												for="сpassword">
+												<span id="header_regist_cpass"> </span>
+											</label>
+										</div>
+									</div>
+
+
+									<!-- 											<div class="modal-footer"> -->
+
+									<div class="row">
+										<button
+											class="modal-action modal-close waves-effect waves-red btn-flat col s2 offset-s1"
+											data-dismiss="modal" aria-hidden="true"
+											style="margin-left: 10px;">
+											<span id="header_regist_close"> </span>
+										</button>
+									</div>
+
+									<!-- 											</div> -->
+								</div>
+							</div>
 
 
 
