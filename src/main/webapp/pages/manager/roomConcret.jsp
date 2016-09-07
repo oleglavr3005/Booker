@@ -13,7 +13,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>HOTEL LIST</title>
+<title>HOTEL_NAME ${room.number}</title>
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -71,9 +71,6 @@
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
-
-
-
 <style>
 .bg-img {
 	border-style: solid;
@@ -114,21 +111,43 @@
 		<div class="row">
 			<div class="col s3">
 				<!-- 					PHOTO -->
-				<a href="#!"><img id="avatarImg"
-					style="height: 100px; padding: 10px; width: 110px;"
-					<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
+				<div class="row">
+					<a href="#!"><img id="Img"
+						style="height: 100px; padding: 10px; width: 110px;"
+						<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
 								src="<i:urlToImage url="new_hotel.jpg" />">
-				</a>
-				<!-- 					END OF PHOTO -->
-				<!-- 				INPUT -->
-				<%-- 				<input style="margin-top: 60px" type="file" id="avatarInput" --%>
-				<%-- 					onchange="showPhoto()" accept="image/*" /> --%>
-				<!-- 				END OF INPUT -->
+					</a>
+					<!-- 					END OF PHOTO -->
+					<!-- 				INPUT -->
+					<input style="margin-top: 5px" type="file" id="imgInput"
+						onchange="uploadRoom()" accept="image/*" />
+					<!-- 				END OF INPUT -->
 
-				<a class="waves-effect waves-light btn" id="create_button" onclick="createHotel()"
-					style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>CREATE</span></a>
-<p id="create_error" style="color: red"></p>
+					<a class="waves-effect waves-light btn" id="create_button"
+						onclick="updateRoom()"
+						style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>SAVE</span></a>
+					<p id="create_error" style="color: red"></p>
+				</div>
 
+				<div class="row">
+					<p>
+						<input type="checkbox" class="filled-in" id="isDeleted"
+							name="isDeleted" /> <label for="isDeleted">DELETED</label>
+					</p>
+
+					<script>
+						$('#isDeleted').attr('checked',
+								'${room.deleted}' == 'true');
+					</script>
+					
+					<p>
+						<input type="checkbox" class="filled-in" id="freeBook" onclick="changeFreeBook()"
+							name="freeBook" /> <label for="freeBook">FREEBOOK</label>
+					</p>
+
+					
+
+				</div>
 
 
 			</div>
@@ -138,122 +157,156 @@
 				<div class="container-fluid">
 
 					<div class="row">
-						<div class="col s6">
+						<div class="col s4 offset-s2" style="margin-top: 20px;">
+												
+							<!-- 						ROOM TYPE -->
+							<div class="row">
+								<select id="roomType" class="chosen-select optionstyle">
+									<option class="optionstyle" value="STANDART"
+										selected="selected">STANDART</option>
+									<option class="optionstyle" value="LUX">LUX</option>
+									<option class="optionstyle" value="DELUXE">DELUXE</option>
+								</select>
+							</div>
+							<!-- 						END OF ROOM TYPE -->
 
-							<!-- 						NAME -->
+							
 
-							<div class="input-field">
-								<input id="name" type="text" class="validate" length="45"
-									placeholder="Name of Hotel"> <label id="nameLbl"
-									data-error="${fmtName}" for="name"><fmt:message
-										key="admin.edit.name" /></label>
+
+							<!-- 1 BEDS COUNT -->
+
+							<div class="row">
+								<input id="single" value="${room.bedsCount}" type="number"
+									  class="validate" name="single" min=1 max=100> <label
+									id="singleLbl" data-error="${fmtPeople}" for="single"><fmt:message
+										key="room.concrete.single" /></label>
 							</div>
 
-							<!-- 							END OF NAME -->
+							<!-- 							END OF 1 BEDS COUNT -->
+							
+							<!-- DAYS COUNT -->
 
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col s7">
-
-							<!-- 						STARS -->
-							<input id="rating" onchange="rate()" value="0" type="number"
-								class="rating" min=0 max=5 step=1 data-size="xs" data-stars="5">
-							<span
-								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><fmt:message
-									key="manager.hotel.star" />STAR : <span id="rate_span">0</span>
-								/ 5 |</span>
-							<script>
-								function rate() {
-
-									var count = document
-											.getElementById("rate_span");
-									count.innerHTML = $('#rating').val();
-
-								}
-							</script>
-
-							<!-- 							END OF STARS -->
-
-						</div>
-					</div>
-
-					<div class="row">
-
-						<div class="col s4">
-
-							<!-- 						CITY -->
-
-							<div class="input-field">
-								<input id="city" type="text" class="validate" length="45"
-									placeholder="Name of city"> <label id="cityLbl"
-									data-error="${fmtName}" for="city"><fmt:message
-										key="admin.edit.city" /></label>
+							<div class="row">
+								<input id="days" value="${room.daysCount}" type="number"
+									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>									
+									class="validate" name="days" min=1 max=365> <label
+									id="daysLbl" data-error="${fmtPeople}" for="days"><fmt:message
+										key="room.concrete.days" /></label>
 							</div>
 
-							<!-- 							END OF CITY -->
+							<!-- 							END OF DAYS COUNT -->
 
-						</div>
+							<!-- NUMBER -->
 
-						<div class="col s4">
-
-							<!-- 						STREET -->
-
-							<div class="input-field">
-								<input id="street" type="text" class="validate" length="45"
-									placeholder="Name of street"> <label id="streetLbl"
-									data-error="${fmtName}" for="street"><fmt:message
-										key="admin.edit.street" /></label>
+							<div class="row">
+								<input id="number" value="${room.number}" type="number"
+									class="validate" name="days" min=1 max=365> <label
+									id="daysLbl" data-error="${fmtPeople}" for="days"><fmt:message
+										key="room.concrete.number" /></label>
 							</div>
 
-							<!-- 							END OF STREET -->
+							<!-- 							END OF NUMBER -->
 
-						</div>
+							<!-- PRICE -->
 
-
-						<div class="col s4">
-
-							<!-- 						PHONE -->
-
-							<div class="input-field">
-								<input id="phone" type="text" class="validate" length="45"
-									placeholder="Name of phone"> <label id="phoneLbl"
-									data-error="${fmtName}" for="phone"><fmt:message
-										key="admin.edit.phone" /></label>
+							<div class="row">
+								<input id="price" value="${room.price}" type="number"
+									class="validate" name="percentage" min=1 max=100> <label
+									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><fmt:message
+										key="room.concrete.price" /></label>
 							</div>
 
-							<!-- 							END OF PHONE -->
+							<!-- 							END OF PRICE -->
 
 						</div>
 
+						<div class="col s4 offset-s2" style="margin-top: 20px;">
+						
+							<!-- 						FOOD TYPE -->
+							<div class="row">
+								<select id="foodType" class="chosen-select optionstyle">
+									<option class="optionstyle" value="NONE" selected="selected">NONE
+									</option>
+									<option class="optionstyle" value="BREAKFAST">BREAKFAST</option>
+									<option class="optionstyle" value="TWICE">TWICE</option>
+									<option class="optionstyle" value="FULL">FULL</option>
+								</select>
+							</div>
+							<!-- 						END OF FOOD TYPE -->
+							
+							<!-- 2 BEDS COUNT -->
 
-
-
-					</div>
-
-					<div class="row">
-
-						<div class="col s12">
-
-							<!-- 						DESC -->
-
-							<div class="input-field">
-								<textarea placeholder="Desc" id="desc"
-									class="materialize-textarea" class="validate" length="999">${message}</textarea>
-								<label id="descLbl" data-error="${fmtName}" for="desc"><fmt:message
-										key="admin.edit.desc" /></label>
+							<div class="row">
+								<input id="double" value="${room.doubleBedsCount}" type="number"
+									class="validate" name="single" min=1 max=100> <label
+									id="doubleLbl" data-error="${fmtPeople}" for="double"><fmt:message
+										key="room.concrete.double" /></label>
 							</div>
 
-							<!-- 							END OF DESC -->
+							<!-- 							END OF 2 BEDS COUNT -->
+						
+							<!-- PERCENTAGE COUNT -->
+
+							<div class="row">
+								<input id="percentage" value="${room.percentage}" type="number"
+									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>		
+									class="validate" name="percentage" min=1 max=100> <label
+									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><fmt:message
+										key="room.concrete.percentage" /></label>
+							</div>
+
+							<!-- 							END OF PERCENTAGE COUNT -->
+							
+						
+						
+						
+						
+
+							<!-- 								CHECKBOX -->
+
+							<p style="margin-top: 20px;">
+								<input type="checkbox" class="filled-in" id="hasWiFi"
+									name="hasWiFi" /> <label for="hasWiFi">WIFI</label>
+							</p>
+							<p>
+								<input type="checkbox" class="filled-in" id="hasShower"
+									name="hasShower" /> <label for="hasShower">SHOWER</label>
+							</p>
+							<p>
+								<input type="checkbox" class="filled-in" id="hasParking"
+									name="hasParking" /> <label for="hasParking">PARKING</label>
+							</p>
+							<p>
+								<input type="checkbox" class="filled-in" id="hasCondition"
+									name="hasCondition" /> <label for="hasCondition">AIR
+									CONDITION</label>
+							</p>
+							<p>
+								<input type="checkbox" class="filled-in" id="hasPool"
+									name="hasPool" /> <label for="hasPool">SWIM POOL</label>
+							</p>
+							<p>
+								<input type="checkbox" class="filled-in" id="hasGym"
+									name="hasGym" /> <label for="hasGym">FIT GYM</label>
+							</p>
+							<p>
+								<input type="checkbox" class="filled-in" id="hasBalcony"
+									name="hasBalcony" /> <label for="hasBalcony">BALCONY</label>
+							</p>
+
+							<!-- 								END OF CHECKBOX -->
 
 						</div>
-					</div>
+
+
+					</div>		
 
 				</div>
 			</div>
 		</div>
 	</div>
+
+	TABLE WITH PICS
 
 
 	<!-- Footer ========================================================================== -->
@@ -268,6 +321,18 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
+		
+	<script>
+						function changeFreeBook(){
+							var freeBook = document.getElementById('freeBook').checked;
+							$('#percentage').prop('disabled', freeBook);
+							$('#days').prop('disabled', freeBook);
+						}
+					
+						$('#freeBook').attr('checked',
+								'${room.daysCount}' < 0);
+					</script>
+		
 
 </body>
 
