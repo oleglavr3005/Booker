@@ -120,4 +120,8 @@ public class UserService {
 	public int updateUserType(int userId, UserType type) {
 		return daoManager.executeAndClose(() -> daoManager.getUserDao().updateUserType(userId, type));
 	}
+
+	public List<User> getAllNotAdmins() {
+		return daoManager.executeAndClose(() -> daoManager.getUserDao().getAllNotAdmins());
+	}
 }
