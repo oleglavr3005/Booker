@@ -13,14 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.epam.task.database.model.Hotel;
+import com.epam.task.database.model.Room;
 import com.epam.task.database.model.User;
-import com.epam.task.database.model.enums.UserType;
 import com.epam.task.database.service.HotelService;
+import com.epam.task.database.service.RoomService;
 
-@WebFilter("/cabinet/my_hotels/*")
-public class ManagerHotelFilter implements Filter {
+@WebFilter("/cabinet/room/*")
+public class ManagerRoomFilter implements Filter {
 
-    public ManagerHotelFilter() {
+    public ManagerRoomFilter() {
     }
 
 	public void destroy() {
@@ -31,22 +32,22 @@ public class ManagerHotelFilter implements Filter {
 		HttpSession httpSession = httpRequest.getSession(true);
 		
 		User manager = (User) httpSession.getAttribute("user");
-		int hotelId;
+		int roomId;
 		try {
-			hotelId = Integer.parseInt(httpRequest.getPathInfo().substring(1));
+			roomId = Integer.parseInt(httpRequest.getPathInfo().substring(1));
 		} catch (Exception e) {
-			if(httpRequest.getPathInfo() != null || manager == null || manager.getType() != UserType.MANAGER) {
-				((HttpServletResponse) response).sendError(404);
-			} else {
-				chain.doFilter(request, response);
-			}
+			((HttpServletResponse) response).sendError(404);
 			return;
 		}
+		Room room = new RoomService().getRoomById(roomId);
 		
-		Hotel hotel = new HotelService().getHotelById(hotelId);
-		
-		if(manager != null && hotel != null && hotel.getManagerId() == manager.getId()) {
-			chain.doFilter(request, response);
+		if(manager != null && room != null) {
+			Hotel hotel = new HotelService().getHotelById(room.getHotelId());
+			if (hotel.getManagerId() == manager.getId()) {
+				chain.doFilter(request, response);
+			} else {
+				((HttpServletResponse) response).sendError(404);
+			}
 		} else {		//throw the unexpected visitor on the error page
 			((HttpServletResponse) response).sendError(404);
 		}

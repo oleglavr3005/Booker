@@ -265,7 +265,7 @@ div #sidebar-wrapper {
 
 
 
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div id="admin" class="col s12">
 				<div class="card material-table">
@@ -288,6 +288,7 @@ div #sidebar-wrapper {
 								<th>Convinions</th>
 								<th>Food</th>
 								<th>Free Book</th>
+								<th>Deleted</th>
 								<th>Price</th>
 							</tr>
 						</thead>
@@ -331,9 +332,15 @@ div #sidebar-wrapper {
 									<td><a class="tooltipped" data-position="icon"
 										data-tooltip="Food" style="color: #0d0d0d;"><i
 											class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span></td>
-									<td><c:if test="${room.percentage >= 0}">
+									<td><c:if test="${room.daysCount >= 0}">
 											<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-										</c:if> <c:if test="${room.percentage < 0}">
+										</c:if> <c:if test="${room.daysCount < 0}">
+											<span class="glyphicon glyphicon-remove-sign"
+												aria-hidden="true"></span>
+										</c:if></td>
+									<td><c:if test="${room.deleted}">
+											<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+										</c:if> <c:if test="${room.deleted}">
 											<span class="glyphicon glyphicon-remove-sign"
 												aria-hidden="true"></span>
 										</c:if></td>
@@ -353,8 +360,6 @@ div #sidebar-wrapper {
 	<!-- Footer END==================================================================== -->
 	<script src="//code.jquery.com/jquery-1.12.3.js"></script>
 
-	<script
-		src="  http://demo.geekslabs.com/materialize/v2.1/layout03/js/materialize.js"></script>
 	<script
 		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
@@ -565,17 +570,17 @@ div #sidebar-wrapper {
 															+ '<option value="-1">All</option>'
 															+ '</select></div>'
 												},
-												bAutoWidth : false,
-												aoColumnDefs : [ {
-													sWidth : "18%",
-													aTargets : [ 3 ]
-												}, {
-													sWidth : "7%",
-													aTargets : [ 0 ]
-												}, {
-													sWidth : "7%",
-													aTargets : [ 6 ]
-												} ]
+												bAutoWidth : false
+// 												aoColumnDefs : [ {
+// 													sWidth : "18%",
+// 													aTargets : [ 3 ]
+// 												}, {
+// 													sWidth : "7%",
+// 													aTargets : [ 0 ]
+// 												}, {
+// 													sWidth : "7%",
+// 													aTargets : [ 6 ]
+// 												} ]
 
 											});
 						});
