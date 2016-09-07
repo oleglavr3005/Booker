@@ -129,37 +129,34 @@
 
 							<!-- 						NAME -->
 
-							<span id="request_name"></span> : <span>${firstName} </span> <span> ${lastName}</span>
+							<span id="request_name"></span> : <span>${firstName} </span> <span>
+								${lastName}</span>
 
 							<!-- 							END OF NAME -->
 
 						</div>
 					</div>
-					
+
 					<div class="row">
 						<div class="col s9">
 
 							<!-- 						DATE -->
 
-							<span id="request_date"> : <span>${request.requestDate} </span>
-
-							<!-- 							END OF DATE -->
-
+							<span id="request_date"> : <span>${request.requestDate}
+							</span> <!-- 							END OF DATE -->
 						</div>
 					</div>
-					
+
 					<div class="row">
 						<div class="col s9">
 
 							<!-- 						STATUS -->
 
-							<span id="request_status"> : <span>${request.requestDate} </span>
-
-							<!-- 							END OF STATUS -->
-
+							<span id="request_status"> : <span>${request.status}
+							</span> <!-- 							END OF STATUS -->
 						</div>
 					</div>
-					
+
 
 				</div>
 			</div>
@@ -173,8 +170,7 @@
 				<!-- 						MESSAGE -->
 
 				<div class="input-field">
-					<textarea class="materialize-textarea"
-						>${request.message}</textarea>
+					<textarea class="materialize-textarea">${request.message}</textarea>
 					<label id="descLbl"><span id="request_message"></span></label>
 				</div>
 
@@ -182,22 +178,26 @@
 
 			</div>
 		</div>
-		
-		<div class="row">
-			<div class="col s3 offset-s2">
-				<a class="waves-effect waves-light btn" id="create_button"
-					onclick="chageStatus(${request.id},true)"
-					style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>APPROVE</span></a>
-				
-			</div>
-			<div class="col s3 offset-s2">
-				<a class="waves-effect waves-light btn" id="create_button"
-					onclick="chageStatus(${request.id},false)"
-					style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>DECLINE</span></a>
-				
-			</div>
-		</div>
 
+
+		<c:if test="${request.status == 'REMOVED'}">
+			<div class="row">
+				<div class="col s3 offset-s2">
+					<a class="waves-effect waves-light btn" id="create_button"
+						onclick="chageStatus(${request.id},true)"
+						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
+						id="request_approve">APPROVE</span></a>
+
+				</div>
+				<div class="col s3 offset-s2">
+					<a class="waves-effect waves-light btn" id="create_button"
+						onclick="chageStatus(${request.id},false)"
+						style="margin-left: 10px; margin-top: 100px; background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
+						id="request_decline">DECLINE</span></a>
+
+				</div>
+			</div>
+		</c:if>
 
 	</div>
 
@@ -205,7 +205,10 @@
 	<jsp:include page="../foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
 
-	
+
+	<script
+		src="${pageContext.servletContext.contextPath}/resources/js/admin/request.js"></script>
+
 
 </body>
 

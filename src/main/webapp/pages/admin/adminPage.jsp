@@ -195,8 +195,12 @@
 							<c:forEach var="request" items="${requests}">
 								<tr
 									<c:if test="${request.status == 'PENDING'}">
-   					style="background: white;"
-</c:if>>
+   					style="background-color: white;"
+</c:if>
+<c:if test="${request.status != 'PENDING'}">
+   					style="background-color: lightgrey;"
+</c:if>
+>
 									<td><a
 										href="${pageContext.servletContext.contextPath}/cabinet/admin/request/${request.id}"><c:out
 												value="${request.id }"></c:out></a></td>
@@ -206,11 +210,11 @@
 									<td style="text-align: center;"><c:if
 											test="${request.status == 'PENDING'}">
 											<a class="my-btn waves-effect waves-light btn"
-												style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-												onclick="removeOrderTable(${activeOrder.id})">APPROVE</a>
+												style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+												onclick="chageStatus(${request.id},true)">APPROVE</a>
 											<a class="my-btn waves-effect waves-light btn"
-												style="background: #3c763d; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-												onclick="removeOrderTable(${activeOrder.id})">DECLINED</a>
+												style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+												onclick="chageStatus(${request.id},false)">DECLINED</a>
 										</c:if> <c:if test="${request.status == 'DECLINED'}">
 											<div style="color: #F55151;">
 												<strong>DeCIde!</strong>
@@ -242,6 +246,8 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/tablesorter/jquery-1.10.2.min.js"></script>
 	<script
 		src="${pageContext.servletContext.contextPath}/resources/js/settings/settings.js"></script>
+	<script
+		src="${pageContext.servletContext.contextPath}/resources/js/admin/request.js"></script>
 
 	<script>
 		$(document).ready(function() {
