@@ -24,8 +24,10 @@ public class AdminPageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserService userService = new UserService();
-		List<User> users = userService.getUsersByType(UserType.ADMIN);
-		request.setAttribute("users", userService.getAllUsers().removeAll(users));
+		List<User> usersWithoutAdmins = userService.getAllUsers();
+		usersWithoutAdmins.removeAll(userService.getUsersByType(UserType.ADMIN));
+		
+		request.setAttribute("users", userService.getAllUsers().removeAll(usersWithoutAdmins));
 		request.setAttribute("requests", new RequestService().getAllRequests());
 		
 		request.getRequestDispatcher("/pages/admin/adminPage.jsp").forward(request, response);
