@@ -6,9 +6,7 @@
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="com.i18n.text" />
 
-<script>
-	jQuery.noConflict();
-</script>
+
 <!-- Bootstrap style -->
 <link id="callCss" rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/themes/bootshop/bootstrap.min.css"
@@ -111,7 +109,7 @@ img.logo {
 
 				<c:choose>
 					<c:when test="${user != null}">
-						<script>$(document).ready(function() {jQuery.noConflict();});</script>
+						
 							<div class="dropdown" style="padding-top:0.7rem;">
 							<span id="userNameSpan" style="font-size:1.3rem; margin-right:0.5rem; margin-top:20px">${user.firstName} ${user.lastName}</span>
 								<img id="imageavatar"
@@ -137,6 +135,13 @@ img.logo {
 										<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/cabinet/my_hotels" style="color: #26A69A">
 										<i class="fa fa-building" aria-hidden="true"></i> My hotels</a></li>
+									</c:if>
+									
+									<c:if test="${user.type == 'ADMIN'}">			
+										<li role="presentation" class="divider" style="border-color:lightgrey"></li>						
+										<li role="presentation"><a role="menuitem" tabindex="-1"
+										href="${pageContext.servletContext.contextPath}/cabinet/admin" style="color: #26A69A">
+										<i class="fa fa-trash" aria-hidden="true"></i> Admin stuff</a></li>
 									</c:if>
 									
 									<li role="presentation" class="divider" style="border-color:lightgrey"></li>

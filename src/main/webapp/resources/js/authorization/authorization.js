@@ -1,7 +1,8 @@
 var mapping = $('#mapping').val();
 
 function auth(){
-	alert($('#mapping').val());
+	//alert($('#mapping').val());
+		var urlString = mapping == undefined ? "../auth" : "auth";
 		var emailField = $("#emailAuth");
 		var passwordField = $("#passwordAuth");
 		$.ajax({
@@ -10,7 +11,7 @@ function auth(){
 					password : passwordField.val()
 				},
 				dataType : 'json',
-				url : 'auth',
+				url : urlString,
 				type : 'POST',
 				success : function(respond) {
 					if (respond.logged) {
