@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.UserType;
 
-@WebFilter("/AdminFilter")
+@WebFilter("/cabinet/admin")
 public class AdminFilter implements Filter {
 
     public AdminFilter() {
