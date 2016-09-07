@@ -2,11 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<c:set var="language"
-	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
-	scope="session" />
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="com.i18n.text" />
+<%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
 
 	<section class="bg-img" style="background-color: #292b34;">
 		<div class="container-fluid">
@@ -19,81 +15,81 @@
 							<div class="col s2">
 								<h5 class="title-footer"
 									style="font-size: 1.6rem; color: #e6e6e6">
-									<fmt:message key="footer.info" />
+									<span id="footer_info"> </span>
 								</h5>
 								<div>
-									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><fmt:message
-											key="footer.info.contact" /></a>
+									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><span
+											id="footer_info_contact"> </span></a>
 								</div>
 								<div>
-									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><fmt:message
-											key="footer.info.terms" /></a>
+									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><span
+											id="footer_info_terms"> </span></a>
 								</div>
 								<div>
-									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><fmt:message
-											key="footer.info.rules" /></a>
+									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><span
+											id="footer_info_rules"> </span></a>
 								</div>
 								<div>
-									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><fmt:message
-											key="footer.info.faq" /></a>
+									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><span
+											id="footer_info_faq"> </span></a>
 								</div>
 								<div>
-									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><fmt:message
-											key="footer.info.story" /></a>
+									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><span
+											id="footer_info_story"> </span></a>
 								</div>
 							</div>
 
 							<div class="col s2 offset-s1">
 								<h5 class="title-footer"
 									style="font-size: 1.6rem; color: #e6e6e6">
-									<fmt:message key="footer.visit" />
+									<span id="footer_visit"> </span>
 								</h5>
 								<div>
-									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><fmt:message
-											key="footer.visit.home" /></a>
+									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><span
+											id="footer_visit_home"> </span></a>
 								</div>
 								<div>
-									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><fmt:message
-											key="footer.visit.news" /></a>
+									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><span
+											id="footer_visit_news"> </span></a>
 								</div>
 								<div>
-									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><fmt:message
-											key="footer.visit.premium" /></a>
+									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><span
+											id="footer_visit_premium"> </span></a>
 								</div>
 								<div>
-									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><fmt:message
-											key="footer.visit.shop" /></a>
+									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><span
+											id="footer_visit_shop"> </span></a>
 								</div>
 								<div>
-									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><fmt:message
-											key="footer.visit.forum" /></a>
+									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><span
+											id="footer_visit_forum"> </span></a>
 								</div>
 							</div>
 
 							<div class="col s2 offset-s1">
 								<h5 class="title-footer"
 									style="font-size: 1.6rem; color: #e6e6e6">
-									<fmt:message key="footer.support" />
+									<span id="footer_support"> </span>
 								</h5>
 								<div>
-									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><fmt:message
-											key="footer.support.center" /></a>
+									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><span
+											id="footer_support_center"> </span></a>
 								</div>
 								<div>
-									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><fmt:message
-											key="footer.support.guides" /></a>
+									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><span
+											id="footer_support_guides"> </span></a>
 								</div>
 								<div>
-									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><fmt:message
-											key="footer.support.tools" /></a>
+									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><span
+											id="footer_support_tools"> </span></a>
 								</div>
 								<div>
-									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><fmt:message
-											key="footer.support.tutorial" /></a>
+									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><span
+											id="footer_support_tutorial"> </span></a>
 								</div>
 								<div>
-									<a href="#" style="color: #e6e6e6; font-size: 1rem;"><fmt:message
-											key="footer.support.webinars" /></a>
+									<a href="#" style="color: #e6e6e6; font-size: 1rem;">
+									<span id="footer_support_webinars"> </span></a>
 								</div>
 							</div>
 
@@ -103,37 +99,37 @@
 							<div class="col s2 offset-s2">
 								<h5 class="title-footer"
 									style="font-size: 1.6rem; color: #e6e6e6">
-									<fmt:message key="footer.social" />
+									<span id="footer_social"> </span>
 								</h5>
 								<div>
 									<a href="https://www.facebook.com/proquest/" style="color: #e6e6e6; font-size: 1rem;"><i
 										class="fa fa-lg fa-facebook-official " aria-hidden="true"
-										style="margin-right: 8px;"></i> <fmt:message
-											key="footer.social.facebook" /></a>
+										style="margin-right: 8px;"></i> 
+										<span id="footer_social_facebook"> </span></a>
 								</div>
 								<div>
 									<a href="https://www.youtube.com/user/proquesttraining" style="color: #e6e6e6; font-size: 1rem;"><i
 										class="fa fa-lg fa-youtube-play " aria-hidden="true"
-										style="margin-right: 7px;"></i> <fmt:message
-											key="footer.social.youtube" /></a>
+										style="margin-right: 7px;"></i> 
+										<span id="footer_social_youtube"> </span></a>
 								</div>
 								<div>
 									<a href="https://twitter.com/proquest" style="color: #e6e6e6; font-size: 1rem;"><i
 										class="fa fa-lg fa-twitter " aria-hidden="true"
-										style="margin-right: 7px;"></i> <fmt:message
-											key="footer.social.twitter" /></a>
+										style="margin-right: 7px;"></i> 
+										<span id="footer_social_twitter"> </span></a>
 								</div>
 								<div>
 									<a href="https://www.pinterest.com/proquest/" style="color: #e6e6e6; font-size: 1rem;"><i
 										class="fa fa-lg fa-pinterest-p " aria-hidden="true"
-										style="margin-right: 11px;"></i> <fmt:message
-											key="footer.social.pinterest" /></a>
+										style="margin-right: 11px;"></i> 
+										<span id="footer_social_pinteres"> </span></a>
 								</div>
 								<div>
 									<a href="https://plus.google.com/+proquest" style="color: #e6e6e6; font-size: 1rem;"><i
 										class="fa fa-lg fa-google-plus " aria-hidden="true"
-										style="margin-right: 7px;"></i> <fmt:message
-											key="footer.social.wordpress" /></a>
+										style="margin-right: 7px;"></i> 
+										<span id="footer_social_wordpress"> </span></a>
 								</div>
 							</div>
 
@@ -150,7 +146,21 @@
 
 			<div сlass="col s1 offset-s1"
 				style="color: #cccccc; margin-top: 20px; font-size: 20px;">
-				<fmt:message key="footer.copyright" />
+				<span id="footer_copyright"> </span>
 			</div>
 		</div>
 	</section>
+	
+	<script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/internalization.js"></script>
+	<c:choose>
+		<c:when test="${user == null}">
+			<script>
+				changeLanguageOnPage('EN');
+			</script>
+		</c:when>
+		<c:otherwise>
+			<script>
+				changeLanguageOnPage('${user.language}');
+			</script>
+		</c:otherwise>
+	</c:choose>

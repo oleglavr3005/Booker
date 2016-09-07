@@ -25,7 +25,7 @@ function uploadRoom() {
 			processData : false,
 			type : 'POST',
 			success : function(result) {
-					picture.val(result);
+				picture.val(result);
 			}
 		});
 	}
