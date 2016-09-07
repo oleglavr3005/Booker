@@ -52,7 +52,9 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css"
 	rel="stylesheet">
-
+<link
+	href="http://unslider.com/unslider/dist/css/unslider.css"
+	rel="stylesheet">
 <style>
 div #sidebar-wrapper {
 	position: relative;
@@ -97,9 +99,15 @@ div #sidebar-wrapper {
 	<jsp:include page="header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 	
-	<div class="banner">
-    <ul><li>This is my slider.</li><li>Pretty cool, huh?</li></ul>
-</div>
+<!-- <div class="my-slider"> -->
+<!-- 	<ul> -->
+<!-- 		<li>My slide</li> -->
+<!-- 		<li>Another slide</li> -->
+<!-- 		<li>My last slide</li> -->
+<!-- 	</ul> -->
+<!-- </div> -->
+
+
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
@@ -107,8 +115,14 @@ div #sidebar-wrapper {
 
 <!-- And the relevant JavaScript -->
 <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="${pageContext.servletContext.contextPath}/resources/js/unslider-min.js"></script> <!-- but with the right path! -->
-<script>$(function() { $('.banner').unslider() })</script>
+<script src="http://unslider.com/unslider/dist/js/unslider-min.js"></script> <!-- but with the right path! -->
+<script>
+		jQuery(document).ready(function($) {
+			$('.my-slider').unslider({	
+				autoplay: true, arrows: false
+				});
+		});
+	</script>
 
 </body>
 
