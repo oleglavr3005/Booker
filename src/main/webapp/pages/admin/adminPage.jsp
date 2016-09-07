@@ -102,7 +102,65 @@
 	<jsp:include page="../header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 
-	
+	<div class="container">
+
+		<h4 style="text-align: center; margin-top: 20px;">
+			<fmt:message key="admin.header" />
+		</h4>
+
+		<div class="row">
+
+			<!-- 			Tab Holder -->
+			<div class="col s8 offset-s2">
+				<ul class="tabs" style="background: #638F98;">
+					<li class="tab col s5 offset-s1"><a class="active" href="#test1"
+						style="color: #1A3D44"><b><p id="tab_users">USERS</p></b></a></li>
+					<li class="tab col s5 offset-s1"><a href="#test2" style="color: #1A3D44"><b><p
+									id="tab_contact">CONTACT</p></b></a></li>
+				</ul>
+			</div>
+			<!-- 			End of Tab Holder -->
+
+
+			<!-- 				Tab #1 -->
+			<div id="test1" class="col s12">
+				<div class="container">
+					<div class="row settings-title">
+						<h4>
+							<fmt:message key="settings.header.USERS" />
+						</h4>
+					</div>
+
+TABS WITH USERS
+ID | fName | lName | mail | phoneNumber | type | status(comboBox) | 
+
+					
+				</div>
+			</div>
+			<!-- 			End of Tab #1 -->
+
+
+			<!-- 				Tab #2 -->
+			<div id="test2" class="col s12">
+				<div class="container">
+					<div class="row settings-title">
+						<h4>
+							<fmt:message key="settings.header.CONTACT" />
+						</h4>
+					</div>
+
+
+TABS WITH MAILS
+ID | userId | reqDate | message | status | 			(status == 'PENDING' => whiteBackground + 2 button (APPROVE(GREEN)) / DECLINE(RED))ELSE grey) 
+
+				</div>
+
+			</div>
+			<!-- 			End of Tab #2 -->
+
+		</div>
+	</div>
+		
 
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="../foot.jsp"></jsp:include>

@@ -70,6 +70,8 @@
 	src="${pageContext.servletContext.contextPath}/resources/js/hotel/jquery.blueimp-gallery.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 
 <style>
 .bg-img {
@@ -139,13 +141,14 @@
 						$('#isDeleted').attr('checked',
 								'${room.deleted}' == 'true');
 					</script>
-					
+
 					<p>
-						<input type="checkbox" class="filled-in" id="freeBook" onclick="changeFreeBook()"
-							name="freeBook" /> <label for="freeBook">FREEBOOK</label>
+						<input type="checkbox" class="filled-in" id="freeBook"
+							onclick="changeFreeBook()" name="freeBook" /> <label
+							for="freeBook">FREEBOOK</label>
 					</p>
 
-					
+
 
 				</div>
 
@@ -158,7 +161,7 @@
 
 					<div class="row">
 						<div class="col s4 offset-s2" style="margin-top: 20px;">
-												
+
 							<!-- 						ROOM TYPE -->
 							<div class="row">
 								<select id="roomType" class="chosen-select optionstyle">
@@ -170,25 +173,25 @@
 							</div>
 							<!-- 						END OF ROOM TYPE -->
 
-							
+
 
 
 							<!-- 1 BEDS COUNT -->
 
 							<div class="row">
 								<input id="single" value="${room.bedsCount}" type="number"
-									  class="validate" name="single" min=1 max=100> <label
+									class="validate" name="single" min=1 max=100> <label
 									id="singleLbl" data-error="${fmtPeople}" for="single"><fmt:message
 										key="room.concrete.single" /></label>
 							</div>
 
 							<!-- 							END OF 1 BEDS COUNT -->
-							
+
 							<!-- DAYS COUNT -->
 
 							<div class="row">
 								<input id="days" value="${room.daysCount}" type="number"
-									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>									
+									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="days" min=1 max=365> <label
 									id="daysLbl" data-error="${fmtPeople}" for="days"><fmt:message
 										key="room.concrete.days" /></label>
@@ -221,7 +224,7 @@
 						</div>
 
 						<div class="col s4 offset-s2" style="margin-top: 20px;">
-						
+
 							<!-- 						FOOD TYPE -->
 							<div class="row">
 								<select id="foodType" class="chosen-select optionstyle">
@@ -233,7 +236,7 @@
 								</select>
 							</div>
 							<!-- 						END OF FOOD TYPE -->
-							
+
 							<!-- 2 BEDS COUNT -->
 
 							<div class="row">
@@ -244,23 +247,23 @@
 							</div>
 
 							<!-- 							END OF 2 BEDS COUNT -->
-						
+
 							<!-- PERCENTAGE COUNT -->
 
 							<div class="row">
 								<input id="percentage" value="${room.percentage}" type="number"
-									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>		
+									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="percentage" min=1 max=100> <label
 									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><fmt:message
 										key="room.concrete.percentage" /></label>
 							</div>
 
 							<!-- 							END OF PERCENTAGE COUNT -->
-							
-						
-						
-						
-						
+
+
+
+
+
 
 							<!-- 								CHECKBOX -->
 
@@ -299,20 +302,50 @@
 						</div>
 
 
-					</div>		
+					</div>
 
 				</div>
 			</div>
 		</div>
 	</div>
-
-	TABLE WITH PICS
-
+	<div class="container">
+		<div class="row">
+			<div class="col s8">
+				<table id="photos">
+					<thead>
+						<tr>
+							<th>Img</th>
+							<th>Description</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="photo" items="${room.photos}">
+							<tr>
+								<td><img src="<i:urlToImage url="${photo.img }" />" alt=""></td>
+								<td><c:out value="${photo.desc }"></c:out></td>
+								<td><a class="my-btn waves-effect waves-light btn"
+									style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+									onclick="removeOrderTable(${photo.id})"><fmt:message
+											key="subscribes.table.remove" /> </a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="../foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
+	<script type="text/javascript">$(document).ready(function() {
+	    $('#photos').DataTable();
+	} );</script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
 	<script type="text/javascript"
@@ -321,7 +354,7 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
-		
+
 	<script>
 						function changeFreeBook(){
 							var freeBook = document.getElementById('freeBook').checked;
@@ -332,7 +365,7 @@
 						$('#freeBook').attr('checked',
 								'${room.daysCount}' < 0);
 					</script>
-		
+
 
 </body>
 
