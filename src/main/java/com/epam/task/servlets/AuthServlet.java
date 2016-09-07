@@ -12,28 +12,17 @@ import org.json.JSONObject;
 
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.UserStatus;
-import com.epam.task.database.model.enums.UserType;
 import com.epam.task.database.service.UserService;
 import com.epam.task.util.PasswordHasher;
 
-/**
- * Servlet implementation class AuthServlet
- */
-@WebServlet({ "/auth/*","/hotel/auth/*"})
+@WebServlet({ "/auth" })
 public class AuthServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public AuthServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			UserService userService = new UserService();
@@ -49,8 +38,6 @@ public class AuthServlet extends HttpServlet {
 			
 			response.getWriter().print(json.toString());
 			response.getWriter().flush();
-			
-//			response.getWriter().write(user.getType() != UserType.ADMIN ? "cabinet" : "admin");
 		} catch (Exception e) {
 			response.setContentType("text/plain");
 			response.setCharacterEncoding("UTF-8");
@@ -58,11 +45,7 @@ public class AuthServlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
