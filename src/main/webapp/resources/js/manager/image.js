@@ -25,14 +25,7 @@ function uploadRoom() {
 			processData : false,
 			type : 'POST',
 			success : function(result) {
-				if (result == 'error') {
-					alert(result);
-				}else{
-					image = result;
-					alert(result);
 					picture.val(result);
-					//SET JSON STRIN TO HIDDEN INPUT photo
-				}
 			}
 		});
 	}
@@ -61,14 +54,7 @@ function uploadHotel() {
 			processData : false,
 			type : 'POST',
 			success : function(result) {
-				if (result == 'error') {
-					alert(result);
-				}else{
-					image = result;
-					alert(result);
-					picture.val(result);
-					//SET JSON STRIN TO HIDDEN INPUT photo
-				}
+				picture.val(result);
 			}
 		});
 	}
