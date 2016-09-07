@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
 <c:set var="language"
 	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
 	scope="session" />
@@ -86,7 +87,11 @@
 	<!-- Header ========================================================================= -->
 	<jsp:include page="../header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
-<script>$(document).ready(function() {jQuery.noConflict();});</script>
+	<script>
+		$(document).ready(function() {
+			jQuery.noConflict();
+		});
+	</script>
 	<div class="container">
 		<h4 style="text-align: center; margin-top: 20px;">
 			<fmt:message key="user.cart.header" />
@@ -139,49 +144,51 @@
 
 	<!-- SUCCES MODAL  -->
 	<div id="modal1" class="modal"
-		style="width: 65% !important; max-height: 70% !important">
+		style="width: 50% !important; max-height: 80% !important">
+		<div class="modal-header" style="padding-bottom:0px">
+			<h4 id="registrationHeader">
+				<span id="shopping_cart_modal_header">THX FOR YOUR ORDER</span>
+			</h4>
+		</div>
 		<div class="modal-content">
-			<h6>GZ WITH SUCCESFULL ORDER CREATION</h6>
+			<div class="container-fluid" id="modalContainer">
+
+			</div>
+		</div>
+		<div class="modal-footer" style="padding-bottom:0px; height: 40px;">
 			<a href="href="${pageContext.servletContext.contextPath}/cabinet/orders">CLICK
 				IF YOU WANT TO LOOK AT YOUR ORDER LIST : </a>
 		</div>
-
 	</div>
 	<!-- 	END OF SUCCES MODAL -->
 
 
-<div id="signupModal" class="modal">
-								<div class="modal-header">
-									<h4 id="registrationHeader">
-										<span id="header_regist"> </span>
-									</h4>
-								</div>
-								<div class="modal-content" style="margin-top: -10px">
-									<div class="form-horizontal registrationFrm">
-										<div class="input-field">
-											<input id="сpassword" type="password" class="validate">
-											<label id="сpasswordLbl" data-error=""
-												for="сpassword">
-												<span id="header_regist_cpass"> </span>
-											</label>
-										</div>
-									</div>
+	<div id="signupModal" class="modal">
+
+		<div class="modal-content" style="margin-top: -10px">
+			<div class="form-horizontal registrationFrm">
+				<div class="input-field">
+					<input id="сpassword" type="password" class="validate"> <label
+						id="сpasswordLbl" data-error="" for="сpassword"> <span
+						id="header_regist_cpass"> </span>
+					</label>
+				</div>
+			</div>
 
 
-									<!-- 											<div class="modal-footer"> -->
+			<!-- 											<div class="modal-footer"> -->
 
-									<div class="row">
-										<button
-											class="modal-action modal-close waves-effect waves-red btn-flat col s2 offset-s1"
-											data-dismiss="modal" aria-hidden="true"
-											style="margin-left: 10px;">
-											<span id="header_regist_close"> </span>
-										</button>
-									</div>
+			<div class="row">
+				<button
+					class="modal-action modal-close waves-effect waves-red btn-flat col s2 offset-s1"
+					data-dismiss="modal" aria-hidden="true" style="margin-left: 10px;">
+					<span id="header_regist_close"> </span>
+				</button>
+			</div>
 
-									<!-- 											</div> -->
-								</div>
-							</div>
+			<!-- 											</div> -->
+		</div>
+	</div>
 
 
 
@@ -195,15 +202,15 @@
 
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-	
-	
-<!-- 	<script type="text/javascript" -->
-<%-- 		src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script> --%>
-	
-<!-- 	<script -->
-<!-- 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.js"></script> -->
-<!-- 	<script -->
-<!-- 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script> -->
+
+
+	<!-- 	<script type="text/javascript" -->
+	<%-- 		src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script> --%>
+
+	<!-- 	<script -->
+	<!-- 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.js"></script> -->
+	<!-- 	<script -->
+	<!-- 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script> -->
 
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
