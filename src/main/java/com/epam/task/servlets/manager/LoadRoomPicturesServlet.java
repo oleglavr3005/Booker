@@ -10,53 +10,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.RoomPhoto;
-import com.epam.task.database.service.RoomPhotoService;
 import com.epam.task.util.ImageSetter;
 
-/**
- * Servlet implementation class LoadRoomPicturesServlet
- */
 @WebServlet("/upload_room")
 public class LoadRoomPicturesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public LoadRoomPicturesServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			List<RoomPhoto> photo = new ImageSetter(request).uploadRoomImages();
-			if (photo.isEmpty()){
-				photo.add(new RoomPhoto(0,"no_image.jpg", "", 0));
+    	String spliterator = ":::";
+    	try {
+			List<RoomPhoto> photos = new ImageSetter(request).uploadRoomImages();
+			if (photos.isEmpty()){
+				photos.add(new RoomPhoto(0,"no_image.jpg", "", 0));
 			}
-			int roomId = Integer.parseInt(request.getParameter("roomId"));
-			RoomPhotoService service = new RoomPhotoService();
-			for( RoomPhoto roomPhoto : photo){
-				roomPhoto.setRoomId(roomId);
-				service.insertRoomPhoto(roomPhoto);
+			StringBuilder roomImages = new StringBuilder();
+			for(RoomPhoto hotelPhoto : photos) {
+				if(roomImages.length() != 0) {
+					roomImages.append(spliterator);
+				}
+				roomImages.append(hotelPhoto.getImg());
 			}			
 			response.setContentType("application/text");
 			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(photo.get(0).getImg());
+			response.getWriter().write(roomImages.toString());
 		} catch (Exception e) {
 			response.setContentType("application/text");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write("error");
 		}
 	}
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
