@@ -610,13 +610,13 @@ div #sidebar-wrapper {
 															+ '<option value="-1">All</option>'
 															+ '</select></div>'
 												},
-												bAutoWidth : false
+												bAutoWidth : false,
 // 												aoColumnDefs : [ {
-// 													sWidth : "18%",
-// 													aTargets : [ 3 ]
-// 												}, {
 // 													sWidth : "7%",
 // 													aTargets : [ 0 ]
+// 												}, {
+// 													sWidth : "10%",
+// 													aTargets : [ 1 ]
 // 												}, {
 // 													sWidth : "7%",
 // 													aTargets : [ 6 ]
