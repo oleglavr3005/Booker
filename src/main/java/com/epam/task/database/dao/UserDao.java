@@ -130,27 +130,27 @@ public class UserDao {
 		}
 	}
 
-	public User getUserByStatus(UserStatus status) {
+	public List<User> getUsersByStatus(UserStatus status) {
 		try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_STATUS)) {
 			statement.setString(1, status.toString());
 			try (ResultSet result = statement.executeQuery()) {
-				return UniversalTransformer.getObjectFromRS(result, User.class);
+				return UniversalTransformer.getCollectionFromRS(result, User.class);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return null;
+			return new ArrayList<>();
 		}
 	}
 
-	public User getUserByType(UserType type) {
+	public List<User> getUsersByType(UserType type) {
 		try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_TYPE)) {
 			statement.setString(1, type.toString());
 			try (ResultSet result = statement.executeQuery()) {
-				return UniversalTransformer.getObjectFromRS(result, User.class);
+				return UniversalTransformer.getCollectionFromRS(result, User.class);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return null;
+			return new ArrayList<>();
 		}
 	}
 	
