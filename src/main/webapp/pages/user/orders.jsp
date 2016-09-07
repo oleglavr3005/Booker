@@ -158,7 +158,7 @@ div.material-table .table-footer .dataTables_length {
 	<jsp:include page="../header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 
-	<div class="container-fluid">
+	<div class="container">
 
 		<h4 style="text-align: center; margin-top: 20px;">
 			<fmt:message key="subscribes.header" />
@@ -181,7 +181,7 @@ div.material-table .table-footer .dataTables_length {
 
 
 			<!-- 				Tab #1 -->
-			<div id="test1" class="col s10 offset-s1">
+			<div id="test1" class="col s12">
 				<c:choose>
 					<c:when test="${activeSubsSize != 0}">
 						<table id="tab1" class="purchase-table">
@@ -264,7 +264,7 @@ div.material-table .table-footer .dataTables_length {
 
 
 			<!-- 				Tab #2 -->
-			<div id="test2" class="col s10 offset-s1">
+			<div id="test2" class="col s12">
 				<c:choose>
 					<c:when test="${historySubsSize != 0}">
 						<table id="tab2" class="purchase-table">
@@ -340,7 +340,7 @@ div.material-table .table-footer .dataTables_length {
 
 
 			<!-- 			Tab #3 -->
-			<div id="test3" class="col s10 offset-s1">
+			<div id="test3" class="col s12">
 				<c:choose>
 					<c:when test="${allSubsSize != 0}">
 						<table id="tab3" class="purchase-table">

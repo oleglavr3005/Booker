@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import com.epam.task.database.dto.FeedbackDto;
 import com.epam.task.database.model.Conveniences;
 import com.epam.task.database.model.Feedback;
 import com.epam.task.database.model.Hotel;
@@ -89,7 +90,7 @@ public class HotelServlet extends HttpServlet {
 		} catch (Exception e) {
 			endDate = new Timestamp(0);
 		}
-	//////////////////////	
+
 		String pageString = request.getParameter("page");
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
 		int countOfRooms = new RoomService().getSuitableRoomsNumber(id, 
@@ -103,7 +104,7 @@ public class HotelServlet extends HttpServlet {
 		if (page > countOfPages) {
 			page--;
 		}
-////////////
+		
 		String compareBy = request.getParameter("compareBy");
 		List<Feedback> feedbacks = new FeedbackService().getAllFeedbacksByHotel(id);
 		List<Room> rooms = new RoomService().getAllSuitableRoomsForHotel(id, page, 
@@ -114,16 +115,12 @@ public class HotelServlet extends HttpServlet {
 				startDate, endDate, compareBy);
 		request.setAttribute("hotel", hotel);
 		
-		List<Hotel> hotels = new ArrayList<Hotel>();  		// —”œ≈–  Œ—“»À‹ œŒ◊¿“Œ 
+		List<Hotel> hotels = new ArrayList<Hotel>();  		//
 		hotels.add(hotel);
-		request.setAttribute("hotels", hotels);				// —”œ≈–  Œ—“»À‹  ≤Õ≈÷‹
+		request.setAttribute("hotels", hotels);				//
 		request.setAttribute("conveniences", conveniences);
-		request.setAttribute("feedbacks", feedbacks);
-		request.setAttribute("rooms", rooms);
-		//request.getRequestDispatcher("/pages/hotel.jsp").forward(request, response);
-
-		
-		
+		request.setAttribute("feedbacks", FeedbackDto.listConverter(feedbacks));
+		request.setAttribute("rooms", rooms);		
 		
 		request.setAttribute("countOfRooms", countOfRooms);
 		request.setAttribute("countOfPages", countOfPages);
