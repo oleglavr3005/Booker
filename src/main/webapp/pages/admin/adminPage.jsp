@@ -38,7 +38,9 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
 	rel="stylesheet">
 
-
+<link
+	href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"
+	rel="stylesheet">
 <style>
 .btn {
 	background: #26A69A;
@@ -124,16 +126,45 @@
 
 			<!-- 				Tab #1 -->
 			<div id="test1" class="col s12">
-				<div class="container">
+				<div class="container-fluid">
 					<div class="row settings-title">
 						<h4>
 							<fmt:message key="settings.header.USERS" />
 						</h4>
 					</div>
 
-TABS WITH USERS
-ID | fName | lName | mail | phoneNumber | type | status(comboBox) | 
+				<table id="users">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>fNane</th>
+							<th>lName</th>
+							<th>Mail</th>
+							<th>Phone</th>
+							<th>Type</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="user" items="${users}">
+							<tr>
+								<td><c:out value="${user.id }"></c:out></td>
+								<td><c:out value="${user.firstName}"></c:out></td>
+								<td><c:out value="${user.lastName}"></c:out></td>
+								<td><c:out value="${user.email}"></c:out></td>
+								<td><c:out value="${user.phoneNumber}"></c:out></td>
+								<td><c:out value="${user.type}"></c:out></td>
+								<td><select class="combobox">
+  <option value="PA">Pennsylvania</option>
+  <option value="CT">Connecticut</option>
+</select></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+	
 
+        
 					
 				</div>
 			</div>
@@ -142,7 +173,7 @@ ID | fName | lName | mail | phoneNumber | type | status(comboBox) |
 
 			<!-- 				Tab #2 -->
 			<div id="test2" class="col s12">
-				<div class="container">
+				<div class="container-fluid">
 					<div class="row settings-title">
 						<h4>
 							<fmt:message key="settings.header.CONTACT" />
@@ -152,7 +183,35 @@ ID | fName | lName | mail | phoneNumber | type | status(comboBox) |
 
 TABS WITH MAILS
 ID | userId | reqDate | message | status | 			(status == 'PENDING' => whiteBackground + 2 button (APPROVE(GREEN)) / DECLINE(RED))ELSE grey) 
-
+<table id="users">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>fNane</th>
+							<th>lName</th>
+							<th>Mail</th>
+							<th>Phone</th>
+							<th>Type</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="user" items="${users}">
+							<tr>
+								<td><c:out value="${user.id }"></c:out></td>
+								<td><c:out value="${user.firstName}"></c:out></td>
+								<td><c:out value="${user.lastName}"></c:out></td>
+								<td><c:out value="${user.email}"></c:out></td>
+								<td><c:out value="${user.phoneNumber}"></c:out></td>
+								<td><c:out value="${user.type}"></c:out></td>
+								<td><select class="combobox">
+  <option value="PA">Pennsylvania</option>
+  <option value="CT">Connecticut</option>
+</select></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 				</div>
 
 			</div>
@@ -176,6 +235,14 @@ ID | userId | reqDate | message | status | 			(status == 'PENDING' => whiteBackg
 			$('input#name, input#surname, input#email').characterCounter();
 		});
 	</script>
-
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript">
+$(document).ready(function() {
+    $('#users').DataTable( {
+        stateSave: true
+    } );
+} );
+</script>
 </body>
 </html>
