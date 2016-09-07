@@ -30,7 +30,8 @@ public class UserDao {
 	private final String INSERT = "INSERT INTO `user` (first_name, last_name, e_mail, password, type, confirm_code, status, phone_number, img, social_network, social_network_id, email_notif, phone_notif, language) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private final String UPDATE = "UPDATE `user` SET first_name = ?, last_name = ?, e_mail = ?, password = ?, type = ?, confirm_code = ?, status = ?, phone_number = ?, img = ?, social_network = ?, social_network_id = ?, email_notif = ?, phone_notif = ?, language = ? WHERE user_id = ?";
 	private final String UPDATE_STATUS = "UPDATE `user` SET status = ? WHERE user_id = ?";
-	
+	private final String UPDATE_TYPE = "UPDATE `user` SET type = ? WHERE user_id = ?";
+
 	public UserDao(Connection connection) {
 		super();
 		this.connection = connection;
@@ -206,6 +207,17 @@ public class UserDao {
 	public int updateUserStatus(int userId, UserStatus status) {
 		try (PreparedStatement statement = connection.prepareStatement(UPDATE_STATUS)) {
 			statement.setString(1, status.toString());
+			statement.setInt(2, userId);
+			return statement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+
+	public int updateUserType(int userId, UserType type) {
+		try (PreparedStatement statement = connection.prepareStatement(UPDATE_TYPE)) {
+			statement.setString(1, type.toString());
 			statement.setInt(2, userId);
 			return statement.executeUpdate();
 		} catch (SQLException e) {

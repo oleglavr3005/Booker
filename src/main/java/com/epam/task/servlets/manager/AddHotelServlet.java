@@ -40,10 +40,10 @@ public class AddHotelServlet extends HttpServlet {
 		}
 		
 		if(hotelImagesString.equals("error")) {
-			System.out.println("wtf");
+			response.sendError(500);
+			return;
 		}
 		
-		System.out.println(hotelImagesString);
 		String[] hotelImagesArray = hotelImagesString.split(":::");
 		
 		int stars = Integer.parseInt(starsString);		
@@ -54,7 +54,6 @@ public class AddHotelServlet extends HttpServlet {
 		HotelPhotoService hotelPhotoService = new HotelPhotoService();
 		if (hotelId > 0) {
 			for (int i = 0; i<hotelImagesArray.length; i++) {
-				System.out.println(hotelImagesArray[i]);
 				hotelPhotoService.insertHotelPhoto(new HotelPhoto(0, hotelImagesArray[i], "", hotelId));
 			}
 		}
