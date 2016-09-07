@@ -1,20 +1,30 @@
-var image = null;
 
 function createRoom(){
-	var img = image == null ? 'new_hotel.jpg':image;
 	var hotel = $('#hotelId').val();
-	if (validate()){
-		$.get('../create_room',{
+	alert(hotel);
+//	if (validate()){
+		$.get('../add_room',{
 			hotelId : hotel,
-			name : $('#name').val(),
-			stars : star,
-			city : $('#city').val(),
-			street : $('#street').val(),
-			description : $('#desc').val(),
-			phoneNumber : $('#phone').val(),
-			xCoord : x,
-			yCoord : y,
-			hotelImages : $('#photos').val()
+			type : $('#roomType').val(),
+			number : $('#number').val(),
+			bedsCount : $('#single').val(),
+			doubleBedsCount : $('#double').val(),
+			price : $('#price').val(),
+			roomImages :  $('#photos').val(),
+			food : $('#foodType').val(),
+			
+			hasWifi : document.getElementById('hasWiFi').checked,
+			hasShower : document.getElementById('hasShower').checked,
+			hasParking : document.getElementById('hasParking').checked,
+			hasCondition : document.getElementById('hasCondition').checked,
+			hasPool : document.getElementById('hasPool').checked,
+			hasGym : document.getElementById('hasGym').checked,
+			hasBalcony : document.getElementById('hasBalcony').checked,
+			freeBook : document.getElementById('freeBook').checked,
+			
+			daysCount : $('#days').val(),
+			percentage : $('#percentage').val(),
+			
 		}, function(result){
 			if(result != 'error'){
 				$('#create_error').css('color', 'green');
@@ -27,27 +37,39 @@ function createRoom(){
 				$('#create_error').text("FAIL");
 			}
 		});
-	}else{
-		$('#create_error').text("INVALID DATA");
-	}
+//	}else{
+//		$('#create_error').text("INVALID DATA");
+//	}
 }
 
-function updateRoom(roomId,hotelId){
+function updateRoom(room){
+	var hotel = $('#roomId').val();
 	var img = image == null ? 'new_hotel.jpg':image;
 	var x = 0;
 	var y = 0;
-	if (validate()){
+//	if (validate()){
 		$.get('../edit_hotel',{
-			hotelId : hotelId,
-			name : $('#name').val(),
-			stars : star,
-			city : $('#city').val(),
-			street : $('#street').val(),
-			description : $('#desc').val(),
-			phoneNumber : $('#phone').val(),
-			xCoord : x,
-			yCoord : y,
-			hotelImages : $('#photos').val()
+			roomId : room,
+			hotelId : hotel,
+			type : $('#roomType').val(),
+			number : $('#number').val(),
+			bedsCount : $('#single').val(),
+			doubleBedsCount : $('#double').val(),
+			price : $('#price').val(),
+			roomImages :  $('#photos').val(),
+			food : $('#foodType').val(),
+			
+			hasWifi : document.getElementById('wifi').checked,
+			hasShower : document.getElementById('shower').checked,
+			hasParking : document.getElementById('parking').checked,
+			hasCondition : document.getElementById('condition').checked,
+			hasPool : document.getElementById('pool').checked,
+			hasGym : document.getElementById('gym').checked,
+			hasBalcony : document.getElementById('balcony').checked,
+			freeBook : document.getElementById('freeBook').checked,
+			
+			daysCount : $('#days').val(),
+			percentage : $('#percentage').val(),
 		}, function(result){
 			if(result != 'false'){
 				$('#create_error').css('color', 'green');
@@ -58,9 +80,9 @@ function updateRoom(roomId,hotelId){
 				$('#create_error').text("FAIL");
 			}
 		});
-	}else{
-		$('#create_error').text("INVALID DATA");
-	}
+//	}else{
+//		$('#create_error').text("INVALID DATA");
+//	}
 }
 
 

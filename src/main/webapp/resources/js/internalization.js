@@ -247,14 +247,3 @@ function activeFalseMessage(role, id){
 	$.getJSON("http://localhost:7161/task/" + role + "/messageActiveFalse?id=" + id);
 	$.getJSON("http://localhost:8080/task/" + role + "/messageActiveFalse?id=" + id);
 }
-
-
-
-
-
-
-
-
-
-
-
