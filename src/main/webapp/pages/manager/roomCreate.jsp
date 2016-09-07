@@ -170,7 +170,7 @@
 									<option class="optionstyle" value="STANDART"
 										selected="selected">STANDART</option>
 									<option class="optionstyle" value="LUX">LUX</option>
-									<option class="optionstyle" value="DELUXE">DELUXE</option>
+									<option class="optionstyle" value="DELUX">DELUX</option>
 								</select>
 							</div>
 							<!-- 						END OF ROOM TYPE -->

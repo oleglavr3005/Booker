@@ -47,7 +47,7 @@ function updateRoom(room){
 	var x = 0;
 	var y = 0;
 //	if (validate()){
-		$.get('../edit_hotel',{
+		$.get('../../edit_room',{
 			roomId : room,
 			hotelId : hotel,
 			type : $('#roomType').val(),
@@ -58,7 +58,7 @@ function updateRoom(room){
 			roomImages :  $('#photos').val(),
 			food : $('#foodType').val(),
 			
-			hasWifi : document.getElementById('hasWiFi').checked,
+			hasWiFi : document.getElementById('hasWiFi').checked,
 			hasShower : document.getElementById('hasShower').checked,
 			hasParking : document.getElementById('hasParking').checked,
 			hasCondition : document.getElementById('hasCondition').checked,
