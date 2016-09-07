@@ -132,10 +132,14 @@ div #sidebar-wrapper {
 							name="isDeleted" /> <label for="isDeleted">DELETED</label>
 					</p>
 					
+					<form id="myForm" action="../create_room" method="post">
+					<input id="hotId" name=hotelId type="hidden"
+		value="${hotel.id}" />
 					<a class="waves-effect waves-light btn" id="create_room_button"
-					href="${pageContext.servletContext.contextPath}/cabinet/create_room"
+<%-- 					href="${pageContext.servletContext.contextPath}/cabinet/create_room" --%>
+						onclick="redirect(${hotel.id})"
 						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>CREATE_ROOM</span></a>
-					
+					</form>
 					
 					<script>
 						$('#isDeleted').attr('checked',

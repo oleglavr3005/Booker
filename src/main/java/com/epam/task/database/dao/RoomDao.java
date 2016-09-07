@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -249,7 +250,7 @@ public class RoomDao {
 		
 	public int insertRoom(Room room) { 
 		int result = 0;
-		try (PreparedStatement st = connection.prepareStatement(SQL_INSERT_ROOM)) {
+		try (PreparedStatement st = connection.prepareStatement(SQL_INSERT_ROOM, Statement.RETURN_GENERATED_KEYS)) {
 			int i = 1;
 			st.setInt(i++, room.getHotelId());
 			st.setString(i++, room.getNumber());

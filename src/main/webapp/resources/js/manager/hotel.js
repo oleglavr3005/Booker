@@ -169,4 +169,15 @@ function value(value){
 	return value == null ? '':value;
 }
 
+function redirect(id){
+	
+	alert("form - " + $('#hotId').val());
+	document.getElementById("myForm").submit();
+	
+//	alert(id);
+//	$.get('../create_room',{
+//		hotelId : id,
+//	});
+}
+
 
