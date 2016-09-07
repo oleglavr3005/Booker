@@ -154,9 +154,9 @@
 									<td><c:out value="${user.email}"></c:out></td>
 									<td><c:out value="${user.phoneNumber}"></c:out></td>
 									<td><c:out value="${user.type}"></c:out></td>
-									<td><select class="combobox">
-											<option value="PA">Pennsylvania</option>
-											<option value="CT">Connecticut</option>
+									<td><select id="userStatus${user.id}" class="combobox" onchange="changeUserStatus(${user.id})">
+											<option value="ACTIVE" <c:if test="${user.status == 'ACTIVE'}"> selected="selected"</c:if>>ACTIVE</option>
+											<option value="BANNED" <c:if test="${user.status == 'BANNED'}"> selected="selected"</c:if>>BANNED</option>
 									</select></td>
 								</tr>
 							</c:forEach>
@@ -248,6 +248,8 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/settings/settings.js"></script>
 	<script
 		src="${pageContext.servletContext.contextPath}/resources/js/admin/request.js"></script>
+		<script
+		src="${pageContext.servletContext.contextPath}/resources/js/admin/adminPage.js"></script>
 
 	<script>
 		$(document).ready(function() {
