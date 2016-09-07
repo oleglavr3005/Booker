@@ -36,6 +36,7 @@
 		footer_social_wordpress : "WordPress",
 		footer_copyright : "All rights Reserved",
 		
+		
 		header_regist_name : "Імя",
 		header_regist_surname : "Прізвище",
 		header_regist_mail : "Емейл",
