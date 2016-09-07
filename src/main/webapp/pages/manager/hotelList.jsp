@@ -102,8 +102,7 @@
 </head>
 
 <body>
-	<input id="photos" type="hidden"
-		value="${pageContext.servletContext.contextPath}/" />
+	<input id="photos" type="hidden"/>
 	<input id="lang" type="hidden" value="${language}" />
 
 	<!-- Header ========================================================================= -->

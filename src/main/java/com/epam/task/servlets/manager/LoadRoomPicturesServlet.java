@@ -33,9 +33,9 @@ public class LoadRoomPicturesServlet extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			List<RoomPhoto> photo = new ImageSetter(request,"/room").uploadRoomImages();
+			List<RoomPhoto> photo = new ImageSetter(request).uploadRoomImages();
 			if (photo.isEmpty()){
-				photo.add(new RoomPhoto(0,"room/no_image.jpg", "", 0));
+				photo.add(new RoomPhoto(0,"no_image.jpg", "", 0));
 			}
 			int roomId = Integer.parseInt(request.getParameter("roomId"));
 			RoomPhotoService service = new RoomPhotoService();

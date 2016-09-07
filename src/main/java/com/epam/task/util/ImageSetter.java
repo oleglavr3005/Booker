@@ -96,7 +96,7 @@ public class ImageSetter {
 					if(!storeFile.exists()) break;
 				}
 				item.write(storeFile);
-				roomPhoto.add(new RoomPhoto(0, "room/" + storeFile.getName(), "", 0));
+				roomPhoto.add(new RoomPhoto(0, storeFile.getName(), "", 0));
 			}}
 		} catch (Exception ex) {
 			throw ex;
@@ -134,7 +134,7 @@ public class ImageSetter {
 					if(!storeFile.exists()) break;
 				}
 				item.write(storeFile);
-				hotelPhoto.add(new HotelPhoto(0, "hotel/" + storeFile.getName(), "", 0));
+				hotelPhoto.add(new HotelPhoto(0, storeFile.getName(), "", 0));
 			}}
 		} catch (Exception ex) {
 			throw ex;

@@ -14,14 +14,15 @@ function createHotel(){
 			description : $('#desc').val(),
 			phoneNumber : $('#phone').val(),
 			xCoord : x,
-			yCoord : y
+			yCoord : y,
+			hotelImages : $('#photos').val()
 		}, function(result){
 			if(result != 'error'){
 				$('#create_error').css('color', 'green');
 				$('#create_error').text("SUCCES");
 				$('#create_button').attr("disabled", true);
 				setTimeout(function() {
-					document.location.href = '/booker/my_hotels/' + result;
+					document.location.href = '/booker/cabinet/my_hotels/' + result;
 				}, 2000);
 			}else{
 				$('#create_error').text("FAIL");
@@ -47,7 +48,8 @@ function updateHotel(hotelId){
 			description : $('#desc').val(),
 			phoneNumber : $('#phone').val(),
 			xCoord : x,
-			yCoord : y
+			yCoord : y,
+			hotelImages : $('#photos').val()
 		}, function(result){
 			if(result != 'false'){
 				$('#create_error').css('color', 'green');

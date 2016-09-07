@@ -3,6 +3,7 @@ $("#Img").click(function() {
 });
 
 function uploadRoom() {
+	var picture = document.getElementById('photos');
 	var preview = document.querySelector('#Img');
 	var file = document.querySelector('input[type=file]').files[0];
 	if (file) {
@@ -24,18 +25,14 @@ function uploadRoom() {
 			processData : false,
 			type : 'POST',
 			success : function(result) {
-				if (result == 'error') {
-					alert(result);
-				}else{
-					image = result;
-					//SET JSON STRIN TO HIDDEN INPUT photo
-				}
+					picture.val(result);
 			}
 		});
 	}
 }
 
 function uploadHotel() {
+	var picture = document.getElementById('photos');
 	var preview = document.querySelector('#Img');
 	var file = document.querySelector('input[type=file]').files[0];
 	if (file) {
@@ -57,12 +54,7 @@ function uploadHotel() {
 			processData : false,
 			type : 'POST',
 			success : function(result) {
-				if (result == 'error') {
-					alert(result);
-				}else{
-					image = result;
-					//SET JSON STRIN TO HIDDEN INPUT photo
-				}
+				picture.val(result);
 			}
 		});
 	}
