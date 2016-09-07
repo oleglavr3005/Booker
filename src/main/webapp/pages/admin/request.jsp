@@ -180,18 +180,18 @@
 		</div>
 
 
-		<c:if test="${request.status == 'REMOVED'}">
+		<c:if test="${request.status == 'PENDING'}">
 			<div class="row">
 				<div class="col s3 offset-s2">
 					<a class="waves-effect waves-light btn" id="create_button"
-						onclick="chageStatus(${request.id},true)"
+						onclick="chageStatus(${request.id},true,'../../')"
 						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
 						id="request_approve">APPROVE</span></a>
 
 				</div>
 				<div class="col s3 offset-s2">
 					<a class="waves-effect waves-light btn" id="create_button"
-						onclick="chageStatus(${request.id},false)"
+						onclick="chageStatus(${request.id},false,'../../')"
 						style="margin-left: 10px; margin-top: 100px; background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
 						id="request_decline">DECLINE</span></a>
 

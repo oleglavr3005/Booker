@@ -211,10 +211,10 @@
 											test="${request.status == 'PENDING'}">
 											<a class="my-btn waves-effect waves-light btn"
 												style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-												onclick="chageStatus(${request.id},true)">APPROVE</a>
+												onclick="chageStatus(${request.id},true,'')">APPROVE</a>
 											<a class="my-btn waves-effect waves-light btn"
 												style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-												onclick="chageStatus(${request.id},false)">DECLINED</a>
+												onclick="chageStatus(${request.id},false,'')">DECLINED</a>
 										</c:if> <c:if test="${request.status == 'DECLINED'}">
 											<div style="color: #F55151;">
 												<strong>DeCIde!</strong>
