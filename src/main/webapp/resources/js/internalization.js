@@ -3,6 +3,12 @@
 	var en = {
 		header_regist : "Registration",
 		header_auth : "Sign In",
+		
+		header_auth : "Auth",
+		header_auth_close : "Close",
+		header_auth_forgot : "Forgot password",
+		header_auth_enter : "Enter",
+		
 		index_search_header : "Find Hotel",
 		index_search_name : "Going to",
 		concrete_date_from : "Check-in",
@@ -34,16 +40,16 @@
 		footer_social_youtube : "YouTube",
 		footer_social_pinterest : "Pinterest",
 		footer_social_wordpress : "WordPress",
+		footer_social_google_plus : "Google +", 
 		footer_copyright : "All rights Reserved",
-			
-		header_regist_name : "First Name",
-		header_regist_surname : "Last Name",
+
+		header_regist_name : "First name",
+		header_regist_surname : "Last name",
 		header_regist_mail : "Email",
 		header_regist_pass : "Password",
-		header_regist_cpass : "Confirm password",
-		header_regist_confirm : "Finish registration",
+		header_regist_cpass : "Підтвердити пароль",
+		header_regist_confirm : "Завершити реєстрацію",
 		
-
 		// authorization
 		header_error_mail : "Invalid email",
 		header_error_mailpass : "Invalid email or password",
@@ -84,6 +90,12 @@
 	var ua = {
 		header_regist : "Регістрація",
 		header_auth : "Увійти",
+		
+		header_auth : "Auth",
+		header_auth_close : "Close",
+		header_auth_forgot : "Forgot password",
+		header_auth_enter : "Enter",
+		
 		index_search_header : "Шукати готель",
 		index_search_name : "Напрямок",
 		concrete_date_from : "Приїжджаю",
@@ -110,11 +122,11 @@
 		footer_support_tools : "Інструменти",
 		footer_support_tutorial : "Туторіали",
 		footer_support_webinars : "Вебінари",
-		footer_social_facebook : "Фейсбук",
-		footer_social_twitter : "Твіттер",
-		footer_social_youtube : "Ютуб",
+		footer_social_facebook : "Facebook",
+		footer_social_twitter : "Twitter",
+		footer_social_youtube : "YouTube",
 		footer_social_pinterest : "Pinterest",
-		footer_social_wordpress : "Вордпрес",
+		footer_social_wordpress : "WordPress",
 		footer_copyright : "Всі права зарезервовані.",
 		
 		header_regist_name : "Імя",
@@ -164,8 +176,39 @@
 
 		user_cart_header :"Кошик покупця"
 	}
+	
+	var error = {
+		ua: {
+			nameLbl: "nameLbl",
+			surnameLbl: "surnameLbl",
+			emailLbl: "emailLbl",
+			passwordLbl: "passwordLbl",
+			сpasswordLbl: "сpasswordLbl",
+			mailPasswordLbl: "mailPasswordLbl",
+			
+			header_regist_succes: "header_regist_succes",
+			header_regist_confirmmail: "header_regist_confirmmail",
+			header_error_fail: "header_error_fail",
+			header_regist: "header_regist"
+		},
+		en: {
+			nameLbl: "nameLbl",
+			surnameLbl: "surnameLbl",
+			emailLbl: "emailLbl",
+			passwordLbl: "passwordLbl",
+			сpasswordLbl: "сpasswordLbl",
+			mailPasswordLbl: "mailPasswordLbl",
+			
+			header_regist_succes: "header_regist_succes",
+			header_regist_confirmmail: "header_regist_confirmmail",
+			header_error_fail: "header_error_fail",
+			header_regist: "header_regist"
+		}
+	};
 	languages.en = en;
 	languages.ua = ua;
+	languages.error = error;
+	languages.error.current;
 })();
 
 function changeLanguage(id, language){
@@ -183,6 +226,18 @@ function changeLanguageOnPage(language){
 		}
 	}
 }
+function changeLanguageOfErrors(language){
+	for ( var prop in languages) {
+		if(prop == language){
+			languages.error.current = languages.error[prop];
+			for ( var idElement in languages[prop]){
+				$("#" + idElement).html(languages[prop][idElement]);
+			}
+			break;
+		}
+	}
+}
+
 function changeLanguageOnServer(id, language){
 	$.getJSON("http://localhost:7161/booker/language?id=" + id + "&lan=" + language);
 	$.getJSON("http://localhost:8080/booker/language?id=" + id + "&lan=" + language);
@@ -192,14 +247,3 @@ function activeFalseMessage(role, id){
 	$.getJSON("http://localhost:7161/task/" + role + "/messageActiveFalse?id=" + id);
 	$.getJSON("http://localhost:8080/task/" + role + "/messageActiveFalse?id=" + id);
 }
-
-
-
-
-
-
-
-
-
-
-
