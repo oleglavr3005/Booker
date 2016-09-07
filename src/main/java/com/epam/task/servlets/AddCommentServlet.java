@@ -50,7 +50,7 @@ public class AddCommentServlet extends HttpServlet {
 			userFeedback.setRating(rating);
 			feedbackService.updateFeedback(userFeedback);
 		} else { 	//create new
-			userFeedback = new Feedback(0, userId, hotelId, rating, comment, title, new Timestamp(new Date().getTime()), null, null, null);
+			userFeedback = new Feedback(0, userId, hotelId, rating, comment, title, new Timestamp(new Date().getTime()));
 			feedbackService.insertFeedback(userFeedback);
 		}
 		

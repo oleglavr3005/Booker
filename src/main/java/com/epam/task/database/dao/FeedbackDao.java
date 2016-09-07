@@ -12,11 +12,11 @@ import com.epam.task.database.transformers.UniversalTransformer;
 
 public class FeedbackDao {
 	private Connection connection;
-	private final String SELECT_ALL_FEEDBACK = "SELECT * FROM feedback LEFT JOIN user u ON feedback.user_id = u.user_id";
+	private final String SELECT_ALL_FEEDBACK = "SELECT * FROM feedback";
 	private final String INSERT_FEEDBACK = "INSERT INTO feedback (user_id, hotel_id, rating, title, comment, date) VALUES (?, ?, ?, ?, ?, ?)";
 	private final String UPDATE_FEEDBACK = "UPDATE feedback SET user_id = ?, hotel_id = ?, rating = ?, comment = ?, title = ?, date = ? WHERE feedback_id = ?";
 	private final String DELETE_FEEDBACK = "DELETE FROM feedback WHERE feedback_id = ?";
-	private final String SELECT_ALL_FEEDBACK_BY_HOTEL = "SELECT * FROM feedback LEFT JOIN user u ON feedback.user_id = u.user_id WHERE hotel_id = ?;";
+	private final String SELECT_ALL_FEEDBACK_BY_HOTEL = "SELECT * FROM feedback WHERE hotel_id = ?;";
 	private final String SELECT_FEEDBACK_BY_USER_AND_HOTEL = "SELECT * FROM feedback WHERE user_id = ? AND hotel_id = ?";
 	
 	public FeedbackDao(Connection connection) {
