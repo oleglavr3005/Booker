@@ -27,9 +27,10 @@ public class UserDao {
 	private final String SELECT_BY_TYPE	 = SELECT_ALL + " WHERE type LIKE ?";
 	private final String SELECT_BY_CODE = "SELECT * FROM user u WHERE u.confirm_code LIKE ?;";
 	
-	private final String INSERT = "INSERT INTO `user` (first_name, last_name, e_mail, password, type, is_banned, confirm_code, status, phone_number, img, social_network, social_network_id, email_notif, phone_notif, language) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private final String UPDATE = "UPDATE `user` SET first_name = ?, last_name = ?, e_mail = ?, password = ?, type = ?, is_banned = ?, confirm_code = ?, status = ?, phone_number = ?, img = ?, social_network = ?, social_network_id = ?, email_notif = ?, phone_notif = ?, language = ? WHERE user_id = ?";
-
+	private final String INSERT = "INSERT INTO `user` (first_name, last_name, e_mail, password, type, confirm_code, status, phone_number, img, social_network, social_network_id, email_notif, phone_notif, language) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private final String UPDATE = "UPDATE `user` SET first_name = ?, last_name = ?, e_mail = ?, password = ?, type = ?, confirm_code = ?, status = ?, phone_number = ?, img = ?, social_network = ?, social_network_id = ?, email_notif = ?, phone_notif = ?, language = ? WHERE user_id = ?";
+	private final String UPDATE_STATUS = "UPDATE `user` SET status = ? WHERE user_id = ?";
+	
 	public UserDao(Connection connection) {
 		super();
 		this.connection = connection;
@@ -160,7 +161,6 @@ public class UserDao {
 			statement.setString(i++, user.getEmail());
 			statement.setString(i++, user.getPassword());
 			statement.setString(i++, user.getType().toString());
-			statement.setBoolean(i++, user.isBanned());
 			statement.setString(i++, user.getConfirmCode());
 			statement.setString(i++, user.getStatus().toString());
 			statement.setString(i++, user.getPhoneNumber());
@@ -185,7 +185,6 @@ public class UserDao {
 			statement.setString(i++, user.getEmail());
 			statement.setString(i++, user.getPassword());
 			statement.setString(i++, user.getType().toString());
-			statement.setBoolean(i++, user.isBanned());
 			statement.setString(i++, user.getConfirmCode());
 			statement.setString(i++, user.getStatus().toString());
 			statement.setString(i++, user.getPhoneNumber());
@@ -197,6 +196,17 @@ public class UserDao {
 			statement.setString(i++, user.getLanguage());
 
 			statement.setInt(i, user.getId());
+			return statement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+
+	public int updateUserStatus(int userId, UserStatus status) {
+		try (PreparedStatement statement = connection.prepareStatement(UPDATE_STATUS)) {
+			statement.setString(1, status.toString());
+			statement.setInt(2, userId);
 			return statement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
