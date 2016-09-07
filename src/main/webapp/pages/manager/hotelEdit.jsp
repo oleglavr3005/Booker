@@ -136,9 +136,9 @@ div #sidebar-wrapper {
 							<!-- 						NAME -->
 
 							<div class="input-field">
-								<input id="name" type="text" class="validate" length="45" value="${hotel.name}"
-									placeholder="Name of Hotel"> <label id="nameLbl"
-									data-error="${fmtName}" for="name"><fmt:message
+								<input id="name" type="text" class="validate" length="45"
+									value="${hotel.name}" placeholder="Name of Hotel"> <label
+									id="nameLbl" data-error="${fmtName}" for="name"><fmt:message
 										key="admin.edit.name" /></label>
 							</div>
 
@@ -151,9 +151,9 @@ div #sidebar-wrapper {
 						<div class="col s7">
 
 							<!-- 						STARS -->
-							<input id="rating" onchange="rate()" type="number"  value="${hotel.stars}"
-								class="rating" min=0 max=5 step=1 data-size="xs" data-stars="5">
-							<span
+							<input id="rating" onchange="rate()" type="number"
+								value="${hotel.stars}" class="rating" min=0 max=5 step=1
+								data-size="xs" data-stars="5"> <span
 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><fmt:message
 									key="manager.hotel.star" />STAR : <span id="rate_span">0</span>
 								/ 5 |</span>
@@ -180,8 +180,8 @@ div #sidebar-wrapper {
 
 							<div class="input-field">
 								<input id="city" type="text" class="validate" length="45"
-									placeholder="Name of city" value="${hotel.city}"> <label id="cityLbl"
-									data-error="${fmtName}" for="city"><fmt:message
+									placeholder="Name of city" value="${hotel.city}"> <label
+									id="cityLbl" data-error="${fmtName}" for="city"><fmt:message
 										key="admin.edit.city" /></label>
 							</div>
 
@@ -195,8 +195,8 @@ div #sidebar-wrapper {
 
 							<div class="input-field">
 								<input id="street" type="text" class="validate" length="45"
-									placeholder="Name of street" value="${hotel.street}"> <label id="streetLbl"
-									data-error="${fmtName}" for="street"><fmt:message
+									placeholder="Name of street" value="${hotel.street}"> <label
+									id="streetLbl" data-error="${fmtName}" for="street"><fmt:message
 										key="admin.edit.street" /></label>
 							</div>
 
@@ -211,8 +211,8 @@ div #sidebar-wrapper {
 
 							<div class="input-field">
 								<input id="phone" type="text" class="validate" length="45"
-									placeholder="Name of phone" value="${hotel.phoneNumber}"> <label id="phoneLbl"
-									data-error="${fmtName}" for="phone"><fmt:message
+									placeholder="Name of phone" value="${hotel.phoneNumber}">
+								<label id="phoneLbl" data-error="${fmtName}" for="phone"><fmt:message
 										key="admin.edit.phone" /></label>
 							</div>
 
@@ -250,7 +250,7 @@ div #sidebar-wrapper {
 
 
 
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div id="admin" class="col s12">
 				<div class="card material-table">
@@ -273,6 +273,7 @@ div #sidebar-wrapper {
 								<th>Convinions</th>
 								<th>Food</th>
 								<th>Free Book</th>
+								<th>Deleted</th>
 								<th>Price</th>
 							</tr>
 						</thead>
@@ -316,9 +317,15 @@ div #sidebar-wrapper {
 									<td><a class="tooltipped" data-position="icon"
 										data-tooltip="Food" style="color: #0d0d0d;"><i
 											class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span></td>
-									<td><c:if test="${room.percentage >= 0}">
+									<td><c:if test="${room.daysCount >= 0}">
 											<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-										</c:if> <c:if test="${room.percentage < 0}">
+										</c:if> <c:if test="${room.daysCount < 0}">
+											<span class="glyphicon glyphicon-remove-sign"
+												aria-hidden="true"></span>
+										</c:if></td>
+									<td><c:if test="${room.deleted}">
+											<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+										</c:if> <c:if test="${room.deleted}">
 											<span class="glyphicon glyphicon-remove-sign"
 												aria-hidden="true"></span>
 										</c:if></td>
@@ -339,15 +346,13 @@ div #sidebar-wrapper {
 	<script src="//code.jquery.com/jquery-1.12.3.js"></script>
 
 	<script
-		src="  http://demo.geekslabs.com/materialize/v2.1/layout03/js/materialize.js"></script>
-	<script
 		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-	
+
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/star-rating/star-rating.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
-		
+
 	<script type="text/javascript">
 		(function(window, document, undefined) {
 
@@ -550,17 +555,17 @@ div #sidebar-wrapper {
 															+ '<option value="-1">All</option>'
 															+ '</select></div>'
 												},
-												bAutoWidth : false,
-												aoColumnDefs : [ {
-													sWidth : "18%",
-													aTargets : [ 3 ]
-												}, {
-													sWidth : "7%",
-													aTargets : [ 0 ]
-												}, {
-													sWidth : "7%",
-													aTargets : [ 6 ]
-												} ]
+												bAutoWidth : false
+// 												aoColumnDefs : [ {
+// 													sWidth : "18%",
+// 													aTargets : [ 3 ]
+// 												}, {
+// 													sWidth : "7%",
+// 													aTargets : [ 0 ]
+// 												}, {
+// 													sWidth : "7%",
+// 													aTargets : [ 6 ]
+// 												} ]
 
 											});
 						});
