@@ -152,7 +152,7 @@
 		</div>
 		<div class="modal-content">
 			<div class="container-fluid" id="modalContainer">
-
+				
 			</div>
 		</div>
 		<div class="modal-footer" style="padding-bottom:0px; height: 40px;">
