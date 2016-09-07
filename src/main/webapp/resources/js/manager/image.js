@@ -54,7 +54,8 @@ function uploadHotel() {
 			processData : false,
 			type : 'POST',
 			success : function(result) {
-				picture.val(result);
+				$('#photos').val(result);
+				//picture.val(result);
 			}
 		});
 	}

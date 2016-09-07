@@ -170,8 +170,6 @@ function value(value){
 }
 
 function redirect(id){
-	
-	alert("form - " + $('#hotId').val());
 	document.getElementById("myForm").submit();
 	
 //	alert(id);
