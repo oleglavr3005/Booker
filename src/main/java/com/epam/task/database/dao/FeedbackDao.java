@@ -17,6 +17,8 @@ public class FeedbackDao {
 	private final String UPDATE_FEEDBACK = "UPDATE feedback SET user_id = ?, hotel_id = ?, rating = ?, comment = ?, title = ?, date = ? WHERE feedback_id = ?";
 	private final String DELETE_FEEDBACK = "DELETE FROM feedback WHERE feedback_id = ?";
 	private final String SELECT_ALL_FEEDBACK_BY_HOTEL = "SELECT * FROM feedback WHERE hotel_id = ?;";
+	private final String SELECT_ALL_FEEDBACK_BY_USER = "SELECT * FROM feedback WHERE user_id = ?;";
+	private final String SELECT_FEEDBACK_BY_ID = "SELECT * FROM feedback WHERE feedback_id = ?;";
 	private final String SELECT_FEEDBACK_BY_USER_AND_HOTEL = "SELECT * FROM feedback WHERE user_id = ? AND hotel_id = ?";
 	
 	public FeedbackDao(Connection connection) {
@@ -94,6 +96,28 @@ public class FeedbackDao {
 		try (PreparedStatement statment = connection.prepareStatement(SELECT_FEEDBACK_BY_USER_AND_HOTEL)){
 			statment.setInt(1, userId);
 			statment.setInt(2, hotelId);
+			ResultSet rs = statment.executeQuery();
+			return UniversalTransformer.getObjectFromRS(rs, Feedback.class);
+		} catch(SQLException e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public List<Feedback> getAllFeedbacksByUser(int id) {
+		try (PreparedStatement statment = connection.prepareStatement(SELECT_ALL_FEEDBACK_BY_USER)){
+			statment.setInt(1, id);
+			ResultSet rs = statment.executeQuery();
+			return UniversalTransformer.getCollectionFromRS(rs, Feedback.class);
+		} catch(SQLException e){
+			e.printStackTrace();
+			return new ArrayList<>();
+		}
+	}
+
+	public Feedback getFeedbackById(int feedbackId) {
+		try (PreparedStatement statment = connection.prepareStatement(SELECT_FEEDBACK_BY_ID)){
+			statment.setInt(1, feedbackId);
 			ResultSet rs = statment.executeQuery();
 			return UniversalTransformer.getObjectFromRS(rs, Feedback.class);
 		} catch(SQLException e){

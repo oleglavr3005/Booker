@@ -17,11 +17,11 @@ import com.epam.task.database.model.User;
 import com.epam.task.database.service.FeedbackService;
 import com.epam.task.database.service.HotelService;
 
-@WebServlet("/add_comment")
-public class AddCommentServlet extends HttpServlet {
+@WebServlet("/add_feedback")
+public class AddFeedbackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AddCommentServlet() {
+    public AddFeedbackServlet() {
         super();
     }
 
@@ -49,21 +49,23 @@ public class AddCommentServlet extends HttpServlet {
 		if(userFeedback != null) { //modify
 			userFeedback.setComment(comment);
 			userFeedback.setRating(rating);
+			userFeedback.setTitle(title);
 			success = feedbackService.updateFeedback(userFeedback);
 		} else { 	//create new
 			userFeedback = new Feedback(0, userId, hotelId, rating, comment, title, new Timestamp(new Date().getTime()));
 			success = feedbackService.insertFeedback(userFeedback);
 		}
 		
-		//calculate new rating
-		List<Feedback> feedbacks = feedbackService.getAllFeedbacksByHotel(hotelId);
-		double newRating = 0;
-		for(Feedback feedback : feedbacks) {
-			newRating += feedback.getRating();
+		if (success > 0) { //calculate new rating
+			List<Feedback> feedbacks = feedbackService.getAllFeedbacksByHotel(hotelId);
+			double newRating = 0;
+			for(Feedback feedback : feedbacks) {
+				newRating += feedback.getRating();
+			}
+			newRating /= feedbacks.size(); 
+			hotel.setRating(newRating);
+			hotelService.updateHotel(hotel);
 		}
-		newRating /= feedbacks.size(); 
-		hotel.setRating(newRating);
-		hotelService.updateHotel(hotel);
 		
 		response.getWriter().write(success > 0 ? "true" : "false");
 	}
