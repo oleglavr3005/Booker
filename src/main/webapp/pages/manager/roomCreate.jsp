@@ -140,7 +140,7 @@
 						<option class="optionstyle"><fmt:message
 								key="roomCreate_chooseHotel" /></option>
 						<c:forEach var="hotel" items="${hotels}">
-							<option class="optionstyle">${hotel}</option>
+							<option class="optionstyle">${hotel.name}</option>
 						</c:forEach>
 					</select>
 				</div>

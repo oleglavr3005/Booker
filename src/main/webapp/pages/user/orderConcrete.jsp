@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="language"
 	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
 	scope="session" />
@@ -157,7 +158,7 @@ div #sidebar-wrapper {
 		<div id="links">
 			<div class="row">
 				<div class="col s4">
-					<c:if test="${mainPhoto == null}">
+					<c:if test="${fn:length(hotel.photos) == 0}">
 						<a
 							href="<i:urlToImage url="no.jpg" />"
 							title="No image"
@@ -166,23 +167,22 @@ div #sidebar-wrapper {
 							alt="No image">
 						</a>
 					</c:if>
-					<c:if test="${mainPhoto != null}">
-						<a href='<i:urlToImage url="${mainPhoto.img}" />'
-							title="<c:out value="${mainPhoto.desc }"></c:out>" data-gallery>
-							<img src="<i:urlToImage url="${mainPhoto.img}" />"
-							alt="<c:out value="${mainPhoto.desc }"></c:out>">
+					<c:if test="${fn:length(hotel.photos) != 0}">
+						<a href='<i:urlToImage url="${hotel.photos[0].img}" />'
+							data-gallery>
+							<img src="<i:urlToImage url="hotel.photos[0].img" />">
 						</a>
 
 
 						<div style="overflow-x: auto;">
 							<div style="margin: 10px; white-space: nowrap;">
-								<c:forEach items="${hotelPhotos}" var="photo">
+								<c:forEach items="${hotel.photos}" var="photo" begin="1">
 									<div style="display: inline-block;">
 										<a href='<i:urlToImage url="${photo.img}" />'
-											title="<c:out value="${photo.desc }"></c:out>" data-gallery>
+											 data-gallery>
 											<img style="height: 60px;"
 											src="<i:urlToImage url="${photo.img}" />"
-											alt="<c:out value="${photo.desc }"></c:out>">
+											alt="<c:out value="${photo.id }"></c:out>">
 										</a>
 									</div>
 								</c:forEach>
