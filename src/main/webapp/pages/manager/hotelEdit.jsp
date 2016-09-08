@@ -120,19 +120,19 @@ div #sidebar-wrapper {
 
 
 
-					<a href="#!"><img id="avatarImg"
+					<a href="#!"><img id="Img"
 						style="height: 100px; padding: 10px; width: 110px;"
 						<%-- 														src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
  								src="<i:urlToImage url="${hotel.photos[0].img }" />">
 					</a>
 					<!-- 					END OF PHOTO -->
 					<!-- 				INPUT -->
-									<input style="margin-top: 60px" type="file" id="avatarInput"
-					 					onchange="showPhoto()" accept="image/*" /> 
+									<input multiple style="margin-top: 60px" type="file" id="imgInput"
+					 					onchange="uploadHotel('../')" accept="image/*" /> 
 					<!-- 				END OF INPUT -->
 
 					<a class="waves-effect waves-light btn" id="create_button"
-						onclick="updateHotel()"
+						onclick="updateHotel(${hotel.id})"
 						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>UPDATE</span></a>
 					<p id="create_error" style="color: red"></p>
 				</div>

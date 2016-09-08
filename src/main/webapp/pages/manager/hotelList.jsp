@@ -119,7 +119,7 @@
 				<!-- 					END OF PHOTO -->
 				<!-- 				INPUT -->
 				<input multiple style="margin-top: 60px; display: none" type="file" id="imgInput"
-					onchange="uploadHotel()" accept="image/*" />
+					onchange="uploadHotel('')" accept="image/*" />
 				<!-- 				END OF INPUT -->
 
 				<a class="waves-effect waves-light btn" id="create_button"
