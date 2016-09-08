@@ -176,4 +176,37 @@ function redirect(id){
 //	});
 }
 
+//function updateHotelPhotos(id){
+//	$.get('../../edit_hotel',{
+//		hotelId : id,
+//	}, function(hotels) {
+//		$('#switchContent').html(hotels);
+//	});
+//}
+
+
+function updateHotelPhotos(id) {
+	var file = document.querySelector('input[type=file]').files[0];
+	if (file) {
+		var reader = new FileReader();
+		reader.onloadend = function() {
+		}
+		reader.readAsDataURL(file);
+		var data = new FormData();
+		$.each($('#imgInput')[0].files, function(i, file) {
+			data.append('file-' + i, file);
+		});
+		$.ajax({
+			url : '../../edit_hotel_pictures/'+id,
+			data : data,
+			cache : false,
+			contentType : false,
+			processData : false,
+			type : 'POST',
+			success : function(hotels) {
+				$('#switchContent').html(hotels);
+			}
+		});
+	}
+}
 

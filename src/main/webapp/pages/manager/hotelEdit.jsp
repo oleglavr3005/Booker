@@ -60,10 +60,6 @@
 	href="${pageContext.servletContext.contextPath}/resources/css/table.css">
 
 
-<!-- 	Image picker -->
-<link
-	href="${pageContext.servletContext.contextPath}/resources/js/image-picker/image-picker.css"
-	rel="stylesheet">
 <style>
 div #sidebar-wrapper {
 	position: relative;
@@ -284,19 +280,15 @@ div #sidebar-wrapper {
 			<div class="col s2">
 				<!-- 				INPUT -->
 				<input multiple style="margin-top: 60px" type="file" id="imgInput"
-					onchange="uploadHotel('../')" accept="image/*" />
+					onchange="updateHotelPhotos(${hotel.id})" accept="image/*" />
 				<!-- 				END OF INPUT -->
 
 			</div>
 
 			<div class="col s8">
-				<select class="image-picker masonry show-html" id="images"
-					multiple="multiple">
-					<c:forEach var="photo" items="${hotel.photos}">
-						<option data-img-src="<i:urlToImage url="${photo.img }" />"
-							value="${photo.id}">${photo.desc }</option>
-					</c:forEach>
-				</select>
+				<div id="switchContent">
+			<jsp:include page="../cards/photoCard.jsp"></jsp:include>
+		</div>
 			</div>
 
 			<div class="col s2">
@@ -421,31 +413,16 @@ div #sidebar-wrapper {
 
 
 
-	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/image-picker/image-picker.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/image-picker/image-picker.min.js"></script>
-	<script
-		src="http://rvera.github.io/image-picker/js/jquery.masonry.min.js"></script>
-	<script type="text/javascript">
-		$("select").imagepicker();
-		var container = jQuery("select.image-picker.masonry").next("ul.thumbnails");
-    container.imagesLoaded(function(){
-      container.masonry({
-        itemSelector:   "li",
-      });
-    });
-    
-    
-    function remove() {
-    	var values = $('#images').val();
-    	alert(values);
-	}
-    </script>
+	
 
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotelEdit.js"></script>
-
+<script type="text/javascript">    
+function remove() {
+	var values = $('#images').val();
+	alert(values);
+}
+</script></script>
 
 
 
