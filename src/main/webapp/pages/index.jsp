@@ -260,7 +260,7 @@ div #sidebar-wrapper {
 							<div class="col s8">
 
 								<label class="labelstyle"><span
-				    id="index_search_price_2"></span>PRICE</label>
+				    id="index_search_price_2"></span></label>
 								<section class="range-slider">
 									<div id="priceSlider"></div>
 								</section>

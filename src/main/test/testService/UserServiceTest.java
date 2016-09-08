@@ -85,11 +85,11 @@ public class UserServiceTest extends TestCase {
 	
 	@Test
 	public void testGetUserByStatus(){
-		assertNotNull(userService.getUserByStatus(UserStatus.ACTIVE));
+		assertNotNull(userService.getUsersByStatus(UserStatus.ACTIVE));
 	}
 	
 	@Test 
 	public void testGetUserByType(){
-		assertNotNull(userService.getUserByType(UserType.USER));
+		assertNotNull(userService.getUsersByType(UserType.USER));
 	}
 }
