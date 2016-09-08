@@ -167,24 +167,6 @@ function value(value){
 	return value == null ? '':value;
 }
 
-function redirect(id){
-	document.getElementById("myForm").submit();
-	
-//	alert(id);
-//	$.get('../create_room',{
-//		hotelId : id,
-//	});
-}
-
-//function updateHotelPhotos(id){
-//	$.get('../../edit_hotel',{
-//		hotelId : id,
-//	}, function(hotels) {
-//		$('#switchContent').html(hotels);
-//	});
-//}
-
-
 function updateHotelPhotos(id) {
 	var file = document.querySelector('input[type=file]').files[0];
 	if (file) {
@@ -210,3 +192,11 @@ function updateHotelPhotos(id) {
 	}
 }
 
+function removeRoomPhoto() {
+	var values = $('#images').val();
+	$.get('../../remove_hotel_photo',{
+		photos : values
+	}, function(hotels) {
+		$('#switchContent').html(hotels);
+	});
+}
