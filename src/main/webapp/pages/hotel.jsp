@@ -322,28 +322,29 @@ div #sidebar-wrapper {
 		<div class="col s3">
 			<input type="date" name="startDate" id="date_from"
 				class="datepicker validate" value="${startDate}"><label
-				id="startLbl" data-error="${fmtStart}" for="date_from"><fmt:message
-					key="index.search.start" /></label>
+				id="startLbl" data-error="${fmtStart}" for="date_from"><span
+					id="index_search_start"></span></label>
 		</div>
 
 		<div class="col s3">
 			<input type="date" name="endDate" id="date_to"
 				class="datepicker validate" value="${endDate}"><label
-				id="endLbl" data-error="${fmtEnd}" for="date_to"><fmt:message
-					key="index.search.end" /></label>
+				id="endLbl" data-error="${fmtEnd}" for="date_to"><span
+					id="index_search_end"></span></label>
 		</div>
 
 		<div class="col s3">
 			<input id="people" type="text" class="validate" name="people"
 				value="${people}"> <label id="pplLbl"
-				data-error="${fmtPeople}" for="pplCount"><fmt:message
-					key="index.search.ppl" /></label>
+				data-error="${fmtPeople}" for="pplCount"><span
+					id="index_search_ppl"></span></label>
 		</div>
 
 		<div class="col s2 offset-s1">
 			<a id="search" class="waves-effect waves-light btn"
-				onclick="searchRooms(${hotel.id})"
-				style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">SEARCH</a>
+				onclick="searchRooms(${hotel.id})" 
+				style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
+					id="index_search_button"></span></a>
 		</div>
 
 	</div>

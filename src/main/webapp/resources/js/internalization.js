@@ -42,6 +42,8 @@
 		index_option_star_desc : "Star desc",
 		index_option_rating_asc : "Rating asc",
 		index_option_rating_desc : "Rating desc",	
+		
+		index_option_people_desc : "People desc",
 
 		concrete_date_from : "Check-in",
 		concrete_date_to : "Check-out",
