@@ -188,7 +188,9 @@ function value(value){
 }
 
 function updateRoomPhotos(id) {
+	alert("updateRoomPhotos(" + id + ")");
 	var file = document.querySelector('input[type=file]').files[0];
+	alert(file);
 	if (file) {
 		var reader = new FileReader();
 		reader.onloadend = function() {

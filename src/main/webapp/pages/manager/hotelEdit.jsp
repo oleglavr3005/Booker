@@ -294,7 +294,7 @@ div #sidebar-wrapper {
 			<div class="col s2">
 				<a class="my-btn waves-effect waves-light btn"
 					style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
-					onclick="removeRoomPhoto()"><fmt:message key="subscribes.table.remove" />
+					onclick="removeHotelPhoto()"><fmt:message key="subscribes.table.remove" />
 				</a>
 			</div>
 		</div>

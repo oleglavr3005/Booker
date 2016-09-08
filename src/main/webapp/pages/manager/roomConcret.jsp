@@ -126,8 +126,8 @@
 					</a>
 					<!-- 					END OF PHOTO -->
 					<!-- 				INPUT -->
-					<input style="margin-top: 5px; display:none" type="file" id="imgInput" 
-						onchange="uploadRoom()" accept="image/*" />
+<%-- 					<input style="margin-top: 5px; display:none" type="file" id="imgInput"  --%>
+<%-- 						onchange="uploadRoom()" accept="image/*" /> --%>
 					<!-- 				END OF INPUT -->
 
 					<a class="waves-effect waves-light btn" id="create_button"
@@ -365,11 +365,6 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/star-rating/star-rating.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
-		
-		<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
 		
 		
 

@@ -18,7 +18,7 @@ import com.epam.task.database.model.User;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.RoomService;
 
-@WebFilter("/cabinet/room/*")
+@WebFilter({"/cabinet/room/*",  "/edit_room_pictures/*" })
 public class ManagerRoomFilter implements Filter {
 
     public ManagerRoomFilter() {
