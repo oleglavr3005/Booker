@@ -86,6 +86,7 @@ div #sidebar-wrapper {
 	padding: 0px;
 }
 </style>
+
 </head>
 
 
@@ -102,11 +103,20 @@ div #sidebar-wrapper {
 <div style="background: url('../resources/header.jpg'); height: 700px;">
 <div class="container">
 <div style="margin-top: 200px; ">
-  <div class="row" style="background-color: RGB(0, 0, 0);   opacity: .8;">
-         <form class="col s12" action="${pageContext.servletContext.contextPath}/search">
-                  <input placeholder="Search" required>
-                  <button>Search</button>
-         </form>       
+  <div class="row" style="background-color: RGB(0, 0, 0);   opacity: .8; border-radius: 10px;">
+         <form class="col s12" action="${pageContext.servletContext.contextPath}/search" method="POST">
+           <div class="form-group" style="display:inline;">
+            <div class="input-group col-md-12" >
+                  <input name="search" class="form-control" placeholder="Search" required>
+                 <span class="input-group-btn">
+                        <button class="btn waves-effect waves-light input-group-addon">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                    </div>
+                    </div>
+         </form>  
+       
 </div>
 </div>
 </div>
