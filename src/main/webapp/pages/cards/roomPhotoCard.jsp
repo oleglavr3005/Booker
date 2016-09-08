@@ -10,7 +10,7 @@
 
 <select class="image-picker masonry show-html" id="images"
 					multiple="multiple">
-					<c:forEach var="photo" items="${rooms.photos}">
+					<c:forEach var="photo" items="${room.photos}">
 						<option data-img-src="<i:urlToImage url="${photo.img }" />"
 							value="${photo.id}">${photo.desc }</option>
 					</c:forEach>
