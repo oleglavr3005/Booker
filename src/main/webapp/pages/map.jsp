@@ -37,6 +37,19 @@
 		var flag = 0;
 		var fladTwo = 0;
 		jQuery('#google_map').hide();
+		jQuery('#hotel_map_button').on('click', function() {
+			if (flag == 0) {
+				jQuery('#google_map').slideDown(500);
+				flag = 1;
+				if (fladTwo == 0) {
+					setTimeout(map_initialize, 500);
+					fladTwo = 1;
+				}
+			} else {
+				jQuery('#google_map').slideUp(500);
+				flag = 0;
+			}
+		});
 		jQuery('#map_button').on('click', function() {
 			if (flag == 0) {
 				jQuery('#google_map').slideDown(500);
