@@ -9,7 +9,6 @@ function createOrder(orders) {
 }
 
 function bookOrderCard(orderId, daysCount) {
-	alert("bookOrderCard(" + orderId + ")");
 	var localComment = orderId == null ? $('#comment').val() : $(
 			'#comment' + orderId).val();
 	var code = value($('#cardnum1').val()) + value($('#cardnum2').val())
@@ -38,9 +37,6 @@ function bookOrderCard(orderId, daysCount) {
 						$('#book' + orderId).onclick = null;
 
 						if (res.booked == 'true') {
-							alert('res.countOfHotels - ' + res.countOfHotels);
-							alert("hot - " + res.hotels[0]);
-							alert("hotNam - " + res.hotels[0].name);
 							insertModal(res);
 							$('#modal1').openModal();
 
@@ -115,12 +111,10 @@ function bookOrderCard(orderId, daysCount) {
 			}, function(result) {
 				var res = $.parseJSON(result);
 				var hotels = $.parseJSON(res.hotels[0]);
-				alert(res[0]);
 				$('#book' + orderId).onclick = null;
 
 				if (res.booked == 'true') {
-					alert("hot - " + res.hotels[0]);
-					alert("hotNam - " + res.hotels[0].id);
+			//		alert("hotNam - " + res.hotels[0].id);
 					insertModal(res);
 					$('#modal1').openModal();
 
@@ -271,12 +265,31 @@ function isLengthFull(id) {
 }
 
 function insertModal(result) {
-	$('#modalContainer').html(modalMaker(result));
+//	$('#modalContainer').html(modalMaker(result));
+	showModal(result);
+}
+
+function showModal(result){
+	alert("id" + result.hotels[0].id);
+	alert("photo" + result.hotels[0].photo);
+	if (result.countOfHotels > 0){
+		var url = 'http://localhost:8080/booker/hotel/';
+		for (var i = 0; i < 3 && i < result.countOfHotels; i++) {
+			document.getElementById('row'+i).style.display = 'block';
+			$('#href'+i+'1').attr('href',url+result.hotels[i].id);
+			$('#href'+i+'2').attr('href',url+result.hotels[i].id);
+			$('#img'+i).attr('url',result.hotels[i].photo);
+			$('#hotelName'+i).html(result.hotels[i].name);
+			$('#location'+i).html(result.hotels[i].city + " " + result.hotels[i].street);
+		}
+	}
+	else{
+		document.getElementById('empty').style.display = 'block';
+	}
 }
 
 function modalMaker(result) {
 	var totalContent = '';
-	alert("result - " + result.countOfHotels);
 	// alert(result.hotels[0] + " | " + result.hotels[0].name);
 	if (result.countOfHotels > 0) {
 		for (var i = 0; i < 3 && i < result.countOfHotels; i++) {

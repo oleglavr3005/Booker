@@ -145,54 +145,148 @@
 	<!-- SUCCES MODAL  -->
 	<div id="modal1" class="modal"
 		style="width: 50% !important; max-height: 80% !important">
-		<div class="modal-header" style="padding-bottom:0px">
+		<div class="modal-header" style="padding-bottom: 0px">
 			<h4 id="registrationHeader">
 				<span id="shopping_cart_modal_header">THX FOR YOUR ORDER</span>
 			</h4>
 		</div>
 		<div class="modal-content">
 			<div class="container-fluid" id="modalContainer">
-				
+
+				<div class="row" id="empty" style="display: none">
+					<img alt="thank you for order"
+						src="http://localhost:8080/booker/resources/images/order1.jpg"
+						class="img-responsive center-block"
+						style="max-width: 150px; max-height: 150px; margin-bottom: 10px; margin-top: 30px">
+				</div>
+
+
+
+				<div class="row" id="row0" style="display: none">
+					<div class="col s4">
+						<a id="href01" href="http://localhost:8080/booker/hotel/"> <img
+							src="<i:urlToImage id="img0" url="new_hotel.jpg" />"
+							style="height: 110px; width: 150px;">
+						</a>
+					</div>
+					<div class="col s6">
+						<div class="row" style="margin-top: 15px; margin-bottom: 10px">
+							<div class="col s5">
+								<a id="href02" href="http://localhost:8080/booker/hotel/"><span
+									id="hotelName0"></span></a>
+							</div>
+							<!-- 							<div class="col s6 offset-s1"> -->
+							<%-- 								<a style="color: #0d0d0d; text-decoration: none;"> <c:forEach --%>
+							<%-- 										var="i" begin="1" end="+ hotel.stars +"> --%>
+							<%-- 										<i class="fa fa-lg fa-star" aria-hidden="true"></i> --%>
+							<%-- 									</c:forEach> <c:forEach var="i" begin="+ hotel.stars +" end="4"> --%>
+							<%-- 										<i class="fa fa-lg fa-star-o" aria-hidden="true"></i> --%>
+							<%-- 									</c:forEach> --%>
+							<!-- 								</a> -->
+							<!-- 							</div> -->
+						</div>
+						<div class="row">
+							<i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i><span
+								id="location0"></span>
+						</div>
+					</div>
+					<!-- 					<div class="col s2"> -->
+					<!-- 						<div class="row"> -->
+					<!-- 							<a class="waves-effect waves-light btn" -->
+					<!-- 								href="http://localhost:8080/booker/hotel/+ hotel.id +" -->
+					<!-- 								style="margin-top: 30px; margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: Times, serif;"><span>INFO</span></a> -->
+					<!-- 						</div> -->
+					<!-- 					</div> -->
+				</div>
+
+
+
+				<div class="row" id="row1" style="display: none">
+					<div class="col s4">
+						<a id="href11" href="http://localhost:8080/booker/hotel/"> <img
+							src="<i:urlToImage id="img1" url="new_hotel.jpg" />"
+							style="height: 110px; width: 150px;">
+						</a>
+					</div>
+					<div class="col s6">
+						<div class="row" style="margin-top: 15px; margin-bottom: 10px">
+							<div class="col s5">
+								<a id="href12" href="http://localhost:8080/booker/hotel/"><span
+									id="hotelName1"></span></a>
+							</div>
+							<!-- 							<div class="col s6 offset-s1"> -->
+							<%-- 								<a style="color: #0d0d0d; text-decoration: none;"> <c:forEach --%>
+							<%-- 										var="i" begin="1" end="+ hotel.stars +"> --%>
+							<%-- 										<i class="fa fa-lg fa-star" aria-hidden="true"></i> --%>
+							<%-- 									</c:forEach> <c:forEach var="i" begin="+ hotel.stars +" end="4"> --%>
+							<%-- 										<i class="fa fa-lg fa-star-o" aria-hidden="true"></i> --%>
+							<%-- 									</c:forEach> --%>
+							<!-- 								</a> -->
+							<!-- 							</div> -->
+						</div>
+						<div class="row">
+							<i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i><span
+								id="location1"></span>
+						</div>
+					</div>
+					<!-- 					<div class="col s2"> -->
+					<!-- 						<div class="row"> -->
+					<!-- 							<a class="waves-effect waves-light btn" -->
+					<!-- 								href="http://localhost:8080/booker/hotel/+ hotel.id +" -->
+					<!-- 								style="margin-top: 30px; margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: Times, serif;"><span>INFO</span></a> -->
+					<!-- 						</div> -->
+					<!-- 					</div> -->
+				</div>
+
+
+
+				<div class="row" id="row2" style="display: none">
+					<div class="col s4">
+						<a id="href21" href="http://localhost:8080/booker/hotel/"> <img
+							src="<i:urlToImage id="img3" url="new_hotel.jpg" />"
+							style="height: 110px; width: 150px;">
+						</a>
+					</div>
+					<div class="col s6">
+						<div class="row" style="margin-top: 15px; margin-bottom: 10px">
+							<div class="col s5">
+								<a id="href22" href="http://localhost:8080/booker/hotel/"><span
+									id="hotelName2"></span></a>
+							</div>
+							<!-- 							<div class="col s6 offset-s1"> -->
+							<%-- 								<a style="color: #0d0d0d; text-decoration: none;"> <c:forEach --%>
+							<%-- 										var="i" begin="1" end="+ hotel.stars +"> --%>
+							<%-- 										<i class="fa fa-lg fa-star" aria-hidden="true"></i> --%>
+							<%-- 									</c:forEach> <c:forEach var="i" begin="+ hotel.stars +" end="4"> --%>
+							<%-- 										<i class="fa fa-lg fa-star-o" aria-hidden="true"></i> --%>
+							<%-- 									</c:forEach> --%>
+							<!-- 								</a> -->
+							<!-- 							</div> -->
+						</div>
+						<div class="row">
+							<i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i><span
+								id="location2"></span>
+						</div>
+					</div>
+					<!-- 					<div class="col s2"> -->
+					<!-- 						<div class="row"> -->
+					<!-- 							<a class="waves-effect waves-light btn" -->
+					<!-- 								href="http://localhost:8080/booker/hotel/+ hotel.id +" -->
+					<!-- 								style="margin-top: 30px; margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: Times, serif;"><span>INFO</span></a> -->
+					<!-- 						</div> -->
+					<!-- 					</div> -->
+				</div>
+
+
+
 			</div>
 		</div>
-		<div class="modal-footer" style="padding-bottom:0px; height: 40px;">
+		<div class="modal-footer" style="padding-bottom: 0px; height: 40px;">
 			<a href="href="${pageContext.servletContext.contextPath}/cabinet/orders">CLICK
 				IF YOU WANT TO LOOK AT YOUR ORDER LIST : </a>
 		</div>
 	</div>
 	<!-- 	END OF SUCCES MODAL -->
-
-
-	<div id="signupModal" class="modal">
-
-		<div class="modal-content" style="margin-top: -10px">
-			<div class="form-horizontal registrationFrm">
-				<div class="input-field">
-					<input id="сpassword" type="password" class="validate"> <label
-						id="сpasswordLbl" data-error="" for="сpassword"> <span
-						id="header_regist_cpass"> </span>
-					</label>
-				</div>
-			</div>
-
-
-			<!-- 											<div class="modal-footer"> -->
-
-			<div class="row">
-				<button
-					class="modal-action modal-close waves-effect waves-red btn-flat col s2 offset-s1"
-					data-dismiss="modal" aria-hidden="true" style="margin-left: 10px;">
-					<span id="header_regist_close"> </span>
-				</button>
-			</div>
-
-			<!-- 											</div> -->
-		</div>
-	</div>
-
-
-
-
 
 
 
@@ -202,15 +296,6 @@
 
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-
-
-	<!-- 	<script type="text/javascript" -->
-	<%-- 		src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script> --%>
-
-	<!-- 	<script -->
-	<!-- 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.js"></script> -->
-	<!-- 	<script -->
-	<!-- 		src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script> -->
 
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
