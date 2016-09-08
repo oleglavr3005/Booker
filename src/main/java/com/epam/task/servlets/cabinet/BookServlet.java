@@ -57,10 +57,10 @@ public class BookServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		try {
 			JSONObject json = new JSONObject();
-			json.put("hotels", recomendedHotels);
+			json.put("hotels", recomendedHotels.toArray(new Hotel[0]));
 			json.put("countOfHotels", recomendedHotels.size());
 			json.put("booked", booked > 0 ? "true" : "false");
-			response.getWriter().print(json.toString());
+			response.getWriter().print(json);
 			response.getWriter().flush();
 		} catch (JSONException e) {
 			response.getWriter().write("false");
