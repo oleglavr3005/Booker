@@ -287,15 +287,15 @@ function modalMaker(result){
 function contentMaker(hotel){
 	var content = '<div class="row">'+
 	'<div class="col s4">'+
-	'	<a href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}">'+
-	'		<img src="<i:urlToImage url="${hotel.photos[0].img}" />"'+
+	'	<a href="${pageContext.servletContext.contextPath}/hotel/hotel.id">'+
+	'		<img src="<i:urlToImage url="hotel.photos[0].img" />"'+
 	'		style="height: 110px; width: 150px;">'+
 	'	</a>'+
 	'</div>'+
 	'<div class="col s6">'+
 	'<div class="row" style="margin-top: 15px; margin-bottom:10px">'+
     '<div class="col s5">'+
-     '   <a href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}">${hotel.name}</a>'+
+     '   <a href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}">hotel.name</a>'+
     '</div>'+
     '<div class="col s6 offset-s1">'+
     '    <a style="color: #0d0d0d; text-decoration: none;">'+
