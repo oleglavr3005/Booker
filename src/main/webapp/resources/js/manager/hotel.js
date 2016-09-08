@@ -192,7 +192,7 @@ function updateHotelPhotos(id) {
 	}
 }
 
-function removeRoomPhoto() {
+function removeHotelPhoto() {
 	var values = $('#images').val();
 	$.post('../../remove_hotel_photo',{
 		images : '' + values,
