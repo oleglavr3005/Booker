@@ -280,7 +280,7 @@ div #sidebar-wrapper {
 			<div class="col s2">
 				<!-- 				INPUT -->
 				<input multiple style="margin-top: 60px" type="file" id="imgInput"
-					onchange="uploadHotel('../')" accept="image/*" />
+					onchange="updateHotelPhotos(${hotel.id})" accept="image/*" />
 				<!-- 				END OF INPUT -->
 
 			</div>
