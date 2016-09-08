@@ -54,6 +54,10 @@ private DaoManager daoManager;
 	public int updateHotel(Hotel hotel){
 		return daoManager.executeAndClose(() -> daoManager.getHotelDao().updateHotel(hotel));
 	}
+	
+	public int updateHotelRating(Hotel hotel){
+		return daoManager.executeAndClose(() -> daoManager.getHotelDao().updateHotelRating(hotel));
+	}
 
 	public int getSuitableHotelsNumber(String name, int minStars, int maxStars, int people, boolean typeStandart,
 			boolean typeLux, boolean typeDelux, boolean foodNone, boolean foodBreakfast, boolean foodTwice,
