@@ -2,6 +2,7 @@ package com.epam.task.servlets;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,13 +12,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.epam.task.database.dto.FeedbackDto;
 import com.epam.task.database.model.Feedback;
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.FeedbackService;
 import com.epam.task.database.service.HotelService;
 
-@WebServlet("/add_feedback")
+@WebServlet("/addFeedback")
 public class AddFeedbackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -32,6 +34,10 @@ public class AddFeedbackServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		
 		if(comment == null || ratingString == null || hotelIdString == null || title == null) {
+			return;
+		}
+		if(request.getSession().getAttribute("user") == null ){
+			returnFalse(response);
 			return;
 		}
 		
@@ -64,14 +70,28 @@ public class AddFeedbackServlet extends HttpServlet {
 			}
 			newRating /= feedbacks.size(); 
 			hotel.setRating(newRating);
-			hotelService.updateHotel(hotel);
+			hotelService.updateHotelRating(hotel);
+			
+			List<Feedback> listFeedBack = new ArrayList<Feedback>();
+			listFeedBack.add(userFeedback);
+			request.setAttribute("feedbacks", FeedbackDto.listConverter(listFeedBack));
+			request.getRequestDispatcher("/pages/oneComment.jsp").forward(request, response);
+		} else {
+			returnFalse(response);
 		}
 		
-		response.getWriter().write(success > 0 ? "true" : "false");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
+	private void returnFalse(HttpServletResponse response){
+		try {
+			response.setContentType("text/plain");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write("false");
+			response.getWriter().flush();
+		} catch (IOException e) {
+		}
+	}
 }

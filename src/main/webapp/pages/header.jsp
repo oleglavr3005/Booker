@@ -107,6 +107,9 @@ img.logo {
 										href="${pageContext.servletContext.contextPath}/cabinet/orders" style="color: #26A69A">
 										<i class="fa fa-briefcase" aria-hidden="true"></i> My orders</a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
+										href="${pageContext.servletContext.contextPath}/cabinet/my_feedbacks" style="color: #26A69A">
+										<i class="fa fa-comment" aria-hidden="true"></i> My feedbacks</a></li>
+									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/cabinet/settings" style="color: #26A69A">
 										<i class="fa fa-cog" aria-hidden="true"></i> Settings</a></li>
 									

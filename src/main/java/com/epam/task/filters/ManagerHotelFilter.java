@@ -17,7 +17,7 @@ import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.UserType;
 import com.epam.task.database.service.HotelService;
 
-@WebFilter({ "/cabinet/my_hotels/*", "/edit_hotel_pictures/*", "/remove_hotel_photo" })
+@WebFilter({ "/cabinet/my_hotels/*", "/edit_hotel_pictures/*" })
 public class ManagerHotelFilter implements Filter {
 
     public ManagerHotelFilter() {

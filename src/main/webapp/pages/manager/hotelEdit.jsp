@@ -287,14 +287,14 @@ div #sidebar-wrapper {
 
 			<div class="col s8">
 				<div id="switchContent">
-			<jsp:include page="../cards/photoCard.jsp"></jsp:include>
+			<jsp:include page="../cards/hotelPhotoCard.jsp"></jsp:include>
 		</div>
 			</div>
 
 			<div class="col s2">
 				<a class="my-btn waves-effect waves-light btn"
 					style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
-					onclick="removeRoomPhoto()"><fmt:message key="subscribes.table.remove" />
+					onclick="removeHotelPhoto()"><fmt:message key="subscribes.table.remove" />
 				</a>
 			</div>
 		</div>

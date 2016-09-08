@@ -215,7 +215,7 @@ function updateRoomPhotos(id) {
 function removeRoomPhoto() {
 	var values = $('#images').val();
 	$.get('../../remove_room_photo',{
-		photos : values
+		img : '' + values,
 	}, function(hotels) {
 		$('#switchContent').html(hotels);
 	});

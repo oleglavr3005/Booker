@@ -9,30 +9,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.epam.task.database.model.HotelPhoto;
-import com.epam.task.database.service.HotelPhotoService;
-import com.epam.task.database.service.HotelService;
+import com.epam.task.database.model.RoomPhoto;
+import com.epam.task.database.service.RoomPhotoService;
+import com.epam.task.database.service.RoomService;
 import com.epam.task.util.ImageSetter;
 
-@WebServlet("/edit_hotel_pictures/*")
-public class EditHotelPictuesServlet extends HttpServlet {
+@WebServlet("/edit_room_pictures/*")
+public class EditRoomPictures extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public EditHotelPictuesServlet() {
+
+    public EditRoomPictures() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	try {
-    		int hotelId = Integer.parseInt(request.getPathInfo().substring(1));
-			List<HotelPhoto> photos = new ImageSetter(request).uploadHotelImages();
-			HotelPhotoService hotelPhotoService = new HotelPhotoService();
-			for(HotelPhoto photo : photos){
-				photo.setHotelId(hotelId);
-				hotelPhotoService.insertHotelPhoto(photo);
+		try {
+    		int roomId = Integer.parseInt(request.getPathInfo().substring(1));
+			List<RoomPhoto> photos = new ImageSetter(request).uploadRoomImages();
+			RoomPhotoService roomPhotoService = new RoomPhotoService();
+			for(RoomPhoto photo : photos){
+				photo.setRoomId(roomId);
+				roomPhotoService.insertRoomPhoto(photo);
 			}
-			request.setAttribute("hotel", new HotelService().getHotelById(hotelId));
-			request.getRequestDispatcher("/pages/cards/hotelPhotoCard.jsp").forward(request, response);
+			request.setAttribute("room", new RoomService().getRoomById(roomId));
+			request.getRequestDispatcher("/pages/cards/roomPhotoCard.jsp").forward(request, response);
 		} catch (Exception e) {
 			response.setContentType("application/text");
 			response.setCharacterEncoding("UTF-8");
