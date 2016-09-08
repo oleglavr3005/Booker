@@ -86,11 +86,7 @@ div #sidebar-wrapper {
 	padding: 0px;
 }
 </style>
-<!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 </head>
 
 
@@ -108,7 +104,7 @@ div #sidebar-wrapper {
 <div class="container">
 <div style="margin-top: 200px; ">
   <div class="row" style="background-color: RGB(0, 0, 0);   opacity: .8; border-radius: 10px;">
-         <form class="col s12" action="${pageContext.servletContext.contextPath}/search" method="get">
+         <form class="col s12" action="${pageContext.servletContext.contextPath}/search" method="POST">
            <div class="form-group" style="display:inline;">
             <div class="input-group col-md-12" >
                   <input name="search" class="form-control" placeholder="Search" required>
