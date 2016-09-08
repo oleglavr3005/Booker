@@ -53,11 +53,13 @@ public class HotelDao {
 			+ " manager_id, x_coord, y_coord, rating,"
 			+ " is_deleted, phone_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private final String SELECT_BY_ID = "SELECT * FROM `hotel` WHERE hotel_id = ?";
+	
+	
 	private final String CHANGE_HOTEL_STATUS = "UPDATE `hotel` SET is_deleted = ? WHERE hotel_id = ?";
 	private final String UPDATE_HOTEL = "UPDATE `hotel` SET name = ?,"
 			+ " city = ?, street = ?, stars = ?, desc = ?, manager_id = ?,"
 			+ " x_coord = ?, y_coord = ?, rating = ?, is_deleted = ?, phone_number = ? WHERE hotel_id = ?";
-	
+	private final String UPDATE_HOTEL_RATING = "UPDATE `hotel` SET rating = ? WHERE hotel_id = ?";
 	public HotelDao(Connection connection){
 		super();
 		this.connection = connection;
@@ -301,6 +303,19 @@ public class HotelDao {
 			statement.setBoolean(i++, hotel.getIsDeleted());
 			statement.setString(i++, hotel.getPhoneNumber());
 
+			statement.setInt(i, hotel.getId());
+			return statement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	
+	public int updateHotelRating(Hotel hotel) {
+		try (PreparedStatement statement = connection.prepareStatement(UPDATE_HOTEL_RATING)) {
+			int i = 1;
+			statement.setDouble(i++, hotel.getRating());
+			
 			statement.setInt(i, hotel.getId());
 			return statement.executeUpdate();
 		} catch (SQLException e) {
