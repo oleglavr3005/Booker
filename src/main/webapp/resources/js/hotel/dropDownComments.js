@@ -19,3 +19,20 @@ function addComments(delta) {
 	indexShowComments = indexShowComments + delta;
 }
 
+function addNewComment(hotelIdVal){
+	var comment_val = $('#comment').val();
+	var title_val = $('#title_comment').val();
+	var rating_val = 4;
+	$.post(window.location.protocol + "//" + window.location.host + "/booker/add_comment", {
+		comment : comment_val,
+		rating : rating_val,
+		hotelId : hotelIdVal,
+		title : title_val
+	}, function(result) {
+		if(result != 'false'){
+			$('#newComment').after(result); 
+		}else{
+			$('#newComment').after("ERROR"); 
+		}
+	});
+}
