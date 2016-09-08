@@ -26,10 +26,6 @@ public class EditHotelPictuesServlet extends HttpServlet {
     	try {
     		int hotelId = Integer.parseInt(request.getParameter("hotelId"));
 			List<HotelPhoto> photos = new ImageSetter(request).uploadHotelImages();
-			if (photos.isEmpty()){
-				photos.add(new HotelPhoto(0,"no_image.jpg", "", hotelId));
-			}
-			
 			HotelPhotoService hotelPhotoService = new HotelPhotoService();
 			for(HotelPhoto photo : photos){
 				photo.setHotelId(hotelId);
