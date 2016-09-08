@@ -49,7 +49,7 @@ public class EditHotelServlet extends HttpServlet {
 		hotel.setXCoord(xCoord);
 		hotel.setYCoord(yCoord);
 		hotel.setPhoneNumber(phoneNumber);
-		int changed = new HotelService().updateHotel(hotel);
+		int changed = hotelService.updateHotel(hotel);
 	
 		response.getWriter().write(changed > 0 ? "true" : "false");
 	}
