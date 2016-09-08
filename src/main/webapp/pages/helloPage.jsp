@@ -97,18 +97,19 @@ div #sidebar-wrapper {
 
 	<!-- Header ========================================================================= -->
 	<jsp:include page="header.jsp"></jsp:include>
-	<!-- Header End====================================================================== -->
-	
-<!-- <div class="my-slider"> -->
-<!-- 	<ul> -->
-<!-- 		<li>My slide</li> -->
-<!-- 		<li>Another slide</li> -->
-<!-- 		<li>My last slide</li> -->
-<!-- 	</ul> -->
-<!-- </div> -->
+
 
 <div style="background: url('../resources/header.jpg'); height: 700px;">
-
+<div class="container">
+<div style="margin-top: 200px; ">
+  <div class="row" style="background-color: RGB(0, 0, 0);   opacity: .8;">
+         <form class="col s12" action="${pageContext.servletContext.contextPath}/search">
+                  <input placeholder="Search" required>
+                  <button>Search</button>
+         </form>       
+</div>
+</div>
+</div>
 
 </div>
 	<!-- Footer ========================================================================== -->
@@ -119,13 +120,7 @@ div #sidebar-wrapper {
 <!-- And the relevant JavaScript -->
 <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="http://unslider.com/unslider/dist/js/unslider-min.js"></script> <!-- but with the right path! -->
-<script>
-		jQuery(document).ready(function($) {
-			$('.my-slider').unslider({	
-				autoplay: true, arrows: false
-				});
-		});
-	</script>
+
 
 </body>
 
