@@ -85,3 +85,6 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/star-rating/star-rating.js"></script>
