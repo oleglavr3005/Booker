@@ -14,7 +14,7 @@ import com.epam.task.database.service.HotelPhotoService;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.util.ImageSetter;
 
-@WebServlet("/edit_hotel_pictures")
+@WebServlet("/edit_hotel_pictures/*")
 public class EditHotelPictuesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -24,7 +24,7 @@ public class EditHotelPictuesServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	try {
-    		int hotelId = Integer.parseInt(request.getParameter("hotelId"));
+    		int hotelId = Integer.parseInt(request.getPathInfo().substring(1));
 			List<HotelPhoto> photos = new ImageSetter(request).uploadHotelImages();
 			HotelPhotoService hotelPhotoService = new HotelPhotoService();
 			for(HotelPhoto photo : photos){
