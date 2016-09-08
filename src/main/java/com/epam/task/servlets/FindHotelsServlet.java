@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -31,21 +32,29 @@ public class FindHotelsServlet extends HttpServlet {
 		
 		if(request.getParameter("flag") == null || !request.getParameter("flag").equals("true")) {
 			
-			if(request.getParameter("name") == null || request.getParameter("name").equals("") ||
-					request.getParameter("people").equals("") || request.getParameter("startDate").equals("") || request.getParameter("endDate").equals("")) {
+			if(request.getParameter("name") == null || request.getParameter("name").equals("") ) {
 				response.sendRedirect("home");
 				return;
 			}
 			
 			RoomService roomService = new RoomService();
-			boolean togler = Boolean.parseBoolean(request.getParameter("togler"));
+			String toglerString = request.getParameter("togler");
+			boolean togler;
+			if (toglerString == null) {
+				togler = false;
+			} else {
+				togler = Boolean.parseBoolean(request.getParameter("togler"));
+			}
 			
 			session.setAttribute("togler", togler);
 			
 			session.setAttribute("name", request.getParameter("name"));
-			session.setAttribute("minStars", (int) Double.parseDouble(request.getParameter("minStars")));
-			session.setAttribute("maxStars", (int) Double.parseDouble(request.getParameter("maxStars")));
-			session.setAttribute("people", Integer.parseInt(request.getParameter("people")));
+			String minStarsString = request.getParameter("minStars");
+			String maxStarsString = request.getParameter("maxStars");
+			String peopleString = request.getParameter("people");
+			session.setAttribute("minStars", minStarsString == null ? 1 : (int) Double.parseDouble(minStarsString));
+			session.setAttribute("maxStars", maxStarsString == null ? 5 : (int) Double.parseDouble(request.getParameter("maxStars")));
+			session.setAttribute("people", peopleString == null ? 1 : Integer.parseInt(peopleString));
 			
 			session.setAttribute("typeStandart", togler == true? request.getParameter("typeStandart") != null : false);
 			session.setAttribute("typeLux", togler == true? request.getParameter("typeLux") != null : false);
@@ -68,8 +77,17 @@ public class FindHotelsServlet extends HttpServlet {
 			session.setAttribute("hasBalcony", togler == true? request.getParameter("hasBalcony") != null : false);
 			session.setAttribute("noDeposit", togler == true? request.getParameter("noDeposit") != null : false);
 			
-			session.setAttribute("startDate", request.getParameter("startDate"));
-			session.setAttribute("endDate", request.getParameter("endDate"));
+			String startDateString = request.getParameter("startDate");
+			String endDateString = request.getParameter("endDate");
+			Calendar calendar = Calendar.getInstance();
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			calendar.setTime(new Date());
+			calendar.add(Calendar.DAY_OF_MONTH, 1);
+			String currentDateString = format.format(calendar.getTime());
+			calendar.add(Calendar.DAY_OF_MONTH, 1);
+			String tomorrowDateString = format.format(calendar.getTime());
+			session.setAttribute("startDate", startDateString == null ? currentDateString : startDateString);
+			session.setAttribute("endDate", endDateString == null ? tomorrowDateString : endDateString);
 			
 			session.setAttribute("minPrice", roomService.getMinPrice());
 			session.setAttribute("maxPrice", roomService.getMaxPrice());

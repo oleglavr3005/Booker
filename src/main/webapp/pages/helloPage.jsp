@@ -107,7 +107,7 @@ div #sidebar-wrapper {
          <form class="col s12" action="${pageContext.servletContext.contextPath}/search" method="POST">
            <div class="form-group" style="display:inline;">
             <div class="input-group col-md-12" >
-                  <input name="search" class="form-control" placeholder="Search" required>
+                  <input name="name" class="form-control" placeholder="Search" required>
                  <span class="input-group-btn">
                         <button class="btn waves-effect waves-light input-group-addon">
                             <i class="glyphicon glyphicon-search"></i>
