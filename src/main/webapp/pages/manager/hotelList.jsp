@@ -150,11 +150,9 @@
 							<!-- 							END OF NAME -->
 
 						</div>
-					</div>
-
-					<div class="row">
-						<div class="col s7">
-
+					
+						<div class="col s6"style="margin-top: 15px;">
+						
 							<!-- 						STARS -->
 							<input id="rating" onchange="rate()" value="0" type="number"
 								class="rating" min=0 max=5 step=1 data-size="xs" data-stars="5">
