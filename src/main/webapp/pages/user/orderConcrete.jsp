@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="language"
 	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
 	scope="session" />
@@ -83,6 +84,26 @@ div #sidebar-wrapper {
 	filter: invert(70%);
 }
 </style>
+<!-- GALERY -->
+<!-- Add local libraries for gallery -->
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/hotel/font-awesome.min.css">
+
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/hotel/jquery-ui.css">
+
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/hotel/nouislider.min.css">
+
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/hotel/blueimp-gallery.min.css">
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/hotel/blueimp-gallery.css">
+<script
+	src="${pageContext.servletContext.contextPath}/resources/js/hotel/jquery.min.js"></script>
+
+<script
+	src="${pageContext.servletContext.contextPath}/resources/js/hotel/jquery.blueimp-gallery.min.js"></script>
 </head>
 
 
@@ -92,7 +113,40 @@ div #sidebar-wrapper {
 
 	<input id="lang" type="hidden" value="${language}" />
 
-
+<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 	<!-- Header ========================================================================= -->
 	<jsp:include page="/pages/header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
@@ -101,29 +155,42 @@ div #sidebar-wrapper {
 
 		<div class="row" style="margin-top: 20px;">
 
-			<div class="col s3 offset-s1">
-				<a href='<c:out value="${mainPhoto.id}"></c:out>' title="Banana"
-					data-gallery> <img
-					src="<c:out value="${mainPhoto.img}"></c:out>" alt="Banana">
-				</a>
+		<div id="links">
+			<div class="row">
+				<div class="col s4">
+					<c:if test="${fn:length(hotel.photos) == 0}">
+						<a
+							href="<i:urlToImage url="no.jpg" />"
+							title="No image"
+							data-gallery> <img
+							src="<i:urlToImage url="no.jpg" />"
+							alt="No image">
+						</a>
+					</c:if>
+					<c:if test="${fn:length(hotel.photos) != 0}">
+						<a href='<i:urlToImage url="${hotel.photos[0].img}" />'
+							data-gallery>
+							<img src="<i:urlToImage url="hotel.photos[0].img" />">
+						</a>
 
 
-				<div style="overflow-x: auto;">
-					<div style="margin: 10px; white-space: nowrap;">
-						<c:forEach items="${hotelPhotos}" var="photo">
-							<div style="display: inline-block;">
-								<a href='<c:out value="${photo.img }"></c:out>'
-									title="<c:out value="${photo.img }"></c:out>" data-gallery>
-									<img style="height: 60px;"
-									src="<c:out value="${photo.img }"></c:out>"
-									alt="<c:out value="${photo.img }"></c:out>">
-								</a>
+						<div style="overflow-x: auto;">
+							<div style="margin: 10px; white-space: nowrap;">
+								<c:forEach items="${hotel.photos}" var="photo" begin="1">
+									<div style="display: inline-block;">
+										<a href='<i:urlToImage url="${photo.img}" />'
+											 data-gallery>
+											<img style="height: 60px;"
+											src="<i:urlToImage url="${photo.img}" />"
+											alt="<c:out value="${photo.id }"></c:out>">
+										</a>
+									</div>
+								</c:forEach>
 							</div>
-						</c:forEach>
-					</div>
+						</div>
+					</c:if>
 				</div>
-			</div>
-
+				
 
 			<div class="col s8">
 				<div class="container-fluid">

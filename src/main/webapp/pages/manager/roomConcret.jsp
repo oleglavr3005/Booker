@@ -126,8 +126,8 @@
 					</a>
 					<!-- 					END OF PHOTO -->
 					<!-- 				INPUT -->
-					<input style="margin-top: 5px; display:none" type="file" id="imgInput" 
-						onchange="uploadRoom()" accept="image/*" />
+<%-- 					<input style="margin-top: 5px; display:none" type="file" id="imgInput"  --%>
+<%-- 						onchange="uploadRoom()" accept="image/*" /> --%>
 					<!-- 				END OF INPUT -->
 
 					<a class="waves-effect waves-light btn" id="create_button"
@@ -322,19 +322,33 @@
 
 
 
-
 	<div class="container">
-	
-<select class="image-picker masonry show-html" id="images" multiple="multiple">
-<c:forEach var="photo" items="${room.photos}">
-   <option data-img-src="<i:urlToImage url="${photo.img }" />" value="${photo.id}">${photo.desc }</option>
-</c:forEach>
-</select>
-<a class="my-btn waves-effect waves-light btn"
-									style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
-									onclick="remove()"><fmt:message
-											key="subscribes.table.remove" /> </a>
-</div>
+		<div class="row">
+			<div class="col s2">
+				<!-- 				INPUT -->
+				<input multiple style="margin-top: 60px" type="file" id="imgInput"
+					onchange="updateRoomPhotos(${room.id})" accept="image/*" />
+				<!-- 				END OF INPUT -->
+
+			</div>
+
+			<div class="col s8">
+				<div id="switchContent">
+			<jsp:include page="../cards/roomPhotoCard.jsp"></jsp:include>
+		</div>
+			</div>
+
+			<div class="col s2">
+				<a class="my-btn waves-effect waves-light btn"
+					style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
+					onclick="removeRoomPhoto()"><fmt:message key="subscribes.table.remove" />
+				</a>
+			</div>
+		</div>
+
+
+	</div>
+
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="../foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
@@ -351,33 +365,9 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/star-rating/star-rating.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
-		
-		<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
 		
 		
-				<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/image-picker/image-picker.js"></script>
-				<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/image-picker/image-picker.min.js"></script>
-		<script src="http://rvera.github.io/image-picker/js/jquery.masonry.min.js"></script>
-<script type="text/javascript">
-		$("select").imagepicker();
-		var container = jQuery("select.image-picker.masonry").next("ul.thumbnails");
-    container.imagesLoaded(function(){
-      container.masonry({
-        itemSelector:   "li",
-      });
-    });
-    
-    
-    function remove() {
-    	var values = $('#images').val();
-    	alert(values);
-	}
-    </script>
+
 	<script>
 		function changeFreeBook(){
 			var freeBook = document.getElementById('freeBook').checked;

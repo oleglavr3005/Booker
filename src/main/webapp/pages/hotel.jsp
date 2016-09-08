@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="language"
 	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
 	scope="session" />
@@ -208,7 +209,7 @@ div #sidebar-wrapper {
 		<div id="links">
 			<div class="row">
 				<div class="col s4">
-					<c:if test="${mainPhoto == null}">
+					<c:if test="${fn:length(hotel.photos) == 0}">
 						<a
 							href="<i:urlToImage url="no.jpg" />"
 							title="No image"
@@ -217,23 +218,22 @@ div #sidebar-wrapper {
 							alt="No image">
 						</a>
 					</c:if>
-					<c:if test="${mainPhoto != null}">
-						<a href='<i:urlToImage url="${mainPhoto.img}" />'
-							title="<c:out value="${mainPhoto.desc }"></c:out>" data-gallery>
-							<img src="<i:urlToImage url="${mainPhoto.img}" />"
-							alt="<c:out value="${mainPhoto.desc }"></c:out>">
+					<c:if test="${fn:length(hotel.photos) != 0}">
+						<a href='<i:urlToImage url="${hotel.photos[0].img}" />'
+							data-gallery>
+							<img src="<i:urlToImage url="${hotel.photos[0].img }" />">
 						</a>
 
 
 						<div style="overflow-x: auto;">
 							<div style="margin: 10px; white-space: nowrap;">
-								<c:forEach items="${hotelPhotos}" var="photo">
+								<c:forEach items="${hotel.photos}" var="photo" begin="1">
 									<div style="display: inline-block;">
 										<a href='<i:urlToImage url="${photo.img}" />'
-											title="<c:out value="${photo.desc }"></c:out>" data-gallery>
+											 data-gallery>
 											<img style="height: 60px;"
 											src="<i:urlToImage url="${photo.img}" />"
-											alt="<c:out value="${photo.desc }"></c:out>">
+											alt="<c:out value="${photo.id }"></c:out>">
 										</a>
 									</div>
 								</c:forEach>
@@ -322,28 +322,29 @@ div #sidebar-wrapper {
 		<div class="col s3">
 			<input type="date" name="startDate" id="date_from"
 				class="datepicker validate" value="${startDate}"><label
-				id="startLbl" data-error="${fmtStart}" for="date_from"><fmt:message
-					key="index.search.start" /></label>
+				id="startLbl" data-error="${fmtStart}" for="date_from"><span
+					id="index_search_start"></span></label>
 		</div>
 
 		<div class="col s3">
 			<input type="date" name="endDate" id="date_to"
 				class="datepicker validate" value="${endDate}"><label
-				id="endLbl" data-error="${fmtEnd}" for="date_to"><fmt:message
-					key="index.search.end" /></label>
+				id="endLbl" data-error="${fmtEnd}" for="date_to"><span
+					id="index_search_end"></span></label>
 		</div>
 
 		<div class="col s3">
 			<input id="people" type="text" class="validate" name="people"
 				value="${people}"> <label id="pplLbl"
-				data-error="${fmtPeople}" for="pplCount"><fmt:message
-					key="index.search.ppl" /></label>
+				data-error="${fmtPeople}" for="pplCount"><span
+					id="index_search_ppl"></span></label>
 		</div>
 
 		<div class="col s2 offset-s1">
 			<a id="search" class="waves-effect waves-light btn"
-				onclick="searchRooms(${hotel.id})"
-				style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">SEARCH</a>
+				onclick="searchRooms(${hotel.id})" 
+				style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
+					id="index_search_button"></span></a>
 		</div>
 
 	</div>
@@ -361,7 +362,7 @@ div #sidebar-wrapper {
 			<div class="col s3">
 				<h6>
 					<c:if test="${countOfRooms > 0 }">
-						<fmt:message key="card.header" />
+						<span id="hotel_count_room"></span>
 						<span id="periodicals_number_for_all_users">${countOfRooms}</span>
 					</c:if>
 					<c:if test="${countOfRooms <= 0 }">

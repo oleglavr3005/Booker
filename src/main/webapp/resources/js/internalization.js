@@ -4,16 +4,16 @@
 		header_regist : "Registration",
 		header_auth : "Sign In",
 		
-		header_auth : "Auth",
+		header_auth : "Log In",
 		header_auth_close : "Close",
 		header_auth_forgot : "Forgot password",
 		header_auth_enter : "Enter",
 		
 		index_search_header : "Find Hotel",
-		index_search_name : "Going to",
-		index_search_start : "Start",
-		index_search_end : "End",
-		index_search_price : "Max Price",
+		index_search_name : "Destination/Hotel Name:",
+		index_search_start : "Start date",
+		index_search_end : "End date",
+		index_search_price : "Stars",
 		index_search_price_2 : "Price",
 		index_search_ppl : "Guests",
 		index_search_button : "Search",
@@ -42,6 +42,8 @@
 		index_option_star_desc : "Star desc",
 		index_option_rating_asc : "Rating asc",
 		index_option_rating_desc : "Rating desc",	
+		
+		index_option_people_desc : "People desc",
 
 		concrete_date_from : "Check-in",
 		concrete_date_to : "Check-out",
@@ -78,6 +80,8 @@
 		header_regist_pass : "Password",
 		header_regist_cpass : "Підтвердити пароль",
 		header_regist_confirm : "Завершити реєстрацію",
+		
+		hotel_count_room : "Number of rooms found: ",
 		
 		// authorization
 		header_error_mail : "Invalid email",
@@ -120,19 +124,22 @@
 		header_regist : "Регістрація",
 		header_auth : "Увійти",
 		
-		header_auth : "Auth",
-		header_auth_close : "Close",
-		header_auth_forgot : "Forgot password",
-		header_auth_enter : "Enter",
+		header_auth : "Увійти",
+		header_auth_close : "Закрити",
+		header_auth_forgot : "Забули пароль?",
+		header_auth_enter : "Увійти",
 		
 		index_search_header : "Шукати готель",
-		index_search_name : "Напрямок",
-		index_search_price : "Макс. ціна",
+		index_search_name : "Місце/назва готелю:",
+		index_search_price : "Зірки",
 		index_search_ppl : "Гостей",
-		index_search_start : "Start",
-		index_search_end : "End",
-		index_search_price_2 : "Price",
-		index_search_button : "Search",
+		index_search_start : "Приїжджаю",
+		index_search_end : "Від'їжджаю",
+		index_search_price_2 : "Ціна",
+		index_search_button : "Пошук",
+		
+		map_button : "Карта", 
+		search : "Пошук",
 		
 		concrete_date_from : "Приїжджаю",
 		concrete_date_to : "Від'їжджаю",
@@ -173,6 +180,8 @@
 		// authorization
 		header_error_mail : "Невірна електронна пошта", 
 		header_error_mailpass : "Невірний емейл чи пароль",
+		
+		hotel_count_room : "Кількість знайдених кімнат: ",
 
 		// user settings
 		// файл не выбран??

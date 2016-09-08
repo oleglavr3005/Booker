@@ -57,7 +57,7 @@ public class HotelDao {
 	
 	private final String CHANGE_HOTEL_STATUS = "UPDATE `hotel` SET is_deleted = ? WHERE hotel_id = ?";
 	private final String UPDATE_HOTEL = "UPDATE `hotel` SET name = ?,"
-			+ " city = ?, street = ?, stars = ?, desc = ?, manager_id = ?,"
+			+ " city = ?, street = ?, stars = ?, `desc` = ?, manager_id = ?,"
 			+ " x_coord = ?, y_coord = ?, rating = ?, is_deleted = ?, phone_number = ? WHERE hotel_id = ?";
 	private final String UPDATE_HOTEL_RATING = "UPDATE `hotel` SET rating = ? WHERE hotel_id = ?";
 	public HotelDao(Connection connection){

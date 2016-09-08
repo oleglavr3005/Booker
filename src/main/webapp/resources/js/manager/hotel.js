@@ -1,8 +1,7 @@
 var image = null;
 
 function createHotel(){
-	alert($('#photos').val());
-	var img = image == null ? 'new_hotel.jpg':image;
+	var img = $('#photos').val() == '' ? 'new_hotel.jpg' : $('#photos').val();
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
 	var x = 0;
 	var y = 0;
@@ -16,7 +15,7 @@ function createHotel(){
 			phoneNumber : $('#phone').val(),
 			xCoord : x,
 			yCoord : y,
-			hotelImages : $('#photos').val()
+			hotelImages : img
 		}, function(result){
 			if(result != 'error'){
 				$('#create_error').css('color', 'green');
@@ -35,12 +34,11 @@ function createHotel(){
 }
 
 function updateHotel(hotelId){
-	var img = image == null ? 'new_hotel.jpg':image;
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
 	var x = 0;
 	var y = 0;
 	if (validate()){
-		$.get('../edit_hotel',{
+		$.get('../../edit_hotel',{
 			hotelId : hotelId,
 			name : $('#name').val(),
 			stars : star,
@@ -49,8 +47,7 @@ function updateHotel(hotelId){
 			description : $('#desc').val(),
 			phoneNumber : $('#phone').val(),
 			xCoord : x,
-			yCoord : y,
-			hotelImages : $('#photos').val()
+			yCoord : y
 		}, function(result){
 			if(result != 'false'){
 				$('#create_error').css('color', 'green');
@@ -170,13 +167,36 @@ function value(value){
 	return value == null ? '':value;
 }
 
-function redirect(id){
-	document.getElementById("myForm").submit();
-	
-//	alert(id);
-//	$.get('../create_room',{
-//		hotelId : id,
-//	});
+function updateHotelPhotos(id) {
+	var file = document.querySelector('input[type=file]').files[0];
+	if (file) {
+		var reader = new FileReader();
+		reader.onloadend = function() {
+		}
+		reader.readAsDataURL(file);
+		var data = new FormData();
+		$.each($('#imgInput')[0].files, function(i, file) {
+			data.append('file-' + i, file);
+		});
+		$.ajax({
+			url : '../../edit_hotel_pictures/'+id,
+			data : data,
+			cache : false,
+			contentType : false,
+			processData : false,
+			type : 'POST',
+			success : function(hotels) {
+				$('#switchContent').html(hotels);
+			}
+		});
+	}
 }
 
-
+function removeHotelPhoto() {
+	var values = $('#images').val();
+	$.post('../../remove_hotel_photo',{
+		images : '' + values,
+	}, function(hotels) {
+		$('#switchContent').html(hotels);
+	});
+}
