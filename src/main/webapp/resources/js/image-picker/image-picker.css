@@ -1,12 +1,12 @@
 ul.thumbnails.image_picker_selector {
-  overflow: auto;
+  overflow: visible;
   list-style-image: none;
   list-style-position: outside;
   list-style-type: none;
   padding: 0px;
   margin: 0px; }
   ul.thumbnails.image_picker_selector ul {
-    overflow: auto;
+    overflow: visible;
     list-style-image: none;
     list-style-position: outside;
     list-style-type: none;
