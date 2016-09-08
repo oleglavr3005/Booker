@@ -32,7 +32,7 @@ function uploadRoom() {
 	}
 }
 
-function uploadHotel() {
+function uploadHotel(rl) {
 	var picture = document.getElementById('photos');
 	var preview = document.querySelector('#Img');
 	var file = document.querySelector('input[type=file]').files[0];
@@ -48,7 +48,7 @@ function uploadHotel() {
 			data.append('file-' + i, file);
 		});
 		$.ajax({
-			url : '../upload_hotel',
+			url : rl + '../upload_hotel',
 			data : data,
 			cache : false,
 			contentType : false,

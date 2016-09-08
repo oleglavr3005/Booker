@@ -40,7 +40,7 @@ function updateHotel(hotelId){
 	var x = 0;
 	var y = 0;
 	if (validate()){
-		$.get('../edit_hotel',{
+		$.get('../../edit_hotel',{
 			hotelId : hotelId,
 			name : $('#name').val(),
 			stars : star,
