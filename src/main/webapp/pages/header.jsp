@@ -45,8 +45,10 @@ body {
 }
 
 img.logo {
-	width: 140px;
-	height: 50px;
+	width: 160px;
+	height: 60px;
+	padding-top: 0px;
+    margin-top: 10px;
 }
 
 .login {
@@ -75,7 +77,7 @@ img.logo {
 		<div class="navbar-header"
 			style="margin-left: 30px; margin-right: 50px;">
 			<a href="${pageContext.servletContext.contextPath}/home"
-				class="brand"> <img class="logo"
+				class="brand" style="padding-bottom: 0px; padding-top: 0px;"> <img class="logo"
 				src="${pageContext.servletContext.contextPath}/resources/themes/images/logo.png"
 				alt="Periodicals" />
 			</a>
@@ -104,6 +106,9 @@ img.logo {
 									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/cabinet/orders" style="color: #26A69A">
 										<i class="fa fa-briefcase" aria-hidden="true"></i> My orders</a></li>
+									<li role="presentation"><a role="menuitem" tabindex="-1"
+										href="${pageContext.servletContext.contextPath}/cabinet/my_feedbacks" style="color: #26A69A">
+										<i class="fa fa-comment" aria-hidden="true"></i> My feedbacks</a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/cabinet/settings" style="color: #26A69A">
 										<i class="fa fa-cog" aria-hidden="true"></i> Settings</a></li>
