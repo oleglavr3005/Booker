@@ -14,7 +14,7 @@ import com.epam.task.database.service.HotelPhotoService;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.util.ImageSetter;
 
-@WebServlet("/edit_hotel_pictrues")
+@WebServlet("/edit_hotel_pictures")
 public class EditHotelPictuesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
