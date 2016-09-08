@@ -412,6 +412,12 @@ div #sidebar-wrapper {
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotelEdit.js"></script>
 
+	<script>
+	$(document).ready(function(){
+	    $('.tooltipped').tooltip({delay: 50,position: 'top'});
+	  });
+	
+	</script>
 
 
 	<!-- 
