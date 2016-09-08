@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -57,7 +58,15 @@ public class BookServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		try {
 			JSONObject json = new JSONObject();
-			json.put("hotels", recomendedHotels.toArray(new Hotel[0]));
+			JSONArray array = new JSONArray();
+			for(Hotel hotel : recomendedHotels) {
+				JSONObject hotelJson = new JSONObject();
+				hotelJson.put("id", hotel.getId());
+				hotelJson.put("name", hotel.getName());
+				hotelJson.put("city", hotel.getCity());
+				array.put(hotelJson);
+			}
+			json.put("hotels", array);
 			json.put("countOfHotels", recomendedHotels.size());
 			json.put("booked", booked > 0 ? "true" : "false");
 			response.getWriter().print(json);
