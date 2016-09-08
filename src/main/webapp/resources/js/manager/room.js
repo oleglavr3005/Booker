@@ -1,6 +1,7 @@
 
 function createRoom(){
 	var hotel = $('#hotelId').val();
+	var img = $('#photos').val() == '' ? 'new_room.jpg' : $('#photos').val();
 //	if (validate()){
 		$.get('../add_room',{
 			hotelId : hotel,
@@ -9,7 +10,7 @@ function createRoom(){
 			bedsCount : $('#single').val(),
 			doubleBedsCount : $('#double').val(),
 			price : $('#price').val(),
-			roomImages :  $('#photos').val(),
+			roomImages :  img,
 			food : $('#foodType').val(),
 			
 			hasWiFi : document.getElementById('hasWiFi').checked,
@@ -43,7 +44,6 @@ function createRoom(){
 
 function updateRoom(room){
 	var hotel = $('#roomId').val();
-	var img = image == null ? 'new_hotel.jpg':image;
 	var x = 0;
 	var y = 0;
 //	if (validate()){
@@ -55,7 +55,6 @@ function updateRoom(room){
 			bedsCount : $('#single').val(),
 			doubleBedsCount : $('#double').val(),
 			price : $('#price').val(),
-			roomImages :  $('#photos').val(),
 			food : $('#foodType').val(),
 			
 			hasWiFi : document.getElementById('hasWiFi').checked,
