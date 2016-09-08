@@ -362,7 +362,7 @@ div #sidebar-wrapper {
 			<div class="col s3">
 				<h6>
 					<c:if test="${countOfRooms > 0 }">
-						<fmt:message key="card.header" />
+						<span id="hotel_count_room"></span>
 						<span id="periodicals_number_for_all_users">${countOfRooms}</span>
 					</c:if>
 					<c:if test="${countOfRooms <= 0 }">

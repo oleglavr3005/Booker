@@ -81,6 +81,8 @@
 		header_regist_cpass : "Підтвердити пароль",
 		header_regist_confirm : "Завершити реєстрацію",
 		
+		hotel_count_room : "Number of rooms found: ",
+		
 		// authorization
 		header_error_mail : "Invalid email",
 		header_error_mailpass : "Invalid email or password",
@@ -178,6 +180,8 @@
 		// authorization
 		header_error_mail : "Невірна електронна пошта", 
 		header_error_mailpass : "Невірний емейл чи пароль",
+		
+		hotel_count_room : "Кількість знайдених кімнат: ",
 
 		// user settings
 		// файл не выбран??
