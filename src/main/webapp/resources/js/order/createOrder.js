@@ -36,6 +36,7 @@ function bookOrderCard(orderId, daysCount) {
 						$('#book' + orderId).onclick = null;
 
 						if (res.booked == 'true') {
+							alert('res.countOfHotels - ' + res.countOfHotels);
 							insertModal(res);
 							 $('#modal1').openModal();
 							
@@ -112,7 +113,7 @@ function bookOrderCard(orderId, daysCount) {
 				$('#book' + orderId).onclick = null;
 
 				if (res.booked == 'true') {
-					alert(res.countOfHotels);
+					alert('res.countOfHotels - ' + res.countOfHotels);
 					insertModal(res);
 					 $('#modal1').openModal();
 					
@@ -268,15 +269,15 @@ function insertModal(result){
 
 function modalMaker(result){
 	var totalContent = '';
-	alert(result.countOfHotels);
+	alert("result - " + result.countOfHotels);
 	if (result.countOfHotels > 0){
-		for (var i = 0; i < 3 && i < countOfHotels; i++){
+		for (var i = 0; i < 3 && i < result.countOfHotels; i++){
 			totalContent += contentMaker(result.hotels[i]);
 		}
 	}
 	else {
 		totalContent = '<img alt="thank you for order"'+
-			'src="<i:urlToImage url="order.jpg"'+
+			'src="http://localhost:8080/booker/resources/images/order1.jpg"'+
 			'class="img-responsive center-block"'+
 			'style="max-width: 150px; max-height: 150px; margin-bottom: 10px; margin-top: 30px">';
 	}
