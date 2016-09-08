@@ -126,10 +126,7 @@ div #sidebar-wrapper {
  								src="<i:urlToImage url="${hotel.photos[0].img }" />">
 					</a>
 					<!-- 					END OF PHOTO -->
-					<!-- 				INPUT -->
-									<input multiple style="margin-top: 60px" type="file" id="imgInput"
-					 					onchange="uploadHotel('../')" accept="image/*" /> 
-					<!-- 				END OF INPUT -->
+
 
 					<a class="waves-effect waves-light btn" id="create_button"
 						onclick="updateHotel(${hotel.id})"
@@ -283,17 +280,34 @@ div #sidebar-wrapper {
 
 
 	<div class="container">
+		<div class="row">
+			<div class="col s2">
+				<!-- 				INPUT -->
+				<input multiple style="margin-top: 60px" type="file" id="imgInput"
+					onchange="uploadHotel('../')" accept="image/*" />
+				<!-- 				END OF INPUT -->
 
-		<select class="image-picker masonry show-html" id="images"
-			multiple="multiple">
-			<c:forEach var="photo" items="${hotel.photos}">
-				<option data-img-src="<i:urlToImage url="${photo.img }" />"
-					value="${photo.id}">${photo.desc }</option>
-			</c:forEach>
-		</select> <a class="my-btn waves-effect waves-light btn"
-			style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
-			onclick="remove()"><fmt:message key="subscribes.table.remove" />
-		</a>
+			</div>
+
+			<div class="col s8">
+				<select class="image-picker masonry show-html" id="images"
+					multiple="multiple">
+					<c:forEach var="photo" items="${hotel.photos}">
+						<option data-img-src="<i:urlToImage url="${photo.img }" />"
+							value="${photo.id}">${photo.desc }</option>
+					</c:forEach>
+				</select>
+			</div>
+
+			<div class="col s2">
+				<a class="my-btn waves-effect waves-light btn"
+					style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
+					onclick="remove()"><fmt:message key="subscribes.table.remove" />
+				</a>
+			</div>
+		</div>
+
+
 	</div>
 
 	<div class="container-fluid">

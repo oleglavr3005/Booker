@@ -1,8 +1,7 @@
 var image = null;
 
 function createHotel(){
-	alert($('#photos').val());
-	var img = image == null ? 'new_hotel.jpg':image;
+	var img = $('#photos').val() == '' ? 'new_hotel.jpg' : $('#photos').val();
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
 	var x = 0;
 	var y = 0;
@@ -16,7 +15,7 @@ function createHotel(){
 			phoneNumber : $('#phone').val(),
 			xCoord : x,
 			yCoord : y,
-			hotelImages : $('#photos').val()
+			hotelImages : img
 		}, function(result){
 			if(result != 'error'){
 				$('#create_error').css('color', 'green');
@@ -35,7 +34,6 @@ function createHotel(){
 }
 
 function updateHotel(hotelId){
-	var img = image == null ? 'new_hotel.jpg':image;
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
 	var x = 0;
 	var y = 0;
@@ -49,8 +47,7 @@ function updateHotel(hotelId){
 			description : $('#desc').val(),
 			phoneNumber : $('#phone').val(),
 			xCoord : x,
-			yCoord : y,
-			hotelImages : $('#photos').val()
+			yCoord : y
 		}, function(result){
 			if(result != 'false'){
 				$('#create_error').css('color', 'green');
