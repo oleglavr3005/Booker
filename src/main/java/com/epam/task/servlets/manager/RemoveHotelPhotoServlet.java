@@ -21,7 +21,7 @@ public class RemoveHotelPhotoServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-    		String photoIdsString = request.getParameter("photos");
+    		String photoIdsString = request.getParameter("images");
     		String[] photoIds = photoIdsString.split(",");
 			HotelPhotoService hotelPhotoService = new HotelPhotoService();
 			int hotelId = 0;

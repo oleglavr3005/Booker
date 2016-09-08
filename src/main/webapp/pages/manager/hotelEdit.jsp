@@ -287,7 +287,7 @@ div #sidebar-wrapper {
 
 			<div class="col s8">
 				<div id="switchContent">
-			<jsp:include page="../cards/photoCard.jsp"></jsp:include>
+			<jsp:include page="../cards/hotelPhotoCard.jsp"></jsp:include>
 		</div>
 			</div>
 
