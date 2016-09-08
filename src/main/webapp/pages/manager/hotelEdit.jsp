@@ -294,7 +294,7 @@ div #sidebar-wrapper {
 			<div class="col s2">
 				<a class="my-btn waves-effect waves-light btn"
 					style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
-					onclick="remove()"><fmt:message key="subscribes.table.remove" />
+					onclick="removeRoomPhoto()"><fmt:message key="subscribes.table.remove" />
 				</a>
 			</div>
 		</div>
@@ -409,20 +409,8 @@ div #sidebar-wrapper {
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/image.js"></script>
-
-
-
-
-	
-
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotelEdit.js"></script>
-<script type="text/javascript">    
-function remove() {
-	var values = $('#images').val();
-	alert(values);
-}
-</script></script>
 
 
 
