@@ -196,9 +196,8 @@ function updateHotelPhotos(id) {
 		$.each($('#imgInput')[0].files, function(i, file) {
 			data.append('file-' + i, file);
 		});
-		data.append('hotelId',id)
 		$.ajax({
-			url : '../../edit_hotel_pictures',
+			url : '../../edit_hotel_pictures/'+id,
 			data : data,
 			cache : false,
 			contentType : false,
