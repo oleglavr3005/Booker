@@ -25,15 +25,7 @@ b {
 </style>
 
 <!-- MOVE TO HOTEL -->
-<h6>
-	<c:if test="${countOfRooms > 0 }">
-		<fmt:message key="card.header" />
-		<span id="periodicals_number_for_all_users">${countOfRooms}</span>
-	</c:if>
-	<c:if test="${countOfRooms <= 0 }">
-		<fmt:message key="card.no.periodicals" />
-	</c:if>
-</h6>
+
 <div class="divider" style="margin: 0;"></div>
 
 <c:if test="${countOfRooms == 0}">
