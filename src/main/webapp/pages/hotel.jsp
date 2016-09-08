@@ -221,7 +221,7 @@ div #sidebar-wrapper {
 					<c:if test="${fn:length(hotel.photos) != 0}">
 						<a href='<i:urlToImage url="${hotel.photos[0].img}" />'
 							data-gallery>
-							<img src="<i:urlToImage url="hotel.photos[0].img" />">
+							<img src="<i:urlToImage url="${hotel.photos[0].img }" />">
 						</a>
 
 
