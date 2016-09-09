@@ -265,20 +265,17 @@ function isLengthFull(id) {
 }
 
 function insertModal(result) {
-//	$('#modalContainer').html(modalMaker(result));
 	showModal(result);
 }
 
 function showModal(result){
-	alert("id" + result.hotels[0].id);
-	alert("photo" + result.hotels[0].photo);
 	if (result.countOfHotels > 0){
 		var url = 'http://localhost:8080/booker/hotel/';
 		for (var i = 0; i < 3 && i < result.countOfHotels; i++) {
 			document.getElementById('row'+i).style.display = 'block';
 			$('#href'+i+'1').attr('href',url+result.hotels[i].id);
 			$('#href'+i+'2').attr('href',url+result.hotels[i].id);
-			$('#img'+i).attr('url',result.hotels[i].photo);
+			document.getElementById("img"+i).src="../resources/images/" + result.hotels[i].photo;
 			$('#hotelName'+i).html(result.hotels[i].name);
 			$('#location'+i).html(result.hotels[i].city + " " + result.hotels[i].street);
 		}
