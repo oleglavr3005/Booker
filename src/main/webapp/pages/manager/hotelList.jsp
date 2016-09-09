@@ -177,36 +177,19 @@
 
 					<div class="row">
 
-						<div class="col s4">
+						<div class="col s8">
 
-							<!-- 						CITY -->
+							<!-- 						ADDRESS -->
 
 							<div class="input-field">
-								<input id="city" type="text" class="validate" length="45"
-									placeholder="Name of city"> <label id="cityLbl"
+								<input id="address" type="text" class="validate" length="145"
+									placeholder="Address of hotel"> <label id="cityLbl"
 									data-error="${fmtName}" for="city"><fmt:message
 										key="admin.edit.city" /></label>
 							</div>
-
-							<!-- 							END OF CITY -->
-
-						</div>
-
-						<div class="col s4">
-
-							<!-- 						STREET -->
-
-							<div class="input-field">
-								<input id="street" type="text" class="validate" length="45"
-									placeholder="Name of street"> <label id="streetLbl"
-									data-error="${fmtName}" for="street"><fmt:message
-										key="admin.edit.street" /></label>
-							</div>
-
-							<!-- 							END OF STREET -->
+							<!-- 							END OF ADDRESS -->
 
 						</div>
-
 
 						<div class="col s4">
 
@@ -306,7 +289,7 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/image.js"></script>
-
+	<script src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU&libraries=places&callback=initAutocomplete" async defer></script>
 </body>
 
 </html>

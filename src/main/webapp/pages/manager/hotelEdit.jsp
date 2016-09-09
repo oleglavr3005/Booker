@@ -199,35 +199,18 @@ div #sidebar-wrapper {
 
 					<div class="row">
 
-						<div class="col s4">
-
-							<!-- 						CITY -->
-
+						<div class="col s8">
+							<!-- 						ADDRESS -->
 							<div class="input-field">
-								<input id="city" type="text" class="validate" length="45"
-									placeholder="Name of city" value="${hotel.city}"> <label
+								<input id="address" type="text" class="validate" length="145"
+									placeholder="Address of hotel" value="${hotel.city} ${hotel.street}"> <label
 									id="cityLbl" data-error="${fmtName}" for="city"><fmt:message
 										key="admin.edit.city" /></label>
 							</div>
-
-							<!-- 							END OF CITY -->
-
-						</div>
-
-						<div class="col s4">
-
-							<!-- 						STREET -->
-
-							<div class="input-field">
-								<input id="street" type="text" class="validate" length="45"
-									placeholder="Name of street" value="${hotel.street}"> <label
-									id="streetLbl" data-error="${fmtName}" for="street"><fmt:message
-										key="admin.edit.street" /></label>
-							</div>
-
-							<!-- 							END OF STREET -->
+							<!-- 							END OF ADDRESS -->
 
 						</div>
+
 
 
 						<div class="col s4">
@@ -241,7 +224,7 @@ div #sidebar-wrapper {
 										key="admin.edit.phone" /></label>
 							</div>
 
-							<!-- 							END OF PHONE -->
+							<!--####################### END OF PHONE ############################# -->
 
 						</div>
 
@@ -411,7 +394,7 @@ div #sidebar-wrapper {
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/image.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotelEdit.js"></script>
-
+<script src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU&libraries=places&callback=initAutocomplete" async defer></script>
 	<script>
 	$(document).ready(function(){
 	    $('.tooltipped').tooltip({delay: 50,position: 'top'});
