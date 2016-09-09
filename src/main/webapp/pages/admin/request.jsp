@@ -168,11 +168,8 @@
 			<div class="col s12">
 
 				<!-- 						MESSAGE -->
-
-				<div class="input-field">
-					<textarea class="materialize-textarea">${request.message}</textarea>
-					<label id="descLbl"><span id="request_message"></span></label>
-				</div>
+				<a></a>
+				<div style="font-size: 15px;">${request.message}</div>
 
 				<!-- 							END OF MESSAGE -->
 
