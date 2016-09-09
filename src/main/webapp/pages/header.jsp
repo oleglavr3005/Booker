@@ -225,14 +225,14 @@ img.logo {
 											<input id="emailAuth" type="email" class="validate">
 											<label id="emailAuthLbl" data-error="${fmtMail}"
 												for="emailAuth">
-												<span id="header_regist_mail"> </span>
+												<span id="header_author_mail"> </span>
 											</label>
 										</div>
 										<div class="input-field">
 											<input id="passwordAuth" type="password"> <label
 												id="mailPasswordLbl" data-error="${fmtMailPass}"
 												for="passwordAuth">
-												<span id="header_regist_pass"> </span>
+												<span id="header_author_pass"> </span>
 											</label>
 										</div>
 									</div>
