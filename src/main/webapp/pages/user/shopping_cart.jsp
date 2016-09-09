@@ -164,8 +164,8 @@
 
 				<div class="row" id="row0" style="display: none">
 					<div class="col s4">
-						<a id="href01" href="http://localhost:8080/booker/hotel/"> <img
-							src="<i:urlToImage id="img0" url="new_hotel.jpg" />"
+						<a id="href01" href="http://localhost:8080/booker/hotel/"> <img id="img0" 
+							src="<i:urlToImage url="new_hotel.jpg" />"
 							style="height: 110px; width: 150px;">
 						</a>
 					</div>
@@ -203,8 +203,8 @@
 
 				<div class="row" id="row1" style="display: none">
 					<div class="col s4">
-						<a id="href11" href="http://localhost:8080/booker/hotel/"> <img
-							src="<i:urlToImage id="img1" url="new_hotel.jpg" />"
+						<a id="href11" href="http://localhost:8080/booker/hotel/"> <img id="img1"
+<%-- 							src="<i:urlToImage url="new_hotel.jpg" />" --%>
 							style="height: 110px; width: 150px;">
 						</a>
 					</div>
