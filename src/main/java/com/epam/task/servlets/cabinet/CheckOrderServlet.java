@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.Order;
 import com.epam.task.database.service.OrderService;
+import com.epam.task.util.StringUtil;
 
 @WebServlet("/check_order")
 public class CheckOrderServlet extends HttpServlet {
@@ -20,7 +21,8 @@ public class CheckOrderServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String orderIdString = request.getParameter("orderId");
-		if(orderIdString == null) {
+		if(orderIdString == null || !StringUtil.isPositiveInteger(orderIdString)) {
+			response.sendError(500);
 			return;
 		}
 		

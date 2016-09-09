@@ -36,6 +36,7 @@ public class BookAllServlet extends HttpServlet {
 		String cardNumber = request.getParameter("cardNumber");
 		String comment = request.getParameter("comment");
 		if(cardNumber == null) {
+			response.sendError(500);
 			return;
 		}
 		int userId = ((User) request.getSession().getAttribute("user")).getId();
@@ -49,9 +50,6 @@ public class BookAllServlet extends HttpServlet {
 		List<Hotel> recomendedHotels = HotelUtil.getRecomendedHotelsForUser(hotelIds, userId);
 
 		int booked = new OrderService().bookAllByUser(userId, cardNumber, comment);
-
-//		request.setAttribute("recomendedHotels", recomendedHotels);
-//		request.setAttribute("recomendedHotelsSize", recomendedHotels.size());
 		
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
@@ -78,10 +76,6 @@ public class BookAllServlet extends HttpServlet {
 		} catch (JSONException e) {
 			response.getWriter().write("false");
 		}
-		
-//		if(booked > 0) {
-//			request.getRequestDispatcher("/pages/orderCard.jsp").forward(request, response);
-//		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

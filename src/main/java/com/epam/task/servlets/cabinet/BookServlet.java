@@ -21,6 +21,7 @@ import com.epam.task.database.model.User;
 import com.epam.task.database.service.OrderService;
 import com.epam.task.database.service.RoomService;
 import com.epam.task.util.HotelUtil;
+import com.epam.task.util.StringUtil;
 
 @WebServlet("/book")
 public class BookServlet extends HttpServlet {
@@ -35,7 +36,8 @@ public class BookServlet extends HttpServlet {
 		String cardNumber = request.getParameter("cardNumber");
 		String comment = request.getParameter("comment");
 		
-		if(orderIdString == null || cardNumber == null) {
+		if(orderIdString == null || cardNumber == null || !StringUtil.isPositiveInteger(orderIdString)) {
+			response.sendError(500);
 			return;
 		}
 		OrderService orderService = new OrderService();
@@ -50,9 +52,6 @@ public class BookServlet extends HttpServlet {
 		List<Hotel> recomendedHotels = HotelUtil.getRecomendedHotelsForUser(hotelIds, userId);
 		
 		int booked = orderService.bookOrder(orderId, cardNumber, comment);
-		
-//		request.setAttribute("recomendedHotels", recomendedHotels);
-//		request.setAttribute("recomendedHotelsSize", recomendedHotels.size());
 
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.service.OrderService;
+import com.epam.task.util.StringUtil;
 
 @WebServlet("/remove_from_cart")
 public class RemoveFromCartServlet extends HttpServlet {
@@ -19,9 +20,11 @@ public class RemoveFromCartServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String orderIdString = request.getParameter("orderId");
-		if(orderIdString == null) {
+		if(orderIdString == null || !StringUtil.isPositiveInteger(orderIdString)) {
+			response.sendError(500);
 			return;
 		}
+		
 		int orderId = Integer.parseInt(orderIdString);
 		int removed = new OrderService().removeOrder(orderId);
 
@@ -31,5 +34,4 @@ public class RemoveFromCartServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

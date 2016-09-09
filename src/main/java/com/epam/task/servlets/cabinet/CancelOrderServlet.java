@@ -1,7 +1,6 @@
 package com.epam.task.servlets.cabinet;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -16,6 +15,7 @@ import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.service.OrderService;
 import com.epam.task.database.service.RoomService;
+import com.epam.task.util.StringUtil;
 
 @WebServlet("/cancel_order")
 public class CancelOrderServlet extends HttpServlet {
@@ -27,7 +27,8 @@ public class CancelOrderServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String orderIdString = request.getParameter("orderId");
-		if(orderIdString == null) {
+		if(orderIdString == null || !StringUtil.isPositiveInteger(orderIdString)) {
+			response.sendError(500);
 			return;
 		}
 		
@@ -61,13 +62,7 @@ public class CancelOrderServlet extends HttpServlet {
 		order.setStatus(OrderStatus.CANCELED);
 		int result = service.updateOrder(order);
 		response.getWriter().write(result > 0 ? "true" : "false");
-		
-//		String fromOrderPage = request.getParameter("fromOrderPage");
-//		if(fromOrderPage != null && Boolean.parseBoolean(fromOrderPage)) {
-//			response.sendRedirect("/cabinet/orders");
-//		} else {
-//			response.getWriter().write(result > 0 ? "true" : "false");
-//		}
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

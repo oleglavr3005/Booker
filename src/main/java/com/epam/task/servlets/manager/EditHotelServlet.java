@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.service.HotelService;
+import com.epam.task.util.StringUtil;
 
 @WebServlet("/edit_hotel")
 public class EditHotelServlet extends HttpServlet {
@@ -30,7 +31,10 @@ public class EditHotelServlet extends HttpServlet {
 		String phoneNumber = request.getParameter("phoneNumber");
 		
 		if (hotelIdString == null || name == null || city == null || street == null || starsString == null || description == null ||
-				xCoordString == null || yCoordString == null || phoneNumber == null) {
+				xCoordString == null || yCoordString == null || phoneNumber == null ||
+				!StringUtil.isPositiveInteger(hotelIdString) || !StringUtil.isInStarsRange(starsString) ||
+				!StringUtil.isNotNegativeDouble(xCoordString) || !StringUtil.isNotNegativeDouble(yCoordString)) {
+			response.sendError(500);
 			return;
 		}
 		

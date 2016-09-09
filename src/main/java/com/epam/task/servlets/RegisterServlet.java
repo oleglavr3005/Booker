@@ -34,14 +34,22 @@ public class RegisterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
+		String surname = request.getParameter("surname");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		if (surname == null || name == null || email == null || password == null || password.length() < 6) {
+			response.sendError(500);
+			return;
+		}
 		try {
 			User user = new User();
-			user.setLastName(request.getParameter("surname"));
-			user.setFirstName(request.getParameter("name"));
-			user.setEmail(request.getParameter("email"));
+			user.setLastName(surname);
+			user.setFirstName(name);
+			user.setEmail(email);
 			user.setType("USER");
 			user.setStatus("PENDING");
-			user.setPassword(PasswordHasher.hash(request.getParameter("password")));
+			user.setPassword(PasswordHasher.hash(password));
 			user.setConfirmCode(ConfirmCodeGenerator.getCode());
 			
 			user.setLanguage("en");

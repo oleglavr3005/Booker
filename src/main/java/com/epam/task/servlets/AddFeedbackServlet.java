@@ -18,6 +18,7 @@ import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.FeedbackService;
 import com.epam.task.database.service.HotelService;
+import com.epam.task.util.StringUtil;
 
 @WebServlet("/addFeedback")
 public class AddFeedbackServlet extends HttpServlet {
@@ -33,13 +34,12 @@ public class AddFeedbackServlet extends HttpServlet {
 		String hotelIdString = request.getParameter("hotelId");
 		String title = request.getParameter("title");
 		
-		if(comment == null || ratingString == null || hotelIdString == null || title == null) {
+		if(comment == null || ratingString == null || hotelIdString == null || title == null ||
+				!StringUtil.isInRatingRange(ratingString) || !StringUtil.isPositiveInteger(hotelIdString)) {
+			response.sendError(500);
 			return;
 		}
-		if(request.getSession().getAttribute("user") == null ){
-			returnFalse(response);
-			return;
-		}
+		//removed user check : filter has already done it, removed code would never work!
 		
 		int rating = Integer.parseInt(ratingString);
 		int hotelId = Integer.parseInt(hotelIdString);
@@ -72,26 +72,20 @@ public class AddFeedbackServlet extends HttpServlet {
 			hotel.setRating(newRating);
 			hotelService.updateHotelRating(hotel);
 			
-			List<Feedback> listFeedBack = new ArrayList<Feedback>();
-			listFeedBack.add(userFeedback);
+			List<Feedback> listFeedBack = new ArrayList<Feedback>();	//WTF????? 
+			listFeedBack.add(userFeedback);								//List with a single element? Logic?
 			request.setAttribute("feedbacks", FeedbackDto.listConverter(listFeedBack));
 			request.getRequestDispatcher("/pages/oneComment.jsp").forward(request, response);
 		} else {
-			returnFalse(response);
+			response.setContentType("text/plain");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write("false");
+			response.getWriter().flush();
 		}
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
-	}
-	private void returnFalse(HttpServletResponse response){
-		try {
-			response.setContentType("text/plain");
-			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write("false");
-			response.getWriter().flush();
-		} catch (IOException e) {
-		}
 	}
 }

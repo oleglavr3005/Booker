@@ -27,7 +27,8 @@ public class ChangePasswordServlet extends HttpServlet {
 		String newPassword = request.getParameter("newPassword");
 		String newPasswordConfirm = request.getParameter("newPasswordConfirm");
 		
-		if(oldPassword == null || newPassword == null || newPasswordConfirm == null) {
+		if(oldPassword == null || newPassword == null || newPasswordConfirm == null || newPassword.length() < 6) {
+			response.sendError(500);
 			return;
 		}
 		

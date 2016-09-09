@@ -21,7 +21,6 @@ public class RoomCreatePageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int managerId = ((User) request.getSession().getAttribute("user")).getId();
 		request.setAttribute("hotels", new HotelService().getAllHotelsByManager(managerId));
-		//request.setAttribute("hotelId", request.getParameter("hotelId"));
 		request.getRequestDispatcher("/pages/manager/roomCreate.jsp").forward(request, response);
 	}
 

@@ -13,6 +13,7 @@ import com.epam.task.database.model.Feedback;
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.service.FeedbackService;
 import com.epam.task.database.service.HotelService;
+import com.epam.task.util.StringUtil;
 
 @WebServlet("/change_feedback")
 public class ChangeFeedbackServlet extends HttpServlet {
@@ -26,14 +27,16 @@ public class ChangeFeedbackServlet extends HttpServlet {
 		String comment = request.getParameter("comment");
 		String ratingString = request.getParameter("rating");
 		String title = request.getParameter("title");
-		String feedbackString = request.getParameter("feedbackId");
+		String feedbackIdString = request.getParameter("feedbackId");
 		
-		if(comment == null || ratingString == null || feedbackString == null || title == null) {
+		if(comment == null || ratingString == null || feedbackIdString == null || title == null ||
+				!StringUtil.isInRatingRange(ratingString) || !StringUtil.isPositiveInteger(feedbackIdString)) {
+			response.sendError(500);
 			return;
 		}
 		
 		int rating = Integer.parseInt(ratingString);
-		int feedbackId = Integer.parseInt(feedbackString);
+		int feedbackId = Integer.parseInt(feedbackIdString);
 
 		HotelService hotelService = new HotelService();
 		FeedbackService feedbackService = new FeedbackService();

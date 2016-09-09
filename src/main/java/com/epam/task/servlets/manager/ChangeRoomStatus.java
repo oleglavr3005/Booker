@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.Room;
 import com.epam.task.database.service.RoomService;
+import com.epam.task.util.StringUtil;
 
 @WebServlet("/change_room_status")
 public class ChangeRoomStatus extends HttpServlet {
@@ -21,8 +22,10 @@ public class ChangeRoomStatus extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String roomIdString = request.getParameter("roomId");
 		String deletedString = request.getParameter("deleted"); //true or false
-		
-		if(roomIdString == null || deletedString == null) {
+
+		if(roomIdString == null || deletedString == null || 
+				!StringUtil.isPositiveInteger(roomIdString) || !StringUtil.isBoolean(deletedString)) {
+			response.sendError(500);
 			return;
 		}
 		

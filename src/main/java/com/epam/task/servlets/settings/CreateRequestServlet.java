@@ -27,6 +27,7 @@ public class CreateRequestServlet extends HttpServlet {
 		String message = request.getParameter("message");
 		
 		if(message == null) {
+			response.sendError(500);
 			return;
 		}
 		

@@ -11,6 +11,7 @@ import com.epam.task.database.model.Room;
 import com.epam.task.database.model.RoomPhoto;
 import com.epam.task.database.service.RoomPhotoService;
 import com.epam.task.database.service.RoomService;
+import com.epam.task.util.StringUtil;
 
 @WebServlet("/add_room")
 public class AddRoomServlet extends HttpServlet {
@@ -24,7 +25,7 @@ public class AddRoomServlet extends HttpServlet {
 	
 		String hotelIdString = request.getParameter("hotelId");
 		String number = request.getParameter("number");
-		String type = request.getParameter("type");
+		String type = request.getParameter("type");	//STANDART LUX DELUX
 		
 		String doubleBedsCountString = request.getParameter("doubleBedsCount");
 		String bedsCountString = request.getParameter("bedsCount");
@@ -39,14 +40,26 @@ public class AddRoomServlet extends HttpServlet {
 		String hasGymString = request.getParameter("hasGym");
 		String hasBalconyString = request.getParameter("hasBalcony");
 		
+		String food = request.getParameter("food");	//NONE BREAKFAST TWICE FULL
+		String freeBookString = request.getParameter("freeBook");
+		
+		String daysCountString = request.getParameter("daysCount");
+		String percentageString = request.getParameter("percentage");
+				
 		String roomImagesString = request.getParameter("roomImages");
 		
-		String food = request.getParameter("food");
-
-		String freeBook = request.getParameter("freeBook");
-		
 		if (hotelIdString == null || number == null || type == null || doubleBedsCountString == null || bedsCountString == null ||
-				priceString == null || food == null || roomImagesString == null || freeBook == null) {
+				priceString == null || food == null || roomImagesString == null || freeBookString == null ||
+				!StringUtil.isPositiveInteger(hotelIdString) || !StringUtil.isPositiveInteger(doubleBedsCountString) || !StringUtil.isPositiveInteger(bedsCountString) ||
+				!StringUtil.isPositiveInteger(priceString) || !StringUtil.isBoolean(freeBookString) ||
+				!(type.equalsIgnoreCase("STANDART") || type.equalsIgnoreCase("LUX") || type.equalsIgnoreCase("DELUX")) || 
+				!(food.equalsIgnoreCase("NONE") || food.equalsIgnoreCase("BREAKFAST") || food.equalsIgnoreCase("TWICE") || food.equalsIgnoreCase("FULL")) ) {
+			response.sendError(500);
+			return;
+		}
+		boolean freeBook = Boolean.parseBoolean(freeBookString);
+		if (freeBook && (daysCountString == null || percentageString == null) ) {
+			response.sendError(500);
 			return;
 		}
 		
@@ -72,9 +85,9 @@ public class AddRoomServlet extends HttpServlet {
 		int daysCount;
 		int percentage;
 		
-		if(!Boolean.parseBoolean(freeBook)) {
-			daysCount = Integer.parseInt(request.getParameter("daysCount"));
-			percentage = Integer.parseInt(request.getParameter("percentage"));
+		if(!freeBook) {
+			daysCount = Integer.parseInt(daysCountString);
+			percentage = Integer.parseInt(percentageString);
 		} else {
 			daysCount = -1;
 			percentage = 0;

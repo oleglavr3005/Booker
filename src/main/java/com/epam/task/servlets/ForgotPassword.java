@@ -13,28 +13,24 @@ import com.epam.task.database.service.UserService;
 import com.epam.task.util.ConfirmCodeGenerator;
 import com.epam.task.util.PasswordHasher;
 
-/**
- * Servlet implementation class ForgotPassword
- */
 @WebServlet("/forgot")
 public class ForgotPassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public ForgotPassword() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String email = request.getParameter("email");
+		if(email == null) {
+			response.sendError(500);
+			return;
+		}
+		
 		try {
 			UserService userService = new UserService();
-			User user = userService.getUserByEmail(request.getParameter("email"));
+			User user = userService.getUserByEmail(email);
 			String newPass = ConfirmCodeGenerator.getCode();
 			user.setPassword(PasswordHasher.hash(newPass));
 			userService.updateUser(user);
@@ -47,11 +43,7 @@ public class ForgotPassword extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.RoomService;
+import com.epam.task.util.StringUtil;
 
 @WebServlet("/search")
 public class FindHotelsServlet extends HttpServlet {
@@ -32,8 +33,8 @@ public class FindHotelsServlet extends HttpServlet {
 		
 		if(request.getParameter("flag") == null || !request.getParameter("flag").equals("true")) {
 			
-			if(request.getParameter("name") == null || request.getParameter("name").equals("") ) {
-				response.sendRedirect("home");
+			if(request.getParameter("name") == null ) {
+				response.sendError(500);
 				return;
 			}
 			
@@ -43,17 +44,27 @@ public class FindHotelsServlet extends HttpServlet {
 			if (toglerString == null) {
 				togler = false;
 			} else {
-				togler = Boolean.parseBoolean(request.getParameter("togler"));
+				togler = Boolean.parseBoolean(toglerString);
 			}
 			
-			session.setAttribute("togler", togler);
-			
-			session.setAttribute("name", request.getParameter("name"));
 			String minStarsString = request.getParameter("minStars");
 			String maxStarsString = request.getParameter("maxStars");
 			String peopleString = request.getParameter("people");
+			String minUserPriceString = request.getParameter("minUserPrice");
+			String maxUserPriceString = request.getParameter("maxUserPrice");
+			
+			if(!StringUtil.isInStarsRangeOrNull(minStarsString) || !StringUtil.isInStarsRangeOrNull(maxStarsString) || !StringUtil.isPositiveIntegerOrNull(peopleString) ||
+					!StringUtil.isPositiveIntegerOrNull(minUserPriceString) || !StringUtil.isPositiveIntegerOrNull(maxUserPriceString)) {				
+				response.sendError(500);
+				return;
+			}
+
+			session.setAttribute("togler", togler);
+			
+			session.setAttribute("name", request.getParameter("name"));
+			
 			session.setAttribute("minStars", minStarsString == null ? 1 : (int) Double.parseDouble(minStarsString));
-			session.setAttribute("maxStars", maxStarsString == null ? 5 : (int) Double.parseDouble(request.getParameter("maxStars")));
+			session.setAttribute("maxStars", maxStarsString == null ? 5 : (int) Double.parseDouble(maxStarsString));
 			session.setAttribute("people", peopleString == null ? 1 : Integer.parseInt(peopleString));
 			
 			session.setAttribute("typeStandart", togler == true? request.getParameter("typeStandart") != null : false);
@@ -65,8 +76,8 @@ public class FindHotelsServlet extends HttpServlet {
 			session.setAttribute("foodTwice", togler == true? request.getParameter("foodTwice") != null : false);
 			session.setAttribute("foodFull", togler == true? request.getParameter("foodFull") != null : false);
 			
-			session.setAttribute("minUserPrice", togler == true? (int) Double.parseDouble(request.getParameter("minUserPrice")) : roomService.getMinPrice());
-			session.setAttribute("maxUserPrice", togler == true? (int) Double.parseDouble(request.getParameter("maxUserPrice")) : roomService.getMaxPrice());
+			session.setAttribute("minUserPrice", togler == true? (int) Double.parseDouble(minUserPriceString) : roomService.getMinPrice());
+			session.setAttribute("maxUserPrice", togler == true? (int) Double.parseDouble(maxUserPriceString) : roomService.getMaxPrice());
 			
 			session.setAttribute("hasWiFi", togler == true? request.getParameter("hasWifi") != null : false);
 			session.setAttribute("hasShower", togler == true? request.getParameter("hasShower") != null : false);
@@ -154,5 +165,5 @@ public class FindHotelsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-	
+
 }

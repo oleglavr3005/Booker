@@ -24,7 +24,8 @@ public class ChangeRequestStatusServlet extends HttpServlet {
 		String requestIdString = request.getParameter("requestId");
 		String status = request.getParameter("status"); //APPROVED DECLINED
 		
-		if(requestIdString == null || status == null) {
+		if(requestIdString == null || status == null || !(status.equalsIgnoreCase("APPROVED") || status.equalsIgnoreCase("DECLINED") )) {
+			response.sendError(500);
 			return;
 		}
 		

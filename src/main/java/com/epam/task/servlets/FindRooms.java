@@ -35,21 +35,30 @@ public class FindRooms extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		String startDateString = request.getParameter("startDate");
+		String endDateString = request.getParameter("endDate");
+		String hotelIdString = request.getParameter("hotelId");
+		String peopleString = request.getParameter("people");
+		
+		if(startDateString == null || endDateString == null || !isPositiveInteger(hotelIdString) || !isPositiveInteger(peopleString)) {		
+			response.sendError(500);
+			return;
+		}
 		Timestamp startDate;
 		Timestamp endDate;
 		try {
-			startDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("startDate")).getTime());
+			startDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(startDateString).getTime());
 		} catch (ParseException e) {
 			startDate = new Timestamp(new Date().getTime());
 		}
 		try {
-			endDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("endDate")).getTime());
+			endDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(endDateString).getTime());
 		} catch (ParseException e) {
 			endDate = new Timestamp(new Date().getTime());
 		}
 		session.setAttribute("startDate", new SimpleDateFormat("yyyy-MM-dd").format(startDate));
 		session.setAttribute("endDate", new SimpleDateFormat("yyyy-MM-dd").format(endDate));
-		int hotelId = Integer.parseInt(request.getParameter("hotelId"));
+		int hotelId = Integer.parseInt(hotelIdString);
 		
 		Hotel hotel = new HotelService().getHotelById(hotelId);
 		Conveniences conveniences = null;
@@ -60,7 +69,7 @@ public class FindRooms extends HttpServlet {
 			return;
 		}
 		
-		int people = Integer.parseInt(request.getParameter("people"));
+		int people = Integer.parseInt(peopleString);
 		session.setAttribute("people", people);
 		
 		boolean typeStandart = session.getAttribute("typeStandart") == null ? false : (boolean) session.getAttribute("typeStandart");
@@ -122,16 +131,17 @@ public class FindRooms extends HttpServlet {
 			request.setAttribute("hotelPhotos", hotelPhoto);
 		}
 		request.getRequestDispatcher("/pages/roomCard.jsp").forward(request, response);
-		
-//		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
-//			request.getRequestDispatcher("/pages/roomCard.jsp").forward(request, response);
-//		} else {	
-//			request.getRequestDispatcher("/pages/hotel.jsp").forward(request, response);
-//		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 
+	private boolean isPositiveInteger (String stringToCheck) {
+		try {
+			return ((int) Double.parseDouble(stringToCheck)) > 0 ? true : false;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 }

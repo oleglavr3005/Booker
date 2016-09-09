@@ -19,8 +19,13 @@ public class RemoveRoomPhotoServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String photoIdsString = request.getParameter("img");
+		if(photoIdsString == null) {
+			response.sendError(500);
+			return;
+		}
+		
 		try {
-    		String photoIdsString = request.getParameter("img");
     		String[] photoIds = photoIdsString.split(",");
 			RoomPhotoService roomPhotoService = new RoomPhotoService();
 			int roomId = 0;

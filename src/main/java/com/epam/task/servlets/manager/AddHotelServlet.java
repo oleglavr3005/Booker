@@ -12,6 +12,7 @@ import com.epam.task.database.model.HotelPhoto;
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.HotelPhotoService;
 import com.epam.task.database.service.HotelService;
+import com.epam.task.util.StringUtil;
 
 @WebServlet("/add_hotel")
 public class AddHotelServlet extends HttpServlet {
@@ -35,11 +36,9 @@ public class AddHotelServlet extends HttpServlet {
 		String hotelImagesString = request.getParameter("hotelImages");
 		
 		if (name == null || city == null || street == null || starsString == null || description == null ||
-				xCoordString == null || yCoordString == null || phoneNumber == null || hotelImagesString == null) {
-			return;
-		}
-		
-		if(hotelImagesString.equals("error")) {
+				xCoordString == null || yCoordString == null || phoneNumber == null || hotelImagesString == null ||
+				hotelImagesString.equals("error") || !StringUtil.isInStarsRange(starsString) || 
+				!StringUtil.isNotNegativeDouble(xCoordString) || !StringUtil.isNotNegativeDouble(yCoordString)) {
 			response.sendError(500);
 			return;
 		}

@@ -21,8 +21,6 @@ public class ChangeImageServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//somehow load image on server
-		//will do it tomorrow :P
 		try {
 			String photo = new ImageSetter(request).uploadImage();
 			User user = (User) request.getSession().getAttribute("user");

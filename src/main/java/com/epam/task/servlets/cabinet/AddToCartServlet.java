@@ -17,10 +17,8 @@ import com.epam.task.database.model.Order;
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.OrderService;
 import com.epam.task.database.service.RoomService;
+import com.epam.task.util.StringUtil;
 
-/**
- * Servlet implementation class AddToCartServlet
- */
 @WebServlet("/add_to_cart")
 public class AddToCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,7 +30,13 @@ public class AddToCartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		int userId = ((User) session.getAttribute("user")).getId();
-		int roomId = Integer.parseInt(request.getParameter("roomId"));
+		String roomIdString = request.getParameter("roomId");
+		if (roomIdString == null || !StringUtil.isPositiveInteger(roomIdString)) {
+			response.sendError(500);
+			return;
+		}
+		
+		int roomId = Integer.parseInt(roomIdString);
 		Timestamp startDate;
 		Timestamp endDate;
 		try {

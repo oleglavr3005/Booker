@@ -24,11 +24,19 @@ public class AuthServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		if(email == null || password == null || password.length() < 6) {
+			response.sendError(500);
+			return;
+		}
+
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
 		try {
-			UserService userService = new UserService();
-			User user = userService.getUserByEmail(request.getParameter("email"));
-			if (user.getStatus().equals(UserStatus.PENDING) || !user.getPassword()
-					.equals(PasswordHasher.hash(request.getParameter("password")))) {
+			User user = new UserService().getUserByEmail(email);
+			if (user == null || user.getStatus().equals(UserStatus.PENDING) || !user.getPassword()
+					.equals(PasswordHasher.hash(password))) {
 				throw new Exception();
 			}
 			request.getSession().setAttribute("user", user);
@@ -37,12 +45,10 @@ public class AuthServlet extends HttpServlet {
 			json.put("logged", true);
 			
 			response.getWriter().print(json.toString());
-			response.getWriter().flush();
 		} catch (Exception e) {
-			response.setContentType("text/plain");
-			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write("false");
 		}
+		response.getWriter().flush();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

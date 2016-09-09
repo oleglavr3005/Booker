@@ -22,7 +22,8 @@ public class ChangeUserStatusServlet extends HttpServlet {
 		String userIdString = request.getParameter("userId");
 		String status = request.getParameter("status"); //BANNED ACTIVE
 		
-		if(userIdString == null || status == null) {
+		if(userIdString == null || status == null || !(status.equalsIgnoreCase("BANNED") || status.equalsIgnoreCase("ACTIVE"))) {
+			response.sendError(500);
 			return;
 		}
 		

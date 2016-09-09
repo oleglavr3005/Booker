@@ -29,6 +29,7 @@ public class ChangeInfoServlet extends HttpServlet {
 		String lastName = request.getParameter("lastName");
 
 		if(lastName == null || firstName == null) {
+			response.sendError(500);
 			return;
 		}
 		

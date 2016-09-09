@@ -20,9 +20,15 @@ public class CheckEmailServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String email = request.getParameter("email");
+		if(email == null) {
+			response.sendError(500);
+			return;
+		}
+		
 		try {
 			UserService userService = new UserService();
-			User user = userService.getUserByEmail(request.getParameter("email"));
+			User user = userService.getUserByEmail(email);
 			response.setContentType("text/plain");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(String.valueOf(user == null));
@@ -31,11 +37,7 @@ public class CheckEmailServlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -26,7 +26,6 @@ public class ClearCartServlet extends HttpServlet {
 		int userId = ((User) request.getSession().getAttribute("user")).getId();
 		new OrderService().removeAllOrdersByStatus(userId, OrderStatus.ORDER);
 		
-//		response.getWriter().write(removed > 0 ? "true" : "false");
 		request.setAttribute("orders", new ArrayList<Order>());
 		request.setAttribute("summary", 0);
 		request.setAttribute("countOfOrders", 0);

@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.UserService;
+import com.epam.task.util.StringUtil;
 
 @WebServlet("/change_email")
 public class ChangeEmailServlet extends HttpServlet {
@@ -24,12 +25,14 @@ public class ChangeEmailServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
+		String mailNotifString = request.getParameter("mailNotif");
 		
-		if(email == null) {
+		if(email == null || !StringUtil.isBoolean(mailNotifString)) {
+			response.sendError(500);
 			return;
 		}
 		
-		Boolean mailNotif = Boolean.parseBoolean(request.getParameter("mailNotif"));
+		Boolean mailNotif = Boolean.parseBoolean(mailNotifString);
 		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
