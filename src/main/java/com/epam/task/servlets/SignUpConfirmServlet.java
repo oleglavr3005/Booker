@@ -39,7 +39,7 @@ public class SignUpConfirmServlet extends HttpServlet {
 				user.setStatus("ACTIVE");
 				userService.updateUser(user);
 				request.getSession().setAttribute("user", user);
-				response.sendRedirect(request.getContextPath() + "/");
+				response.sendRedirect(request.getContextPath() + "/home");
 			} else {
 				response.sendError(404);
 			}
