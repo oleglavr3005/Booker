@@ -260,25 +260,33 @@ div #sidebar-wrapper {
 
 	<div class="container">
 		<div class="row">
-			<div class="col s2">
+
+
+			<div class="col s10 offset-s1">
+				<div id="switchContent">
+					<jsp:include page="../cards/hotelPhotoCard.jsp"></jsp:include>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s3 offset-s3">
+			
+				<a class="my-btn waves-effect waves-light btn"
+					style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
+					onclick="pushInput()">ADD_IMAGE </a>
+			
 				<!-- 				INPUT -->
 				<input multiple style="margin-top: 60px" type="file" id="imgInput"
-					onchange="updateHotelPhotos(${hotel.id})" accept="image/*" />
+					onchange="updateHotelPhotos(${hotel.id})" accept="image/*" style="display:none" />
 				<!-- 				END OF INPUT -->
 
 			</div>
 
-			<div class="col s8">
-				<div id="switchContent">
-			<jsp:include page="../cards/hotelPhotoCard.jsp"></jsp:include>
-		</div>
-			</div>
-
-			<div class="col s2">
+			<div class="col s3 offset-s1">
 				<a class="my-btn waves-effect waves-light btn"
 					style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
-					onclick="removeHotelPhoto()"><fmt:message key="subscribes.table.remove" />
-				</a>
+					onclick="removeHotelPhoto()">REMOVE_SELECTED </a>
 			</div>
 		</div>
 
