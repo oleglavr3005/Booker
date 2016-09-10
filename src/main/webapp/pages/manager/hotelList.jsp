@@ -62,7 +62,7 @@
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 
 <script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script>
+	src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script>
 
 
 <style>
@@ -93,7 +93,7 @@
 </head>
 
 <body>
-	<input id="photos" type="hidden"/>
+	<input id="photos" type="hidden" />
 	<input id="lang" type="hidden" value="${language}" />
 
 	<!-- Header ========================================================================= -->
@@ -110,15 +110,22 @@
 					src="<i:urlToImage url="new_hotel.png" />"> </a>
 				<!-- 					END OF PHOTO -->
 				<!-- 				INPUT -->
-				<input multiple style="margin-top: 60px; display: none" type="file" id="imgInput"
-					onchange="uploadHotel('')" accept="image/*" />
+				<input multiple style="margin-top: 60px; display: none" type="file"
+					id="imgInput" onchange="uploadHotel('')" accept="image/*" />
 				<!-- 				END OF INPUT -->
 
 				<a class="waves-effect waves-light btn" id="create_button"
 					onclick="createHotel()"
 					style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-					<span id=btn_create>CREATE</span></a>
+					<span id=btn_create>CREATE</span>
+				</a>
 				<p id="create_error" style="color: red"></p>
+
+				<!-- 							SEND NOTIF -->
+				<p style="margin-top: 20px;">
+					<input type="checkbox" class="filled-in" id="sendNotif"
+						name="sendNotif" /> <label for="sendNotif">SEND NOTIF</label>
+				</p>
 
 
 
@@ -137,25 +144,24 @@
 								<input id="name" type="text" class="validate" length="45"
 									placeholder="Name of Hotel"> <label id="nameLbl"
 									data-error="NAME INVALID" for="name"><span
-										id="admin_edit_name"></span></label>
+									id="admin_edit_name"></span></label>
 							</div>
 
 							<!-- 							END OF NAME -->
 
 						</div>
-					
-						<div class="col s6"style="margin-top: 15px;">
-						
+
+						<div class="col s6" style="margin-top: 15px;">
+
 							<!-- 						STARS -->
 							<input id="rating" onchange="rate()" value="0" type="number"
 								class="rating" min=0 max=5 step=1 data-size="xs" data-stars="5">
-								<label id="ratingLbl"
-									data-error="RATING SHOULD BE 1-5" for="rating"><span
-										id="admin_edit_rating"></span> </label>
-<!-- 							<span -->
-<%-- 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><span --%>
-<%-- 									key="manager.hotel.star" />STAR : <span id="rate_span">0</span> --%>
-<!-- 								/ 5 |</span> -->
+							<label id="ratingLbl" data-error="RATING SHOULD BE 1-5"
+								for="rating"><span id="admin_edit_rating"></span> </label>
+							<!-- 							<span -->
+							<%-- 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><span --%>
+							<%-- 									key="manager.hotel.star" />STAR : <span id="rate_span">0</span> --%>
+							<!-- 								/ 5 |</span> -->
 							<script>
 								function rate() {
 
@@ -181,7 +187,7 @@
 								<input id="address" type="text" class="validate" length="145"
 									placeholder="Address of hotel"> <label id="addressLbl"
 									data-error="ADDRESS IS INVALID" for="address"><span
-										id="admin_edit_address"></span> </label>
+									id="admin_edit_address"></span> </label>
 							</div>
 							<!-- 							END OF ADDRESS -->
 
@@ -195,7 +201,7 @@
 								<input id="phone" type="text" class="validate" length="20"
 									placeholder="Phone Number"> <label id="phoneLbl"
 									data-error="PHONE NUMBER IS INVALID" for="phone"><span
-										id="admin_edit_phone" ></span></label>
+									id="admin_edit_phone"></span></label>
 							</div>
 
 							<!-- 							END OF PHONE -->
@@ -216,8 +222,8 @@
 							<div class="input-field">
 								<textarea placeholder="Desc" id="desc"
 									class="materialize-textarea" class="validate">${message}</textarea>
-								<label id="descLbl" data-error="DESCRIPTION IS INVALID" for="desc"><span
-										id="admin_edit_desc"></span> </label>
+								<label id="descLbl" data-error="DESCRIPTION IS INVALID"
+									for="desc"><span id="admin_edit_desc"></span> </label>
 							</div>
 
 							<!-- 							END OF DESC -->
@@ -236,7 +242,7 @@
 			<div class="col s3">
 				<h6>
 					<c:if test="${countOfHotels > 0 }">
-						<span id="card_header" ></span>
+						<span id="card_header"></span>
 						<span id="periodicals_number_for_all_users">${countOfHotels}</span>
 					</c:if>
 					<c:if test="${countOfHotels <= 0 }">
@@ -285,9 +291,11 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotel.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/image.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU&libraries=places&callback=initAutocomplete" async defer></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU&libraries=places&callback=initAutocomplete"
+		async defer></script>
 	<script>
-	$('#rating').rating('update', 1);
+		$('#rating').rating('update', 1);
 	</script>
 </body>
 

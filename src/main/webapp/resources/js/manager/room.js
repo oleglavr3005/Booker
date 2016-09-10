@@ -21,6 +21,7 @@ function createRoom(){
 			hasGym : document.getElementById('hasGym').checked,
 			hasBalcony : document.getElementById('hasBalcony').checked,
 			freeBook : document.getElementById('freeBook').checked,
+			sendNotif : document.getElementById('sendNotif').checked,
 			
 			daysCount : $('#days').val(),
 			percentage : $('#percentage').val(),
