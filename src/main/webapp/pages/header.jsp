@@ -72,7 +72,7 @@ img.logo {
 <!-- =================================================================== -->
 
 <nav class="navbar navbar-default navbar-static-top"
-	style="margin-bottom: 0px; background: #000033;">
+	style="margin-bottom: 0px; background: #12444c;">
 	<div class="container-fluid">
 		<div class="navbar-header"
 			style="margin-left: 30px; margin-right: 50px;">
