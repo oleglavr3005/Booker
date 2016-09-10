@@ -105,8 +105,8 @@ public class GoogleCallbackServlet extends HttpServlet {
 		JsonNode jsonNode = objectMapper.readTree(responseBody);
 		//JsonNode idNode = jsonNode.get("id");
 		String userId = jsonNode.get("id").asText();
-		String name = jsonNode.get("name").get("familyName").asText();
-		String surname = jsonNode.get("name").get("givenName").asText();
+		String name = jsonNode.get("name").get("givenName").asText();
+		String surname = jsonNode.get("name").get("familyName").asText();
 		String img = jsonNode.get("image").get("url").asText().split("\\?sz=")[0]; // Little fix
 		// return idNode.asText();
 		User user = new User();

@@ -21,8 +21,8 @@ function bookOrderCard(orderId, daysCount) {
 			url = '../book';
 		}
 
-		// if (daysCount > 0) {
-		if (false) {
+		if (daysCount > 0) {
+		//if (false) {
 			// need 2 pay at all
 
 			// validate info for purchase
