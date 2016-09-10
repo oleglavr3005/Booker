@@ -28,7 +28,7 @@ public class UserDao {
 	private final String SELECT_BY_TYPE	 = SELECT_ALL + " WHERE type LIKE ?";
 	private final String SELECT_BY_CODE = "SELECT * FROM user u WHERE u.confirm_code LIKE ?;";
 	
-	private final String INSERT = "INSERT INTO `user` (first_name, last_name, e_mail, password, type, confirm_code, status, phone_number, img, social_network, social_network_id, email_notif, phone_notif, language) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private final String INSERT = "INSERT INTO `user` (first_name, last_name, e_mail, password, type, confirm_code, status, phone_number, img, social_network, social_network_id, email_notif, phone_notif, language) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private final String UPDATE = "UPDATE `user` SET first_name = ?, last_name = ?, e_mail = ?, password = ?, type = ?, confirm_code = ?, status = ?, phone_number = ?, img = ?, social_network = ?, social_network_id = ?, email_notif = ?, phone_notif = ?, language = ? WHERE user_id = ?";
 	private final String UPDATE_STATUS = "UPDATE `user` SET status = ? WHERE user_id = ?";
 	private final String UPDATE_TYPE = "UPDATE `user` SET type = ? WHERE user_id = ?";

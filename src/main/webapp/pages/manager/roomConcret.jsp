@@ -126,8 +126,8 @@
 					</a>
 					<!-- 					END OF PHOTO -->
 					<!-- 				INPUT -->
-<%-- 					<input style="margin-top: 5px; display:none" type="file" id="imgInput"  --%>
-<%-- 						onchange="uploadRoom()" accept="image/*" /> --%>
+					<%-- 					<input style="margin-top: 5px; display:none" type="file" id="imgInput"  --%>
+					<%-- 						onchange="uploadRoom()" accept="image/*" /> --%>
 					<!-- 				END OF INPUT -->
 
 					<a class="waves-effect waves-light btn" id="create_button"
@@ -322,28 +322,42 @@
 
 
 
+
+
+
+
 	<div class="container">
 		<div class="row">
-			<div class="col s2">
-				<!-- 				INPUT -->
-				<input multiple style="margin-top: 60px" type="file" id="imgInput"
-					onchange="updateRoomPhotos(${room.id})" accept="image/*" />
-				<!-- 				END OF INPUT -->
 
-			</div>
-
-			<div class="col s8">
+			<div class="col s10 offset-s1">
 				<div id="switchContent">
-			<jsp:include page="../cards/roomPhotoCard.jsp"></jsp:include>
-		</div>
+					<jsp:include page="../cards/roomPhotoCard.jsp"></jsp:include>
+				</div>
 			</div>
 
-			<div class="col s2">
-				<a class="my-btn waves-effect waves-light btn"
-					style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
-					onclick="removeRoomPhoto()"><fmt:message key="subscribes.table.remove" />
-				</a>
+			<div class="row">
+				<div class="col s3 offset-s3">
+
+					<a class="my-btn waves-effect waves-light btn"
+						style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
+						onclick="pushInput()">ADD_IMAGE </a>
+
+					<!-- 				INPUT -->
+					<input multiple style="margin-top: 60px; display: none" type="file"
+						id="imgInput" onchange="updateRoomPhotos(${room.id})"
+						accept="image/*" />
+					<!-- 				END OF INPUT -->
+
+				</div>
+
+				<div class="col s3 offset-s1">
+					<a class="my-btn waves-effect waves-light btn"
+						style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
+						onclick="removeRoomPhoto()">REMOVE_SELECTED </a>
+				</div>
 			</div>
+
+
 		</div>
 
 
@@ -365,8 +379,8 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/star-rating/star-rating.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
-		
-		
+
+
 
 	<script>
 		function changeFreeBook(){
@@ -388,8 +402,8 @@
 		$('#hasGym').attr('checked', '${room.gym}' == 'true');
 		$('#hasBalcony').attr('checked', '${room.balcony}' == 'true');
 	</script>
-	
-	
+
+
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/room.js"></script>
 

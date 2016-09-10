@@ -67,7 +67,7 @@ public class BookServlet extends HttpServlet {
 				hotelJson.put("stars", hotel.getStars());
 				hotelJson.put("rating", hotel.getRating());
 				hotelJson.put("phoneNumber", hotel.getPhoneNumber());
-				hotelJson.put("photo", hotel.getPhotos().get(0));
+				hotelJson.put("photo", hotel.getPhotos().get(0).getImg());
 				array.put(hotelJson);
 			}
 			json.put("hotels", array);

@@ -1,20 +1,32 @@
 var image = null;
+var hotel_city = "";
+var hotel_street = "";
+var hotel_x = 0;
+var hotel_y = 0;
+
+var places;
+function initAutocomplete() {
+    var input = document.getElementById('address');
+    var searchBox = new google.maps.places.SearchBox(input);
+    searchBox.addListener('places_changed', function () {
+        places = searchBox.getPlaces();
+    });
+}
 
 function createHotel(){
 	var img = $('#photos').val() == '' ? 'new_hotel.jpg' : $('#photos').val();
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
-	var x = 0;
-	var y = 0;
+	getInfoFromGoogle();
 	if (validate()){
 		$.get('../add_hotel',{
 			name : $('#name').val(),
 			stars : star,
-			city : $('#city').val(),
-			street : $('#street').val(),
+			city : hotel_city,
+			street : hotel_street,
 			description : $('#desc').val(),
 			phoneNumber : $('#phone').val(),
-			xCoord : x,
-			yCoord : y,
+			xCoord : hotel_x,
+			yCoord : hotel_y,
 			hotelImages : img
 		}, function(result){
 			if(result != 'error'){
@@ -35,19 +47,18 @@ function createHotel(){
 
 function updateHotel(hotelId){
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
-	var x = 0;
-	var y = 0;
+	getInfoFromGoogle();
 	if (validate()){
 		$.get('../../edit_hotel',{
 			hotelId : hotelId,
 			name : $('#name').val(),
 			stars : star,
-			city : $('#city').val(),
-			street : $('#street').val(),
+			city : hotel_city,
+			street : hotel_street,
 			description : $('#desc').val(),
 			phoneNumber : $('#phone').val(),
-			xCoord : x,
-			yCoord : y
+			xCoord : hotel_x,
+			yCoord : hotel_y,
 		}, function(result){
 			if(result != 'false'){
 				$('#create_error').css('color', 'green');
@@ -67,8 +78,8 @@ function updateHotel(hotelId){
 function validate(){
 	var ok = true;
 	ok = nameIsValid($('#name').val()) && ok;
-	ok = cityIsValid($('#city').val()) && ok;
-	ok = streetIsValid($('#street').val()) && ok;
+	//ok = cityIsValid(hotel_city) && ok;
+	//ok = streetIsValid(hotel_street) && ok;
 	ok = phoneIsValid($('#phone').val()) && ok;
 	ok = descIsValid($('#desc').val()) && ok;
 	return ok;
@@ -199,4 +210,14 @@ function removeHotelPhoto() {
 	}, function(hotels) {
 		$('#switchContent').html(hotels);
 	});
+}
+
+function getInfoFromGoogle(){
+	hotel_x = places[0].geometry.location.lat();
+	hotel_y = places[0].geometry.location.lng();
+	var address = places[0].formatted_address;
+	var subAddress = address.substring(0, address.lastIndexOf(","));
+	subAddress = subAddress.substring(0, subAddress.lastIndexOf(","));
+	hotel_city = subAddress.substring(subAddress.lastIndexOf(",") + 1).trim();;
+	hotel_street = subAddress.substring(0, subAddress.lastIndexOf(","));
 }

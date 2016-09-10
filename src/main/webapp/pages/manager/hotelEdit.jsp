@@ -199,35 +199,18 @@ div #sidebar-wrapper {
 
 					<div class="row">
 
-						<div class="col s4">
-
-							<!-- 						CITY -->
-
+						<div class="col s8">
+							<!-- 						ADDRESS -->
 							<div class="input-field">
-								<input id="city" type="text" class="validate" length="45"
-									placeholder="Name of city" value="${hotel.city}"> <label
+								<input id="address" type="text" class="validate" length="145"
+									placeholder="Address of hotel" value="${hotel.city} ${hotel.street}"> <label
 									id="cityLbl" data-error="${fmtName}" for="city"><fmt:message
 										key="admin.edit.city" /></label>
 							</div>
-
-							<!-- 							END OF CITY -->
-
-						</div>
-
-						<div class="col s4">
-
-							<!-- 						STREET -->
-
-							<div class="input-field">
-								<input id="street" type="text" class="validate" length="45"
-									placeholder="Name of street" value="${hotel.street}"> <label
-									id="streetLbl" data-error="${fmtName}" for="street"><fmt:message
-										key="admin.edit.street" /></label>
-							</div>
-
-							<!-- 							END OF STREET -->
+							<!-- 							END OF ADDRESS -->
 
 						</div>
+
 
 
 						<div class="col s4">
@@ -241,7 +224,7 @@ div #sidebar-wrapper {
 										key="admin.edit.phone" /></label>
 							</div>
 
-							<!-- 							END OF PHONE -->
+							<!--####################### END OF PHONE ############################# -->
 
 						</div>
 
@@ -277,25 +260,33 @@ div #sidebar-wrapper {
 
 	<div class="container">
 		<div class="row">
-			<div class="col s2">
+
+
+			<div class="col s10 offset-s1">
+				<div id="switchContent">
+					<jsp:include page="../cards/hotelPhotoCard.jsp"></jsp:include>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s3 offset-s3">
+			
+				<a class="my-btn waves-effect waves-light btn"
+					style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
+					onclick="pushInput()">ADD_IMAGE </a>
+			
 				<!-- 				INPUT -->
 				<input multiple style="margin-top: 60px" type="file" id="imgInput"
-					onchange="updateHotelPhotos(${hotel.id})" accept="image/*" />
+					onchange="updateHotelPhotos(${hotel.id})" accept="image/*" style="display:none" />
 				<!-- 				END OF INPUT -->
 
 			</div>
 
-			<div class="col s8">
-				<div id="switchContent">
-			<jsp:include page="../cards/hotelPhotoCard.jsp"></jsp:include>
-		</div>
-			</div>
-
-			<div class="col s2">
+			<div class="col s3 offset-s1">
 				<a class="my-btn waves-effect waves-light btn"
 					style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
-					onclick="removeHotelPhoto()"><fmt:message key="subscribes.table.remove" />
-				</a>
+					onclick="removeHotelPhoto()">REMOVE_SELECTED </a>
 			</div>
 		</div>
 
@@ -411,7 +402,7 @@ div #sidebar-wrapper {
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/image.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotelEdit.js"></script>
-
+<script src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU&libraries=places&callback=initAutocomplete" async defer></script>
 	<script>
 	$(document).ready(function(){
 	    $('.tooltipped').tooltip({delay: 50,position: 'top'});

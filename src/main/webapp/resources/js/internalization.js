@@ -1,8 +1,23 @@
 ﻿var languages = {};
 (function (){
 	var en = {
+	
+		header_dropdown_shopping_cart: "Shopping cart",	
+		header_dropdown_orders : "My orders",
+		header_dropdown_feedbacks : "My feedbacks",
+		header_dropdown_settings : "Settings",
+		header_dropdown_hotels : "My hotels",
+		header_dropdown_admin_stuff : "Admin stuff",
+		header_dropdown_log_out: "Log out",
+		card_edit : "EDIT",
+		title_comment_span : "Title", 
+		createComment : "Add comment",
+		hotel_button_previous : "Previous", 
+		hotel_button_next : "Next",
+		
+		
+		
 		header_regist : "Registration",
-		header_auth : "Sign In",
 		
 		header_auth : "Log In",
 		header_auth_close : "Close",
@@ -34,6 +49,11 @@
 		index_room_gym : "Fit gym",
 		index_room_balcony : "Balcony",
 		index_room_noDeposit : "No deposit",
+		hotel_option_star_asc : "Star asc",
+		hotel_option_star_desc : "Star desc",
+		hotel_option_people_asc : "People asc",
+		hotel_option_people_desc : "People desc",
+		hotel_price : "Price",
 
 		map_button : "Map", 
 		search : "Search",
@@ -78,12 +98,14 @@
 		header_regist_surname : "Last name",
 		header_regist_mail : "Email",
 		header_regist_pass : "Password",
-		header_regist_cpass : "Підтвердити пароль",
-		header_regist_confirm : "Завершити реєстрацію",
+		header_regist_cpass : "Confirm password",
+		header_regist_confirm : "Finish",
 		
 		hotel_count_room : "Number of rooms found: ",
 		
 		// authorization
+		header_author_mail : "Email",
+		header_author_pass : "Password",
 		header_error_mail : "Invalid email",
 		header_error_mailpass : "Invalid email or password",
 		
@@ -122,8 +144,6 @@
 	}
 	var ua = {
 		header_regist : "Регістрація",
-		header_auth : "Увійти",
-		
 		header_auth : "Увійти",
 		header_auth_close : "Закрити",
 		header_auth_forgot : "Забули пароль?",
@@ -178,6 +198,8 @@
 		header_regist_confirm : "Завершити реєстрацію",
 		
 		// authorization
+		header_author_mail : "Емейл",
+		header_author_pass : "Пароль",
 		header_error_mail : "Невірна електронна пошта", 
 		header_error_mailpass : "Невірний емейл чи пароль",
 		
@@ -251,7 +273,7 @@
 	languages.en = en;
 	languages.ua = ua;
 	languages.error = error;
-	languages.error.current;
+	languages.error.current=en;
 })();
 
 function changeLanguage(id, language){

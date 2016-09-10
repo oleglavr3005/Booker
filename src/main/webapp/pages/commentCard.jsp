@@ -48,7 +48,7 @@
 					<div class="col s6" style="margin-top: 15px;">
 						<input id="title_comment" type="text" value="">
 						<label id="title_comment_label" data-error="" for="title_comment" class="">
-							<span id="title_comment_span">Title</span>
+							<span id="title_comment_span"></span>
 						</label>
 					</div>
 					<div class="col s6" style="margin-top: 15px;">
@@ -70,7 +70,7 @@
 				</div>
 				<textarea id="comment" style="height: 80px;"></textarea>
 				<div style="margin-top: 20px;">
-					<a id="createComment" class="waves-effect waves-light btn" onclick="addNewComment(${hotel.id})" style="width: 25%;background: #26A69A;text-align: center;color: #F7F7F7;margin-left: 37.5%;">Add comment</a>
+					<a id="createComment" class="waves-effect waves-light btn" onclick="addNewComment(${hotel.id})" style="width: 25%;background: #26A69A;text-align: center;color: #F7F7F7;margin-left: 37.5%;"></a>
 				</div>
 			</div>
 			</c:if>

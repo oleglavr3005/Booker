@@ -2,7 +2,19 @@ $("#Img").click(function() {
 	$("input[id='imgInput']").click();
 });
 
+function checkMax(max){
+	if (parseInt($('#imgInput')[0].files.length)>max){
+        alert(max + " is max");
+        return;
+       }
+}
+
+function pushInput() {
+	$("input[id='imgInput']").click();
+};
+
 function uploadRoom() {
+	checkMax(20);
 	var picture = document.getElementById('photos');
 	var preview = document.querySelector('#Img');
 	var file = document.querySelector('input[type=file]').files[0];
@@ -14,6 +26,7 @@ function uploadRoom() {
 		}
 		reader.readAsDataURL(file);
 		var data = new FormData();
+		
 		$.each($('#imgInput')[0].files, function(i, file) {
 			data.append('file-' + i, file);
 		});
@@ -33,6 +46,7 @@ function uploadRoom() {
 }
 
 function uploadHotel(rl) {
+	checkMax(20);
 	var picture = document.getElementById('photos');
 	var preview = document.querySelector('#Img');
 	var file = document.querySelector('input[type=file]').files[0];
