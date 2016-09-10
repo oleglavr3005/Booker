@@ -45,7 +45,7 @@ b {
 
 </div>
 
-<c:forEach var="hotel" items="${hotels}">
+<c:forEach var="hotel" items="${suitableHotels}">
 
 	<div id="hotel_card_${hotel.id}" class="col s10 offset-s1">
 		<div class="card">
