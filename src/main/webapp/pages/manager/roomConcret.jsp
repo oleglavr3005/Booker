@@ -188,8 +188,8 @@
 							<div class="row">
 								<input id="single" value="${room.bedsCount}" type="number"
 									class="validate" name="single" min=1 max=100> <label
-									id="singleLbl" data-error="${fmtPeople}" for="single"><fmt:message
-										key="room.concrete.single" /></label>
+									id="singleLbl" data-error="${fmtPeople}" for="single"><span
+										id="room_concrete_single"></span> </label>
 							</div>
 
 							<!-- 							END OF 1 BEDS COUNT -->
@@ -200,8 +200,8 @@
 								<input id="days" <c:if test="${room.daysCount >= 0 }"> value="${room.daysCount}"</c:if> type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="days" min=1 max=365> <label
-									id="daysLbl" data-error="${fmtPeople}" for="days"><fmt:message
-										key="room.concrete.days" /></label>
+									id="daysLbl" data-error="${fmtPeople}" for="days"><span
+										id="room_concrete_days"></span> </label>
 							</div>
 
 							<!-- 							END OF DAYS COUNT -->
@@ -211,8 +211,8 @@
 							<div class="row">
 								<input id="number" value="${room.number}" type="number"
 									class="validate" name="days" min=1 max=365> <label
-									id="daysLbl" data-error="${fmtPeople}" for="days"><fmt:message
-										key="room.concrete.number" /></label>
+									id="daysLbl" data-error="${fmtPeople}" for="days"><span
+										id="room_concrete_number"></span></label>
 							</div>
 
 							<!-- 							END OF NUMBER -->
@@ -222,8 +222,8 @@
 							<div class="row">
 								<input id="price" value="${room.price}" type="number"
 									class="validate" name="percentage" min=1 max=100> <label
-									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><fmt:message
-										key="room.concrete.price" /></label>
+									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><span
+										id="room_concrete_price"></span> </label>
 							</div>
 
 							<!-- 							END OF PRICE -->
@@ -253,8 +253,8 @@
 							<div class="row">
 								<input id="double" value="${room.doubleBedsCount}" type="number"
 									class="validate" name="single" min=1 max=100> <label
-									id="doubleLbl" data-error="${fmtPeople}" for="double"><fmt:message
-										key="room.concrete.double" /></label>
+									id="doubleLbl" data-error="${fmtPeople}" for="double"><span
+										id="room_concrete_double"></span> </label>
 							</div>
 
 							<!-- 							END OF 2 BEDS COUNT -->
@@ -265,8 +265,8 @@
 								<input id="percentage" value="${room.percentage}" type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="percentage" min=1 max=100> <label
-									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><fmt:message
-										key="room.concrete.percentage" /></label>
+									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><span
+										id="room_concrete_percentage"></span></label>
 							</div>
 
 							<!-- 							END OF PERCENTAGE COUNT -->
