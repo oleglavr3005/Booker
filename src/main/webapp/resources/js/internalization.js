@@ -1,8 +1,17 @@
 ﻿var languages = {};
 (function (){
 	var en = {
+	
+		header_dropdown_shopping_cart: "Shopping cart",	
+		header_dropdown_orders : "My orders",
+		header_dropdown_feedbacks : "My feedbacks",
+		header_dropdown_settings : "Settings",
+		header_dropdown_hotels : "My hotels",
+		header_dropdown_admin_stuff : "Admin stuff",
+		header_dropdown_log_out: "Log out",
+		
+		
 		header_regist : "Registration",
-		header_auth : "Sign In",
 		
 		header_auth : "Log In",
 		header_auth_close : "Close",
