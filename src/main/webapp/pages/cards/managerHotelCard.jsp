@@ -8,7 +8,8 @@
 <fmt:setBundle basename="com.i18n.text" />
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/fontawesome/css/font-awesome.min.css">
-
+<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script>
 <style>
 b {
 	margin-left: 8px;
