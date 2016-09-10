@@ -43,19 +43,20 @@ public class AddHotelServlet extends HttpServlet {
 			return;
 		}
 		
-		String[] hotelImagesArray = hotelImagesString.split(":::");
-		
 		int stars = Integer.parseInt(starsString);		
 		double xCoord = Double.parseDouble(xCoordString);
 		double yCoord = Double.parseDouble(yCoordString);
 		
 		int hotelId = new HotelService().insertHotel(new Hotel(0, name, city, street, stars, description, manager.getId(), xCoord, yCoord, 0, false, phoneNumber));
-		HotelPhotoService hotelPhotoService = new HotelPhotoService();
-		if (hotelId > 0) {
-			for (int i = 0; i<hotelImagesArray.length; i++) {
+		
+		if(hotelImagesString.length() > 0 && hotelId > 0) {
+			String[] hotelImagesArray = hotelImagesString.split(":::");
+			HotelPhotoService hotelPhotoService = new HotelPhotoService();
+
+			for (int i = 0; i < hotelImagesArray.length; i++) {
 				hotelPhotoService.insertHotelPhoto(new HotelPhoto(0, hotelImagesArray[i], "", hotelId));
 			}
-		}
+		}		
 		
 		response.getWriter().write(hotelId > 0 ? ""+hotelId : "error");
 	}
