@@ -23,6 +23,10 @@
 		manager_hotel_card_edit : "EDIT",
 		manager_hotel_card_removed : "REMOVED",
 		manager_hotel_card_active : "ACTIVE",
+		
+		card_no_hotels : "ACTIVE",
+		
+		
 			
 		header_dropdown_shopping_cart : " Shоpping cart",	
 		header_dropdown_orders : " My оrders",
@@ -397,7 +401,11 @@
 			header_regist_succes: "header_regist_succes",
 			header_regist_confirmmail: "header_regist_confirmmail",
 			header_error_fail: "header_error_fail",
-			header_regist: "header_regist"
+			header_regist: "header_regist",
+				
+			startLbl : "fmtStart",
+			endLbl : "fmtEnd",
+			pplLbl : "fmtPeople",
 		}
 	};
 	var data_tooltip = {

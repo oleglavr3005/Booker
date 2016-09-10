@@ -315,21 +315,21 @@ div #sidebar-wrapper {
 		<div class="col s3">
 			<input type="date" name="startDate" id="date_from"
 				class="datepicker validate" value="${startDate}"><label
-				id="startLbl" data-error="${fmtStart}" for="date_from"><span
+				id="startLbl" data-error="" for="date_from"><span
 					id="index_search_start"></span></label>
 		</div>
 
 		<div class="col s3">
 			<input type="date" name="endDate" id="date_to"
 				class="datepicker validate" value="${endDate}"><label
-				id="endLbl" data-error="${fmtEnd}" for="date_to"><span
+				id="endLbl" data-error="" for="date_to"><span
 					id="index_search_end"></span></label>
 		</div>
 
 		<div class="col s3">
 			<input id="people" type="text" class="validate" name="people"
 				value="${people}"> <label id="pplLbl"
-				data-error="${fmtPeople}" for="pplCount"><span
+				data-error="" for="pplCount"><span
 					id="index_search_ppl"></span></label>
 		</div>
 
@@ -357,7 +357,7 @@ div #sidebar-wrapper {
 						<span id="periodicals_number_for_all_users">${countOfRooms}</span>
 					</c:if>
 					<c:if test="${countOfRooms <= 0 }">
-						<fmt:message key="card.no.hotels" />
+						<span id="card_no_hotels"></span>
 					</c:if>
 				</h6>
 			</div>
