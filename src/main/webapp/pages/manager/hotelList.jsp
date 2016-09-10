@@ -285,6 +285,9 @@
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/image.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU&libraries=places&callback=initAutocomplete" async defer></script>
+	<script>
+	$('#rating').rating('update', 1);
+	</script>
 </body>
 
 </html>
