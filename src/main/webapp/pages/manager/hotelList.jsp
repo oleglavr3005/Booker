@@ -116,7 +116,8 @@
 
 				<a class="waves-effect waves-light btn" id="create_button"
 					onclick="createHotel()"
-					style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>CREATE</span></a>
+					style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+					<span id=btn_create>CREATE</span></a>
 				<p id="create_error" style="color: red"></p>
 
 
@@ -135,8 +136,8 @@
 							<div class="input-field">
 								<input id="name" type="text" class="validate" length="45"
 									placeholder="Name of Hotel"> <label id="nameLbl"
-									data-error="NAME INVALID" for="name"><fmt:message
-										key="admin.edit.name" /></label>
+									data-error="NAME INVALID" for="name"><span
+										id="admin_edit_name"></span></label>
 							</div>
 
 							<!-- 							END OF NAME -->
@@ -149,10 +150,10 @@
 							<input id="rating" onchange="rate()" value="0" type="number"
 								class="rating" min=0 max=5 step=1 data-size="xs" data-stars="5">
 								<label id="ratingLbl"
-									data-error="RATING SHOULD BE 1-5" for="rating"><fmt:message
-										key="admin.edit.rating" /></label>
+									data-error="RATING SHOULD BE 1-5" for="rating"><span
+										id="admin_edit_rating"></span> </label>
 <!-- 							<span -->
-<%-- 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><fmt:message --%>
+<%-- 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><span --%>
 <%-- 									key="manager.hotel.star" />STAR : <span id="rate_span">0</span> --%>
 <!-- 								/ 5 |</span> -->
 							<script>
@@ -179,8 +180,8 @@
 							<div class="input-field">
 								<input id="address" type="text" class="validate" length="145"
 									placeholder="Address of hotel"> <label id="addressLbl"
-									data-error="ADDRESS IS INVALID" for="address"><fmt:message
-										key="admin.edit.address" /></label>
+									data-error="ADDRESS IS INVALID" for="address"><span
+										id="admin_edit_address"></span> </label>
 							</div>
 							<!-- 							END OF ADDRESS -->
 
@@ -193,8 +194,8 @@
 							<div class="input-field">
 								<input id="phone" type="text" class="validate" length="20"
 									placeholder="Phone Number"> <label id="phoneLbl"
-									data-error="PHONE NUMBER IS INVALID" for="phone"><fmt:message
-										key="admin.edit.phone" /></label>
+									data-error="PHONE NUMBER IS INVALID" for="phone"><span
+										id="admin_edit_phone" ></span></label>
 							</div>
 
 							<!-- 							END OF PHONE -->
@@ -215,8 +216,8 @@
 							<div class="input-field">
 								<textarea placeholder="Desc" id="desc"
 									class="materialize-textarea" class="validate">${message}</textarea>
-								<label id="descLbl" data-error="DESCRIPTION IS INVALID" for="desc"><fmt:message
-										key="admin.edit.desc" /></label>
+								<label id="descLbl" data-error="DESCRIPTION IS INVALID" for="desc"><span
+										id="admin_edit_desc"></span> </label>
 							</div>
 
 							<!-- 							END OF DESC -->
@@ -235,11 +236,11 @@
 			<div class="col s3">
 				<h6>
 					<c:if test="${countOfHotels > 0 }">
-						<fmt:message key="card.header" />
+						<span id="card_header" ></span>
 						<span id="periodicals_number_for_all_users">${countOfHotels}</span>
 					</c:if>
 					<c:if test="${countOfHotels <= 0 }">
-						<fmt:message key="card.no.hotels" />
+						<span id="card_no_hotels"></span>
 					</c:if>
 				</h6>
 			</div>
