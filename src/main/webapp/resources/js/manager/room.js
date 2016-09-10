@@ -1,11 +1,9 @@
 
 function createRoom(){
-	alert($('#hotel_name').val());
-	var hotel = $('#hotelId').val();
 	var img = $('#photos').val() == '' ? 'new_room.jpg' : $('#photos').val();
 	if (validate()){
 		$.get('../add_room',{
-			hotelId : hotel,
+			hotelId : $('#hotel_name').val(),
 			type : $('#roomType').val(),
 			number : $('#number').val(),
 			bedsCount : $('#single').val(),
@@ -84,10 +82,10 @@ function updateRoom(room){
 	}
 }
 
-
 function validate(){
 	var ok = true;
 	ok = checkRoomNumber($('#hotel_name').val(),$('#number').val()) && ok;
+	ok = checkBedsCount('single','double');
 	ok = numberIsValid('days',1,365) && ok;
 	ok = numberIsValid('single',0,20) && ok;
 	ok = numberIsValid('double',0,20) && ok;
@@ -97,28 +95,43 @@ function validate(){
 	return ok;
 }
 
+function checkBedsCount(field1,field2){
+	var single = $('#' + field1).val();
+	var double = $('#' + field2).val();
+	if (single + double == 0){
+		invalid('single');
+		invalid('double');
+	}
+	else{
+		return true;
+	}
+}
+
 function checkRoomNumber(id,nmb){
+	var isValid = true;
 	$.ajax({
 		async : false,
-		url : ,
+		url : '../check_room_number',
 		type : 'get',
 		dataType : 'text',
 		data : {
-			"email" : email
+			"hotelId" : id,
+			"roomNumber" : nmb
 		}
 	}).success(function(data) {
 		isValid = (data == "true");
 		if(!isValid){
-			invalid('email');
-			$('#emailLbl').attr("data-error", busyMail);
+			invalid('number');
+			$('#numberLbl').attr("data-error", "ROOM_BUSY");
 		}else{			
-			valid('email');
+			valid('number');
 		}
 	}).error(function(data) {
 		isValid = false;
-		$('#emailLbl').attr("data-error", wrongMail);
-		invalid('email');
+		$('#numberLbl').attr("data-error", "ROOM_BUSY");
+		invalid('number');
 	});
+	return isValid;
 }
 
 function engLetIsValid(field) {

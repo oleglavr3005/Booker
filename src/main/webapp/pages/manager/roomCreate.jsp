@@ -198,7 +198,7 @@
 
 							<div class="row">
 								<input id="single" type="number" class="validate" name="single"
-									min=1 max=100> <label id="singleLbl"
+									min=0 max=100> <label id="singleLbl"
 									data-error="${fmtPeople}" for="single"><fmt:message
 										key="room.concrete.single" /></label>
 							</div>
@@ -209,8 +209,8 @@
 
 							<div class="row">
 								<input id="number" type="number" class="validate" name="days"
-									min=1 max=365> <label id="daysLbl"
-									data-error="${fmtPeople}" for="days"><fmt:message
+									min=1 max=365> <label id="numberLbl"
+									data-error="${fmtPeople}" for="number"><fmt:message
 										key="room.concrete.number" /></label>
 							</div>
 
@@ -232,7 +232,7 @@
 							<div class="row">
 								<input id="percentage" type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
-									class="validate" name="percentage" min=1 max=100> <label
+									class="validate" name="percentage" min=0 max=100> <label
 									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><fmt:message
 										key="room.concrete.percentage" /></label>
 							</div>
@@ -247,7 +247,7 @@
 
 							<div class="row">
 								<input id="double" type="number" class="validate" name="single"
-									min=1 max=100> <label id="doubleLbl"
+									min=0 max=100> <label id="doubleLbl"
 									data-error="${fmtPeople}" for="double"><fmt:message
 										key="room.concrete.double" /></label>
 							</div>
