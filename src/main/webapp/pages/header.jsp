@@ -102,35 +102,35 @@ img.logo {
 								<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/cabinet/cart" style="color: #26A69A">
-										<i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping cart</a></li>
+										<i id="header_dropdown_shopping_cart" class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/cabinet/orders" style="color: #26A69A">
-										<i class="fa fa-briefcase" aria-hidden="true"></i> My orders</a></li>
+										<i id="header_dropdown_orders" class="fa fa-briefcase" aria-hidden="true"></i></a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/cabinet/my_feedbacks" style="color: #26A69A">
-										<i class="fa fa-comment" aria-hidden="true"></i> My feedbacks</a></li>
+										<i id="header_dropdown_" class="fa fa-comment" aria-hidden="true"></i></a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/cabinet/settings" style="color: #26A69A">
-										<i class="fa fa-cog" aria-hidden="true"></i> Settings</a></li>
+										<i id="header_dropdown_settings" class="fa fa-cog" aria-hidden="true"></i></a></li>
 									
 									<c:if test="${user.type == 'MANAGER'}">			
 										<li role="presentation" class="divider" style="border-color:lightgrey"></li>						
 										<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/cabinet/my_hotels" style="color: #26A69A">
-										<i class="fa fa-building" aria-hidden="true"></i> My hotels</a></li>
+										<i id="header_dropdown_hotels" class="fa fa-building" aria-hidden="true"></i></a></li>
 									</c:if>
 									
 									<c:if test="${user.type == 'ADMIN'}">			
 										<li role="presentation" class="divider" style="border-color:lightgrey"></li>						
 										<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/cabinet/admin" style="color: #26A69A">
-										<i class="fa fa-trash" aria-hidden="true"></i> Admin stuff</a></li>
+										<i id="header_dropdown_admin_stuff" class="fa fa-trash" aria-hidden="true"></i></a></li>
 									</c:if>
 									
 									<li role="presentation" class="divider" style="border-color:lightgrey"></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/log-out" style="color: #26A69A">
-										<i class="fa fa-sign-in" aria-hidden="true"></i> Log out</a></li>
+										<i id="header_dropdown_log_out" class="fa fa-sign-in" aria-hidden="true"></i></a></li>
 								</ul>
 							</div>
 <!-- 						</div> -->
