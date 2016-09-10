@@ -219,6 +219,14 @@ function removeHotelPhoto() {
 
 function getInfoFromGoogle() {
 	try {
+		if( places == undefined){
+			var displaySuggestions = function(predictions, status) {
+			    if (status != google.maps.places.PlacesServiceStatus.OK) { return; } 
+				places = predictions;
+			};
+			var service = new google.maps.places.AutocompleteService();
+			service.getQueryPredictions({ input: $("#address").val() }, displaySuggestions);
+		}
 		hotel_x = places[0].geometry.location.lat();
 		hotel_y = places[0].geometry.location.lng();
 		var address = places[0].formatted_address;
