@@ -58,19 +58,11 @@
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/css/hotel/nouislider.min.css">
 
-<link rel="stylesheet"
-	href="${pageContext.servletContext.contextPath}/resources/css/hotel/blueimp-gallery.min.css">
-<link rel="stylesheet"
-	href="${pageContext.servletContext.contextPath}/resources/css/hotel/blueimp-gallery.css">
-<script
-	src="${pageContext.servletContext.contextPath}/resources/js/hotel/jquery.min.js"></script>
 
-<script
-	src="${pageContext.servletContext.contextPath}/resources/js/hotel/jquery.blueimp-gallery.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-
-
+<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script>
 
 
 <style>
