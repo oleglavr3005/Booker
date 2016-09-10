@@ -2,13 +2,13 @@
 (function (){
 	var en = {
 	
-		header_dropdown_shopping_cart: "Shоpping cart",	
-		header_dropdown_orders : "My оrders",
-		header_dropdown_feedbacks : "My feedbacks",
-		header_dropdown_settings : "Settings",
-		header_dropdown_hotels : "My hоtels",
-		header_dropdown_admin_stuff : "Admin stuff",
-		header_dropdown_log_out: "Lоg оut",
+		header_dropdown_shopping_cart: " Shоpping cart",	
+		header_dropdown_orders : " My оrders",
+		header_dropdown_feedbacks : " My feedbacks",
+		header_dropdown_settings : " Settings",
+		header_dropdown_hotels : " My hоtels",
+		header_dropdown_admin_stuff : " Admin stuff",
+		header_dropdown_log_out: " Lоg оut",
 		card_edit : "EDIT",
 		title_comment_span : "Title", 
 		createComment : "Add comment",
