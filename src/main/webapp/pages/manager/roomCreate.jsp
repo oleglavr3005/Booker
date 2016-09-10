@@ -137,9 +137,9 @@
 					<label class="labelstyle"><fmt:message
 							key="roomCreate_hotel" /></label> <select id="hotel_name"
 						class="chosen-select optionstyle">
-						<option class="optionstyle" selected="selected">${hotels[0].name}</option>
+						<option class="optionstyle" selected="selected" value="${hotels[0].id}">${hotels[0].name}</option>
 						<c:forEach var="hotel" items="${hotels}" begin="1">
-							<option class="optionstyle">${hotel.name}</option>
+							<option class="optionstyle" value="${hotel.id}">${hotel.name}</option>
 						</c:forEach>
 					</select>
 				</div>

@@ -3,7 +3,7 @@ function createRoom(){
 	alert($('#hotel_name').val());
 	var hotel = $('#hotelId').val();
 	var img = $('#photos').val() == '' ? 'new_room.jpg' : $('#photos').val();
-//	if (validate()){
+	if (validate()){
 		$.get('../add_room',{
 			hotelId : hotel,
 			type : $('#roomType').val(),
@@ -38,16 +38,16 @@ function createRoom(){
 				$('#create_error').text("FAIL");
 			}
 		});
-//	}else{
-//		$('#create_error').text("INVALID DATA");
-//	}
+	}else{
+		$('#create_error').text("INVALID DATA");
+	}
 }
 
 function updateRoom(room){
 	var hotel = $('#roomId').val();
 	var x = 0;
 	var y = 0;
-//	if (validate()){
+	if (validate()){
 		$.get('../../edit_room',{
 			roomId : room,
 			hotelId : hotel,
@@ -79,20 +79,46 @@ function updateRoom(room){
 				$('#create_error').text("FAIL");
 			}
 		});
-//	}else{
-//		$('#create_error').text("INVALID DATA");
-//	}
+	}else{
+		$('#create_error').text("INVALID DATA");
+	}
 }
 
 
 function validate(){
 	var ok = true;
-	ok = nameIsValid($('#name').val()) && ok;
-	ok = cityIsValid($('#city').val()) && ok;
-	ok = streetIsValid($('#street').val()) && ok;
-	ok = phoneIsValid($('#phone').val()) && ok;
-	ok = descIsValid($('#desc').val()) && ok;
+	ok = checkRoomNumber($('#hotel_name').val(),$('#number').val()) && ok;
+	ok = numberIsValid('days',1,365) && ok;
+	ok = numberIsValid('single',0,20) && ok;
+	ok = numberIsValid('double',0,20) && ok;
+	ok = numberIsValid('number',1,9999999) && ok;
+	ok = numberIsValid('price',1,99999999) && ok;
+	ok = numberIsValid('percentage',0,99) && ok;
 	return ok;
+}
+
+function checkRoomNumber(id,nmb){
+	$.ajax({
+		async : false,
+		url : ,
+		type : 'get',
+		dataType : 'text',
+		data : {
+			"email" : email
+		}
+	}).success(function(data) {
+		isValid = (data == "true");
+		if(!isValid){
+			invalid('email');
+			$('#emailLbl').attr("data-error", busyMail);
+		}else{			
+			valid('email');
+		}
+	}).error(function(data) {
+		isValid = false;
+		$('#emailLbl').attr("data-error", wrongMail);
+		invalid('email');
+	});
 }
 
 function engLetIsValid(field) {
@@ -115,9 +141,15 @@ function onlyTextIsValid(field) {
 	return re.test(field);
 }
 
-function numberIsValid(field) {
-	var re = /^([0-9]*)$/;
-	return re.test(field);
+function numberIsValid(field,minValue,maxValue) {
+	var val = $('#' + field).val();
+	if (val >= minValue && val <= maxValue) {
+		valid(field);
+		return true;
+	} else {
+		invalid(field);
+		return false;
+	}
 }
 
 function valid(field) {
@@ -128,60 +160,6 @@ function valid(field) {
 function invalid(field) {
 	$('#' + field).removeClass("valid");
 	$('#' + field).addClass("invalid");
-}
-
-function nameIsValid(name) {
-	if (name.length >= 2 && name.length <= 45
-			&& engLetIsValid(name)) {
-		valid('name');
-		return true;
-	} else {
-		invalid('name');
-		return false;
-	}
-}
-
-function cityIsValid(name) {
-	if (name.length >= 3 && name.length <= 45
-			&& textIsValid(name)) {
-		valid('city');
-		return true;
-	} else {
-		invalid('city');
-		return false;
-	}
-}
-
-function streetIsValid(name) {
-	if (name.length >= 3 && name.length <= 45
-			&& textIsValid(name)) {
-		valid('street');
-		return true;
-	} else {
-		invalid('street');
-		return false;
-	}
-}
-
-function phoneIsValid(name) {
-	if (name.length >= 8 && name.length <= 15 && numberIsValid(name)) {
-		valid('phoneNmb');
-		return true;
-	} else {
-		invalid('phoneNmb');
-		return false;
-	}
-}
-
-function descIsValid(name) {
-	if (name.length >= 10 && name.length <= 999
-			&& engTextIsValid(name)) {
-		valid('desc');
-		return true;
-	} else {
-		invalid('desc');
-		return false;
-	}
 }
 
 function value(value){
