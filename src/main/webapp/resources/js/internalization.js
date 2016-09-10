@@ -152,7 +152,30 @@
 		user_cart_header :"Shopping Cart"
 	}
 	var ua = {
-		header_regist : "Регістрація",
+			header_dropdown_shopping_cart: "Кошик",	
+			header_dropdown_orders : "Мої покупки",
+			header_dropdown_feedbacks : "Мої відгуки",
+			header_dropdown_settings : "Налаштування",
+			header_dropdown_hotels : "Мої готелі",
+			header_dropdown_admin_stuff : "Адміністрування",
+			header_dropdown_log_out: "Вийти",
+			card_edit : "Редагувати",
+			title_comment_span : "Заголовок", 
+			createComment : "Додати коментар",
+			hotel_button_previous : "Попередній", 
+			hotel_button_next : "Наступний",
+			hiddenError : "Помилка. Неправильні дані", 
+			room_card_add_to_cart : "Додати до картки", 
+			room_card_need_login : "Увійдіть щоб забронювати", 
+			order_card_from : "З: ",  
+			order_card_to : " До: ",
+			order_card_order : "Забронювати",
+			order_card_total_price : "Загальна сума : ",
+			order_card_uan : " Грн",
+			order_card_clear : "Очистити",
+			
+			
+		header_regist : "Реєстрація",
 		header_auth : "Увійти",
 		header_auth_close : "Закрити",
 		header_auth_forgot : "Забули пароль?",
