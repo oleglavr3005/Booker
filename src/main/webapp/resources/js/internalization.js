@@ -415,7 +415,7 @@ function changeLanguage(id, language){
 	changeLanguageOnServer(id, language);
 }
 
-function changeLanguageOnPage(){
+function changeLanguageOnPage(language){
 	changeLanguageOnTags(language);
 	changeLanguageOfErrors(language);
 	changeLanguageOfDataTooltip(language);

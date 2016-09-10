@@ -152,7 +152,25 @@
 	</section>
 	
 	<script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/internalization.js"></script>
-	<script>
-			changeLanguageOnPage('en');
-	</script>
+	<c:choose>
+		<c:when test="${user == null}">
+			<c:choose> 
+			<c:when test="${language == null}">
+				<script>
+					changeLanguageOnPage('en');
+				</script>
+			</c:when>
+			<c:otherwise>
+				<script>
+					changeLanguageOnPage('${language}');
+				</script>
+			</c:otherwise>
+			</c:choose>
+		</c:when>
+		<c:otherwise>
+			<script>
+				changeLanguageOnPage('${user.language}');
+			</script>
+		</c:otherwise>
+	</c:choose>
 	
