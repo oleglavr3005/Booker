@@ -197,7 +197,7 @@
 							<!-- DAYS COUNT -->
 
 							<div class="row">
-								<input id="days" value="${room.daysCount}" type="number"
+								<input id="days" <c:if test="${room.daysCount >= 0 }"> value="${room.daysCount}"</c:if> type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="days" min=1 max=365> <label
 									id="daysLbl" data-error="${fmtPeople}" for="days"><fmt:message
