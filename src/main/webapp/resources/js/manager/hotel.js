@@ -16,7 +16,6 @@ function initAutocomplete() {
 
 function createHotel() {
 //	var img = $('#photos').val() == '' ? 'new_hotel.jpg' : $('#photos').val();
-	alert($('#photos').val());
 	var img = $('#photos').val();
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
 	getInfoFromGoogle();
