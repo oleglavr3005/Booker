@@ -3,11 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
-<c:set var="language"
-	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
-	scope="session" />
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="com.i18n.text" />
+
 <html lang="en">
 
 <head>
@@ -171,11 +167,11 @@ div.material-table .table-footer .dataTables_length {
 			<div class="col s8 offset-s2">
 				<ul class="tabs" style="background: #638F98;">
 					<li class="tab col s3"><a class="active" href="#test1"
-						style="color: #1A3D44"><b><p id="tab_active">ACTIVE</p></b></a></li>
-					<li class="tab col s3"><a href="#test2" style="color: #1A3D44"><b><p
-									id="tab_ended">ENDED</p></b></a></li>
-					<li class="tab col s3"><a href="#test3" style="color: #1A3D44"><b><p
-									id="tab_all">ALL</p></b></a></li>
+						style="color: #1A3D44"><b><p id="tab_active"></p></b></a></li>
+					<li class="tab col s3"><a href="#test2" style="color: #1A3D44"><b>
+						<p id="tab_ended"></p></b></a></li>
+					<li class="tab col s3"><a href="#test3" style="color: #1A3D44"><b>
+						<p id="tab_all"></p></b></a></li>
 				</ul>
 			</div>
 			<!-- 			End of Tab Holder -->
@@ -188,18 +184,18 @@ div.material-table .table-footer .dataTables_length {
 						<table id="tab1" class="purchase-table">
 							<thead>
 								<tr>
-									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_id">ID</p></th>
-									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_date">HOTEL NAME</p></th>
-									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_room">ROOM_TYPE</p></th>
-									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_sdate">START_DATE</p></th>
-									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_edate">END_DATE</p></th>
-									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_price">PRICE</p></th>
+									<th style="text-align: center; border-radius: 0;">
+									<p id="tb_head_id"></p></th>
+									<th style="text-align: center; border-radius: 0;">
+									<p id="tb_head_name"></p></th>
+									<th style="text-align: center; border-radius: 0;">
+									<p id="tb_head_room"></p></th>
+									<th style="text-align: center; border-radius: 0;">
+									<p id="tb_head_sdate"></p></th>
+									<th style="text-align: center; border-radius: 0;">
+									<p id="tb_head_edate"></p></th>
+									<th style="text-align: center; border-radius: 0;">
+									<p id="tb_head_price"></p></th>
 									<th style="text-align: center; border-radius: 0;"></th>
 								</tr>
 							</thead>
@@ -273,17 +269,17 @@ div.material-table .table-footer .dataTables_length {
 							<thead>
 								<tr>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_id">ID</p></th>
+											id="tb_head_id"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_date">HOTEL NAME</p></th>
+											id="tb_head_name"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_room">ROOM_TYPE</p></th>
+											id="tb_head_room"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_sdate">START_DATE</p></th>
+											id="tb_head_sdate"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_edate">END_DATE</p></th>
+											id="tb_head_edate"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_price">PRICE</p></th>
+											id="tb_head_price"></p></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -351,17 +347,17 @@ div.material-table .table-footer .dataTables_length {
 									<th style="text-align: center; border-radius: 0;"><p
 											id="tb_head_id">ID</p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_date">HOTEL NAME</p></th>
+											id="tb_head_name"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_room">ROOM_TYPE</p></th>
+											id="tb_head_room"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_sdate">START_DATE</p></th>
+											id="tb_head_sdate"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_edate">END_DATE</p></th>
+											id="tb_head_edate"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_price">PRICE</p></th>
+											id="tb_head_price"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_status">STATUS</p></th>
+											id="tb_head_status"></p></th>
 									<th style="text-align: center; border-radius: 0;"></th>
 								</tr>
 							</thead>
