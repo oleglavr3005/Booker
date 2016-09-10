@@ -34,7 +34,7 @@ public class OrdersServlet extends HttpServlet {
 		Date currentDate = new Date();
 		for (OrderDto order : activeOrders) {
 			Timestamp startDate = order.getStartDate();
-			if (startDate.getTime() > currentDate.getTime()) {
+			if (startDate.getTime() < currentDate.getTime()) {
 				order.setStatus(OrderStatus.FINISHED);
 				orderService.updateOrder(order);
 			}
