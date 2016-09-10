@@ -3,11 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
-<c:set var="language"
-	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
-	scope="session" />
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="com.i18n.text" />
+
 <html lang="en">
 
 <head>
@@ -138,7 +134,7 @@ div #sidebar-wrapper {
 					<input id="hotId" name=hotelId type="hidden" value="${hotel.id}" />
 					<a class="waves-effect waves-light btn" id="create_room_button"
 						href="${pageContext.servletContext.contextPath}/cabinet/create_room"
-						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span id="btn_create_room">CREATE_ROOM</span></a>
+						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span id="btn_create_room"></span></a>
 
 
 					<script>
@@ -178,7 +174,7 @@ div #sidebar-wrapper {
 								value="${hotel.stars}" class="rating" min=0 max=5 step=1
 								data-size="xs" data-stars="5"> <span
 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><span
-									id="manager_hotel_star"></span> STAR : <span id="rate_span">0</span>
+									id="manager_hotel_star"></span><span id="rate_span">0</span>
 								/ 5 |</span>
 							<script>
 								function rate() {
@@ -298,10 +294,11 @@ div #sidebar-wrapper {
 			<div id="admin" class="col s12">
 				<div class="card material-table">
 					<div class="table-header">
-						<span class="table-title" id="room_header">Rooms</span>
+						<span class="table-title" id="room_header"></span>
 						<div class="actions">
-							<a href="${pageContext.servletContext.contextPath}/cabinet/create_room"
-								class="my-btn waves-effect waves-light btn" style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">Create Room</a>
+							<a href="${pageContext.servletContext.contextPath}/cabinet/create_room" 
+								class="my-btn waves-effect waves-light btn" style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+								<span id="btn_create_room"></span></a>
 								 <button
 								class="search-toggle waves-effect btn-flat nopadding" style="margin-left: 10px;"><i
 								class="material-icons">search</i></button>

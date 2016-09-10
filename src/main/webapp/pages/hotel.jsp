@@ -245,7 +245,7 @@ div #sidebar-wrapper {
 						</h5>
 					</div>
 					<div class="col s4 offset-s1" style="margin-top: 15px;">
-						<a class="tooltipped" data-position="icon" data-tooltip="Stars"
+						<a id="index_search_stars" class="tooltipped" data-position="icon" data-tooltip=""
 							style="color: #0d0d0d;"> <c:forEach var="i" begin="1"
 								end="${hotel.stars}">
 								<i class="fa fa-lg fa-star" aria-hidden="true"></i>
@@ -256,7 +256,7 @@ div #sidebar-wrapper {
 					</div>
 				</div>
 				<div class="row">
-					<a class="tooltipped" data-position="icon" data-tooltip="Location"
+					<a id="index_search_location" class="tooltipped" data-position="icon" data-tooltip=""
 						style="color: #0d0d0d; text-decoration: none;"><i
 						class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a> <a
 						id="hotel_map_button" class="tooltipped" data-position="icon"
@@ -265,8 +265,8 @@ div #sidebar-wrapper {
 				</div>
 
 				<div class="row" style="margin-bottom: 5px">
-					<a class="tooltipped" data-position="icon"
-						data-tooltip="Description" style="color: #0d0d0d; cursor: default"><i
+					<a id="index_search_description" class="tooltipped" data-position="icon"
+						data-tooltip="" style="color: #0d0d0d; cursor: default"><i
 						class="material-icons invert" style="font-size: 20px;">receipt</i></a>
 					<span>${hotel.desc}</span>
 				</div>

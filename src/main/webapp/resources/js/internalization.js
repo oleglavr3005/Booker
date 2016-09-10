@@ -57,7 +57,6 @@
 		index_search_name : "Destination/Hotel Name:",
 		index_search_start : "Start date",
 		index_search_end : "End date",
-		index_search_price : "Stars",
 		index_search_price_2 : "Price",
 		index_search_ppl : "Guests",
 		index_search_button : "Search",
@@ -175,7 +174,7 @@
 		admin_edit_phone : "Phone",
 		admin_edit_desc : "Description",	
 		admin_edit_city : "City",
-		manager_hotel_star : "Stars number",
+		manager_hotel_star : " Stars number : ",
 		
 		room_header : "Rooms",
 		room_type: "Type", 
@@ -344,7 +343,7 @@
 		admin_edit_phone : "Телефон",
 		admin_edit_desc : "Опис",
 		admin_edit_city : "Місто",
-		manager_hotel_star : "К-сть зірок",
+		manager_hotel_star : " К-сть зірок : ",
 		
 		room_header : "Кімнати",
 		room_type: "Тип", 
@@ -410,6 +409,9 @@
 			index_room_pool : "Басейн",
 			index_room_gym : "Тренажерний зал",
 			index_room_balcony : "Балкон",
+			index_search_stars : "Зірки",
+			index_search_location : "Розташування",
+			index_search_description : "Опис",
 		},
 		en : {
 			index_room_wifi : "Wifi",
@@ -419,6 +421,9 @@
 			index_room_pool : "Swiming pool",
 			index_room_gym : "Fit gym",
 			index_room_balcony : "Balcony",
+			index_search_stars : "Stars",
+			index_search_location : "Location",
+			index_search_description : "Description",
 		}
 	};
 	
@@ -456,7 +461,7 @@ function changeLanguageOfErrors(language){
 		if(prop == language){
 			languages.error.current = languages.error[prop];
 			for ( var idElement in languages.error[prop]){
-				$("#" + idElement).html(languages.error[prop][idElement]);
+				$("#" + idElement).attr('data-error', languages.error[prop][idElement]);
 			}
 			break;
 		}
