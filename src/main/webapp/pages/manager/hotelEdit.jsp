@@ -135,13 +135,11 @@ div #sidebar-wrapper {
 							name="isDeleted" /> <label for="isDeleted">DELETED</label>
 					</p>
 
-					<form id="myForm" action="../create_room" method="post">
-						<input id="hotId" name=hotelId type="hidden" value="${hotel.id}" />
-						<a class="waves-effect waves-light btn" id="create_room_button"
-							<%-- 					href="${pageContext.servletContext.contextPath}/cabinet/create_room" --%>
-						onclick="redirect(${hotel.id})"
-							style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>CREATE_ROOM</span></a>
-					</form>
+					<input id="hotId" name=hotelId type="hidden" value="${hotel.id}" />
+					<a class="waves-effect waves-light btn" id="create_room_button"
+						href="${pageContext.servletContext.contextPath}/cabinet/create_room"
+						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>CREATE_ROOM</span></a>
+
 
 					<script>
 						$('#isDeleted').attr('checked',
@@ -203,7 +201,8 @@ div #sidebar-wrapper {
 							<!-- 						ADDRESS -->
 							<div class="input-field">
 								<input id="address" type="text" class="validate" length="145"
-									placeholder="Address of hotel" value="${hotel.city} ${hotel.street}"> <label
+									placeholder="Address of hotel"
+									value="${hotel.city} ${hotel.street}"> <label
 									id="cityLbl" data-error="${fmtName}" for="city"><fmt:message
 										key="admin.edit.city" /></label>
 							</div>
@@ -271,14 +270,15 @@ div #sidebar-wrapper {
 
 		<div class="row">
 			<div class="col s3 offset-s3">
-			
+
 				<a class="my-btn waves-effect waves-light btn"
 					style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
 					onclick="pushInput()">ADD_IMAGE </a>
-			
+
 				<!-- 				INPUT -->
-				<input multiple style="margin-top: 60px" type="file" id="imgInput"
-					onchange="updateHotelPhotos(${hotel.id})" accept="image/*" style="display:none" />
+				<input multiple style="margin-top: 60px; display: none" type="file"
+					id="imgInput" onchange="updateHotelPhotos(${hotel.id})"
+					accept="image/*" />
 				<!-- 				END OF INPUT -->
 
 			</div>
@@ -402,7 +402,9 @@ div #sidebar-wrapper {
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/image.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/hotelEdit.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU&libraries=places&callback=initAutocomplete" async defer></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU&libraries=places&callback=initAutocomplete"
+		async defer></script>
 	<script>
 	$(document).ready(function(){
 	    $('.tooltipped').tooltip({delay: 50,position: 'top'});

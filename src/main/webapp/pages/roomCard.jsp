@@ -99,43 +99,46 @@ b {
 					<div class="col s3">
 						<div class="row" style="float: right; text-align:right; font-size:0.3rem">
 							<c:if test="${room.wifi == true}">
-								<a class="tooltipped" data-position="icon" data-tooltip="Wifi"
-									style="color: #0d0d0d;"><i class="material-icons invert">wifi</i></a>
+								<a  class="tooltipped" data-position="icon" data-tooltip="Wifi"
+									style="color: #0d0d0d;"><i id="index_room_wifi" class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.shower == true}">
-								<a class="tooltipped" data-position="icon" data-tooltip="Shower"><img
-									class="invert" style="max-width: 10%; margin-top:-1.5rem"
-									src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
+								<a id="index_room_shower" class="tooltipped" data-position="icon" data-tooltip="Shower"><img
+									class="invert" style="max-width: 10%; margin-top:-1.5rem" id="index_room_shower" 
+									src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" />
+									</a>
 							</c:if>
 
 							<c:if test="${room.parking == true}">
 								<a class="tooltipped" data-position="icon"
-									data-tooltip="Parking" style="color: #0d0d0d;"><i
-									class="material-icons invert">local_parking</i></a>
+									data-tooltip="Parking" style="color: #0d0d0d;"><i id="index_room_parking" 
+									class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.condition == true}">
 								<a class="tooltipped" data-position="icon"
-									data-tooltip="Condition" style="color: #0d0d0d;"><i
-									class="material-icons invert">toys</i></a>
+									data-tooltip="Condition" style="color: #0d0d0d;"><i id="index_room_conditioner" 
+									class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.pool == true}">
 								<a class="tooltipped" data-position="icon" data-tooltip="Pool"
-									style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
+									style="color: #0d0d0d;"><i id="index_room_pool" class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.gym == true}">
-								<a class="tooltipped" data-position="icon" data-tooltip="Gym"
-									style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
+								<a id="index_room_gym" class="tooltipped" data-position="icon" data-tooltip="Gym"
+									style="color: #0d0d0d;"><i class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.balcony == true}">
 								<a class="tooltipped" data-position="icon"
 									data-tooltip="Balcony"><img class="invert"
 									style="max-width: 10%; margin-top:-1.5rem"
-									src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
+									src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" />
+										<span id="index_room_balcony"></span>
+									</a>
 							</c:if>
 						</div>
 					</div>
@@ -144,19 +147,17 @@ b {
 				<c:if test="${user != null}">
 					<div class="row">
 						<div class="col s3 offset-s8" id="cont"></div>
-
 						<c:if test="${startDate != null}">
 							<div class="col s2 offset-s10" style="float: right">
 								<a id="btn${room.id}" class="waves-effect waves-light btn"
 									onclick="addToCart(${room.id})"
-									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>ADD
-										TO CART</span></a>
+									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+									<span id="room_card_add_to_cart"></span></a>
 							</div>
 						</c:if>
 
 						<c:if test="${startDate == null}">
-							<div id="hiddenError" class="col s2 offset-s6">ERROR
-								WITH INFO</div>
+							<div id="hiddenError" class="col s2 offset-s6"></div>
 						</c:if>
 
 
@@ -166,8 +167,8 @@ b {
 					<div class="row">
 						<div class="col s2" style="float: right">
 							<a class="waves-effect waves-light btn" disabled
-								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>U
-									NEED 2 LOGIN</span></a>
+								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+								<span id="room_card_need_login"></span></a>
 						</div>
 					</div>
 				</c:if>

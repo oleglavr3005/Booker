@@ -30,9 +30,6 @@
 	media="screen,projection" />
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/languages.min.css">
-<link
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
-	rel="stylesheet">
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 <link
