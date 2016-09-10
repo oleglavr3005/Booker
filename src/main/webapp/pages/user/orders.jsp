@@ -29,7 +29,7 @@
 
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/materialize/css/materialize.min.css"
-	media="screen,projection" /> 
+	media="screen,projection" />
 
 
 <link rel="stylesheet"
@@ -123,27 +123,27 @@ div #sidebar-wrapper {
 .well {
 	padding: 0px;
 }
+
 div .table-footer {
-  height: 56px;
-  padding-left: 24px;
-  padding-right: 14px;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-justify-content: flex-end;
-  justify-content: flex-end;
-  -webkit-align-items: center;
-  align-items: center;
-  font-size: 12px !important;
-  color: rgba(0, 0, 0, 0.54);
+	height: 56px;
+	padding-left: 24px;
+	padding-right: 14px;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	-webkit-justify-content: flex-end;
+	justify-content: flex-end;
+	-webkit-align-items: center;
+	align-items: center;
+	font-size: 12px !important;
+	color: rgba(0, 0, 0, 0.54);
 }
 
 div.material-table .table-footer .dataTables_length {
-  display: -webkit-flex;
-  display: flex;
+	display: -webkit-flex;
+	display: flex;
 }
-
 </style>
 
 </head>
@@ -162,7 +162,7 @@ div.material-table .table-footer .dataTables_length {
 	<div class="container">
 
 		<h4 style="text-align: center; margin-top: 20px;">
-			<fmt:message key="subscribes.header" />
+			<span id="subscribes_header"></span>
 		</h4>
 
 		<div class="row">
@@ -232,8 +232,9 @@ div.material-table .table-footer .dataTables_length {
 										<td style="text-align: center;"><a
 											class="my-btn waves-effect waves-light btn"
 											style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-											onclick="removeOrderTable(${activeOrder.id})"><fmt:message
-													key="subscribes.table.remove" /> </a></td>
+											onclick="removeOrderTable(${activeOrder.id})"> <span
+												id="subscribes_table_remove"></span>
+										</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -256,7 +257,7 @@ div.material-table .table-footer .dataTables_length {
 					</c:when>
 					<c:otherwise>
 						<h5 style="color: red; margin-top: 55px; margin-left: 250px;">
-							<fmt:message key="subscribes.empty" />
+							<span id="subscribes_empty"></span>
 						</h5>
 					</c:otherwise>
 				</c:choose>
@@ -314,7 +315,7 @@ div.material-table .table-footer .dataTables_length {
 								</c:forEach>
 							</tbody>
 						</table>
-					<!-- 	<div class="pager" id="pager2">
+						<!-- 	<div class="pager" id="pager2">
 							<form>
 								<img src="first.png" class="first" /> <img src="prev.png"
 									class="prev" /> <span class="pagedisplay"></span>
@@ -332,7 +333,7 @@ div.material-table .table-footer .dataTables_length {
 					</c:when>
 					<c:otherwise>
 						<h5 style="color: red; margin-top: 55px; margin-left: 250px;">
-							<fmt:message key="subscribes.empty" />
+							<span id="subscribes_empty"></span>
 						</h5>
 					</c:otherwise>
 				</c:choose>
@@ -393,23 +394,24 @@ div.material-table .table-footer .dataTables_length {
 										<c:choose>
 											<c:when test="${allOrder.status == 'ACTIVE'}">
 												<td class="lalign"
-													style="text-align: center; color: #70C67C"><fmt:message
-														key="card.status.active" /></td>
+													style="text-align: center; color: #70C67C"><span
+													id="card_status_active"></span></td>
 												<td style="text-align: center;"><a
 													class="my-btn waves-effect waves-light btn"
 													style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-													onclick="removeOrderTable(${allOrder.id})"><fmt:message
-															key="subscribes.table.remove" /> </a></td>
+													onclick="removeOrderTable(${allOrder.id})"> <span
+														id="subscribes_table_remove"></span>
+												</a></td>
 											</c:when>
 											<c:when test="${allOrder.status == 'CANCELED'}">
-												<td style="text-align: center; color: #666666"><fmt:message
-														key="card.status.removed" /></td>
+												<td style="text-align: center; color: #666666"><span
+													id="card_status_removed"></span></td>
 
 												<td style="text-align: center; color: #F55151"><b></b></td>
 											</c:when>
 											<c:otherwise>
-												<td style="text-align: center; color: #F55151"><fmt:message
-														key="card.status.ended" /></td>
+												<td style="text-align: center; color: #F55151"><span
+													id="card_status_ended"></span></td>
 												<td style="text-align: center; color: #F55151"><b></b></td>
 											</c:otherwise>
 										</c:choose>
@@ -417,7 +419,7 @@ div.material-table .table-footer .dataTables_length {
 								</c:forEach>
 							</tbody>
 						</table>
-				<!-- 		<div class="pager" id="pager3">
+						<!-- 		<div class="pager" id="pager3">
 							<form>
 								<img src="first.png" class="first" /> <img src="prev.png"
 									class="prev" /> <span class="pagedisplay"></span>
@@ -435,7 +437,7 @@ div.material-table .table-footer .dataTables_length {
 					</c:when>
 					<c:otherwise>
 						<h5 style="color: red; margin-top: 55px; margin-left: 250px;">
-							<fmt:message key="subscribes.empty" />
+							<span id="subscribes_empty"></span>
 						</h5>
 					</c:otherwise>
 				</c:choose>
@@ -448,7 +450,7 @@ div.material-table .table-footer .dataTables_length {
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="../foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
-<!--  
+	<!--  
 	<script type="text/javascript">
 $(document).ready(function() 
 	    { 	
@@ -484,8 +486,8 @@ $(document).ready(function()
 </script>
 
  -->
- 	<script src="//code.jquery.com/jquery-1.12.3.js"></script>
- 	<script
+	<script src="//code.jquery.com/jquery-1.12.3.js"></script>
+	<script
 		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
 	<script type="text/javascript">
@@ -773,7 +775,7 @@ $(document).ready(function()
 								});
 			});
 	</script>
- 
+
 
 	<!--  <script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script>
