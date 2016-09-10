@@ -446,7 +446,7 @@ function changeLanguageOfDataTooltip(language){
 	for ( var prop in languages) {
 		if(prop == language){
 			for ( var idElement in languages.data_tooltip[prop]){
-				$("#" + idElement).attr('date-tooltip', languages.data_tooltip[prop][idElement]);
+				$("#" + idElement).attr('data-tooltip', languages.data_tooltip[prop][idElement]);
 			}
 			break;
 		}
