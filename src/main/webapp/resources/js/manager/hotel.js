@@ -16,6 +16,7 @@ function initAutocomplete() {
 
 function createHotel() {
 //	var img = $('#photos').val() == '' ? 'new_hotel.jpg' : $('#photos').val();
+	alert($('#photos').val());
 	var img = $('#photos').val();
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
 	getInfoFromGoogle();
@@ -150,7 +151,7 @@ function invalid(field) {
 }
 
 function nameIsValid(name) {
-	if (name.length >= 2 && name.length <= 45 && engLetIsValid(name)) {
+	if (name.length >= 2 && name.length <= 45 && textIsValid(name)) {
 		valid('name');
 		return true;
 	} else {
