@@ -141,10 +141,7 @@ img.logo {
 <!-- 								<i class="fa fa-sign-in" aria-hidden="true"></i></a></li> -->
 					</c:when>
 					<c:otherwise>
-						<script type="text/javascript"
-							src="${pageContext.servletContext.contextPath}/resources/js/registration/registration.js"></script>
-						<script type="text/javascript"
-							src="${pageContext.servletContext.contextPath}/resources/js/authorization/authorization.js"></script>
+						
 
 						<li><a class="modal-trigger" href="#signupModal">
 						<span id="header_regist"> </span></a>
@@ -306,3 +303,9 @@ img.logo {
 		$("#wrapper").toggleClass("toggled");
 	});
 </script>
+
+
+<script type="text/javascript"
+							src="${pageContext.servletContext.contextPath}/resources/js/registration/registration.js"></script>
+						<script type="text/javascript"
+							src="${pageContext.servletContext.contextPath}/resources/js/authorization/authorization.js"></script>
