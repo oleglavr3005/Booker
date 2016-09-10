@@ -16,6 +16,8 @@
 		admin_page_reqDate : "reqDate",
 		admin_page_message : "Message",
 		
+		request_approve : "APPROVE",
+		request_decline : "DECLINE",
 			
 		header_dropdown_shopping_cart : " Shоpping cart",	
 		header_dropdown_orders : " My оrders",
