@@ -66,4 +66,13 @@ public class StringUtil {
 			return false;
 		}
 	}
+
+	public static boolean isDouble(String stringToCheck) {
+		try {
+			Double.parseDouble(stringToCheck);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 }
