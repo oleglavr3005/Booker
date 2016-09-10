@@ -4,8 +4,6 @@
 <%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="com.i18n.text" />
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/fontawesome/css/font-awesome.min.css">
 
@@ -44,41 +42,36 @@ b {
 
 	<div id="hotel_card_${order.id}" class="col s10 offset-s1">
 		<div class="card">
-
 			<div class="container-fluid">
 				<div class="row" style="margin-top: 15px; margin-bottom: 10px;">
-
 					<div class="card-image col s4" style="position: relative;">
 						<a><img src="<i:urlToImage url="${order.room.photo}" />"
 							style="height: 170px; width: 200px; padding: 10px;"> </a>
-
 					</div>
 
 					<div class="col s8">
 						<div class="row" style="margin-bottom: 0px;">
 							<div class="col s7">
-
 								<div class="row" style="margin-top: 15px;">
 									<div class="col s5">
-										<a
-											href="${pageContext.servletContext.contextPath}/hotel/${order.hotel.id}">${order.hotel.name}</a>
+										<a href="${pageContext.servletContext.contextPath}/hotel/${order.hotel.id}">${order.hotel.name}</a>
 									</div>
 									<div class="col s5 offset-s1">${order.room.type}</div>
 								</div>
-
 								<div class="row" style="margin-top: 15px;">
 									<div>
 										<a class="tooltipped" data-position="icon"
 											data-tooltip="StartDate" style="color: #0d0d0d;"><i
 											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
-										From: <span id="start_date${order.id}">${order.startDate}</span>
+										<span id="order_card_from">
+										<span id="start_date${order.id}">${order.startDate}</span>
 									</div>
-
 									<div>
 										<a class="tooltipped" data-position="icon"
-											data-tooltip="EndDate" style="color: #0d0d0d;"><i
-											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
-										To: <span id="end_date${order.id}">${order.endDate}</span>
+											data-tooltip="EndDate" style="color: #0d0d0d;">
+											<i class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
+										<span id="order_card_to"> </span>
+										<span id="end_date${order.id}">${order.endDate}</span>
 									</div>
 									<script type="text/javascript"
 										src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
