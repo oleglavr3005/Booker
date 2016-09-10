@@ -1,16 +1,24 @@
 package com.epam.task.servlets.manager;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.epam.task.database.model.Hotel;
+import com.epam.task.database.model.Order;
 import com.epam.task.database.model.Room;
 import com.epam.task.database.model.RoomPhoto;
+import com.epam.task.database.model.User;
+import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.RoomPhotoService;
 import com.epam.task.database.service.RoomService;
+import com.epam.task.database.service.UserService;
+import com.epam.task.util.MailSender;
 import com.epam.task.util.StringUtil;
 
 @WebServlet("/add_room")
@@ -48,12 +56,15 @@ public class AddRoomServlet extends HttpServlet {
 				
 		String roomImagesString = request.getParameter("roomImages");
 		
+		String sendNotifString = request.getParameter("sendNotif");
+		
 		if (hotelIdString == null || number == null || type == null || doubleBedsCountString == null || bedsCountString == null ||
 				priceString == null || food == null || roomImagesString == null || freeBookString == null ||
 				!StringUtil.isPositiveInteger(hotelIdString) || !StringUtil.isPositiveInteger(doubleBedsCountString) || !StringUtil.isPositiveInteger(bedsCountString) ||
 				!StringUtil.isPositiveInteger(priceString) || !StringUtil.isBoolean(freeBookString) ||
 				!(type.equalsIgnoreCase("STANDART") || type.equalsIgnoreCase("LUX") || type.equalsIgnoreCase("DELUX")) || 
-				!(food.equalsIgnoreCase("NONE") || food.equalsIgnoreCase("BREAKFAST") || food.equalsIgnoreCase("TWICE") || food.equalsIgnoreCase("FULL")) ) {
+				!(food.equalsIgnoreCase("NONE") || food.equalsIgnoreCase("BREAKFAST") || food.equalsIgnoreCase("TWICE") || food.equalsIgnoreCase("FULL")) ||
+				!StringUtil.isBoolean(sendNotifString)) {
 			response.sendError(500);
 			return;
 		}
@@ -101,6 +112,25 @@ public class AddRoomServlet extends HttpServlet {
 			for (int i = 0; i < roomImagesArray.length; i++) {
 				roomPhotoService.insertRoomPhoto(new RoomPhoto(0, roomImagesArray[i], "", roomId));
 			}
+			
+			if(Boolean.parseBoolean(sendNotifString)) {
+				List<User> usersEmail = new UserService().getAllUsersWithEmailNotificationInHotel(hotelId);
+				List<User> usersPhone = new UserService().getAllUsersWithPhoneNotificationInHotel(hotelId);
+
+				for(User user : usersEmail) {
+					new Thread(new Runnable() {
+
+						@Override
+						public void run() {
+							sendMail(user, hotelId, roomId);
+						}
+					}).start();
+				}
+
+				for(User user : usersPhone) {
+					//send sms
+				}
+			}
 		}
 		
 		response.getWriter().write(roomId > 0 ? ""+roomId : "error");
@@ -110,4 +140,13 @@ public class AddRoomServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	private void sendMail(User user, int hotelId, int roomId) {
+		Hotel hotel = new HotelService().getHotelById(hotelId);
+		Room room = new RoomService().getRoomById(roomId);
+		
+		String subject = "A new room was created in " + hotel.getName() + "!";
+		String text = "Check out new room, dude";
+
+		MailSender.send(subject, text, user.getEmail());
+	}
 }
