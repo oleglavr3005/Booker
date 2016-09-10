@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="language"
 	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
 	scope="session" />
@@ -113,40 +113,36 @@ div #sidebar-wrapper {
 
 	<input id="lang" type="hidden" value="${language}" />
 
-<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
-<div id="blueimp-gallery" class="blueimp-gallery">
-    <!-- The container for the modal slides -->
-    <div class="slides"></div>
-    <!-- Controls for the borderless lightbox -->
-    <h3 class="title"></h3>
-    <a class="prev">‹</a>
-    <a class="next">›</a>
-    <a class="close">×</a>
-    <a class="play-pause"></a>
-    <ol class="indicator"></ol>
-    <!-- The modal dialog, which will be used to wrap the lightbox content -->
-    <div class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title"></h4>
-                </div>
-                <div class="modal-body next"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left prev">
-                        <i class="glyphicon glyphicon-chevron-left"></i>
-                        Previous
-                    </button>
-                    <button type="button" class="btn btn-primary next">
-                        Next
-                        <i class="glyphicon glyphicon-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+	<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+	<div id="blueimp-gallery" class="blueimp-gallery">
+		<!-- The container for the modal slides -->
+		<div class="slides"></div>
+		<!-- Controls for the borderless lightbox -->
+		<h3 class="title"></h3>
+		<a class="prev">‹</a> <a class="next">›</a> <a class="close">×</a> <a
+			class="play-pause"></a>
+		<ol class="indicator"></ol>
+		<!-- The modal dialog, which will be used to wrap the lightbox content -->
+		<div class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" aria-hidden="true">&times;</button>
+						<h4 class="modal-title"></h4>
+					</div>
+					<div class="modal-body next"></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default pull-left prev">
+							<i class="glyphicon glyphicon-chevron-left"></i> Previous
+						</button>
+						<button type="button" class="btn btn-primary next">
+							Next <i class="glyphicon glyphicon-chevron-right"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Header ========================================================================= -->
 	<jsp:include page="/pages/header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
@@ -155,274 +151,236 @@ div #sidebar-wrapper {
 
 		<div class="row" style="margin-top: 20px;">
 
-		<div id="links">
-			<div class="row">
-				<div class="col s4">
-					<c:if test="${fn:length(hotel.photos) == 0}">
-						<a
-							href="<i:urlToImage url="no.jpg" />"
-							title="No image"
-							data-gallery> <img
-							src="<i:urlToImage url="no.jpg" />"
-							alt="No image">
-						</a>
-					</c:if>
-					<c:if test="${fn:length(hotel.photos) != 0}">
-						<a href='<i:urlToImage url="${hotel.photos[0].img}" />'
-							data-gallery>
-							<img src="<i:urlToImage url="hotel.photos[0].img" />">
-						</a>
+			<div id="links">
+				<div class="row">
+					<div class="col s4">
+						<c:if test="${fn:length(hotel.photos) == 0}">
+							<a href="<i:urlToImage url="no.jpg" />" title="No image"
+								data-gallery> <img src="<i:urlToImage url="no.jpg" />"
+								alt="No image">
+							</a>
+						</c:if>
+						<c:if test="${fn:length(hotel.photos) != 0}">
+							<a href='<i:urlToImage url="${hotel.photos[0].img}" />'
+								data-gallery> <img
+								src="<i:urlToImage url="${hotel.photos[0].img}" />">
+							</a>
 
 
-						<div style="overflow-x: auto;">
-							<div style="margin: 10px; white-space: nowrap;">
-								<c:forEach items="${hotel.photos}" var="photo" begin="1">
-									<div style="display: inline-block;">
-										<a href='<i:urlToImage url="${photo.img}" />'
-											 data-gallery>
-											<img style="height: 60px;"
-											src="<i:urlToImage url="${photo.img}" />"
-											alt="<c:out value="${photo.id }"></c:out>">
-										</a>
-									</div>
-								</c:forEach>
+							<div style="overflow-x: auto;">
+								<div style="margin: 10px; white-space: nowrap;">
+									<c:forEach items="${hotel.photos}" var="photo" begin="1">
+										<div style="display: inline-block;">
+											<a href='<i:urlToImage url="${photo.img}" />' data-gallery>
+												<img style="height: 60px;"
+												src="<i:urlToImage url="${photo.img}" />"
+												alt="<c:out value="${photo.id }"></c:out>">
+											</a>
+										</div>
+									</c:forEach>
+								</div>
 							</div>
+						</c:if>
+					</div>
+
+
+					<div class="col s8">
+						<div class="container-fluid">
+
+							<!-- HOTEL NAME + ICONS -->
+							<div class="row" style="margin-bottom: 0;">
+								<div class="col s8">
+									<h5>
+										<a
+											href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"><c:out
+												value="${hotel.name}"></c:out></a>
+									</h5>
+								</div>
+
+								<div class="col s4"
+									style="padding-left: 0px; padding-right: 0px;">
+									<c:if test="${room.wifi == true}">
+										<div class="col s1"
+											style="margin-top: 10px; width: 24px; cursor: default;">
+											<a class="tooltipped" data-position="icon"
+												data-tooltip="Wifi" style="color: #0d0d0d;"><i
+												class="material-icons invert">wifi</i></a>
+										</div>
+									</c:if>
+
+									<c:if test="${room.shower == true}">
+										<div class="col s1"
+											style="margin-top: 10px; width: 32px; height: 32px;">
+											<a class="tooltipped" data-position="icon"
+												data-tooltip="Shower"><img class="invert"
+												style="max-width: 230%;"
+												src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
+										</div>
+									</c:if>
+
+									<c:if test="${room.parking == true}">
+										<div class="col s1"
+											style="margin-top: 10px; width: 24px; cursor: default;">
+											<a class="tooltipped" data-position="icon"
+												data-tooltip="Parking" style="color: #0d0d0d;"><i
+												class="material-icons invert">local_parking</i></a>
+										</div>
+									</c:if>
+
+									<c:if test="${room.condition == true}">
+										<div class="col s1"
+											style="margin-top: 10px; width: 24px; cursor: default;">
+											<a class="tooltipped" data-position="icon"
+												data-tooltip="Condition" style="color: #0d0d0d;"><i
+												class="material-icons invert">toys</i></a>
+										</div>
+									</c:if>
+
+									<c:if test="${room.pool == true}">
+										<div class="col s1"
+											style="margin-top: 10px; width: 24px; cursor: default;">
+											<a class="tooltipped" data-position="icon"
+												data-tooltip="Pool" style="color: #0d0d0d;"><i
+												class="material-icons invert">pool</i></a>
+										</div>
+									</c:if>
+
+									<c:if test="${room.gym == true}">
+										<div class="col s1"
+											style="margin-top: 10px; width: 24px; cursor: default;">
+											<a class="tooltipped" data-position="icon" data-tooltip="Gym"
+												style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
+										</div>
+									</c:if>
+
+									<c:if test="${room.balcony == true}">
+										<div class="col s1"
+											style="margin-top: 10px; width: 32px; height: 32px;">
+											<a class="tooltipped" data-position="icon"
+												data-tooltip="Balcony"><img class="invert"
+												style="max-width: 230%;"
+												src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
+										</div>
+									</c:if>
+								</div>
+							</div>
+							<!-- END OF HOTEL NAME + ICONS -->
+
+
+							<!-- MAP MARKER -->
+							<div class="row">
+								<div class="col s12">
+									<a class="tooltipped" data-position="icon"
+										data-tooltip="Location" style="color: #0d0d0d;"><i
+										class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
+									<span>${hotel.city} ${hotel.street}</span>
+								</div>
+							</div>
+							<!-- END OF MAP MARKER -->
+
+
+							<!-- ROOM TYPE MARKER -->
+							<div class="row ">
+								<div class="col s12">
+									<h5 style="font-size: 1rem; margin: 0 0 0 0;">
+										@icon for Room type@ ROOM_TYPE :
+										<c:out value="${room.type }"></c:out>
+									</h5>
+								</div>
+							</div>
+							<!-- END OF ROOM TYPE MARKER -->
+
+							<!-- ORDER DATE MARKER -->
+							<div class="row ">
+								<div class="col s12">
+									<a class="tooltipped" data-position="icon"
+										data-tooltip="Order date" style="color: #0d0d0d;"><i
+										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
+									Order date <span id="order_date">${order.orderDate}</span>
+								</div>
+							</div>
+							<!-- END OF ORDER DATE MARKER -->
+
+							<!-- START DATE MARKER -->
+							<div class="row ">
+								<div class="col s12">
+									<a class="tooltipped" data-position="icon"
+										data-tooltip="Start date" style="color: #0d0d0d;"><i
+										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
+									From: <span id="start_date">${order.startDate}</span>
+								</div>
+							</div>
+							<!-- END OF START DATE MARKER -->
+
+							<!-- END DATE MARKER -->
+							<div class="row ">
+								<div class="col s12">
+									<a class="tooltipped" data-position="icon"
+										data-tooltip="End date" style="color: #0d0d0d;"><i
+										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
+									To: <span id="end_date">${order.endDate}</span>
+								</div>
+							</div>
+							<!-- END OF END DATE MARKER -->
+
+
+							<!-- ROW WITH STATUS | FOOD | PRICE -->
+							<div class="row ">
+								<div class="col s4">
+									<!-- 						TWO DIFFERENT ICONS IF.ACTIVE OR IF.FINISHED -->
+									<span>Status ${order.status}</span>
+								</div>
+								<div class="col s4" style="margin-bottom: 0;">
+									<a class="tooltipped" data-position="icon"
+										data-tooltip="Food type" style="color: #0d0d0d;"><i
+										class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span>
+								</div>
+								<div class="col s4">
+									<a class="tooltipped" data-position="icon" data-tooltip="Price"
+										style="color: #0d0d0d;"><i
+										class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${order.price}</span>
+									<c:if test="${room.daysCount == -1}">
+										<a class="tooltipped" data-position="icon"
+											data-tooltip="No deposit" style="color: #0d0d0d;"><i
+											class="fa fa-2x fa-exclamation-circle invert"
+											aria-hidden="true"></i></a>
+									</c:if>
+								</div>
+							</div>
+							<!-- END OF ROW WITH STATUS | FOOD | PRICE -->
+
+
+
+
 						</div>
-					</c:if>
+					</div>
 				</div>
-				
 
-			<div class="col s8">
-				<div class="container-fluid">
-
-					<!-- HOTEL NAME + ICONS -->
-					<div class="row" style="margin-bottom: 0;">
-						<div class="col s8">
-							<h5>
-								<a href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"><c:out value="${hotel.name}"></c:out></a>
-							</h5>
-						</div>
-
-						<div class="col s4" style="padding-left: 0px; padding-right: 0px;">
-							<c:if test="${room.wifi == true}">
-								<div class="col s1"
-									style="margin-top: 10px; width: 24px; cursor: default;">
-									<a class="tooltipped" data-position="icon" data-tooltip="Wifi"
-										style="color: #0d0d0d;"><i class="material-icons invert">wifi</i></a>
-								</div>
-							</c:if>
-
-							<c:if test="${room.shower == true}">
-								<div class="col s1"
-									style="margin-top: 10px; width: 32px; height: 32px;">
-									<a class="tooltipped" data-position="icon"
-										data-tooltip="Shower"><img class="invert"
-										style="max-width: 230%;"
-										src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
-								</div>
-							</c:if>
-
-							<c:if test="${room.parking == true}">
-								<div class="col s1"
-									style="margin-top: 10px; width: 24px; cursor: default;">
-									<a class="tooltipped" data-position="icon"
-										data-tooltip="Parking" style="color: #0d0d0d;"><i
-										class="material-icons invert">local_parking</i></a>
-								</div>
-							</c:if>
-
-							<c:if test="${room.condition == true}">
-								<div class="col s1"
-									style="margin-top: 10px; width: 24px; cursor: default;">
-									<a class="tooltipped" data-position="icon"
-										data-tooltip="Condition" style="color: #0d0d0d;"><i
-										class="material-icons invert">toys</i></a>
-								</div>
-							</c:if>
-
-							<c:if test="${room.pool == true}">
-								<div class="col s1"
-									style="margin-top: 10px; width: 24px; cursor: default;">
-									<a class="tooltipped" data-position="icon" data-tooltip="Pool"
-										style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
-								</div>
-							</c:if>
-
-							<c:if test="${room.gym == true}">
-								<div class="col s1"
-									style="margin-top: 10px; width: 24px; cursor: default;">
-									<a class="tooltipped" data-position="icon" data-tooltip="Gym"
-										style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
-								</div>
-							</c:if>
-
-							<c:if test="${room.balcony == true}">
-								<div class="col s1"
-									style="margin-top: 10px; width: 32px; height: 32px;">
-									<a class="tooltipped" data-position="icon"
-										data-tooltip="Balcony"><img class="invert"
-										style="max-width: 230%;"
-										src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
-								</div>
-							</c:if>
-						</div>
+				<div class="row">
+					<!-- 		here will be labedfor text area, comment ill be editable -->
+					<div class="col s7 offset-s1" style="border: 1px solid">${order.comment}</div>
+					<div class="col s4">
+						<c:if test="${order.status != ACTIVE}">
+							<div class="col s2 offset-s1"
+								style="margin-top: 18px; margin-left: 0;">
+								<%-- 						<a id="calceOrder" class="waves-effect waves-light btn" onclick="removeOrder(${order.id})" --%>
+								<%-- 							style="background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message --%>
+								<%-- 								key="Cancel" /></a> --%>
+							</div>
+						</c:if>
 					</div>
-					<!-- END OF HOTEL NAME + ICONS -->
-
-
-					<!-- MAP MARKER -->
-					<div class="row">
-						<div class="col s12">
-							<a class="tooltipped" data-position="icon" data-tooltip="Location"
-								style="color: #0d0d0d;"><i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
-							 <span>${hotel.city} ${hotel.street}</span>
-						</div>
-					</div>
-					<!-- END OF MAP MARKER -->
-
-
-					<!-- ROOM TYPE MARKER -->
-					<div class="row ">
-						<div class="col s12">
-							<h5 style="font-size: 1rem; margin: 0 0 0 0;">
-								@icon for Room type@ ROOM_TYPE :
-								<c:out value="${room.type }"></c:out>
-							</h5>
-						</div>
-					</div>
-					<!-- END OF ROOM TYPE MARKER -->
-
-					<!-- ORDER DATE MARKER -->
-					<div class="row ">
-						<div class="col s12">
-							<a class="tooltipped" data-position="icon" data-tooltip="Order date"
-								style="color: #0d0d0d;"><i class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
-							 Order date <span id="order_date">${order.orderDate}</span>
-						</div>
-					</div>
-					<!-- END OF ORDER DATE MARKER -->
-
-					<!-- START DATE MARKER -->
-					<div class="row ">
-						<div class="col s12">
-							<a class="tooltipped" data-position="icon" data-tooltip="Start date"
-								style="color: #0d0d0d;"><i class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
-							 From: <span id="start_date">${order.startDate}</span>
-						</div>
-					</div>
-					<!-- END OF START DATE MARKER -->
-
-					<!-- END DATE MARKER -->
-					<div class="row ">
-						<div class="col s12">
-							<a class="tooltipped" data-position="icon" data-tooltip="End date"
-								style="color: #0d0d0d;"><i class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
-							To: <span id="end_date">${order.endDate}</span>
-						</div>
-					</div>
-					<!-- END OF END DATE MARKER -->
-
-
-					<!-- ROW WITH STATUS | FOOD | PRICE -->
-					<div class="row ">
-						<div class="col s4">
-							<!-- 						TWO DIFFERENT ICONS IF.ACTIVE OR IF.FINISHED -->
-							<span>Status ${order.status}</span>
-						</div>
-						<div class="col s4" style="margin-bottom: 0;">
-							<a class="tooltipped" data-position="icon" data-tooltip="Food type"
-								style="color: #0d0d0d;"><i class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a>
-							<span>${room.food}</span>
-						</div>
-						<div class="col s4">
-							<a class="tooltipped" data-position="icon" data-tooltip="Price"
-								style="color: #0d0d0d;"><i class="fa fa-lg fa-money invert" aria-hidden="true"></i></a>
-							<span>${order.price}</span>
-							<c:if test="${room.daysCount == -1}">
-								<a class="tooltipped" data-position="icon" data-tooltip="No deposit"
-									style="color: #0d0d0d;"><i class="fa fa-2x fa-exclamation-circle invert" aria-hidden="true"></i></a>
-							</c:if>
-						</div>
-					</div>
-					<!-- END OF ROW WITH STATUS | FOOD | PRICE -->
-
-
-
 
 				</div>
-			</div>
-		</div>
 
-		<div class="row">
-<!-- 		here will be labedfor text area, comment ill be editable -->
-			<div class="col s7 offset-s1" style="border: 1px solid">${order.comment}</div>
-			<div class="col s4">
-				<c:if test="${order.status != ACTIVE}">
-					<div class="col s2 offset-s1"
-						style="margin-top: 18px; margin-left: 0;">
-<%-- 						<a id="calceOrder" class="waves-effect waves-light btn" onclick="removeOrder(${order.id})" --%>
-<%-- 							style="background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message --%>
-<%-- 								key="Cancel" /></a> --%>
-					</div>
-				</c:if>
+
 			</div>
 
 		</div>
-
-
 	</div>
-
-
-
 
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="/pages/foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
-
-	<div id="modal1" class="modal"
-		style="width: 25% !important; max-height: 40% !important">
-		<div class="modal-content">
-			<!-- 			<h4>VK auth</h4> -->
-			<p>
-				<img alt="Vk Log"
-					src="http://1863x.com/wp-content/uploads/2016/01/vk-vkontakte-logo-vk.jpg"
-					width="275px" height="200px;">
-			</p>
-			<div class="progress" style="width: 275px;">
-				<div class="indeterminate"></div>
-			</div>
-			<!-- 			<div class="modal-footer"> -->
-
-			<!-- 			</div> -->
-		</div>
-
-	</div>
-
-	<c:if test="${vkOAuth}">
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$(window).load(function() {
-
-					$('.modal-trigger').leanModal();
-					$('#modal1').openModal();
-
-					debugger;
-
-					var token = window.location.hash.substr(1);
-					$.post('vk_oauth', {
-						token : token.split("&")[0].split("=")[1],
-						user_id : token.split("&")[2].split("=")[1]
-					}, function() {
-						//NEED normal names
-						document.location.href = '/MainPage/';
-
-					});
-				});
-			});
-		</script>
-	</c:if>
-
-
 
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
