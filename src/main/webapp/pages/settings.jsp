@@ -105,13 +105,13 @@
 	<div class="container">
 
 		<h4 style="text-align: center; margin-top: 20px;">
-			<span id="settings_header"></span> 
+			<span id="settings_header"></span>
 		</h4>
 
 		<div class="row">
 
 			<!-- 			Tab Holder -->
-			<div class="col s8 offset-s2">
+			<div class="col s10 offset-s1">
 				<ul class="tabs" style="background: #638F98;">
 					<li class="tab col s3"><a class="active" href="#test1"
 						style="color: #1A3D44"><b><p id="tab_personal">PERSONAL</p></b></a></li>
@@ -128,76 +128,74 @@
 
 			<!-- 				Tab #1 -->
 			<div id="test1" class="col s12">
-				<div class="container">
+				<div class="container-fluid">
 					<div class="row settings-title">
-						<h4>
-							<span id="settings_header_PERSONAL"></span>
-						</h4>
+						<div class="col s6 offset-s3">
+							<h4>
+								<span id="settings_header_PERSONAL"></span>
+							</h4>
+						</div>
 					</div>
 
 					<div class="row">
 						<div class="col s4">
 							<a href="#!"><img id="avatarImg"
-								style="height: 100px; padding: 10px; width: 110px;"
-<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
+								style="height: 200px; padding: 10px; width: 290px;"
+								<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
 								src="<i:urlToImage url="${user.image}" />">
-								</a>
+							</a> <input style="margin-top: 60px; display: none" type="file"
+								id="avatarInput" onchange="showPhoto()" accept="image/*" />
 						</div>
-						<div class="col s8">
+						<div class="col s7 offset-s1">
 
-<!-- 							<div class="file-field input-field"> -->
-<!-- 								<div class="waves-effect waves-light btn"> -->
-									<input style="margin-top:60px; display: none" type="file" id="avatarInput"
-								onchange="showPhoto()" accept="image/*" />
-<!-- 								</div> -->
-<!-- 								<div class="file-path-wrapper"> -->
-<!-- 									<input class="file-path validate" type="text"> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-
-							
-						</div>
-					</div>
-
-					<div class="row fields">
-						<div class="input-field col s9">
-							<div class="ui pointing label">
-								<span id="settings_enter_name"></span>
+							<div class="row fields">
+								<div class="input-field col s10">
+									<div class="ui pointing label">
+										<span id="settings_enter_name"></span>
+									</div>
+									<input id="name" type="text" class="validate"
+										value="${user.firstName}" length="45"> <label
+										id="nameLbl" data-error="${fmtName}" for="name"> </label>
+								</div>
 							</div>
-							<input id="name" type="text" class="validate"
-								value="${user.firstName}" length="45"> <label
-								id="nameLbl" data-error="${fmtName}" for="name"> </label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s9">
-							<div class="ui pointing label">
-								<span id="settings_enter_surname"></span>
+							<div class="row">
+								<div class="input-field col s10">
+									<div class="ui pointing label">
+										<span id="settings_enter_surname"></span>
+									</div>
+									<input id="surname" type="text" class="validate"
+										value="${user.lastName}" length="45"> <label
+										id="surnameLbl" data-error="${fmtSurname}" for="surname"></label>
+								</div>
 							</div>
-							<input id="surname" type="text" class="validate"
-								value="${user.lastName}" length="45"> <label
-								id="surnameLbl" data-error="${fmtSurname}" for="surname"></label>
+
+
 						</div>
 					</div>
+
+
 
 					<div class="row" style="margin-top: 20px;">
-						<div class="col s3 offset-s7">
+						<div class="col s3 offset-s9">
 							<a id="savePersonal" class="waves-effect waves-light btn"
 								onclick="savePersonalData('${fmtMail}','${fmtMailExist}')"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-									id="settings_enter_save"></span> </a>
+								id="settings_enter_save"></span> </a>
 						</div>
 					</div>
 
 					<div class="divider"></div>
 
 					<div class="row" style="margin-bottom: 10px;">
-						<h4 id="pwd_title">
-							<span id="settings_header_pass"></span>
-						</h4>
+						<div class="col s6 offset-s3">
+							<h4 id="pwd_title">
+								<span id="settings_header_pass"></span>
+							</h4>
+						</div>
+
 					</div>
 					<div class="row inline field fields">
-						<div class="input-field col s9">
+						<div class="input-field col s8 offset-s2">
 							<div class="ui pointing label">
 								<span id="settings_enter_pass"></span>
 							</div>
@@ -207,7 +205,7 @@
 						</div>
 					</div>
 					<div class="row inline field fields">
-						<div class="input-field col s9">
+						<div class="input-field col s8 offset-s2">
 							<div class="ui pointing label">
 								<span id="settings_enter_passnew"></span>
 							</div>
@@ -217,7 +215,7 @@
 						</div>
 					</div>
 					<div class="row inline field fields">
-						<div class="input-field col s9">
+						<div class="input-field col s8 offset-s2">
 							<div class="ui pointing label">
 								<span id="settings_enter_passrepeat"></span>
 							</div>
@@ -231,7 +229,7 @@
 							<a id="savePassword" class="waves-effect waves-light btn"
 								onclick="savePassword('${fmtHeader}','${fmtSucces}')"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-									id="settings_save_pass"></span></a>
+								id="settings_save_pass"></span></a>
 						</div>
 					</div>
 				</div>
@@ -307,7 +305,7 @@
 							<a id="savePersonal" class="waves-effect waves-light btn"
 								onclick="saveContactData()"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-									id="settings_save_pass"></span></a>
+								id="settings_save_pass"></span></a>
 						</div>
 					</div>
 
@@ -324,7 +322,7 @@
 					<div class="container">
 						<div class="row settings-title">
 							<h4>
-								<span id="settings_header_MANAGE" ></span>
+								<span id="settings_header_MANAGE"></span>
 							</h4>
 						</div>
 
@@ -333,8 +331,7 @@
 								<div class="ui pointing label">
 									<span id="settings_enter_request"></span>
 								</div>
-								<textarea id="requestForm" class="materialize-textarea"
-									>${message}</textarea>
+								<textarea id="requestForm" class="materialize-textarea">${message}</textarea>
 							</div>
 						</div>
 
@@ -343,7 +340,7 @@
 								<a id="savePersonal" class="waves-effect waves-light btn"
 									onclick="createRequest()"
 									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-										id="settings_save_pass1"></span></a>
+									id="settings_save_pass1"></span></a>
 							</div>
 						</div>
 

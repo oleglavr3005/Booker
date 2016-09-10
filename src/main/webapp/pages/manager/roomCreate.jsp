@@ -13,7 +13,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>HOTEL LIST</title>
+<title>ROOM CREATE</title>
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -137,7 +137,8 @@
 					<label class="labelstyle"><fmt:message
 							key="roomCreate_hotel" /></label> <select id="hotel_name"
 						class="chosen-select optionstyle">
-						<option class="optionstyle" selected="selected" value="${hotels[0].id}">${hotels[0].name}</option>
+						<option class="optionstyle" selected="selected"
+							value="${hotels[0].id}">${hotels[0].name}</option>
 						<c:forEach var="hotel" items="${hotels}" begin="1">
 							<option class="optionstyle" value="${hotel.id}">${hotel.name}</option>
 						</c:forEach>
@@ -294,6 +295,12 @@
 									onclick="changeFreeBook()" name="freeBook" /> <label
 									for="freeBook">FREEBOOK</label>
 							</p>
+
+							<!-- 							SEND NOTIF -->
+							<p style="margin-top: 20px;">
+								<input type="checkbox" class="filled-in" id="sendNotif"
+									name="sendNotif" /> <label for="sendNotif">SEND NOTIF</label>
+							</p>
 							<script>
 								function changeFreeBook() {
 									var freeBook = document
@@ -324,7 +331,7 @@
 			<div class="col s10 offset-s1">
 				<a class="waves-effect waves-light btn" id="create_button"
 					onclick="createRoom()"
-					style="margin-left: 10px; text-align: center; width: 100%;margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>SAVE</span></a>
+					style="margin-left: 10px; text-align: center; width: 100%; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>SAVE</span></a>
 				<p id="create_error" style="color: red"></p>
 			</div>
 			<div class="col s1">.</div>
