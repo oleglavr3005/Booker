@@ -68,8 +68,6 @@ public class AddRoomServlet extends HttpServlet {
 			return;
 		}
 		
-		String[] roomImagesArray = roomImagesString.split(":::");
-		
 		int hotelId = Integer.parseInt(hotelIdString);
 		int doubleBedsCount = Integer.parseInt(doubleBedsCountString);
 		int bedsCount = Integer.parseInt(bedsCountString);
@@ -96,9 +94,11 @@ public class AddRoomServlet extends HttpServlet {
 		int roomId = new RoomService().insertRoom(new Room(0, hotelId, number, type, bedsCount, doubleBedsCount, price, 
 				hasWifi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, food, daysCount, percentage, false));
 
-		RoomPhotoService roomPhotoService = new RoomPhotoService();
-		if (roomId > 0) {
-			for (int i = 0; i<roomImagesArray.length; i++) {
+		if(roomImagesString.length() > 0 && roomId > 0) {
+			String[] roomImagesArray = roomImagesString.split(":::");
+			
+			RoomPhotoService roomPhotoService = new RoomPhotoService();
+			for (int i = 0; i < roomImagesArray.length; i++) {
 				roomPhotoService.insertRoomPhoto(new RoomPhoto(0, roomImagesArray[i], "", roomId));
 			}
 		}
