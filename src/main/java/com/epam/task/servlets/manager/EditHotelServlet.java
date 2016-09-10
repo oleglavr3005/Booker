@@ -33,7 +33,7 @@ public class EditHotelServlet extends HttpServlet {
 		if (hotelIdString == null || name == null || city == null || street == null || starsString == null || description == null ||
 				xCoordString == null || yCoordString == null || phoneNumber == null ||
 				!StringUtil.isPositiveInteger(hotelIdString) || !StringUtil.isInStarsRange(starsString) ||
-				!StringUtil.isNotNegativeDouble(xCoordString) || !StringUtil.isNotNegativeDouble(yCoordString)) {
+				!StringUtil.isDouble(xCoordString) || !StringUtil.isDouble(yCoordString)) {
 			response.sendError(500);
 			return;
 		}

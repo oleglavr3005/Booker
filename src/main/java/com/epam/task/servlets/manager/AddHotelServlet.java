@@ -38,7 +38,7 @@ public class AddHotelServlet extends HttpServlet {
 		if (name == null || city == null || street == null || starsString == null || description == null ||
 				xCoordString == null || yCoordString == null || phoneNumber == null || hotelImagesString == null ||
 				hotelImagesString.equals("error") || !StringUtil.isInStarsRange(starsString) || 
-				!StringUtil.isNotNegativeDouble(xCoordString) || !StringUtil.isNotNegativeDouble(yCoordString)) {
+				!StringUtil.isDouble(xCoordString) || !StringUtil.isDouble(yCoordString)) {
 			response.sendError(500);
 			return;
 		}
