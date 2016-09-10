@@ -96,10 +96,10 @@ div #sidebar-wrapper {
 	<jsp:include page="header.jsp"></jsp:include>
 
 
-<div style="background: url('https://cdn6.agoda.net/images/ABTest/ABTest5692/home-1920x590-liguria-italy.jpg'); height: 590px;">
+<div style="background: url('resources/images/helloPage.jpg'); height: 590px;">
 <div class="container">
 <div style="margin-top: 200px; ">
-  <div class="row" style="background-color: RGB(0, 0, 0);   opacity: .8; border-radius: 10px;">
+  <div class="row" style="background-color: #2b6d67;   opacity: .9; border-radius: 5px;">
          <form class="col s12" action="${pageContext.servletContext.contextPath}/search" method="POST">
            <div class="form-group" style="display:inline;">
             <div class="input-group col-md-12" >
