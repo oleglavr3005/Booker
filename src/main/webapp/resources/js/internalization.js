@@ -47,6 +47,20 @@
 		shopping_cart_modal_header : "THX FOR YOUR ORDER",
 		shopping_cart_click : "CLICK IF YOU WANT TO LOOK AT YOUR ORDER LIST : ",
 		
+		room_concret_deleted : "DELETED",
+		room_concret_save : "SAVE",
+		room_concret_freebook : "FREEBOOK",
+		
+		label_wifi : "WiFi",
+		label_shower : "Shower",
+		label_parking : "Parking",
+		label_condition : "Air condition",
+		label_pool : "Swiming pool",
+		label_gym : "Gym",
+		label_balcony : "Balcony",
+		
+		
+		
 		
 		
 		
@@ -430,6 +444,9 @@
 			startLbl : "fmtStart",
 			endLbl : "fmtEnd",
 			pplLbl : "fmtPeople",
+			daysLbl : "fmtPeople",
+			percentageLbl : "fmtPeople",
+			percentageLbl2 : "fmtPeople",
 		}
 	};
 	var data_tooltip = {
