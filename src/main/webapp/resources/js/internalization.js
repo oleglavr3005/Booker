@@ -18,6 +18,11 @@
 		
 		request_approve : "APPROVE",
 		request_decline : "DECLINE",
+		
+		manager_hotel_card_info : "INFO",
+		manager_hotel_card_edit : "EDIT",
+		manager_hotel_card_removed : "REMOVED",
+		manager_hotel_card_active : "ACTIVE",
 			
 		header_dropdown_shopping_cart : " Shоpping cart",	
 		header_dropdown_orders : " My оrders",
