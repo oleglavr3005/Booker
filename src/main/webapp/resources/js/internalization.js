@@ -1,7 +1,6 @@
 ﻿var languages = {};
 (function (){
 	var en = {
-	
 		header_dropdown_shopping_cart: " Shоpping cart",	
 		header_dropdown_orders : " My оrders",
 		header_dropdown_feedbacks : " My feedbacks",
@@ -50,13 +49,7 @@
 		index_room_type_food_breakfast : "Breakfast",
 		index_room_type_food_twice: "Twice",
 		index_room_type_food_full: "Full",
-		index_room_wifi : "Wifi",
-		index_room_shower : "Shower",
-		index_room_parking : "Parking",
-		index_room_conditioner : "Air conditioner",
-		index_room_pool : "Swiming pool",
-		index_room_gym : "Fit gym",
-		index_room_balcony : "Balcony",
+		
 		index_room_noDeposit : "No deposit",
 		hotel_option_star_asc : "Star asc",
 		hotel_option_star_desc : "Star desc",
@@ -238,14 +231,7 @@
 		index_room_type_food_breakfast : "Сніданок",
 		index_room_type_food_twice: "Сніданок і вечеря",
 		index_room_type_food_full: "Все включено",
-		index_room_wifi : "Wifi",
-		index_room_shower : "Душ",
-		index_room_parking : "Стоянка",
-		index_room_conditioner : "Кондиціонер",
-		index_room_pool : "Басейн",
-		index_room_gym : "Тренажерний зал",
-		index_room_balcony : "Балкон",
-		
+				
 		map_button : "Карта", 
 		search : "Пошук",
 		
@@ -394,10 +380,34 @@
 			header_regist: "header_regist"
 		}
 	};
+	var data_tooltip = {
+		ua : {
+			index_room_wifi : "Wifi",
+			index_room_shower : "Душ",
+			index_room_parking : "Стоянка",
+			index_room_conditioner : "Кондиціонер",
+			index_room_pool : "Басейн",
+			index_room_gym : "Тренажерний зал",
+			index_room_balcony : "Балкон",
+		},
+		en : {
+			index_room_wifi : "Wifi",
+			index_room_shower : "Shower",
+			index_room_parking : "Parking",
+			index_room_conditioner : "Air conditioner",
+			index_room_pool : "Swiming pool",
+			index_room_gym : "Fit gym",
+			index_room_balcony : "Balcony",
+		}
+	};
+	
 	languages.en = en;
 	languages.ua = ua;
+	
 	languages.error = error;
 	languages.error.current=en;
+	
+	languages.data_tooltip = data_tooltip;
 })();
 
 function changeLanguage(id, language){
@@ -405,7 +415,12 @@ function changeLanguage(id, language){
 	changeLanguageOnServer(id, language);
 }
 
-function changeLanguageOnPage(language){
+function changeLanguageOnPage(){
+	changeLanguageOnTags(language);
+	changeLanguageOfErrors(language);
+	changeLanguageOfDataTooltip(language);
+}
+function changeLanguageOnTags(language){
 	for ( var prop in languages) {
 		if(prop == language){
 			for ( var idElement in languages[prop]){
@@ -419,8 +434,19 @@ function changeLanguageOfErrors(language){
 	for ( var prop in languages) {
 		if(prop == language){
 			languages.error.current = languages.error[prop];
-			for ( var idElement in languages[prop]){
-				$("#" + idElement).html(languages[prop][idElement]);
+			for ( var idElement in languages.error[prop]){
+				$("#" + idElement).html(languages.error[prop][idElement]);
+			}
+			break;
+		}
+	}
+}
+
+function changeLanguageOfDataTooltip(language){
+	for ( var prop in languages) {
+		if(prop == language){
+			for ( var idElement in languages.data_tooltip[prop]){
+				$("#" + idElement).attr('date-tooltip', languages.data_tooltip[prop][idElement]);
 			}
 			break;
 		}
@@ -428,11 +454,5 @@ function changeLanguageOfErrors(language){
 }
 
 function changeLanguageOnServer(id, language){
-	$.getJSON("http://localhost:7161/booker/language?id=" + id + "&lan=" + language);
-	$.getJSON("http://localhost:8080/booker/language?id=" + id + "&lan=" + language);
-}
-
-function activeFalseMessage(role, id){
-	$.getJSON("http://localhost:7161/task/" + role + "/messageActiveFalse?id=" + id);
-	$.getJSON("http://localhost:8080/task/" + role + "/messageActiveFalse?id=" + id);
+	$.getJSON("http://localhost:8080/booker/change_lang?language=" + language);
 }
