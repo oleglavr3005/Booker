@@ -5,6 +5,7 @@ var hotel_x = 0;
 var hotel_y = 0;
 
 var places;
+
 function initAutocomplete() {
 	var input = document.getElementById('address');
 	var searchBox = new google.maps.places.SearchBox(input);
@@ -14,7 +15,8 @@ function initAutocomplete() {
 }
 
 function createHotel() {
-	var img = $('#photos').val() == '' ? 'new_hotel.jpg' : $('#photos').val();
+//	var img = $('#photos').val() == '' ? 'new_hotel.jpg' : $('#photos').val();
+	var img = $('#photos').val();
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
 	getInfoFromGoogle();
 	if (validate()) {
