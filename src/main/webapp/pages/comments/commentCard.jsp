@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <link rel="stylesheet"	href="${pageContext.servletContext.contextPath}/resources/css/commentStyle.css">
@@ -44,7 +43,7 @@
 		<div class="container-fluid">
 			<c:if test="${user != null}">	
 			<div id="newComment" style="margin: 20px; overflow: hidden;">
-				<div>
+				<div class="row">
 					<div class="col s6" style="margin-top: 15px;">
 						<input id="title_comment" type="text" value="">
 						<label id="title_comment_label" data-error="" for="title_comment" class="">
@@ -52,21 +51,27 @@
 						</label>
 					</div>
 					<div class="col s6" style="margin-top: 15px;">
-						<input id="rating" onchange="rate()" type="number"
-							value="0" class="rating" min=0 max=10 step=1
-							data-size="xs" data-stars="5"> 
-						<span id="manager_hotel_star" style="margin-left: 25px; margin-top: 20px; padding-top: 20px;">
-							STAR : 
-							<span id="rate_span">0</span>
-							/ 5 |
-						</span>
-						<script>
-							function rate() {
-								var count = document.getElementById("rate_span");
-								count.innerHTML = $('#rating').val();
-							}
-						</script>
-					</div>
+
+							<!-- 						STARS -->
+							<input id="rating" onchange="rate()" type="number"
+								value="${hotel.stars}" class="rating" min=0 max=5 step=1
+								data-size="xs" data-stars="5"> <span
+								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><fmt:message
+									key="manager.hotel.star" />STAR : <span id="rate_span">0</span>
+								/ 5 |</span>
+							<script>
+								function rate() {
+
+									var count = document
+											.getElementById("rate_span");
+									count.innerHTML = $('#rating').val();
+
+								}
+							</script>
+
+							<!-- 							END OF STARS -->
+
+						</div>
 				</div>
 				<textarea id="comment" class="materialize-textarea" style="height: 80px;"></textarea>
 				<div style="margin-top: 20px;">

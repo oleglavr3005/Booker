@@ -383,7 +383,7 @@ div #sidebar-wrapper {
 	</div>
 	<div class="container">
 		<div id="switchContent" class="row">
-			<jsp:include page="commentCard.jsp"></jsp:include>
+			<jsp:include page="comments/commentCard.jsp"></jsp:include>
 		</div>
 	</div>
 
