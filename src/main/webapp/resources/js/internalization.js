@@ -25,9 +25,33 @@
 		manager_hotel_card_active : "ACTIVE",
 		
 		card_no_hotels : "ACTIVE",
+		my_feedback_delete : "DELETE",
+		order_concrete_order_date : "Order date",
+		tab_ended : "Ended",
+		tab_all : "All",
+		tab_active : "Active",
+		
+		tb_head_id : "ID",
+		tb_head_name : "HOTEL NAME",
+		tb_head_room : "ROOM_TYPE",
+		tb_head_sdate : "START_DATE",
+		tb_head_edate : "END_DATE",
+		tb_head_price : "PRICE",
+		tb_head_status : "STATUS",
+		
+		shoping_card_shop_list : "SHOP LIST",
+		shoping_card_date_asc : "Date asc",
+		shoping_card_date_desc : "Date desc",
+		shoping_card_price_asc : "Price asc",
+		shoping_card_price_desc : "Price desc",
+		shopping_cart_modal_header : "THX FOR YOUR ORDER",
+		shopping_cart_click : "CLICK IF YOU WANT TO LOOK AT YOUR ORDER LIST : ",
 		
 		
-			
+		
+		
+		
+		
 		header_dropdown_shopping_cart : " Shоpping cart",	
 		header_dropdown_orders : " My оrders",
 		header_dropdown_feedbacks : " My feedbacks",
