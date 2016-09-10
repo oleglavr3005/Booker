@@ -16,7 +16,7 @@ import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.UserType;
 import com.epam.task.database.service.HotelService;
 
-@WebFilter("/cabinet/create_room")
+@WebFilter({"/cabinet/create_room", "/check_room_number" })
 public class CreateRoomFilter implements Filter {
 
     public CreateRoomFilter() {

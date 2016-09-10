@@ -2,18 +2,27 @@
 (function (){
 	var en = {
 	
-		header_dropdown_shopping_cart: "Shopping cart",	
-		header_dropdown_orders : "My orders",
+		header_dropdown_shopping_cart: "Shоpping cart",	
+		header_dropdown_orders : "My оrders",
 		header_dropdown_feedbacks : "My feedbacks",
 		header_dropdown_settings : "Settings",
-		header_dropdown_hotels : "My hotels",
+		header_dropdown_hotels : "My hоtels",
 		header_dropdown_admin_stuff : "Admin stuff",
-		header_dropdown_log_out: "Log out",
+		header_dropdown_log_out: "Lоg оut",
 		card_edit : "EDIT",
 		title_comment_span : "Title", 
 		createComment : "Add comment",
 		hotel_button_previous : "Previous", 
 		hotel_button_next : "Next",
+		hiddenError : "ERROR WITH INFO", 
+		room_card_add_to_cart : "ADD TO CART", 
+		room_card_need_login : "U NEED 2 LOGIN", 
+		order_card_from : "From: ",  
+		order_card_to : " To: ",
+		order_card_order : "ORDER",
+		order_card_total_price : "TOTAL_PRICE : ",
+		order_card_uan : " UAH",
+		order_card_clear : "CLEAR",
 		
 		
 		

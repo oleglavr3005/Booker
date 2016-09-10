@@ -4,8 +4,6 @@
 <%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="com.i18n.text" />
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/fontawesome/css/font-awesome.min.css">
 
@@ -44,41 +42,36 @@ b {
 
 	<div id="hotel_card_${order.id}" class="col s10 offset-s1">
 		<div class="card">
-
 			<div class="container-fluid">
 				<div class="row" style="margin-top: 15px; margin-bottom: 10px;">
-
 					<div class="card-image col s4" style="position: relative;">
 						<a><img src="<i:urlToImage url="${order.room.photo}" />"
 							style="height: 170px; width: 200px; padding: 10px;"> </a>
-
 					</div>
 
 					<div class="col s8">
 						<div class="row" style="margin-bottom: 0px;">
 							<div class="col s7">
-
 								<div class="row" style="margin-top: 15px;">
 									<div class="col s5">
-										<a
-											href="${pageContext.servletContext.contextPath}/hotel/${order.hotel.id}">${order.hotel.name}</a>
+										<a href="${pageContext.servletContext.contextPath}/hotel/${order.hotel.id}">${order.hotel.name}</a>
 									</div>
 									<div class="col s5 offset-s1">${order.room.type}</div>
 								</div>
-
 								<div class="row" style="margin-top: 15px;">
 									<div>
 										<a class="tooltipped" data-position="icon"
 											data-tooltip="StartDate" style="color: #0d0d0d;"><i
 											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
-										From: <span id="start_date${order.id}">${order.startDate}</span>
+										<span id="order_card_from">
+										<span id="start_date${order.id}">${order.startDate}</span>
 									</div>
-
 									<div>
 										<a class="tooltipped" data-position="icon"
-											data-tooltip="EndDate" style="color: #0d0d0d;"><i
-											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
-										To: <span id="end_date${order.id}">${order.endDate}</span>
+											data-tooltip="EndDate" style="color: #0d0d0d;">
+											<i class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
+										<span id="order_card_to"> </span>
+										<span id="end_date${order.id}">${order.endDate}</span>
 									</div>
 									<script type="text/javascript"
 										src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
@@ -202,7 +195,7 @@ b {
 							<a id="book${order.id}"
 								class="my-btn waves-effect waves-light btn"
 								style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-								onclick="bookOrderCard(${order.id},${order.room.daysCount})">ORDER</a>
+								onclick="bookOrderCard(${order.id},${order.room.daysCount})"><span id="order_card_order"></span></a>
 						</div>
 					</div>
 				</div>
@@ -229,7 +222,10 @@ b {
 	
 	<div class="row">
 		<div class="col s3 offset-s1">
-			<span>TOTAL_PRICE : ${summary/2} UAH</span> <a class="tooltipped"
+			<span id="order_card_total_price"></span>
+			<span>${summary/2}</span>
+			<span id="order_card_uan"></span>
+			<a class="tooltipped"
 				data-position="icon"
 				data-tooltip="You pay a half of the sum for orders with deposit. And no money for orders with no deposit"
 				style="color: #0d0d0d;"><i
@@ -239,12 +235,12 @@ b {
 		<div class="col s2 offset-s3">
 			<a id="clearBtn" class="my-btn waves-effect waves-light btn"
 				style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-				onclick="clearCart()">CLEAR</a>
+				onclick="clearCart()"><span id="order_card_clear"></span></a>
 		</div>
 		<div class="col s2 offset-s1">
 			<a class="my-btn waves-effect waves-light btn"
 				style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-				onclick="bookOrderCard(null,${summary})">ORDER</a>
+				onclick="bookOrderCard(null,${summary})"><span id="order_card_order"></span></a>
 		</div>
 	</div>
 	<div id="field" class="divider" style="margin-bottom: 5px;"></div>

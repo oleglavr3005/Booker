@@ -108,7 +108,7 @@ img.logo {
 										<i id="header_dropdown_orders" class="fa fa-briefcase" aria-hidden="true"></i></a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/cabinet/my_feedbacks" style="color: #26A69A">
-										<i id="header_dropdown_" class="fa fa-comment" aria-hidden="true"></i></a></li>
+										<i id="header_dropdown_feedbacks" class="fa fa-comment" aria-hidden="true"></i></a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${pageContext.servletContext.contextPath}/cabinet/settings" style="color: #26A69A">
 										<i id="header_dropdown_settings" class="fa fa-cog" aria-hidden="true"></i></a></li>

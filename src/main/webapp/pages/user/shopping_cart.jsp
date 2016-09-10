@@ -94,7 +94,7 @@
 	</script>
 	<div class="container">
 		<h4 style="text-align: center; margin-top: 20px;">
-			<fmt:message key="user.cart.header" />
+			<span id="user_cart_header"></span>
 		</h4>
 
 		<div class="row">SHOP LIST</div>
@@ -102,11 +102,11 @@
 			<div class="col s3">
 				<h6>
 					<c:if test="${countOfOrders > 0 }">
-						<fmt:message key="card.header" />
+						<span id="card_header"></span>
 						<span id="periodicals_number_for_all_users">${countOfOrders}</span>
 					</c:if>
 					<c:if test="${countOfOrders <= 0 }">
-						<fmt:message key="card.no.hotels" />
+						<span id="card_no_hotels"></span>
 					</c:if>
 				</h6>
 			</div>
