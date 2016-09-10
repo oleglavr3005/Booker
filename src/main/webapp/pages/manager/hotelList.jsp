@@ -143,7 +143,7 @@
 							<div class="input-field">
 								<input id="name" type="text" class="validate" length="45"
 									placeholder="Name of Hotel"> <label id="nameLbl"
-									data-error="${fmtName}" for="name"><fmt:message
+									data-error="NAME INVALID" for="name"><fmt:message
 										key="admin.edit.name" /></label>
 							</div>
 
@@ -154,8 +154,11 @@
 						<div class="col s6"style="margin-top: 15px;">
 						
 							<!-- 						STARS -->
-							<input id="rating" onchange="rate()" value="1" type="number"
-								class="rating" min=1 max=5 step=1 data-size="xs" data-stars="5">
+							<input id="rating" onchange="rate()" value="0" type="number"
+								class="rating" min=0 max=5 step=1 data-size="xs" data-stars="5">
+								<label id="ratingLbl"
+									data-error="RATING SHOULD BE 1-5" for="rating"><fmt:message
+										key="admin.edit.rating" /></label>
 <!-- 							<span -->
 <%-- 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><fmt:message --%>
 <%-- 									key="manager.hotel.star" />STAR : <span id="rate_span">0</span> --%>
@@ -184,7 +187,7 @@
 							<div class="input-field">
 								<input id="address" type="text" class="validate" length="145"
 									placeholder="Address of hotel"> <label id="addressLbl"
-									data-error="${fmtName}" for="address"><fmt:message
+									data-error="ADDRESS IS INVALID" for="address"><fmt:message
 										key="admin.edit.address" /></label>
 							</div>
 							<!-- 							END OF ADDRESS -->
@@ -198,7 +201,7 @@
 							<div class="input-field">
 								<input id="phone" type="text" class="validate" length="20"
 									placeholder="Phone Number"> <label id="phoneLbl"
-									data-error="${fmtName}" for="phone"><fmt:message
+									data-error="PHONE NUMBER IS INVALID" for="phone"><fmt:message
 										key="admin.edit.phone" /></label>
 							</div>
 
@@ -220,7 +223,7 @@
 							<div class="input-field">
 								<textarea placeholder="Desc" id="desc"
 									class="materialize-textarea" class="validate">${message}</textarea>
-								<label id="descLbl" data-error="${fmtName}" for="desc"><fmt:message
+								<label id="descLbl" data-error="DESCRIPTION IS INVALID" for="desc"><fmt:message
 										key="admin.edit.desc" /></label>
 							</div>
 

@@ -78,6 +78,7 @@ function updateHotel(hotelId){
 function validate(){
 	var ok = true;
 	ok = nameIsValid($('#name').val()) && ok;
+	ok = starsIsValid($('#rating').val()) && ok;
 	ok = addressIsValid($('#address').val()) && ok;
 	ok = phoneIsValid($('#phone').val()) && ok;
 	ok = descIsValid($('#desc').val()) && ok;
@@ -108,6 +109,16 @@ function checkAddress(field){
 //	var re = /^[a-zA-Z0-9\s,'-]*$/
 //		return re.test(field);
 	return true;
+}
+
+function starsIsValid(stars) {
+	if (stars >= 1 && stars <= 5) {
+		valid('rating');
+		return true;
+	} else {
+		invalid('rating');
+		return false;
+	}
 }
 
 function addressIsValid(address) {
