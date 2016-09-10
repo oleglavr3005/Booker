@@ -154,12 +154,12 @@
 						<div class="col s6"style="margin-top: 15px;">
 						
 							<!-- 						STARS -->
-							<input id="rating" onchange="rate()" value="0" type="number"
-								class="rating" min=0 max=5 step=1 data-size="xs" data-stars="5">
-							<span
-								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><fmt:message
-									key="manager.hotel.star" />STAR : <span id="rate_span">0</span>
-								/ 5 |</span>
+							<input id="rating" onchange="rate()" value="1" type="number"
+								class="rating" min=1 max=5 step=1 data-size="xs" data-stars="5">
+<!-- 							<span -->
+<%-- 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><fmt:message --%>
+<%-- 									key="manager.hotel.star" />STAR : <span id="rate_span">0</span> --%>
+<!-- 								/ 5 |</span> -->
 							<script>
 								function rate() {
 
@@ -183,9 +183,9 @@
 
 							<div class="input-field">
 								<input id="address" type="text" class="validate" length="145"
-									placeholder="Address of hotel"> <label id="cityLbl"
-									data-error="${fmtName}" for="city"><fmt:message
-										key="admin.edit.city" /></label>
+									placeholder="Address of hotel"> <label id="addressLbl"
+									data-error="${fmtName}" for="address"><fmt:message
+										key="admin.edit.address" /></label>
 							</div>
 							<!-- 							END OF ADDRESS -->
 
@@ -196,8 +196,8 @@
 							<!-- 						PHONE -->
 
 							<div class="input-field">
-								<input id="phone" type="text" class="validate" length="45"
-									placeholder="Name of phone"> <label id="phoneLbl"
+								<input id="phone" type="text" class="validate" length="20"
+									placeholder="Phone Number"> <label id="phoneLbl"
 									data-error="${fmtName}" for="phone"><fmt:message
 										key="admin.edit.phone" /></label>
 							</div>
@@ -219,7 +219,7 @@
 
 							<div class="input-field">
 								<textarea placeholder="Desc" id="desc"
-									class="materialize-textarea" class="validate" length="999">${message}</textarea>
+									class="materialize-textarea" class="validate">${message}</textarea>
 								<label id="descLbl" data-error="${fmtName}" for="desc"><fmt:message
 										key="admin.edit.desc" /></label>
 							</div>

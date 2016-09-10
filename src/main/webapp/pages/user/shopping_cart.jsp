@@ -282,7 +282,7 @@
 			</div>
 		</div>
 		<div class="modal-footer" style="padding-bottom: 0px; height: 40px;">
-			<a href="href="${pageContext.servletContext.contextPath}/cabinet/orders">CLICK
+			<a href="${pageContext.servletContext.contextPath}/cabinet/orders">CLICK
 				IF YOU WANT TO LOOK AT YOUR ORDER LIST : </a>
 		</div>
 	</div>
