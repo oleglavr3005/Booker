@@ -20,9 +20,9 @@ function addComments(delta) {
 }
 
 function addNewComment(hotelId_val){
-	var comment_val = $('#comment').val();
-	var title_val = $('#title_comment').val();
-	var rating_val = $('#rate_span').text(); 
+	var comment_val = jQuery('#comment').val();
+	var title_val = jQuery('#title_comment').val();
+	var rating_val = jQuery('#rate_span').text(); 
 	$.post(window.location.protocol + "//" + window.location.host + "/booker/addFeedback", {
 		comment : comment_val,
 		rating : rating_val,
@@ -31,18 +31,18 @@ function addNewComment(hotelId_val){
 	}, function(result) {
 		if(result != 'false'){
 			console.log(result);
-			$('#newComment').after(result); 
-			var next_id = $('#newComment').next().attr('id');
-			$('#' + next_id).remove();
-			$('#' + next_id).remove();
-			$('#newComment').after(result);
-			$('#newComment').next().slideDown(500);
+			jQuery('#newComment').after(result); 
+			var next_id = jQuery('#newComment').next().attr('id');
+			jQuery('#' + next_id).remove();
+			jQuery('#' + next_id).remove();
+			jQuery('#newComment').after(result);
+			jQuery('#newComment').next().slideDown(500);
 		}else{
 			console.log(result);
-			$('#newComment').after("<p>############## ERROR ############</p>"); 
+			jQuery('#newComment').after("<p>############## ERROR ############</p>"); 
 		}
-		$('#comment').val('');
-		$('#title_comment').val('');
-		$('#rate_span').text('');
+		jQuery('#comment').val('');
+		jQuery('#title_comment').val('');
+		jQuery('#rate_span').text('');
 	});
 }
