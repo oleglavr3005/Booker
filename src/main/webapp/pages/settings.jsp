@@ -105,7 +105,7 @@
 	<div class="container">
 
 		<h4 style="text-align: center; margin-top: 20px;">
-			<fmt:message key="settings.header" />
+			<span id="settings_header"></span> 
 		</h4>
 
 		<div class="row">
@@ -131,7 +131,7 @@
 				<div class="container">
 					<div class="row settings-title">
 						<h4>
-							<fmt:message key="settings.header.PERSONAL" />
+							<span id="settings_header_PERSONAL"></span>
 						</h4>
 					</div>
 
@@ -162,7 +162,7 @@
 					<div class="row fields">
 						<div class="input-field col s9">
 							<div class="ui pointing label">
-								<fmt:message key="settings.enter.name" />
+								<span id="settings_enter_name"></span>
 							</div>
 							<input id="name" type="text" class="validate"
 								value="${user.firstName}" length="45"> <label
@@ -172,7 +172,7 @@
 					<div class="row">
 						<div class="input-field col s9">
 							<div class="ui pointing label">
-								<fmt:message key="settings.enter.surname" />
+								<span id="settings_enter_surname"></span>
 							</div>
 							<input id="surname" type="text" class="validate"
 								value="${user.lastName}" length="45"> <label
@@ -184,8 +184,8 @@
 						<div class="col s3 offset-s7">
 							<a id="savePersonal" class="waves-effect waves-light btn"
 								onclick="savePersonalData('${fmtMail}','${fmtMailExist}')"
-								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
-									key="settings.enter.save" /></a>
+								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
+									id="settings_enter_save"></span> </a>
 						</div>
 					</div>
 
@@ -193,13 +193,13 @@
 
 					<div class="row" style="margin-bottom: 10px;">
 						<h4 id="pwd_title">
-							<fmt:message key="settings.header.pass" />
+							<span id="settings_header_pass"></span>
 						</h4>
 					</div>
 					<div class="row inline field fields">
 						<div class="input-field col s9">
 							<div class="ui pointing label">
-								<fmt:message key="settings.enter.pass" />
+								<span id="settings_enter_pass"></span>
 							</div>
 							<input id="currentPassword" type="password" class="validate">
 							<label id="currentPasswordLbl" data-error="${fmtPass}"
@@ -209,7 +209,7 @@
 					<div class="row inline field fields">
 						<div class="input-field col s9">
 							<div class="ui pointing label">
-								<fmt:message key="settings.enter.passnew" />
+								<span id="settings_enter_passnew"></span>
 							</div>
 							<input id="newPassword" type="password" class="validate">
 							<label id="newPasswordLbl" data-error="${fmtNewPass}"
@@ -219,7 +219,7 @@
 					<div class="row inline field fields">
 						<div class="input-field col s9">
 							<div class="ui pointing label">
-								<fmt:message key="settings.enter.passrepeat" />
+								<span id="settings_enter_passrepeat"></span>
 							</div>
 							<input id="repeatPassword" type="password" class="validate">
 							<label id="repeatPasswordLbl" data-error="${fmtRepPass}"
@@ -230,8 +230,8 @@
 						<div class="col s3 offset-s7">
 							<a id="savePassword" class="waves-effect waves-light btn"
 								onclick="savePassword('${fmtHeader}','${fmtSucces}')"
-								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
-									key="settings.enter.save" /></a>
+								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
+									id="settings_enter_save"></span></a>
 						</div>
 					</div>
 				</div>
@@ -244,14 +244,14 @@
 				<div class="container">
 					<div class="row settings-title">
 						<h4>
-							<fmt:message key="settings.header.CONTACT" />
+							<span id="settings_header_CONTACT"></span>
 						</h4>
 					</div>
 
 					<div class="row fields">
 						<div class="input-field col s9">
 							<div class="ui pointing label">
-								<fmt:message key="settings.enter.phone" />
+								<span id="settings_enter_phone"></span>
 							</div>
 							<input id="phoneNumber" type="text" class="validate"
 								value="${user.phoneNumber}" length="45"> <label
@@ -281,7 +281,7 @@
 						<div class="row">
 							<div class="input-field col s9">
 								<div class="ui pointing label">
-									<fmt:message key="settings.enter.mail" />
+									<span id="settings_enter_mail"></span>
 								</div>
 								<input id="email" type="email" class="validate"
 									value="${user.email}" length="80"> <label id="emailLbl"
@@ -306,8 +306,8 @@
 						<div class="col s3 offset-s7">
 							<a id="savePersonal" class="waves-effect waves-light btn"
 								onclick="saveContactData()"
-								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
-									key="settings.enter.save" /></a>
+								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
+									id="settings_enter_save"></span></a>
 						</div>
 					</div>
 
@@ -324,14 +324,14 @@
 					<div class="container">
 						<div class="row settings-title">
 							<h4>
-								<fmt:message key="settings.header.MANAGE" />
+								<span id="settings_header_MANAGE" ></span>
 							</h4>
 						</div>
 
 						<div class="row fields">
 							<div class="input-field col s9">
 								<div class="ui pointing label">
-									<fmt:message key="settings.enter.request" />
+									<span id="settings_enter_request"></span>
 								</div>
 								<textarea id="requestForm" class="materialize-textarea"
 									>${message}</textarea>
@@ -342,8 +342,8 @@
 							<div class="col s12">
 								<a id="savePersonal" class="waves-effect waves-light btn"
 									onclick="createRequest()"
-									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message
-										key="settings.enter.save" /></a>
+									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
+										id="settings_enter_save"></span></a>
 							</div>
 						</div>
 
