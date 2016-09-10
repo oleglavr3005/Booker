@@ -195,16 +195,35 @@ $(document)
 													+ '</select></div>'
 										},
 										bAutoWidth : false,
-									// aoColumnDefs : [ {
-									// sWidth : "7%",
-									// aTargets : [ 0 ]
-									// }, {
-									// sWidth : "10%",
-									// aTargets : [ 1 ]
-									// }, {
-									// sWidth : "7%",
-									// aTargets : [ 6 ]
-									// } ]
+									 aoColumnDefs : [ {
+									 sWidth : "6%",
+									 aTargets : [ 0 ]
+									 }, {
+									 sWidth : "10%",
+									 aTargets : [ 1 ]
+									 }, {
+									 sWidth : "10%",
+									 aTargets : [ 2 ]
+									 },
+									 {
+										 sWidth : "20%",
+										 aTargets : [ 3 ]
+										 },
+										 {
+										sWidth : "10%",
+											 aTargets : [ 4 ]
+											 },{
+												 sWidth : "10%",
+												 aTargets : [ 5 ]
+												 }, 
+												 {
+													 sWidth : "10%",
+													 aTargets : [ 6 ]
+													 },
+													 {
+														 sWidth : "10%",
+														 aTargets : [ 7 ]
+														 }]
 
 									});
 				});

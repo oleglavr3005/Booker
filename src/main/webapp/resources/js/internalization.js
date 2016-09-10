@@ -124,6 +124,8 @@
 		settings_enter_name : "First name",
 		settings_enter_surname : "Last name ",
 		settings_enter_save : "Save",
+		settings_enter_save1 : "Save",
+		settings_enter_pass : "Old password",
 		settings_header_pass : "Change password",
 		settings_enter_passnew : " New password",
 		settings_enter_passrepeat : "Repeat new password",
@@ -131,8 +133,9 @@
 		settings_enter_phone : "Phone number",
 		settings_header_manage : "Manager",
 		settings_enter_request : "Request for manager",
-
-		card_header : "All rights reserved_",
+		settings_save_pass : "Save password",
+			
+		card_header : "Hotels found",
 		card_no_periodicals : "No numbers found",
 		card_no_hotels: "No Hotels",
 		room_card_count: "Total price??",
@@ -149,7 +152,10 @@
 		card_status_ended : "Removed??",
 		card_status_removed : "Order cancelled??",
 
-		user_cart_header :"Shopping Cart"
+		user_cart_header :"Shopping Cart",
+		
+		btn_remove : "REMOVE",
+		btn_order : "ORDER",
 	}
 	var ua = {
 			header_dropdown_shopping_cart: "Кошик",	
@@ -261,14 +267,16 @@
 		settings_enter_name : "Імя",
 		settings_enter_surname : "Прізвище",
 		settings_enter_save : "Зберегти",
+		settings_enter_save1 : "Зберегти",
 		settings_header_pass : "Змінити пароль",
+		settings_enter_pass : "Старий пароль",
 		settings_enter_passnew : "Новий пароль",
 		settings_enter_passrepeat : "Повторити новий пароль",
 		settings_header_contact : "Контактна інформація",
 		settings_enter_phone : "Номер телефону",
 		settings_header_manage : "Менеджерська інформація",
 		settings_enter_request : "Запит на роль менеджера",
-
+		settings_save_pass : "Зберегти пароль",
 
 		card_header : "Всього пропозицій ",
 		card_no_periodicals : "Наявних  пропозицій немає",
@@ -288,7 +296,10 @@
 		card_status_ended : "Видалено??",
 		card_status_removed : "Замовлення відмінено??",
 
-		user_cart_header :"Кошик покупця"
+		user_cart_header :"Кошик покупця",
+		
+		btn_remove : "ВИДАЛИТИ",
+		btn_order : "ЗАМОВИТИ",
 	}
 	
 	var error = {

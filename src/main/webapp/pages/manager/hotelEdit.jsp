@@ -300,11 +300,11 @@ div #sidebar-wrapper {
 					<div class="table-header">
 						<span class="table-title">Rooms</span>
 						<div class="actions">
-							<a href="#add_users"
-								class="modal-trigger waves-effect btn-flat nopadding"><i
-								class="material-icons">playlist_add</i></a> <a href="#"
-								class="search-toggle waves-effect btn-flat nopadding"><i
-								class="material-icons">search</i></a>
+							<a href="${pageContext.servletContext.contextPath}/cabinet/create_room"
+								class="my-btn waves-effect waves-light btn" style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">Create Room</a>
+								 <button
+								class="search-toggle waves-effect btn-flat nopadding" style="margin-left: 10px;"><i
+								class="material-icons">search</i></button>
 						</div>
 					</div>
 					<table id="datatable">

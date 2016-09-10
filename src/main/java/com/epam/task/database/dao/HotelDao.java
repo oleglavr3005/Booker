@@ -102,7 +102,7 @@ public class HotelDao {
 		}
 	}
 	
-	public List<Hotel> getAllSuitableHotels(String name, int minStars, int maxStars, int people,	//main search
+	public List<Hotel> getAllSuitableHotelsByPage(String name, int minStars, int maxStars, int people,	//main search
 			boolean typeStandart, boolean typeLux, boolean typeDelux, 								//room type
 			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull, 			//food type
 			int minPrice, int maxPrice,																//price
@@ -324,7 +324,7 @@ public class HotelDao {
 		}
 	}
 
-	public int getSuitableHotelsNumber(String name, int minStars, int maxStars, int people, boolean typeStandart,
+	public List<Hotel> getAllSuitableHotels(String name, int minStars, int maxStars, int people, boolean typeStandart,
 			boolean typeLux, boolean typeDelux, boolean foodNone, boolean foodBreakfast, boolean foodTwice,
 			boolean foodFull, int minPrice, int maxPrice, boolean hasWiFi, boolean hasShower, boolean hasParking,
 			boolean hasCondition, boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit,
@@ -423,11 +423,11 @@ public class HotelDao {
 			statement.setTimestamp(i++, endDate);
 			
 			try (ResultSet result = statement.executeQuery()) {
-				return UniversalTransformer.getCollectionFromRS(result, Hotel.class).size();
+				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return -1;
+			return new ArrayList<>();
 		}
 		
 	}

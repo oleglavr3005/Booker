@@ -78,8 +78,8 @@ function updateHotel(hotelId){
 function validate(){
 	var ok = true;
 	ok = nameIsValid($('#name').val()) && ok;
-	//ok = cityIsValid(hotel_city) && ok;
-	//ok = streetIsValid(hotel_street) && ok;
+	ok = starsIsValid($('#rating').val()) && ok;
+	ok = addressIsValid($('#address').val()) && ok;
 	ok = phoneIsValid($('#phone').val()) && ok;
 	ok = descIsValid($('#desc').val()) && ok;
 	return ok;
@@ -103,6 +103,33 @@ function engTextIsValid(field) {
 function onlyTextIsValid(field) {
 	var re = /^([a-zA-Zа-яА-ЯіІьїЇєЄ’ ]*)$/;
 	return re.test(field);
+}
+
+function checkAddress(field){
+//	var re = /^[a-zA-Z0-9\s,'-]*$/
+//		return re.test(field);
+	return true;
+}
+
+function starsIsValid(stars) {
+	if (stars >= 1 && stars <= 5) {
+		valid('rating');
+		return true;
+	} else {
+		invalid('rating');
+		return false;
+	}
+}
+
+function addressIsValid(address) {
+	if (address.length >= 5 && address.length <= 145
+			&& checkAddress(address)) {
+		valid('address');
+		return true;
+	} else {
+		invalid('address');
+		return false;
+	}
 }
 
 function numberIsValid(field) {
@@ -131,41 +158,19 @@ function nameIsValid(name) {
 	}
 }
 
-function cityIsValid(name) {
-	if (name.length >= 3 && name.length <= 45
-			&& textIsValid(name)) {
-		valid('city');
-		return true;
-	} else {
-		invalid('city');
-		return false;
-	}
-}
-
-function streetIsValid(name) {
-	if (name.length >= 3 && name.length <= 45
-			&& textIsValid(name)) {
-		valid('street');
-		return true;
-	} else {
-		invalid('street');
-		return false;
-	}
-}
-
 function phoneIsValid(name) {
 	if (name.length >= 8 && name.length <= 15 && numberIsValid(name)) {
-		valid('phoneNmb');
+		valid('phone');
 		return true;
 	} else {
-		invalid('phoneNmb');
+		invalid('phone');
 		return false;
 	}
 }
 
 function descIsValid(name) {
-	if (name.length >= 10 && name.length <= 999
-			&& engTextIsValid(name)) {
+	if (name.length >= 10 && name.length <= 1000
+			&& textIsValid(name)) {
 		valid('desc');
 		return true;
 	} else {

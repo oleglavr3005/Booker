@@ -28,7 +28,8 @@ public class HomeServlet extends HttpServlet {
 		String pageString = request.getParameter("page");
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
 
-		int countOfHotels = new HotelService().getAllHotels().size();
+		List<Hotel> allHotels = hotelService.getAllHotels();
+		int countOfHotels = allHotels.size();
 		
 		int countOfPages = (int) Math.ceil(countOfHotels / 3.0);
 		if (page > countOfPages) {
@@ -40,7 +41,8 @@ public class HomeServlet extends HttpServlet {
 
 		request.setAttribute("countOfHotels", countOfHotels);
 		request.setAttribute("countOfPages", countOfPages);
-		request.setAttribute("hotels", hotels);
+		request.setAttribute("hotels", allHotels);
+		request.setAttribute("suitableHotels", hotels);
 		request.setAttribute("currentPage", page);
 		
 		RoomService roomService = new RoomService();
