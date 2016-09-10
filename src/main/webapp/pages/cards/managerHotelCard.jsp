@@ -3,7 +3,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/hotel/jquery-ui.css">
+
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/hotel/nouislider.min.css">
+
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/hotel/blueimp-gallery.min.css">
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/hotel/blueimp-gallery.css">
+	<script
+	src="${pageContext.servletContext.contextPath}/resources/js/hotel/jquery.blueimp-gallery.min.js"></script>
+	
+	
+<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/fontawesome/css/font-awesome.min.css">
+	<!--  ################################################################################### -->
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="com.i18n.text" />
 <link rel="stylesheet"
@@ -23,6 +41,41 @@ b {
 }
 </style>
 
+<!--  STArt gallery -->
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        <span id="hotel_button_previous"><span>
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        <span id="hotel_button_next"><span>
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end GALLERY -->
 <!-- <h6> -->
 <%-- 	<c:if test="${countOfHotels > 0 }"> --%>
 <%-- 		<fmt:message key="card.header" /> --%>
@@ -55,13 +108,44 @@ b {
 				<div class="row" style="margin-top: 15px; margin-bottom: 10px;">
 
 					<div class="card-image col s4" style="position: relative;">
+					
+					
+					
+					  <div id="links">
+			<c:if test="${fn:length(hotel.photos) == 0}">
 						<a
-							href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}">
-							<img
-							<%-- 							src="${pageContext.servletContext.contextPath}/resources/images/photoOfHotels/${hotel.photos[0].img}" --%>
-							src="<i:urlToImage url="${hotel.photos[0].img}" />"
-							style="height: 170px; width: 200px; padding: 10px;">
+							href="<i:urlToImage url="no.jpg" />"
+							title="No image"
+							data-gallery> <img
+							src="<i:urlToImage url="no.jpg" />"
+							alt="No image">
 						</a>
+					</c:if>
+					<c:if test="${fn:length(hotel.photos) != 0}">
+						<a href='<i:urlToImage url="${hotel.photos[0].img}" />'
+							data-gallery>
+							<img src="<i:urlToImage url="${hotel.photos[0].img }" />"  style="height: 170px; width: 200px; padding: 10px;">
+						</a>
+
+<div style="display: none;">
+								<c:forEach items="${hotel.photos}" var="photo" begin="1">
+										<a href='<i:urlToImage url="${photo.img}" />'
+											 data-gallery>
+											<img style="height: 60px;"
+											src="<i:urlToImage url="${photo.img}" />"
+											alt="<c:out value="${photo.id }"></c:out>">
+										</a>
+								</c:forEach>
+								</div>
+					</c:if>
+				</div>
+<!-- 						<a -->
+<%-- 							href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"> --%>
+<%-- 							<img --%>
+<%-- 														src="${pageContext.servletContext.contextPath}/resources/images/photoOfHotels/${hotel.photos[0].img}" --%>
+<%-- 							src="<i:urlToImage url="${hotel.photos[0].img}" />" --%>
+<%-- 							style="height: 170px; width: 200px; padding: 10px;"> --%>
+<!-- 						</a> -->
 
 					</div>
 
