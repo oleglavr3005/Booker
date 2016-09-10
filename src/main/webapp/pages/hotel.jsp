@@ -5,11 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="language"
-	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
-	scope="session" />
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="com.i18n.text" />
+
 <html lang="en">
 
 <head>
@@ -185,10 +181,10 @@ div #sidebar-wrapper {
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left prev">
                         <i class="glyphicon glyphicon-chevron-left"></i>
-                        Previous
+                        <span id="hotel_button_previous"><span>
                     </button>
                     <button type="button" class="btn btn-primary next">
-                        Next
+                        <span id="hotel_button_next"><span>
                         <i class="glyphicon glyphicon-chevron-right"></i>
                     </button>
                 </div>
@@ -348,9 +344,7 @@ div #sidebar-wrapper {
 		</div>
 
 	</div>
-
 	<!--           END OF SEARCH FORM -->
-
 
 	</div>
 	<!-- MAP ========================================================================== -->
@@ -373,15 +367,12 @@ div #sidebar-wrapper {
 			<div class="col s4 offset-s5">
 				<c:if test="${countOfRooms > 0 }">
 					<select id="compare" class="chosen-select optionstyle"
-						onchange="findPage(window.location.href,1)">price
-						<option class="optionstyle" value="compareByPriceAsc">star
-							asc</option>
-						<option class="optionstyle" value="compareByPriceDesc">price
-							desc</option>
-						<option class="optionstyle" value="compareByPeopleAsc">ppl
-							asc</option>
-						<option class="optionstyle" value="compareByPeopleDesc"
-							selected="selected">ppl desc</option>
+						onchange="findPage(window.location.href,1)"><span id="hotel_price"></span>
+						<option id="hotel_option_star_asc" class="optionstyle" value="compareByPriceAsc"></option>
+						<option id="hotel_option_star_desc" class="optionstyle" value="compareByPriceDesc"></option>
+						<option id="hotel_option_people_asc" class="optionstyle" value="compareByPeopleAsc"></option>
+						<option id="hotel_option_people_desc" class="optionstyle" value="compareByPeopleDesc"
+							selected="selected"></option>
 					</select>
 				</c:if>
 			</div>
@@ -403,14 +394,11 @@ div #sidebar-wrapper {
 	<jsp:include page="foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
 
-
 	<script
 		src="${pageContext.servletContext.contextPath}/resources/js/customerSlider.js"></script>
 	<script
 		src="${pageContext.servletContext.contextPath}/resources/js/hotel/dropDownComments.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
-
 </body>
-
 </html>

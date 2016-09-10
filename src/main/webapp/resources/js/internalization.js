@@ -10,6 +10,11 @@
 		header_dropdown_admin_stuff : "Admin stuff",
 		header_dropdown_log_out: "Log out",
 		card_edit : "EDIT",
+		title_comment_span : "Title", 
+		createComment : "Add comment",
+		hotel_button_previous : "Previous", 
+		hotel_button_next : "Next",
+		
 		
 		
 		header_regist : "Registration",
@@ -44,6 +49,11 @@
 		index_room_gym : "Fit gym",
 		index_room_balcony : "Balcony",
 		index_room_noDeposit : "No deposit",
+		hotel_option_star_asc : "Star asc",
+		hotel_option_star_desc : "Star desc",
+		hotel_option_people_asc : "People asc",
+		hotel_option_people_desc : "People desc",
+		hotel_price : "Price",
 
 		map_button : "Map", 
 		search : "Search",
