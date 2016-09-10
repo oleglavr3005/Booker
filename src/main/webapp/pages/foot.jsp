@@ -161,7 +161,7 @@
 			</c:when>
 			<c:otherwise>
 				<script>
-					changeLanguageOnPage('${language}'');
+					changeLanguageOnPage('${language}');
 				</script>
 			</c:otherwise>
 		</c:when>
