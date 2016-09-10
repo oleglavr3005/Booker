@@ -134,8 +134,8 @@
 				<!-- 				HOTEL NAME -->
 
 				<div class="row">
-					<label class="labelstyle"><fmt:message
-							key="roomCreate_hotel" /></label> <select id="hotel_name"
+					<label class="labelstyle"><span q
+							id="roomCreate_hotel"></span> </label> <select id="hotel_name"
 						class="chosen-select optionstyle">
 						<option class="optionstyle" selected="selected"
 							value="${hotels[0].id}">${hotels[0].name}</option>
@@ -186,8 +186,8 @@
 							<div class="row" style="margin-bottom: 0px">
 								<input id="number" type="number" class="validate" name="days"
 									min=1 max=365> <label id="numberLbl"
-									data-error="${fmtPeople}" for="number"><fmt:message
-										key="room.concrete.number" /></label>
+									data-error="${fmtPeople}" for="number"><span q
+										id="room_concrete_number"></span></label>
 							</div>
 
 							<!-- 							END OF NUMBER -->
@@ -198,8 +198,8 @@
 							<div class="row" style="margin-bottom: 0px">
 								<input id="single" type="number" class="validate" name="single"
 									min=0 max=100> <label id="singleLbl"
-									data-error="${fmtPeople}" for="single"><fmt:message
-										key="room.concrete.single" /></label>
+									data-error="${fmtPeople}" for="single"><span q
+										id="room_concrete_single"></span> </label>
 							</div>
 
 							<!-- 							END OF 1 BEDS COUNT -->
@@ -209,8 +209,8 @@
 							<div class="row" style="margin-bottom: 0px">
 								<input id="double" type="number" class="validate" name="single"
 									min=0 max=100> <label id="doubleLbl"
-									data-error="${fmtPeople}" for="double"><fmt:message
-										key="room.concrete.double" /></label>
+									data-error="${fmtPeople}" for="double"><span q
+										id="room_concrete_double"></span></label>
 							</div>
 
 							<!-- 							END OF 2 BEDS COUNT -->
@@ -222,8 +222,8 @@
 							<div class="row" style="margin-bottom: 0px">
 								<input id="price" type="number" class="validate"
 									name="percentage" min=1 max=1000000> <label
-									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><fmt:message
-										key="room.concrete.price" /></label>
+									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><span q
+										id="room_concrete_price"></span> </label>
 							</div>
 
 							<!-- 							END OF PRICE -->
@@ -234,8 +234,8 @@
 								<input id="days" type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="days" min=1 max=365> <label
-									id="daysLbl" data-error="${fmtPeople}" for="days"><fmt:message
-										key="room.concrete.days" /></label>
+									id="daysLbl" data-error="${fmtPeople}" for="days"><span q
+										id="room_concrete_days"></span> </label>
 							</div>
 
 							<!-- 							END OF DAYS COUNT -->
@@ -246,8 +246,8 @@
 								<input id="percentage" type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="percentage" min=0 max=100> <label
-									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><fmt:message
-										key="room.concrete.percentage" /></label>
+									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><span q
+										id="room_concrete_percentage"></span> </label>
 							</div>
 
 							<!-- 							END OF PERCENTAGE COUNT -->
