@@ -124,7 +124,8 @@
 		settings_enter_name : "First name",
 		settings_enter_surname : "Last name ",
 		settings_enter_save : "Save",
-		settings_enter_pass : "Save password",
+		settings_enter_save1 : "Save",
+		settings_enter_pass : "Old password",
 		settings_header_pass : "Change password",
 		settings_enter_passnew : " New password",
 		settings_enter_passrepeat : "Repeat new password",
@@ -132,7 +133,8 @@
 		settings_enter_phone : "Phone number",
 		settings_header_manage : "Manager",
 		settings_enter_request : "Request for manager",
-
+		settings_save_pass : "Save password",
+			
 		card_header : "Hotels found",
 		card_no_periodicals : "No numbers found",
 		card_no_hotels: "No Hotels",
@@ -265,15 +267,16 @@
 		settings_enter_name : "Імя",
 		settings_enter_surname : "Прізвище",
 		settings_enter_save : "Зберегти",
+		settings_enter_save1 : "Зберегти",
 		settings_header_pass : "Змінити пароль",
-		settings_enter_pass : "Зберегти пароль",
+		settings_enter_pass : "Старий пароль",
 		settings_enter_passnew : "Новий пароль",
 		settings_enter_passrepeat : "Повторити новий пароль",
 		settings_header_contact : "Контактна інформація",
 		settings_enter_phone : "Номер телефону",
 		settings_header_manage : "Менеджерська інформація",
 		settings_enter_request : "Запит на роль менеджера",
-
+		settings_save_pass : "Зберегти пароль",
 
 		card_header : "Всього пропозицій ",
 		card_no_periodicals : "Наявних  пропозицій немає",
