@@ -40,7 +40,7 @@ public class MyHotelsServlet extends HttpServlet {
 
 		request.setAttribute("countOfHotels", countOfHotels);
 		request.setAttribute("countOfPages", countOfPages);
-		request.setAttribute("hotels", hotels);
+		request.setAttribute("suitableHotels", hotels);
 		request.setAttribute("currentPage", page);
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
