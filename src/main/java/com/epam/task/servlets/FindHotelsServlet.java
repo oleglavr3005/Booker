@@ -120,7 +120,7 @@ public class FindHotelsServlet extends HttpServlet {
 		String pageString = request.getParameter("page");
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
 		
-		int countOfHotels = new HotelService().getSuitableHotelsNumber(session.getAttribute("name").toString(), 
+		List<Hotel> allHotels = new HotelService().getAllSuitableHotels(session.getAttribute("name").toString(), 
 				(int) session.getAttribute("minStars"), (int) session.getAttribute("maxStars"), (int) session.getAttribute("people"), 
 				(boolean) session.getAttribute("typeStandart"), (boolean) session.getAttribute("typeLux"), (boolean) session.getAttribute("typeDelux"), 
 				(boolean) session.getAttribute("foodNone"), (boolean) session.getAttribute("foodBreakfast"), 
@@ -131,6 +131,7 @@ public class FindHotelsServlet extends HttpServlet {
 				(boolean) session.getAttribute("hasBalcony"), (boolean) session.getAttribute("noDeposit"), 
 				startDate, endDate);
 		
+		int countOfHotels = allHotels.size();
 		int countOfPages = (int) Math.ceil(countOfHotels / 3.0);
 		if (page > countOfPages) {
 			page--;
@@ -141,7 +142,7 @@ public class FindHotelsServlet extends HttpServlet {
 		request.setAttribute("currentPage", page);
 
 		String compareBy = request.getParameter("compareBy");
-		List<Hotel> suitableHotels = new HotelService().getAllSuitableHotels(session.getAttribute("name").toString(), 
+		List<Hotel> suitableHotels = new HotelService().getAllSuitableHotelsByPage(session.getAttribute("name").toString(), 
 				(int) session.getAttribute("minStars"), (int) session.getAttribute("maxStars"), 
 				(int) session.getAttribute("people"), 
 				(boolean) session.getAttribute("typeStandart"), (boolean) session.getAttribute("typeLux"), (boolean) session.getAttribute("typeDelux"), 
@@ -153,7 +154,8 @@ public class FindHotelsServlet extends HttpServlet {
 				(boolean) session.getAttribute("hasBalcony"), (boolean) session.getAttribute("noDeposit"), 
 				startDate, endDate, page, compareBy);
 		
-		request.setAttribute("hotels", suitableHotels);
+		request.setAttribute("suitableHotels", suitableHotels);
+		request.setAttribute("hotels", allHotels);
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
