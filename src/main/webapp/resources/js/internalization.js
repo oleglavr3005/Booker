@@ -9,6 +9,7 @@
 		header_dropdown_hotels : "My hotels",
 		header_dropdown_admin_stuff : "Admin stuff",
 		header_dropdown_log_out: "Log out",
+		card_edit : "EDIT",
 		
 		
 		header_regist : "Registration",
