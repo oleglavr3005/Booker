@@ -154,8 +154,17 @@
 
 		user_cart_header :"Shopping Cart",
 		
+		//hotelList
+		admin_edit_name : "Hotel's name",
+		admin_edit_rating : "Rating",
+		admin_edit_address : "Address",
+		admin_edit_phone : "Phone",
+		admin_edit_desc : "Description",	
+		
+		
 		btn_remove : "REMOVE",
 		btn_order : "ORDER",
+		btn_create : "CREATE",
 	}
 	var ua = {
 			header_dropdown_shopping_cart: "Кошик",	
@@ -298,8 +307,15 @@
 
 		user_cart_header :"Кошик покупця",
 		
+		admin_edit_name : "Назва готелю",
+		admin_edit_rating : "Рейтинг",
+		admin_edit_address : "Адреса",
+		admin_edit_phone : "Телефон",
+		admin_edit_desc : "Опис",
+		
 		btn_remove : "ВИДАЛИТИ",
 		btn_order : "ЗАМОВИТИ",
+		btn_create : "СТВОРИТИ",
 	}
 	
 	var error = {

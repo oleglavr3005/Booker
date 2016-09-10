@@ -58,7 +58,7 @@
 	<!-- Header End====================================================================== -->
 	
 	<div class="container">
-		<div id="switchContent" class="row" style="margin-bottom: 0;">
+		<div id="switchContent" class="row" style="margin-bottom: 0; min-height: 300px;">
 			<jsp:include page="feedbacks.jsp"></jsp:include>
 		</div>
 	</div>
