@@ -126,19 +126,19 @@ div #sidebar-wrapper {
 
 					<a class="waves-effect waves-light btn" id="create_button"
 						onclick="updateHotel(${hotel.id})"
-						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>UPDATE</span></a>
+						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span id=btn_update></span></a>
 					<p id="create_error" style="color: red"></p>
 				</div>
 				<div class="row">
 					<p>
 						<input type="checkbox" class="filled-in" id="isDeleted"
-							name="isDeleted" /> <label for="isDeleted">DELETED</label>
+							name="isDeleted" /> <label for="isDeleted"><span id="admin_deleted"></span></label>
 					</p>
 
 					<input id="hotId" name=hotelId type="hidden" value="${hotel.id}" />
 					<a class="waves-effect waves-light btn" id="create_room_button"
 						href="${pageContext.servletContext.contextPath}/cabinet/create_room"
-						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>CREATE_ROOM</span></a>
+						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span id="btn_create_room">CREATE_ROOM</span></a>
 
 
 					<script>
@@ -163,8 +163,8 @@ div #sidebar-wrapper {
 							<div class="input-field">
 								<input id="name" type="text" class="validate" length="45"
 									value="${hotel.name}" placeholder="Name of Hotel"> <label
-									id="nameLbl" data-error="${fmtName}" for="name"><fmt:message
-										key="admin.edit.name" /></label>
+									id="nameLbl" data-error="${fmtName}" for="name"><span 
+										id="admin_edit_name" ></span></label>
 							</div>
 
 							<!-- 							END OF NAME -->
@@ -177,8 +177,8 @@ div #sidebar-wrapper {
 							<input id="rating" onchange="rate()" type="number"
 								value="${hotel.stars}" class="rating" min=0 max=5 step=1
 								data-size="xs" data-stars="5"> <span
-								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><fmt:message
-									key="manager.hotel.star" />STAR : <span id="rate_span">0</span>
+								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><span
+									id="manager_hotel_star"></span> STAR : <span id="rate_span">0</span>
 								/ 5 |</span>
 							<script>
 								function rate() {
@@ -203,8 +203,8 @@ div #sidebar-wrapper {
 								<input id="address" type="text" class="validate" length="145"
 									placeholder="Address of hotel"
 									value="${hotel.city} ${hotel.street}"> <label
-									id="cityLbl" data-error="${fmtName}" for="city"><fmt:message
-										key="admin.edit.city" /></label>
+									id="cityLbl" data-error="${fmtName}" for="city"><span
+										id="admin_edit_city"></span></label>
 							</div>
 							<!-- 							END OF ADDRESS -->
 
@@ -219,8 +219,8 @@ div #sidebar-wrapper {
 							<div class="input-field">
 								<input id="phone" type="text" class="validate" length="45"
 									placeholder="Name of phone" value="${hotel.phoneNumber}">
-								<label id="phoneLbl" data-error="${fmtName}" for="phone"><fmt:message
-										key="admin.edit.phone" /></label>
+								<label id="phoneLbl" data-error="${fmtName}" for="phone"><span 
+										id="admin_edit_phone"></span></label>
 							</div>
 
 							<!--####################### END OF PHONE ############################# -->
@@ -241,8 +241,8 @@ div #sidebar-wrapper {
 							<div class="input-field">
 								<textarea placeholder="Desc" id="desc"
 									class="materialize-textarea" class="validate" length="999">${hotel.desc}</textarea>
-								<label id="descLbl" data-error="${fmtName}" for="desc"><fmt:message
-										key="admin.edit.desc" /></label>
+								<label id="descLbl" data-error="${fmtName}" for="desc"><span
+										id="admin_edit_desc"></span></label>
 							</div>
 
 							<!-- 							END OF DESC -->
@@ -273,7 +273,7 @@ div #sidebar-wrapper {
 
 				<a class="my-btn waves-effect waves-light btn"
 					style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
-					onclick="pushInput()">ADD_IMAGE </a>
+					onclick="pushInput()"><span id="btn_add_image"></span> </a>
 
 				<!-- 				INPUT -->
 				<input multiple style="margin-top: 60px; display: none" type="file"
@@ -286,7 +286,7 @@ div #sidebar-wrapper {
 			<div class="col s3 offset-s1">
 				<a class="my-btn waves-effect waves-light btn"
 					style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
-					onclick="removeHotelPhoto()">REMOVE_SELECTED </a>
+					onclick="removeHotelPhoto()"><span id="btn_remove"></span> </a>
 			</div>
 		</div>
 
@@ -298,7 +298,7 @@ div #sidebar-wrapper {
 			<div id="admin" class="col s12">
 				<div class="card material-table">
 					<div class="table-header">
-						<span class="table-title">Rooms</span>
+						<span class="table-title" id="room_header">Rooms</span>
 						<div class="actions">
 							<a href="${pageContext.servletContext.contextPath}/cabinet/create_room"
 								class="my-btn waves-effect waves-light btn" style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">Create Room</a>
@@ -311,13 +311,13 @@ div #sidebar-wrapper {
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Type</th>
-								<th>Capacity</th>
-								<th>Convinions</th>
-								<th>Food</th>
-								<th>Free Book</th>
-								<th>Deleted</th>
-								<th>Price</th>
+								<th><span id="room_type"></span></th>
+								<th><span id="room_capacity"></span></th>
+								<th><span id="room_conv"></span></th>
+								<th><span id="room_food"></span></th>
+								<th><span id="room_free"></span></th>
+								<th><span id="room_deleted"></span></th>
+								<th><span id="room_price"></span></th>
 							</tr>
 						</thead>
 						<tbody>

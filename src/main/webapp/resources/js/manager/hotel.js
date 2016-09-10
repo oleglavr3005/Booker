@@ -29,7 +29,8 @@ function createHotel() {
 			phoneNumber : $('#phone').val(),
 			xCoord : hotel_x,
 			yCoord : hotel_y,
-			hotelImages : img
+			hotelImages : img,
+			sendNotif : document.getElementById('sendNotif').checked,
 		}, function(result) {
 			if (result != 'error') {
 				$('#create_error').css('color', 'green');

@@ -160,11 +160,35 @@
 		admin_edit_address : "Address",
 		admin_edit_phone : "Phone",
 		admin_edit_desc : "Description",	
+		admin_edit_city : "City",
+		manager_hotel_star : "Stars number",
+		
+		room_header : "Rooms",
+		room_type: "Type", 
+		room_capacity : "Capacity",
+		room_conv: "Conveniences",				
+		room_food:"Food",
+		room_free: "Free Book",
+		room_deleted: "Deleted",						
+		room_price: "Price",
+		
+		roomCreate_hotel : "In hotel",
+		room_concrete_number : "Number",
+		room_concrete_single : "Single beds",
+		room_concrete_double : "Double beds",
+		room_concrete_price : "Price",
+		room_concrete_days : "Days before to pay",
+		room_concrete_percentage: "Deposit percentage",
 		
 		
+		admin_deleted : "DELETED",
 		btn_remove : "REMOVE",
 		btn_order : "ORDER",
 		btn_create : "CREATE",
+		btn_update : "UPDATE",
+		btn_create_room : "CREATE ROOM",
+		btn_add_image : "ADD IMAGE",
+		btn_remove : "REMOVE SELECTED",
 	}
 	var ua = {
 			header_dropdown_shopping_cart: "Кошик",	
@@ -312,10 +336,34 @@
 		admin_edit_address : "Адреса",
 		admin_edit_phone : "Телефон",
 		admin_edit_desc : "Опис",
+		admin_edit_city : "Місто",
+		manager_hotel_star : "К-сть зірок",
 		
+		room_header : "Кімнати",
+		room_type: "Тип", 
+		room_capacity : "Місткість",
+		room_conv: "Зручності",				
+		room_food:"Харчування",
+		room_free: "Без передплати",
+		room_deleted: "Видалено",						
+		room_price: "Ціна",
+		
+		roomCreate_hotel : "В готелі",
+		room_concrete_number : "Номер",
+		room_concrete_single : "Одномісні ліжка",
+		room_concrete_double : "Двомісні ліжка",
+		room_concrete_price : "Ціна",
+		room_concrete_days : "Дні для оплати",
+		room_concrete_percentage: "Відсоток завдатку",
+		
+		admin_deleted : "ВИДАЛЕНО",
 		btn_remove : "ВИДАЛИТИ",
 		btn_order : "ЗАМОВИТИ",
 		btn_create : "СТВОРИТИ",
+		btn_update : "ЗМІНИТИ",
+		btn_create_room : "СТВОРИТИ КІМНАТУ",
+		btn_add_image : "ДОДАТИ ФОТО",
+		btn_remove : "ВИДАЛИТИ ОБРАНЕ",
 	}
 	
 	var error = {
