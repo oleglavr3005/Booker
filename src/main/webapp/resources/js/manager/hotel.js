@@ -6,19 +6,19 @@ var hotel_y = 0;
 
 var places;
 function initAutocomplete() {
-    var input = document.getElementById('address');
-    var searchBox = new google.maps.places.SearchBox(input);
-    searchBox.addListener('places_changed', function () {
-        places = searchBox.getPlaces();
-    });
+	var input = document.getElementById('address');
+	var searchBox = new google.maps.places.SearchBox(input);
+	searchBox.addListener('places_changed', function() {
+		places = searchBox.getPlaces();
+	});
 }
 
-function createHotel(){
+function createHotel() {
 	var img = $('#photos').val() == '' ? 'new_hotel.jpg' : $('#photos').val();
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
 	getInfoFromGoogle();
-	if (validate()){
-		$.get('../add_hotel',{
+	if (validate()) {
+		$.get('../add_hotel', {
 			name : $('#name').val(),
 			stars : star,
 			city : hotel_city,
@@ -28,28 +28,29 @@ function createHotel(){
 			xCoord : hotel_x,
 			yCoord : hotel_y,
 			hotelImages : img
-		}, function(result){
-			if(result != 'error'){
+		}, function(result) {
+			if (result != 'error') {
 				$('#create_error').css('color', 'green');
 				$('#create_error').text("SUCCES");
 				$('#create_button').attr("disabled", true);
 				setTimeout(function() {
-					document.location.href = '/booker/cabinet/my_hotels/' + result;
+					document.location.href = '/booker/cabinet/my_hotels/'
+							+ result;
 				}, 2000);
-			}else{
+			} else {
 				$('#create_error').text("FAIL");
 			}
 		});
-	}else{
+	} else {
 		$('#create_error').text("INVALID DATA");
 	}
 }
 
-function updateHotel(hotelId){
+function updateHotel(hotelId) {
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
 	getInfoFromGoogle();
-	if (validate()){
-		$.get('../../edit_hotel',{
+	if (validate()) {
+		$.get('../../edit_hotel', {
 			hotelId : hotelId,
 			name : $('#name').val(),
 			stars : star,
@@ -59,27 +60,27 @@ function updateHotel(hotelId){
 			phoneNumber : $('#phone').val(),
 			xCoord : hotel_x,
 			yCoord : hotel_y,
-		}, function(result){
-			if(result != 'false'){
+		}, function(result) {
+			if (result != 'false') {
 				$('#create_error').css('color', 'green');
-				$('#create_error').text("SUCCES");setTimeout(function() {
+				$('#create_error').text("SUCCES");
+				setTimeout(function() {
 					$('#create_error').visibility = "none";
 				}, 2000);
-			}else{
+			} else {
 				$('#create_error').text("FAIL");
 			}
 		});
-	}else{
+	} else {
 		$('#create_error').text("INVALID DATA");
 	}
 }
 
-
-function validate(){
+function validate() {
 	var ok = true;
 	ok = nameIsValid($('#name').val()) && ok;
-	//ok = cityIsValid(hotel_city) && ok;
-	//ok = streetIsValid(hotel_street) && ok;
+	ok = starsIsValid($('#rating').val()) && ok;
+	ok = addressIsValid($('#address').val()) && ok;
 	ok = phoneIsValid($('#phone').val()) && ok;
 	ok = descIsValid($('#desc').val()) && ok;
 	return ok;
@@ -105,6 +106,32 @@ function onlyTextIsValid(field) {
 	return re.test(field);
 }
 
+function checkAddress(field) {
+	// var re = /^[a-zA-Z0-9\s,'-]*$/
+	// return re.test(field);
+	return true;
+}
+
+function starsIsValid(stars) {
+	if (stars >= 1 && stars <= 5) {
+		valid('rating');
+		return true;
+	} else {
+		invalid('rating');
+		return false;
+	}
+}
+
+function addressIsValid(address) {
+	if (address.length >= 5 && address.length <= 145 && checkAddress(address)) {
+		valid('address');
+		return true;
+	} else {
+		invalid('address');
+		return false;
+	}
+}
+
 function numberIsValid(field) {
 	var re = /^([0-9]*)$/;
 	return re.test(field);
@@ -121,8 +148,7 @@ function invalid(field) {
 }
 
 function nameIsValid(name) {
-	if (name.length >= 2 && name.length <= 45
-			&& engLetIsValid(name)) {
+	if (name.length >= 2 && name.length <= 45 && engLetIsValid(name)) {
 		valid('name');
 		return true;
 	} else {
@@ -131,41 +157,18 @@ function nameIsValid(name) {
 	}
 }
 
-function cityIsValid(name) {
-	if (name.length >= 3 && name.length <= 45
-			&& textIsValid(name)) {
-		valid('city');
-		return true;
-	} else {
-		invalid('city');
-		return false;
-	}
-}
-
-function streetIsValid(name) {
-	if (name.length >= 3 && name.length <= 45
-			&& textIsValid(name)) {
-		valid('street');
-		return true;
-	} else {
-		invalid('street');
-		return false;
-	}
-}
-
 function phoneIsValid(name) {
 	if (name.length >= 8 && name.length <= 15 && numberIsValid(name)) {
-		valid('phoneNmb');
+		valid('phone');
 		return true;
 	} else {
-		invalid('phoneNmb');
+		invalid('phone');
 		return false;
 	}
 }
 
 function descIsValid(name) {
-	if (name.length >= 10 && name.length <= 999
-			&& engTextIsValid(name)) {
+	if (name.length >= 10 && name.length <= 1000 && textIsValid(name)) {
 		valid('desc');
 		return true;
 	} else {
@@ -174,8 +177,8 @@ function descIsValid(name) {
 	}
 }
 
-function value(value){
-	return value == null ? '':value;
+function value(value) {
+	return value == null ? '' : value;
 }
 
 function updateHotelPhotos(id) {
@@ -190,7 +193,7 @@ function updateHotelPhotos(id) {
 			data.append('file-' + i, file);
 		});
 		$.ajax({
-			url : '../../edit_hotel_pictures/'+id,
+			url : '../../edit_hotel_pictures/' + id,
 			data : data,
 			cache : false,
 			contentType : false,
@@ -205,19 +208,26 @@ function updateHotelPhotos(id) {
 
 function removeHotelPhoto() {
 	var values = $('#images').val();
-	$.post('../../remove_hotel_photo',{
+	$.post('../../remove_hotel_photo', {
 		images : '' + values,
 	}, function(hotels) {
 		$('#switchContent').html(hotels);
 	});
 }
 
-function getInfoFromGoogle(){
-	hotel_x = places[0].geometry.location.lat();
-	hotel_y = places[0].geometry.location.lng();
-	var address = places[0].formatted_address;
-	var subAddress = address.substring(0, address.lastIndexOf(","));
-	subAddress = subAddress.substring(0, subAddress.lastIndexOf(","));
-	hotel_city = subAddress.substring(subAddress.lastIndexOf(",") + 1).trim();;
-	hotel_street = subAddress.substring(0, subAddress.lastIndexOf(","));
+function getInfoFromGoogle() {
+	try {
+		hotel_x = places[0].geometry.location.lat();
+		hotel_y = places[0].geometry.location.lng();
+		var address = places[0].formatted_address;
+		var subAddress = address.substring(0, address.lastIndexOf(","));
+		subAddress = subAddress.substring(0, subAddress.lastIndexOf(","));
+		hotel_city = subAddress.substring(subAddress.lastIndexOf(",") + 1)
+				.trim();
+		;
+		hotel_street = subAddress.substring(0, subAddress.lastIndexOf(","));
+	} catch (err) {
+		invalid('address');
+		return;
+	}
 }

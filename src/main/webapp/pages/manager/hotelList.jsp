@@ -58,19 +58,11 @@
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/css/hotel/nouislider.min.css">
 
-<link rel="stylesheet"
-	href="${pageContext.servletContext.contextPath}/resources/css/hotel/blueimp-gallery.min.css">
-<link rel="stylesheet"
-	href="${pageContext.servletContext.contextPath}/resources/css/hotel/blueimp-gallery.css">
-<script
-	src="${pageContext.servletContext.contextPath}/resources/js/hotel/jquery.min.js"></script>
 
-<script
-	src="${pageContext.servletContext.contextPath}/resources/js/hotel/jquery.blueimp-gallery.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-
-
+<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script>
 
 
 <style>
@@ -143,7 +135,7 @@
 							<div class="input-field">
 								<input id="name" type="text" class="validate" length="45"
 									placeholder="Name of Hotel"> <label id="nameLbl"
-									data-error="${fmtName}" for="name"><fmt:message
+									data-error="NAME INVALID" for="name"><fmt:message
 										key="admin.edit.name" /></label>
 							</div>
 
@@ -156,10 +148,13 @@
 							<!-- 						STARS -->
 							<input id="rating" onchange="rate()" value="0" type="number"
 								class="rating" min=0 max=5 step=1 data-size="xs" data-stars="5">
-							<span
-								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><fmt:message
-									key="manager.hotel.star" />STAR : <span id="rate_span">0</span>
-								/ 5 |</span>
+								<label id="ratingLbl"
+									data-error="RATING SHOULD BE 1-5" for="rating"><fmt:message
+										key="admin.edit.rating" /></label>
+<!-- 							<span -->
+<%-- 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><fmt:message --%>
+<%-- 									key="manager.hotel.star" />STAR : <span id="rate_span">0</span> --%>
+<!-- 								/ 5 |</span> -->
 							<script>
 								function rate() {
 
@@ -183,9 +178,9 @@
 
 							<div class="input-field">
 								<input id="address" type="text" class="validate" length="145"
-									placeholder="Address of hotel"> <label id="cityLbl"
-									data-error="${fmtName}" for="city"><fmt:message
-										key="admin.edit.city" /></label>
+									placeholder="Address of hotel"> <label id="addressLbl"
+									data-error="ADDRESS IS INVALID" for="address"><fmt:message
+										key="admin.edit.address" /></label>
 							</div>
 							<!-- 							END OF ADDRESS -->
 
@@ -196,9 +191,9 @@
 							<!-- 						PHONE -->
 
 							<div class="input-field">
-								<input id="phone" type="text" class="validate" length="45"
-									placeholder="Name of phone"> <label id="phoneLbl"
-									data-error="${fmtName}" for="phone"><fmt:message
+								<input id="phone" type="text" class="validate" length="20"
+									placeholder="Phone Number"> <label id="phoneLbl"
+									data-error="PHONE NUMBER IS INVALID" for="phone"><fmt:message
 										key="admin.edit.phone" /></label>
 							</div>
 
@@ -219,8 +214,8 @@
 
 							<div class="input-field">
 								<textarea placeholder="Desc" id="desc"
-									class="materialize-textarea" class="validate" length="999">${message}</textarea>
-								<label id="descLbl" data-error="${fmtName}" for="desc"><fmt:message
+									class="materialize-textarea" class="validate">${message}</textarea>
+								<label id="descLbl" data-error="DESCRIPTION IS INVALID" for="desc"><fmt:message
 										key="admin.edit.desc" /></label>
 							</div>
 

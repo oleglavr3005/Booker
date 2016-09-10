@@ -124,6 +124,8 @@
 		settings_enter_name : "First name",
 		settings_enter_surname : "Last name ",
 		settings_enter_save : "Save",
+		settings_enter_save1 : "Save",
+		settings_enter_pass : "Old password",
 		settings_header_pass : "Change password",
 		settings_enter_passnew : " New password",
 		settings_enter_passrepeat : "Repeat new password",
@@ -131,8 +133,9 @@
 		settings_enter_phone : "Phone number",
 		settings_header_manage : "Manager",
 		settings_enter_request : "Request for manager",
-
-		card_header : "All rights reserved_",
+		settings_save_pass : "Save password",
+			
+		card_header : "Hotels found",
 		card_no_periodicals : "No numbers found",
 		card_no_hotels: "No Hotels",
 		room_card_count: "Total price??",
@@ -149,10 +152,36 @@
 		card_status_ended : "Removed??",
 		card_status_removed : "Order cancelled??",
 
-		user_cart_header :"Shopping Cart"
+		user_cart_header :"Shopping Cart",
+		
+		btn_remove : "REMOVE",
+		btn_order : "ORDER",
 	}
 	var ua = {
-		header_regist : "Регістрація",
+			header_dropdown_shopping_cart: "Кошик",	
+			header_dropdown_orders : "Мої покупки",
+			header_dropdown_feedbacks : "Мої відгуки",
+			header_dropdown_settings : "Налаштування",
+			header_dropdown_hotels : "Мої готелі",
+			header_dropdown_admin_stuff : "Адміністрування",
+			header_dropdown_log_out: "Вийти",
+			card_edit : "Редагувати",
+			title_comment_span : "Заголовок", 
+			createComment : "Додати коментар",
+			hotel_button_previous : "Попередній", 
+			hotel_button_next : "Наступний",
+			hiddenError : "Помилка. Неправильні дані", 
+			room_card_add_to_cart : "Додати до картки", 
+			room_card_need_login : "Увійдіть щоб забронювати", 
+			order_card_from : "З: ",  
+			order_card_to : " До: ",
+			order_card_order : "Забронювати",
+			order_card_total_price : "Загальна сума : ",
+			order_card_uan : " Грн",
+			order_card_clear : "Очистити",
+			
+			
+		header_regist : "Реєстрація",
 		header_auth : "Увійти",
 		header_auth_close : "Закрити",
 		header_auth_forgot : "Забули пароль?",
@@ -161,11 +190,28 @@
 		index_search_header : "Шукати готель",
 		index_search_name : "Місце/назва готелю:",
 		index_search_price : "Зірки",
-		index_search_ppl : "Гостей",
+		index_search_ppl : "Кількість гостей",
 		index_search_start : "Приїжджаю",
 		index_search_end : "Від'їжджаю",
 		index_search_price_2 : "Ціна",
 		index_search_button : "Пошук",
+		
+		index_room_type : "Тип кімнати",
+		index_room_type_standart : "Стандарт",
+		index_room_type_lux : "Люкс",
+		index_room_type_delux : "Делюкс",
+		index_room_type_food : "Харчування",
+		index_room_type_food_none : "Немає",
+		index_room_type_food_breakfast : "Сніданок",
+		index_room_type_food_twice: "Сніданок і вечеря",
+		index_room_type_food_full: "Все включено",
+		index_room_wifi : "Wifi",
+		index_room_shower : "Душ",
+		index_room_parking : "Стоянка",
+		index_room_conditioner : "Кондиціонер",
+		index_room_pool : "Басейн",
+		index_room_gym : "Тренажерний зал",
+		index_room_balcony : "Балкон",
 		
 		map_button : "Карта", 
 		search : "Пошук",
@@ -221,14 +267,16 @@
 		settings_enter_name : "Імя",
 		settings_enter_surname : "Прізвище",
 		settings_enter_save : "Зберегти",
+		settings_enter_save1 : "Зберегти",
 		settings_header_pass : "Змінити пароль",
+		settings_enter_pass : "Старий пароль",
 		settings_enter_passnew : "Новий пароль",
 		settings_enter_passrepeat : "Повторити новий пароль",
 		settings_header_contact : "Контактна інформація",
 		settings_enter_phone : "Номер телефону",
 		settings_header_manage : "Менеджерська інформація",
 		settings_enter_request : "Запит на роль менеджера",
-
+		settings_save_pass : "Зберегти пароль",
 
 		card_header : "Всього пропозицій ",
 		card_no_periodicals : "Наявних  пропозицій немає",
@@ -248,7 +296,10 @@
 		card_status_ended : "Видалено??",
 		card_status_removed : "Замовлення відмінено??",
 
-		user_cart_header :"Кошик покупця"
+		user_cart_header :"Кошик покупця",
+		
+		btn_remove : "ВИДАЛИТИ",
+		btn_order : "ЗАМОВИТИ",
 	}
 	
 	var error = {

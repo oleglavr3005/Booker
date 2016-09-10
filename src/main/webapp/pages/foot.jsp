@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
 
-	<section class="bg-img" style="background-color: #292b34;">
+	<section class="" style="   background-color: #387f7b  !important;">
 		<div class="container-fluid">
 			<div class="well well-sm main-footer"
 				style="background-color: transparent; border: 0px; margin-bottom: 0px;">
@@ -139,7 +139,7 @@
 			</div>
 
 		</div>
-		<div class="row" style="background-color: #1a1a1a; margin: auto;">
+		<div class="row" style="background-color: #0d353c; margin: auto;">
 			<div class="col s1 offset-s9"
 				style="height: 40px; color: #8c8c8c; margin-top: 20px; font-size: 20px;">
 				&#169 2016</div>

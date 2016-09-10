@@ -25,9 +25,8 @@
 	media="screen,projection" />
 
 <!--  Scripts -->
-<script
-	src="${pageContext.servletContext.contextPath}/resources/themes/js/jquery.js"
-	type="text/javascript"></script>
+<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script>
 <script
 	src="${pageContext.servletContext.contextPath}/resources/themes/js/bootstrap.min.js"
 	type="text/javascript"></script>
@@ -72,7 +71,7 @@ img.logo {
 <!-- =================================================================== -->
 
 <nav class="navbar navbar-default navbar-static-top"
-	style="margin-bottom: 0px; background: #000033;">
+	style="margin-bottom: 0px; background: #12444c;">
 	<div class="container-fluid">
 		<div class="navbar-header"
 			style="margin-left: 30px; margin-right: 50px;">

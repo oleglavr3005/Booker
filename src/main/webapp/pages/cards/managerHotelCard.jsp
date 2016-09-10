@@ -9,6 +9,7 @@
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/fontawesome/css/font-awesome.min.css">
 
+		
 <style>
 b {
 	margin-left: 8px;
@@ -45,7 +46,7 @@ b {
 
 </div>
 
-<c:forEach var="hotel" items="${hotels}">
+<c:forEach var="hotel" items="${suitableHotels}">
 
 	<div id="hotel_card_${hotel.id}" class="col s10 offset-s1">
 		<div class="card">
@@ -166,7 +167,8 @@ b {
 </div>
 <!-- END OF PAGINATOR 3000 -->
 
-
+<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
 		var pagesCount = '${countOfPages}';
 		var currentPage = '${currentPage}';

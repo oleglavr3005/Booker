@@ -96,22 +96,14 @@ div #sidebar-wrapper {
 	<jsp:include page="header.jsp"></jsp:include>
 
 
-<div style="background: url('resources/images/helloPage.jpg'); height: 590px;">
+<div style="background: url('https://cdn6.agoda.net/images/ABTest/ABTest5692/home-1920x590-liguria-italy.jpg'); height: 590px;">
 <div class="container">
 <div style="margin-top: 200px; ">
-  <div class="row" style="background-color: #2b6d67;   opacity: .9; border-radius: 5px;">
-         <form class="col s12" action="${pageContext.servletContext.contextPath}/search" method="POST">
-           <div class="form-group" style="display:inline;">
-            <div class="input-group col-md-12" >
-                  <input name="name" class="form-control" placeholder="Search" required>
-                 <span class="input-group-btn">
-                        <button class="btn waves-effect waves-light input-group-addon">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </span>
-                    </div>
-                    </div>
-         </form>  
+  <div class="row" style="background-color: RGB(0, 0, 0);   opacity: .8; border-radius: 10px;">
+  <div style="text-align: center;">
+<h1>Error, 404</h1>
+<h2>Page not found</h2>
+</div>
        
 </div>
 </div>
