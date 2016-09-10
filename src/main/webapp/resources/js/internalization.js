@@ -1,7 +1,23 @@
 ﻿var languages = {};
 (function (){
 	var en = {
-		header_dropdown_shopping_cart: " Shоpping cart",	
+		tab_contact : "CONTACT",
+		tab_users : "USERS",
+		admin_page_id : "ID",
+		admin_page_fNane : "fNane",
+		admin_page_lName : "lName",
+		admin_page_mail : "Mail",
+		admin_page_phone : "Phone",
+		admin_page_type : "Type",
+		admin_page_status : "Status",
+		admin_page_active : "ACTIVE",
+		admin_page_banned : "BANNED",
+		admin_page_userId : "userId",
+		admin_page_reqDate : "reqDate",
+		admin_page_message : "Message",
+		
+			
+		header_dropdown_shopping_cart : " Shоpping cart",	
 		header_dropdown_orders : " My оrders",
 		header_dropdown_feedbacks : " My feedbacks",
 		header_dropdown_settings : " Settings",
@@ -22,8 +38,6 @@
 		order_card_total_price : "TOTAL_PRICE : ",
 		order_card_uan : " UAH",
 		order_card_clear : "CLEAR",
-		
-		
 		
 		header_regist : "Registration",
 		
@@ -184,27 +198,27 @@
 		btn_remove : "REMOVE SELECTED",
 	}
 	var ua = {
-			header_dropdown_shopping_cart: "Кошик",	
-			header_dropdown_orders : "Мої покупки",
-			header_dropdown_feedbacks : "Мої відгуки",
-			header_dropdown_settings : "Налаштування",
-			header_dropdown_hotels : "Мої готелі",
-			header_dropdown_admin_stuff : "Адміністрування",
-			header_dropdown_log_out: "Вийти",
-			card_edit : "Редагувати",
-			title_comment_span : "Заголовок", 
-			createComment : "Додати коментар",
-			hotel_button_previous : "Попередній", 
-			hotel_button_next : "Наступний",
-			hiddenError : "Помилка. Неправильні дані", 
-			room_card_add_to_cart : "Додати до картки", 
-			room_card_need_login : "Увійдіть щоб забронювати", 
-			order_card_from : "З: ",  
-			order_card_to : " До: ",
-			order_card_order : "Забронювати",
-			order_card_total_price : "Загальна сума : ",
-			order_card_uan : " Грн",
-			order_card_clear : "Очистити",
+		header_dropdown_shopping_cart: "Кошик",	
+		header_dropdown_orders : "Мої покупки",
+		header_dropdown_feedbacks : "Мої відгуки",
+		header_dropdown_settings : "Налаштування",
+		header_dropdown_hotels : "Мої готелі",
+		header_dropdown_admin_stuff : "Адміністрування",
+		header_dropdown_log_out: "Вийти",
+		card_edit : "Редагувати",
+		title_comment_span : "Заголовок", 
+		createComment : "Додати коментар",
+		hotel_button_previous : "Попередній", 
+		hotel_button_next : "Наступний",
+		hiddenError : "Помилка. Неправильні дані", 
+		room_card_add_to_cart : "Додати до картки", 
+		room_card_need_login : "Увійдіть щоб забронювати", 
+		order_card_from : "З: ",  
+		order_card_to : " До: ",
+		order_card_order : "Забронювати",
+		order_card_total_price : "Загальна сума : ",
+		order_card_uan : " Грн",
+		order_card_clear : "Очистити",
 			
 			
 		header_regist : "Реєстрація",
