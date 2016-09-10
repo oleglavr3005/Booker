@@ -150,7 +150,7 @@ function invalid(field) {
 }
 
 function nameIsValid(name) {
-	if (name.length >= 2 && name.length <= 45 && engLetIsValid(name)) {
+	if (name.length >= 2 && name.length <= 45 && textIsValid(name)) {
 		valid('name');
 		return true;
 	} else {
