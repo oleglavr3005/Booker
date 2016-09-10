@@ -190,7 +190,9 @@ b {
 
 <!-- IMPORTED -->
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script>
+
 
 
 <!-- END OF IMPORTED -->

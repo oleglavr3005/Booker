@@ -231,7 +231,7 @@
 							<a id="savePassword" class="waves-effect waves-light btn"
 								onclick="savePassword('${fmtHeader}','${fmtSucces}')"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-									id="settings_enter_save"></span></a>
+									id="settings_save_pass"></span></a>
 						</div>
 					</div>
 				</div>
@@ -307,7 +307,7 @@
 							<a id="savePersonal" class="waves-effect waves-light btn"
 								onclick="saveContactData()"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-									id="settings_enter_save"></span></a>
+									id="settings_save_pass"></span></a>
 						</div>
 					</div>
 
@@ -343,7 +343,7 @@
 								<a id="savePersonal" class="waves-effect waves-light btn"
 									onclick="createRequest()"
 									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-										id="settings_enter_save"></span></a>
+										id="settings_save_pass1"></span></a>
 							</div>
 						</div>
 
