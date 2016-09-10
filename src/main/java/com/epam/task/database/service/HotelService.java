@@ -22,7 +22,7 @@ private DaoManager daoManager;
 		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getAllHotelsByPage(page, compareBy));
 	}
 	
-	public List<Hotel> getAllSuitableHotels(String name, int minStars, int maxStars, int people,	//main search
+	public List<Hotel> getAllSuitableHotelsByPage(String name, int minStars, int maxStars, int people,	//main search
 			boolean typeStandart, boolean typeLux, boolean typeDelux, 								//room type
 			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull, 			//food type
 			int minPrice, int maxPrice,																//price
@@ -30,7 +30,7 @@ private DaoManager daoManager;
 			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit, 
 			Timestamp startDate, Timestamp endDate, int page, String compareBy) {
 		
-		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getAllSuitableHotels(
+		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getAllSuitableHotelsByPage(
 				name, minStars, maxStars, people, 
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull, 
@@ -59,13 +59,13 @@ private DaoManager daoManager;
 		return daoManager.executeAndClose(() -> daoManager.getHotelDao().updateHotelRating(hotel));
 	}
 
-	public int getSuitableHotelsNumber(String name, int minStars, int maxStars, int people, boolean typeStandart,
+	public List<Hotel> getAllSuitableHotels(String name, int minStars, int maxStars, int people, boolean typeStandart,
 			boolean typeLux, boolean typeDelux, boolean foodNone, boolean foodBreakfast, boolean foodTwice,
 			boolean foodFull, int minPrice, int maxPrice, boolean hasWiFi, boolean hasShower, boolean hasParking,
 			boolean hasCondition, boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit,
 			Timestamp startDate, Timestamp endDate) {
 		
-		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getSuitableHotelsNumber(
+		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getAllSuitableHotels(
 				name, minStars, maxStars, people, 
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull, 
