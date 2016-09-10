@@ -1,5 +1,6 @@
 
 function createRoom(){
+	alert($('#hotel_name').val());
 	var hotel = $('#hotelId').val();
 	var img = $('#photos').val() == '' ? 'new_room.jpg' : $('#photos').val();
 //	if (validate()){
