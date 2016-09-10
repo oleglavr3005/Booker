@@ -14,6 +14,15 @@
 		createComment : "Add comment",
 		hotel_button_previous : "Previous", 
 		hotel_button_next : "Next",
+		hiddenError : "ERROR WITH INFO", 
+		room_card_add_to_cart : "ADD TO CART", 
+		room_card_need_login : "U NEED 2 LOGIN", 
+		order_card_from : "From: ",  
+		order_card_to : " To: ",
+		order_card_order : "ORDER",
+		order_card_total_price : "TOTAL_PRICE : ",
+		order_card_uan : " UAH",
+		order_card_clear : "CLEAR",
 		
 		
 		
