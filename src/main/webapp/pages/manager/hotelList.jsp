@@ -106,30 +106,13 @@
 			<div class="col s3">
 				<!-- 					PHOTO -->
 				<a href="#!"><img id="Img"
-					style="height: 100px; padding: 10px; width: 110px;"
+					style="height: 200px; padding: 10px; width: 200px;"
 					src="<i:urlToImage url="new_hotel.png" />"> </a>
 				<!-- 					END OF PHOTO -->
 				<!-- 				INPUT -->
 				<input multiple style="margin-top: 60px; display: none" type="file"
 					id="imgInput" onchange="uploadHotel('')" accept="image/*" />
 				<!-- 				END OF INPUT -->
-
-				<a class="waves-effect waves-light btn" id="create_button"
-					onclick="createHotel()"
-					style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-					<span id=btn_create>CREATE</span>
-				</a>
-				<p id="create_error" style="color: red"></p>
-
-				<!-- 							SEND NOTIF -->
-				<p style="margin-top: 20px;">
-					<input type="checkbox" class="filled-in" id="sendNotif"
-						name="sendNotif" /> <label for="sendNotif">
-						<span id=lbl_sendnotif>SEND NOTIF</span></label>
-				</p>
-
-
-
 			</div>
 
 
@@ -214,11 +197,14 @@
 
 					</div>
 
-					<div class="row">
 
-						<div class="col s12">
-
-							<!-- 						DESC -->
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col s9">
+				<!-- 						DESC -->
 
 							<div class="input-field">
 								<textarea placeholder="Desc" id="desc"
@@ -228,13 +214,25 @@
 							</div>
 
 							<!-- 							END OF DESC -->
-
-						</div>
-					</div>
-
-				</div>
 			</div>
-		</div>
+			<div class="col s3">
+			<!-- 							SEND NOTIF -->
+				<p style="margin-top: 20px;">
+					<input type="checkbox" class="filled-in" id="sendNotif"
+						name="sendNotif" /> <label for="sendNotif">
+						<span id=lbl_sendnotif>SEND NOTIF</span></label>
+				</p>
+			<a class="waves-effect waves-light btn" id="create_button"
+					onclick="createHotel()"
+					style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+					<span id=btn_create>CREATE</span>
+				</a>
+				<p id="create_error" style="color: red"></p>
+
+				
+			
+			</div>
+			</div>
 	</div>
 
 
