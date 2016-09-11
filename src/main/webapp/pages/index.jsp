@@ -252,25 +252,22 @@ div #sidebar-wrapper {
 								</p>
 
 							</div>
-
-							<div class="col s1 offset-s1">
-								<div class="rangePrint" id="printMinPrice">${minPrice}</div>
+							<div class="row">
+								<div class="col s1 offset-s1">
+									<div class="rangePrint" id="printMinPrice">${minPrice}</div>
+								</div>
+								<div class="col s8">
+									<label class="labelstyle">
+										<span id="index_search_price_2"></span>
+									</label>
+									<section class="range-slider">
+										<div id="priceSlider"></div>
+									</section>
+								</div>
+								<div class="col s1">
+									<div class="rangePrint" id="printMaxPrice">${maxPrice}</div>
+								</div>
 							</div>
-
-							<div class="col s8">
-
-								<label class="labelstyle"><span
-				    id="index_search_price_2"></span></label>
-								<section class="range-slider">
-									<div id="priceSlider"></div>
-								</section>
-
-							</div>
-
-							<div class="col s1">
-								<div class="rangePrint" id="printMaxPrice">${maxPrice}</div>
-							</div>
-
 
 						</div>
 					</div>
