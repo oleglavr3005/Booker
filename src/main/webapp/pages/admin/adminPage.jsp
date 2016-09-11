@@ -104,7 +104,7 @@
 	<jsp:include page="../header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 
-	<div class="container">
+	<div class="container-fluid">
 
 		<h4 style="text-align: center; margin-top: 20px;">
 			<span id="admin_header"></span>
