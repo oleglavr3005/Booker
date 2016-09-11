@@ -564,6 +564,9 @@
 			index_search_stars : "Зірки",
 			index_search_location : "Розташування",
 			index_search_description : "Опис",
+			tooltip_phone_number : "Номер телефону",
+			tooltip_showe_all_info : "Показати всю інформацію",
+			tooltip_rating : "Рейтинг",
 		},
 		en : {
 			index_room_wifi : "Wifi",
@@ -576,6 +579,9 @@
 			index_search_stars : "Stars",
 			index_search_location : "Location",
 			index_search_description : "Description",
+			tooltip_phone_number : "Phone number",
+			tooltip_showe_all_info : "Show full info",
+			tooltip_rating : "Rating",
 		}
 	};
 	
