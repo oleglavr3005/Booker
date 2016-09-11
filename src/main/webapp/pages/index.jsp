@@ -167,110 +167,100 @@ div #sidebar-wrapper {
 
 
 			</div>
-
 			<div class="row">
-
 				<div id="search_divider" class="divider"
 					style="margin-bottom: 20px;"></div>
 
 				<div id="togle_place" class="col s12" style="margin-top: 18px;">
-
 					<div id="details_panel" style="display: none">
-
 						<div class="row">
-
-							<div class="col s4 offset-s1 ">
-
-								<h6 id="room_type"style="margin-bottom: 15px;"> </h6>
-								<p>
-									<input type="checkbox" class="filled-in" id="typeStandart"
-										name="typeStandart" /> <label id="index_room_type_standart" for="typeStandart"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="typeLux"
-										name="typeLux" /> <label id="index_room_type_lux" for="typeLux"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="typeDelux"
-										name="typeDelux" /> <label id="index_room_type_delux" for="typeDelux"></label>
-								</p>
-
-
-								<h6 id="room_food" style="margin-bottom: 15px;"></h6>
-								<p>
-									<input type="checkbox" class="filled-in" id="foodNone"
-										name="foodNone" /><label id="index_room_type_food_none" for="foodNone"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="foodBreakfast"
-										name="foodBreakfast" /> <label id="index_room_type_food_breakfast" for="foodBreakfast">BREAKFAST</label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="foodTwice"
-										name="foodTwice" /> <label id="index_room_type_food_twice" for="foodTwice"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="foodFull"
-										name="foodFull" /> <label id="index_room_type_food_full" for="foodFull">Full</label>
-								</p>
-
+							<div class="row">
+								<div class="col s4 offset-s1 ">
+	
+									<h6 id="room_type"style="margin-bottom: 15px;"> </h6>
+									<p>
+										<input type="checkbox" class="filled-in" id="typeStandart"
+											name="typeStandart" /> <label id="index_room_type_standart" for="typeStandart"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="typeLux"
+											name="typeLux" /> <label id="index_room_type_lux" for="typeLux"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="typeDelux"
+											name="typeDelux" /> <label id="index_room_type_delux" for="typeDelux"></label>
+									</p>
+									<h6 id="room_food" style="margin-bottom: 15px;"></h6>
+									<p>
+										<input type="checkbox" class="filled-in" id="foodNone"
+											name="foodNone" /><label id="index_room_type_food_none" for="foodNone"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="foodBreakfast"
+											name="foodBreakfast" /> <label id="index_room_type_food_breakfast" for="foodBreakfast">BREAKFAST</label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="foodTwice"
+											name="foodTwice" /> <label id="index_room_type_food_twice" for="foodTwice"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="foodFull"
+											name="foodFull" /> <label id="index_room_type_food_full" for="foodFull">Full</label>
+									</p>
+	
+								</div>
+								<div class="col s4 offset-s2 ">
+	
+									<p style="margin-top: 20px;">
+										<input type="checkbox" class="filled-in" id="hasWiFi"
+											name="hasWiFi" /> <label id="label_wifi" for="hasWiFi"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="hasShower"
+											name="hasShower" /> <label id="label_shower" for="hasShower"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="hasParking"
+											name="hasParking" /> <label id="label_parking" for="hasParking"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="hasCondition"
+											name="hasCondition" /> <label id="label_condition" for="hasCondition"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="hasPool"
+											name="hasPool" /> <label id="label_pool" for="hasPool"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="hasGym"
+											name="hasGym" /> <label id="label_gym" for="hasGym"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="hasBalcony"
+											name="hasBalcony" /> <label id="label_balcony" for="hasBalcony"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="noDeposit"
+											name="noDeposit" /> <label id="index_room_noDeposit" for="noDeposit"></label>
+									</p>
+								</div>
 							</div>
-
-							<div class="col s4 offset-s2 ">
-
-								<p style="margin-top: 20px;">
-									<input type="checkbox" class="filled-in" id="hasWiFi"
-										name="hasWiFi" /> <label id="label_wifi" for="hasWiFi"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="hasShower"
-										name="hasShower" /> <label id="label_shower" for="hasShower"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="hasParking"
-										name="hasParking" /> <label id="label_parking" for="hasParking"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="hasCondition"
-										name="hasCondition" /> <label id="label_condition" for="hasCondition"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="hasPool"
-										name="hasPool" /> <label id="label_pool" for="hasPool"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="hasGym"
-										name="hasGym" /> <label id="label_gym" for="hasGym"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="hasBalcony"
-										name="hasBalcony" /> <label id="label_balcony" for="hasBalcony"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="noDeposit"
-										name="noDeposit" /> <label id="index_room_noDeposit" for="noDeposit"></label>
-								</p>
-
+							<div class="row">
+								<div class="col s1 offset-s1">
+									<div class="rangePrint" id="printMinPrice">${minPrice}</div>
+								</div>
+								<div class="col s8">
+									<label class="labelstyle">
+										<span id="index_search_price_2"></span>
+									</label>
+									<section class="range-slider">
+										<div id="priceSlider"></div>
+									</section>
+								</div>
+								<div class="col s1">
+									<div class="rangePrint" id="printMaxPrice">${maxPrice}</div>
+								</div>
 							</div>
-
-							<div class="col s1 offset-s1">
-								<div class="rangePrint" id="printMinPrice">${minPrice}</div>
-							</div>
-
-							<div class="col s8">
-
-								<label class="labelstyle"><span
-				    id="index_search_price_2"></span></label>
-								<section class="range-slider">
-									<div id="priceSlider"></div>
-								</section>
-
-							</div>
-
-							<div class="col s1">
-								<div class="rangePrint" id="printMaxPrice">${maxPrice}</div>
-							</div>
-
 
 						</div>
 					</div>
@@ -444,41 +434,12 @@ div #sidebar-wrapper {
 
 	<!-- 	DATEPICKER -->
 		<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/picker.js"></script>
+		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/picker.js"></script>
 		<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/picker.date.js"></script>
+		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/picker.date.js"></script>
+		<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/datepicker.js"></script>
 	
-	 	<script type="text/javascript"> 
-	 	$(document).ready(function() {
- 		$('.datepicker').pickadate({
- 			    selectMonths: true, // Creates a dropdown to control month
- 			    selectYears: 15, // Creates a dropdown of 15 years to control year
- 			 	format: 'yyyy-mm-dd' 
- 		});
-
- 	});
- 	</script>
-<script type="text/javascript">
-function onDate() {
-	    var selectedText = document.getElementById('date_from').value;
-	    var selectedDate = new Date(selectedText);
-	    var d = addDays(selectedDate, 1);
-	    var curr_date = d.getDate();
-	    var curr_month = d.getMonth() + 1;
-	    if(curr_month < 10){
-	    	curr_month = "0" + curr_month;
-	    }
-	    var curr_year = d.getFullYear();
-		var date = curr_year + "-" + curr_month + "-" + curr_date;
-	   document.getElementById("date_to").value = date;
-	   // var changeDate = document.getElementById('date_to').
-	};
-
-	function addDays(date, days) {
-	    var result = new Date(date);
-	    result.setDate(result.getDate() + days);
-	    return result;
-	}</script>
 
 </body>
 

@@ -324,18 +324,20 @@ div #sidebar-wrapper {
 
 			<div class="row">
 
-				<div class="col s3">
-					<input type="date" name="startDate" id="date_from"
-						class="datepicker validate" value="${startDate}"><label
-						id="startLbl" data-error="" for="date_from"><span
-						id="index_search_start"></span></label>
+				<div class="col s3">						
+						<input type="date" name="startDate" id="date_from"
+						class="datepicker validate" onchange="onDate()"  style="cursor: default;"
+						value="${startDate}"><label id="startLbl"
+						data-error="${fmtStart}" for="date_from"><span
+				    id="index_search_start"></span></label>						
 				</div>
 
 				<div class="col s3">
 					<input type="date" name="endDate" id="date_to"
-						class="datepicker validate" value="${endDate}"><label
-						id="endLbl" data-error="" for="date_to"><span
-						id="index_search_end"></span></label>
+						class="datepicker validate" style="cursor: default;"
+						value="${endDate}"><label id="endLbl"
+						data-error="${fmtEnd}" for="date_to"><span
+				    id="index_search_end"></span></label>
 				</div>
 
 				<div class="col s3">
@@ -412,5 +414,13 @@ div #sidebar-wrapper {
 		src="${pageContext.servletContext.contextPath}/resources/js/hotel/dropDownComments.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
+		
+			<!-- 	DATEPICKER -->
+		<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/picker.js"></script>
+		<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/picker.date.js"></script>
+		<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/datepicker.js"></script>
 </body>
 </html>
