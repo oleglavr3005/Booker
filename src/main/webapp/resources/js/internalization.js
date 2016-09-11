@@ -512,11 +512,11 @@
 		btn_update : "Змінити",
 		btn_create_room : "Створити кімнату",
 		btn_add_image : "Додати фото",
-		btn_remove_іудусеув : "Видалити обране",
+		btn_remove_selected : "Видалити обране",
 		btn_decline : "Відхилити",
 		btn_approve : "Підтвердити",
 
-		header_regist: "header_regist",
+		header_regist: "Реєстрація",
 	}
 	
 	var error = {
