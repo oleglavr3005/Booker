@@ -66,6 +66,7 @@ function updateRoom(room){
 			hasGym : document.getElementById('hasGym').checked,
 			hasBalcony : document.getElementById('hasBalcony').checked,
 			freeBook : document.getElementById('freeBook').checked,
+			deleted : document.getElementById('isDeleted').checked,
 			
 			daysCount : $('#days').val(),
 			percentage : $('#percentage').val(),

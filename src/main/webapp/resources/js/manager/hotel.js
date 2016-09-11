@@ -61,6 +61,7 @@ function updateHotel(hotelId) {
 			street : hotel_street,
 			description : $('#desc').val(),
 			phoneNumber : $('#phone').val(),
+			deleted : document.getElementById('isDeleted').checked,
 			xCoord : hotel_x,
 			yCoord : hotel_y,
 		}, function(result) {
