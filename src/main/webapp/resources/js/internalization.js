@@ -1,7 +1,8 @@
 ﻿var languages = {};
 (function (){
 	var en = {
-		tab_contact : "Contact",
+		tab_personal : "Personal",
+		tab_contact : "Contacts",
 		tab_users : "Users",
 		admin_page_id : "ID",
 		admin_page_fNane : "First name",
@@ -182,7 +183,8 @@
 		settings_header_manage : "Manager",
 		settings_enter_request : "Request for manager",
 		settings_save_pass : "Save password",
-			
+		settings_chk_mails : "I WANT RECEIVE MAILS ABOUT NEW ROOMS!",
+		 	
 		card_header : "Hotels found",
 		card_no_periodicals : "No numbers found",
 		card_no_hotels: "No Hotels",
@@ -256,7 +258,8 @@
 		btn_approve : "Approve",
 	}
 	var ua = {
-		tab_contact : "Контакти??",
+		tab_personal : "Особисті налаштування",
+		tab_contact : "Контакти",
 		tab_users : "Користувачі",
 		admin_page_id : "ID",
 		admin_page_fNane : "І'мя",
@@ -314,13 +317,13 @@
 		label_gym : "Тренажерний зал",
 		label_balcony : "Балкон",
 	
-		header_dropdown_shopping_cart: "Кошик",	
-		header_dropdown_orders : "Мої покупки",
-		header_dropdown_feedbacks : "Мої відгуки",
-		header_dropdown_settings : "Налаштування",
-		header_dropdown_hotels : "Мої готелі",
-		header_dropdown_admin_stuff : "Адміністрування",
-		header_dropdown_log_out: "Вийти",
+		header_dropdown_shopping_cart: " Кошик",	
+		header_dropdown_orders : " Мої покупки",
+		header_dropdown_feedbacks : " Мої відгуки",
+		header_dropdown_settings : " Налаштування",
+		header_dropdown_hotels : " Мої готелі",
+		header_dropdown_admin_stuff : " Адміністрування",
+		header_dropdown_log_out: " Вийти",
 		card_edit : "Редагувати",
 		title_comment_span : "Заголовок", 
 		createComment : "Додати коментар",
@@ -431,6 +434,7 @@
 		settings_header_manage : "Менеджерська інформація",
 		settings_enter_request : "Запит на роль менеджера",
 		settings_save_pass : "Зберегти пароль",
+		settings_chk_mails : "Я ХОЧУ ОТРИМУВАТИ ПОВІДОМЛЕННЯ ПРО НОВІ КІМНАТИ!",
 
 		card_header : "Всього пропозицій ",
 		card_no_periodicals : "Наявних  пропозицій немає",

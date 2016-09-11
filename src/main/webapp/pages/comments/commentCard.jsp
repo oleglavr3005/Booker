@@ -76,7 +76,7 @@
 				</div>
 				<textarea id="comment" class="materialize-textarea" style="height: 80px;"></textarea>
 				<div style="margin-top: 20px;">
-					<a id="createComment" class="waves-effect waves-light btn" onclick="addNewComment(${hotel.id})" style="width: 120px;background: #26A69A;text-align: center;color: #F7F7F7;margin-left: calc(50% - 60px);"></a>
+					<a id="createComment" class="waves-effect waves-light btn" onclick="addNewComment(${hotel.id})" style="width: 200px;background: #26A69A;text-align: center;color: #F7F7F7;margin-left: calc(50% - 100px);"></a>
 				</div>
 			</div>
 			</c:if>
