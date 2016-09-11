@@ -99,20 +99,22 @@ img.logo {
 	<div class="container-fluid">
 		<div class="navbar-header"
 			style="margin-left: 30px; margin-right: 50px;">
-			<a href="${pageContext.servletContext.contextPath}/home"
-				class="brand" style="padding-bottom: 0px; padding-top: 0px;"> <img class="logo"
-				src="${pageContext.servletContext.contextPath}/resources/themes/images/logo.png"
-				alt="Periodicals" />
+			<a href="${pageContext.servletContext.contextPath}/home" class="brand" style="padding-bottom: 0px; padding-top: 0px;">
+				<img class="logo" src="${pageContext.servletContext.contextPath}/resources/themes/images/logo.png" alt="Periodicals" />
 			</a>
 		</div>
-
+		<div style="padding-top: 5px;">
+			<a class="en" class="waves-effect waves-light btn" onclick="changeLanguage('en')" 
+				style="width: 60px;background: #26A69A;text-align: center;color: #F7F7F7;margin-left: calc(50% - 30px);">
+			</a>
+			<a class="ua" class="waves-effect waves-light btn" onclick="changeLanguage('ua')" 
+				style="width: 60px;background: #26A69A;text-align: center;color: #F7F7F7;margin-left: calc(50% - 30px);">
+			</a>
+		</div>
 		<div id="navbar" class="navbar" style="margin-bottom: 0px; margin-left:300px">
-
 			<ul class="nav navbar-nav navbar-right" style="padding-top: 5px;">
-
 				<c:choose>
-					<c:when test="${user != null}">
-						
+					<c:when test="${user != null}">	
 							<div class="dropdown" style="padding-top:0.7rem;">
 							<span id="userNameSpan" style="font-size:1.3rem; margin-right:0.5rem; margin-top:20px">${user.firstName} ${user.lastName}</span>
 								<img id="imageavatar"
@@ -286,9 +288,7 @@ img.logo {
 						</li>
 					</c:otherwise>
 				</c:choose>
-
 			</ul>
-
 		</div>
 		<!--/.nav-collapse -->
 	</div>
