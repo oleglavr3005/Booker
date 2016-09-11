@@ -1,6 +1,8 @@
 package com.epam.task.servlets.cabinet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,51 +10,63 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.Feedback;
+import com.epam.task.database.model.Hotel;
+import com.epam.task.database.model.User;
 import com.epam.task.database.service.FeedbackService;
+import com.epam.task.database.service.HotelService;
+import com.epam.task.util.StringUtil;
 
-/**
- * Servlet implementation class DeleteFeedback
- */
 @WebServlet("/deleteFeedback")
 public class DeleteFeedback extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public DeleteFeedback() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try{
-			int commentId = Integer.parseInt(request.getParameter("commentId"));
-			Feedback feedback = new Feedback(commentId, 0, 0, 0, null, null, null);
-			int result = new FeedbackService().deleteFeedback(feedback);
-			if(result > 0){
-				response.getWriter().write("true");
-			} else {
-				response.getWriter().write("false");
-			}
-			response.getWriter().flush();
-		} catch (Exception e) {
-			response.setContentType("text/plain");
-			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write("false");
-			response.getWriter().flush();
+		String commentIdString = request.getParameter("commentId");
+		if(commentIdString == null || !StringUtil.isPositiveInteger(commentIdString)) {
+			response.sendError(500);
 			return;
 		}
+		
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		try{
+			FeedbackService feedbackService = new FeedbackService();
+			int commentId = Integer.parseInt(commentIdString);
+			Feedback feedback = feedbackService.getFeedbackById(commentId);
+
+			User user = (User) request.getSession().getAttribute("user");
+			if (feedback.getUserId() != user.getId()) {
+				response.sendError(500);
+				return;
+			}
+			
+			int hotelId = feedback.getHotelId();
+			int result = feedbackService.deleteFeedback(commentId);
+			
+			if (result > 0) { //calculate new rating
+				HotelService hotelService = new HotelService();
+				List<Feedback> feedbacks = feedbackService.getAllFeedbacksByHotel(hotelId);
+				double newRating = 0;
+				for(Feedback feedback1 : feedbacks) {
+					newRating += feedback1.getRating();
+				}
+				newRating /= feedbacks.size();
+				Hotel hotel = hotelService.getHotelById(hotelId);
+				hotel.setRating(newRating);
+				hotelService.updateHotel(hotel);
+			}
+			response.getWriter().write(result > 0 ? "true" : "false");
+		} catch (Exception e) {
+			response.getWriter().write("false");
+		}
+		response.getWriter().flush();
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 }

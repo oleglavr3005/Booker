@@ -575,11 +575,18 @@
 	languages.data_tooltip = data_tooltip;
 })();
 
-function changeLanguage(id, language){
+function changeLanguage(language){
+	if(language != 'en' && language != 'ua'){
+		language = 'en';
+	}
+	currentLanguage = language;
 	changeLanguageOnPage(language);
-	changeLanguageOnServer(id, language);
+	changeLanguageOnServer(language);
 }
 function updateLanguage(){
+	if(currentLanguage != 'en' && currentLanguage != 'ua'){
+		currentLanguage = 'en';
+	}
 	changeLanguageOnPage(currentLanguage);
 }
 function changeLanguageOnPage(language){
@@ -623,6 +630,6 @@ function changeLanguageOfDataTooltip(language){
 	}
 }
 
-function changeLanguageOnServer(id, language){
+function changeLanguageOnServer(language){
 	$.getJSON("http://localhost:8080/booker/change_lang?language=" + language);
 }
