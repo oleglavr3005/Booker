@@ -25,8 +25,8 @@ public class FeedbackService {
 		return daoManager.executeAndClose(() -> daoManager.getFeedbackDao().updateFeedback(element));
 	}
 	
-	public int deleteFeedback(Feedback element){
-		return daoManager.executeAndClose(() -> daoManager.getFeedbackDao().deleteFeedback(element));
+	public int deleteFeedback(int feedBackId){
+		return daoManager.executeAndClose(() -> daoManager.getFeedbackDao().deleteFeedback(feedBackId));
 	}
 	
 	public List<Feedback> getAllFeedbacksByHotel(int id){

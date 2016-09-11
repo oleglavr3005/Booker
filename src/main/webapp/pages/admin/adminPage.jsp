@@ -38,6 +38,9 @@
 <link
 	href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"
 	rel="stylesheet">
+	
+	<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/css/style.css">
 <style>
 .btn {
 	background: #26A69A;
@@ -111,12 +114,12 @@
 
 			<!-- 			Tab Holder -->
 			<div class="col s8 offset-s2">
-				<ul class="tabs" style="background: #638F98;">
+				<ul class="tabs" style="background: #12444c;">
 					<li id="admin_page_users" class="tab col s5 offset-s1"><a
-						class="active" href="#test1" style="color: #1A3D44"><b><p
+						class="active" href="#test1" style="color: #F7F7F7"><b><p
 									id="tab_users"></p></b></a></li>
 					<li class="tab col s5 offset-s1"><a href="#test2"
-						style="color: #1A3D44"><b><p id="tab_contact"></p></b></a></li>
+						style="color: #F7F7F7"><b><p id="tab_contact"></p></b></a></li>
 				</ul>
 			</div>
 			<!-- 			End of Tab Holder -->
@@ -154,9 +157,9 @@
 									<td><c:out value="${user.type}"></c:out></td>
 									<td><select id="userStatus${user.id}" class="combobox"
 										onchange="changeUserStatus(${user.id})">
-											<option id="admin_page_active" value="ACTIVE"
+											<option class="admin_page_active" value="ACTIVE"
 												<c:if test="${user.status == 'ACTIVE'}"> selected="selected"</c:if>></option>
-											<option id="admin_page_banned" value="BANNED"
+											<option class="admin_page_banned" value="BANNED"
 												<c:if test="${user.status == 'BANNED'}"> selected="selected"</c:if>></option>
 									</select></td>
 								</tr>
@@ -207,10 +210,10 @@
 											test="${request.status == 'PENDING'}">
 											<a class="my-btn waves-effect waves-light btn"
 												style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-												onclick="chageStatus(${request.id},true,'')"><span id="btn_appr">APPROVE</span></a>
+												onclick="chageStatus(${request.id},true,'')"><span class="btn_appr"></span></a>
 											<a class="my-btn waves-effect waves-light btn"
 												style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-												onclick="chageStatus(${request.id},false,'')"><span id="btn_decline">DECLINE</span></a>
+												onclick="chageStatus(${request.id},false,'')"><span class="btn_decline"></span></a>
 										</c:if> <c:if test="${request.status == 'DECLINED'}">
 											<div style="color: #F55151;">
 												<strong>DECLINED!</strong>

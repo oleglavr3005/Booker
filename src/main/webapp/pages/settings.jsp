@@ -61,7 +61,7 @@
 		rgba(0, 0, 0, 0.12);
 	transition: box-shadow .25s;
 	border-radius: 5px;
-	background-color: #F3EAEA;
+	background-color: #26A69A;
 }
 
 .bg-img {
@@ -114,14 +114,14 @@
 
 			<!-- 			Tab Holder -->
 			<div class="col s10 offset-s1">
-				<ul class="tabs" style="background: #638F98;">
+				<ul class="tabs" style="background: #12444c; ">
 					<li class="tab col s3"><a class="active" href="#test1"
-						style="color: #1A3D44"><b><p id="tab_personal">PERSONAL</p></b></a></li>
-					<li class="tab col s3"><a href="#test2" style="color: #1A3D44"><b><p
+						style=" color: #F7F7F7;"><b><p id="tab_personal">PERSONAL</p></b></a></li>
+					<li class="tab col s3"><a href="#test2" style="color: #F7F7F7"><b><p
 									id="tab_contact">CONTACT</p></b></a></li>
 					<c:if test="${user.type eq 'USER' }">
 						<li class="tab col s3"><a href="#test3"
-							style="color: #1A3D44"><b><p id="tab_manage">MANAG</p></b></a></li>
+							style="color: #F7F7F7"><b><p id="tab_manage">MANAG</p></b></a></li>
 					</c:if>
 				</ul>
 			</div>

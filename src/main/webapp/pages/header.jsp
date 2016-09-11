@@ -75,11 +75,13 @@ img.logo {
 			<c:when test="${language == null}">
 				<script>
 					var currentLanguage = 'en';
+					var sor = 'language == null';
 				</script>
 			</c:when>
 			<c:otherwise>
 				<script>
 					var currentLanguage = '${language}';
+					var sor = 'language != null';
 				</script>
 			</c:otherwise>
 			</c:choose>
@@ -87,6 +89,7 @@ img.logo {
 		<c:otherwise>
 			<script>
 				var currentLanguage = '${user.language}';
+				var sor = 'user.language';
 			</script>
 		</c:otherwise>
 	</c:choose>
@@ -96,20 +99,15 @@ img.logo {
 	<div class="container-fluid">
 		<div class="navbar-header"
 			style="margin-left: 30px; margin-right: 50px;">
-			<a href="${pageContext.servletContext.contextPath}/home"
-				class="brand" style="padding-bottom: 0px; padding-top: 0px;"> <img class="logo"
-				src="${pageContext.servletContext.contextPath}/resources/themes/images/logo.png"
-				alt="Periodicals" />
+			<a href="${pageContext.servletContext.contextPath}/home" class="brand" style="padding-bottom: 0px; padding-top: 0px;">
+				<img class="logo" src="${pageContext.servletContext.contextPath}/resources/themes/images/logo.png" alt="Periodicals" />
 			</a>
 		</div>
-
+		
 		<div id="navbar" class="navbar" style="margin-bottom: 0px; margin-left:300px">
-
 			<ul class="nav navbar-nav navbar-right" style="padding-top: 5px;">
-
 				<c:choose>
-					<c:when test="${user != null}">
-						
+					<c:when test="${user != null}">	
 							<div class="dropdown" style="padding-top:0.7rem;">
 							<span id="userNameSpan" style="font-size:1.3rem; margin-right:0.5rem; margin-top:20px">${user.firstName} ${user.lastName}</span>
 								<img id="imageavatar"
@@ -283,9 +281,7 @@ img.logo {
 						</li>
 					</c:otherwise>
 				</c:choose>
-
 			</ul>
-
 		</div>
 		<!--/.nav-collapse -->
 	</div>

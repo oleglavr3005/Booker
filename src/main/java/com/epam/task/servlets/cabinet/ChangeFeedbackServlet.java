@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.Feedback;
 import com.epam.task.database.model.Hotel;
+import com.epam.task.database.model.User;
 import com.epam.task.database.service.FeedbackService;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.util.StringUtil;
@@ -42,6 +43,11 @@ public class ChangeFeedbackServlet extends HttpServlet {
 		FeedbackService feedbackService = new FeedbackService();
 		
 		Feedback feedback = feedbackService.getFeedbackById(feedbackId);
+		User user = (User) request.getSession().getAttribute("user");
+		if (feedback.getUserId() != user.getId()) {
+			response.sendError(500);
+			return;
+		}
 		Hotel hotel = hotelService.getHotelById(feedback.getHotelId());
 		
 		feedback.setComment(comment);

@@ -153,6 +153,6 @@
 	
 	<script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/internalization.js"></script>
 	<script>
-		changeLanguageOnPage(currentLanguage);
+		updateLanguage();
 	</script>
 	
