@@ -63,26 +63,26 @@ public class AddHotelServlet extends HttpServlet {
 			for (int i = 0; i < hotelImagesArray.length; i++) {
 				hotelPhotoService.insertHotelPhoto(new HotelPhoto(0, hotelImagesArray[i], "", hotelId));
 			}
-			
-			if(Boolean.parseBoolean(sendNotifString)) {
-				List<User> usersEmail = new UserService().getAllUsersWithEmailNotification();
-				List<User> usersPhone = new UserService().getAllUsersWithPhoneNotification();
-
-				for(User user : usersEmail) {
-					new Thread(new Runnable() {
-
-						@Override
-						public void run() {
-							sendMail(user, hotelId);
-						}
-					}).start();
-				}
-
-				for(User user : usersPhone) {
-					//send sms
-				}
-			}
 		}		
+		
+		if(Boolean.parseBoolean(sendNotifString) && hotelId > 0) {
+			List<User> usersEmail = new UserService().getAllUsersWithEmailNotification();
+			List<User> usersPhone = new UserService().getAllUsersWithPhoneNotification();
+
+			for(User user : usersEmail) {
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						sendMail(user, hotelId);
+					}
+				}).start();
+			}
+
+			for(User user : usersPhone) {
+				//send sms
+			}
+		}
 		
 		response.getWriter().write(hotelId > 0 ? ""+hotelId : "error");
 	}

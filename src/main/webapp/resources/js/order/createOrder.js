@@ -38,7 +38,9 @@ function bookOrderCard(orderId, daysCount) {
 
 						if (res.booked == 'true') {
 							insertModal(res);
-							$('#modal1').openModal();
+							$('#modal1').openModal({
+							    complete : onModalHide
+							});
 
 							$('#book' + orderId).text("SUCCES");
 							$('#book' + orderId).attr('disabled', true);
@@ -88,19 +90,8 @@ function bookOrderCard(orderId, daysCount) {
 				} else {
 					$('#field').after(content); // book all
 				}
-
-				// var height = $('#subscribing_form').height();
-				// $("#subscribing_form").animate({
-				// height : "0px",
-				// opacity : 0
-				// }, 0, function() {
-				// $("#subscribing_form").animate({
-				// height : height + 'px',
-				// opacity : 1
-				// }, 500, function() {
+				
 				$("#subscribing_form").html(content);
-				// });
-				// });
 			}
 
 		} else {
@@ -110,13 +101,13 @@ function bookOrderCard(orderId, daysCount) {
 				comment : localComment
 			}, function(result) {
 				var res = $.parseJSON(result);
-				var hotels = $.parseJSON(res.hotels[0]);
 				$('#book' + orderId).onclick = null;
 
 				if (res.booked == 'true') {
-			//		alert("hotNam - " + res.hotels[0].id);
 					insertModal(res);
-					$('#modal1').openModal();
+					$('#modal1').openModal({
+					    complete : onModalHide
+					});
 
 					$('#book' + orderId).text("SUCCES");
 					$('#book' + orderId).attr('disabled', true);
@@ -287,7 +278,6 @@ function showModal(result){
 
 function modalMaker(result) {
 	var totalContent = '';
-	// alert(result.hotels[0] + " | " + result.hotels[0].name);
 	if (result.countOfHotels > 0) {
 		for (var i = 0; i < 3 && i < result.countOfHotels; i++) {
 			totalContent += contentMaker(result.hotels[i]);
@@ -333,3 +323,10 @@ function contentMaker(hotel) {
 			+ '	</div>' + '</div></div>';
 	return content;
 }
+
+var onModalHide = function() {
+	$.get('../refresh_cart', {
+	}, function(orders) {
+		$('#switchContent').html(orders);
+	});
+};
