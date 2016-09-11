@@ -302,7 +302,7 @@
 							<a id="savePersonal" class="waves-effect waves-light btn"
 								onclick="saveContactData()"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-								class="settings_save_pass"></span></a>
+								class="settings_enter_save"></span></a>
 						</div>
 					</div>
 
