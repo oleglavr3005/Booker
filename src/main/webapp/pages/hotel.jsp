@@ -324,18 +324,20 @@ div #sidebar-wrapper {
 
 			<div class="row">
 
-				<div class="col s3">
-					<input type="date" name="startDate" id="date_from"
-						class="datepicker validate" value="${startDate}"><label
-						id="startLbl" data-error="" for="date_from"><span
-						id="index_search_start"></span></label>
+				<div class="col s3">						
+						<input type="date" name="startDate" id="date_from"
+						class="datepicker validate" onchange="onDate()"  style="cursor: default;"
+						value="${startDate}"><label id="startLbl"
+						data-error="${fmtStart}" for="date_from"><span
+				    id="index_search_start"></span></label>						
 				</div>
 
 				<div class="col s3">
 					<input type="date" name="endDate" id="date_to"
-						class="datepicker validate" value="${endDate}"><label
-						id="endLbl" data-error="" for="date_to"><span
-						id="index_search_end"></span></label>
+						class="datepicker validate" style="cursor: default;"
+						value="${endDate}"><label id="endLbl"
+						data-error="${fmtEnd}" for="date_to"><span
+				    id="index_search_end"></span></label>
 				</div>
 
 				<div class="col s3">
@@ -412,5 +414,47 @@ div #sidebar-wrapper {
 		src="${pageContext.servletContext.contextPath}/resources/js/hotel/dropDownComments.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
+		
+			<!-- 	DATEPICKER -->
+		<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/picker.js"></script>
+		<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/picker.date.js"></script>
+	
+	 	<script type="text/javascript"> 
+	 	$(document).ready(function() {
+ 		$('.datepicker').pickadate({
+ 			    selectMonths: true, // Creates a dropdown to control month
+ 			    selectYears: 15, // Creates a dropdown of 15 years to control year
+ 			 	format: 'yyyy-mm-dd' 
+ 		});
+
+ 	});
+ 	</script>
+ 	<script type="text/javascript">
+ 	jQuery.noConflict();
+function onDate() {
+	    var selectedText = document.getElementById('date_from').value;
+	    var selectedDate = new Date(selectedText);
+	    var d = addDays(selectedDate, 1);
+	    var curr_date = d.getDate();
+	    var curr_month = d.getMonth() + 1;
+	    if(curr_month < 10){
+	    	curr_month = "0" + curr_month;
+	    }
+	    if(curr_date < 10){
+	    	curr_date = "0" + curr_date;
+	    }
+	    var curr_year = d.getFullYear();
+		var date = curr_year + "-" + curr_month + "-" + curr_date;
+	   document.getElementById("date_to").value = date;
+	   // var changeDate = document.getElementById('date_to').
+	};
+
+	function addDays(date, days) {
+	    var result = new Date(date);
+	    result.setDate(result.getDate() + days);
+	    return result;
+	}</script>
 </body>
 </html>

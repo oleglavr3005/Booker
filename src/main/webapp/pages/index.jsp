@@ -459,14 +459,18 @@ div #sidebar-wrapper {
  	});
  	</script>
 <script type="text/javascript">
+jQuery.noConflict();
 function onDate() {
-	    var selectedText = document.getElementById('date_from').value;
+		var selectedText = document.getElementById('date_from').value;
 	    var selectedDate = new Date(selectedText);
 	    var d = addDays(selectedDate, 1);
 	    var curr_date = d.getDate();
 	    var curr_month = d.getMonth() + 1;
 	    if(curr_month < 10){
 	    	curr_month = "0" + curr_month;
+	    }
+	    if(curr_date < 10){
+	    	curr_date = "0" + curr_date;
 	    }
 	    var curr_year = d.getFullYear();
 		var date = curr_year + "-" + curr_month + "-" + curr_date;
