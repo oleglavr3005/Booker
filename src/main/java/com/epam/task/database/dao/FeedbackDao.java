@@ -71,9 +71,9 @@ public class FeedbackDao {
 		}
 	}
 
-	public int deleteFeedback(Feedback element) {
+	public int deleteFeedback(int feedBackId) {
 		try (PreparedStatement statment = connection.prepareStatement(DELETE_FEEDBACK)) {
-			statment.setInt(1, element.getId());
+			statment.setInt(1, feedBackId);
 			return statment.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
