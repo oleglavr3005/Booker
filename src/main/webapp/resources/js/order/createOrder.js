@@ -139,6 +139,19 @@ function addToCart(roomId) {
 			$('#btn' + roomId).attr('disabled', true);
 		}
 	});
+	var url = window.location.href;
+	var path = url.substring(url.lastIndexOf("/") + 1,url.lenght);	
+	alert(url);
+	var compare = $('#compare').val();
+	var pageNumber = $('#pageNmb').val();
+	alert(pageNumber);
+	$.get(url, {
+		flag : 'true',
+		page : pageNumber,
+		compareBy : compare
+	}, function(orders) {
+		$('#switchContent').html(orders);
+	});
 }
 
 function isInfoValid() {
