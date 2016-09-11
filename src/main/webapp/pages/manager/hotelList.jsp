@@ -106,30 +106,13 @@
 			<div class="col s3">
 				<!-- 					PHOTO -->
 				<a href="#!"><img id="Img"
-					style="height: 100px; padding: 10px; width: 110px;"
+					style="height: 200px; padding: 10px; width: 200px;"
 					src="<i:urlToImage url="new_hotel.png" />"> </a>
 				<!-- 					END OF PHOTO -->
 				<!-- 				INPUT -->
 				<input multiple style="margin-top: 60px; display: none" type="file"
 					id="imgInput" onchange="uploadHotel('')" accept="image/*" />
 				<!-- 				END OF INPUT -->
-
-				<a class="waves-effect waves-light btn" id="create_button"
-					onclick="createHotel()"
-					style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-					<span id=btn_create>CREATE</span>
-				</a>
-				<p id="create_error" style="color: red"></p>
-
-				<!-- 							SEND NOTIF -->
-				<p style="margin-top: 20px;">
-					<input type="checkbox" class="filled-in" id="sendNotif"
-						name="sendNotif" /> <label for="sendNotif">
-						<span id=lbl_sendnotif>SEND NOTIF</span></label>
-				</p>
-
-
-
 			</div>
 
 
@@ -143,7 +126,7 @@
 
 							<div class="input-field">
 								<input id="name" type="text" class="validate" length="45"
-									placeholder="Name of Hotel"> <label id="nameLbl"
+									placeholder=""> <label id="nameLbl"
 									data-error="NAME INVALID" for="name"><span
 									id="admin_edit_name"></span></label>
 							</div>
@@ -186,7 +169,7 @@
 
 							<div class="input-field">
 								<input id="address" type="text" class="validate" length="145"
-									placeholder="Address of hotel"> <label id="addressLbl"
+									placeholder=""> <label id="addressLbl"
 									data-error="ADDRESS IS INVALID" for="address"><span
 									id="admin_edit_address"></span> </label>
 							</div>
@@ -200,7 +183,7 @@
 
 							<div class="input-field">
 								<input id="phone" type="text" class="validate" length="20"
-									placeholder="Phone Number"> <label id="phoneLbl"
+									placeholder=""> <label id="phoneLbl"
 									data-error="PHONE NUMBER IS INVALID" for="phone"><span
 									id="admin_edit_phone"></span></label>
 							</div>
@@ -214,27 +197,42 @@
 
 					</div>
 
-					<div class="row">
 
-						<div class="col s12">
-
-							<!-- 						DESC -->
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col s9">
+				<!-- 						DESC -->
 
 							<div class="input-field">
-								<textarea placeholder="Desc" id="desc"
+								<textarea placeholder="" id="desc"
 									class="materialize-textarea" class="validate">${message}</textarea>
 								<label id="descLbl" data-error="DESCRIPTION IS INVALID"
 									for="desc"><span id="admin_edit_desc"></span> </label>
 							</div>
 
 							<!-- 							END OF DESC -->
-
-						</div>
-					</div>
-
-				</div>
 			</div>
-		</div>
+			<div class="col s3">
+			<!-- 							SEND NOTIF -->
+				<p style="margin-top: 20px;">
+					<input type="checkbox" class="filled-in" id="sendNotif"
+						name="sendNotif" /> <label for="sendNotif">
+						<span id=lbl_sendnotif>SEND NOTIF</span></label>
+				</p>
+			<a class="waves-effect waves-light btn" id="create_button"
+					onclick="createHotel()"
+					style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+					<span id=btn_create>CREATE</span>
+				</a>
+				<p id="create_error" style="color: red"></p>
+
+				
+			
+			</div>
+			</div>
 	</div>
 
 
@@ -255,14 +253,10 @@
 				<c:if test="${countOfHotels > 0 }">
 					<select id="compare" class="chosen-select optionstyle"
 						onchange="findPage(window.location.href,1)">
-						<option class="optionstyle" value="compareByStarsAsc">star
-							asc</option>
-						<option class="optionstyle" value="compareByStarsDesc">star
-							desc</option>
-						<option class="optionstyle" value="compareByRatingAsc">rating
-							asc</option>
-						<option class="optionstyle" value="compareByRatingDesc"
-							selected="selected">rating desc</option>
+						<option class="optionstyle index_option_star_asc" value="compareByStarsAsc"></option>
+						<option class="optionstyle index_option_star_desc" value="compareByStarsDesc"></option>
+						<option class="optionstyle index_option_rating_asc" value="compareByRatingAsc"></option>
+						<option class="optionstyle index_option_rating_desc" value="compareByRatingDesc" selected="selected"></option>
 					</select>
 				</c:if>
 			</div>

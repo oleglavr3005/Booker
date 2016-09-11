@@ -57,10 +57,10 @@ b {
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default pull-left prev">
 						<i class="glyphicon glyphicon-chevron-left"></i> <span
-							id="hotel_button_previous"><span>
+							id="hotel_button_previous"></span>
 					</button>
 					<button type="button" class="btn btn-primary next">
-						<span id="hotel_button_next"><span> <i
+						<span id="hotel_button_next"></span> <i
 								class="glyphicon glyphicon-chevron-right"></i>
 					</button>
 				</div>
@@ -139,7 +139,7 @@ b {
 									href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}">${hotel.name}</a>
 							</div>
 							<div class="col s6 offset-s1">
-								<a class="tooltipped" data-position="icon" data-tooltip="Stars"
+								<a class="tooltipped index_search_stars" data-position="icon" data-tooltip=""
 									style="color: #0d0d0d; text-decoration: none;"> <c:forEach
 										var="i" begin="1" end="${hotel.stars}">
 										<i class="fa fa-lg fa-star" aria-hidden="true"></i>
@@ -152,30 +152,30 @@ b {
 
 
 						<div class="row" style="margin-bottom: 10px;">
-							<a class="tooltipped" data-position="icon"
-								data-tooltip="Location"
+							<a class="tooltipped index_search_location" data-position="icon"
+								data-tooltip=""
 								style="color: #0d0d0d; text-decoration: none;"><i
 								class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
 							<span>${hotel.city} ${hotel.street}</span>
 						</div>
 
 						<div class="row" style="margin-bottom: 10px">
-							<a class="tooltipped" data-position="icon"
-								data-tooltip="phone number"
+							<a class="tooltipped tooltip_phone_number" data-position="icon"
+								data-tooltip=""
 								style="color: #0d0d0d; text-decoration: none;"><i
 								class="fa fa-lg fa-phone-square invert" aria-hidden="true"></i></a>
 							<span>${hotel.phoneNumber}</span>
 						</div>
 
 						<div class="row" style="margin-bottom: 5px">
-							<a class="tooltipped" data-position="icon"
-								data-tooltip="Description"
+							<a class="tooltipped index_search_description" data-position="icon"
+								data-tooltip=""
 								style="color: #0d0d0d; cursor: default"><i
 								class="material-icons invert" style="font-size: 20px;">receipt</i></a>
 							<span id="hotelInfo${hotel.id}">${hotel.desc.substring(0, hotel.desc.length() < 150 ? hotel.desc.length() : 150)}</span>
 							<a onclick="changeInfo(${hotel.id})" style="cursor: pointer"
-								class="tooltipped" data-position="icon"
-								data-tooltip="Show full info" id="dots${hotel.id}">...</a> <input
+								class="tooltipped tooltip_showe_all_info" data-position="icon"
+								data-tooltip="" id="dots${hotel.id}">...</a> <input
 								id="infoOpened${hotel.id}" type="hidden" value="false" /> <input
 								id="fullInfo${hotel.id}" type="hidden" value="${hotel.desc}" />
 							<input id="shortInfo${hotel.id}" type="hidden"
@@ -185,7 +185,7 @@ b {
 
 					<div class="col s2">
 						<div class="row" style="margin-top: 14px">
-							<a class="tooltipped" data-position="icon" data-tooltip="Rating"
+							<a class="tooltipped tooltip_rating" data-position="icon" data-tooltip="Rating"
 								style="margin-left: 50px; color: #0d0d0d; text-decoration: none;">
 								<i class="fa fa-lg fa-thumbs-up invert" aria-hidden="true"></i> <span>${hotel.rating }</span>
 							</a>

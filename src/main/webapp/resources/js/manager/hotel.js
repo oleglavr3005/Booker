@@ -96,7 +96,7 @@ function engLetIsValid(field) {
 }
 
 function textIsValid(field) {
-	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’ ]*)$/;
+	var re = /^([-a-zA-Zа-яА-Я0-9іІьїЇєЄ’.!/'" ]*)$/;
 	return re.test(field);
 }
 
@@ -106,7 +106,7 @@ function engTextIsValid(field) {
 }
 
 function onlyTextIsValid(field) {
-	var re = /^([a-zA-Zа-яА-ЯіІьїЇєЄ’ ]*)$/;
+	var re = /^([a-zA-Zа-яА-ЯіІьїЇєЄ’.! ]*)$/;
 	return re.test(field);
 }
 
