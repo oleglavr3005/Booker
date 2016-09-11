@@ -327,8 +327,8 @@ function contentMaker(hotel) {
 }
 
 var onModalHide = function() {
-//	$.get('search', {
-//	}, function(orders) {
-//		$('#switchContent').html(orders);
-//	});
+	$.get('../refresh_cart', {
+	}, function(orders) {
+		$('#switchContent').html(orders);
+	});
 };
