@@ -71,18 +71,18 @@ b {
 <!-- end GALLERY -->
 <h6>
 	<c:if test="${countOfOrders > 0 }">
-		<fmt:message key="card.header" />
+		<span  id="card_header"></span>
 		<span id="periodicals_number_for_all_users">${countOfOrders}</span>
 	</c:if>
 	<c:if test="${countOfOrders <= 0 }">
-		<fmt:message key="card.no.periodicals" />
+		<span id="card_no_periodicals"></span>
 	</c:if>
 </h6>
 <div class="divider" style="margin-bottom: 20px;"></div>
 
 <c:if test="${countOfOrders == 0}">
 	<h5 style="color: red; margin-bottom: 63px;">
-		<fmt:message key="card.no.periodicals" />
+		<span id="card_no_periodicals"></span> 
 	</h5>
 </c:if>
 
