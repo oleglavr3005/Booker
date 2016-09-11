@@ -137,23 +137,21 @@ function addToCart(roomId) {
 		$('#btn' + roomId).onclick = null;
 
 		if (result == 'true') {
-			$('#btn' + roomId).text("SUCCES");
-			$('#btn' + roomId).attr('disabled', true);
+			$('#btn' + roomId).attr('disabled', true);			
+			var url = window.location.href;
+			var compare = $('#compare').val();
+			var pageNumber = $('#pageNmb').val();
+			$.get(url, {
+				flag : 'true',
+				page : pageNumber,
+				compareBy : compare
+			}, function(orders) {
+				$('#switchContent').html(orders);
+			});
 		} else {
 			$('#btn' + roomId).text("FAIL");
 			$('#btn' + roomId).attr('disabled', true);
 		}
-	});
-	var url = window.location.href;
-	var path = url.substring(url.lastIndexOf("/") + 1, url.lenght);
-	var compare = $('#compare').val();
-	var pageNumber = $('#pageNmb').val();
-	$.get(url, {
-		flag : 'true',
-		page : pageNumber,
-		compareBy : compare
-	}, function(orders) {
-		$('#switchContent').html(orders);
 	});
 }
 
