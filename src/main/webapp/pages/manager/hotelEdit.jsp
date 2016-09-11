@@ -113,37 +113,12 @@ div #sidebar-wrapper {
 
 
 					<a href="#!"><img id="Img"
-						style="height: 100px; padding: 10px; width: 110px;"
+						style="height: 200px; padding: 10px; width: 200px;"
 						<%-- 														src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
  								src="<i:urlToImage url="${hotel.photos[0].img }" />">
 					</a>
 					<!-- 					END OF PHOTO -->
-
-
-					<a class="waves-effect waves-light btn" id="create_button"
-						onclick="updateHotel(${hotel.id})"
-						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span id=btn_update></span></a>
-					<p id="create_error" style="color: red"></p>
 				</div>
-				<div class="row">
-					<p>
-						<input type="checkbox" class="filled-in" id="isDeleted"
-							name="isDeleted" /> <label for="isDeleted"><span id="admin_deleted"></span></label>
-					</p>
-
-					<input id="hotId" name=hotelId type="hidden" value="${hotel.id}" />
-					<a class="waves-effect waves-light btn" id="create_room_button"
-						href="${pageContext.servletContext.contextPath}/cabinet/create_room"
-						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span class="btn_create_room"></span></a>
-
-
-					<script>
-						$('#isDeleted').attr('checked',
-								'${hotel.isDeleted}' == 'true');
-					</script>
-
-				</div>
-
 
 			</div>
 
@@ -159,8 +134,8 @@ div #sidebar-wrapper {
 							<div class="input-field">
 								<input id="name" type="text" class="validate" length="45"
 									value="${hotel.name}" placeholder="Name of Hotel"> <label
-									id="nameLbl" data-error="${fmtName}" for="name"><span 
-										id="admin_edit_name" ></span></label>
+									id="nameLbl" data-error="${fmtName}" for="name"><span
+									id="admin_edit_name"></span></label>
 							</div>
 
 							<!-- 							END OF NAME -->
@@ -174,8 +149,8 @@ div #sidebar-wrapper {
 								value="${hotel.stars}" class="rating" min=0 max=5 step=1
 								data-size="xs" data-stars="5"> <span
 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><span
-									id="manager_hotel_star"></span><span id="rate_span">0</span>
-								/ 5 |</span>
+								id="manager_hotel_star"></span><span id="rate_span">0</span> / 5
+								|</span>
 							<script>
 								function rate() {
 
@@ -200,7 +175,7 @@ div #sidebar-wrapper {
 									placeholder="Address of hotel"
 									value="${hotel.city} ${hotel.street}"> <label
 									id="cityLbl" data-error="${fmtName}" for="city"><span
-										id="admin_edit_city"></span></label>
+									id="admin_edit_city"></span></label>
 							</div>
 							<!-- 							END OF ADDRESS -->
 
@@ -215,8 +190,8 @@ div #sidebar-wrapper {
 							<div class="input-field">
 								<input id="phone" type="text" class="validate" length="45"
 									placeholder="Name of phone" value="${hotel.phoneNumber}">
-								<label id="phoneLbl" data-error="${fmtName}" for="phone"><span 
-										id="admin_edit_phone"></span></label>
+								<label id="phoneLbl" data-error="${fmtName}" for="phone"><span
+									id="admin_edit_phone"></span></label>
 							</div>
 
 							<!--####################### END OF PHONE ############################# -->
@@ -230,23 +205,50 @@ div #sidebar-wrapper {
 
 					<div class="row">
 
-						<div class="col s12">
-
-							<!-- 						DESC -->
-
-							<div class="input-field">
-								<textarea placeholder="Desc" id="desc"
-									class="materialize-textarea" class="validate" length="999">${hotel.desc}</textarea>
-								<label id="descLbl" data-error="${fmtName}" for="desc"><span
-										id="admin_edit_desc"></span></label>
-							</div>
-
-							<!-- 							END OF DESC -->
-
-						</div>
+						<div class="col s12"></div>
 					</div>
 
 				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s10">
+				<!-- 						DESC -->
+
+				<div class="input-field">
+					<textarea placeholder="Desc" id="desc" class="materialize-textarea"
+						class="validate" length="999">${hotel.desc}</textarea>
+					<label id="descLbl" data-error="${fmtName}" for="desc"><span
+						id="admin_edit_desc"></span></label>
+				</div>
+
+				<!-- 							END OF DESC -->
+
+
+			</div>
+			<div class="col s2">
+			
+			
+			<p>
+						<input type="checkbox" class="filled-in" id="isDeleted"
+							name="isDeleted" /> <label for="isDeleted"><span
+							id="admin_deleted"></span></label>
+					</p>
+
+		
+						<a class="waves-effect waves-light btn" id="create_button"
+						onclick="updateHotel(${hotel.id})"
+						style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
+						id=btn_update></span></a>
+					<p id="create_error" style="color: red"></p>
+						
+						<!-- CREATE BUTTON -->
+				<script>
+						$('#isDeleted').attr('checked',
+								'${hotel.isDeleted}' == 'true');
+					</script>
+			
 			</div>
 		</div>
 	</div>
@@ -296,12 +298,16 @@ div #sidebar-wrapper {
 					<div class="table-header">
 						<span class="table-title" id="room_header"></span>
 						<div class="actions">
-							<a href="${pageContext.servletContext.contextPath}/cabinet/create_room" 
-								class="my-btn waves-effect waves-light btn" style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-								<span class="btn_create_room"></span></a>
-								 <button
-								class="search-toggle waves-effect btn-flat nopadding" style="margin-left: 10px;"><i
-								class="material-icons">search</i></button>
+							<a
+								href="${pageContext.servletContext.contextPath}/cabinet/create_room"
+								class="my-btn waves-effect waves-light btn"
+								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+								<span class="btn_create_room"></span>
+							</a>
+							<button class="search-toggle waves-effect btn-flat nopadding"
+								style="margin-left: 10px;">
+								<i class="material-icons">search</i>
+							</button>
 						</div>
 					</div>
 					<table id="datatable">
@@ -367,7 +373,7 @@ div #sidebar-wrapper {
 										</c:if></td>
 									<td><c:if test="${room.deleted}">
 											<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-										</c:if> </td>
+										</c:if></td>
 									<td><c:out value="${room.price }"></c:out></td>
 								</tr>
 
