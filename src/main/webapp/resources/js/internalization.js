@@ -201,8 +201,8 @@
 		subscribes_table_endDate: "Check-out",
 		subscribes_table_price: "Price",
 		subscribes_table_status: "Status",
-		card_status_ended : "Removed??",
-		card_status_removed : "Order cancelled??",
+		card_status_ended : "Finished",
+		card_status_removed : "Cancelled",
 
 		user_cart_header :"Shopping Cart",
 		
@@ -273,7 +273,7 @@
 		admin_page_active : "Активний",
 		admin_page_banned : "Забанений",
 		admin_page_userId : "ID користувача",
-		admin_page_reqDate : "reqDate",
+		admin_page_reqDate : "Дата запиту",
 		admin_page_message : "Повідомлення",
 			
 		request_approve : "Підтвердити",
@@ -332,7 +332,7 @@
 		hotel_button_previous : "Попередній", 
 		hotel_button_next : "Наступний",
 		hiddenError : "Помилка. Неправильні дані", 
-		room_card_add_to_cart : "Додати до картки", 
+		room_card_add_to_cart : "В кошик", 
 		room_card_need_login : "Увійдіть щоб забронювати", 
 		order_card_from : "З: ",  
 		order_card_to : " До: ",
@@ -461,8 +461,8 @@
 		subscribes_table_endDate: "Виїзд",
 		subscribes_table_price: "Ціна",
 		subscribes_table_status: "Стан",
-		card_status_ended : "Видалено??",
-		card_status_removed : "Замовлення відмінено??",
+		card_status_ended : "Завершене",
+		card_status_removed : "Скасоване",
 
 		user_cart_header :"Кошик покупця",
 		
