@@ -37,7 +37,8 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
 	rel="stylesheet">
-
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/css/style.css">
 
 <style>
 .btn {
@@ -87,6 +88,7 @@
 .well {
 	padding: 0px;
 }
+
 </style>
 
 </head>
@@ -130,11 +132,9 @@
 			<div id="test1" class="col s12">
 				<div class="container-fluid">
 					<div class="row settings-title">
-						<div class="col s6 offset-s3">
-							<h4>
+							<h4 style="text-align: center; margin-top: 20px;">
 								<span id="settings_header_PERSONAL"></span>
 							</h4>
-						</div>
 					</div>
 
 					<div class="row">
@@ -187,11 +187,9 @@
 					<div class="divider"></div>
 
 					<div class="row" style="margin-bottom: 10px;">
-						<div class="col s6 offset-s3">
-							<h4 id="pwd_title">
+							<h4 id="pwd_title" style="text-align: center; margin-top: 20px;">
 								<span id="settings_header_pass"></span>
 							</h4>
-						</div>
 
 					</div>
 					<div class="row inline field fields">
@@ -240,11 +238,9 @@
 			<!-- 				Tab #2 -->
 			<div id="test2" class="col s12">
 				<div class="container">
-					<div class="row settings-title">
-						<h4>
+						<h4 style="text-align: center; margin-top: 20px;">
 							<span id="settings_header_CONTACT"></span>
 						</h4>
-					</div>
 
 					<div class="row fields">
 						<div class="input-field col s12">

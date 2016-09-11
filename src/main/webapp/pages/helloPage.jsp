@@ -99,15 +99,15 @@ div #sidebar-wrapper {
 <div style="background: url('resources/images/helloPage.jpg'); height: 590px;">
 <div class="container">
 <div style="margin-top: 200px; ">
-  <div class="row" style="background-color: #2b6d67;   opacity: .9; border-radius: 5px;">
-         <form class="col s12" action="${pageContext.servletContext.contextPath}/search" method="POST">
+  <div class="row" style="background-color: #12444c;   opacity: .7; border-radius: 5px;">
+         <form id="myForm" class="col s12" action="${pageContext.servletContext.contextPath}/search" method="POST">
            <div class="form-group" style="display:inline;">
             <div class="input-group col-md-12" >
-                  <input name="name" class="form-control" placeholder="Search" required>
+                  <input name="name" id="nam" class="form-control" placeholder="Search">
                  <span class="input-group-btn">
-                        <button class="btn waves-effect waves-light input-group-addon">
+                        <a onclick="simpleSearch()" class="waves-effect waves-light btn" style="background: #26A69A; color: #F7F7F7; ">
                             <i class="glyphicon glyphicon-search"></i>
-                        </button>
+                        </a>
                     </span>
                     </div>
                     </div>
@@ -128,6 +128,8 @@ div #sidebar-wrapper {
 <script src="http://unslider.com/unslider/dist/js/unslider-min.js"></script> <!-- but with the right path! -->
 
 
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
 </body>
 
 </html>

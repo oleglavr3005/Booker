@@ -78,6 +78,12 @@ function searchRooms(hotelId) {
 	}
 }
 
+function simpleSearch() {
+	if (nameIsValid($('#nam').val())) {
+		document.getElementById("myForm").submit();
+	}
+}
+
 function searchForm() {
 	var flag = true;
 	flag = nameIsValid($('#nam').val()) && flag;
@@ -132,7 +138,7 @@ function validateEndDate() {
 }
 
 function nameIsValid(name) {
-	if (name.length >= 2 && name.length <= 45 && validateLetters(name)) {
+	if (name.length <= 45 && validateLetters(name)) {
 		valid('nam');
 		return true;
 	} else {
@@ -182,5 +188,5 @@ function findPage(url,pageNumber) {
 	}, function(orders) {
 		$('#switchContent').html(orders);
 	});
-	updateLanguage();
+	setTimeout('updateLanguage()', 50);
 }
