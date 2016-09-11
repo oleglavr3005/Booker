@@ -167,90 +167,83 @@ div #sidebar-wrapper {
 
 
 			</div>
-
 			<div class="row">
-
 				<div id="search_divider" class="divider"
 					style="margin-bottom: 20px;"></div>
 
 				<div id="togle_place" class="col s12" style="margin-top: 18px;">
-
 					<div id="details_panel" style="display: none">
-
 						<div class="row">
-
-							<div class="col s4 offset-s1 ">
-
-								<h6 id="room_type"style="margin-bottom: 15px;"> </h6>
-								<p>
-									<input type="checkbox" class="filled-in" id="typeStandart"
-										name="typeStandart" /> <label id="index_room_type_standart" for="typeStandart"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="typeLux"
-										name="typeLux" /> <label id="index_room_type_lux" for="typeLux"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="typeDelux"
-										name="typeDelux" /> <label id="index_room_type_delux" for="typeDelux"></label>
-								</p>
-
-
-								<h6 id="room_food" style="margin-bottom: 15px;"></h6>
-								<p>
-									<input type="checkbox" class="filled-in" id="foodNone"
-										name="foodNone" /><label id="index_room_type_food_none" for="foodNone"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="foodBreakfast"
-										name="foodBreakfast" /> <label id="index_room_type_food_breakfast" for="foodBreakfast">BREAKFAST</label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="foodTwice"
-										name="foodTwice" /> <label id="index_room_type_food_twice" for="foodTwice"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="foodFull"
-										name="foodFull" /> <label id="index_room_type_food_full" for="foodFull">Full</label>
-								</p>
-
-							</div>
-
-							<div class="col s4 offset-s2 ">
-
-								<p style="margin-top: 20px;">
-									<input type="checkbox" class="filled-in" id="hasWiFi"
-										name="hasWiFi" /> <label id="label_wifi" for="hasWiFi"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="hasShower"
-										name="hasShower" /> <label id="label_shower" for="hasShower"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="hasParking"
-										name="hasParking" /> <label id="label_parking" for="hasParking"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="hasCondition"
-										name="hasCondition" /> <label id="label_condition" for="hasCondition"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="hasPool"
-										name="hasPool" /> <label id="label_pool" for="hasPool"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="hasGym"
-										name="hasGym" /> <label id="label_gym" for="hasGym"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="hasBalcony"
-										name="hasBalcony" /> <label id="label_balcony" for="hasBalcony"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="noDeposit"
-										name="noDeposit" /> <label id="index_room_noDeposit" for="noDeposit"></label>
-								</p>
-
+							<div class="row">
+								<div class="col s4 offset-s1 ">
+	
+									<h6 id="room_type"style="margin-bottom: 15px;"> </h6>
+									<p>
+										<input type="checkbox" class="filled-in" id="typeStandart"
+											name="typeStandart" /> <label id="index_room_type_standart" for="typeStandart"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="typeLux"
+											name="typeLux" /> <label id="index_room_type_lux" for="typeLux"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="typeDelux"
+											name="typeDelux" /> <label id="index_room_type_delux" for="typeDelux"></label>
+									</p>
+									<h6 id="room_food" style="margin-bottom: 15px;"></h6>
+									<p>
+										<input type="checkbox" class="filled-in" id="foodNone"
+											name="foodNone" /><label id="index_room_type_food_none" for="foodNone"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="foodBreakfast"
+											name="foodBreakfast" /> <label id="index_room_type_food_breakfast" for="foodBreakfast">BREAKFAST</label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="foodTwice"
+											name="foodTwice" /> <label id="index_room_type_food_twice" for="foodTwice"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="foodFull"
+											name="foodFull" /> <label id="index_room_type_food_full" for="foodFull">Full</label>
+									</p>
+	
+								</div>
+								<div class="col s4 offset-s2 ">
+	
+									<p style="margin-top: 20px;">
+										<input type="checkbox" class="filled-in" id="hasWiFi"
+											name="hasWiFi" /> <label id="label_wifi" for="hasWiFi"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="hasShower"
+											name="hasShower" /> <label id="label_shower" for="hasShower"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="hasParking"
+											name="hasParking" /> <label id="label_parking" for="hasParking"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="hasCondition"
+											name="hasCondition" /> <label id="label_condition" for="hasCondition"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="hasPool"
+											name="hasPool" /> <label id="label_pool" for="hasPool"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="hasGym"
+											name="hasGym" /> <label id="label_gym" for="hasGym"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="hasBalcony"
+											name="hasBalcony" /> <label id="label_balcony" for="hasBalcony"></label>
+									</p>
+									<p>
+										<input type="checkbox" class="filled-in" id="noDeposit"
+											name="noDeposit" /> <label id="index_room_noDeposit" for="noDeposit"></label>
+									</p>
+								</div>
 							</div>
 							<div class="row">
 								<div class="col s1 offset-s1">
