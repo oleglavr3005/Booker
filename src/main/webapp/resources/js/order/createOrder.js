@@ -260,7 +260,6 @@ function insertModal(result) {
 }
 
 function showModal(result){
-	alert("modal result" + result);
 	if (result.countOfHotels > 0){
 		var url = 'http://localhost:8080/booker/hotel/';
 		for (var i = 0; i < 3 && i < result.countOfHotels; i++) {
@@ -279,7 +278,6 @@ function showModal(result){
 
 function modalMaker(result) {
 	var totalContent = '';
-	// alert(result.hotels[0] + " | " + result.hotels[0].name);
 	if (result.countOfHotels > 0) {
 		for (var i = 0; i < 3 && i < result.countOfHotels; i++) {
 			totalContent += contentMaker(result.hotels[i]);
