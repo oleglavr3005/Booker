@@ -171,11 +171,11 @@ img.logo {
 							
 	
 							<li><a class="modal-trigger" href="#signupModal">
-							<span id="header_regist"> </span></a>
+							<span class="header_regist"> </span></a>
 								<div id="signupModal" class="modal">
 									<div class="modal-header">
 										<h4 id="registrationHeader">
-											<span id="header_regist"> </span>
+											<span class="header_regist"> </span>
 										</h4>
 									</div>
 									<div class="modal-content" style="margin-top: -10px">
@@ -183,32 +183,32 @@ img.logo {
 											<div class="input-field">
 												<input id="name" type="text" class="validate"> <label
 													id="nameLbl" data-error="" for="name">
-													<span id="header_regist_name"> </span>
+													<span class="header_regist_name"> </span>
 												</label>
 											</div>
 											<div class="input-field">
 												<input id="surname" type="text" class="validate"> <label
 													id="surnameLbl" data-error="" for="surname">
-													<span id="header_regist_surname"> </span>
+													<span class="header_regist_surname"> </span>
 												</label>
 											</div>
 											<div class="input-field">
 												<input id="email" type="email" class="validate"> <label
 													id="emailLbl" data-error="" for="email">
-													<span id="header_regist_mail"> </span>
+													<span class="header_regist_mail"> </span>
 												</label>
 											</div>
 											<div class="input-field">
 												<input id="password" type="password" class="validate">
 												<label id="passwordLbl" data-error=""
 													for="password">
-													<span id="header_regist_pass"> </span></label>
+													<span class="header_regist_pass"> </span></label>
 											</div>
 											<div class="input-field">
 												<input id="сpassword" type="password" class="validate">
 												<label id="сpasswordLbl" data-error=""
 													for="сpassword">
-													<span id="header_regist_cpass"> </span>
+													<span class="header_regist_cpass"> </span>
 												</label>
 											</div>
 										</div>
@@ -221,13 +221,13 @@ img.logo {
 												class="btn-flat btn-success login col s2 offset-s1"
 												onclick="confirmRegistration(languages.error.current.emailLbl, languages.error.current.mailPasswordLbl, languages.error.current.header_regist_succes, languages.error.current.header_regist_confirmmail, languages.error.current.header_error_fail, languages.error.current.header_regist);"
 												style="margin-left: 15px;">
-												<span id="header_regist_confirm"> </span>
+												<span class="header_regist_confirm"> </span>
 											</button>
 											<button
 												class="modal-action modal-close waves-effect waves-red btn-flat col s2 offset-s1"
 												data-dismiss="modal" aria-hidden="true"
 												style="margin-left: 10px;">
-												<span id="header_regist_close"> </span>
+												<span class="header_regist_close"> </span>
 											</button>
 										</div>
 	
@@ -237,26 +237,26 @@ img.logo {
 	
 							<li><a class="waves-effect waves-white modal-trigger"
 								href="#login" role="button" style="padding-right: 0">
-									<span id="header_auth"> </span>
+									<span class="header_auth"> </span>
 								</a>
 								<div id="login" class="modal">
 									<div class="modal-content">
 										<h4>
-											<span id="header_auth"> </span>
+											<span class="header_auth"> </span>
 										</h4>
 										<div class="form-horizontal loginFrm">
 											<div class="input-field">
 												<input id="emailAuth" type="email" class="validate">
 												<label id="emailAuthLbl" data-error="${fmtMail}"
 													for="emailAuth">
-													<span id="header_author_mail"> </span>
+													<span class="header_author_mail"> </span>
 												</label>
 											</div>
 											<div class="input-field">
 												<input id="passwordAuth" type="password"> <label
 													id="mailPasswordLbl" data-error="${fmtMailPass}"
 													for="passwordAuth">
-													<span id="header_author_pass"> </span>
+													<span class="header_author_pass"> </span>
 												</label>
 											</div>
 										</div>
@@ -265,11 +265,11 @@ img.logo {
 										<button type="submit" id="sbm"
 											class="btn-flat btn-success login" onclick="auth()"
 											style="margin-left: 15px;">
-											<span id="header_auth_enter"> </span>
+											<span class="header_auth_enter"> </span>
 										</button>
 										<button class="btn-flat waves-effect waves-red "
 											onclick="forgot()" style="margin-left: 15px;">
-											<span id="header_auth_forgot"> </span>
+											<span class="header_auth_forgot"> </span>
 										</button>
 										<button
 											class="modal-action modal-close waves-effect waves-red btn-flat"

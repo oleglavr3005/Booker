@@ -181,7 +181,7 @@ div #sidebar-wrapper {
 
 							<div class="col s4 offset-s1 ">
 
-								<label id="room_type"> </label>
+								<h6 id="room_type"style="margin-bottom: 15px;"> </h6>
 								<p>
 									<input type="checkbox" class="filled-in" id="typeStandart"
 										name="typeStandart" /> <label id="index_room_type_standart" for="typeStandart"></label>
@@ -196,7 +196,7 @@ div #sidebar-wrapper {
 								</p>
 
 
-								<label id="room_food"></label>
+								<h6 id="room_food" style="margin-bottom: 15px;"></h6>
 								<p>
 									<input type="checkbox" class="filled-in" id="foodNone"
 										name="foodNone" /><label id="index_room_type_food_none" for="foodNone"></label>
@@ -220,31 +220,31 @@ div #sidebar-wrapper {
 
 								<p style="margin-top: 20px;">
 									<input type="checkbox" class="filled-in" id="hasWiFi"
-										name="hasWiFi" /> <label id="index_room_wifi" for="hasWiFi"></label>
+										name="hasWiFi" /> <label id="label_wifi" for="hasWiFi"></label>
 								</p>
 								<p>
 									<input type="checkbox" class="filled-in" id="hasShower"
-										name="hasShower" /> <label id="index_room_shower" for="hasShower"></label>
+										name="hasShower" /> <label id="label_shower" for="hasShower"></label>
 								</p>
 								<p>
 									<input type="checkbox" class="filled-in" id="hasParking"
-										name="hasParking" /> <label id="index_room_parking" for="hasParking"></label>
+										name="hasParking" /> <label id="label_parking" for="hasParking"></label>
 								</p>
 								<p>
 									<input type="checkbox" class="filled-in" id="hasCondition"
-										name="hasCondition" /> <label id="index_room_conditioner" for="hasCondition"></label>
+										name="hasCondition" /> <label id="label_condition" for="hasCondition"></label>
 								</p>
 								<p>
 									<input type="checkbox" class="filled-in" id="hasPool"
-										name="hasPool" /> <label id="index_room_pool" for="hasPool"></label>
+										name="hasPool" /> <label id="label_pool" for="hasPool"></label>
 								</p>
 								<p>
 									<input type="checkbox" class="filled-in" id="hasGym"
-										name="hasGym" /> <label id="index_room_gym" for="hasGym"></label>
+										name="hasGym" /> <label id="label_gym" for="hasGym"></label>
 								</p>
 								<p>
 									<input type="checkbox" class="filled-in" id="hasBalcony"
-										name="hasBalcony" /> <label id="index_room_balcony" for="hasBalcony"></label>
+										name="hasBalcony" /> <label id="label_balcony" for="hasBalcony"></label>
 								</p>
 								<p>
 									<input type="checkbox" class="filled-in" id="noDeposit"

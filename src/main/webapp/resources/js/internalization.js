@@ -36,7 +36,7 @@
 		tb_head_name : "Hotel name",
 		tb_head_room : "Room type",
 		tb_head_sdate : "Start date",
-		tb_head_edate : "Een date",
+		tb_head_edate : "End date",
 		tb_head_price : "Price",
 		tb_head_status : "Status",
 		
@@ -72,9 +72,9 @@
 		createComment : "Add comment",
 		hotel_button_previous : "Previous", 
 		hotel_button_next : "Next",
-		hiddenError : "ERROR WITH INFO", 
+		hiddenError : "Error with info",
 		room_card_add_to_cart : "Add to cart", 
-		room_card_need_login : "??U NEED 2 LOGIN??", 
+		room_card_need_login : "You need login", 
 		order_card_from : "From: ",  
 		order_card_to : " To: ",
 		order_card_order : "Order",
@@ -183,17 +183,18 @@
 		settings_header_manage : "Manager",
 		settings_enter_request : "Request for manager",
 		settings_save_pass : "Save password",
-		settings_chk_mails : "I WANT RECEIVE MAILS ABOUT NEW ROOMS!",
+		settings_chk_mails : "I want receive mails about new rooms!",
+		lbl_sendnotif : "Send notif",
 		 	
 		card_header : "Hotels found",
 		card_no_periodicals : "No numbers found",
 		card_no_hotels: "No Hotels",
-		room_card_count: "Total price??",
+		room_card_count: "Total price?",
 
 		subscribes_header : "List of orders",
 		card_status_active : "Active",
 		subscribes_table_remove : "Delete order",
-		subscribes_empty : "Not Found??",
+		subscribes_empty : "Not Found?",
 		subscribes_table_name : "Hotel",
 		subscribes_table_startDate : "Check-in",
 		subscribes_table_endDate: "Check-out",
@@ -307,7 +308,7 @@
 			
 		room_concret_deleted : "Видалити",
 		room_concret_save : "Зберегти",
-		room_concret_freebook : "??FREEBOOK??",
+		room_concret_freebook : "Booked free",
 		
 		label_wifi : "WiFi",
 		label_shower : "Душ",
@@ -339,19 +340,19 @@
 		order_card_uan : " Грн",
 		order_card_clear : "Очистити",
 			
-			
+		index_room_noDeposit : "Без передоплати",
 		header_regist : "Реєстрація",
 		header_auth : "Увійти",
 		header_auth_close : "Закрити",
 		header_auth_forgot : "Забули пароль?",
 		header_auth_enter : "Увійти",
 		
-		index_search_header : "Шукати готель",
-		index_search_name : "Місце/назва готелю:",
+		index_search_header : "Пошук готелів",
+		index_search_name : "Місце / назва готелю:",
 		index_search_price : "Зірки",
 		index_search_ppl : "Кількість гостей",
-		index_search_start : "Приїжджаю",
-		index_search_end : "Від'їжджаю",
+		index_search_start : "Дата заселення",
+		index_search_end : "Дата виселення",
 		index_search_price_2 : "Ціна",
 		index_search_button : "Пошук",
 		
@@ -373,6 +374,11 @@
 		map_button : "Карта", 
 		search : "Пошук",
 		
+		index_option_star_asc : "За зростанням кількості зірок",
+		index_option_star_desc : "За спаданням кількості зірок",
+		index_option_rating_asc : "За зростанням рейтингу",
+		index_option_rating_desc : "За спаданням рейтингу",	
+
 		concrete_date_from : "Приїжджаю",
 		concrete_date_to : "Від'їжджаю",
 		index_search_button : "Шукати",
@@ -434,7 +440,10 @@
 		settings_header_manage : "Менеджерська інформація",
 		settings_enter_request : "Запит на роль менеджера",
 		settings_save_pass : "Зберегти пароль",
-		settings_chk_mails : "Я ХОЧУ ОТРИМУВАТИ ПОВІДОМЛЕННЯ ПРО НОВІ КІМНАТИ!",
+		settings_chk_mails : "Хочу отримувати повідомлення про нові кімнати!",
+		
+		lbl_sendnotif : "Посилати повідомлення",
+		
 
 		card_header : "Всього пропозицій ",
 		card_no_periodicals : "Наявних  пропозицій немає",
@@ -506,6 +515,8 @@
 		btn_remove_іудусеув : "Видалити обране",
 		btn_decline : "Відхилити",
 		btn_approve : "Підтвердити",
+
+		header_regist: "header_regist",
 	}
 	
 	var error = {
@@ -520,7 +531,6 @@
 			header_regist_succes: "header_regist_succes",
 			header_regist_confirmmail: "header_regist_confirmmail",
 			header_error_fail: "header_error_fail",
-			header_regist: "header_regist"
 		},
 		en: {
 			nameLbl: "nameLbl",
@@ -533,7 +543,6 @@
 			header_regist_succes: "header_regist_succes",
 			header_regist_confirmmail: "header_regist_confirmmail",
 			header_error_fail: "header_error_fail",
-			header_regist: "header_regist",
 				
 			startLbl : "fmtStart",
 			endLbl : "fmtEnd",
