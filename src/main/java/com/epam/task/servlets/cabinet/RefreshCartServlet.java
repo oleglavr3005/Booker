@@ -33,10 +33,17 @@ public class RefreshCartServlet extends HttpServlet {
 				summary += order.getPrice();
 			}
 		}
-		
-		List<OrderDto> ordersByPage = OrderDto.listConverter(orderService.getOrdersByUserAndStatusAndPage(user.getId(), OrderStatus.ORDER, 1, null));
+
+		String compareBy = request.getParameter("compareBy");
+		String pageString = request.getParameter("page");
+		int page = pageString == null ? 1 : Integer.parseInt(pageString);
 		int countOfPages = (int) Math.ceil(orders.size() / 3.0);
+		if (page > countOfPages) {
+			page--;
+		}
 		
+		List<OrderDto> ordersByPage = OrderDto.listConverter(orderService.getOrdersByUserAndStatusAndPage(user.getId(), OrderStatus.ORDER, page, compareBy));
+
 		request.setAttribute("orders", ordersByPage);
 		request.setAttribute("summary", summary);
 		request.setAttribute("countOfOrders", orders.size());
