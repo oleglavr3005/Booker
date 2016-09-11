@@ -103,7 +103,7 @@ public class FindRooms extends HttpServlet {
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
 				startDate, endDate);
 		
-		int countOfPages = (int) Math.ceil(countOfRooms / 3.0);
+		int countOfPages = (int) Math.ceil(countOfRooms / 5.0);
 		if (page > countOfPages) {
 			page--;
 		}

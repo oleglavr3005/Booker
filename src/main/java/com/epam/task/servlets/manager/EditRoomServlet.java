@@ -46,23 +46,43 @@ public class EditRoomServlet extends HttpServlet {
 		
 		String daysCountString = request.getParameter("daysCount");
 		String percentageString = request.getParameter("percentage");
+
+		String deletedString = request.getParameter("deleted"); //true or false
 		
 		if (roomIdString == null || number == null || type == null || doubleBedsCountString == null || bedsCountString == null ||
 				priceString == null || food == null || freeBookString == null ||
 				!StringUtil.isPositiveInteger(roomIdString) || !StringUtil.isPositiveInteger(doubleBedsCountString) || !StringUtil.isPositiveInteger(bedsCountString) ||
 				!StringUtil.isPositiveInteger(priceString) || !StringUtil.isBoolean(freeBookString) ||
 				!(type.equalsIgnoreCase("STANDART") || type.equalsIgnoreCase("LUX") || type.equalsIgnoreCase("DELUX")) || 
-				!(food.equalsIgnoreCase("NONE") || food.equalsIgnoreCase("BREAKFAST") || food.equalsIgnoreCase("TWICE") || food.equalsIgnoreCase("FULL")) ) {
+				!(food.equalsIgnoreCase("NONE") || food.equalsIgnoreCase("BREAKFAST") || food.equalsIgnoreCase("TWICE") || food.equalsIgnoreCase("FULL")) ||
+				!StringUtil.isBoolean(deletedString)) {
 			response.sendError(500);
 			return;
 		}
+		int roomId = Integer.parseInt(roomIdString);
+		
+		RoomService roomService = new RoomService();
+		
+		Room room = roomService.getRoomById(roomId);
+		Hotel hotel = new HotelService().getHotelById(room.getHotelId());
+		int userId = ((User) request.getSession().getAttribute("user")).getId();
+		if(hotel.getManagerId() != userId) {
+			response.sendError(500);
+			return;
+		}
+		
+		if(Boolean.parseBoolean(deletedString)) {
+			int changed = roomService.removeRoom(roomId);
+			response.getWriter().write(changed > 0 ? "true" : "false");
+			return;
+		}
+		
 		boolean freeBook = Boolean.parseBoolean(freeBookString);
 		if (freeBook && (daysCountString == null || percentageString == null) ) {
 			response.sendError(500);
 			return;
 		}
 
-		int roomId = Integer.parseInt(roomIdString);
 		int doubleBedsCount = Integer.parseInt(doubleBedsCountString);
 		int bedsCount = Integer.parseInt(bedsCountString);
 		int price = Integer.parseInt(priceString);
@@ -85,14 +105,6 @@ public class EditRoomServlet extends HttpServlet {
 			percentage = 0;
 		}
 		
-		RoomService roomService = new RoomService();
-		Room room = roomService.getRoomById(roomId);
-		Hotel hotel = new HotelService().getHotelById(room.getHotelId());
-		int userId = ((User) request.getSession().getAttribute("user")).getId();
-		if(hotel.getManagerId() != userId) {
-			response.sendError(500);
-			return;
-		}
 		room.setNumber(number);
 		room.setType(type);
 		room.setBedsCount(bedsCount);
@@ -110,6 +122,8 @@ public class EditRoomServlet extends HttpServlet {
 
 		room.setDaysCount(daysCount);
 		room.setPercentage(percentage);
+		
+		room.setDeleted(Boolean.parseBoolean(deletedString));
 		
 		int changed = roomService.updateRoom(room);
 	

@@ -47,8 +47,12 @@ private DaoManager daoManager;
 		return daoManager.executeAndClose(() -> daoManager.getHotelDao().insertHotel(hotel));
 	}
 	
-	public int removeHotel(Hotel hotel){
-		return daoManager.executeAndClose(() -> daoManager.getHotelDao().removeHotel(hotel));
+	public int removeHotel(int hotelId){
+		return daoManager.executeAndClose(() -> daoManager.getHotelDao().removeHotel(hotelId));
+	}
+	
+	public int restoreHotel(int hotelId){
+		return daoManager.executeAndClose(() -> daoManager.getHotelDao().restoreHotel(hotelId));
 	}
 	
 	public int updateHotel(Hotel hotel){
