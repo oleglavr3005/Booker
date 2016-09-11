@@ -180,7 +180,7 @@
 							<a id="savePersonal" class="waves-effect waves-light btn"
 								onclick="savePersonalData('${fmtMail}','${fmtMailExist}')"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-								id="settings_enter_save"></span> </a>
+								class="settings_enter_save"></span> </a>
 						</div>
 					</div>
 
@@ -264,8 +264,9 @@
 
 							<p>
 								<input type="checkbox" class="filled-in" id="phoneCheckBox"
-									name="phonoCheckBox" /> <label for="phoneCheckBox">I
-									WANT RECEIVE MESSAGES ABOUT NEW ROOMS!</label>
+									name="phonoCheckBox" /> <label for="phoneCheckBox">
+									<span id="settings_chk_mails">I
+									WANT RECEIVE MESSAGES ABOUT NEW ROOMS!</span></label>
 							</p>
 						</div>
 					</div>
@@ -282,8 +283,8 @@
 									data-error="${fmtMail}" for="email"> </label>
 								<p>
 									<input type="checkbox" class="filled-in" id="eMailBox"
-										name="eMailBox" /> <label for="eMailBox">I WANT
-										RECEIVE MAILS ABOUT NEW ROOMS!</label>
+										name="eMailBox" /> <label for="eMailBox">
+										<span id="settings_chk_mails"> </span></label>
 								</p>
 							</div>
 						</div>
@@ -301,7 +302,7 @@
 							<a id="savePersonal" class="waves-effect waves-light btn"
 								onclick="saveContactData()"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-								id="settings_save_pass"></span></a>
+								class="settings_enter_save"></span></a>
 						</div>
 					</div>
 
@@ -336,7 +337,7 @@
 								<a id="savePersonal" class="waves-effect waves-light btn"
 									onclick="createRequest()"
 									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-									id="settings_save_pass1"></span></a>
+									class="settings_enter_save"></span></a>
 							</div>
 						</div>
 
