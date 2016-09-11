@@ -112,24 +112,24 @@ public class AddRoomServlet extends HttpServlet {
 			for (int i = 0; i < roomImagesArray.length; i++) {
 				roomPhotoService.insertRoomPhoto(new RoomPhoto(0, roomImagesArray[i], "", roomId));
 			}
-			
-			if(Boolean.parseBoolean(sendNotifString)) {
-				List<User> usersEmail = new UserService().getAllUsersWithEmailNotificationInHotel(hotelId);
-				List<User> usersPhone = new UserService().getAllUsersWithPhoneNotificationInHotel(hotelId);
+		}
+		
+		if(Boolean.parseBoolean(sendNotifString) && roomId > 0) {
+			List<User> usersEmail = new UserService().getAllUsersWithEmailNotificationInHotel(hotelId);
+			List<User> usersPhone = new UserService().getAllUsersWithPhoneNotificationInHotel(hotelId);
 
-				for(User user : usersEmail) {
-					new Thread(new Runnable() {
+			for(User user : usersEmail) {
+				new Thread(new Runnable() {
 
-						@Override
-						public void run() {
-							sendMail(user, hotelId, roomId);
-						}
-					}).start();
-				}
+					@Override
+					public void run() {
+						sendMail(user, hotelId, roomId);
+					}
+				}).start();
+			}
 
-				for(User user : usersPhone) {
-					//send sms
-				}
+			for(User user : usersPhone) {
+				//send sms
 			}
 		}
 		
