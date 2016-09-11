@@ -132,7 +132,7 @@ public class FindHotelsServlet extends HttpServlet {
 				startDate, endDate);
 		
 		int countOfHotels = allHotels.size();
-		int countOfPages = (int) Math.ceil(countOfHotels / 3.0);
+		int countOfPages = (int) Math.ceil(countOfHotels / 5.0);
 		if (page > countOfPages) {
 			page--;
 		}

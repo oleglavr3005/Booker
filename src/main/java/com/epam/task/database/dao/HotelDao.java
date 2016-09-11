@@ -23,7 +23,7 @@ public class HotelDao {
 	private final String ORDER_BY_STARS_DESC = " ORDER BY stars DESC";
 	private final String ORDER_BY_RATING_ASC = " ORDER BY rating ASC";
 	private final String ORDER_BY_RATING_DESC = " ORDER BY rating DESC";
-	private final String PAGINATION = " LIMIT ?, 3";
+	private final String PAGINATION = " LIMIT ?, 5";
 	
 	private final String SELECT_ALL_SUITABLE = "SELECT DISTINCT h.* FROM hotel h INNER JOIN room r ON h.hotel_id = r.hotel_id LEFT JOIN `order` o ON o.room_id = r.room_id "
 			+ "WHERE (h.name REGEXP ? OR h.city REGEXP ? OR h.street REGEXP ?) AND h.stars >= ? AND h.stars <= ? AND h.is_deleted = false AND "
@@ -92,7 +92,7 @@ public class HotelDao {
 			ORDER_BY = ORDER_BY_RATING_DESC;
 		}
 		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_NOT_DELETED + ORDER_BY + PAGINATION)) {
-			statement.setInt(1, (page-1)*3);
+			statement.setInt(1, (page-1)*5);
 			try (ResultSet result = statement.executeQuery()) {
 				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
 			}
@@ -215,7 +215,7 @@ public class HotelDao {
 			statement.setTimestamp(i++, startDate);
 			statement.setTimestamp(i++, endDate);
 			
-			statement.setInt(i, (page-1)*3);
+			statement.setInt(i, (page-1)*5);
 			
 			try (ResultSet result = statement.executeQuery()) {
 				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
@@ -458,7 +458,7 @@ public class HotelDao {
 		}
 		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BY_MANAGER + ORDER_BY + PAGINATION)) {
 			statement.setInt(1, managerId);
-			statement.setInt(2, (page-1)*3);
+			statement.setInt(2, (page-1)*5);
 			try (ResultSet result = statement.executeQuery()) {
 				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
 			}

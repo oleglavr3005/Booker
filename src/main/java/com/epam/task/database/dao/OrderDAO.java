@@ -32,7 +32,7 @@ public class OrderDAO {
 	private final String SQL_GET_ORDER_BY_ROOM_ID = "SELECT * FROM `order` WHERE room_id = ?";
 	private final String SQL_GET_ORDER_BY_HOTEL_ID = "SELECT o.* FROM `order` o INNER JOIN `room` r ON o.room_id = r.room_id WHERE r.hotel_id = ?";
 	
-	private final String PAGINATION = " LIMIT ?, 3";
+	private final String PAGINATION = " LIMIT ?, 5";
 	private final String ORDER_BY_PRICE_ASC = " ORDER BY price ASC";
 	private final String ORDER_BY_PRICE_DESC = " ORDER BY price DESC";
 	private final String ORDER_BY_DATE_ASC = " ORDER BY start_date ASC";
@@ -160,7 +160,7 @@ public class OrderDAO {
 		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ALL_ORDERS_BY_USER_AND_STATUS + ORDER_BY + PAGINATION)) {
 			statement.setString(1, status.toString());
 			statement.setInt(2, userId);
-			statement.setInt(3, (page-1)*3);
+			statement.setInt(3, (page-1)*5);
 			ResultSet rs = statement.executeQuery();
 			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
 		} catch (SQLException e) {
