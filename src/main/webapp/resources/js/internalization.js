@@ -339,19 +339,19 @@
 		order_card_uan : " Грн",
 		order_card_clear : "Очистити",
 			
-			
+		index_room_noDeposit : "Без передоплати",
 		header_regist : "Реєстрація",
 		header_auth : "Увійти",
 		header_auth_close : "Закрити",
 		header_auth_forgot : "Забули пароль?",
 		header_auth_enter : "Увійти",
 		
-		index_search_header : "Шукати готель",
-		index_search_name : "Місце/назва готелю:",
+		index_search_header : "Пошук готелів",
+		index_search_name : "Місце / назва готелю:",
 		index_search_price : "Зірки",
 		index_search_ppl : "Кількість гостей",
-		index_search_start : "Приїжджаю",
-		index_search_end : "Від'їжджаю",
+		index_search_start : "Дата заселення",
+		index_search_end : "Дата виселення",
 		index_search_price_2 : "Ціна",
 		index_search_button : "Пошук",
 		
@@ -373,6 +373,11 @@
 		map_button : "Карта", 
 		search : "Пошук",
 		
+		index_option_star_asc : "За зростанням кількості зірок",
+		index_option_star_desc : "За спаданням кількості зірок",
+		index_option_rating_asc : "За зростанням рейтингу",
+		index_option_rating_desc : "За спаданням рейтингу",	
+
 		concrete_date_from : "Приїжджаю",
 		concrete_date_to : "Від'їжджаю",
 		index_search_button : "Шукати",
@@ -506,6 +511,8 @@
 		btn_remove_іудусеув : "Видалити обране",
 		btn_decline : "Відхилити",
 		btn_approve : "Підтвердити",
+
+		header_regist: "header_regist",
 	}
 	
 	var error = {
@@ -520,7 +527,6 @@
 			header_regist_succes: "header_regist_succes",
 			header_regist_confirmmail: "header_regist_confirmmail",
 			header_error_fail: "header_error_fail",
-			header_regist: "header_regist"
 		},
 		en: {
 			nameLbl: "nameLbl",
@@ -533,7 +539,6 @@
 			header_regist_succes: "header_regist_succes",
 			header_regist_confirmmail: "header_regist_confirmmail",
 			header_error_fail: "header_error_fail",
-			header_regist: "header_regist",
 				
 			startLbl : "fmtStart",
 			endLbl : "fmtEnd",
