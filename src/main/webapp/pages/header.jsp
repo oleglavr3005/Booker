@@ -75,11 +75,13 @@ img.logo {
 			<c:when test="${language == null}">
 				<script>
 					var currentLanguage = 'en';
+					var sor = 'language == null';
 				</script>
 			</c:when>
 			<c:otherwise>
 				<script>
 					var currentLanguage = '${language}';
+					var sor = 'language != null';
 				</script>
 			</c:otherwise>
 			</c:choose>
@@ -87,6 +89,7 @@ img.logo {
 		<c:otherwise>
 			<script>
 				var currentLanguage = '${user.language}';
+				var sor = 'user.language';
 			</script>
 		</c:otherwise>
 	</c:choose>
