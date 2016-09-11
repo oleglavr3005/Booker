@@ -193,7 +193,7 @@
 
 		subscribes_header : "List of orders",
 		card_status_active : "Active",
-		subscribes_table_remove : "Delete order",
+		subscribes_table_remove : "Cancel",
 		subscribes_empty : "Not Found?",
 		subscribes_table_name : "Hotel",
 		subscribes_table_startDate : "Check-in",
@@ -453,7 +453,7 @@
 
 		subscribes_header : "Список замовлень",
 		card_status_active : "Активне",
-		subscribes_table_remove : "Видалити замовлення",
+		subscribes_table_remove : "Скасувати",
 		subscribes_empty : "Не знайдено??",
 		subscribes_table_name : "Готель",
 		subscribes_table_startDate : "В'їзд",
