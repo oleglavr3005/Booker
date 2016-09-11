@@ -76,6 +76,8 @@
 <body>
 	<input id="mapping" type="hidden"
 		value="${pageContext.servletContext.contextPath}/" />
+	<input id="pageNmb" type="hidden"
+		value="1" />
 
 	<input id="lang" type="hidden" value="${language}" />
 
@@ -93,7 +95,9 @@
 			<span id="user_cart_header"></span>
 		</h4>
 
-		<div class="row"><span id="shoping_card_shop_list"></span></div>
+		<div class="row">
+			<span id="shoping_card_shop_list"></span>
+		</div>
 		<div class="row">
 			<div class="col s3">
 				<h6>
@@ -110,10 +114,14 @@
 				<c:if test="${countOfOrders > 0 }">
 					<select id="compare" class="chosen-select optionstyle"
 						onchange="findPage(window.location.href,1)">
-						<option id="shoping_card_date_asc" class="optionstyle" value="compareByDateAsc"></option>
-						<option id="shoping_card_date_desc" class="optionstyle" value="compareByDateDesc" selected="selected"></option>
-						<option id="shoping_card_price_asc" class="optionstyle" value="compareByPriceAsc"></option>
-						<option id="shoping_card_price_desc" class="optionstyle" value="compareByPriceDesc"></option>
+						<option id="shoping_card_date_asc" class="optionstyle"
+							value="compareByDateAsc"></option>
+						<option id="shoping_card_date_desc" class="optionstyle"
+							value="compareByDateDesc" selected="selected"></option>
+						<option id="shoping_card_price_asc" class="optionstyle"
+							value="compareByPriceAsc"></option>
+						<option id="shoping_card_price_desc" class="optionstyle"
+							value="compareByPriceDesc"></option>
 					</select>
 				</c:if>
 			</div>
@@ -156,8 +164,8 @@
 
 				<div class="row" id="row0" style="display: none">
 					<div class="col s4">
-						<a id="href01" href="http://localhost:8080/booker/hotel/"> <img id="img0" 
-							src="<i:urlToImage url="new_hotel.jpg" />"
+						<a id="href01" href="http://localhost:8080/booker/hotel/"> <img
+							id="img0" src="<i:urlToImage url="new_hotel.jpg" />"
 							style="height: 110px; width: 150px;">
 						</a>
 					</div>
@@ -195,8 +203,9 @@
 
 				<div class="row" id="row1" style="display: none">
 					<div class="col s4">
-						<a id="href11" href="http://localhost:8080/booker/hotel/"> <img id="img1"
-<%-- 							src="<i:urlToImage url="new_hotel.jpg" />" --%>
+						<a id="href11" href="http://localhost:8080/booker/hotel/"> <img
+							id="img1"
+							<%-- 							src="<i:urlToImage url="new_hotel.jpg" />" --%>
 							style="height: 110px; width: 150px;">
 						</a>
 					</div>
@@ -274,7 +283,8 @@
 			</div>
 		</div>
 		<div class="modal-footer" style="padding-bottom: 0px; height: 40px;">
-			<a id="shopping_cart_click" href="${pageContext.servletContext.contextPath}/cabinet/orders"></a>
+			<a id="shopping_cart_click"
+				href="${pageContext.servletContext.contextPath}/cabinet/orders"></a>
 		</div>
 	</div>
 	<!-- 	END OF SUCCES MODAL -->
@@ -283,7 +293,6 @@
 
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="../foot.jsp"></jsp:include>
-	<!-- Footer End====================================================================== -->
 
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
