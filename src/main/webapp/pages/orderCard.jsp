@@ -124,19 +124,15 @@ b {
 					<div class="col s8">
 						<div class="row" style="margin-bottom: 0px;">
 							<div class="col s8">
-
 								<div class="row" style="margin-top: 15px; margin-bottom: 0px">
-
 									<div class="col s6">
 										<div class="row">
-											<a
-												href="${pageContext.servletContext.contextPath}/hotel/${order.hotel.id}">${order.hotel.name}</a>
+											<a href="${pageContext.servletContext.contextPath}/hotel/${order.hotel.id}">${order.hotel.name}</a>
 										</div>
-
 										<div class="row" style="margin-top: 15px;">
 											<div>
-												<a class="tooltipped" data-position="icon"
-													data-tooltip="StartDate" style="color: #0d0d0d;"><i
+												<a class="tooltipped tooltip_start_date" data-position="icon"
+													data-tooltip="" style="color: #0d0d0d;"><i
 													class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
 												<span class="order_card_from"></span> <span
 													id="start_date${order.id}">${order.startDate}</span>
@@ -144,8 +140,8 @@ b {
 										</div>
 										<div class="row">
 											<div>
-												<a class="tooltipped" data-position="icon"
-													data-tooltip="EndDate" style="color: #0d0d0d;"> <i
+												<a class="tooltipped tooltip_start_date" data-position="icon"
+													data-tooltip="" style="color: #0d0d0d;"> <i
 													class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
 												<span class="order_card_to"> </span> <span
 													id="end_date${order.id}">${order.endDate}</span>
@@ -165,27 +161,27 @@ b {
 										<div class="row">${order.room.type}</div>
 
 										<div class="row">
-											<a class="tooltipped" data-position="icon"
-												data-tooltip="Double beds" style="color: #0d0d0d;"><img
+											<a class="tooltipped tooltip_double_beds" data-position="icon"
+												data-tooltip="" style="color: #0d0d0d;"><img
 												class="invert" style="max-width: 15%;"
 												src="${pageContext.servletContext.contextPath}/resources/images/double_bed.png" /></a>
 											<span>${order.room.doubleBedsCount}</span> <a
-												class="tooltipped" data-position="icon"
-												data-tooltip="Single beds" style="color: #0d0d0d;"><img
+												class="tooltipped tooltip_single_beds" data-position="icon"
+												data-tooltip="" style="color: #0d0d0d;"><img
 												class="invert" style="max-width: 15%;"
 												src="${pageContext.servletContext.contextPath}/resources/images/single_bed.png" /></a>
 											<span>${order.room.bedsCount}</span>
 										</div>
 
 										<div class="row">
-											<a class="tooltipped" data-position="icon"
-												data-tooltip="Food" style="color: #0d0d0d;"><i
+											<a class="tooltipped tooltip_food" data-position="icon"
+												data-tooltip="" style="color: #0d0d0d;"><i
 												class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${order.room.food}</span>
 										</div>
 
 										<div class="row">
-											<a class="tooltipped" data-position="icon"
-												data-tooltip="Price" style="color: #0d0d0d;"><i
+											<a class="tooltipped tooltip_price" data-position="icon"
+												data-tooltip="" style="color: #0d0d0d;"><i
 												class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${order.price}</span>
 
 											<%-- 											<c:if test="${order.room.daysCount == -1}"> --%>
@@ -206,59 +202,56 @@ b {
 								<div class="row"
 									style="float: right; text-align: right; font-size: 0.3rem">
 									<c:if test="${order.room.wifi == true}">
-										<a class="tooltipped" data-position="icon" data-tooltip="Wifi"
+										<a class="tooltipped index_room_wifi" data-position="icon" data-tooltip=""
 											style="color: #0d0d0d;"><i class="material-icons invert">wifi</i></a>
 									</c:if>
 
 									<c:if test="${order.room.shower == true}">
-										<a class="tooltipped" data-position="icon"
-											data-tooltip="Shower"><img class="invert"
+										<a class="tooltipped index_room_shower" data-position="icon"
+											data-tooltip=""><img class="invert"
 											style="max-width: 10%; margin-top: -1.5rem"
 											src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
 									</c:if>
 
 									<c:if test="${order.room.parking == true}">
-										<a class="tooltipped" data-position="icon"
-											data-tooltip="Parking" style="color: #0d0d0d;"><i
+										<a class="tooltipped index_room_parking" data-position="icon"
+											data-tooltip="" style="color: #0d0d0d;"><i
 											class="material-icons invert">local_parking</i></a>
 									</c:if>
 
 									<c:if test="${order.room.condition == true}">
-										<a class="tooltipped" data-position="icon"
-											data-tooltip="Condition" style="color: #0d0d0d;"><i
+										<a class="tooltipped index_room_conditioner" data-position="icon"
+											data-tooltip="" style="color: #0d0d0d;"><i
 											class="material-icons invert">toys</i></a>
 									</c:if>
 
 									<c:if test="${order.room.pool == true}">
-										<a class="tooltipped" data-position="icon" data-tooltip="Pool"
+										<a class="tooltipped index_room_pool" data-position="icon" data-tooltip=""
 											style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
 									</c:if>
 
 									<c:if test="${order.room.gym == true}">
-										<a class="tooltipped" data-position="icon" data-tooltip="Gym"
+										<a class="tooltipped index_room_gym" data-position="icon" data-tooltip=""
 											style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
 									</c:if>
 
 									<c:if test="${order.room.balcony == true}">
-										<a class="tooltipped" data-position="icon"
-											data-tooltip="Balcony"><img class="invert"
+										<a class="tooltipped index_room_balcony" data-position="icon"
+											data-tooltip=""><img class="invert"
 											style="max-width: 10%; margin-top: -1.5rem"
 											src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
 									</c:if>
 								</div>
-
 							</div>
 						</div>
-
 					</div>
-
 				</div>
 
 				<div class="row">
 					<div class="col s12">
 						<textarea style="padding-top: 0px" id="comment${order.id}"
-							class="materialize-textarea"
-							placeholder="enter comment to order here"></textarea>
+							class="materialize-textarea placeholder_enter_comment"
+							placeholder=""></textarea>
 					</div>
 				</div>
 
@@ -307,8 +300,8 @@ b {
 
 	<div class="row">
 		<div class="col s8 offset-s2">
-			<textarea id="comment" class="materialize-textarea"
-				placeholder="enter comment to orders here"></textarea>
+			<textarea id="comment" class="materialize-textarea placeholder_enter_comment"
+				placeholder=""></textarea>
 		</div>
 	</div>
 

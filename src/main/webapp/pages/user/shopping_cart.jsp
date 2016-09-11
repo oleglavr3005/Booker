@@ -90,7 +90,7 @@
 	</script>
 	<div class="container">
 		<h4 style="text-align: center; margin-top: 20px;">
-			<span id="user_cart_header"></span>
+			<span class="user_cart_header"></span>
 		</h4>
 
 		<!-- <div class="row"><span id="shoping_card_shop_list"></span></div> -->

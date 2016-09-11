@@ -93,6 +93,7 @@
 		index_search_name : "Destination / Hotel Name:",
 		index_search_start : "Start date",
 		index_search_end : "End date",
+		index_search_price : "Stars",
 		index_search_price_2 : "Price",
 		index_search_ppl : "Guests",
 		index_search_button : "Search",
@@ -280,7 +281,7 @@
 		
 		manager_hotel_card_info : "Інформація",
 		manager_hotel_card_edit : "Редагувати",
-		manager_hotel_card_removed : "Видалити",
+		manager_hotel_card_removed : "Видалений",
 		manager_hotel_card_active : "Активний",
 		
 		card_no_hotels : "Активний",
@@ -413,7 +414,7 @@
 		header_regist_mail : "E-mail",
 		header_regist_pass : "Пароль",
 		header_regist_cpass : "Підтвердити пароль",
-		header_regist_confirm : "Завершити реєстрацію",
+		header_regist_confirm : "Зареєструватися",
 		
 		// authorization
 		header_author_mail : "E-mail",
@@ -579,9 +580,17 @@
 			index_search_stars : "Stars",
 			index_search_location : "Location",
 			index_search_description : "Description",
+			
 			tooltip_phone_number : "Phone number",
 			tooltip_showe_all_info : "Show full info",
 			tooltip_rating : "Rating",
+			tooltip_start_date : "Start date",
+			tooltip_end_date : "End date",
+			tooltip_double_beds : "Double beds", 
+			tooltip_food : "Food", 
+			tooltip_single_beds : "Single beds",
+			tooltip_price : "Price",
+
 		}
 	};
 	
