@@ -44,7 +44,7 @@ public class MyHotelsServlet extends HttpServlet {
 		request.setAttribute("currentPage", page);
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
-			request.getRequestDispatcher("/pages/card.jsp").forward(request, response);
+			request.getRequestDispatcher("/pages/cards/managerHotelCard.jsp").forward(request, response);
 		} else {	
 			request.getRequestDispatcher("/pages/manager/hotelList.jsp").forward(request, response);
 		}
