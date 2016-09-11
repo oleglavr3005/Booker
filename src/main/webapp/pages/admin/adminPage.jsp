@@ -104,7 +104,7 @@
 	<div class="container">
 
 		<h4 style="text-align: center; margin-top: 20px;">
-			<fmt:message key="admin.header" />
+			<span id="admin_header"></span>
 		</h4>
 
 		<div class="row">
@@ -127,7 +127,7 @@
 				<div class="container-fluid">
 					<div class="row settings-title">
 						<h4>
-							<fmt:message key="settings.header.USERS" />
+							<span id="settings_header_USERS"></span>
 						</h4>
 					</div>
 
@@ -135,7 +135,7 @@
 						<thead>
 							<tr>
 								<th id="admin_page_id"></th>
-								<th id="admin_page_fNane"></th>
+								<th id="admin_page_fName"></th>
 								<th id="admin_page_lName"></th>
 								<th id="admin_page_mail"></th>
 								<th id="admin_page_phone"></th>
@@ -177,7 +177,7 @@
 				<div class="container-fluid">
 					<div class="row settings-title">
 						<h4>
-							<fmt:message key="settings.header.CONTACT" />
+							<span id="settings_header_CONTACT"></span>
 						</h4>
 					</div>
 
@@ -207,10 +207,10 @@
 											test="${request.status == 'PENDING'}">
 											<a class="my-btn waves-effect waves-light btn"
 												style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-												onclick="chageStatus(${request.id},true,'')">APPROVE</a>
+												onclick="chageStatus(${request.id},true,'')"><span id="btn_appr">APPROVE</span></a>
 											<a class="my-btn waves-effect waves-light btn"
 												style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-												onclick="chageStatus(${request.id},false,'')">DECLINE</a>
+												onclick="chageStatus(${request.id},false,'')"><span id="btn_decline">DECLINE</span></a>
 										</c:if> <c:if test="${request.status == 'DECLINED'}">
 											<div style="color: #F55151;">
 												<strong>DECLINED!</strong>

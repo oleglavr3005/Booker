@@ -237,6 +237,21 @@
 		
 		
 		admin_deleted : "DELETED",
+		//admin page
+		admin_page_id : "ID",
+		admin_page_fName : "fName",
+		admin_page_lName : "lName",
+		admin_page_mail : "Mail",
+		admin_page_phone : "Phone",
+		admin_page_type : "Type",
+		admin_page_status : "Status",
+		admin_page_userId : "userId",
+		admin_page_reqDate : "Request date",
+		admin_page_message : "Message",
+		admin_header : "ADMIN",
+		settings_header_USERS : "Users",
+		settings_header_CONTACT : "Contacts",
+		
 		btn_remove : "REMOVE",
 		btn_order : "ORDER",
 		btn_create : "CREATE",
@@ -244,6 +259,8 @@
 		btn_create_room : "CREATE ROOM",
 		btn_add_image : "ADD IMAGE",
 		btn_remove : "REMOVE SELECTED",
+		btn_decline : "DECLINE",
+		btn_approve : "APPROVE",
 	}
 	var ua = {
 		header_dropdown_shopping_cart: "Кошик",	
@@ -405,6 +422,21 @@
 		room_concrete_percentage: "Відсоток завдатку",
 		
 		admin_deleted : "ВИДАЛЕНО",
+		//admin page
+		admin_page_id : "ID",
+		admin_page_fName : "Імя",
+		admin_page_lName : "Прізвище",
+		admin_page_mail : "Емейл",
+		admin_page_phone : "Телефон",
+		admin_page_type : "Тип",
+		admin_page_status : "Статус",
+		admin_page_userId : "userId",
+		admin_page_reqDate : "Дата запиту",
+		admin_page_message : "Повідомлення",
+		admin_header : "АДМІН",
+		settings_header_USERS : "Користувачі",
+		settings_header_CONTACT : "Контакти",
+		
 		btn_remove : "ВИДАЛИТИ",
 		btn_order : "ЗАМОВИТИ",
 		btn_create : "СТВОРИТИ",
@@ -412,6 +444,8 @@
 		btn_create_room : "СТВОРИТИ КІМНАТУ",
 		btn_add_image : "ДОДАТИ ФОТО",
 		btn_remove : "ВИДАЛИТИ ОБРАНЕ",
+		btn_decline : "ВІДХИЛИТИ",
+		btn_approve : "СХВАЛИТИ",
 	}
 	
 	var error = {
@@ -489,7 +523,9 @@ function changeLanguage(id, language){
 	changeLanguageOnPage(language);
 	changeLanguageOnServer(id, language);
 }
-
+function updateLanguage(){
+	changeLanguageOnPage(currentLanguage);
+}
 function changeLanguageOnPage(language){
 	changeLanguageOnTags(language);
 	changeLanguageOfErrors(language);

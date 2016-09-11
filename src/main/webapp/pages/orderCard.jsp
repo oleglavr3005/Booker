@@ -71,18 +71,18 @@ b {
 <!-- end GALLERY -->
 <h6>
 	<c:if test="${countOfOrders > 0 }">
-		<fmt:message key="card.header" />
+		<span  id="card_header"></span>
 		<span id="periodicals_number_for_all_users">${countOfOrders}</span>
 	</c:if>
 	<c:if test="${countOfOrders <= 0 }">
-		<fmt:message key="card.no.periodicals" />
+		<span id="card_no_periodicals"></span>
 	</c:if>
 </h6>
 <div class="divider" style="margin-bottom: 20px;"></div>
 
 <c:if test="${countOfOrders == 0}">
 	<h5 style="color: red; margin-bottom: 63px;">
-		<fmt:message key="card.no.periodicals" />
+		<span id="card_no_periodicals"></span> 
 	</h5>
 </c:if>
 
@@ -263,14 +263,14 @@ b {
 					<div class="row">
 						<div class="col s2 offset-s4">
 							<a id="remove${order.id}"
-								class="my-btn waves-effect waves-light btn"
-								style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+								class="waves-effect waves-light btn"
+								style="background: #F55151; color: #FFFFFF;"
 								onclick="removeOrderCard(${order.id})"><span class="btn_remove"></span></a>
 						</div>
 						<div class="col s2 offset-s2">
 							<a id="book${order.id}"
-								class="my-btn waves-effect waves-light btn"
-								style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+								class="waves-effect waves-light btn"
+								style="background: #26A69A; color: #FFFFFF;"
 								onclick="bookOrderCard(${order.id},${order.room.daysCount})"><span class="order_card_order"></span></a>
 						</div>
 					</div>
@@ -309,13 +309,13 @@ b {
 
 		</div>
 		<div class="col s2 offset-s3">
-			<a id="clearBtn" class="my-btn waves-effect waves-light btn"
-				style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+			<a id="clearBtn" class="waves-effect waves-light btn"
+				style="background: #F55151; color: #FFFFFF;"
 				onclick="clearCart()"><span id="order_card_clear"></span></a>
 		</div>
 		<div class="col s2 offset-s1">
-			<a class="my-btn waves-effect waves-light btn"
-				style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+			<a class="waves-effect waves-light btn"
+				style="background: #26A69A; color: #FFFFFF;"
 				onclick="bookOrderCard(null,${summary})"><span id="order_card_order"></span></a>
 		</div>
 	</div>

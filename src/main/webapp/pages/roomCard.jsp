@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
 <fmt:setLocale value="${language}" />
@@ -26,37 +26,35 @@ b {
 }
 </style>
 <div id="blueimp-gallery" class="blueimp-gallery">
-    <!-- The container for the modal slides -->
-    <div class="slides"></div>
-    <!-- Controls for the borderless lightbox -->
-    <h3 class="title"></h3>
-    <a class="prev">‹</a>
-    <a class="next">›</a>
-    <a class="close">×</a>
-    <a class="play-pause"></a>
-    <ol class="indicator"></ol>
-    <!-- The modal dialog, which will be used to wrap the lightbox content -->
-    <div class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title"></h4>
-                </div>
-                <div class="modal-body next"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left prev">
-                        <i class="glyphicon glyphicon-chevron-left"></i>
-                        <span id="hotel_button_previous"><span>
-                    </button>
-                    <button type="button" class="btn btn-primary next">
-                        <span id="hotel_button_next"><span>
-                        <i class="glyphicon glyphicon-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<!-- The container for the modal slides -->
+	<div class="slides"></div>
+	<!-- Controls for the borderless lightbox -->
+	<h3 class="title"></h3>
+	<a class="prev">‹</a> <a class="next">›</a> <a class="close">×</a> <a
+		class="play-pause"></a>
+	<ol class="indicator"></ol>
+	<!-- The modal dialog, which will be used to wrap the lightbox content -->
+	<div class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" aria-hidden="true">&times;</button>
+					<h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body next"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default pull-left prev">
+						<i class="glyphicon glyphicon-chevron-left"></i> <span
+							id="hotel_button_previous"><span>
+					</button>
+					<button type="button" class="btn btn-primary next">
+						<span id="hotel_button_next"><span> <i
+								class="glyphicon glyphicon-chevron-right"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <!-- MOVE TO HOTEL -->
 
@@ -85,48 +83,52 @@ b {
 			<div class="container-fluid">
 				<div class="row" style="margin-top: 15px; margin-bottom: 10px;">
 					<div class="card-image col s4" style="position: relative;">
-					  <div id="links">
-						<c:if test="${fn:length(room.photos) == 0}">
-						<a
-							href="<i:urlToImage url="no.jpg" />"
-							title="No image"
-							data-gallery> <img
-							src="<i:urlToImage url="no.jpg" />"
-							alt="No image">
-						</a>
-					</c:if>
-					<c:if test="${fn:length(room.photos) != 0}">
-						<a href='<i:urlToImage url="${room.photos[0].img}" />'
-							data-gallery>
-							<img src="<i:urlToImage url="${room.photos[0].img }" />"  style="height: 170px; width: 200px; padding: 10px;">
-						</a>
+						<div id="links">
+							<c:if test="${fn:length(room.photos) == 0}">
+								<a href="<i:urlToImage url="no.jpg" />" title="No image"
+									data-gallery> <img src="<i:urlToImage url="no.jpg" />"
+									alt="No image">
+								</a>
+							</c:if>
+							<c:if test="${fn:length(room.photos) != 0}">
+								<a href='<i:urlToImage url="${room.photos[0].img}" />'
+									data-gallery> <img
+									src="<i:urlToImage url="${room.photos[0].img }" />"
+									style="height: 170px; width: 200px; padding: 10px;">
+								</a>
 
-<div style="display: none;">
-								<c:forEach items="${room.photos}" var="photo" begin="1">
-										<a href='<i:urlToImage url="${photo.img}" />'
-											 data-gallery>
+								<div style="display: none;">
+									<c:forEach items="${room.photos}" var="photo" begin="1">
+										<a href='<i:urlToImage url="${photo.img}" />' data-gallery>
 											<img style="height: 60px;"
 											src="<i:urlToImage url="${photo.img}" />"
 											alt="<c:out value="${photo.id }"></c:out>">
 										</a>
-								</c:forEach>
+									</c:forEach>
 								</div>
-					</c:if>
-				</div>
-					
-					
-					
-					
-<%-- 						<a><img src="${pageContext.servletContext.contextPath}/resources/images/photoOfHotelsRoom/${room.photos[0].img}" --%>
-<%-- 							style="height: 170px; width: 200px; padding: 10px;"> </a> --%>
+							</c:if>
+						</div>
+
+
+
+
+						<%-- 						<a><img src="${pageContext.servletContext.contextPath}/resources/images/photoOfHotelsRoom/${room.photos[0].img}" --%>
+						<%-- 							style="height: 170px; width: 200px; padding: 10px;"> </a> --%>
 
 					</div>
 
 					<div class="col s5">
 
+<!-- ROOM TYPE ZONE -->
 						<div class="row" style="margin-top: 15px;">
 							<span>${room.type}</span>
 						</div>
+<!-- 				END OF	INFO MONEY REFUND ZONE -->
+
+						<!-- 						INFO MONEY REFUND ZONE -->
+						<div class="row"></div>
+						<!-- 						END OF INFO MONEY REFUND ZONE -->
+
 
 						<div class="row">
 							<a class="tooltipped" data-position="icon"
@@ -148,57 +150,64 @@ b {
 						</div>
 
 						<div class="row">
-							<a class="tooltipped" data-position="icon" data-tooltip="Price for one day"
-								style="color: #0d0d0d;"><i class="fa fa-lg fa-money invert"
-								aria-hidden="true"></i></a> <span>${room.price}</span>
-									<c:if test="${room.daysCount == -1}">
-										<a class="tooltipped" data-position="icon" data-tooltip="No deposit"
-										style="color: #0d0d0d;"><i class="fa fa-2x fa-exclamation-circle invert" aria-hidden="true"></i></a>
-									</c:if>
+							<a class="tooltipped" data-position="icon"
+								data-tooltip="Price for one day" style="color: #0d0d0d;"><i
+								class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${room.price}</span>
+							<c:if test="${room.daysCount == -1}">
+								<a class="tooltipped" data-position="icon"
+									data-tooltip="No deposit" style="color: #0d0d0d;"><i
+									class="fa fa-2x fa-exclamation-circle invert"
+									aria-hidden="true"></i></a>
+							</c:if>
 						</div>
 
 					</div>
 
 					<div class="col s3">
-						<div class="row" style="float: right; text-align:right; font-size:0.3rem">
+						<div class="row"
+							style="float: right; text-align: right; font-size: 0.3rem">
 							<c:if test="${room.wifi == true}">
-								<a class="index_room_wifi"  class="tooltipped" data-position="icon" data-tooltip="Wifi"
+								<a class="index_room_wifi" class="tooltipped"
+									data-position="icon" data-tooltip="Wifi"
 									style="color: #0d0d0d;"><i class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.shower == true}">
-								<a class="index_room_shower" class="tooltipped" data-position="icon" data-tooltip="Shower"><img
-									class="invert" style="max-width: 10%; margin-top:-1.5rem"  
+								<a class="index_room_shower" class="tooltipped"
+									data-position="icon" data-tooltip="Shower"><img
+									class="invert" style="max-width: 10%; margin-top: -1.5rem"
 									src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" />
-									</a>
+								</a>
 							</c:if>
 
 							<c:if test="${room.parking == true}">
-								<a class="index_room_parking" class="tooltipped" data-position="icon"
-									data-tooltip="Parking" style="color: #0d0d0d;"><i 
-									class="material-icons invert"></i></a>
+								<a class="index_room_parking" class="tooltipped"
+									data-position="icon" data-tooltip="Parking"
+									style="color: #0d0d0d;"><i class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.condition == true}">
-								<a class="index_room_conditioner" class="tooltipped" data-position="icon"
-									data-tooltip="Condition" style="color: #0d0d0d;"><i  
-									class="material-icons invert"></i></a>
+								<a class="index_room_conditioner" class="tooltipped"
+									data-position="icon" data-tooltip="Condition"
+									style="color: #0d0d0d;"><i class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.pool == true}">
-								<a class="index_room_pool" class="tooltipped" data-position="icon" data-tooltip="Pool"
+								<a class="index_room_pool" class="tooltipped"
+									data-position="icon" data-tooltip="Pool"
 									style="color: #0d0d0d;"><i class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.gym == true}">
-								<a class="index_room_gym" class="tooltipped" data-position="icon" data-tooltip="Gym"
-									style="color: #0d0d0d;"><i class="material-icons invert"></i></a>
+								<a class="index_room_gym" class="tooltipped"
+									data-position="icon" data-tooltip="Gym" style="color: #0d0d0d;"><i
+									class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.balcony == true}">
-								<a class="index_room_balcony" class="tooltipped" data-position="icon"
-									data-tooltip="Balcony"><img class="invert"
-									style="max-width: 10%; margin-top:-1.5rem"
+								<a class="index_room_balcony" class="tooltipped"
+									data-position="icon" data-tooltip="Balcony"><img
+									class="invert" style="max-width: 10%; margin-top: -1.5rem"
 									src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" />
 								</a>
 							</c:if>
@@ -214,7 +223,8 @@ b {
 								<a id="btn${room.id}" class="waves-effect waves-light btn"
 									onclick="addToCart(${room.id})"
 									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-									<span class="room_card_add_to_cart"></span></a>
+									<span class="room_card_add_to_cart"></span>
+								</a>
 							</div>
 						</c:if>
 
@@ -230,7 +240,8 @@ b {
 						<div class="col s2" style="float: right">
 							<a class="waves-effect waves-light btn" disabled
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-								<span class="room_card_need_login"></span></a>
+								<span class="room_card_need_login"></span>
+							</a>
 						</div>
 					</div>
 				</c:if>
@@ -253,16 +264,16 @@ b {
 <!-- IMPORTED -->
 
 <script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script>
+	src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script>
 
 
 
 <!-- END OF IMPORTED -->
 
-	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
+<script type="text/javascript"
+	src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
+<script type="text/javascript"
+	src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
 
 <script type="text/javascript">
 		var pagesCount = '${countOfPages}';
@@ -289,14 +300,14 @@ b {
 				});
 			});
 		}
- 	</script> 
+ 	</script>
 
 
 <script
 	src="${pageContext.servletContext.contextPath}/resources/js/order/createOrder.js"
 	type="text/javascript"></script>
-	
-	<script>
+
+<script>
 	$(document).ready(function(){
 	    $('.tooltipped').tooltip({delay: 50,position: 'top'});
 	  });

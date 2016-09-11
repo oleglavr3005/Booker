@@ -344,8 +344,8 @@
 			<div class="row">
 				<div class="col s3 offset-s3">
 
-					<a id="btn_add_image" class="my-btn waves-effect waves-light btn"
-						style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
+					<a id="btn_add_image" class="waves-effect waves-light btn"
+						style="background: #26A69A; color: #FFFFFF; margin: 0 auto;"
 						onclick="pushInput()"></a>
 
 					<!-- 				INPUT -->
@@ -357,8 +357,8 @@
 				</div>
 
 				<div class="col s3 offset-s1">
-					<a id="btn_remove" class="my-btn waves-effect waves-light btn"
-						style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
+					<a id="btn_remove" class="waves-effect waves-light btn"
+						style="background: #F55151; color: #FFFFFF; margin: 0 auto;"
 						onclick="removeRoomPhoto()"></a>
 				</div>
 			</div>
