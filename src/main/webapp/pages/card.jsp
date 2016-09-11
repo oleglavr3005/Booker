@@ -57,10 +57,10 @@ b {
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default pull-left prev">
 						<i class="glyphicon glyphicon-chevron-left"></i> <span
-							id="hotel_button_previous"><span>
+							id="hotel_button_previous"></span>
 					</button>
 					<button type="button" class="btn btn-primary next">
-						<span id="hotel_button_next"><span> <i
+						<span id="hotel_button_next"></span> <i
 								class="glyphicon glyphicon-chevron-right"></i>
 					</button>
 				</div>

@@ -126,7 +126,7 @@
 
 							<div class="input-field">
 								<input id="name" type="text" class="validate" length="45"
-									placeholder="Name of Hotel"> <label id="nameLbl"
+									placeholder=""> <label id="nameLbl"
 									data-error="NAME INVALID" for="name"><span
 									id="admin_edit_name"></span></label>
 							</div>
@@ -169,7 +169,7 @@
 
 							<div class="input-field">
 								<input id="address" type="text" class="validate" length="145"
-									placeholder="Address of hotel"> <label id="addressLbl"
+									placeholder=""> <label id="addressLbl"
 									data-error="ADDRESS IS INVALID" for="address"><span
 									id="admin_edit_address"></span> </label>
 							</div>
@@ -183,7 +183,7 @@
 
 							<div class="input-field">
 								<input id="phone" type="text" class="validate" length="20"
-									placeholder="Phone Number"> <label id="phoneLbl"
+									placeholder=""> <label id="phoneLbl"
 									data-error="PHONE NUMBER IS INVALID" for="phone"><span
 									id="admin_edit_phone"></span></label>
 							</div>
@@ -207,7 +207,7 @@
 				<!-- 						DESC -->
 
 							<div class="input-field">
-								<textarea placeholder="Desc" id="desc"
+								<textarea placeholder="" id="desc"
 									class="materialize-textarea" class="validate">${message}</textarea>
 								<label id="descLbl" data-error="DESCRIPTION IS INVALID"
 									for="desc"><span id="admin_edit_desc"></span> </label>
@@ -253,14 +253,10 @@
 				<c:if test="${countOfHotels > 0 }">
 					<select id="compare" class="chosen-select optionstyle"
 						onchange="findPage(window.location.href,1)">
-						<option class="optionstyle" value="compareByStarsAsc">star
-							asc</option>
-						<option class="optionstyle" value="compareByStarsDesc">star
-							desc</option>
-						<option class="optionstyle" value="compareByRatingAsc">rating
-							asc</option>
-						<option class="optionstyle" value="compareByRatingDesc"
-							selected="selected">rating desc</option>
+						<option class="optionstyle index_option_star_asc" value="compareByStarsAsc"></option>
+						<option class="optionstyle index_option_star_desc" value="compareByStarsDesc"></option>
+						<option class="optionstyle index_option_rating_asc" value="compareByRatingAsc"></option>
+						<option class="optionstyle index_option_rating_desc" value="compareByRatingDesc" selected="selected"></option>
 					</select>
 				</c:if>
 			</div>
