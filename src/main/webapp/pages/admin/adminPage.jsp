@@ -197,7 +197,7 @@
 						</thead>
 						<tbody>
 							<c:forEach var="request" items="${requests}">
-								<tr
+								<tr id="req${request.id }"
 									<c:if test="${request.status == 'PENDING'}"> style="background-color: white;"</c:if>
 									<c:if test="${request.status != 'PENDING'}">style="background-color: lightgrey;"</c:if>>
 									<td><c:out value="${request.id }"></c:out></td>
@@ -206,21 +206,30 @@
 									<td><a
 										href="${pageContext.servletContext.contextPath}/cabinet/admin/request/${request.id}"><c:out
 												value="${request.message}"></c:out></a></td>
-									<td style="text-align: center;"><c:if
+									<td style="text-align: center;" id="req${request.id }s"><c:if
 											test="${request.status == 'PENDING'}">
+											<div id="req${request.id }d">
 											<a class="my-btn waves-effect waves-light btn"
 												style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-												onclick="chageStatus(${request.id},true,'')"><span class="btn_appr"></span></a>
+												onclick="chageStatus(${request.id},true,'')"><span class="btn_approve"></span></a>
 											<a class="my-btn waves-effect waves-light btn"
 												style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
 												onclick="chageStatus(${request.id},false,'')"><span class="btn_decline"></span></a>
-										</c:if> <c:if test="${request.status == 'DECLINED'}">
+												</div>
+												<div style="color: #F55151;" class="hidden" id="req${request.id }dc">
+												<strong><span class="btn_decline"></span></strong>
+												</div>
+												<div style="color: #3c763d;" class="hidden" id="req${request.id }ap">
+												<strong><span class="btn_approve"></span></strong>
+											</div>
+											
+										</c:if><c:if test="${request.status == 'DECLINED'}">
 											<div style="color: #F55151;">
-												<strong>DECLINED!</strong>
+												<strong><span class="btn_decline"></span></strong>
 											</div>
 										</c:if> <c:if test="${request.status == 'APPROVED'}">
 											<div style="color: #3c763d;">
-												<strong>APPROVED!</strong>
+												<strong><span class="btn_approve"></span></strong>
 											</div>
 
 										</c:if></td>
