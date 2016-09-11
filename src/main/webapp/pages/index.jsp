@@ -108,15 +108,15 @@ div #sidebar-wrapper {
 					<input id="nam" type="text" class="validate" name="name"
 						value="${name}"> <label id="nameLbl"
 						data-error="${fmtName}" for="nam"><span
-				    id="index_search_name"></span> </label>
+						id="index_search_name"></span> </label>
 				</div>
 
 				<div class="col s3 offset-s2">
 					<input type="date" name="startDate" id="date_from"
-						class="datepicker validate" onchange="onDate()"  style="cursor: default;"
-						value="${startDate}"><label id="startLbl"
-						data-error="${fmtStart}" for="date_from"><span
-				    id="index_search_start"></span></label>
+						class="datepicker validate" onchange="onDate()"
+						style="cursor: default;" value="${startDate}"><label
+						id="startLbl" data-error="${fmtStart}" for="date_from"><span
+						id="index_search_start"></span></label>
 				</div>
 
 				<div class="col s3 offset-s2">
@@ -124,7 +124,7 @@ div #sidebar-wrapper {
 						class="datepicker validate" style="cursor: default;"
 						value="${endDate}"><label id="endLbl"
 						data-error="${fmtEnd}" for="date_to"><span
-				    id="index_search_end"></span></label>
+						id="index_search_end"></span></label>
 				</div>
 
 			</div>
@@ -144,8 +144,7 @@ div #sidebar-wrapper {
 						</div>
 
 						<div class="row">
-							<label class="labelstyle"><span
-				    id="index_search_price"></span></label>
+							<label class="labelstyle"><span id="index_search_price"></span></label>
 
 							<section class="range-slider">
 								<div id="rangeSlider"></div>
@@ -156,12 +155,11 @@ div #sidebar-wrapper {
 
 				<div class="col s3 offset-s2">
 					<input id="people" value="${people}" type="number"
-								class="rating validate" name="people" min=1 max=1000>
-<!-- 					<input id="" type="text" class=""  -->
-<!-- 						value="">  -->
-						<label id="pplLbl"
-						data-error="${fmtPeople}" for="pplCount"><span
-				    id="index_search_ppl" ></span></label>
+						class="rating validate" name="people" min=1 max=1000>
+					<!-- 					<input id="" type="text" class=""  -->
+					<!-- 						value="">  -->
+					<label id="pplLbl" data-error="${fmtPeople}" for="pplCount"><span
+						id="index_search_ppl"></span></label>
 				</div>
 
 
@@ -176,41 +174,48 @@ div #sidebar-wrapper {
 						<div class="row">
 							<div class="row">
 								<div class="col s4 offset-s1 ">
-	
-									<h6 id="room_type"style="margin-bottom: 15px;"> </h6>
+
+									<h6 id="room_type" style="margin-bottom: 15px;"></h6>
 									<p>
 										<input type="checkbox" class="filled-in" id="typeStandart"
-											name="typeStandart" /> <label id="index_room_type_standart" for="typeStandart"></label>
+											name="typeStandart" /> <label id="index_room_type_standart"
+											for="typeStandart"></label>
 									</p>
 									<p>
 										<input type="checkbox" class="filled-in" id="typeLux"
-											name="typeLux" /> <label id="index_room_type_lux" for="typeLux"></label>
+											name="typeLux" /> <label id="index_room_type_lux"
+											for="typeLux"></label>
 									</p>
 									<p>
 										<input type="checkbox" class="filled-in" id="typeDelux"
-											name="typeDelux" /> <label id="index_room_type_delux" for="typeDelux"></label>
+											name="typeDelux" /> <label id="index_room_type_delux"
+											for="typeDelux"></label>
 									</p>
 									<h6 id="room_food" style="margin-bottom: 15px;"></h6>
 									<p>
 										<input type="checkbox" class="filled-in" id="foodNone"
-											name="foodNone" /><label id="index_room_type_food_none" for="foodNone"></label>
+											name="foodNone" /><label id="index_room_type_food_none"
+											for="foodNone"></label>
 									</p>
 									<p>
 										<input type="checkbox" class="filled-in" id="foodBreakfast"
-											name="foodBreakfast" /> <label id="index_room_type_food_breakfast" for="foodBreakfast">BREAKFAST</label>
+											name="foodBreakfast" /> <label
+											id="index_room_type_food_breakfast" for="foodBreakfast">BREAKFAST</label>
 									</p>
 									<p>
 										<input type="checkbox" class="filled-in" id="foodTwice"
-											name="foodTwice" /> <label id="index_room_type_food_twice" for="foodTwice"></label>
+											name="foodTwice" /> <label id="index_room_type_food_twice"
+											for="foodTwice"></label>
 									</p>
 									<p>
 										<input type="checkbox" class="filled-in" id="foodFull"
-											name="foodFull" /> <label id="index_room_type_food_full" for="foodFull">Full</label>
+											name="foodFull" /> <label id="index_room_type_food_full"
+											for="foodFull">Full</label>
 									</p>
-	
+
 								</div>
 								<div class="col s4 offset-s2 ">
-	
+
 									<p style="margin-top: 20px;">
 										<input type="checkbox" class="filled-in" id="hasWiFi"
 											name="hasWiFi" /> <label id="label_wifi" for="hasWiFi"></label>
@@ -221,11 +226,13 @@ div #sidebar-wrapper {
 									</p>
 									<p>
 										<input type="checkbox" class="filled-in" id="hasParking"
-											name="hasParking" /> <label id="label_parking" for="hasParking"></label>
+											name="hasParking" /> <label id="label_parking"
+											for="hasParking"></label>
 									</p>
 									<p>
 										<input type="checkbox" class="filled-in" id="hasCondition"
-											name="hasCondition" /> <label id="label_condition" for="hasCondition"></label>
+											name="hasCondition" /> <label id="label_condition"
+											for="hasCondition"></label>
 									</p>
 									<p>
 										<input type="checkbox" class="filled-in" id="hasPool"
@@ -237,28 +244,42 @@ div #sidebar-wrapper {
 									</p>
 									<p>
 										<input type="checkbox" class="filled-in" id="hasBalcony"
-											name="hasBalcony" /> <label id="label_balcony" for="hasBalcony"></label>
+											name="hasBalcony" /> <label id="label_balcony"
+											for="hasBalcony"></label>
 									</p>
 									<p>
 										<input type="checkbox" class="filled-in" id="noDeposit"
-											name="noDeposit" /> <label id="index_room_noDeposit" for="noDeposit"></label>
+											name="noDeposit" /> <label id="index_room_noDeposit"
+											for="noDeposit"></label>
 									</p>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col s1 offset-s1">
-									<div class="rangePrint" id="printMinPrice">${minPrice}</div>
+								<div class="col s2">
+									<div class="rangePrint" id="printMinPrice">
+										<%-- 									${minPrice} --%>
+										<input onchange="updateMinPrice()" id="inputPrintMinPrice" type="number"
+											name="inputPrintMinPrice" value="${minPrice}"
+											min="${minPrice}" max="${maxPrice}"
+											style="margin-bottom: 0px; text-align: center; margin-top: -5px;">
+									</div>
 								</div>
 								<div class="col s8">
-									<label class="labelstyle">
-										<span id="index_search_price_2"></span>
+									<label class="labelstyle"> <span
+										id="index_search_price_2"></span>
 									</label>
 									<section class="range-slider">
 										<div id="priceSlider"></div>
 									</section>
 								</div>
-								<div class="col s1">
-									<div class="rangePrint" id="printMaxPrice">${maxPrice}</div>
+								<div class="col s2">
+									<div class="rangePrint" id="printMaxPrice">
+										<%-- 									${maxPrice} --%>
+										<input onchange="updateMaxPrice()" id="inputPrintMaxPrice" type="number"
+											name="inputPrintMaxPrice" min="${minPrice}" max="${maxPrice}"
+											value="${maxPrice}"
+											style="margin-bottom: 0px; text-align: center; margin-top: -5px;">
+									</div>
 								</div>
 							</div>
 
@@ -284,7 +305,7 @@ div #sidebar-wrapper {
 						</div>
 					</div>
 					<!-- MAP ========================================================================== -->
-						<jsp:include page="map.jsp"></jsp:include>
+					<jsp:include page="map.jsp"></jsp:include>
 					<!-- MAP End======================================================================= -->
 				</div>
 			</div>
@@ -322,10 +343,14 @@ div #sidebar-wrapper {
 				<c:if test="${countOfHotels > 0 }">
 					<select id="compare" class="chosen-select optionstyle"
 						onchange="findPage(window.location.href,1)">
-						<option id="index_option_star_asc" class="optionstyle" value="compareByStarsAsc"></option>
-						<option id="index_option_star_desc" class="optionstyle" value="compareByStarsDesc"></option>
-						<option id="index_option_rating_asc" class="optionstyle" value="compareByRatingAsc"></option>
-						<option id="index_option_rating_desc" class="optionstyle" value="compareByRatingDesc"selected="selected"></option>
+						<option id="index_option_star_asc" class="optionstyle"
+							value="compareByStarsAsc"></option>
+						<option id="index_option_star_desc" class="optionstyle"
+							value="compareByStarsDesc"></option>
+						<option id="index_option_rating_asc" class="optionstyle"
+							value="compareByRatingAsc"></option>
+						<option id="index_option_rating_desc" class="optionstyle"
+							value="compareByRatingDesc" selected="selected"></option>
 					</select>
 				</c:if>
 			</div>
@@ -433,13 +458,13 @@ div #sidebar-wrapper {
 	</script>
 
 	<!-- 	DATEPICKER -->
-		<script type="text/javascript"
+	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/picker.js"></script>
-		<script type="text/javascript"
+	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/picker.date.js"></script>
-		<script type="text/javascript"
+	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/datepicker.js"></script>
-	
+
 
 </body>
 

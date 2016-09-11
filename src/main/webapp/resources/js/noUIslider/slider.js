@@ -47,8 +47,9 @@ noUiSlider.create(priceRange, {
 	}
 });
 
-$('#printMinPrice').html(parseInt(priceRange.noUiSlider.get()[0]));
-$('#printMaxPrice').html(parseInt(priceRange.noUiSlider.get()[1]));
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+$('#inputPrintMinPrice').val(parseInt(priceRange.noUiSlider.get()[0]));
+$('#inputPrintMaxPrice').val(parseInt(priceRange.noUiSlider.get()[1]));
 
 starRange.noUiSlider.on('change', function() {
 	$('#minStars').val(starRange.noUiSlider.get()[0]);
@@ -64,9 +65,10 @@ priceRange.noUiSlider.on('change', function() {
 	$('#maxUserPrice').val(priceRange.noUiSlider.get()[1]);
 });
 
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 priceRange.noUiSlider.on('slide', function() {
-	$('#printMinPrice').html(parseInt(priceRange.noUiSlider.get()[0]));
-	$('#printMaxPrice').html(parseInt(priceRange.noUiSlider.get()[1]));
+	$('#inputPrintMinPrice').val(parseInt(priceRange.noUiSlider.get()[0]));
+	$('#inputPrintMaxPrice').val(parseInt(priceRange.noUiSlider.get()[1]));
 });
 
 function starChanger(start, end) {
@@ -84,4 +86,16 @@ function starChanger(start, end) {
 			starArray[i].addClass("fa-star");
 		}
 	}
+}
+
+function updateMaxPrice(){
+	var price = $('#inputPrintMaxPrice').val();
+	priceRange.noUiSlider.set([null,price]);
+	$('#maxUserPrice').val(priceRange.noUiSlider.get()[1]);
+}
+
+function updateMinPrice(){
+	var price = $('#inputPrintMinPrice').val();
+	priceRange.noUiSlider.set([price,null]);
+	$('#minUserPrice').val(priceRange.noUiSlider.get()[0]);
 }
