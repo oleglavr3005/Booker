@@ -80,17 +80,13 @@ b {
 
 
 <c:forEach var="room" items="${rooms}">
-
 	<div id="hotel_card_${room.id}" class="col s10 offset-s1">
 		<div class="card">
-
 			<div class="container-fluid">
 				<div class="row" style="margin-top: 15px; margin-bottom: 10px;">
-
 					<div class="card-image col s4" style="position: relative;">
-					
 					  <div id="links">
-			<c:if test="${fn:length(room.photos) == 0}">
+						<c:if test="${fn:length(room.photos) == 0}">
 						<a
 							href="<i:urlToImage url="no.jpg" />"
 							title="No image"
@@ -166,41 +162,41 @@ b {
 					<div class="col s3">
 						<div class="row" style="float: right; text-align:right; font-size:0.3rem">
 							<c:if test="${room.wifi == true}">
-								<a id="index_room_wifi"  class="tooltipped" data-position="icon" data-tooltip="Wifi"
+								<a class="index_room_wifi"  class="tooltipped" data-position="icon" data-tooltip="Wifi"
 									style="color: #0d0d0d;"><i class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.shower == true}">
-								<a id="index_room_shower" class="tooltipped" data-position="icon" data-tooltip="Shower"><img
+								<a class="index_room_shower" class="tooltipped" data-position="icon" data-tooltip="Shower"><img
 									class="invert" style="max-width: 10%; margin-top:-1.5rem"  
 									src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" />
 									</a>
 							</c:if>
 
 							<c:if test="${room.parking == true}">
-								<a id="index_room_parking" class="tooltipped" data-position="icon"
+								<a class="index_room_parking" class="tooltipped" data-position="icon"
 									data-tooltip="Parking" style="color: #0d0d0d;"><i 
 									class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.condition == true}">
-								<a id="index_room_conditioner" class="tooltipped" data-position="icon"
+								<a class="index_room_conditioner" class="tooltipped" data-position="icon"
 									data-tooltip="Condition" style="color: #0d0d0d;"><i  
 									class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.pool == true}">
-								<a id="index_room_pool" class="tooltipped" data-position="icon" data-tooltip="Pool"
+								<a class="index_room_pool" class="tooltipped" data-position="icon" data-tooltip="Pool"
 									style="color: #0d0d0d;"><i class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.gym == true}">
-								<a id="index_room_gym" class="tooltipped" data-position="icon" data-tooltip="Gym"
+								<a class="index_room_gym" class="tooltipped" data-position="icon" data-tooltip="Gym"
 									style="color: #0d0d0d;"><i class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.balcony == true}">
-								<a id="index_room_balcony" class="tooltipped" data-position="icon"
+								<a class="index_room_balcony" class="tooltipped" data-position="icon"
 									data-tooltip="Balcony"><img class="invert"
 									style="max-width: 10%; margin-top:-1.5rem"
 									src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" />
@@ -218,12 +214,12 @@ b {
 								<a id="btn${room.id}" class="waves-effect waves-light btn"
 									onclick="addToCart(${room.id})"
 									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-									<span id="room_card_add_to_cart"></span></a>
+									<span class="room_card_add_to_cart"></span></a>
 							</div>
 						</c:if>
 
 						<c:if test="${startDate == null}">
-							<div id="hiddenError" class="col s2 offset-s6"></div>
+							<div class="hiddenError" class="col s2 offset-s6"></div>
 						</c:if>
 
 
@@ -234,7 +230,7 @@ b {
 						<div class="col s2" style="float: right">
 							<a class="waves-effect waves-light btn" disabled
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-								<span id="room_card_need_login"></span></a>
+								<span class="room_card_need_login"></span></a>
 						</div>
 					</div>
 				</c:if>

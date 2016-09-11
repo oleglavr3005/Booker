@@ -208,13 +208,13 @@ $(document)
 											sWidth : "20%",
 											aTargets : [ 3 ]
 										}, {
-											sWidth : "10%",
+											sWidth : "14%",
 											aTargets : [ 4 ]
 										}, {
-											sWidth : "10%",
+											sWidth : "7%",
 											aTargets : [ 5 ]
 										}, {
-											sWidth : "10%",
+											sWidth : "7%",
 											aTargets : [ 6 ]
 										}, {
 											sWidth : "10%",
