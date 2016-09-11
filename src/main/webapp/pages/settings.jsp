@@ -37,7 +37,8 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
 	rel="stylesheet">
-
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/css/style.css">
 
 <style>
 .btn {
@@ -60,7 +61,7 @@
 		rgba(0, 0, 0, 0.12);
 	transition: box-shadow .25s;
 	border-radius: 5px;
-	background-color: #F3EAEA;
+	background-color: #26A69A;
 }
 
 .bg-img {
@@ -87,6 +88,7 @@
 .well {
 	padding: 0px;
 }
+
 </style>
 
 </head>
@@ -112,14 +114,14 @@
 
 			<!-- 			Tab Holder -->
 			<div class="col s10 offset-s1">
-				<ul class="tabs" style="background: #638F98;">
+				<ul class="tabs" style="background: #12444c; ">
 					<li class="tab col s3"><a class="active" href="#test1"
-						style="color: #1A3D44"><b><p id="tab_personal">PERSONAL</p></b></a></li>
-					<li class="tab col s3"><a href="#test2" style="color: #1A3D44"><b><p
+						style=" color: #F7F7F7;"><b><p id="tab_personal">PERSONAL</p></b></a></li>
+					<li class="tab col s3"><a href="#test2" style="color: #F7F7F7"><b><p
 									id="tab_contact">CONTACT</p></b></a></li>
 					<c:if test="${user.type eq 'USER' }">
 						<li class="tab col s3"><a href="#test3"
-							style="color: #1A3D44"><b><p id="tab_manage">MANAG</p></b></a></li>
+							style="color: #F7F7F7"><b><p id="tab_manage">MANAG</p></b></a></li>
 					</c:if>
 				</ul>
 			</div>
@@ -130,11 +132,9 @@
 			<div id="test1" class="col s12">
 				<div class="container-fluid">
 					<div class="row settings-title">
-						<div class="col s6 offset-s3">
-							<h4>
+							<h4 style="text-align: center; margin-top: 20px;">
 								<span id="settings_header_PERSONAL"></span>
 							</h4>
-						</div>
 					</div>
 
 					<div class="row">
@@ -187,11 +187,9 @@
 					<div class="divider"></div>
 
 					<div class="row" style="margin-bottom: 10px;">
-						<div class="col s6 offset-s3">
-							<h4 id="pwd_title">
+							<h4 id="pwd_title" style="text-align: center; margin-top: 20px;">
 								<span id="settings_header_pass"></span>
 							</h4>
-						</div>
 
 					</div>
 					<div class="row inline field fields">
@@ -240,11 +238,9 @@
 			<!-- 				Tab #2 -->
 			<div id="test2" class="col s12">
 				<div class="container">
-					<div class="row settings-title">
-						<h4>
+						<h4 style="text-align: center; margin-top: 20px;">
 							<span id="settings_header_CONTACT"></span>
 						</h4>
-					</div>
 
 					<div class="row fields">
 						<div class="input-field col s12">

@@ -45,11 +45,11 @@ b {
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default pull-left prev">
 						<i class="glyphicon glyphicon-chevron-left"></i> <span
-							id="hotel_button_previous"><span>
+							id="hotel_button_previous"></span>
 					</button>
 					<button type="button" class="btn btn-primary next">
-						<span id="hotel_button_next"><span> <i
-								class="glyphicon glyphicon-chevron-right"></i>
+						<span id="hotel_button_next"></span> <i
+							class="glyphicon glyphicon-chevron-right"></i>
 					</button>
 				</div>
 			</div>
@@ -119,17 +119,15 @@ b {
 
 					<div class="col s5">
 
-<!-- ROOM TYPE ZONE -->
+						<!-- ROOM TYPE ZONE -->
 						<div class="row" style="margin-top: 15px;">
 							<span>${room.type}</span>
 						</div>
-<!-- 				END OF	INFO MONEY REFUND ZONE -->
-
-						<!-- 						INFO MONEY REFUND ZONE -->
-						<div class="row"></div>
-						<!-- 						END OF INFO MONEY REFUND ZONE -->
+						<!-- 				END OF ROOM TYPE ZONE -->
 
 
+
+						<!-- BEDS ICON ZONE -->
 						<div class="row">
 							<a class="tooltipped" data-position="icon"
 								data-tooltip="Double beds" style="color: #0d0d0d;"><img
@@ -142,24 +140,29 @@ b {
 								src="${pageContext.servletContext.contextPath}/resources/images/single_bed.png" /></a>
 							<span>${room.bedsCount}</span>
 						</div>
+						<!-- END OF BEDS ICON ZONE -->
 
+						<!-- ROOM FOOD ZONE -->
 						<div class="row">
 							<a class="tooltipped" data-position="icon" data-tooltip="Food"
 								style="color: #0d0d0d;"><i
 								class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span>
 						</div>
+						<!-- END OF ROOM FOOD ZONE -->
 
+						<!-- ROOM PRICE ZONE -->
 						<div class="row">
 							<a class="tooltipped" data-position="icon"
 								data-tooltip="Price for one day" style="color: #0d0d0d;"><i
 								class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${room.price}</span>
-							<c:if test="${room.daysCount == -1}">
-								<a class="tooltipped" data-position="icon"
-									data-tooltip="No deposit" style="color: #0d0d0d;"><i
-									class="fa fa-2x fa-exclamation-circle invert"
-									aria-hidden="true"></i></a>
-							</c:if>
+<%-- 							<c:if test="${room.daysCount == -1}"> --%>
+<!-- 								<a class="tooltipped" data-position="icon" -->
+<%-- 									data-tooltip="No deposit" style="color: #0d0d0d;"><i --%>
+<%-- 									class="fa fa-2x fa-exclamation-circle invert" --%>
+<%-- 									aria-hidden="true"></i></a> --%>
+<%-- 							</c:if> --%>
 						</div>
+						<!-- END OF ROOM PRICE ZONE -->
 
 					</div>
 
@@ -215,17 +218,33 @@ b {
 					</div>
 				</div>
 
-				<c:if test="${user != null}">
-					<div class="row">
-						<div class="col s3 offset-s8" id="cont"></div>
+				<!-- 						INFO MONEY REFUND ZONE -->
+				<div class="row">
+					<div class="col s9">
+						<c:choose>
+							<c:when test="${room.daysCount > -1}">
+								<div
+									style="border: 1px solid red; border-radius: 10px; padding: 5px; background-color: rgba(255, 0, 0, 0.3);">YOU
+									WILL GET 100% REFUND IN CASE OF CANCELING ORDER ONLY IN
+									${room.daysCount} DAYS BEFORE MOVING IN, AFTER THESE PERIOD
+									REFUND WILL BE ONLY ${room.percentage}%</div>
+							</c:when>
+							<c:otherwise>
+								<div
+									style="border: 1px solid green; border-radius: 10px; padding: 5px; background-color: rgba(0, 255, 0, 0.3);">FREE_BOOK</div>
+							</c:otherwise>
+						</c:choose>
+					</div>
+
+
+					<c:if test="${user != null}">
+						<div class="col s3" id="cont"></div>
 						<c:if test="${startDate != null}">
-							<div class="col s2 offset-s10" style="float: right">
 								<a id="btn${room.id}" class="waves-effect waves-light btn"
 									onclick="addToCart(${room.id})"
 									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
 									<span class="room_card_add_to_cart"></span>
 								</a>
-							</div>
 						</c:if>
 
 						<c:if test="${startDate == null}">
@@ -233,18 +252,24 @@ b {
 						</c:if>
 
 
-					</div>
-				</c:if>
-				<c:if test="${user == null}">
-					<div class="row">
-						<div class="col s2" style="float: right">
-							<a class="waves-effect waves-light btn" disabled
-								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-								<span class="room_card_need_login"></span>
-							</a>
+					</c:if>
+					<c:if test="${user == null}">
+						<div class="row">
+							<div class="col s3" style="float: right">
+								<a class="waves-effect waves-light btn" disabled
+									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+									<span class="room_card_need_login"></span>
+								</a>
+							</div>
 						</div>
-					</div>
-				</c:if>
+					</c:if>
+
+
+
+				</div>
+				<!-- 						END OF INFO MONEY REFUND ZONE -->
+
+
 
 			</div>
 
