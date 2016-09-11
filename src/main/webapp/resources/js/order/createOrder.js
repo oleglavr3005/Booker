@@ -9,20 +9,18 @@ function createOrder(orders) {
 }
 
 function bookOrderCard(orderId, daysCount) {
-	debugger;
 	var localComment = orderId == null ? $('#comment').val() : $(
 			'#comment' + orderId).val();
 	var code = value($('#cardnum1').val()) + value($('#cardnum2').val())
 			+ value($('#cardnum3').val()) + value($('#cardnum4').val());
-	
+
 	var flag;
-	if (orderId != null){
+	if (orderId != null) {
 		flag = $('#book' + orderId).attr('disabled');
-	}
-	else {
+	} else {
 		flag = $('#book').attr('disabled')
 	}
-	
+
 	if (!flag) {
 		var url;
 		if (orderId == null) {
@@ -32,7 +30,7 @@ function bookOrderCard(orderId, daysCount) {
 		}
 
 		if (daysCount > 0) {
-		//if (false) {
+			// if (false) {
 			// need 2 pay at all
 
 			// validate info for purchase
@@ -49,7 +47,7 @@ function bookOrderCard(orderId, daysCount) {
 						if (res.booked == 'true') {
 							insertModal(res);
 							$('#modal1').openModal({
-							    complete : onModalHide
+								complete : onModalHide
 							});
 
 							$('#book' + orderId).text("SUCCES");
@@ -69,29 +67,26 @@ function bookOrderCard(orderId, daysCount) {
 						+
 
 						'<div class="row">'
-						+
-
-						'<div class="col s8 cardDetail" style="margin-top:30px; margin-left:60px;">'
-						+ '<div><p>2. якесь поле'
-						+ '</p></div>'
-						+ '<div id="cardNumber" style="margin-top: 10px; margin-left: 35px;">'
-						+ '<input id="cardnum1" style="margin-left: 15px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(1)" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
-						+ '<input id="cardnum2" style="margin-left: 15px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(2)" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
-						+ '<input id="cardnum3" style="margin-left: 15px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(3)" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
-						+ '<input id="cardnum4" style="margin-left: 15px; width: 60px; text-align: center;" maxlength="4" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
+						+ '<div class="col s3"><div style="margin-top:50px;">CARD:</div></div>'
+						+ '<div class="col s8 cardDetail">'
+						+ '<div class="row" style="margin-bottom: 0px;"><div id="cardNumber" class="col s8">'
+						+ '<input id="cardnum1" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(1)" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
+						+ '<input id="cardnum2" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(2)" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
+						+ '<input id="cardnum3" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(3)" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
+						+ '<input id="cardnum4" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
 						+ '</div>'
-						+ '<div id="cardNumberError" class="error" style="height: 35px; margin: -10px 0 0 130px;"></div>'
-						+ '<div style="margin-left: 125px;">'
-						+ '<select class="selectTag"><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option></select>'
-						+ '<select class="selectTag" style="margin-left: 75px; width: 70px;"><option>2016</option><option>2017</option><option>2018</option><option>2019</option><option>2020</option><option>2021</option><option>2022</option><option>2023</option><option>2024</option><option>2025</option><option>2026</option><option>2027</option></select>'
+						+ '<div id="cardNumberError" class="error col s4" style="height: 35px; margin: -10px 0 0 130px;"></div></div>'
+						+ '<div class="row" style="margin-bottom: 0px;"><div class="col s2 offset-s1">'
+						+ '<select style="width: 70px;" class="selectTag"><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option></select>'
+						+ '</div><div class="col s2"><select class="selectTag" style="width: 70px;"><option>2016</option><option>2017</option><option>2018</option><option>2019</option><option>2020</option><option>2021</option><option>2022</option><option>2023</option><option>2024</option><option>2025</option><option>2026</option><option>2027</option></select>'
+						+ '</div><div class="col s1">cvv:</div><div class="col s2"><input id="CVC" type="password" maxlength="3" style="margin-top:-20px; font-size: 20px;"/>'
 						+ '</div>'
 						+
 
 						'</div>'
 						+ // col s8
 
-						'<div class="col s3" style="margin-top: 0px; width: 100px; font-size: 16px">CV: <input id="CVC" type="password" maxlength="3" style=" font-size: 20px;"/>'
-						+ '</div>' + '</div>' + // row
+						'</div>' + // row
 
 						'</div>' + // form
 						'</div>'
@@ -100,7 +95,7 @@ function bookOrderCard(orderId, daysCount) {
 				} else {
 					$('#field').after(content); // book all
 				}
-				
+
 				$("#subscribing_form").html(content);
 			}
 
@@ -116,7 +111,7 @@ function bookOrderCard(orderId, daysCount) {
 				if (res.booked == 'true') {
 					insertModal(res);
 					$('#modal1').openModal({
-					    complete : onModalHide
+						complete : onModalHide
 					});
 
 					$('#book' + orderId).text("SUCCES");
@@ -150,7 +145,7 @@ function addToCart(roomId) {
 		}
 	});
 	var url = window.location.href;
-	var path = url.substring(url.lastIndexOf("/") + 1,url.lenght);	
+	var path = url.substring(url.lastIndexOf("/") + 1, url.lenght);
 	var compare = $('#compare').val();
 	var pageNumber = $('#pageNmb').val();
 	$.get(url, {
@@ -280,19 +275,20 @@ function insertModal(result) {
 	showModal(result);
 }
 
-function showModal(result){
-	if (result.countOfHotels > 0){
+function showModal(result) {
+	if (result.countOfHotels > 0) {
 		var url = 'http://localhost:8080/booker/hotel/';
 		for (var i = 0; i < 3 && i < result.countOfHotels; i++) {
-			document.getElementById('row'+i).style.display = 'block';
-			$('#href'+i+'1').attr('href',url+result.hotels[i].id);
-			$('#href'+i+'2').attr('href',url+result.hotels[i].id);
-			document.getElementById("img"+i).src="../resources/images/" + result.hotels[i].photo;
-			$('#hotelName'+i).html(result.hotels[i].name);
-			$('#location'+i).html(result.hotels[i].city + " " + result.hotels[i].street);
+			document.getElementById('row' + i).style.display = 'block';
+			$('#href' + i + '1').attr('href', url + result.hotels[i].id);
+			$('#href' + i + '2').attr('href', url + result.hotels[i].id);
+			document.getElementById("img" + i).src = "../resources/images/"
+					+ result.hotels[i].photo;
+			$('#hotelName' + i).html(result.hotels[i].name);
+			$('#location' + i).html(
+					result.hotels[i].city + " " + result.hotels[i].street);
 		}
-	}
-	else{
+	} else {
 		document.getElementById('empty').style.display = 'block';
 	}
 }
@@ -313,33 +309,50 @@ function modalMaker(result) {
 }
 
 function contentMaker(hotel) {
-	var content = '<div class="row">'
-			+ '<div class="col s4">'
-			+ '	<a href="http://localhost:8080/booker/hotel/'+ hotel.id +'">'
-			+ '		<img src="<i:urlToImage url="' + hotel.photo + '" />"'
+	var content = '<div class="row">' + '<div class="col s4">'
+			+ '	<a href="http://localhost:8080/booker/hotel/'
+			+ hotel.id
+			+ '">'
+			+ '		<img src="<i:urlToImage url="'
+			+ hotel.photo
+			+ '" />"'
 			+ '		style="height: 110px; width: 150px;">'
 			+ '	</a>'
 			+ '</div>'
 			+ '<div class="col s6">'
 			+ '<div class="row" style="margin-top: 15px; margin-bottom:10px">'
 			+ '<div class="col s5">'
-			+ '   <a href="http://localhost:8080/booker/hotel/'+ hotel.id +'">'+ hotel.name +'</a>'
+			+ '   <a href="http://localhost:8080/booker/hotel/'
+			+ hotel.id
+			+ '">'
+			+ hotel.name
+			+ '</a>'
 			+ '</div>'
 			+ '<div class="col s6 offset-s1">'
 			+ '    <a style="color: #0d0d0d; text-decoration: none;">'
-			+ '        <c:forEach var="i" begin="1" end="'+ hotel.stars +'">'
+			+ '        <c:forEach var="i" begin="1" end="'
+			+ hotel.stars
+			+ '">'
 			+ '            <i class="fa fa-lg fa-star" aria-hidden="true"></i>'
 			+ '        </c:forEach>'
-			+ '        <c:forEach var="i" begin="'+ hotel.stars +'" end="4">'
+			+ '        <c:forEach var="i" begin="'
+			+ hotel.stars
+			+ '" end="4">'
 			+ '            <i class="fa fa-lg fa-star-o" aria-hidden="true"></i>'
 			+ '        </c:forEach>'
 			+ '    </a></div></div>'
-			+ '	<div class="row"><i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i><span>'+ hotel.city +' '+ hotel.street +'</span></div>'
+			+ '	<div class="row"><i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i><span>'
+			+ hotel.city
+			+ ' '
+			+ hotel.street
+			+ '</span></div>'
 			+ '</div>'
 			+ '<div class="col s2">'
 			+ '	<div class="row">'
 			+ '		<a class="waves-effect waves-light btn"'
-			+ '			href="http://localhost:8080/booker/hotel/'+ hotel.id +'"'
+			+ '			href="http://localhost:8080/booker/hotel/'
+			+ hotel.id
+			+ '"'
 			+ '			style="margin-top: 30px; margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family:Times, serif;"><span>INFO</span></a>'
 			+ '	</div>' + '</div></div>';
 	return content;
