@@ -140,7 +140,7 @@
 					<div class="row">
 						<div class="col s4">
 							<a href="#!"><img id="avatarImg"
-								style="height: 200px; padding: 10px; width: 290px;"
+								style="max-height: 200px; padding: 10px; max-width: 290px; float:right"
 								<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
 								src="<i:urlToImage url="${user.image}" />">
 							</a> <input style="margin-top: 60px; display: none" type="file"
@@ -247,7 +247,7 @@
 					</div>
 
 					<div class="row fields">
-						<div class="input-field col s9">
+						<div class="input-field col s12">
 							<div class="ui pointing label">
 								<span id="settings_enter_phone"></span>
 							</div>
@@ -277,7 +277,7 @@
 
 					<c:if test="${user.socialNetworkId == null}">
 						<div class="row">
-							<div class="input-field col s9">
+							<div class="input-field col s12">
 								<div class="ui pointing label">
 									<span id="settings_enter_mail"></span>
 								</div>
@@ -301,7 +301,7 @@
 					</script>
 
 					<div class="row" style="margin-top: 20px;">
-						<div class="col s3 offset-s7">
+						<div class="col s3 offset-s9">
 							<a id="savePersonal" class="waves-effect waves-light btn"
 								onclick="saveContactData()"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span

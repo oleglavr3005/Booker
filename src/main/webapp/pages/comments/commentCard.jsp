@@ -54,10 +54,11 @@
 
 							<!-- 						STARS -->
 							<input id="rating" onchange="rate()" type="number"
-								value="${hotel.stars}" class="rating" min=0 max=5 step=1
+								value="1" class="rating" min=1 max=5 step=1
 								data-size="xs" data-stars="5"> <span
-								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><fmt:message
-									key="manager.hotel.star" />STAR : <span id="rate_span">0</span>
+								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;">
+							<span id="manager_hotel_star"></span>
+							<span id="rate_span">0</span>
 								/ 5 |</span>
 							<script>
 								function rate() {
