@@ -76,15 +76,6 @@ b {
     </div>
 </div>
 <!-- end GALLERY -->
-<!-- <h6> -->
-<%-- 	<c:if test="${countOfHotels > 0 }"> --%>
-<%-- 		<fmt:message key="card.header" /> --%>
-<%-- 		<span id="periodicals_number_for_all_users">${countOfHotels}</span> --%>
-<%-- 	</c:if> --%>
-<%-- 	<c:if test="${countOfHotels <= 0 }"> --%>
-<%-- 		<fmt:message key="card.no.periodicals" /> --%>
-<%-- 	</c:if> --%>
-<!-- </h6> -->
 <div class="divider" style="margin-bottom: 20px;"></div>
 <div class="container-fluid">
 	<div class="row">
