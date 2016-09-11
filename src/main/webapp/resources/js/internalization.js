@@ -193,7 +193,7 @@
 
 		subscribes_header : "List of orders",
 		card_status_active : "Active",
-		subscribes_table_remove : "Delete order",
+		subscribes_table_remove : "Cancel",
 		subscribes_empty : "Not Found?",
 		subscribes_table_name : "Hotel",
 		subscribes_table_startDate : "Check-in",
@@ -308,7 +308,7 @@
 			
 		room_concret_deleted : "Видалити",
 		room_concret_save : "Зберегти",
-		room_concret_freebook : "Booked free",
+		room_concret_freebook : "Без передплати",
 		
 		label_wifi : "WiFi",
 		label_shower : "Душ",
@@ -453,7 +453,7 @@
 
 		subscribes_header : "Список замовлень",
 		card_status_active : "Активне",
-		subscribes_table_remove : "Видалити замовлення",
+		subscribes_table_remove : "Скасувати",
 		subscribes_empty : "Не знайдено??",
 		subscribes_table_name : "Готель",
 		subscribes_table_startDate : "В'їзд",
@@ -512,11 +512,11 @@
 		btn_update : "Змінити",
 		btn_create_room : "Створити кімнату",
 		btn_add_image : "Додати фото",
-		btn_remove_іудусеув : "Видалити обране",
+		btn_remove_selected : "Видалити обране",
 		btn_decline : "Відхилити",
 		btn_approve : "Підтвердити",
 
-		header_regist: "header_regist",
+		header_regist: "Реєстрація",
 	}
 	
 	var error = {
@@ -564,6 +564,9 @@
 			index_search_stars : "Зірки",
 			index_search_location : "Розташування",
 			index_search_description : "Опис",
+			tooltip_phone_number : "Номер телефону",
+			tooltip_showe_all_info : "Показати всю інформацію",
+			tooltip_rating : "Рейтинг",
 		},
 		en : {
 			index_room_wifi : "Wifi",
@@ -576,6 +579,9 @@
 			index_search_stars : "Stars",
 			index_search_location : "Location",
 			index_search_description : "Description",
+			tooltip_phone_number : "Phone number",
+			tooltip_showe_all_info : "Show full info",
+			tooltip_rating : "Rating",
 		}
 	};
 	

@@ -96,7 +96,7 @@ function engLetIsValid(field) {
 }
 
 function textIsValid(field) {
-	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’ ]*)$/;
+	var re = /^([-a-zA-Zа-яА-Я0-9іІьїЇєЄ’.!/'" ]*)$/;
 	return re.test(field);
 }
 
@@ -106,7 +106,7 @@ function engTextIsValid(field) {
 }
 
 function onlyTextIsValid(field) {
-	var re = /^([a-zA-Zа-яА-ЯіІьїЇєЄ’ ]*)$/;
+	var re = /^([a-zA-Zа-яА-ЯіІьїЇєЄ’.! ]*)$/;
 	return re.test(field);
 }
 
@@ -241,5 +241,25 @@ function getInfoFromGoogle() {
 	} catch (err) {
 		invalid('address');
 		return;
+	}
+}
+
+function changeIsDeleted() {
+	var deleted = document.getElementById('isDeleted').checked;
+	$('#name').prop('disabled', deleted);
+	//$('#rating').prop('readonly', deleted);
+	$('#address').prop('disabled', deleted);
+	$('#phone').prop('disabled', deleted);
+	$('#desc').prop('disabled', deleted);
+	
+	if (deleted) {
+		$('#pushImage').addClass('disabled');
+	} else {
+		$('#pushImage').removeClass('disabled');
+	}
+	if (deleted) {
+		$('#createBtn').addClass('disabled');
+	} else {
+		$('#createBtn').removeClass('disabled');
 	}
 }

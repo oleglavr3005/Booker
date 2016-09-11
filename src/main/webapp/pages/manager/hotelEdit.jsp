@@ -110,13 +110,9 @@ div #sidebar-wrapper {
 				<div class="row">
 					<!-- 					PHOTO -->
 
-
-
-					<a href="#!"><img id="Img"
-						style="height: 200px; padding: 10px; width: 200px;"
+					<img id="Img" style="height: 200px; padding: 10px; width: 200px;"
 						<%-- 														src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
  								src="<i:urlToImage url="${hotel.photos[0].img }" />">
-					</a>
 					<!-- 					END OF PHOTO -->
 				</div>
 
@@ -147,18 +143,19 @@ div #sidebar-wrapper {
 							<!-- 						STARS -->
 							<input id="rating" onchange="rate()" type="number"
 								value="${hotel.stars}" class="rating" min=0 max=5 step=1
-								data-size="xs" data-stars="5"> <span
-								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><span
-								id="manager_hotel_star"></span><span id="rate_span">0</span> / 5
-								|</span>
+								data-size="xs" data-stars="5"> 
+<!-- 								<span -->
+<!-- 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><span -->
+<!-- 								id="manager_hotel_star"></span><span id="rate_span">0</span> / 5 -->
+<!-- 								|</span> -->
 							<script>
-								function rate() {
+// 								function rate() {
 
-									var count = document
-											.getElementById("rate_span");
-									count.innerHTML = $('#rating').val();
+// 									var count = document
+// 											.getElementById("rate_span");
+// 									count.innerHTML = $('#rating').val();
 
-								}
+// 								}
 							</script>
 
 							<!-- 							END OF STARS -->
@@ -228,27 +225,27 @@ div #sidebar-wrapper {
 
 			</div>
 			<div class="col s2">
-			
-			
-			<p>
-						<input type="checkbox" class="filled-in" id="isDeleted"
-							name="isDeleted" /> <label for="isDeleted"><span
-							id="admin_deleted"></span></label>
-					</p>
 
-		
-						<a class="waves-effect waves-light btn" id="create_button"
-						onclick="updateHotel(${hotel.id})"
-						style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-						id=btn_update></span></a>
-					<p id="create_error" style="color: red"></p>
-						
-						<!-- CREATE BUTTON -->
+
+				<p>
+					<input type="checkbox" class="filled-in" id="isDeleted"
+						onclick="changeIsDeleted()" name="isDeleted" /> <label for="isDeleted"><span
+						id="admin_deleted"></span></label>
+				</p>
+
+
+				<a class="waves-effect waves-light btn" id="create_button"
+					onclick="updateHotel(${hotel.id})"
+					style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
+					id=btn_update></span></a>
+				<p id="create_error" style="color: red"></p>
+
+				<!-- CREATE BUTTON -->
 				<script>
-						$('#isDeleted').attr('checked',
-								'${hotel.isDeleted}' == 'true');
+// 						$('#isDeleted').attr('checked',
+// 								'${hotel.isDeleted}' == 'true');
 					</script>
-			
+
 			</div>
 		</div>
 	</div>
@@ -269,7 +266,7 @@ div #sidebar-wrapper {
 		<div class="row">
 			<div class="col s3 offset-s3">
 
-				<a class="waves-effect waves-light btn"
+				<a id="pushImage" class="waves-effect waves-light btn"
 					style="background: #26A69A; color: #FFFFFF; margin: 0 auto;"
 					onclick="pushInput()"><span id="btn_add_image"></span> </a>
 
@@ -298,7 +295,7 @@ div #sidebar-wrapper {
 					<div class="table-header">
 						<span class="table-title" id="room_header"></span>
 						<div class="actions">
-							<a
+							<a id="createBtn" 
 								href="${pageContext.servletContext.contextPath}/cabinet/create_room"
 								class="my-btn waves-effect waves-light btn"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
@@ -406,6 +403,9 @@ div #sidebar-wrapper {
 		src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU&libraries=places&callback=initAutocomplete"
 		async defer></script>
 	<script>
+	if (${hotel.isDeleted} == true) {
+		$('#isDeleted').click();
+	}
 	$(document).ready(function(){
 	    $('.tooltipped').tooltip({delay: 50,position: 'top'});
 	  });

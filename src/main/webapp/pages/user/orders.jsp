@@ -168,11 +168,11 @@ div.material-table .table-footer .dataTables_length {
 			<div class="col s8 offset-s2">
 				<ul class="tabs" style="background: #12444c;">
 					<li class="tab col s3"><a class="active" href="#test1"
-						style="color: #F7F7F7"><b><p id="tab_active"></p></b></a></li>
+						style="color: #F7F7F7"><b><p class="tab_active"></p></b></a></li>
 					<li class="tab col s3"><a href="#test2" style="color: #F7F7F7"><b>
-						<p id="tab_ended"></p></b></a></li>
+						<p class="tab_ended"></p></b></a></li>
 					<li class="tab col s3"><a href="#test3" style="color: #F7F7F7"><b>
-						<p id="tab_all"></p></b></a></li>
+						<p class="tab_all"></p></b></a></li>
 				</ul>
 			</div>
 			<!-- 			End of Tab Holder -->
@@ -186,17 +186,17 @@ div.material-table .table-footer .dataTables_length {
 							<thead>
 								<tr>
 									<th style="text-align: center; border-radius: 0;">
-									<p id="tb_head_id"></p></th>
+									<p class="tb_head_id"></p></th>
 									<th style="text-align: center; border-radius: 0;">
-									<p id="tb_head_name"></p></th>
+									<p class="tb_head_name"></p></th>
 									<th style="text-align: center; border-radius: 0;">
-									<p id="tb_head_room"></p></th>
+									<p class="tb_head_room"></p></th>
 									<th style="text-align: center; border-radius: 0;">
-									<p id="tb_head_sdate"></p></th>
+									<p class="tb_head_sdate"></p></th>
 									<th style="text-align: center; border-radius: 0;">
-									<p id="tb_head_edate"></p></th>
+									<p class="tb_head_edate"></p></th>
 									<th style="text-align: center; border-radius: 0;">
-									<p id="tb_head_price"></p></th>
+									<p class="tb_head_price"></p></th>
 									<th style="text-align: center; border-radius: 0;"></th>
 								</tr>
 							</thead>
@@ -221,12 +221,13 @@ div.material-table .table-footer .dataTables_length {
 											src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
 
 										<script>
-									var id = ${activeOrder.id};
-									changeDate(id);</script>
+											var id = ${activeOrder.id};
+											changeDate(id);
+										</script>
 
 										<td style="text-align: center;">${activeOrder.price}</td>
 
-										<td style="text-align: center;"><a
+										<td style="text-align: center;"><a id="t${activeOrder.id }"
 											class="my-btn waves-effect waves-light btn"
 											style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif;"
 											onclick="removeOrderTable(${activeOrder.id})"> <span
@@ -270,17 +271,17 @@ div.material-table .table-footer .dataTables_length {
 							<thead>
 								<tr>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_id"></p></th>
+											class="tb_head_id"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_name"></p></th>
+											class="tb_head_name"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_room"></p></th>
+											class="tb_head_room"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_sdate"></p></th>
+											class="tb_head_sdate"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_edate"></p></th>
+											class="tb_head_edate"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_price"></p></th>
+											class="tb_head_price"></p></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -346,19 +347,19 @@ div.material-table .table-footer .dataTables_length {
 							<thead>
 								<tr>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_id">ID</p></th>
+											class="tb_head_id">ID</p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_name"></p></th>
+											class="tb_head_name"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_room"></p></th>
+											class="tb_head_room"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_sdate"></p></th>
+											class="tb_head_sdate"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_edate"></p></th>
+											class="tb_head_edate"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_price"></p></th>
+											class="tb_head_price"></p></th>
 									<th style="text-align: center; border-radius: 0;"><p
-											id="tb_head_status"></p></th>
+											class="tb_head_status"></p></th>
 									<th style="text-align: center; border-radius: 0;"></th>
 								</tr>
 							</thead>
@@ -397,7 +398,7 @@ div.material-table .table-footer .dataTables_length {
 													class="my-btn waves-effect waves-light btn"
 													style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; "
 													onclick="removeOrderTable(${allOrder.id})"> <span
-														id="subscribes_table_remove"></span>
+														class="subscribes_table_remove"></span>
 												</a></td>
 											</c:when>
 											<c:when test="${allOrder.status == 'CANCELED'}">

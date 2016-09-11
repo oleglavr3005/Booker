@@ -115,11 +115,10 @@
 			<div class="col s3">
 				<!-- 					PHOTO -->
 				<div class="row">
-					<a href="#!"><img id="Img"
-						style="height: 100px; padding: 10px; width: 110px;"
+					<img id="Img" style="height: 100px; padding: 10px; width: 110px;"
 						<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
 								src="<i:urlToImage url="${room.photos[0].img }" />">
-					</a>
+
 					<!-- 					END OF PHOTO -->
 					<!-- 				INPUT -->
 					<%-- 					<input style="margin-top: 5px; display:none" type="file" id="imgInput"  --%>
@@ -129,25 +128,27 @@
 					<a class="waves-effect waves-light btn" id="create_button"
 						onclick="updateRoom(${room.id})"
 						style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-						<span id="room_concret_save" ></span></a>
+						<span id="room_concret_save"></span>
+					</a>
 					<p id="create_error" style="color: red"></p>
 				</div>
 
 				<div class="row">
 					<p>
 						<input type="checkbox" class="filled-in" id="isDeleted"
-							name="isDeleted" /> <label id="room_concret_deleted" for="isDeleted"></label>
+							onclick="changeIsDeleted()" name="isDeleted" /> <label
+							id="room_concret_deleted" for="isDeleted"></label>
 					</p>
 
 					<script>
-						$('#isDeleted').attr('checked',
-								'${room.deleted}' == 'true');
+// 						$('#isDeleted').attr('checked',
+// 								'${room.deleted}' == 'true');
 					</script>
 
 					<p>
 						<input type="checkbox" class="filled-in" id="freeBook"
-							onclick="changeFreeBook()" name="freeBook" />
-						<label id="room_concret_freebook" for="freeBook"></label>
+							onclick="changeFreeBook()" name="freeBook" /> <label
+							id="room_concret_freebook" for="freeBook"></label>
 					</p>
 
 
@@ -189,7 +190,7 @@
 								<input id="single" value="${room.bedsCount}" type="number"
 									class="validate" name="single" min=1 max=100> <label
 									id="singleLbl" data-error="${fmtPeople}" for="single"><span
-										id="room_concrete_single"></span> </label>
+									id="room_concrete_single"></span> </label>
 							</div>
 
 							<!-- 							END OF 1 BEDS COUNT -->
@@ -197,11 +198,13 @@
 							<!-- DAYS COUNT -->
 
 							<div class="row">
-								<input id="days" <c:if test="${room.daysCount >= 0 }"> value="${room.daysCount}"</c:if> type="number"
+								<input id="days"
+									<c:if test="${room.daysCount >= 0 }"> value="${room.daysCount}"</c:if>
+									type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="days" min=1 max=365> <label
 									id="daysLbl" data-error="" for="days"><span
-										id="room_concrete_days"></span> </label>
+									id="room_concrete_days"></span> </label>
 							</div>
 
 							<!-- 							END OF DAYS COUNT -->
@@ -212,7 +215,7 @@
 								<input id="number" value="${room.number}" type="number"
 									class="validate" name="days" min=1 max=365> <label
 									id="daysLbl" data-error="" for="days"><span
-										id="room_concrete_number"></span></label>
+									id="room_concrete_number"></span></label>
 							</div>
 
 							<!-- 							END OF NUMBER -->
@@ -223,7 +226,7 @@
 								<input id="price" value="${room.price}" type="number"
 									class="validate" name="percentage" min=1 max=100> <label
 									id="percentageLbl" data-error="" for="percentage"><span
-										id="room_concrete_price"></span> </label>
+									id="room_concrete_price"></span> </label>
 							</div>
 
 							<!-- 							END OF PRICE -->
@@ -261,7 +264,7 @@
 								<input id="double" value="${room.doubleBedsCount}" type="number"
 									class="validate" name="single" min=1 max=100> <label
 									id="doubleLbl" data-error="${fmtPeople}" for="double"><span
-										id="room_concrete_double"></span> </label>
+									id="room_concrete_double"></span> </label>
 							</div>
 
 							<!-- 							END OF 2 BEDS COUNT -->
@@ -273,12 +276,10 @@
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="percentage" min=1 max=100> <label
 									id="percentageLbl2" data-error="" for="percentage"><span
-										id="room_concrete_percentage"></span></label>
+									id="room_concrete_percentage"></span></label>
 							</div>
 
 							<!-- 							END OF PERCENTAGE COUNT -->
-
-
 
 
 
@@ -295,23 +296,28 @@
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasParking"
-									name="hasParking" /> <label id="label_parking" for="hasParking">PARKING</label>
+									name="hasParking" /> <label id="label_parking"
+									for="hasParking">PARKING</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasCondition"
-									name="hasCondition" /> <label id="label_condition" for="hasCondition">AIR CONDITION</label>
+									name="hasCondition" /> <label id="label_condition"
+									for="hasCondition">AIR CONDITION</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasPool"
-									name="hasPool" /> <label id="label_pool" for="hasPool">SWIM POOL</label>
+									name="hasPool" /> <label id="label_pool" for="hasPool">SWIM
+									POOL</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasGym"
-									name="hasGym" /> <label id="label_gym" for="hasGym">FIT GYM</label>
+									name="hasGym" /> <label id="label_gym" for="hasGym">FIT
+									GYM</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasBalcony"
-									name="hasBalcony" /> <label id="label_balcony" for="hasBalcony">BALCONY</label>
+									name="hasBalcony" /> <label id="label_balcony"
+									for="hasBalcony">BALCONY</label>
 							</p>
 
 							<!-- 								END OF CHECKBOX -->
@@ -385,18 +391,10 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/star-rating/star-rating.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
-
-
-
-	<script>
-		function changeFreeBook(){
-			var freeBook = document.getElementById('freeBook').checked;
-			$('#percentage').prop('disabled', freeBook);
-			$('#days').prop('disabled', freeBook);
-		}
-		$('#freeBook').attr('checked',
-				'${room.daysCount}' < 0);
-	</script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/manager/room.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/manager/image.js"></script>
 
 	<script>
 		$('#hasWiFi').attr('checked', '${room.wifi}' == 'true');
@@ -407,11 +405,14 @@
 		$('#hasPool').attr('checked', '${room.pool}' == 'true');
 		$('#hasGym').attr('checked', '${room.gym}' == 'true');
 		$('#hasBalcony').attr('checked', '${room.balcony}' == 'true');
+		
+		$('#freeBook').attr('checked', '${room.daysCount}' < 0);
+		if (${room.deleted} == true) {
+			$('#isDeleted').click();
+		}
 	</script>
 
 
-	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/manager/room.js"></script>
 
 </body>
 
