@@ -61,7 +61,7 @@ b {
 					</button>
 					<button type="button" class="btn btn-primary next">
 						<span id="hotel_button_next"></span> <i
-								class="glyphicon glyphicon-chevron-right"></i>
+							class="glyphicon glyphicon-chevron-right"></i>
 					</button>
 				</div>
 			</div>
@@ -139,9 +139,9 @@ b {
 									href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}">${hotel.name}</a>
 							</div>
 							<div class="col s6 offset-s1">
-								<a class="tooltipped index_search_stars" data-position="icon" data-tooltip=""
-									style="color: #0d0d0d; text-decoration: none;"> <c:forEach
-										var="i" begin="1" end="${hotel.stars}">
+								<a class="tooltipped index_search_stars" data-position="icon"
+									data-tooltip="" style="color: #0d0d0d; text-decoration: none;">
+									<c:forEach var="i" begin="1" end="${hotel.stars}">
 										<i class="fa fa-lg fa-star" aria-hidden="true"></i>
 									</c:forEach> <c:forEach var="i" begin="${hotel.stars}" end="4">
 										<i class="fa fa-lg fa-star-o" aria-hidden="true"></i>
@@ -153,23 +153,21 @@ b {
 
 						<div class="row" style="margin-bottom: 10px;">
 							<a class="tooltipped index_search_location" data-position="icon"
-								data-tooltip=""
-								style="color: #0d0d0d; text-decoration: none;"><i
+								data-tooltip="" style="color: #0d0d0d; text-decoration: none;"><i
 								class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
 							<span>${hotel.city} ${hotel.street}</span>
 						</div>
 
 						<div class="row" style="margin-bottom: 10px">
 							<a class="tooltipped tooltip_phone_number" data-position="icon"
-								data-tooltip=""
-								style="color: #0d0d0d; text-decoration: none;"><i
+								data-tooltip="" style="color: #0d0d0d; text-decoration: none;"><i
 								class="fa fa-lg fa-phone-square invert" aria-hidden="true"></i></a>
 							<span>${hotel.phoneNumber}</span>
 						</div>
 
 						<div class="row" style="margin-bottom: 5px">
-							<a class="tooltipped index_search_description" data-position="icon"
-								data-tooltip=""
+							<a class="tooltipped index_search_description"
+								data-position="icon" data-tooltip=""
 								style="color: #0d0d0d; cursor: default"><i
 								class="material-icons invert" style="font-size: 20px;">receipt</i></a>
 							<span id="hotelInfo${hotel.id}">${hotel.desc.substring(0, hotel.desc.length() < 150 ? hotel.desc.length() : 150)}</span>
@@ -185,9 +183,11 @@ b {
 
 					<div class="col s2">
 						<div class="row" style="margin-top: 14px">
-							<a class="tooltipped tooltip_rating" data-position="icon" data-tooltip="Rating"
+							<a class="tooltipped tooltip_rating" data-position="icon"
+								data-tooltip="Rating"
 								style="margin-left: 50px; color: #0d0d0d; text-decoration: none;">
-								<i class="fa fa-lg fa-thumbs-up invert" aria-hidden="true"></i> <span>${hotel.rating }</span>
+								<i class="fa fa-lg fa-thumbs-up invert" aria-hidden="true"></i>
+								<span>${hotel.rating }</span>
 							</a>
 						</div>
 
@@ -198,10 +198,12 @@ b {
 								href="${pageContext.servletContext.contextPath}/cabinet/my_hotels/${hotel.id}"
 								style="margin-left: 10px; background: #e68a00; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;
 															<c:if test="${user.id !=hotel.managerId}">visibility: hidden</c:if>"><span
-								class="card_edit"></span></a> <a class="waves-effect waves-light btn"
+								class="card_edit"></span></a> <a
+								class="waves-effect waves-light btn"
 								href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"
 								style="margin-top: 30px; margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-								<span class="manager_hotel_card_info"></span></a>
+								<span class="manager_hotel_card_info"></span>
+							</a>
 						</div>
 
 					</div>
