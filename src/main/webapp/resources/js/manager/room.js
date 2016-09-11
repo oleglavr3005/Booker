@@ -222,7 +222,6 @@ function changeFreeBook() {
 	$('#days').prop('disabled', freeBook);
 }
 
-$('#freeBook').prop('checked', '${room.daysCount}' < 0);
 
 function changeIsDeleted() {
 	var deleted = document.getElementById('isDeleted').checked;
@@ -244,4 +243,5 @@ function changeIsDeleted() {
 	} else {
 		$('#btn_add_image').removeClass('disabled');
 	}
+	changeFreeBook();
 }
