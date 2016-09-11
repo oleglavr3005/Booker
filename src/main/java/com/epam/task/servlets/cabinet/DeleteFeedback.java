@@ -51,10 +51,12 @@ public class DeleteFeedback extends HttpServlet {
 				HotelService hotelService = new HotelService();
 				List<Feedback> feedbacks = feedbackService.getAllFeedbacksByHotel(hotelId);
 				double newRating = 0;
-				for(Feedback feedback1 : feedbacks) {
-					newRating += feedback1.getRating();
+				if(feedbacks.size() != 0) {
+					for(Feedback feedback1 : feedbacks) {
+						newRating += feedback1.getRating();
+					}
+					newRating /= feedbacks.size(); 
 				}
-				newRating /= feedbacks.size();
 				Hotel hotel = hotelService.getHotelById(hotelId);
 				hotel.setRating(newRating);
 				hotelService.updateHotel(hotel);

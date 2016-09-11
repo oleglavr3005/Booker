@@ -58,10 +58,12 @@ public class ChangeFeedbackServlet extends HttpServlet {
 		if(success > 0) { //calculate new rating
 			List<Feedback> feedbacks = feedbackService.getAllFeedbacksByHotel(feedback.getHotelId());
 			double newRating = 0;
-			for(Feedback feedback1 : feedbacks) {
-				newRating += feedback1.getRating();
+			if(feedbacks.size() != 0) {
+				for(Feedback feedback1 : feedbacks) {
+					newRating += feedback1.getRating();
+				}
+				newRating /= feedbacks.size(); 
 			}
-			newRating /= feedbacks.size(); 
 			hotel.setRating(newRating);
 			hotelService.updateHotel(hotel);
 		}

@@ -75,7 +75,7 @@ public class AddFeedbackServlet extends HttpServlet {
 			List<Feedback> listFeedBack = new ArrayList<Feedback>();	//WTF????? 
 			listFeedBack.add(userFeedback);								//List with a single element? Logic?
 			request.setAttribute("feedbacks", FeedbackDto.listConverter(listFeedBack));
-			request.getRequestDispatcher("/pages/oneComment.jsp").forward(request, response);
+			request.getRequestDispatcher("/pages/comments/oneComment.jsp").forward(request, response);
 		} else {
 			response.setContentType("text/plain");
 			response.setCharacterEncoding("UTF-8");
