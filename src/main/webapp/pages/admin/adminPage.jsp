@@ -157,9 +157,9 @@
 									<td><c:out value="${user.type}"></c:out></td>
 									<td><select id="userStatus${user.id}" class="combobox"
 										onchange="changeUserStatus(${user.id})">
-											<option id="admin_page_active" value="ACTIVE"
+											<option class="admin_page_active" value="ACTIVE"
 												<c:if test="${user.status == 'ACTIVE'}"> selected="selected"</c:if>></option>
-											<option id="admin_page_banned" value="BANNED"
+											<option class="admin_page_banned" value="BANNED"
 												<c:if test="${user.status == 'BANNED'}"> selected="selected"</c:if>></option>
 									</select></td>
 								</tr>
@@ -210,10 +210,10 @@
 											test="${request.status == 'PENDING'}">
 											<a class="my-btn waves-effect waves-light btn"
 												style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-												onclick="chageStatus(${request.id},true,'')"><span id="btn_appr">APPROVE</span></a>
+												onclick="chageStatus(${request.id},true,'')"><span class="btn_appr"></span></a>
 											<a class="my-btn waves-effect waves-light btn"
 												style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-												onclick="chageStatus(${request.id},false,'')"><span id="btn_decline">DECLINE</span></a>
+												onclick="chageStatus(${request.id},false,'')"><span class="btn_decline"></span></a>
 										</c:if> <c:if test="${request.status == 'DECLINED'}">
 											<div style="color: #F55151;">
 												<strong>DECLINED!</strong>
