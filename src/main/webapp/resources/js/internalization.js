@@ -308,7 +308,7 @@
 			
 		room_concret_deleted : "Видалити",
 		room_concret_save : "Зберегти",
-		room_concret_freebook : "Booked free",
+		room_concret_freebook : "Без передплати",
 		
 		label_wifi : "WiFi",
 		label_shower : "Душ",
