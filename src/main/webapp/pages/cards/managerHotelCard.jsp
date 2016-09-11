@@ -63,11 +63,11 @@ b {
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default pull-left prev">
 						<i class="glyphicon glyphicon-chevron-left"></i> <span
-							class="hotel_button_previous"><span>
+							class="hotel_button_previous"></span>
 					</button>
 					<button type="button" class="btn btn-primary next">
-						<span class="hotel_button_next"><span> <i
-								class="glyphicon glyphicon-chevron-right"></i>
+						<span class="hotel_button_next"></span>
+						<i class="glyphicon glyphicon-chevron-right"></i>
 					</button>
 				</div>
 			</div>
@@ -90,17 +90,11 @@ b {
 </div>
 
 <c:forEach var="hotel" items="${suitableHotels}">
-
 	<div id="hotel_card_${hotel.id}" class="col s12">
 		<div class="card">
-
 			<div class="container-fluid">
 				<div class="row" style="margin-top: 15px; margin-bottom: 10px;">
-
 					<div class="card-image col s4" style="position: relative;">
-
-
-
 						<div id="links">
 							<c:if test="${fn:length(hotel.photos) == 0}">
 								<a href="<i:urlToImage url="no.jpg" />" title="No image"
@@ -114,7 +108,6 @@ b {
 									src="<i:urlToImage url="${hotel.photos[0].img }" />"
 									style="height: 220px; width: 300px; padding: 10px;">
 								</a>
-
 								<div style="display: none;">
 									<c:forEach items="${hotel.photos}" var="photo" begin="1">
 										<a href='<i:urlToImage url="${photo.img}" />' data-gallery>
@@ -135,9 +128,7 @@ b {
 						<!-- 						</a> -->
 
 					</div>
-
 					<div class="col s6">
-
 						<div class="row" style="margin-top: 15px; margin-bottom: 0px">
 							<div class="col s5">
 								<a
@@ -154,14 +145,12 @@ b {
 								</a>
 							</div>
 						</div>
-
 						<div class="row" style="margin-bottom: 10px;">
 							<a class="tooltipped index_search_location" data-position="icon"
 								data-tooltip="" style="color: #0d0d0d; text-decoration: none;"><i
 								class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
 							<span>${hotel.city} ${hotel.street}</span>
 						</div>
-
 						<div class="row" style="margin-bottom: 10px">
 							<a class="tooltipped placeholder_phone_number"
 								data-position="icon" data-tooltip=""
@@ -169,7 +158,6 @@ b {
 								class="fa fa-lg fa-phone-square invert" aria-hidden="true"></i></a>
 							<span>${hotel.phoneNumber}</span>
 						</div>
-
 						<div class="row" style="margin-bottom: 5px">
 							<a class="tooltipped index_search_description"
 								data-position="icon" data-tooltip=""
@@ -185,7 +173,6 @@ b {
 								value="${hotel.desc.substring(0, hotel.desc.length() < 150 ? hotel.desc.length() : 150)}" />
 						</div>
 					</div>
-
 					<div class="col s2">
 						<div class="row" style="margin-top: 14px; margin-bottom: 5px;">
 							<a class="tooltipped tooltip_rating" data-position="icon"
@@ -195,24 +182,21 @@ b {
 								<span>${hotel.rating }</span>
 							</a>
 						</div>
-
 						<div class="row">
 							<c:choose>
 								<c:when test="${hotel.isDeleted == true}">
 									<div class="col s6 offset-s3" style="color: red">
-										<span id="manager_hotel_card_removed"></span>
+										<span class="manager_hotel_card_removed"></span>
 									</div>
 								</c:when>
 								<c:otherwise>
 									<div class="col s6 offset-s4" style="color: green">
-										<span id="manager_hotel_card_active"></span>
+										<span class="manager_hotel_card_active"></span>
 									</div>
 								</c:otherwise>
 							</c:choose>
 						</div>
-
 						<div class="row" style="margin-top: 39px">
-
 							<a class="waves-effect waves-light btn"
 								href="${pageContext.servletContext.contextPath}/cabinet/my_hotels/${hotel.id}"
 								style="margin-left: 10px; background: #e68a00; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;
