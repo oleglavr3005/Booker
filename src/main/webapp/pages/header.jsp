@@ -113,7 +113,7 @@ img.logo {
 					style="margin: 20px 10px 0 0;padding-left: 10px;padding-right: 28px;width: 100%;background: #26A69A;color: #F7F7F7;font-family: 'Times NewRoman', Times, serif;">UA</a>
 				</div>
 			</div>
-			<div id="navbar" class="navbar-header" style="width: 340px; margin-bottom: 0px; margin-left: calc(100% - 360px - 350px);">
+			<div id="navbar" class="navbar-header" style="width: 340px; margin-bottom: 0px; float:right">
 				<ul class="nav navbar-nav navbar-right" style="padding-top: 5px;">
 					<c:choose>
 						<c:when test="${user != null}">	
