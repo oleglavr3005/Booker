@@ -229,7 +229,7 @@ div.material-table .table-footer .dataTables_length {
 											class="my-btn waves-effect waves-light btn"
 											style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
 											onclick="removeOrderTable(${activeOrder.id})"> <span
-												id="subscribes_table_remove"></span>
+												class="subscribes_table_remove"></span>
 										</a></td>
 									</tr>
 								</c:forEach>
