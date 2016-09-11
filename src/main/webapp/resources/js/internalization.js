@@ -576,10 +576,16 @@
 })();
 
 function changeLanguage(id, language){
+	if(language != 'en' && language != 'ua'){
+		language = 'en';
+	}
 	changeLanguageOnPage(language);
 	changeLanguageOnServer(id, language);
 }
 function updateLanguage(){
+	if(currentLanguage != 'en' && currentLanguage != 'ua'){
+		currentLanguage = 'en';
+	}
 	changeLanguageOnPage(currentLanguage);
 }
 function changeLanguageOnPage(language){
