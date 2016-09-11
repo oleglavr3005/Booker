@@ -92,16 +92,11 @@ b {
 </div>
 
 <c:forEach var="hotel" items="${suitableHotels}">
-
 	<div id="hotel_card_${hotel.id}" class="col s12">
 		<div class="card">
-
 			<div class="container-fluid">
 				<div class="row" style="margin-top: 15px; margin-bottom: 10px;">
-
 					<div class="card-image col s4" style="position: relative;">
-
-
 						<div id="links">
 							<c:if test="${fn:length(hotel.photos) == 0}">
 								<a href="<i:urlToImage url="no.jpg" />" title="No image"
@@ -203,9 +198,10 @@ b {
 								href="${pageContext.servletContext.contextPath}/cabinet/my_hotels/${hotel.id}"
 								style="margin-left: 10px; background: #e68a00; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;
 															<c:if test="${user.id !=hotel.managerId}">visibility: hidden</c:if>"><span
-								id="card_edit"></span></a> <a class="waves-effect waves-light btn"
+								class="card_edit"></span></a> <a class="waves-effect waves-light btn"
 								href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"
-								style="margin-top: 30px; margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>INFO</span></a>
+								style="margin-top: 30px; margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+								<span class="manager_hotel_card_info"></span></a>
 						</div>
 
 					</div>

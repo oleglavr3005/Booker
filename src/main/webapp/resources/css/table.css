@@ -150,6 +150,7 @@ div.material-table .table-title {
 }
 
 div.material-table table tr td {
+	text-align: center;
   padding: 0 0 0 56px;
   height: 48px;
   width: auto;
@@ -175,6 +176,7 @@ div.material-table table tr {
 }
 
 div.material-table table th {
+	text-align: center;
   font-size: 12px;
   font-weight: 500;
   color: #757575;

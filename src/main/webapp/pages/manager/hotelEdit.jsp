@@ -134,7 +134,7 @@ div #sidebar-wrapper {
 					<input id="hotId" name=hotelId type="hidden" value="${hotel.id}" />
 					<a class="waves-effect waves-light btn" id="create_room_button"
 						href="${pageContext.servletContext.contextPath}/cabinet/create_room"
-						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span id="btn_create_room"></span></a>
+						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span class="btn_create_room"></span></a>
 
 
 					<script>
@@ -298,7 +298,7 @@ div #sidebar-wrapper {
 						<div class="actions">
 							<a href="${pageContext.servletContext.contextPath}/cabinet/create_room" 
 								class="my-btn waves-effect waves-light btn" style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-								<span id="btn_create_room"></span></a>
+								<span class="btn_create_room"></span></a>
 								 <button
 								class="search-toggle waves-effect btn-flat nopadding" style="margin-left: 10px;"><i
 								class="material-icons">search</i></button>

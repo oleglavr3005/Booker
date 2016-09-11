@@ -229,11 +229,11 @@ b {
 								href="${pageContext.servletContext.contextPath}/cabinet/my_hotels/${hotel.id}"
 								style="margin-left: 10px; background: #e68a00; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;
 								<c:if test="${user.id != hotel.managerId}">visibility: hidden</c:if>
-								"><span id="manager_hotel_card_edit"></span></a>
+								"><span class="manager_hotel_card_edit"></span></a>
 							<a class="waves-effect waves-light btn"
 								href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"
 								style="margin-top: 30px; margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-								<span id="manager_hotel_card_info"></span></a>
+								<span class="manager_hotel_card_info"></span></a>
 						</div>
 
 					</div>
