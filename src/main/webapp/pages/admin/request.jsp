@@ -107,18 +107,18 @@
 			<div class="col s3">
 				<!-- 					PHOTO -->
 				<a href="#!"><img id="Img"
-					style="height: 100px; padding: 10px; width: 110px;"
+					style="height: 200px; padding: 10px; width: 200px;"
 					src="<i:urlToImage url="${userPhoto}" />"> </a>
 				<!-- 					END OF PHOTO -->
 
 			</div>
 
 
-			<div class="col s9">
+			<div class="col offset-s2 s7">
 				<div class="container-fluid">
 
 					<div class="row">
-						<div class="col s9">
+						<div class="col s9" style="margin-tom:20px;">
 
 							<!-- 						NAME -->
 
@@ -162,7 +162,7 @@
 
 				<!-- 						MESSAGE -->
 				<a></a>
-				<div style="font-size: 15px;">${request.message}</div>
+				<div style="font-size: 15px; padding: 10px; 	border: solid 1px #000; border-radius: 10px; background-color: lightgray;">${request.message}</div>
 
 				<!-- 							END OF MESSAGE -->
 
@@ -175,14 +175,14 @@
 				<div class="col s3 offset-s2">
 					<a class="waves-effect waves-light btn" id="create_button"
 						onclick="chageStatus(${request.id},true,'../../')"
-						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+						style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
 						<span id="request_approve"></span></a>
 
 				</div>
 				<div class="col s3 offset-s2">
 					<a class="waves-effect waves-light btn" id="create_button"
 						onclick="chageStatus(${request.id},false,'../../')"
-						style="margin-left: 10px; margin-top: 100px; background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+						style="margin-left: 10px; margin-top: 10px; background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
 						<span id="request_decline"></span></a>
 
 				</div>

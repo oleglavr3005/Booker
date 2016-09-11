@@ -124,7 +124,8 @@
 				<!-- 							SEND NOTIF -->
 				<p style="margin-top: 20px;">
 					<input type="checkbox" class="filled-in" id="sendNotif"
-						name="sendNotif" /> <label for="sendNotif">SEND NOTIF</label>
+						name="sendNotif" /> <label for="sendNotif">
+						<span id=lbl_sendnotif>SEND NOTIF</span></label>
 				</p>
 
 
