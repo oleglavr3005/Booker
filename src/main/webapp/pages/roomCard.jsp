@@ -154,7 +154,7 @@ b {
 								data-tooltip="Price for one day" style="color: #0d0d0d;"><i
 								class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${room.price}</span>
 
-							<i onclick="showInfo(${room.id})" class="fa fa-lg fa-info invert"
+							<i id="showInfo${room.id}" onclick="showInfo(${room.id})" class="fa fa-lg fa-info invert tooltipped" data-tooltip="Show additional info" 
 								aria-hidden="true"></i>
 
 							<%-- 							<c:if test="${room.daysCount == -1}"> --%>

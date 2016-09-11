@@ -2,9 +2,12 @@ function showInfo(id){
 	var elem1 = document.getElementById("details_panel"+id);
 	var style = document.defaultView.getComputedStyle(elem1, null)
 			.getPropertyValue("display");
+	var i = document.getElementById("showInfo"+id);
 	if (style == 'none') {
-		document.getElementById('details_panel'+id).style.display = "block";
+		elem1.style.display = "block";
+		i.setAttribute("data-tooltip", "Hide additional info");
 	} else {
-		document.getElementById('details_panel'+id).style.display = "none";
+		elem1.style.display = "none";
+		i.setAttribute("data-tooltip", "Show additional info");
 	}
 }
