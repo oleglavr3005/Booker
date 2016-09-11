@@ -333,7 +333,7 @@ div #sidebar-wrapper {
 										</c:if> <c:if test="${room.shower == true}">
 											<a class="tooltipped" data-position="icon"
 												data-tooltip="Shower"><img class="invert"
-												style="max-width: 15%; margin-top: -1rem"
+												style="width: 18px; margin-top: -0.8em;"
 												src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
 										</c:if> <c:if test="${room.parking == true}">
 											<a class="tooltipped" data-position="icon"
@@ -353,7 +353,7 @@ div #sidebar-wrapper {
 										</c:if> <c:if test="${room.balcony == true}">
 											<a class="tooltipped" data-position="icon"
 												data-tooltip="Balcony"><img class="invert"
-												style="max-width: 15%; margin-top: -1rem"
+												style="width: 18px; margin-top: -0.8em;"
 												src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
 										</c:if></td>
 									<td><a class="tooltipped" data-position="icon"
@@ -367,10 +367,7 @@ div #sidebar-wrapper {
 										</c:if></td>
 									<td><c:if test="${room.deleted}">
 											<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-										</c:if> <c:if test="${room.deleted}">
-											<span class="glyphicon glyphicon-remove-sign"
-												aria-hidden="true"></span>
-										</c:if></td>
+										</c:if> </td>
 									<td><c:out value="${room.price }"></c:out></td>
 								</tr>
 
