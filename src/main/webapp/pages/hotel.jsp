@@ -189,6 +189,9 @@ div #sidebar-wrapper {
 	</div>
 
 	<input id="lang" type="hidden" value="${language}" />
+	<input id="pageNmb" type="hidden"
+		value="${pageContext.servletContext.contextPath}/" />
+	
 
 
 	<!-- Header ========================================================================= -->

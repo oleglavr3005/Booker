@@ -326,6 +326,8 @@ function contentMaker(hotel) {
 
 var onModalHide = function() {
 	$.get('../refresh_cart', {
+		compareBy : $('#compare').val(),
+		page : $('#pageNmb').val()
 	}, function(orders) {
 		$('#switchContent').html(orders);
 	});
