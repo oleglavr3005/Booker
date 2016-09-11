@@ -434,50 +434,12 @@ div #sidebar-wrapper {
 
 	<!-- 	DATEPICKER -->
 		<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/picker.js"></script>
+		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/picker.js"></script>
 		<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/picker.date.js"></script>
+		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/picker.date.js"></script>
+		<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/datepicker.js"></script>
 	
-	 	<script type="text/javascript"> 
-	 	$(document).ready(function() {
- 		$('.datepicker').pickadate({
- 			    selectMonths: true, // Creates a dropdown to control month
- 			    selectYears: 15, // Creates a dropdown of 15 years to control year
- 			 	format: 'yyyy-mm-dd',
- 			 	onSet: function( arg ){
- 			        if ( 'select' in arg ){ //prevent closing on selecting month/year
- 			            this.close();
- 			        }
- 			    }
- 		});
-
- 	});
- 	</script>
-<script type="text/javascript">
-jQuery.noConflict();
-function onDate() {
-		var selectedText = document.getElementById('date_from').value;
-	    var selectedDate = new Date(selectedText);
-	    var d = addDays(selectedDate, 1);
-	    var curr_date = d.getDate();
-	    var curr_month = d.getMonth() + 1;
-	    if(curr_month < 10){
-	    	curr_month = "0" + curr_month;
-	    }
-	    if(curr_date < 10){
-	    	curr_date = "0" + curr_date;
-	    }
-	    var curr_year = d.getFullYear();
-		var date = curr_year + "-" + curr_month + "-" + curr_date;
-	   document.getElementById("date_to").value = date;
-	   // var changeDate = document.getElementById('date_to').
-	};
-
-	function addDays(date, days) {
-	    var result = new Date(date);
-	    result.setDate(result.getDate() + days);
-	    return result;
-	}</script>
 
 </body>
 
