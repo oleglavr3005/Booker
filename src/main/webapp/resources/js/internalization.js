@@ -565,9 +565,16 @@
 			index_search_stars : "Зірки",
 			index_search_location : "Розташування",
 			index_search_description : "Опис",
+			
 			tooltip_phone_number : "Номер телефону",
 			tooltip_showe_all_info : "Показати всю інформацію",
 			tooltip_rating : "Рейтинг",
+			tooltip_start_date : "Початкова дата",
+			tooltip_end_date : "Кінцева дата",
+			tooltip_double_beds : "Подвійне ліжко", 
+			tooltip_food : "Їжа", 
+			tooltip_single_beds : "Одинарне ліжко",
+			tooltip_price : "Ціна",
 		},
 		en : {
 			index_room_wifi : "Wifi",
@@ -590,7 +597,7 @@
 			tooltip_food : "Food", 
 			tooltip_single_beds : "Single beds",
 			tooltip_price : "Price",
-
+			
 		}
 	};
 	
