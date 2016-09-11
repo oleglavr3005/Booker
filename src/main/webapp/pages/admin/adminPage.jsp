@@ -112,8 +112,9 @@
 			<!-- 			Tab Holder -->
 			<div class="col s8 offset-s2">
 				<ul class="tabs" style="background: #638F98;">
-					<li id="admin_page_users" class="tab col s5 offset-s1"><a class="active"
-						href="#test1" style="color: #1A3D44"><b><p id="tab_users"></p></b></a></li>
+					<li id="admin_page_users" class="tab col s5 offset-s1"><a
+						class="active" href="#test1" style="color: #1A3D44"><b><p
+									id="tab_users"></p></b></a></li>
 					<li class="tab col s5 offset-s1"><a href="#test2"
 						style="color: #1A3D44"><b><p id="tab_contact"></p></b></a></li>
 				</ul>
@@ -151,9 +152,12 @@
 									<td><c:out value="${user.email}"></c:out></td>
 									<td><c:out value="${user.phoneNumber}"></c:out></td>
 									<td><c:out value="${user.type}"></c:out></td>
-									<td><select id="userStatus${user.id}" class="combobox" onchange="changeUserStatus(${user.id})">
-											<option id="admin_page_active" value="ACTIVE" <c:if test="${user.status == 'ACTIVE'}"> selected="selected"</c:if>></option>
-											<option id="admin_page_banned" value="BANNED" <c:if test="${user.status == 'BANNED'}"> selected="selected"</c:if>></option>
+									<td><select id="userStatus${user.id}" class="combobox"
+										onchange="changeUserStatus(${user.id})">
+											<option id="admin_page_active" value="ACTIVE"
+												<c:if test="${user.status == 'ACTIVE'}"> selected="selected"</c:if>></option>
+											<option id="admin_page_banned" value="BANNED"
+												<c:if test="${user.status == 'BANNED'}"> selected="selected"</c:if>></option>
 									</select></td>
 								</tr>
 							</c:forEach>
@@ -190,13 +194,15 @@
 						</thead>
 						<tbody>
 							<c:forEach var="request" items="${requests}">
-								<tr <c:if test="${request.status == 'PENDING'}"> style="background-color: white;"</c:if>
+								<tr
+									<c:if test="${request.status == 'PENDING'}"> style="background-color: white;"</c:if>
 									<c:if test="${request.status != 'PENDING'}">style="background-color: lightgrey;"</c:if>>
-									<td><a href="${pageContext.servletContext.contextPath}/cabinet/admin/request/${request.id}"><c:out
-												value="${request.id }"></c:out></a></td>
+									<td><c:out value="${request.id }"></c:out></td>
 									<td><c:out value="${request.userId}"></c:out></td>
 									<td><c:out value="${request.requestDate}"></c:out></td>
-									<td><c:out value="${request.message}"></c:out></td>
+									<td><a
+										href="${pageContext.servletContext.contextPath}/cabinet/admin/request/${request.id}"><c:out
+												value="${request.message}"></c:out></a></td>
 									<td style="text-align: center;"><c:if
 											test="${request.status == 'PENDING'}">
 											<a class="my-btn waves-effect waves-light btn"
@@ -204,14 +210,14 @@
 												onclick="chageStatus(${request.id},true,'')">APPROVE</a>
 											<a class="my-btn waves-effect waves-light btn"
 												style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-												onclick="chageStatus(${request.id},false,'')">DECLINED</a>
+												onclick="chageStatus(${request.id},false,'')">DECLINE</a>
 										</c:if> <c:if test="${request.status == 'DECLINED'}">
 											<div style="color: #F55151;">
-												<strong>DeCIde!</strong>
+												<strong>DECLINED!</strong>
 											</div>
 										</c:if> <c:if test="${request.status == 'APPROVED'}">
 											<div style="color: #3c763d;">
-												<strong>Success!</strong>
+												<strong>APPROVED!</strong>
 											</div>
 
 										</c:if></td>
@@ -238,7 +244,7 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/settings/settings.js"></script>
 	<script
 		src="${pageContext.servletContext.contextPath}/resources/js/admin/request.js"></script>
-		<script
+	<script
 		src="${pageContext.servletContext.contextPath}/resources/js/admin/adminPage.js"></script>
 
 	<script>
