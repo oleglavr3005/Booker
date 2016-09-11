@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.Hotel;
+import com.epam.task.database.model.User;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.util.StringUtil;
 
@@ -45,6 +46,11 @@ public class EditHotelServlet extends HttpServlet {
 		
 		HotelService hotelService = new HotelService();
 		Hotel hotel = hotelService.getHotelById(hotelId);
+		int userId = ((User) request.getSession().getAttribute("user")).getId();
+		if(hotel.getManagerId() != userId) {
+			response.sendError(500);
+			return;
+		}
 		hotel.setName(name);
 		hotel.setCity(city);
 		hotel.setStreet(street);

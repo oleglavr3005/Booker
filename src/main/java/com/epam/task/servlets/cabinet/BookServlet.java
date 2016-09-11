@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.epam.task.database.model.Hotel;
+import com.epam.task.database.model.Order;
 import com.epam.task.database.model.Room;
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.OrderService;
@@ -43,9 +44,14 @@ public class BookServlet extends HttpServlet {
 		OrderService orderService = new OrderService();
 		int orderId = Integer.parseInt(orderIdString);
 		
-		int roomId = orderService.getOrderById(orderId).getRoomId();
+		Order order = orderService.getOrderById(orderId);
+		int roomId = order.getRoomId();
 		Room room = new RoomService().getRoomById(roomId);
 		int userId = ((User) request.getSession().getAttribute("user")).getId();
+		if (order.getUserId() != userId) {
+			response.sendError(500);
+			return;
+		}
 		Set<Integer> hotelIds = new HashSet<>();
 		hotelIds.add(room.getHotelId());
 		
