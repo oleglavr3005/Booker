@@ -221,7 +221,7 @@ public class OrderDAO {
 		try (PreparedStatement st = connection.prepareStatement(SQL_BOOK_ALL_ORDERS_BY_USER)) {
 			st.setString(1, cardNumber);
 			st.setString(2, comment);
-			st.setString(3, new Date().toString());
+			st.setString(3, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 			st.setInt(4, userId);
 			return st.executeUpdate();
 		} catch (SQLException e) {
