@@ -96,8 +96,8 @@ public class CancelOrderServlet extends HttpServlet {
 				"<div style='width: 100%; height:20px; background-color: #00000 position: relative color:white;'>Order was canceled"
 				+ "<div style='top: 10px; background-color: white; padding:20px'>"
 				+ "<div><h1 style='color: #00264d;'> Hello, " + user.getFirstName() + "</h1>" + "<p>Your order #"
-				+ order.getId() + " was succesfully canceled." + moneyLine + "</p>" + "</div><div id='one'><p>"
-				+ "<p></div></div></div></body>";
+				+ order.getId() + " was succesfully canceled." + moneyLine + "</p>" + "</div>"
+						+ "</div></div></body>";
 
 		MailSender.send(subject, text, user.getEmail());
 	}

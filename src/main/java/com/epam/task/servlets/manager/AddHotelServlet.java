@@ -74,7 +74,7 @@ public class AddHotelServlet extends HttpServlet {
 
 					@Override
 					public void run() {
-						sendMail(user, hotelId);
+						sendMail(user, hotelId, "http://localhost:8080/booker/hotel/" + hotelId);
 					}
 				}).start();
 			}
@@ -91,11 +91,17 @@ public class AddHotelServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
-	private void sendMail(User user, int hotelId) {
+	private void sendMail(User user, int hotelId, String href) {
 		Hotel hotel = new HotelService().getHotelById(hotelId);
 		
 		String subject = "A new hotel was created!";
-		String text = "Check out new hotel, dude! It's called " + hotel.getName();
+		String text = "<body style='background-color: #fff'>" +
+
+				"<div style='width: 100%; height:20px; background-color: #00000 position: relative color:white;'>Check out a new room!"
+				+ "<div style='top: 10px; background-color: white; padding:20px'>"
+				+ "<div><h1 style='color: #00264d;'> Hello, " + user.getFirstName() + "</h1>" + "<p>A new \""
+				+ hotel.getName() + "\" hotel was created!</p>" + "</div>"
+						+ "<a href='" + href + "'>Check it out now!</a></div></div></body>";
 
 		MailSender.send(subject, text, user.getEmail());
 	}
