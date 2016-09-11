@@ -393,7 +393,7 @@ div.material-table .table-footer .dataTables_length {
 											<c:when test="${allOrder.status == 'ACTIVE'}">
 												<td class="lalign"
 													style="text-align: center; color: #70C67C"><span
-													id="card_status_active"></span></td>
+													class="card_status_active"></span></td>
 												<td style="text-align: center;"><a
 													class="my-btn waves-effect waves-light btn"
 													style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; "
@@ -403,13 +403,13 @@ div.material-table .table-footer .dataTables_length {
 											</c:when>
 											<c:when test="${allOrder.status == 'CANCELED'}">
 												<td style="text-align: center; color: #666666"><span
-													id="card_status_removed"></span></td>
+													class="card_status_removed"></span></td>
 
 												<td style="text-align: center; color: #F55151"><b></b></td>
 											</c:when>
 											<c:otherwise>
 												<td style="text-align: center; color: #F55151"><span
-													id="card_status_ended"></span></td>
+													class="card_status_ended"></span></td>
 												<td style="text-align: center; color: #F55151"><b></b></td>
 											</c:otherwise>
 										</c:choose>
