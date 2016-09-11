@@ -182,5 +182,5 @@ function findPage(url,pageNumber) {
 	}, function(orders) {
 		$('#switchContent').html(orders);
 	});
-	updateLanguage();
+	setTimeout('updateLanguage()', 50);
 }
