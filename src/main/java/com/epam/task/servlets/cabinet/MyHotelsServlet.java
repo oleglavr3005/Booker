@@ -30,7 +30,7 @@ public class MyHotelsServlet extends HttpServlet {
 		String pageString = request.getParameter("page");
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
 		
-		int countOfPages = (int) Math.ceil(countOfHotels / 3.0);
+		int countOfPages = (int) Math.ceil(countOfHotels / 5.0);
 		if (page > countOfPages) {
 			page--;
 		}

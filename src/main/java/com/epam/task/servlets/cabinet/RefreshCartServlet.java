@@ -37,7 +37,7 @@ public class RefreshCartServlet extends HttpServlet {
 		String compareBy = request.getParameter("compareBy");
 		String pageString = request.getParameter("page");
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
-		int countOfPages = (int) Math.ceil(orders.size() / 3.0);
+		int countOfPages = (int) Math.ceil(orders.size() / 5.0);
 		if (page > countOfPages) {
 			page--;
 		}

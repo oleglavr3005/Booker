@@ -192,7 +192,7 @@ b {
 						</div>
 
 
-						<div class="row" style="margin-top: 30px">
+						<div class="row" style="margin-top: 64px">
 
 							<a class="waves-effect waves-light btn"
 								href="${pageContext.servletContext.contextPath}/cabinet/my_hotels/${hotel.id}"

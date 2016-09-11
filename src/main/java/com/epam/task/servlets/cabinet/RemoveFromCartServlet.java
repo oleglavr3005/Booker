@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.epam.task.database.model.Order;
+import com.epam.task.database.model.User;
 import com.epam.task.database.service.OrderService;
 import com.epam.task.util.StringUtil;
 
@@ -26,6 +28,13 @@ public class RemoveFromCartServlet extends HttpServlet {
 		}
 		
 		int orderId = Integer.parseInt(orderIdString);
+		Order order = new OrderService().getOrderById(orderId);
+		int userId = ((User) request.getSession().getAttribute("user")).getId();
+		if (order.getUserId() != userId) {
+			response.sendError(500);
+			return;
+		}
+		
 		int removed = new OrderService().removeOrder(orderId);
 
 		response.getWriter().write(removed > 0 ? "true" : "false");

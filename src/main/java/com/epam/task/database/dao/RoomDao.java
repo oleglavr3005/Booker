@@ -46,7 +46,7 @@ public class RoomDao {
 	private final String ORDER_BY_PEOPLE_ASC = " ORDER BY double_beds_count*2 + beds_count ASC";
 	private final String ORDER_BY_PEOPLE_DESC = " ORDER BY double_beds_count*2 + beds_count DESC";
 	
-	private final String PAGINATION = " LIMIT ?, 3";
+	private final String PAGINATION = " LIMIT ?, 5";
 	
 	private final String GET_ALL_ROOMS_FOR_HOTEL = "SELECT * FROM room WHERE hotel_id = ?";
 	
@@ -96,7 +96,7 @@ public class RoomDao {
 	public List<Room> getAllActiveRoomsForHotel(int id, int page) {
 		try (PreparedStatement ps = connection.prepareStatement(GET_ALL_ACIVE_ROOMS_FOR_HOTEL + PAGINATION)) {
 			ps.setInt(1, id);
-			ps.setInt(2, (page-1)*3);
+			ps.setInt(2, (page-1)*5);
 			try (ResultSet rs = ps.executeQuery()) {
 				return UniversalTransformer.getCollectionFromRS(rs, Room.class);
 			}
@@ -214,7 +214,7 @@ public class RoomDao {
 			statement.setTimestamp(i++, startDate);
 			statement.setTimestamp(i++, endDate);
 			
-			statement.setInt(i, (page-1)*3);
+			statement.setInt(i, (page-1)*5);
 			
 			try (ResultSet rs = statement.executeQuery()) {
 				return UniversalTransformer.getCollectionFromRS(rs, Room.class);
@@ -227,7 +227,7 @@ public class RoomDao {
 	public List<Room> getAllRoomsForHotel(int id, int page) {
 		try (PreparedStatement ps = connection.prepareStatement(GET_ALL_ROOMS_FOR_HOTEL + PAGINATION)) {
 			ps.setInt(1, id);
-			ps.setInt(2, (page-1)*3);
+			ps.setInt(2, (page-1)*5);
 			try (ResultSet rs = ps.executeQuery()) {
 				return UniversalTransformer.getCollectionFromRS(rs, Room.class);
 			}			
@@ -243,8 +243,7 @@ public class RoomDao {
 				return UniversalTransformer.getObjectFromRS(rs, Room.class);
 			}			
 		} catch (Exception e) {
-		//	return new ArrayList<Room>();
-			throw new NullPointerException("Cant get Room by id");
+			return null;
 		}
 	}
 		
