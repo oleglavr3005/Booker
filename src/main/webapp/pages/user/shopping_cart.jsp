@@ -93,12 +93,12 @@
 			<span id="user_cart_header"></span>
 		</h4>
 
-		<div class="row"><span id="shoping_card_shop_list"></span></div>
+		<!-- <div class="row"><span id="shoping_card_shop_list"></span></div> -->
 		<div class="row">
 			<div class="col s3">
 				<h6>
 					<c:if test="${countOfOrders > 0 }">
-						<span id="card_header"></span>
+						<span class="card_header"></span>
 						<span id="periodicals_number_for_all_users">${countOfOrders}</span>
 					</c:if>
 					<c:if test="${countOfOrders <= 0 }">

@@ -221,8 +221,9 @@ div.material-table .table-footer .dataTables_length {
 											src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
 
 										<script>
-									var id = ${activeOrder.id};
-									changeDate(id);</script>
+											var id = ${activeOrder.id};
+											changeDate(id);
+										</script>
 
 										<td style="text-align: center;">${activeOrder.price}</td>
 
@@ -397,7 +398,7 @@ div.material-table .table-footer .dataTables_length {
 													class="my-btn waves-effect waves-light btn"
 													style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; "
 													onclick="removeOrderTable(${allOrder.id})"> <span
-														id="subscribes_table_remove"></span>
+														class="subscribes_table_remove"></span>
 												</a></td>
 											</c:when>
 											<c:when test="${allOrder.status == 'CANCELED'}">

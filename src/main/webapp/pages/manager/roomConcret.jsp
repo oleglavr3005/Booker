@@ -141,8 +141,8 @@
 					</p>
 
 					<script>
-						$('#isDeleted').attr('checked',
-								'${room.deleted}' == 'true');
+// 						$('#isDeleted').attr('checked',
+// 								'${room.deleted}' == 'true');
 					</script>
 
 					<p>
@@ -391,6 +391,10 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/star-rating/star-rating.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/manager/room.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/manager/image.js"></script>
 
 	<script>
 		$('#hasWiFi').attr('checked', '${room.wifi}' == 'true');
@@ -401,13 +405,14 @@
 		$('#hasPool').attr('checked', '${room.pool}' == 'true');
 		$('#hasGym').attr('checked', '${room.gym}' == 'true');
 		$('#hasBalcony').attr('checked', '${room.balcony}' == 'true');
+		
+		$('#freeBook').attr('checked', '${room.daysCount}' < 0);
+		if (${room.deleted} == true) {
+			$('#isDeleted').click();
+		}
 	</script>
 
 
-	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/manager/room.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/manager/image.js"></script>
 
 </body>
 
