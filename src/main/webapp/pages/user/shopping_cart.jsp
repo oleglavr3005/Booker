@@ -93,7 +93,7 @@
 			<span id="user_cart_header"></span>
 		</h4>
 
-		<div class="row"><span id="shoping_card_shop_list"></div>
+		<div class="row"><span id="shoping_card_shop_list"></span></div>
 		<div class="row">
 			<div class="col s3">
 				<h6>
