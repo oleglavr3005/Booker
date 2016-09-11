@@ -41,7 +41,7 @@ public class UserOrderFilter implements Filter {
 		
 		if(user != null) {		
 			Order order = new OrderService().getOrderByUserAndId(user.getId(), orderId);
-			if(order != null && order.getStatus() != OrderStatus.ORDER && order.getStatus() != OrderStatus.CANCELED) {
+			if(order != null && order.getStatus() != OrderStatus.ORDER) {
 				chain.doFilter(request, response);
 			} else {
 				((HttpServletResponse) response).sendError(404);
