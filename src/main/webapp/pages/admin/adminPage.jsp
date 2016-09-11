@@ -210,10 +210,10 @@
 											test="${request.status == 'PENDING'}">
 											<div id="req${request.id }d">
 											<a class="my-btn waves-effect waves-light btn"
-												style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+												style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif;"
 												onclick="chageStatus(${request.id},true,'')"><span class="btn_approve"></span></a>
 											<a class="my-btn waves-effect waves-light btn"
-												style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+												style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; "
 												onclick="chageStatus(${request.id},false,'')"><span class="btn_decline"></span></a>
 												</div>
 												<div style="color: #F55151;" class="hidden" id="req${request.id }dc">
