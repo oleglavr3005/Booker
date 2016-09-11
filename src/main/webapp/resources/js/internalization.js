@@ -489,7 +489,9 @@ function changeLanguage(id, language){
 	changeLanguageOnPage(language);
 	changeLanguageOnServer(id, language);
 }
-
+function updateLanguage(){
+	changeLanguageOnPage(currentLanguage);
+}
 function changeLanguageOnPage(language){
 	changeLanguageOnTags(language);
 	changeLanguageOfErrors(language);
