@@ -3,11 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
-<c:set var="language"
-	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
-	scope="session" />
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="com.i18n.text" />
+
 <html lang="en">
 
 <head>
@@ -69,9 +65,6 @@
 	src="${pageContext.servletContext.contextPath}/resources/js/hotel/jquery.blueimp-gallery.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-
-
-
 
 <style>
 .bg-img {
@@ -182,15 +175,15 @@
 				<div class="col s3 offset-s2">
 					<a class="waves-effect waves-light btn" id="create_button"
 						onclick="chageStatus(${request.id},true,'../../')"
-						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-						id="request_approve">APPROVE</span></a>
+						style="margin-left: 10px; margin-top: 100px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+						<span id="request_approve"></span></a>
 
 				</div>
 				<div class="col s3 offset-s2">
 					<a class="waves-effect waves-light btn" id="create_button"
 						onclick="chageStatus(${request.id},false,'../../')"
-						style="margin-left: 10px; margin-top: 100px; background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-						id="request_decline">DECLINE</span></a>
+						style="margin-left: 10px; margin-top: 100px; background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+						<span id="request_decline"></span></a>
 
 				</div>
 			</div>

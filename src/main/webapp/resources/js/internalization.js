@@ -1,14 +1,78 @@
 ﻿var languages = {};
 (function (){
 	var en = {
-	
-		header_dropdown_shopping_cart: "Shоpping cart",	
-		header_dropdown_orders : "My оrders",
-		header_dropdown_feedbacks : "My feedbacks",
-		header_dropdown_settings : "Settings",
-		header_dropdown_hotels : "My hоtels",
-		header_dropdown_admin_stuff : "Admin stuff",
-		header_dropdown_log_out: "Lоg оut",
+		tab_contact : "CONTACT",
+		tab_users : "USERS",
+		admin_page_id : "ID",
+		admin_page_fNane : "fNane",
+		admin_page_lName : "lName",
+		admin_page_mail : "Mail",
+		admin_page_phone : "Phone",
+		admin_page_type : "Type",
+		admin_page_status : "Status",
+		admin_page_active : "ACTIVE",
+		admin_page_banned : "BANNED",
+		admin_page_userId : "userId",
+		admin_page_reqDate : "reqDate",
+		admin_page_message : "Message",
+		
+		request_approve : "APPROVE",
+		request_decline : "DECLINE",
+		
+		manager_hotel_card_info : "INFO",
+		manager_hotel_card_edit : "EDIT",
+		manager_hotel_card_removed : "REMOVED",
+		manager_hotel_card_active : "ACTIVE",
+		
+		card_no_hotels : "ACTIVE",
+		my_feedback_delete : "DELETE",
+		order_concrete_order_date : "Order date",
+		tab_ended : "Ended",
+		tab_all : "All",
+		tab_active : "Active",
+		
+		tb_head_id : "ID",
+		tb_head_name : "HOTEL NAME",
+		tb_head_room : "ROOM_TYPE",
+		tb_head_sdate : "START_DATE",
+		tb_head_edate : "END_DATE",
+		tb_head_price : "PRICE",
+		tb_head_status : "STATUS",
+		
+		shoping_card_shop_list : "SHOP LIST",
+		shoping_card_date_asc : "Date asc",
+		shoping_card_date_desc : "Date desc",
+		shoping_card_price_asc : "Price asc",
+		shoping_card_price_desc : "Price desc",
+		shopping_cart_modal_header : "THX FOR YOUR ORDER",
+		shopping_cart_click : "CLICK IF YOU WANT TO LOOK AT YOUR ORDER LIST : ",
+		
+		room_concret_deleted : "DELETED",
+		room_concret_save : "SAVE",
+		room_concret_freebook : "FREEBOOK",
+		
+		label_wifi : "WiFi",
+		label_shower : "Shower",
+		label_parking : "Parking",
+		label_condition : "Air condition",
+		label_pool : "Swiming pool",
+		label_gym : "Gym",
+		label_balcony : "Balcony",
+		
+		
+		
+		
+		
+		
+		
+		
+		header_dropdown_shopping_cart : " Shоpping cart",	
+		header_dropdown_orders : " My оrders",
+		header_dropdown_feedbacks : " My feedbacks",
+		header_dropdown_settings : " Settings",
+		header_dropdown_hotels : " My hоtels",
+		header_dropdown_admin_stuff : " Admin stuff",
+		header_dropdown_log_out: " Lоg оut",
 		card_edit : "EDIT",
 		title_comment_span : "Title", 
 		createComment : "Add comment",
@@ -24,8 +88,6 @@
 		order_card_uan : " UAH",
 		order_card_clear : "CLEAR",
 		
-		
-		
 		header_regist : "Registration",
 		
 		header_auth : "Log In",
@@ -37,7 +99,6 @@
 		index_search_name : "Destination/Hotel Name:",
 		index_search_start : "Start date",
 		index_search_end : "End date",
-		index_search_price : "Stars",
 		index_search_price_2 : "Price",
 		index_search_ppl : "Guests",
 		index_search_button : "Search",
@@ -50,13 +111,7 @@
 		index_room_type_food_breakfast : "Breakfast",
 		index_room_type_food_twice: "Twice",
 		index_room_type_food_full: "Full",
-		index_room_wifi : "Wifi",
-		index_room_shower : "Shower",
-		index_room_parking : "Parking",
-		index_room_conditioner : "Air conditioner",
-		index_room_pool : "Swiming pool",
-		index_room_gym : "Fit gym",
-		index_room_balcony : "Balcony",
+		
 		index_room_noDeposit : "No deposit",
 		hotel_option_star_asc : "Star asc",
 		hotel_option_star_desc : "Star desc",
@@ -161,7 +216,7 @@
 		admin_edit_phone : "Phone",
 		admin_edit_desc : "Description",	
 		admin_edit_city : "City",
-		manager_hotel_star : "Stars number",
+		manager_hotel_star : " Stars number : ",
 		
 		room_header : "Rooms",
 		room_type: "Type", 
@@ -171,6 +226,15 @@
 		room_free: "Free Book",
 		room_deleted: "Deleted",						
 		room_price: "Price",
+		
+		roomCreate_hotel : "In hotel",
+		room_concrete_number : "Number",
+		room_concrete_single : "Single beds",
+		room_concrete_double : "Double beds",
+		room_concrete_price : "Price",
+		room_concrete_days : "Days before to pay",
+		room_concrete_percentage: "Deposit percentage",
+		
 		
 		admin_deleted : "DELETED",
 		btn_remove : "REMOVE",
@@ -182,27 +246,27 @@
 		btn_remove : "REMOVE SELECTED",
 	}
 	var ua = {
-			header_dropdown_shopping_cart: "Кошик",	
-			header_dropdown_orders : "Мої покупки",
-			header_dropdown_feedbacks : "Мої відгуки",
-			header_dropdown_settings : "Налаштування",
-			header_dropdown_hotels : "Мої готелі",
-			header_dropdown_admin_stuff : "Адміністрування",
-			header_dropdown_log_out: "Вийти",
-			card_edit : "Редагувати",
-			title_comment_span : "Заголовок", 
-			createComment : "Додати коментар",
-			hotel_button_previous : "Попередній", 
-			hotel_button_next : "Наступний",
-			hiddenError : "Помилка. Неправильні дані", 
-			room_card_add_to_cart : "Додати до картки", 
-			room_card_need_login : "Увійдіть щоб забронювати", 
-			order_card_from : "З: ",  
-			order_card_to : " До: ",
-			order_card_order : "Забронювати",
-			order_card_total_price : "Загальна сума : ",
-			order_card_uan : " Грн",
-			order_card_clear : "Очистити",
+		header_dropdown_shopping_cart: "Кошик",	
+		header_dropdown_orders : "Мої покупки",
+		header_dropdown_feedbacks : "Мої відгуки",
+		header_dropdown_settings : "Налаштування",
+		header_dropdown_hotels : "Мої готелі",
+		header_dropdown_admin_stuff : "Адміністрування",
+		header_dropdown_log_out: "Вийти",
+		card_edit : "Редагувати",
+		title_comment_span : "Заголовок", 
+		createComment : "Додати коментар",
+		hotel_button_previous : "Попередній", 
+		hotel_button_next : "Наступний",
+		hiddenError : "Помилка. Неправильні дані", 
+		room_card_add_to_cart : "Додати до картки", 
+		room_card_need_login : "Увійдіть щоб забронювати", 
+		order_card_from : "З: ",  
+		order_card_to : " До: ",
+		order_card_order : "Забронювати",
+		order_card_total_price : "Загальна сума : ",
+		order_card_uan : " Грн",
+		order_card_clear : "Очистити",
 			
 			
 		header_regist : "Реєстрація",
@@ -229,14 +293,7 @@
 		index_room_type_food_breakfast : "Сніданок",
 		index_room_type_food_twice: "Сніданок і вечеря",
 		index_room_type_food_full: "Все включено",
-		index_room_wifi : "Wifi",
-		index_room_shower : "Душ",
-		index_room_parking : "Стоянка",
-		index_room_conditioner : "Кондиціонер",
-		index_room_pool : "Басейн",
-		index_room_gym : "Тренажерний зал",
-		index_room_balcony : "Балкон",
-		
+				
 		map_button : "Карта", 
 		search : "Пошук",
 		
@@ -328,7 +385,7 @@
 		admin_edit_phone : "Телефон",
 		admin_edit_desc : "Опис",
 		admin_edit_city : "Місто",
-		manager_hotel_star : "К-сть зірок",
+		manager_hotel_star : " К-сть зірок : ",
 		
 		room_header : "Кімнати",
 		room_type: "Тип", 
@@ -338,7 +395,14 @@
 		room_free: "Без передплати",
 		room_deleted: "Видалено",						
 		room_price: "Ціна",
-
+		
+		roomCreate_hotel : "В готелі",
+		room_concrete_number : "Номер",
+		room_concrete_single : "Одномісні ліжка",
+		room_concrete_double : "Двомісні ліжка",
+		room_concrete_price : "Ціна",
+		room_concrete_days : "Дні для оплати",
+		room_concrete_percentage: "Відсоток завдатку",
 		
 		admin_deleted : "ВИДАЛЕНО",
 		btn_remove : "ВИДАЛИТИ",
@@ -375,13 +439,50 @@
 			header_regist_succes: "header_regist_succes",
 			header_regist_confirmmail: "header_regist_confirmmail",
 			header_error_fail: "header_error_fail",
-			header_regist: "header_regist"
+			header_regist: "header_regist",
+				
+			startLbl : "fmtStart",
+			endLbl : "fmtEnd",
+			pplLbl : "fmtPeople",
+			daysLbl : "fmtPeople",
+			percentageLbl : "fmtPeople",
+			percentageLbl2 : "fmtPeople",
 		}
 	};
+	var data_tooltip = {
+		ua : {
+			index_room_wifi : "Wifi",
+			index_room_shower : "Душ",
+			index_room_parking : "Стоянка",
+			index_room_conditioner : "Кондиціонер",
+			index_room_pool : "Басейн",
+			index_room_gym : "Тренажерний зал",
+			index_room_balcony : "Балкон",
+			index_search_stars : "Зірки",
+			index_search_location : "Розташування",
+			index_search_description : "Опис",
+		},
+		en : {
+			index_room_wifi : "Wifi",
+			index_room_shower : "Shower",
+			index_room_parking : "Parking",
+			index_room_conditioner : "Air conditioner",
+			index_room_pool : "Swiming pool",
+			index_room_gym : "Fit gym",
+			index_room_balcony : "Balcony",
+			index_search_stars : "Stars",
+			index_search_location : "Location",
+			index_search_description : "Description",
+		}
+	};
+	
 	languages.en = en;
 	languages.ua = ua;
+	
 	languages.error = error;
 	languages.error.current=en;
+	
+	languages.data_tooltip = data_tooltip;
 })();
 
 function changeLanguage(id, language){
@@ -390,6 +491,11 @@ function changeLanguage(id, language){
 }
 
 function changeLanguageOnPage(language){
+	changeLanguageOnTags(language);
+	changeLanguageOfErrors(language);
+	changeLanguageOfDataTooltip(language);
+}
+function changeLanguageOnTags(language){
 	for ( var prop in languages) {
 		if(prop == language){
 			for ( var idElement in languages[prop]){
@@ -403,8 +509,19 @@ function changeLanguageOfErrors(language){
 	for ( var prop in languages) {
 		if(prop == language){
 			languages.error.current = languages.error[prop];
-			for ( var idElement in languages[prop]){
-				$("#" + idElement).html(languages[prop][idElement]);
+			for ( var idElement in languages.error[prop]){
+				$("#" + idElement).attr('data-error', languages.error[prop][idElement]);
+			}
+			break;
+		}
+	}
+}
+
+function changeLanguageOfDataTooltip(language){
+	for ( var prop in languages) {
+		if(prop == language){
+			for ( var idElement in languages.data_tooltip[prop]){
+				$("#" + idElement).attr('data-tooltip', languages.data_tooltip[prop][idElement]);
 			}
 			break;
 		}
@@ -412,11 +529,5 @@ function changeLanguageOfErrors(language){
 }
 
 function changeLanguageOnServer(id, language){
-	$.getJSON("http://localhost:7161/booker/language?id=" + id + "&lan=" + language);
-	$.getJSON("http://localhost:8080/booker/language?id=" + id + "&lan=" + language);
-}
-
-function activeFalseMessage(role, id){
-	$.getJSON("http://localhost:7161/task/" + role + "/messageActiveFalse?id=" + id);
-	$.getJSON("http://localhost:8080/task/" + role + "/messageActiveFalse?id=" + id);
+	$.getJSON("http://localhost:8080/booker/change_lang?language=" + language);
 }

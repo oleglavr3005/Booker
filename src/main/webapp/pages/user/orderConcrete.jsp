@@ -4,11 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<c:set var="language"
-	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
-	scope="session" />
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="com.i18n.text" />
+
 <html lang="en">
 
 <head>
@@ -133,10 +129,12 @@ div #sidebar-wrapper {
 					<div class="modal-body next"></div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default pull-left prev">
-							<i class="glyphicon glyphicon-chevron-left"></i> Previous
+							<i class="glyphicon glyphicon-chevron-left"></i>
+							<span id="hotel_button_previous"></span>
 						</button>
 						<button type="button" class="btn btn-primary next">
-							Next <i class="glyphicon glyphicon-chevron-right"></i>
+							<span id="hotel_button_next"></span>
+							<i class="glyphicon glyphicon-chevron-right"></i>
 						</button>
 					</div>
 				</div>
@@ -202,7 +200,7 @@ div #sidebar-wrapper {
 									<c:if test="${room.wifi == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
-											<a class="tooltipped" data-position="icon"
+											<a id="index_room_wifi" class="tooltipped" data-position="icon"
 												data-tooltip="Wifi" style="color: #0d0d0d;"><i
 												class="material-icons invert">wifi</i></a>
 										</div>
@@ -211,7 +209,7 @@ div #sidebar-wrapper {
 									<c:if test="${room.shower == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 32px; height: 32px;">
-											<a class="tooltipped" data-position="icon"
+											<a id="index_room_shower" class="tooltipped" data-position="icon"
 												data-tooltip="Shower"><img class="invert"
 												style="max-width: 230%;"
 												src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
@@ -221,7 +219,7 @@ div #sidebar-wrapper {
 									<c:if test="${room.parking == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
-											<a class="tooltipped" data-position="icon"
+											<a id="index_room_parking" class="tooltipped" data-position="icon"
 												data-tooltip="Parking" style="color: #0d0d0d;"><i
 												class="material-icons invert">local_parking</i></a>
 										</div>
@@ -230,7 +228,7 @@ div #sidebar-wrapper {
 									<c:if test="${room.condition == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
-											<a class="tooltipped" data-position="icon"
+											<a id="index_room_conditioner" class="tooltipped" data-position="icon"
 												data-tooltip="Condition" style="color: #0d0d0d;"><i
 												class="material-icons invert">toys</i></a>
 										</div>
@@ -239,7 +237,7 @@ div #sidebar-wrapper {
 									<c:if test="${room.pool == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
-											<a class="tooltipped" data-position="icon"
+											<a id="index_room_pool" class="tooltipped" data-position="icon"
 												data-tooltip="Pool" style="color: #0d0d0d;"><i
 												class="material-icons invert">pool</i></a>
 										</div>
@@ -248,7 +246,7 @@ div #sidebar-wrapper {
 									<c:if test="${room.gym == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
-											<a class="tooltipped" data-position="icon" data-tooltip="Gym"
+											<a id="index_room_gym" class="tooltipped" data-position="icon" data-tooltip="Gym"
 												style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
 										</div>
 									</c:if>
@@ -256,7 +254,7 @@ div #sidebar-wrapper {
 									<c:if test="${room.balcony == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 32px; height: 32px;">
-											<a class="tooltipped" data-position="icon"
+											<a id="index_room_balcony" class="tooltipped" data-position="icon"
 												data-tooltip="Balcony"><img class="invert"
 												style="max-width: 230%;"
 												src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
@@ -296,7 +294,8 @@ div #sidebar-wrapper {
 									<a class="tooltipped" data-position="icon"
 										data-tooltip="Order date" style="color: #0d0d0d;"><i
 										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
-									Order date <span id="order_date">${order.orderDate}</span>
+									<span id="order_concrete_order_date"></span> 
+									<span id="order_date">${order.orderDate}</span>
 								</div>
 							</div>
 							<!-- END OF ORDER DATE MARKER -->
@@ -306,8 +305,9 @@ div #sidebar-wrapper {
 								<div class="col s12">
 									<a class="tooltipped" data-position="icon"
 										data-tooltip="Start date" style="color: #0d0d0d;"><i
-										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
-									From: <span id="start_date">${order.startDate}</span>
+										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> 
+									<span id="order_card_from"></span>
+									<span id="start_date">${order.startDate}</span>
 								</div>
 							</div>
 							<!-- END OF START DATE MARKER -->
@@ -318,7 +318,8 @@ div #sidebar-wrapper {
 									<a class="tooltipped" data-position="icon"
 										data-tooltip="End date" style="color: #0d0d0d;"><i
 										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
-									To: <span id="end_date">${order.endDate}</span>
+									<span id="order_card_to"></span>
+									<span id="end_date">${order.endDate}</span>
 								</div>
 							</div>
 							<!-- END OF END DATE MARKER -->
@@ -328,7 +329,7 @@ div #sidebar-wrapper {
 							<div class="row ">
 								<div class="col s4">
 									<!-- 						TWO DIFFERENT ICONS IF.ACTIVE OR IF.FINISHED -->
-									<span>Status ${order.status}</span>
+									<span id="subscribes_table_status"></span><span> ${order.status}</span>
 								</div>
 								<div class="col s4" style="margin-bottom: 0;">
 									<a class="tooltipped" data-position="icon"

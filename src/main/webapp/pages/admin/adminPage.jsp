@@ -3,11 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
-<c:set var="language"
-	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
-	scope="session" />
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="com.i18n.text" />
+
+
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -115,10 +112,11 @@
 			<!-- 			Tab Holder -->
 			<div class="col s8 offset-s2">
 				<ul class="tabs" style="background: #638F98;">
-					<li class="tab col s5 offset-s1"><a class="active"
-						href="#test1" style="color: #1A3D44"><b><p id="tab_users">USERS</p></b></a></li>
+					<li id="admin_page_users" class="tab col s5 offset-s1"><a
+						class="active" href="#test1" style="color: #1A3D44"><b><p
+									id="tab_users"></p></b></a></li>
 					<li class="tab col s5 offset-s1"><a href="#test2"
-						style="color: #1A3D44"><b><p id="tab_contact">CONTACT</p></b></a></li>
+						style="color: #1A3D44"><b><p id="tab_contact"></p></b></a></li>
 				</ul>
 			</div>
 			<!-- 			End of Tab Holder -->
@@ -136,13 +134,13 @@
 					<table id="users">
 						<thead>
 							<tr>
-								<th>ID</th>
-								<th>fNane</th>
-								<th>lName</th>
-								<th>Mail</th>
-								<th>Phone</th>
-								<th>Type</th>
-								<th>Status</th>
+								<th id="admin_page_id"></th>
+								<th id="admin_page_fNane"></th>
+								<th id="admin_page_lName"></th>
+								<th id="admin_page_mail"></th>
+								<th id="admin_page_phone"></th>
+								<th id="admin_page_type"></th>
+								<th id="admin_page_status"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -154,9 +152,12 @@
 									<td><c:out value="${user.email}"></c:out></td>
 									<td><c:out value="${user.phoneNumber}"></c:out></td>
 									<td><c:out value="${user.type}"></c:out></td>
-									<td><select id="userStatus${user.id}" class="combobox" onchange="changeUserStatus(${user.id})">
-											<option value="ACTIVE" <c:if test="${user.status == 'ACTIVE'}"> selected="selected"</c:if>>ACTIVE</option>
-											<option value="BANNED" <c:if test="${user.status == 'BANNED'}"> selected="selected"</c:if>>BANNED</option>
+									<td><select id="userStatus${user.id}" class="combobox"
+										onchange="changeUserStatus(${user.id})">
+											<option id="admin_page_active" value="ACTIVE"
+												<c:if test="${user.status == 'ACTIVE'}"> selected="selected"</c:if>></option>
+											<option id="admin_page_banned" value="BANNED"
+												<c:if test="${user.status == 'BANNED'}"> selected="selected"</c:if>></option>
 									</select></td>
 								</tr>
 							</c:forEach>
@@ -184,29 +185,24 @@
 					<table id="requests">
 						<thead>
 							<tr>
-								<th>ID</th>
-								<th>userId</th>
-								<th>reqDate</th>
-								<th>message</th>
-								<th>status</th>
+								<th id="admin_page_id"></th>
+								<th id="admin_page_userId"></th>
+								<th id="admin_page_reqDate"></th>
+								<th id="admin_page_message"></th>
+								<th id="admin_page_status"></th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="request" items="${requests}">
 								<tr
-									<c:if test="${request.status == 'PENDING'}">
-   					style="background-color: white;"
-</c:if>
-<c:if test="${request.status != 'PENDING'}">
-   					style="background-color: lightgrey;"
-</c:if>
->
-									<td><a
-										href="${pageContext.servletContext.contextPath}/cabinet/admin/request/${request.id}"><c:out
-												value="${request.id }"></c:out></a></td>
+									<c:if test="${request.status == 'PENDING'}"> style="background-color: white;"</c:if>
+									<c:if test="${request.status != 'PENDING'}">style="background-color: lightgrey;"</c:if>>
+									<td><c:out value="${request.id }"></c:out></td>
 									<td><c:out value="${request.userId}"></c:out></td>
 									<td><c:out value="${request.requestDate}"></c:out></td>
-									<td><c:out value="${request.message}"></c:out></td>
+									<td><a
+										href="${pageContext.servletContext.contextPath}/cabinet/admin/request/${request.id}"><c:out
+												value="${request.message}"></c:out></a></td>
 									<td style="text-align: center;"><c:if
 											test="${request.status == 'PENDING'}">
 											<a class="my-btn waves-effect waves-light btn"
@@ -214,14 +210,14 @@
 												onclick="chageStatus(${request.id},true,'')">APPROVE</a>
 											<a class="my-btn waves-effect waves-light btn"
 												style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-												onclick="chageStatus(${request.id},false,'')">DECLINED</a>
+												onclick="chageStatus(${request.id},false,'')">DECLINE</a>
 										</c:if> <c:if test="${request.status == 'DECLINED'}">
 											<div style="color: #F55151;">
-												<strong>DeCIde!</strong>
+												<strong>DECLINED!</strong>
 											</div>
 										</c:if> <c:if test="${request.status == 'APPROVED'}">
 											<div style="color: #3c763d;">
-												<strong>Success!</strong>
+												<strong>APPROVED!</strong>
 											</div>
 
 										</c:if></td>
@@ -248,7 +244,7 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/settings/settings.js"></script>
 	<script
 		src="${pageContext.servletContext.contextPath}/resources/js/admin/request.js"></script>
-		<script
+	<script
 		src="${pageContext.servletContext.contextPath}/resources/js/admin/adminPage.js"></script>
 
 	<script>

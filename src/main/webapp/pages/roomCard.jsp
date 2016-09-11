@@ -166,32 +166,32 @@ b {
 					<div class="col s3">
 						<div class="row" style="float: right; text-align:right; font-size:0.3rem">
 							<c:if test="${room.wifi == true}">
-								<a  class="tooltipped" data-position="icon" data-tooltip="Wifi"
-									style="color: #0d0d0d;"><i id="index_room_wifi" class="material-icons invert"></i></a>
+								<a id="index_room_wifi"  class="tooltipped" data-position="icon" data-tooltip="Wifi"
+									style="color: #0d0d0d;"><i class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.shower == true}">
 								<a id="index_room_shower" class="tooltipped" data-position="icon" data-tooltip="Shower"><img
-									class="invert" style="max-width: 10%; margin-top:-1.5rem" id="index_room_shower" 
+									class="invert" style="max-width: 10%; margin-top:-1.5rem"  
 									src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" />
 									</a>
 							</c:if>
 
 							<c:if test="${room.parking == true}">
-								<a class="tooltipped" data-position="icon"
-									data-tooltip="Parking" style="color: #0d0d0d;"><i id="index_room_parking" 
+								<a id="index_room_parking" class="tooltipped" data-position="icon"
+									data-tooltip="Parking" style="color: #0d0d0d;"><i 
 									class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.condition == true}">
-								<a class="tooltipped" data-position="icon"
-									data-tooltip="Condition" style="color: #0d0d0d;"><i id="index_room_conditioner" 
+								<a id="index_room_conditioner" class="tooltipped" data-position="icon"
+									data-tooltip="Condition" style="color: #0d0d0d;"><i  
 									class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.pool == true}">
-								<a class="tooltipped" data-position="icon" data-tooltip="Pool"
-									style="color: #0d0d0d;"><i id="index_room_pool" class="material-icons invert"></i></a>
+								<a id="index_room_pool" class="tooltipped" data-position="icon" data-tooltip="Pool"
+									style="color: #0d0d0d;"><i class="material-icons invert"></i></a>
 							</c:if>
 
 							<c:if test="${room.gym == true}">
@@ -200,12 +200,11 @@ b {
 							</c:if>
 
 							<c:if test="${room.balcony == true}">
-								<a class="tooltipped" data-position="icon"
+								<a id="index_room_balcony" class="tooltipped" data-position="icon"
 									data-tooltip="Balcony"><img class="invert"
 									style="max-width: 10%; margin-top:-1.5rem"
 									src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" />
-										<span id="index_room_balcony"></span>
-									</a>
+								</a>
 							</c:if>
 						</div>
 					</div>

@@ -245,7 +245,7 @@ div #sidebar-wrapper {
 						</h5>
 					</div>
 					<div class="col s4 offset-s1" style="margin-top: 15px;">
-						<a class="tooltipped" data-position="icon" data-tooltip="Stars"
+						<a id="index_search_stars" class="tooltipped" data-position="icon" data-tooltip=""
 							style="color: #0d0d0d;"> <c:forEach var="i" begin="1"
 								end="${hotel.stars}">
 								<i class="fa fa-lg fa-star" aria-hidden="true"></i>
@@ -256,7 +256,7 @@ div #sidebar-wrapper {
 					</div>
 				</div>
 				<div class="row">
-					<a class="tooltipped" data-position="icon" data-tooltip="Location"
+					<a id="index_search_location" class="tooltipped" data-position="icon" data-tooltip=""
 						style="color: #0d0d0d; text-decoration: none;"><i
 						class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a> <a
 						id="hotel_map_button" class="tooltipped" data-position="icon"
@@ -265,40 +265,40 @@ div #sidebar-wrapper {
 				</div>
 
 				<div class="row" style="margin-bottom: 5px">
-					<a class="tooltipped" data-position="icon"
-						data-tooltip="Description" style="color: #0d0d0d; cursor: default"><i
+					<a id="index_search_description" class="tooltipped" data-position="icon"
+						data-tooltip="" style="color: #0d0d0d; cursor: default"><i
 						class="material-icons invert" style="font-size: 20px;">receipt</i></a>
 					<span>${hotel.desc}</span>
 				</div>
 				<div class="row" style="height: 10px; margin: 0;">
 					<c:if test="${conveniences.wiFi == true}">
-						<a class="tooltipped" data-position="icon" data-tooltip="Wifi"
+						<a id="index_room_wifi" class="tooltipped" data-position="icon" data-tooltip="Wifi"
 							style="color: #0d0d0d;"><i class="material-icons invert">wifi</i></a>
 					</c:if>
 					<c:if test="${conveniences.shower == true}">
-						<a class="tooltipped" data-position="icon" data-tooltip="Shower"><img
+						<a id="index_room_shower" class="tooltipped" data-position="icon" data-tooltip="Shower"><img
 							class="invert" style="max-width: 5%; margin-top: -1rem"
 							src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
 					</c:if>
 					<c:if test="${conveniences.parking == true}">
-						<a class="tooltipped" data-position="icon" data-tooltip="Parking"
+						<a id="index_room_parking" class="tooltipped" data-position="icon" data-tooltip="Parking"
 							style="color: #0d0d0d;"><i class="material-icons invert">local_parking</i></a>
 					</c:if>
 					<c:if test="${conveniences.condition == true}">
-						<a class="tooltipped" data-position="icon"
+						<a id="index_room_conditioner" class="tooltipped" data-position="icon"
 							data-tooltip="Condition" style="color: #0d0d0d;"><i
 							class="material-icons invert">toys</i></a>
 					</c:if>
 					<c:if test="${conveniences.pool == true}">
-						<a class="tooltipped" data-position="icon" data-tooltip="Pool"
+						<a id="index_room_pool" class="tooltipped" data-position="icon" data-tooltip="Pool"
 							style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
 					</c:if>
 					<c:if test="${conveniences.gym == true}">
-						<a class="tooltipped" data-position="icon" data-tooltip="Gym"
+						<a id="index_room_gym" class="tooltipped" data-position="icon" data-tooltip="Gym"
 							style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
 					</c:if>
 					<c:if test="${conveniences.balcony == true}">
-						<a class="tooltipped" data-position="icon" data-tooltip="Balcony"><img
+						<a id="index_room_balcony" class="tooltipped" data-position="icon" data-tooltip="Balcony"><img
 							class="invert"
 							style="max-width: 230%; height: 230%; margin-top: -18px;"
 							src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
@@ -315,21 +315,21 @@ div #sidebar-wrapper {
 		<div class="col s3">
 			<input type="date" name="startDate" id="date_from"
 				class="datepicker validate" value="${startDate}"><label
-				id="startLbl" data-error="${fmtStart}" for="date_from"><span
+				id="startLbl" data-error="" for="date_from"><span
 					id="index_search_start"></span></label>
 		</div>
 
 		<div class="col s3">
 			<input type="date" name="endDate" id="date_to"
 				class="datepicker validate" value="${endDate}"><label
-				id="endLbl" data-error="${fmtEnd}" for="date_to"><span
+				id="endLbl" data-error="" for="date_to"><span
 					id="index_search_end"></span></label>
 		</div>
 
 		<div class="col s3">
 			<input id="people" type="text" class="validate" name="people"
 				value="${people}"> <label id="pplLbl"
-				data-error="${fmtPeople}" for="pplCount"><span
+				data-error="" for="pplCount"><span
 					id="index_search_ppl"></span></label>
 		</div>
 
@@ -357,7 +357,7 @@ div #sidebar-wrapper {
 						<span id="periodicals_number_for_all_users">${countOfRooms}</span>
 					</c:if>
 					<c:if test="${countOfRooms <= 0 }">
-						<fmt:message key="card.no.hotels" />
+						<span id="card_no_hotels"></span>
 					</c:if>
 				</h6>
 			</div>
@@ -383,7 +383,7 @@ div #sidebar-wrapper {
 	</div>
 	<div class="container">
 		<div id="switchContent" class="row">
-			<jsp:include page="commentCard.jsp"></jsp:include>
+			<jsp:include page="comments/commentCard.jsp"></jsp:include>
 		</div>
 	</div>
 

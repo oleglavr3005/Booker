@@ -3,11 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
-<c:set var="language"
-	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
-	scope="session" />
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="com.i18n.text" />
+
 <html lang="en">
 
 <head>
@@ -97,7 +93,7 @@
 			<span id="user_cart_header"></span>
 		</h4>
 
-		<div class="row">SHOP LIST</div>
+		<div class="row"><span id="shoping_card_shop_list"></div>
 		<div class="row">
 			<div class="col s3">
 				<h6>
@@ -114,14 +110,10 @@
 				<c:if test="${countOfOrders > 0 }">
 					<select id="compare" class="chosen-select optionstyle"
 						onchange="findPage(window.location.href,1)">
-						<option class="optionstyle" value="compareByDateAsc">date
-							asc</option>
-						<option class="optionstyle" value="compareByDateDesc"
-							selected="selected">date desc</option>
-						<option class="optionstyle" value="compareByPriceAsc">price
-							asc</option>
-						<option class="optionstyle" value="compareByPriceDesc">price
-							desc</option>
+						<option id="shoping_card_date_asc" class="optionstyle" value="compareByDateAsc"></option>
+						<option id="shoping_card_date_desc" class="optionstyle" value="compareByDateDesc" selected="selected"></option>
+						<option id="shoping_card_price_asc" class="optionstyle" value="compareByPriceAsc"></option>
+						<option id="shoping_card_price_desc" class="optionstyle" value="compareByPriceDesc"></option>
 					</select>
 				</c:if>
 			</div>
@@ -147,7 +139,7 @@
 		style="width: 50% !important; max-height: 80% !important">
 		<div class="modal-header" style="padding-bottom: 0px">
 			<h4 id="registrationHeader">
-				<span id="shopping_cart_modal_header">THX FOR YOUR ORDER</span>
+				<span id="shopping_cart_modal_header"></span>
 			</h4>
 		</div>
 		<div class="modal-content">
@@ -282,8 +274,7 @@
 			</div>
 		</div>
 		<div class="modal-footer" style="padding-bottom: 0px; height: 40px;">
-			<a href="${pageContext.servletContext.contextPath}/cabinet/orders">CLICK
-				IF YOU WANT TO LOOK AT YOUR ORDER LIST : </a>
+			<a id="shopping_cart_click" href="${pageContext.servletContext.contextPath}/cabinet/orders"></a>
 		</div>
 	</div>
 	<!-- 	END OF SUCCES MODAL -->

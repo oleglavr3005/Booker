@@ -4,11 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
-<c:set var="language"
-	value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
-	scope="session" />
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="com.i18n.text" />
+
 <html lang="en">
 
 <head>
@@ -132,14 +128,15 @@
 
 					<a class="waves-effect waves-light btn" id="create_button"
 						onclick="updateRoom(${room.id})"
-						style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>SAVE</span></a>
+						style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+						<span id="room_concret_save" ></span></a>
 					<p id="create_error" style="color: red"></p>
 				</div>
 
 				<div class="row">
 					<p>
 						<input type="checkbox" class="filled-in" id="isDeleted"
-							name="isDeleted" /> <label for="isDeleted">DELETED</label>
+							name="isDeleted" /> <label id="room_concret_deleted" for="isDeleted"></label>
 					</p>
 
 					<script>
@@ -149,8 +146,8 @@
 
 					<p>
 						<input type="checkbox" class="filled-in" id="freeBook"
-							onclick="changeFreeBook()" name="freeBook" /> <label
-							for="freeBook">FREEBOOK</label>
+							onclick="changeFreeBook()" name="freeBook" />
+						<label id="room_concret_freebook" for="freeBook"></label>
 					</p>
 
 
@@ -171,11 +168,14 @@
 							<div class="row">
 								<select id="roomType" class="chosen-select optionstyle">
 									<option class="optionstyle" value="STANDART"
-										<c:if test="${room.type == 'STANDART'}"> selected="selected"</c:if>>STANDART</option>
+										<c:if test="${room.type == 'STANDART'}"> selected="selected"</c:if>>
+										<span id="index_room_type_standart"></span></option>
 									<option class="optionstyle" value="LUX"
-										<c:if test="${room.type == 'LUX'}"> selected="selected"</c:if>>LUX</option>
+										<c:if test="${room.type == 'LUX'}"> selected="selected"</c:if>>
+										<span id="index_room_type_lux"></span></option>
 									<option class="optionstyle" value="DELUX"
-										<c:if test="${room.type == 'DELUX'}"> selected="selected"</c:if>>DELUX</option>
+										<c:if test="${room.type == 'DELUX'}"> selected="selected"</c:if>>
+										<span id="index_room_type_delux"></span></option>
 								</select>
 							</div>
 							<!-- 						END OF ROOM TYPE -->
@@ -188,8 +188,8 @@
 							<div class="row">
 								<input id="single" value="${room.bedsCount}" type="number"
 									class="validate" name="single" min=1 max=100> <label
-									id="singleLbl" data-error="${fmtPeople}" for="single"><fmt:message
-										key="room.concrete.single" /></label>
+									id="singleLbl" data-error="${fmtPeople}" for="single"><span
+										id="room_concrete_single"></span> </label>
 							</div>
 
 							<!-- 							END OF 1 BEDS COUNT -->
@@ -200,8 +200,8 @@
 								<input id="days" <c:if test="${room.daysCount >= 0 }"> value="${room.daysCount}"</c:if> type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="days" min=1 max=365> <label
-									id="daysLbl" data-error="${fmtPeople}" for="days"><fmt:message
-										key="room.concrete.days" /></label>
+									id="daysLbl" data-error="" for="days"><span
+										id="room_concrete_days"></span> </label>
 							</div>
 
 							<!-- 							END OF DAYS COUNT -->
@@ -211,8 +211,8 @@
 							<div class="row">
 								<input id="number" value="${room.number}" type="number"
 									class="validate" name="days" min=1 max=365> <label
-									id="daysLbl" data-error="${fmtPeople}" for="days"><fmt:message
-										key="room.concrete.number" /></label>
+									id="daysLbl" data-error="" for="days"><span
+										id="room_concrete_number"></span></label>
 							</div>
 
 							<!-- 							END OF NUMBER -->
@@ -222,8 +222,8 @@
 							<div class="row">
 								<input id="price" value="${room.price}" type="number"
 									class="validate" name="percentage" min=1 max=100> <label
-									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><fmt:message
-										key="room.concrete.price" /></label>
+									id="percentageLbl" data-error="" for="percentage"><span
+										id="room_concrete_price"></span> </label>
 							</div>
 
 							<!-- 							END OF PRICE -->
@@ -236,14 +236,21 @@
 							<div class="row">
 								<select id="foodType" class="chosen-select optionstyle">
 									<option class="optionstyle" value="NONE" selected="selected"
-										<c:if test="${room.food == 'NONE'}"> selected="selected"</c:if>>NONE
+										<c:if test="${room.food == 'NONE'}"> selected="selected"</c:if>>
+										<span id="index_room_type_food_none"></span>
 									</option>
 									<option class="optionstyle" value="BREAKFAST"
-										<c:if test="${room.food == 'BREAKFAST'}"> selected="selected"</c:if>>BREAKFAST</option>
+										<c:if test="${room.food == 'BREAKFAST'}"> selected="selected"</c:if>>
+										<span id="index_room_type_food_breakfast"></span>
+									</option>
 									<option class="optionstyle" value="TWICE"
-										<c:if test="${room.food == 'TWICE'}"> selected="selected"</c:if>>TWICE</option>
+										<c:if test="${room.food == 'TWICE'}"> selected="selected"</c:if>>
+										<span id="index_room_type_food_twice"></span>
+									</option>
 									<option class="optionstyle" value="FULL"
-										<c:if test="${room.food == 'FULL'}"> selected="selected"</c:if>>FULL</option>
+										<c:if test="${room.food == 'FULL'}"> selected="selected"</c:if>>
+										<span id="index_room_type_food_full"></span>
+									</option>
 								</select>
 							</div>
 							<!-- 						END OF FOOD TYPE -->
@@ -253,8 +260,8 @@
 							<div class="row">
 								<input id="double" value="${room.doubleBedsCount}" type="number"
 									class="validate" name="single" min=1 max=100> <label
-									id="doubleLbl" data-error="${fmtPeople}" for="double"><fmt:message
-										key="room.concrete.double" /></label>
+									id="doubleLbl" data-error="${fmtPeople}" for="double"><span
+										id="room_concrete_double"></span> </label>
 							</div>
 
 							<!-- 							END OF 2 BEDS COUNT -->
@@ -265,8 +272,8 @@
 								<input id="percentage" value="${room.percentage}" type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="percentage" min=1 max=100> <label
-									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><fmt:message
-										key="room.concrete.percentage" /></label>
+									id="percentageLbl2" data-error="" for="percentage"><span
+										id="room_concrete_percentage"></span></label>
 							</div>
 
 							<!-- 							END OF PERCENTAGE COUNT -->
@@ -280,32 +287,31 @@
 
 							<p style="margin-top: 20px;">
 								<input type="checkbox" class="filled-in" id="hasWiFi"
-									name="hasWiFi" /> <label for="hasWiFi">WIFI</label>
+									name="hasWiFi" /> <label id="label_wifi" for="hasWiFi">WIFI</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasShower"
-									name="hasShower" /> <label for="hasShower">SHOWER</label>
+									name="hasShower" /> <label id="label_shower" for="hasShower">SHOWER</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasParking"
-									name="hasParking" /> <label for="hasParking">PARKING</label>
+									name="hasParking" /> <label id="label_parking" for="hasParking">PARKING</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasCondition"
-									name="hasCondition" /> <label for="hasCondition">AIR
-									CONDITION</label>
+									name="hasCondition" /> <label id="label_condition" for="hasCondition">AIR CONDITION</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasPool"
-									name="hasPool" /> <label for="hasPool">SWIM POOL</label>
+									name="hasPool" /> <label id="label_pool" for="hasPool">SWIM POOL</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasGym"
-									name="hasGym" /> <label for="hasGym">FIT GYM</label>
+									name="hasGym" /> <label id="label_gym" for="hasGym">FIT GYM</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasBalcony"
-									name="hasBalcony" /> <label for="hasBalcony">BALCONY</label>
+									name="hasBalcony" /> <label id="label_balcony" for="hasBalcony">BALCONY</label>
 							</p>
 
 							<!-- 								END OF CHECKBOX -->
@@ -338,9 +344,9 @@
 			<div class="row">
 				<div class="col s3 offset-s3">
 
-					<a class="my-btn waves-effect waves-light btn"
+					<a id="btn_add_image" class="my-btn waves-effect waves-light btn"
 						style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
-						onclick="pushInput()">ADD_IMAGE </a>
+						onclick="pushInput()"></a>
 
 					<!-- 				INPUT -->
 					<input multiple style="margin-top: 60px; display: none" type="file"
@@ -351,9 +357,9 @@
 				</div>
 
 				<div class="col s3 offset-s1">
-					<a class="my-btn waves-effect waves-light btn"
+					<a id="btn_remove" class="my-btn waves-effect waves-light btn"
 						style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
-						onclick="removeRoomPhoto()">REMOVE_SELECTED </a>
+						onclick="removeRoomPhoto()"></a>
 				</div>
 			</div>
 
