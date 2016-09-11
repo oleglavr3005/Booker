@@ -58,8 +58,8 @@ b {
 				<div class="row" style="padding-left: calc(50% - 60px);">
 					<a class="waves-effect waves-light btn" onclick="deleteComment(${feedback.id})"
 						style="width: 120px; margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-						<span id="feedback_error"></span>
-						<span id="my_feedback_delete"></span>
+						<span class="feedback_error"></span>
+						<span class="my_feedback_delete"></span>
 					</a>
 				</div>
 			</div>

@@ -88,17 +88,14 @@ b {
 
 
 <c:forEach var="order" items="${orders}">
-
 	<div id="hotel_card_${order.id}" class="col s10 offset-s1">
 		<div class="card">
 			<div class="container-fluid">
 				<div class="row" style="margin-top: 15px; margin-bottom: 10px;">
 					<div class="card-image col s4" style="position: relative;">
-					
-								  <div id="links">
+						<div id="links">
 			<c:if test="${fn:length(order.room.photos) == 0}">
-						<a
-							href="<i:urlToImage url="no.jpg" />"
+						<a href="<i:urlToImage url="no.jpg" />"
 							title="No image"
 							data-gallery> <img
 							src="<i:urlToImage url="no.jpg" />"
@@ -142,14 +139,14 @@ b {
 										<a class="tooltipped" data-position="icon"
 											data-tooltip="StartDate" style="color: #0d0d0d;"><i
 											class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
-										<span id="order_card_from">
+										<span class="order_card_from">
 										<span id="start_date${order.id}">${order.startDate}</span>
 									</div>
 									<div>
 										<a class="tooltipped" data-position="icon"
 											data-tooltip="EndDate" style="color: #0d0d0d;">
 											<i class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
-										<span id="order_card_to"> </span>
+										<span class="order_card_to"> </span>
 										<span id="end_date${order.id}">${order.endDate}</span>
 									</div>
 									<script type="text/javascript"
@@ -268,13 +265,13 @@ b {
 							<a id="remove${order.id}"
 								class="my-btn waves-effect waves-light btn"
 								style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-								onclick="removeOrderCard(${order.id})">REMOVE</a>
+								onclick="removeOrderCard(${order.id})"><span class="btn_remove"></span></a>
 						</div>
 						<div class="col s2 offset-s2">
 							<a id="book${order.id}"
 								class="my-btn waves-effect waves-light btn"
 								style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
-								onclick="bookOrderCard(${order.id},${order.room.daysCount})"><span id="order_card_order"></span></a>
+								onclick="bookOrderCard(${order.id},${order.room.daysCount})"><span class="order_card_order"></span></a>
 						</div>
 					</div>
 				</div>

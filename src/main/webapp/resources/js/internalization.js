@@ -500,6 +500,7 @@ function changeLanguageOnTags(language){
 		if(prop == language){
 			for ( var idElement in languages[prop]){
 				$("#" + idElement).html(languages[prop][idElement]);
+				$("." + idElement).html(languages[prop][idElement]);
 			}
 			break;
 		}
@@ -511,6 +512,7 @@ function changeLanguageOfErrors(language){
 			languages.error.current = languages.error[prop];
 			for ( var idElement in languages.error[prop]){
 				$("#" + idElement).attr('data-error', languages.error[prop][idElement]);
+				$("." + idElement).attr('data-error', languages.error[prop][idElement]);
 			}
 			break;
 		}
@@ -522,6 +524,7 @@ function changeLanguageOfDataTooltip(language){
 		if(prop == language){
 			for ( var idElement in languages.data_tooltip[prop]){
 				$("#" + idElement).attr('data-tooltip', languages.data_tooltip[prop][idElement]);
+				$("." + idElement).attr('data-tooltip', languages.data_tooltip[prop][idElement]);
 			}
 			break;
 		}
