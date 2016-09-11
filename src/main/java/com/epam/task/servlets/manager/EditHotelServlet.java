@@ -30,27 +30,37 @@ public class EditHotelServlet extends HttpServlet {
 		String xCoordString = request.getParameter("xCoord");
 		String yCoordString = request.getParameter("yCoord");
 		String phoneNumber = request.getParameter("phoneNumber");
+
+		String deletedString = request.getParameter("deleted"); //true or false
 		
 		if (hotelIdString == null || name == null || city == null || street == null || starsString == null || description == null ||
 				xCoordString == null || yCoordString == null || phoneNumber == null ||
 				!StringUtil.isPositiveInteger(hotelIdString) || !StringUtil.isInStarsRange(starsString) ||
-				!StringUtil.isDouble(xCoordString) || !StringUtil.isDouble(yCoordString)) {
+				!StringUtil.isDouble(xCoordString) || !StringUtil.isDouble(yCoordString) || !StringUtil.isBoolean(deletedString)) {
 			response.sendError(500);
 			return;
 		}
-		
-		int hotelId = Integer.parseInt(hotelIdString);		
-		int stars = Integer.parseInt(starsString);		
-		double xCoord = Double.parseDouble(xCoordString);
-		double yCoord = Double.parseDouble(yCoordString);
-		
 		HotelService hotelService = new HotelService();
+		int hotelId = Integer.parseInt(hotelIdString);	
+
 		Hotel hotel = hotelService.getHotelById(hotelId);
 		int userId = ((User) request.getSession().getAttribute("user")).getId();
 		if(hotel.getManagerId() != userId) {
 			response.sendError(500);
 			return;
 		}
+		
+		if(Boolean.parseBoolean(deletedString)) {
+			hotel.setDeleted(true);
+			int changed = hotelService.updateHotel(hotel);
+			response.getWriter().write(changed > 0 ? "true" : "false");
+			return;
+		}
+			
+		int stars = Integer.parseInt(starsString);		
+		double xCoord = Double.parseDouble(xCoordString);
+		double yCoord = Double.parseDouble(yCoordString);
+		
 		hotel.setName(name);
 		hotel.setCity(city);
 		hotel.setStreet(street);
