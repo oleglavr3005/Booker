@@ -243,3 +243,23 @@ function getInfoFromGoogle() {
 		return;
 	}
 }
+
+function changeIsDeleted() {
+	var deleted = document.getElementById('isDeleted').checked;
+	$('#name').prop('disabled', deleted);
+	//$('#rating').prop('readonly', deleted);
+	$('#address').prop('disabled', deleted);
+	$('#phone').prop('disabled', deleted);
+	$('#desc').prop('disabled', deleted);
+	
+	if (deleted) {
+		$('#pushImage').addClass('disabled');
+	} else {
+		$('#pushImage').removeClass('disabled');
+	}
+	if (deleted) {
+		$('#createBtn').addClass('disabled');
+	} else {
+		$('#createBtn').removeClass('disabled');
+	}
+}

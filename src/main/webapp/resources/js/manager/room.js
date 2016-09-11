@@ -218,8 +218,9 @@ function removeRoomPhoto() {
 
 function changeFreeBook() {
 	var freeBook = document.getElementById('freeBook').checked;
-	$('#percentage').prop('disabled', freeBook);
-	$('#days').prop('disabled', freeBook);
+	var deleted = document.getElementById('isDeleted').checked;
+	$('#percentage').prop('disabled', freeBook || deleted);
+	$('#days').prop('disabled', freeBook || deleted);
 }
 
 
