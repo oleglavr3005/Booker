@@ -114,7 +114,7 @@ img.logo {
 				</div>
 			</div>
 			<div id="navbar" class="navbar-header" style="width: 340px; margin-bottom: 0px; margin-left: calc(100% - 360px - 350px);">
-				<ul class="nav navbar-nav navbar-right" style="width: 210px; margin-left: calc(100% - 210px); padding-top: 5px;">
+				<ul class="nav navbar-nav navbar-right" style="padding-top: 5px;">
 					<c:choose>
 						<c:when test="${user != null}">	
 								<div class="dropdown" style="padding-top:0.7rem;">
@@ -180,19 +180,19 @@ img.logo {
 									</div>
 									<div class="modal-content" style="margin-top: -10px">
 										<div class="form-horizontal registrationFrm">
-											<div class="input-field col">
+											<div class="input-field">
 												<input id="name" type="text" class="validate"> <label
 													id="nameLbl" data-error="" for="name">
 													<span id="header_regist_name"> </span>
 												</label>
 											</div>
-											<div class="input-field col">
+											<div class="input-field">
 												<input id="surname" type="text" class="validate"> <label
 													id="surnameLbl" data-error="" for="surname">
 													<span id="header_regist_surname"> </span>
 												</label>
 											</div>
-											<div class="input-field col">
+											<div class="input-field">
 												<input id="email" type="email" class="validate"> <label
 													id="emailLbl" data-error="" for="email">
 													<span id="header_regist_mail"> </span>
@@ -245,7 +245,7 @@ img.logo {
 											<span id="header_auth"> </span>
 										</h4>
 										<div class="form-horizontal loginFrm">
-											<div class="input-field col">
+											<div class="input-field">
 												<input id="emailAuth" type="email" class="validate">
 												<label id="emailAuthLbl" data-error="${fmtMail}"
 													for="emailAuth">
