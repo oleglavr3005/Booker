@@ -174,6 +174,7 @@ function endDateIsValid() {
 function findPage(url,pageNumber) {	
 	var path = url.substring(url.lastIndexOf("/") + 1,url.lenght);	
 	var compare = $('#compare').val();
+	$('#pageNmb').val(pageNumber);
 	$.get(path, {
 		flag : 'true',
 		page : pageNumber,

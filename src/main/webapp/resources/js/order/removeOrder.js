@@ -15,7 +15,10 @@ function removeOrderCard(orderId) {
 				$('#remove' + orderId).text("FAIL");
 				$('#remove' + orderId).attr('disabled', true);
 			}
-			$.get('../refresh_cart', {}, function(orders) {
+			$.get('../refresh_cart', {
+				compareBy : $('#compare').val(),
+				page : $('#pageNmb').val()
+			}, function(orders) {
 				$('#switchContent').html(orders);
 			});
 		});
