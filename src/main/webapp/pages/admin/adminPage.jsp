@@ -38,6 +38,9 @@
 <link
 	href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"
 	rel="stylesheet">
+	
+	<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/css/style.css">
 <style>
 .btn {
 	background: #26A69A;
@@ -111,12 +114,12 @@
 
 			<!-- 			Tab Holder -->
 			<div class="col s8 offset-s2">
-				<ul class="tabs" style="background: #638F98;">
+				<ul class="tabs" style="background: #12444c;">
 					<li id="admin_page_users" class="tab col s5 offset-s1"><a
-						class="active" href="#test1" style="color: #1A3D44"><b><p
+						class="active" href="#test1" style="color: #F7F7F7"><b><p
 									id="tab_users"></p></b></a></li>
 					<li class="tab col s5 offset-s1"><a href="#test2"
-						style="color: #1A3D44"><b><p id="tab_contact"></p></b></a></li>
+						style="color: #F7F7F7"><b><p id="tab_contact"></p></b></a></li>
 				</ul>
 			</div>
 			<!-- 			End of Tab Holder -->
