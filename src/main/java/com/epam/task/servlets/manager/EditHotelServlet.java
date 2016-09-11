@@ -51,8 +51,7 @@ public class EditHotelServlet extends HttpServlet {
 		}
 		
 		if(Boolean.parseBoolean(deletedString)) {
-			hotel.setDeleted(true);
-			int changed = hotelService.updateHotel(hotel);
+			int changed = hotelService.removeHotel(hotelId);
 			response.getWriter().write(changed > 0 ? "true" : "false");
 			return;
 		}
@@ -69,6 +68,8 @@ public class EditHotelServlet extends HttpServlet {
 		hotel.setXCoord(xCoord);
 		hotel.setYCoord(yCoord);
 		hotel.setPhoneNumber(phoneNumber);
+		
+		hotel.setDeleted(Boolean.parseBoolean(deletedString));
 		int changed = hotelService.updateHotel(hotel);
 	
 		response.getWriter().write(changed > 0 ? "true" : "false");

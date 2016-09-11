@@ -72,8 +72,7 @@ public class EditRoomServlet extends HttpServlet {
 		}
 		
 		if(Boolean.parseBoolean(deletedString)) {
-			room.setDeleted(true);
-			int changed = roomService.updateRoom(room);
+			int changed = roomService.removeRoom(roomId);
 			response.getWriter().write(changed > 0 ? "true" : "false");
 			return;
 		}
@@ -123,6 +122,8 @@ public class EditRoomServlet extends HttpServlet {
 
 		room.setDaysCount(daysCount);
 		room.setPercentage(percentage);
+		
+		room.setDeleted(Boolean.parseBoolean(deletedString));
 		
 		int changed = roomService.updateRoom(room);
 	

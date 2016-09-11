@@ -266,10 +266,10 @@ public class HotelDao {
 		}
 	}
 	
-	public int removeHotel(Hotel hotel) {
+	public int removeHotel(int hotelId) {
 		try (PreparedStatement statment = connection.prepareStatement(CHANGE_HOTEL_STATUS)) {
 			statment.setBoolean(1, true);
-			statment.setInt(2, hotel.getId());
+			statment.setInt(2, hotelId);
 			return statment.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -277,10 +277,10 @@ public class HotelDao {
 		}
 	}
 	
-	public int restoreHotel(Hotel hotel) {
+	public int restoreHotel(int hotelId) {
 		try (PreparedStatement statment = connection.prepareStatement(CHANGE_HOTEL_STATUS)) {
 			statment.setBoolean(1, false);
-			statment.setInt(2, hotel.getId());
+			statment.setInt(2, hotelId);
 			return statment.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
