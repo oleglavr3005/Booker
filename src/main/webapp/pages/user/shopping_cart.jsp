@@ -319,6 +319,11 @@
 			});
 		}
 	</script>
+	
+	<script>
+ 	var count = ${countOfOrders};
+ 		$('#periodicals_number_for_all_users').html(count);
+ 	</script>
 
 </body>
 
