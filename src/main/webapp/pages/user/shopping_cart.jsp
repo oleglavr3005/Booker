@@ -110,10 +110,14 @@
 				<c:if test="${countOfOrders > 0 }">
 					<select id="compare" class="chosen-select optionstyle"
 						onchange="findPage(window.location.href,1)">
-						<option id="shoping_card_date_asc" class="optionstyle" value="compareByDateAsc"></option>
-						<option id="shoping_card_date_desc" class="optionstyle" value="compareByDateDesc" selected="selected"></option>
-						<option id="shoping_card_price_asc" class="optionstyle" value="compareByPriceAsc"></option>
-						<option id="shoping_card_price_desc" class="optionstyle" value="compareByPriceDesc"></option>
+						<option id="shoping_card_date_asc" class="optionstyle"
+							value="compareByDateAsc"></option>
+						<option id="shoping_card_date_desc" class="optionstyle"
+							value="compareByDateDesc" selected="selected"></option>
+						<option id="shoping_card_price_asc" class="optionstyle"
+							value="compareByPriceAsc"></option>
+						<option id="shoping_card_price_desc" class="optionstyle"
+							value="compareByPriceDesc"></option>
 					</select>
 				</c:if>
 			</div>
@@ -128,6 +132,39 @@
 
 		<!-- END OF SWITCH CONTENT -->
 
+
+
+		<!-- TEST ZONE -->
+
+		<div class="row">
+			<div class="col s2 offset-s1">
+				<a class="waves-effect waves-light btn"
+					style="background: #26A69A; color: #FFFFFF;"
+					onclick="testFunction(0)">0</a>
+			</div>
+			<div class="col s2 offset-s1">
+				<a class="waves-effect waves-light btn"
+					style="background: #26A69A; color: #FFFFFF;"
+					onclick="testFunction(1)">1</a>
+			</div>
+			<div class="col s2 offset-s1">
+				<a class="waves-effect waves-light btn"
+					style="background: #26A69A; color: #FFFFFF;"
+					onclick="testFunction(2)">2</a>
+			</div>
+			<div class="col s2 offset-s1">
+				<a class="waves-effect waves-light btn"
+					style="background: #26A69A; color: #FFFFFF;"
+					onclick="testFunction(3)">3</a>
+			</div>
+		</div>
+
+
+		<script type="text/javascript"
+			src="${pageContext.servletContext.contextPath}/resources/js/test/recommendModal.js"></script>
+
+
+		<!-- END OF TEST ZONE -->
 
 
 
@@ -156,8 +193,8 @@
 
 				<div class="row" id="row0" style="display: none">
 					<div class="col s4">
-						<a id="href01" href="http://localhost:8080/booker/hotel/"> <img id="img0" 
-							src="<i:urlToImage url="new_hotel.jpg" />"
+						<a id="href01" href="http://localhost:8080/booker/hotel/"> <img
+							id="img0" src="<i:urlToImage url="new_hotel.jpg" />"
 							style="height: 110px; width: 150px;">
 						</a>
 					</div>
@@ -167,36 +204,28 @@
 								<a id="href02" href="http://localhost:8080/booker/hotel/"><span
 									id="hotelName0"></span></a>
 							</div>
-							<!-- 							<div class="col s6 offset-s1"> -->
-							<%-- 								<a style="color: #0d0d0d; text-decoration: none;"> <c:forEach --%>
-							<%-- 										var="i" begin="1" end="+ hotel.stars +"> --%>
-							<%-- 										<i class="fa fa-lg fa-star" aria-hidden="true"></i> --%>
-							<%-- 									</c:forEach> <c:forEach var="i" begin="+ hotel.stars +" end="4"> --%>
-							<%-- 										<i class="fa fa-lg fa-star-o" aria-hidden="true"></i> --%>
-							<%-- 									</c:forEach> --%>
-							<!-- 								</a> -->
-							<!-- 							</div> -->
+							<div class="col s6 offset-s1">
+								<i id="00" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								<i id="01" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								<i id="02" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								<i id="03" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								<i id="04" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+							</div>
 						</div>
 						<div class="row">
 							<i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i><span
 								id="location0"></span>
 						</div>
 					</div>
-					<!-- 					<div class="col s2"> -->
-					<!-- 						<div class="row"> -->
-					<!-- 							<a class="waves-effect waves-light btn" -->
-					<!-- 								href="http://localhost:8080/booker/hotel/+ hotel.id +" -->
-					<!-- 								style="margin-top: 30px; margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: Times, serif;"><span>INFO</span></a> -->
-					<!-- 						</div> -->
-					<!-- 					</div> -->
 				</div>
 
 
 
 				<div class="row" id="row1" style="display: none">
 					<div class="col s4">
-						<a id="href11" href="http://localhost:8080/booker/hotel/"> <img id="img1"
-<%-- 							src="<i:urlToImage url="new_hotel.jpg" />" --%>
+						<a id="href11" href="http://localhost:8080/booker/hotel/"> <img
+							id="img1"
+							<%-- 							src="<i:urlToImage url="new_hotel.jpg" />" --%>
 							style="height: 110px; width: 150px;">
 						</a>
 					</div>
@@ -206,28 +235,19 @@
 								<a id="href12" href="http://localhost:8080/booker/hotel/"><span
 									id="hotelName1"></span></a>
 							</div>
-							<!-- 							<div class="col s6 offset-s1"> -->
-							<%-- 								<a style="color: #0d0d0d; text-decoration: none;"> <c:forEach --%>
-							<%-- 										var="i" begin="1" end="+ hotel.stars +"> --%>
-							<%-- 										<i class="fa fa-lg fa-star" aria-hidden="true"></i> --%>
-							<%-- 									</c:forEach> <c:forEach var="i" begin="+ hotel.stars +" end="4"> --%>
-							<%-- 										<i class="fa fa-lg fa-star-o" aria-hidden="true"></i> --%>
-							<%-- 									</c:forEach> --%>
-							<!-- 								</a> -->
-							<!-- 							</div> -->
+							<div class="col s6 offset-s1">
+								<i id="10" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								<i id="11" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								<i id="12" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								<i id="13" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								<i id="04" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+							</div>
 						</div>
 						<div class="row">
 							<i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i><span
 								id="location1"></span>
 						</div>
 					</div>
-					<!-- 					<div class="col s2"> -->
-					<!-- 						<div class="row"> -->
-					<!-- 							<a class="waves-effect waves-light btn" -->
-					<!-- 								href="http://localhost:8080/booker/hotel/+ hotel.id +" -->
-					<!-- 								style="margin-top: 30px; margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: Times, serif;"><span>INFO</span></a> -->
-					<!-- 						</div> -->
-					<!-- 					</div> -->
 				</div>
 
 
@@ -235,7 +255,7 @@
 				<div class="row" id="row2" style="display: none">
 					<div class="col s4">
 						<a id="href21" href="http://localhost:8080/booker/hotel/"> <img
-							src="<i:urlToImage id="img3" url="new_hotel.jpg" />"
+							id="img2" src="<i:urlToImage url="new_hotel.jpg" />"
 							style="height: 110px; width: 150px;">
 						</a>
 					</div>
@@ -245,28 +265,19 @@
 								<a id="href22" href="http://localhost:8080/booker/hotel/"><span
 									id="hotelName2"></span></a>
 							</div>
-							<!-- 							<div class="col s6 offset-s1"> -->
-							<%-- 								<a style="color: #0d0d0d; text-decoration: none;"> <c:forEach --%>
-							<%-- 										var="i" begin="1" end="+ hotel.stars +"> --%>
-							<%-- 										<i class="fa fa-lg fa-star" aria-hidden="true"></i> --%>
-							<%-- 									</c:forEach> <c:forEach var="i" begin="+ hotel.stars +" end="4"> --%>
-							<%-- 										<i class="fa fa-lg fa-star-o" aria-hidden="true"></i> --%>
-							<%-- 									</c:forEach> --%>
-							<!-- 								</a> -->
-							<!-- 							</div> -->
+							<div class="col s6 offset-s1">
+								<i id="20" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								<i id="21" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								<i id="22" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								<i id="23" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								<i id="24" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+							</div>
 						</div>
 						<div class="row">
 							<i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i><span
 								id="location2"></span>
 						</div>
 					</div>
-					<!-- 					<div class="col s2"> -->
-					<!-- 						<div class="row"> -->
-					<!-- 							<a class="waves-effect waves-light btn" -->
-					<!-- 								href="http://localhost:8080/booker/hotel/+ hotel.id +" -->
-					<!-- 								style="margin-top: 30px; margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: Times, serif;"><span>INFO</span></a> -->
-					<!-- 						</div> -->
-					<!-- 					</div> -->
 				</div>
 
 
@@ -274,7 +285,8 @@
 			</div>
 		</div>
 		<div class="modal-footer" style="padding-bottom: 0px; height: 40px;">
-			<a id="shopping_cart_click" href="${pageContext.servletContext.contextPath}/cabinet/orders"></a>
+			<a id="shopping_cart_click"
+				href="${pageContext.servletContext.contextPath}/cabinet/orders"></a>
 		</div>
 	</div>
 	<!-- 	END OF SUCCES MODAL -->
@@ -319,11 +331,14 @@
 			});
 		}
 	</script>
-	
+
 	<script>
- 	var count = ${countOfOrders};
- 		$('#periodicals_number_for_all_users').html(count);
- 	</script>
+		var count = $
+		{
+			countOfOrders
+		};
+		$('#periodicals_number_for_all_users').html(count);
+	</script>
 
 </body>
 
