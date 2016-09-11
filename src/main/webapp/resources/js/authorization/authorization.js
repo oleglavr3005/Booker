@@ -31,7 +31,7 @@ function invalid(field) {
 
 
 function forgot(){
-	$.post('forgot', {
+	$.post(mapping == null ? '':mapping + "forgot", {
 		email : $('#emailAuth').val()
 	}, function(result){
 		if(result == 'false'){
