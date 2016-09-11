@@ -193,7 +193,7 @@
 
 		subscribes_header : "List of orders",
 		card_status_active : "Active",
-		subscribes_table_remove : "Delete order",
+		subscribes_table_remove : "Cancel",
 		subscribes_empty : "Not Found?",
 		subscribes_table_name : "Hotel",
 		subscribes_table_startDate : "Check-in",
@@ -453,7 +453,7 @@
 
 		subscribes_header : "Список замовлень",
 		card_status_active : "Активне",
-		subscribes_table_remove : "Видалити замовлення",
+		subscribes_table_remove : "Скасувати",
 		subscribes_empty : "Не знайдено??",
 		subscribes_table_name : "Готель",
 		subscribes_table_startDate : "В'їзд",
@@ -564,6 +564,9 @@
 			index_search_stars : "Зірки",
 			index_search_location : "Розташування",
 			index_search_description : "Опис",
+			tooltip_phone_number : "Номер телефону",
+			tooltip_showe_all_info : "Показати всю інформацію",
+			tooltip_rating : "Рейтинг",
 		},
 		en : {
 			index_room_wifi : "Wifi",
@@ -576,6 +579,9 @@
 			index_search_stars : "Stars",
 			index_search_location : "Location",
 			index_search_description : "Description",
+			tooltip_phone_number : "Phone number",
+			tooltip_showe_all_info : "Show full info",
+			tooltip_rating : "Rating",
 		}
 	};
 	
