@@ -9,11 +9,21 @@ function createOrder(orders) {
 }
 
 function bookOrderCard(orderId, daysCount) {
+	debugger;
 	var localComment = orderId == null ? $('#comment').val() : $(
 			'#comment' + orderId).val();
 	var code = value($('#cardnum1').val()) + value($('#cardnum2').val())
 			+ value($('#cardnum3').val()) + value($('#cardnum4').val());
-	if (!$('#book' + orderId).attr('disabled')) {
+	
+	var flag;
+	if (orderId != null){
+		flag = $('#book' + orderId).attr('disabled');
+	}
+	else {
+		flag = $('#book').attr('disabled')
+	}
+	
+	if (!flag) {
 		var url;
 		if (orderId == null) {
 			url = '../book_all';

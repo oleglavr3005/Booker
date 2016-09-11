@@ -81,7 +81,7 @@ b {
 	<div id="hotel_card_${room.id}" class="col s10 offset-s1">
 		<div class="card">
 			<div class="container-fluid">
-				<div class="row" style="margin-top: 15px; margin-bottom: 10px;">
+				<div class="row" style="margin-top: 15px; margin-bottom: 0px;">
 					<div class="card-image col s4" style="position: relative;">
 						<div id="links">
 							<c:if test="${fn:length(room.photos) == 0}">
@@ -125,8 +125,6 @@ b {
 						</div>
 						<!-- 				END OF ROOM TYPE ZONE -->
 
-
-
 						<!-- BEDS ICON ZONE -->
 						<div class="row">
 							<a class="tooltipped" data-position="icon"
@@ -155,12 +153,16 @@ b {
 							<a class="tooltipped" data-position="icon"
 								data-tooltip="Price for one day" style="color: #0d0d0d;"><i
 								class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${room.price}</span>
-<%-- 							<c:if test="${room.daysCount == -1}"> --%>
-<!-- 								<a class="tooltipped" data-position="icon" -->
-<%-- 									data-tooltip="No deposit" style="color: #0d0d0d;"><i --%>
-<%-- 									class="fa fa-2x fa-exclamation-circle invert" --%>
-<%-- 									aria-hidden="true"></i></a> --%>
-<%-- 							</c:if> --%>
+
+							<i onclick="showInfo(${room.id})" class="fa fa-lg fa-info invert"
+								aria-hidden="true"></i>
+
+							<%-- 							<c:if test="${room.daysCount == -1}"> --%>
+							<!-- 								<a class="tooltipped" data-position="icon" -->
+							<%-- 									data-tooltip="No deposit" style="color: #0d0d0d;"><i --%>
+							<%-- 									class="fa fa-2x fa-exclamation-circle invert" --%>
+							<%-- 									aria-hidden="true"></i></a> --%>
+							<%-- 							</c:if> --%>
 						</div>
 						<!-- END OF ROOM PRICE ZONE -->
 
@@ -215,12 +217,42 @@ b {
 								</a>
 							</c:if>
 						</div>
+						<div class="row" style="margin-bottom: 0px; margin-top: 120px;">
+							<c:if test="${user != null}">
+								<div class="col s3" id="cont"></div>
+								<c:if test="${startDate != null}">
+									<a id="btn${room.id}" class="waves-effect waves-light btn"
+										onclick="addToCart(${room.id})"
+										style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+										<span class="room_card_add_to_cart"></span>
+									</a>
+								</c:if>
+
+								<c:if test="${startDate == null}">
+									<div class="hiddenError" class="col s2 offset-s6"></div>
+								</c:if>
+
+
+							</c:if>
+							<c:if test="${user == null}">
+								<div class="row">
+									<div class="col s3" style="float: right">
+										<a class="waves-effect waves-light btn" disabled
+											style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+											<span class="room_card_need_login"></span>
+										</a>
+									</div>
+								</div>
+							</c:if>
+
+						</div>
 					</div>
 				</div>
 
 				<!-- 						INFO MONEY REFUND ZONE -->
 				<div class="row">
-					<div class="col s9">
+					<div id="details_panel${room.id}" class="col s12"
+						style="display: none">
 						<c:choose>
 							<c:when test="${room.daysCount > -1}">
 								<div
@@ -235,36 +267,6 @@ b {
 							</c:otherwise>
 						</c:choose>
 					</div>
-
-
-					<c:if test="${user != null}">
-						<div class="col s3" id="cont"></div>
-						<c:if test="${startDate != null}">
-								<a id="btn${room.id}" class="waves-effect waves-light btn"
-									onclick="addToCart(${room.id})"
-									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-									<span class="room_card_add_to_cart"></span>
-								</a>
-						</c:if>
-
-						<c:if test="${startDate == null}">
-							<div class="hiddenError" class="col s2 offset-s6"></div>
-						</c:if>
-
-
-					</c:if>
-					<c:if test="${user == null}">
-						<div class="row">
-							<div class="col s3" style="float: right">
-								<a class="waves-effect waves-light btn" disabled
-									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-									<span class="room_card_need_login"></span>
-								</a>
-							</div>
-						</div>
-					</c:if>
-
-
 
 				</div>
 				<!-- 						END OF INFO MONEY REFUND ZONE -->
@@ -330,6 +332,9 @@ b {
 
 <script
 	src="${pageContext.servletContext.contextPath}/resources/js/order/createOrder.js"
+	type="text/javascript"></script>
+<script
+	src="${pageContext.servletContext.contextPath}/resources/js/hotel/infoToggle.js"
 	type="text/javascript"></script>
 
 <script>
