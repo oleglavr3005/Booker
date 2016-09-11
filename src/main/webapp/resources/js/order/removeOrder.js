@@ -44,6 +44,7 @@ function removeOrderTable(orderId) {
 			$('.order' + orderId).remove();
 		});
 	});
+	$("#t" + orderId).addClass('disabled');
 }
 
 function removeOrder(orderId) {

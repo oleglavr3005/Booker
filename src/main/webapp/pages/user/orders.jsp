@@ -226,7 +226,7 @@ div.material-table .table-footer .dataTables_length {
 
 										<td style="text-align: center;">${activeOrder.price}</td>
 
-										<td style="text-align: center;"><a
+										<td style="text-align: center;"><a id="t${activeOrder.id }"
 											class="my-btn waves-effect waves-light btn"
 											style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif;"
 											onclick="removeOrderTable(${activeOrder.id})"> <span
