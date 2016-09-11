@@ -58,7 +58,7 @@
 								data-size="xs" data-stars="5"> <span
 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;">
 							<span id="manager_hotel_star"></span>
-							<span id="rate_span">0</span>
+							<span id="rate_span">1</span>
 								/ 5 |</span>
 							<script>
 								function rate() {
