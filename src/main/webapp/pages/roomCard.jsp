@@ -60,12 +60,6 @@ b {
 
 <div class="divider" style="margin: 0;"></div>
 
-<c:if test="${countOfRooms == 0}">
-	<h5 style="color: red; margin-bottom: 63px;">
-		<fmt:message key="card.no.periodicals" />
-	</h5>
-</c:if>
-
 <!--END MOVE TO HOTEL -->
 
 <input id="flag" type="hidden" value="true" />
@@ -327,6 +321,11 @@ b {
 				});
 			});
 		}
+ 	</script>
+ 	
+ 	<script>
+ 	var count = ${countOfRooms};
+ 		$('#periodicals_number_for_all_users').html(count);
  	</script>
 
 
