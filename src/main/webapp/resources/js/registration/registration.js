@@ -97,8 +97,8 @@ function emailIsValid(email) {
 		dataType : 'text',
 		data : {
 			"email" : email
-		}
-	}).success(function(data) {
+		},
+	success : function(data) {
 		isValid = (data == "true");
 		if(!isValid){
 			invalid('email');
@@ -106,10 +106,12 @@ function emailIsValid(email) {
 		}else{			
 			valid('email');
 		}
-	}).error(function(data) {
+	},
+	error : function(data) {
 		isValid = false;
 		$('#emailLbl').attr("data-error", wrongMail);
 		invalid('email');
+	}
 	});
 	return isValid;
 }
