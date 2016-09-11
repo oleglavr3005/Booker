@@ -37,7 +37,8 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
 	rel="stylesheet">
-
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/css/style.css">
 
 <style>
 .btn {
@@ -87,6 +88,7 @@
 .well {
 	padding: 0px;
 }
+
 </style>
 
 </head>

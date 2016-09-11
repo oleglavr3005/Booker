@@ -188,4 +188,5 @@ function findPage(url,pageNumber) {
 	}, function(orders) {
 		$('#switchContent').html(orders);
 	});
+	setTimeout('updateLanguage()', 50);
 }

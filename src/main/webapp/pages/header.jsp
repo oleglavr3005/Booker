@@ -69,7 +69,28 @@ img.logo {
 <fmt:message key="header.error.mailuse" var="fmtMailUse" />
 
 <!-- =================================================================== -->
-
+	<c:choose>
+		<c:when test="${user == null}">
+			<c:choose> 
+			<c:when test="${language == null}">
+				<script>
+					var currentLanguage = 'en';
+				</script>
+			</c:when>
+			<c:otherwise>
+				<script>
+					var currentLanguage = '${language}';
+				</script>
+			</c:otherwise>
+			</c:choose>
+		</c:when>
+		<c:otherwise>
+			<script>
+				var currentLanguage = '${user.language}';
+			</script>
+		</c:otherwise>
+	</c:choose>
+	
 <nav class="navbar navbar-default navbar-static-top"
 	style="margin-bottom: 0px; background: #12444c;">
 	<div class="container-fluid">
