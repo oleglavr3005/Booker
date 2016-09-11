@@ -76,6 +76,7 @@ function searchRooms(hotelId) {
 			$('#switchContent').html(hotels);
 		});
 	}
+	setTimeout('updateLanguage()', 100);
 }
 
 function simpleSearch() {
@@ -188,5 +189,5 @@ function findPage(url,pageNumber) {
 	}, function(orders) {
 		$('#switchContent').html(orders);
 	});
-	setTimeout('updateLanguage()', 50);
+	setTimeout('updateLanguage()', 100);
 }
