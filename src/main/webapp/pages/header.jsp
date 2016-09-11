@@ -103,14 +103,7 @@ img.logo {
 				<img class="logo" src="${pageContext.servletContext.contextPath}/resources/themes/images/logo.png" alt="Periodicals" />
 			</a>
 		</div>
-		<div style="padding-top: 5px;">
-			<a class="en" class="waves-effect waves-light btn" onclick="changeLanguage('en')" 
-				style="width: 60px;background: #26A69A;text-align: center;color: #F7F7F7;margin-left: calc(50% - 30px);">
-			</a>
-			<a class="ua" class="waves-effect waves-light btn" onclick="changeLanguage('ua')" 
-				style="width: 60px;background: #26A69A;text-align: center;color: #F7F7F7;margin-left: calc(50% - 30px);">
-			</a>
-		</div>
+		
 		<div id="navbar" class="navbar" style="margin-bottom: 0px; margin-left:300px">
 			<ul class="nav navbar-nav navbar-right" style="padding-top: 5px;">
 				<c:choose>
