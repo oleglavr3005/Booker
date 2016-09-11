@@ -267,8 +267,8 @@ div #sidebar-wrapper {
 		<div class="row">
 			<div class="col s3 offset-s3">
 
-				<a class="my-btn waves-effect waves-light btn"
-					style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
+				<a class="waves-effect waves-light btn"
+					style="background: #26A69A; color: #FFFFFF; margin: 0 auto;"
 					onclick="pushInput()"><span id="btn_add_image"></span> </a>
 
 				<!-- 				INPUT -->
@@ -280,8 +280,8 @@ div #sidebar-wrapper {
 			</div>
 
 			<div class="col s3 offset-s1">
-				<a class="my-btn waves-effect waves-light btn"
-					style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px; margin: 0 auto;"
+				<a class="waves-effect waves-light btn"
+					style="background: #F55151; color: #FFFFFF; margin: 0 auto;"
 					onclick="removeHotelPhoto()"><span id="btn_remove"></span> </a>
 			</div>
 		</div>

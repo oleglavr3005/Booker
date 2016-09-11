@@ -266,14 +266,14 @@ b {
 					<div class="row">
 						<div class="col s2 offset-s4">
 							<a id="remove${order.id}"
-								class="my-btn waves-effect waves-light btn"
-								style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+								class="waves-effect waves-light btn"
+								style="background: #F55151; color: #FFFFFF; "
 								onclick="removeOrderCard(${order.id})">REMOVE</a>
 						</div>
 						<div class="col s2 offset-s2">
 							<a id="book${order.id}"
-								class="my-btn waves-effect waves-light btn"
-								style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+								class="waves-effect waves-light btn"
+								style="background: #26A69A; color: #FFFFFF;"
 								onclick="bookOrderCard(${order.id},${order.room.daysCount})"><span id="order_card_order"></span></a>
 						</div>
 					</div>
@@ -312,13 +312,13 @@ b {
 
 		</div>
 		<div class="col s2 offset-s3">
-			<a id="clearBtn" class="my-btn waves-effect waves-light btn"
-				style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+			<a id="clearBtn" class="waves-effect waves-light btn"
+				style="background: #F55151; color: #FFFFFF;"
 				onclick="clearCart()"><span id="order_card_clear"></span></a>
 		</div>
 		<div class="col s2 offset-s1">
-			<a class="my-btn waves-effect waves-light btn"
-				style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; border-radius: 25px;"
+			<a class="waves-effect waves-light btn"
+				style="background: #26A69A; color: #FFFFFF;"
 				onclick="bookOrderCard(null,${summary})"><span id="order_card_order"></span></a>
 		</div>
 	</div>
