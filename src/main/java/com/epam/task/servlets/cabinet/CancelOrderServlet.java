@@ -34,9 +34,14 @@ public class CancelOrderServlet extends HttpServlet {
 			return;
 		}
 
+		User user = ((User) request.getSession().getAttribute("user"));
 		int orderId = Integer.parseInt(orderIdString);
 		OrderService service = new OrderService();
 		Order order = service.getOrderById(orderId);
+		if (order.getUserId() != user.getId()) {
+			response.sendError(500);
+			return;
+		}
 		Room room = new RoomService().getRoomById(order.getRoomId());
 
 		int days = room.getDaysCount();
@@ -53,7 +58,6 @@ public class CancelOrderServlet extends HttpServlet {
 																					// as
 																					// above
 			}
-			User user = ((User) request.getSession().getAttribute("user"));
 			String email = user.getEmail();
 			String phone = user.getPhoneNumber();
 			if (email != null) {

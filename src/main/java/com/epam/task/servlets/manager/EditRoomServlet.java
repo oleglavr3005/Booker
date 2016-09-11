@@ -7,7 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.Room;
+import com.epam.task.database.model.User;
+import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.RoomService;
 import com.epam.task.util.StringUtil;
 
@@ -84,6 +87,12 @@ public class EditRoomServlet extends HttpServlet {
 		
 		RoomService roomService = new RoomService();
 		Room room = roomService.getRoomById(roomId);
+		Hotel hotel = new HotelService().getHotelById(room.getHotelId());
+		int userId = ((User) request.getSession().getAttribute("user")).getId();
+		if(hotel.getManagerId() != userId) {
+			response.sendError(500);
+			return;
+		}
 		room.setNumber(number);
 		room.setType(type);
 		room.setBedsCount(bedsCount);
