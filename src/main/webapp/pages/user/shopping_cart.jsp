@@ -77,7 +77,7 @@
 	<input id="mapping" type="hidden"
 		value="${pageContext.servletContext.contextPath}/" />
 	<input id="pageNmb" type="hidden"
-		value="${pageContext.servletContext.contextPath}/" />
+		value="1" />
 
 	<input id="lang" type="hidden" value="${language}" />
 
