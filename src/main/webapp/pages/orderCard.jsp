@@ -67,15 +67,7 @@ b {
 	</div>
 </div>
 <!-- end GALLERY -->
-<h6>
-	<c:if test="${countOfOrders > 0 }">
-		<span id="card_header"></span>
-		<span id="periodicals_number_for_all_users">${countOfOrders}</span>
-	</c:if>
-	<c:if test="${countOfOrders <= 0 }">
-		<span id="card_no_periodicals"></span>
-	</c:if>
-</h6>
+
 <div class="divider" style="margin-bottom: 20px;"></div>
 
 <c:if test="${countOfOrders == 0}">
@@ -258,7 +250,7 @@ b {
 				<div class="row" style="margin-right: 10px;">
 					<div class="col s2">
 						<a id="remove${order.id}" class="waves-effect waves-light btn"
-							style="background: #F55151; color: #FFFFFF;"
+							style="background: #F55151; color: #FFFFFF; font-size: 10px;"
 							onclick="removeOrderCard(${order.id})"><span
 							class="btn_remove"></span></a>
 					</div>
@@ -277,7 +269,7 @@ b {
 					</div>
 					<div class="col s2 ">
 						<a id="book${order.id}" class="waves-effect waves-light btn"
-							style="background: #26A69A; color: #FFFFFF;"
+							style="background: #26A69A; color: #FFFFFF; font-size: 10px;"
 							onclick="bookOrderCard(${order.id},${order.room.daysCount})"><span
 							class="order_card_order"></span></a>
 					</div>
@@ -317,12 +309,12 @@ b {
 		</div>
 		<div class="col s2 offset-s3">
 			<a id="clearBtn" class="waves-effect waves-light btn"
-				style="background: #F55151; color: #FFFFFF;" onclick="clearCart()"><span
+				style="background: #F55151; color: #FFFFFF; font-size: 10px;" onclick="clearCart()"><span
 				id="order_card_clear"></span></a>
 		</div>
 		<div class="col s2 offset-s1">
 			<a class="waves-effect waves-light btn"
-				style="background: #26A69A; color: #FFFFFF;"
+				style="background: #26A69A; color: #FFFFFF; font-size: 10px;"
 				onclick="bookOrderCard(null,${summary})"><span
 				id="order_card_order"></span></a>
 		</div>
