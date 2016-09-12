@@ -200,7 +200,7 @@ div #sidebar-wrapper {
 									<c:if test="${room.wifi == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
-											<a id="index_room_wifi" class="tooltipped" data-position="icon"
+											<a class="tooltipped index_room_wifi" data-position="icon"
 												data-tooltip="Wifi" style="color: #0d0d0d;"><i
 												class="material-icons invert">wifi</i></a>
 										</div>
@@ -209,7 +209,7 @@ div #sidebar-wrapper {
 									<c:if test="${room.shower == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 32px; height: 32px;">
-											<a id="index_room_shower" class="tooltipped" data-position="icon"
+											<a class="tooltipped index_room_shower" data-position="icon"
 												data-tooltip="Shower"><img class="invert"
 												style="max-width: 230%;"
 												src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
@@ -219,7 +219,7 @@ div #sidebar-wrapper {
 									<c:if test="${room.parking == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
-											<a id="index_room_parking" class="tooltipped" data-position="icon"
+											<a class="tooltipped index_room_parking" data-position="icon"
 												data-tooltip="Parking" style="color: #0d0d0d;"><i
 												class="material-icons invert">local_parking</i></a>
 										</div>
@@ -228,7 +228,7 @@ div #sidebar-wrapper {
 									<c:if test="${room.condition == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
-											<a id="index_room_conditioner" class="tooltipped" data-position="icon"
+											<a class="tooltipped index_room_conditioner" data-position="icon"
 												data-tooltip="Condition" style="color: #0d0d0d;"><i
 												class="material-icons invert">toys</i></a>
 										</div>
@@ -237,7 +237,7 @@ div #sidebar-wrapper {
 									<c:if test="${room.pool == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
-											<a id="index_room_pool" class="tooltipped" data-position="icon"
+											<a class="tooltipped index_room_pool" data-position="icon"
 												data-tooltip="Pool" style="color: #0d0d0d;"><i
 												class="material-icons invert">pool</i></a>
 										</div>
@@ -246,7 +246,7 @@ div #sidebar-wrapper {
 									<c:if test="${room.gym == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
-											<a id="index_room_gym" class="tooltipped" data-position="icon" data-tooltip="Gym"
+											<a class="tooltipped index_room_gym" data-position="icon" data-tooltip="Gym"
 												style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
 										</div>
 									</c:if>
@@ -254,7 +254,7 @@ div #sidebar-wrapper {
 									<c:if test="${room.balcony == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 32px; height: 32px;">
-											<a id="index_room_balcony" class="tooltipped" data-position="icon"
+											<a class="tooltipped index_room_balcony" data-position="icon"
 												data-tooltip="Balcony"><img class="invert"
 												style="max-width: 230%;"
 												src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
@@ -268,7 +268,7 @@ div #sidebar-wrapper {
 							<!-- MAP MARKER -->
 							<div class="row">
 								<div class="col s12">
-									<a class="tooltipped" data-position="icon"
+									<a class="tooltipped index_search_location" data-position="icon"
 										data-tooltip="Location" style="color: #0d0d0d;"><i
 										class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
 									<span>${hotel.city} ${hotel.street}</span>
@@ -291,7 +291,7 @@ div #sidebar-wrapper {
 							<!-- ORDER DATE MARKER -->
 							<div class="row ">
 								<div class="col s12">
-									<a class="tooltipped" data-position="icon"
+									<a class="tooltipped tooltip_order_date" data-position="icon"
 										data-tooltip="Order date" style="color: #0d0d0d;"><i
 										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
 									<span id="order_concrete_order_date"></span> 
@@ -303,7 +303,7 @@ div #sidebar-wrapper {
 							<!-- START DATE MARKER -->
 							<div class="row ">
 								<div class="col s12">
-									<a class="tooltipped" data-position="icon"
+									<a class="tooltipped tooltip_start_date" data-position="icon"
 										data-tooltip="Start date" style="color: #0d0d0d;"><i
 										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> 
 									<span id="order_card_from"></span>
@@ -315,7 +315,7 @@ div #sidebar-wrapper {
 							<!-- END DATE MARKER -->
 							<div class="row ">
 								<div class="col s12">
-									<a class="tooltipped" data-position="icon"
+									<a class="tooltipped tooltip_start_date" data-position="icon"
 										data-tooltip="End date" style="color: #0d0d0d;"><i
 										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
 									<span id="order_card_to"></span>
@@ -332,16 +332,16 @@ div #sidebar-wrapper {
 									<span id="subscribes_table_status"></span><span> ${order.status}</span>
 								</div>
 								<div class="col s4" style="margin-bottom: 0;">
-									<a class="tooltipped" data-position="icon"
+									<a class="tooltipped tooltip_food" data-position="icon"
 										data-tooltip="Food type" style="color: #0d0d0d;"><i
 										class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span>
 								</div>
 								<div class="col s4">
-									<a class="tooltipped" data-position="icon" data-tooltip="Price"
+									<a class="tooltipped tooltip_price" data-position="icon" data-tooltip="Price"
 										style="color: #0d0d0d;"><i
 										class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${order.price}</span>
 									<c:if test="${room.daysCount == -1}">
-										<a class="tooltipped" data-position="icon"
+										<a class="tooltipped tooltip_no_deposit" data-position="icon"
 											data-tooltip="No deposit" style="color: #0d0d0d;"><i
 											class="fa fa-2x fa-exclamation-circle invert"
 											aria-hidden="true"></i></a>
