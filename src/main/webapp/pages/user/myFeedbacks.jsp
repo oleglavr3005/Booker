@@ -64,7 +64,7 @@
 	</div>
 	
 	<!-- Footer ========================================================================== -->
-	<jsp:include page="../foot.jsp"></jsp:include>
+		<jsp:include page="../foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
 
 	<script src="${pageContext.servletContext.contextPath}/resources/js/customerSlider.js"></script>

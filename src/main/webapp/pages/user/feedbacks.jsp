@@ -20,9 +20,9 @@ b {
 </style>
 <!-- MOVE TO HOTEL -->
 <div style="margin: 20px;"></div>
-<c:if test="${countOfRooms == 0}">
+<c:if test="${feedbacks == 0}">
 	<h5 style="color: red; margin-bottom: 63px;">
-		<span id="card_no_periodicals"></span>
+		<span id="feedback_without_feedback"></span>
 	</h5>
 </c:if>
 
