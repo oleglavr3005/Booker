@@ -1,9 +1,29 @@
 ﻿var languages = {};
 (function (){
 	var en = {
+			
+		sort_by : "Sort by : ",
+		ooltip_you_pay : "You pay a half of the sum for orders with deposit. And no money for orders with no deposit",
+		feedback_without_feedback : "You have not left a feedback",
+		
+			
 		tab_personal : "Personal",
 		tab_contact : "Contacts",
 		tab_users : "Users",
+		tab_ended : "Ended",
+		tab_all : "All",
+		tab_active : "Active",
+		
+		card_edit : "Edit",
+		
+		//admin page
+		admin_edit_name : "Hotel's name",
+		admin_edit_rating : "Rating",
+		admin_edit_address : "Address",
+		admin_edit_phone : "Phone",
+		admin_edit_desc : "Description",	
+		admin_edit_city : "City",
+		admin_header : "Admin",
 		admin_page_id : "ID",
 		admin_page_fNane : "First name",
 		admin_page_lName : "Last name",
@@ -14,8 +34,9 @@
 		admin_page_active : "Active",
 		admin_page_banned : "Banned",
 		admin_page_userId : "User Id",
-		admin_page_reqDate : "reqDate &",
+		admin_page_reqDate : "Request date",
 		admin_page_message : "Message",
+		admin_deleted : "Deleted",
 		
 		request_approve : "Approve",
 		request_decline : "Decline",
@@ -24,13 +45,11 @@
 		manager_hotel_card_edit : "Edit",
 		manager_hotel_card_removed : "Removed",
 		manager_hotel_card_active : "Active",
+		manager_hotel_star : " Stars number : ",
 		
-		card_no_hotels : "Active",
 		my_feedback_delete : "Delete",
+		
 		order_concrete_order_date : "Order date",
-		tab_ended : "Ended",
-		tab_all : "All",
-		tab_active : "Active",
 		
 		tb_head_id : "ID",
 		tb_head_name : "Hotel name",
@@ -51,6 +70,12 @@
 		room_concret_deleted : "Deleted",
 		room_concret_save : "Save",
 		room_concret_freebook : "Freebook",
+		room_card_add_to_cart : "Add to cart", 
+		room_card_need_login : "You need login", 
+		room_card_count: "Total price?",
+		room_card_info1 : "You will get 100% refund in case of cancelling order only in",
+		room_card_info2 : " days before moving in, after these period refund will be only",
+		room_card_info3 : "Free book",
 		
 		label_wifi : "WiFi",
 		label_shower : "Shower",
@@ -60,6 +85,13 @@
 		label_gym : "Gym",
 		label_balcony : "Balcony",
 		 
+		header_regist : "Registration",
+		
+		header_auth : "Log In",
+		header_auth_close : "Close",
+		header_auth_forgot : "Forgot password",
+		header_auth_enter : "Enter",
+		
 		header_dropdown_shopping_cart : " Shоpping cart",	
 		header_dropdown_orders : " My оrders",
 		header_dropdown_feedbacks : " My feedbacks",
@@ -67,14 +99,12 @@
 		header_dropdown_hotels : " My hоtels",
 		header_dropdown_admin_stuff : " Admin stuff",
 		header_dropdown_log_out: " Lоg оut",
-		card_edit : "Edit",
+		
 		title_comment_span : "Title", 
 		createComment : "Add comment",
-		hotel_button_previous : "Previous", 
-		hotel_button_next : "Next",
+		
 		hiddenError : "Error with info",
-		room_card_add_to_cart : "Add to cart", 
-		room_card_need_login : "You need login", 
+		
 		order_card_from : "From: ",  
 		order_card_to : " To: ",
 		order_card_order : "Order",
@@ -82,13 +112,6 @@
 		order_card_total_price : "Total price : ",
 		order_card_uan : " UAH",
 		order_card_clear : "Clear cart",
-		
-		header_regist : "Registration",
-		
-		header_auth : "Log In",
-		header_auth_close : "Close",
-		header_auth_forgot : "Forgot password",
-		header_auth_enter : "Enter",
 		
 		index_search_header : "Find Hotel",
 		index_search_name : "Destination / Hotel Name:",
@@ -107,26 +130,28 @@
 		index_room_type_food_breakfast : "Breakfast",
 		index_room_type_food_twice: "Twice",
 		index_room_type_food_full: "Full",
-		
 		index_room_noDeposit : "No deposit",
+		index_option_star_asc : "Star asc",
+		index_option_star_desc : "Star desc",
+		index_option_rating_asc : "Rating asc",
+		index_option_rating_desc : "Rating desc",	
+		index_option_people_desc : "People desc",
+		
 		hotel_option_star_asc : "Star asc",
 		hotel_option_star_desc : "Star desc",
 		hotel_option_people_asc : "People asc",
 		hotel_option_people_desc : "People desc",
 		hotel_price : "Price",
-
+		hotel_button_previous : "Previous", 
+		hotel_button_next : "Next",
+		hotel_count_room : "Number of rooms found: ",
+		
 		map_button : "Map", 
 		search : "Search",
 
-		index_option_star_asc : "Star asc",
-		index_option_star_desc : "Star desc",
-		index_option_rating_asc : "Rating asc",
-		index_option_rating_desc : "Rating desc",	
-		
-		index_option_people_desc : "People desc",
-
 		concrete_date_from : "Check-in",
 		concrete_date_to : "Check-out",
+		
 		footer_info : "Info",
 		footer_visit : "Visit",
 		footer_support : "Support",
@@ -161,8 +186,6 @@
 		header_regist_cpass : "Confirm password",
 		header_regist_confirm : "Finish",
 		
-		hotel_count_room : "Number of rooms found: ",
-		
 		// authorization
 		header_author_mail : "Email",
 		header_author_pass : "Password",
@@ -191,10 +214,7 @@
 		card_header : "Hotels found",
 		card_no_periodicals : "No numbers found",
 		card_no_hotels: "No Hotels",
-		room_card_count: "Total price?",
-		room_card_info1 : "You will get 100% refund in case of cancelling order only in",
-		room_card_info2 : " days before moving in, after these period refund will be only",
-		room_card_info3 : "Free book",
+		
 		subscribes_header : "List of orders",
 		card_status_active : "Active",
 		subscribes_table_remove : "Cancel",
@@ -210,14 +230,6 @@
 		user_cart_header :"Shopping Cart",
 		
 		//hotelList
-		admin_edit_name : "Hotel's name",
-		admin_edit_rating : "Rating",
-		admin_edit_address : "Address",
-		admin_edit_phone : "Phone",
-		admin_edit_desc : "Description",	
-		admin_edit_city : "City",
-		manager_hotel_star : " Stars number : ",
-		
 		room_header : "Rooms",
 		room_type: "Type", 
 		room_capacity : "Capacity",
@@ -235,20 +247,6 @@
 		room_concrete_days : "Days before to pay",
 		room_concrete_percentage: "Deposit percentage",
 		
-		
-		admin_deleted : "Deleted",
-		//admin page
-		admin_page_id : "ID",
-		admin_page_fName : "fName",
-		admin_page_lName : "lName",
-		admin_page_mail : "Mail",
-		admin_page_phone : "Phone",
-		admin_page_type : "Type",
-		admin_page_status : "Status",
-		admin_page_userId : "userId",
-		admin_page_reqDate : "Request date",
-		admin_page_message : "Message",
-		admin_header : "Admin",
 		settings_header_USERS : "Users",
 		settings_header_CONTACT : "Contacts",
 		
@@ -263,6 +261,11 @@
 		btn_approve : "Approve",
 	}
 	var ua = {
+			
+		sort_by : "Сортувати за : ",
+		ooltip_you_pay : "You pay a half of the sum for orders with deposit. And no money for orders with no deposit",
+		feedback_without_feedback : "You have not left a feedback",	
+		
 		tab_personal : "Особисті налаштування",
 		tab_contact : "Контакти",
 		tab_users : "Користувачі",
@@ -287,7 +290,6 @@
 		manager_hotel_card_removed : "Видалений",
 		manager_hotel_card_active : "Активний",
 		
-		card_no_hotels : "Активний",
 		my_feedback_delete : "Видалити",
 		order_concrete_order_date : "Дата замовлення",
 		tab_ended : "Завершенні",
@@ -450,7 +452,6 @@
 		
 		lbl_sendnotif : "Посилати повідомлення",
 		
-
 		card_header : "Всього пропозицій ",
 		card_no_periodicals : "Наявних  пропозицій немає",
 		card_no_hotels : "Готелів не знайдено",
@@ -504,14 +505,14 @@
 		admin_page_id : "ID",
 		admin_page_fName : "Імя",
 		admin_page_lName : "Прізвище",
-		admin_page_mail : "Емейл",
+		admin_page_mail : "E-mail",
 		admin_page_phone : "Телефон",
 		admin_page_type : "Тип",
 		admin_page_status : "Статус",
 		admin_page_userId : "userId",
 		admin_page_reqDate : "Дата запиту",
 		admin_page_message : "Повідомлення",
-		admin_header : "Адмін",
+		admin_header : "Адміністратор",
 		settings_header_USERS : "Користувачі",
 		settings_header_CONTACT : "Контакти",
 		
@@ -527,8 +528,7 @@
 
 		header_regist: "Реєстрація",
 	}
-	
-	var error = {
+	var data_error = {
 		ua: {
 			nameLbl: "nameLbl",
 			surnameLbl: "surnameLbl",
@@ -589,6 +589,7 @@
 			tooltip_room_type : "Тип номера",
 			tooltip_money_to_pay : "Оплатити",
 			tooltip_you_pay : "Загальна сума",
+			tooltip_show_info : "Показати додаткову інформацію",
 		},
 		en : {
 			index_room_wifi : "Wifi",
@@ -617,15 +618,15 @@
 			tooltip_room_type : "Room's type",
 			tooltip_money_to_pay : "Money to pay",
 			tooltip_you_pay : "Total sum",
-			
+			tooltip_show_info : "Show additional info",
 		}
 	};
 	
 	languages.en = en;
 	languages.ua = ua;
 	
-	languages.error = error;
-	languages.error.current=en;
+	languages.data_error = data_error;
+	languages.data_error.current=en;
 	
 	languages.data_tooltip = data_tooltip;
 })();
@@ -635,14 +636,14 @@ function changeLanguage(language){
 		language = 'en';
 	}
 	currentLanguage = language;
-	changeLanguageOnPage(language);
+	$(document).ready(changeLanguageOnPage(language));
 	changeLanguageOnServer(language);
 }
 function updateLanguage(){
 	if(currentLanguage != 'en' && currentLanguage != 'ua'){
 		currentLanguage = 'en';
 	}
-	changeLanguageOnPage(currentLanguage);
+	$(document).ready(changeLanguageOnPage(currentLanguage));
 }
 function changeLanguageOnPage(language){
 	changeLanguageOnTags(language);
@@ -663,16 +664,15 @@ function changeLanguageOnTags(language){
 function changeLanguageOfErrors(language){
 	for ( var prop in languages) {
 		if(prop == language){
-			languages.error.current = languages.error[prop];
-			for ( var idElement in languages.error[prop]){
-				$("#" + idElement).attr('data-error', languages.error[prop][idElement]);
-				$("." + idElement).attr('data-error', languages.error[prop][idElement]);
+			languages.data_error.current = languages.data_error[prop];
+			for ( var idElement in languages.data_error[prop]){
+				$("#" + idElement).attr('data-error', languages.data_error[prop][idElement]);
+				$("." + idElement).attr('data-error', languages.data_error[prop][idElement]);
 			}
 			break;
 		}
 	}
 }
-
 function changeLanguageOfDataTooltip(language){
 	for ( var prop in languages) {
 		if(prop == language){
