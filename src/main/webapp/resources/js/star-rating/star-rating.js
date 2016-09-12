@@ -508,7 +508,7 @@
 
     $.fn.rating.defaults = {
         theme: '',
-        language: 'en',
+        language: currentLanguage,
         stars: 5,
         filledStar: '<i class="glyphicon glyphicon-star"></i>',
         emptyStar: '<i class="glyphicon glyphicon-star-empty"></i>',

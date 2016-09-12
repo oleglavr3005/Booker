@@ -1,6 +1,6 @@
 var mapping = $('#mapping').val();
 
-var removed = 'REMOVED';
+var removed = '';
 
 function removeOrderCard(orderId) {
 	if (!$('#remove' + orderId).attr('disabled')) {
@@ -9,12 +9,12 @@ function removeOrderCard(orderId) {
 			orderId : orderId
 		}, function(result) {
 			if (result == 'true') {
-				$('#remove' + orderId).text("SUCCES");
+				$('#remove' + orderId).text(languages.script.current.createOrder.succes);
 				$('#remove' + orderId).attr('disabled', true);
-				$('#book' + orderId).text("REMOVED");
+				$('#book' + orderId).text(languages.script.current.createOrder.removed);
 				$('#book' + orderId).attr('disabled', true);
 			} else {
-				$('#remove' + orderId).text("FAIL");
+				$('#remove' + orderId).text(languages.script.current.createOrder.fald);
 				$('#remove' + orderId).attr('disabled', true);
 			}
 			$.get('../refresh_cart', {
@@ -49,8 +49,8 @@ function removeOrderTable(orderId) {
 	//$("#t" + orderId).addClass('disabled');
 	$("#active_btn" + orderId).remove();
 	$("#all_btn" + orderId).remove();
-	$("#active_after_status" + orderId).html(removed);
-	$("#all_after_status" + orderId).html(removed);
+	$("#active_after_status" + orderId).html(languages.script.current.createOrder.removed);
+	$("#all_after_status" + orderId).html(languages.script.current.createOrder.removed);
 }
 
 function removeOrder(orderId) {

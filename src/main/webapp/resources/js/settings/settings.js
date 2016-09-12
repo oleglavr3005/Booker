@@ -1,9 +1,3 @@
-var wrongMail;
-var usedMail;
-
-var succesTitle = "SUCCESFULLY CHANGED PASSWORD";
-var oldHeader = "OLD HEADER TEXT INSERT HERE";
-
 function saveContactData() {
 	var phone = $('#phoneNumber').val();
 	var phoneCheck = document.getElementById('phoneCheckBox').checked;
@@ -42,9 +36,7 @@ function saveContactData() {
 	}
 }
 
-function savePersonalData(wMail, uMail) {
-	wrongMail = wMail;
-	usedMail = uMail;
+function savePersonalData() {
 	var name = $('#name').val();
 	var surname = $('#surname').val();
 	$.post('../change_info', {
@@ -165,7 +157,7 @@ function emailIsValid(email) {
 	}
 	if (email.length < 5 || email.length > 45 || !validateEmail(email)) {
 		invalid('email');
-		$('#emailLbl').attr("data-error", wrongMail);
+		$('#emailLbl').attr("data-error", languages.script.current.settings.wrongMail);
 		return null;
 	}
 	$.ajax({
@@ -180,7 +172,7 @@ function emailIsValid(email) {
 		var isValid = (data == "false");
 		if (!isValid) {
 			invalid('email');
-			$('#emailLbl').attr("data-error", usedMail);
+			$('#emailLbl').attr("data-error", languages.script.current.settings.usedMail);
 			return false;
 		}
 	});
@@ -231,10 +223,10 @@ function savePassword(header, succesfull) {
 			$('#currentPassword').val('');
 			$('#newPassword').val('');
 			$('#repeatPassword').val('');
-			$('#pwd_title').text(succesTitle);
+			$('#pwd_title').text(languages.script.current.settings.succesTitle);
 			$('#pwd_title').css('color', 'green');
 			setTimeout(function() {
-				$('#pwd_title').text(oldHeader);
+				$('#pwd_title').text(languages.script.current.settings.oldHeader);
 				$('#pwd_title').css('color', '#333333');
 			}, 3000);
 		}

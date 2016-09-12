@@ -1,12 +1,6 @@
 var mapping = $('#mapping').val();
-var wrongMail = "Email is wrong";
-var busyMail = "Email is allready in use";
-var regist = "Реєстрація";
 
-function confirmRegistration(wMail,bMail,succes,cont,fail,reg){
-	wrongMail = wMail;
-	busyMail = bMail;
-	regist = reg;
+function confirmRegistration(){
 	$("#signupModal").openModal();
 	if(validateRegistrationForm()){
 		$.post(mapping == null ? '':mapping + "register", {
@@ -16,12 +10,12 @@ function confirmRegistration(wMail,bMail,succes,cont,fail,reg){
 			password : $('#password').val()
 		}, function(result) {
 			if(result == 'true'){
-				$('#registrationHeader').text(succes);
+				$('#registrationHeader').text(languages.script.current.registration.succes);
 				$('#registrationHeader').css('color', '#5BB65B');
-				$('#registrationHeader').after('<p id="afterRegHeader">*' + cont + '</p>');
+				$('#registrationHeader').after('<p id="afterRegHeader">*' + languages.script.current.registration.cont + '</p>');
 				$('#registrationConfirmButton').prop('disabled', true);
 			}else{
-				$('#registrationHeader').text(fail);
+				$('#registrationHeader').text(languages.script.current.registration.fail);
 				$('#registrationHeader').css('color', '#F44336');
 			}
 		});
@@ -86,7 +80,7 @@ function emailIsValid(email) {
 	var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	var isValid = re.test(email);
 	if (!isValid || email.length > 45) {
-		$('#emailLbl').attr("data-error", wrongMail);
+		$('#emailLbl').attr("data-error", languages.script.current.registration.wrongMail);
 		invalid('email');
 		return false;
 	}
@@ -102,14 +96,14 @@ function emailIsValid(email) {
 		isValid = (data == "true");
 		if(!isValid){
 			invalid('email');
-			$('#emailLbl').attr("data-error", busyMail);
+			$('#emailLbl').attr("data-error", languages.script.current.registration.busyMail);
 		}else{			
 			valid('email');
 		}
 	},
 	error : function(data) {
 		isValid = false;
-		$('#emailLbl').attr("data-error", wrongMail);
+		$('#emailLbl').attr("data-error", languages.script.current.registration.wrongMail);
 		invalid('email');
 	}
 	});
@@ -159,7 +153,7 @@ $(document).ready(function() {
 			  $('#emailLbl').removeClass("active");
 			  $('#passwordLbl').removeClass("active");
 			  $('#сpasswordLbl').removeClass("active");
-			  $('#registrationHeader').text(regist);
+			  $('#registrationHeader').text(languages.script.current.registration.regist);
 			  $('#registrationHeader').css('color', '#777777');
 			  $('#afterRegHeader').remove();
 			  $('#registrationConfirmButton').prop('disabled', false);
