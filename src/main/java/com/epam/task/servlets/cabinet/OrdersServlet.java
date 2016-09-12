@@ -33,8 +33,8 @@ public class OrdersServlet extends HttpServlet {
 		List<OrderDto> activeOrders = OrderDto.listConverter(orderService.getOrdersByUserAndStatus(userId, OrderStatus.ACTIVE));
 		Date currentDate = new Date();
 		for (OrderDto order : activeOrders) {
-			Timestamp startDate = order.getStartDate();
-			if (startDate.getTime() < currentDate.getTime()) {
+			Timestamp endDate = order.getEndDate();
+			if (endDate.getTime() < currentDate.getTime()) {
 				order.setStatus(OrderStatus.FINISHED);
 				orderService.updateOrder(order);
 			}
