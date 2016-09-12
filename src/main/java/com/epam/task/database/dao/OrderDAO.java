@@ -38,7 +38,8 @@ public class OrderDAO {
 	private final String ORDER_BY_DATE_ASC = " ORDER BY start_date ASC";
 	private final String ORDER_BY_DATE_DESC = " ORDER BY start_date DESC";
 
-	private final String SQL_CREATE_ORDER_EVENT = "CREATE EVENT eventname ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 HOUR DO DELETE FROM `order` WHERE order_id = ? AND `status` LIKE 'ORDER'";
+	private final String SQL_ENABLE_EVENTS = "SET GLOBAL event_scheduler=ON";
+	private final String SQL_CREATE_ORDER_EVENT = "CREATE EVENT eventname ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 30 MINUTE DO DELETE FROM `order` WHERE order_id = ? AND `status` LIKE 'ORDER'";
 	
 	public OrderDAO(Connection connection) {
 		super();
@@ -78,6 +79,9 @@ public class OrderDAO {
 			ResultSet rs = st.getGeneratedKeys();
 			rs.next();
 			int orderId = rs.getInt(1);
+			try(PreparedStatement st1 = connection.prepareStatement(SQL_ENABLE_EVENTS)) {
+				st1.executeUpdate();
+			}
 			try (PreparedStatement st1 = connection.prepareStatement(SQL_CREATE_ORDER_EVENT.replaceAll("eventname", "ev" + new Date().getTime()))) {
 				st1.setInt(1, orderId);
 				st1.executeUpdate();
