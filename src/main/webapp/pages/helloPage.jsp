@@ -103,9 +103,9 @@ div #sidebar-wrapper {
          <form id="myForm" class="col s12" action="${pageContext.servletContext.contextPath}/search" method="POST">
            <div class="form-group" style="display:inline;">
             <div class="input-group col-md-12" >
-                  <input name="name" id="nam" class="form-control" placeholder="Search">
+                  <input name="name" id="nam" class="form-control" placeholder="Search" style="    width: 98%;">
                  <span class="input-group-btn">
-                        <a onclick="simpleSearch()" class="waves-effect waves-light btn" style="background: #26A69A; color: #F7F7F7; ">
+                        <a onclick="simpleSearch()" class="waves-effect waves-light btn" style="background: #26A69A; color: #F7F7F7; margin-top: 10px;">
                             <i class="glyphicon glyphicon-search"></i>
                         </a>
                     </span>

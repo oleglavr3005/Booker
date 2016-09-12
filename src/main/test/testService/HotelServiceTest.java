@@ -36,7 +36,7 @@ public class HotelServiceTest extends TestCase {
 	@Test
 	public void testRemoveHotel(){
 		try{
-			assertNotNull(hotelService.removeHotel(hotel));
+			assertNotNull(hotelService.removeHotel(1));
 		}catch(Exception e){
 			Assert.fail();
 		}

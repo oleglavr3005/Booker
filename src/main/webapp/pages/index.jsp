@@ -255,13 +255,13 @@ div #sidebar-wrapper {
 								</div>
 							</div>
 							<div class="row">
-								<div class="col s2">
-									<div class="rangePrint" id="printMinPrice">
+								<div class="col s2" style="    width: 12%;">
+									<div class="rangePrint" id="printMinPrice" style="">
 										<%-- 									${minPrice} --%>
 										<input onchange="updateMinPrice()" id="inputPrintMinPrice" type="number"
 											name="inputPrintMinPrice" value="${minPrice}"
 											min="${minPrice}" max="${maxPrice}"
-											style="margin-bottom: 0px; text-align: center; margin-top: -5px;">
+											style="margin-bottom: 0px; text-align: center; margin-top: -5px; height: 1.5rem;">
 									</div>
 								</div>
 								<div class="col s8">
@@ -272,13 +272,13 @@ div #sidebar-wrapper {
 										<div id="priceSlider"></div>
 									</section>
 								</div>
-								<div class="col s2">
+								<div class="col s2" style="    width: 12%;">
 									<div class="rangePrint" id="printMaxPrice">
 										<%-- 									${maxPrice} --%>
 										<input onchange="updateMaxPrice()" id="inputPrintMaxPrice" type="number"
 											name="inputPrintMaxPrice" min="${minPrice}" max="${maxPrice}"
 											value="${maxPrice}"
-											style="margin-bottom: 0px; text-align: center; margin-top: -5px;">
+											style="margin-bottom: 0px; text-align: center; margin-top: -5px; height: 1.5rem;">
 									</div>
 								</div>
 							</div>
@@ -301,7 +301,7 @@ div #sidebar-wrapper {
 						<div class="col s2">
 							<a id="search" class="waves-effect waves-light btn"
 								onclick="searchForm()"
-								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"></a>
+								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif; "></a>
 						</div>
 					</div>
 					<!-- MAP ========================================================================== -->

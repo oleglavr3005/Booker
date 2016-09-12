@@ -145,7 +145,7 @@
 				&#169 2016</div>
 
 			<div сlass="col s1 offset-s1"
-				style="color: #cccccc; margin-top: 20px; font-size: 20px;">
+				style="color: #cccccc; margin-top: 20px; font-size: 15px;">
 				<span id="footer_copyright"> </span>
 			</div>
 		</div>
