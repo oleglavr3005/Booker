@@ -258,32 +258,32 @@
 
 							<p style="margin-top: 20px;">
 								<input type="checkbox" class="filled-in" id="hasWiFi"
-									name="hasWiFi" /> <label for="hasWiFi">WIFI</label>
+									name="hasWiFi" /> <label id="label_wifi" for="hasWiFi">WIFI</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasShower"
-									name="hasShower" /> <label for="hasShower">SHOWER</label>
+									name="hasShower" /> <label id="label_shower" for="hasShower">SHOWER</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasParking"
-									name="hasParking" /> <label for="hasParking">PARKING</label>
+									name="hasParking" /> <label id="label_parking" for="hasParking">PARKING</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasCondition"
-									name="hasCondition" /> <label for="hasCondition">AIR
+									name="hasCondition" /> <label id="label_condition"for="hasCondition">AIR
 									CONDITION</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasPool"
-									name="hasPool" /> <label for="hasPool">SWIM POOL</label>
+									name="hasPool" /> <label id="label_pool"for="hasPool">SWIM POOL</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasGym"
-									name="hasGym" /> <label for="hasGym">FIT GYM</label>
+									name="hasGym" /> <label id="label_gym"for="hasGym">FIT GYM</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasBalcony"
-									name="hasBalcony" /> <label for="hasBalcony">BALCONY</label>
+									name="hasBalcony" /> <label id="label_balcony"for="hasBalcony">BALCONY</label>
 							</p>
 
 							<!-- 							FREE BOOK -->
@@ -291,19 +291,20 @@
 							<p>
 								<input type="checkbox" class="filled-in" id="freeBook"
 									onclick="changeFreeBook()" name="freeBook" /> <label
-									for="freeBook">FREEBOOK</label>
+									id="room_free" for="freeBook">FREEBOOK</label>
 							</p>
 
 							<!-- 							SEND NOTIF -->
 							<p style="margin-top: 20px;">
 								<input type="checkbox" class="filled-in" id="sendNotif"
-									name="sendNotif" /> <label for="sendNotif">SEND NOTIF</label>
+									name="sendNotif" /> <label id="lbl_sendnotif" for="sendNotif">SEND NOTIF</label>
 							</p>
 
 							<div class="row">
 								<a class="waves-effect waves-light btn" id="create_button"
 									onclick="createRoom()"
-									style="margin-left: 10px; text-align: center; width: 100%; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span>SAVE</span></a>
+									style="margin-left: 10px; text-align: center; width: 100%; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+									<span id="settings_enter_save">SAVE</span></a>
 								<p id="create_error" style="color: red"></p>
 							</div>
 							<script>
