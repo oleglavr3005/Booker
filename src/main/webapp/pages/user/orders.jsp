@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html lang="en">
 
@@ -168,12 +169,15 @@ div.material-table .table-footer .dataTables_length {
 			<div class="col s8 offset-s2">
 				<ul class="tabs" style="background: #12444c;">
 					<li class="tab col s3"><a class="active" href="#test1"
-						style="color: #F7F7F7"><b><p class="tab_active"></p></b></a></li>
+						style="color: #F7F7F7"><b><p id="tab_active"></p></b></a></li>
 					<li class="tab col s3"><a href="#test2" style="color: #F7F7F7"><b>
-								<p class="tab_ended"></p>
+								<p id="tab_ended"></p>
 						</b></a></li>
 					<li class="tab col s3"><a href="#test3" style="color: #F7F7F7"><b>
-								<p class="tab_all"></p>
+								<p id="tab_all"></p>
+						</b></a></li>
+					<li class="tab col s3"><a href="#test4" style="color: #F7F7F7"><b>
+								<p id="tab_charts">CHARTS</p>
 						</b></a></li>
 				</ul>
 			</div>
@@ -454,7 +458,24 @@ div.material-table .table-footer .dataTables_length {
 				</c:choose>
 			</div>
 			<!-- 			End of Tab #3 -->
+			
+			
+			<!-- 				Tab #4 -->
+			<div id="test4" class="col s12">
 
+				<h4 style="text-align: center; margin-top: 20px;">
+					<span id="orders_charts_HOTELSCHART">MOST VISITED HOTELS</span>
+				</h4>
+				<div id="donutChart" style="height: 250px;"></div>
+				
+				<h4 style="text-align: center; margin-top: 20px;">
+					<span id="orders_charts_MONTHCHART">MONTHLY ACTIVITY</span>
+				</h4>
+				<div id="lineChart" style="height: 250px;"></div>
+			
+			</div>
+			<!-- 			End of Tab #4 -->
+			
 		</div>
 	</div>
 
@@ -795,8 +816,49 @@ $(document).ready(function()
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/order/removeOrder.js"></script>
 
+			<!-- CHARTS -->
+ 	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+ 	<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
-
+	<script type="text/javascript">
+	
+	$(document).ready(function() {
+		
+		$.ajax({
+			dataType : 'json',
+			url : "../get_chart_data",
+			type : 'POST',
+			success : function(respond) {
+				if (respond != false && respond.donutData.length > 0) {
+					var morisData = respond.donutData;
+				} else {
+					var morisData = [{ label: "No hotels", value: 0}];
+				}
+				
+				Morris.Donut({
+					  element: 'donutChart',
+					  data: morisData,
+					 colors: ['#26A69A', 'rgb(18, 68, 76)', 'lightblue']
+				});
+			}
+		});
+		
+		Morris.Line({
+			  element: 'lineChart',
+			  data: [
+			    { year: '2008', value: 20 },
+			    { year: '2009', value: 10 },
+			    { year: '2010', value: 5 },
+			    { year: '2011', value: 5 },
+			    { year: '2012', value: 20 }
+			  ],
+			  xkey: 'year',
+			  ykeys: ['value'],
+			  labels: ['Value']
+			});
+	});
+	
+	</script>
 
 
 </body>
