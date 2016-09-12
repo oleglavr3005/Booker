@@ -576,7 +576,7 @@
 			tooltip_food : "Їжа", 
 			tooltip_single_beds : "Одинарне ліжко",
 			tooltip_price : "Ціна",
-			tooltipped : "Зірки",
+			//tooltipped : "Зірки",
 			
 		},
 		en : {
@@ -600,7 +600,7 @@
 			tooltip_food : "Food", 
 			tooltip_single_beds : "Single beds",
 			tooltip_price : "Price",
-			tooltipped : "Stars",
+			//tooltipped : "Stars",
 			
 			
 		}
