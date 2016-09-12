@@ -575,6 +575,7 @@
 			tooltip_phone_number : "Номер телефону",
 			tooltip_showe_all_info : "Показати всю інформацію",
 			tooltip_rating : "Рейтинг",
+			tooltip_order_date: "Дата замовлення",
 			tooltip_start_date : "Початкова дата",
 			tooltip_end_date : "Кінцева дата",
 			tooltip_double_beds : "Подвійне ліжко", 
@@ -582,7 +583,7 @@
 			tooltip_single_beds : "Одинарне ліжко",
 			tooltip_price : "Ціна",
 			tooltip_show_info : "Показувати додаткову інфу",
-			
+			tooltip_no_deposit : "Без передплати",
 		},
 		en : {
 			index_room_wifi : "Wifi",
@@ -599,6 +600,7 @@
 			tooltip_phone_number : "Phone number",
 			tooltip_showe_all_info : "Show full info",
 			tooltip_rating : "Rating",
+			tooltip_order_date: "Order date",
 			tooltip_start_date : "Start date",
 			tooltip_end_date : "End date",
 			tooltip_double_beds : "Double beds", 
@@ -606,7 +608,7 @@
 			tooltip_single_beds : "Single beds",
 			tooltip_price : "Price",
 			tooltip_show_info : "Show additional info",
-			
+			tooltip_no_deposit : "No deposit",
 			
 		}
 	};
