@@ -195,7 +195,7 @@
 		subscribes_header : "List of orders",
 		card_status_active : "Active",
 		subscribes_table_remove : "Cancel",
-		subscribes_empty : "Not Found?",
+		subscribes_empty : "Not Found",
 		subscribes_table_name : "Hotel",
 		subscribes_table_startDate : "Check-in",
 		subscribes_table_endDate: "Check-out",
@@ -369,8 +369,8 @@
 		
 		hotel_option_star_asc : "За зростанням кількості зірок",
 		hotel_option_star_desc : "За спаданням кількості зірок",
-		hotel_option_people_asc : "За зростанням кількості людей??",
-		hotel_option_people_desc : "За спаданням кількості людей??",
+		hotel_option_people_asc : "За зростанням кількості людей",
+		hotel_option_people_desc : "За спаданням кількості людей",
 		
 		map_button : "Карта", 
 		search : "Пошук",
@@ -407,6 +407,7 @@
 		footer_social_youtube : "YouTube",
 		footer_social_pinterest : "Pinterest",
 		footer_social_wordpress : "WordPress",
+		footer_social_google_plus : "Google +", 
 		footer_copyright : "Всі права зарезервовані.",
 		
 		header_regist_name : "Імя",
@@ -455,7 +456,7 @@
 		subscribes_header : "Список замовлень",
 		card_status_active : "Активне",
 		subscribes_table_remove : "Скасувати",
-		subscribes_empty : "Не знайдено??",
+		subscribes_empty : "Не знайдено",
 		subscribes_table_name : "Готель",
 		subscribes_table_startDate : "В'їзд",
 		subscribes_table_endDate: "Виїзд",
@@ -575,6 +576,8 @@
 			tooltip_food : "Їжа", 
 			tooltip_single_beds : "Одинарне ліжко",
 			tooltip_price : "Ціна",
+			tooltipped : "Зірки",
+			
 		},
 		en : {
 			index_room_wifi : "Wifi",
@@ -597,6 +600,8 @@
 			tooltip_food : "Food", 
 			tooltip_single_beds : "Single beds",
 			tooltip_price : "Price",
+			tooltipped : "Stars",
+			
 			
 		}
 	};

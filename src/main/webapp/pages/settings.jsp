@@ -150,8 +150,8 @@
 
 							<div class="row fields">
 								<div class="input-field col s10">
-									<div class="ui pointing label">
-										<span id="settings_enter_name"></span>
+									<div class="ui pointing label" style="background-color: #f7f7f7;">
+										<span id="settings_enter_name" style="color: #b7b2b2; background-color: #9990; "></span>
 									</div>
 									<input id="name" type="text" class="validate"
 										value="${user.firstName}" length="45"> <label
@@ -160,8 +160,8 @@
 							</div>
 							<div class="row">
 								<div class="input-field col s10">
-									<div class="ui pointing label">
-										<span id="settings_enter_surname"></span>
+									<div class="ui pointing label" style="background-color: #f7f7f7;">
+										<span id="settings_enter_surname" style="color: #b7b2b2; background-color: #9990; "></span>
 									</div>
 									<input id="surname" type="text" class="validate"
 										value="${user.lastName}" length="45"> <label
@@ -194,8 +194,8 @@
 					</div>
 					<div class="row inline field fields">
 						<div class="input-field col s8 offset-s2">
-							<div class="ui pointing label">
-								<span id="settings_enter_pass"></span>
+							<div class="ui pointing label" style="background-color: #f7f7f7;">
+								<span id="settings_enter_pass" style="color: #b7b2b2; background-color: #9990; "></span>
 							</div>
 							<input id="currentPassword" type="password" class="validate">
 							<label id="currentPasswordLbl" data-error="${fmtPass}"
@@ -204,8 +204,8 @@
 					</div>
 					<div class="row inline field fields">
 						<div class="input-field col s8 offset-s2">
-							<div class="ui pointing label">
-								<span id="settings_enter_passnew"></span>
+							<div class="ui pointing label" style="background-color: #f7f7f7;">
+								<span id="settings_enter_passnew" style="color: #b7b2b2; background-color: #9990; "></span>
 							</div>
 							<input id="newPassword" type="password" class="validate">
 							<label id="newPasswordLbl" data-error="${fmtNewPass}"
@@ -214,8 +214,8 @@
 					</div>
 					<div class="row inline field fields">
 						<div class="input-field col s8 offset-s2">
-							<div class="ui pointing label">
-								<span id="settings_enter_passrepeat"></span>
+							<div class="ui pointing label" style="background-color: #f7f7f7;">
+								<span id="settings_enter_passrepeat" style="color: #b7b2b2; background-color: #9990; "></span>
 							</div>
 							<input id="repeatPassword" type="password" class="validate">
 							<label id="repeatPasswordLbl" data-error="${fmtRepPass}"
@@ -244,8 +244,8 @@
 
 					<div class="row fields">
 						<div class="input-field col s12">
-							<div class="ui pointing label">
-								<span id="settings_enter_phone"></span>
+							<div class="ui pointing label" style="background-color: #f7f7f7;">
+								<span id="settings_enter_phone" style="color: #b7b2b2; background-color: #9990; "></span>
 							</div>
 							<input id="phoneNumber" type="text" class="validate"
 								value="${user.phoneNumber}" length="45"> <label
@@ -325,8 +325,8 @@
 
 						<div class="row fields">
 							<div class="input-field col s9">
-								<div class="ui pointing label">
-									<span id="settings_enter_request"></span>
+								<div class="ui pointing label" style="background-color: #f7f7f7;">
+									<span id="settings_enter_request" style="color: #b7b2b2; background-color: #9990; "></span>
 								</div>
 								<textarea id="requestForm" class="materialize-textarea">${message}</textarea>
 							</div>
