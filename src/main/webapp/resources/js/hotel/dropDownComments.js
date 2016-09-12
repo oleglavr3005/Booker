@@ -43,6 +43,8 @@ function addNewComment(hotelId_val){
 		}
 		jQuery('#comment').val('');
 		jQuery('#title_comment').val('');
-		jQuery('#rate_span').text('');
+		jQuery('#rate_span').text('1');
+		var $el = $(this);
+		$el.parent().find('.current span').css('width',1 * 20 + '%');
 	});
 }

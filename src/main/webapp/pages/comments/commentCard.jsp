@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <link rel="stylesheet"	href="${pageContext.servletContext.contextPath}/resources/css/commentStyle.css">
-<link href="${pageContext.servletContext.contextPath}/resources/css/star-rating/star-rating.css" rel="stylesheet">
+<link href="${pageContext.servletContext.contextPath}/resources/css/rating.css" rel="stylesheet">
 
 <style>
 	div #sidebar-wrapper {
@@ -51,28 +51,27 @@
 						</label>
 					</div>
 					<div class="col s6" style="margin-top: 15px;">
-
-							<!-- 						STARS -->
-							<input id="rating" onchange="rate()" type="number"
-								value="1" class="rating" min=1 max=5 step=1
-								data-size="xs" data-stars="5"> <span
-								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;">
-							<span id="manager_hotel_star"></span>
-							<span id="rate_span">1</span>
-								/ 5 |</span>
-							<script>
-								function rate() {
-
-									var count = document
-											.getElementById("rate_span");
-									count.innerHTML = $('#rating').val();
-
-								}
-							</script>
-
-							<!-- 							END OF STARS -->
-
-						</div>
+						<div class="vote-block " data-id="28" data-total="427" data-rating="2006" rel="v:rating" style="overflow: inherit;">
+					        <div typeof="v:Rating">
+					            <div itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+					                <meta itemprop="bestRating" content="5">
+					                <meta property="v:rating" content="1">
+					                <meta itemprop="ratingCount" property="v:votes" content="427">
+					            </div>
+					        </div>
+					        <ol class="rating show-current">
+					            <li>5</li>
+					            <li>4</li>
+					            <li>3</li>
+					            <li>2</li>
+					            <li>1</li>
+					            <li class="current"><span style="width:93.957845433255%"></span></li>
+					        </ol>
+					        <span id="manager_hotel_star" style="font-size: 14; position: relative; left: 10px; top: 8px;"></span>
+							<span id="rate_span" style="font-size: 14; position: relative; left: 10px; top: 8px;">1</span>
+							<span style="font-size: 14; position: relative; left: 5px; top: 8px;"> / 5</span>
+					    </div>
+					</div>
 				</div>
 				<textarea id="comment" class="materialize-textarea" style="height: 80px;"></textarea>
 				<div style="margin-top: 20px;">
@@ -92,4 +91,4 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/star-rating/star-rating.js"></script>
+<script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/hotel/rating.js"></script>
