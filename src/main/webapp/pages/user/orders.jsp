@@ -159,7 +159,7 @@ div.material-table .table-footer .dataTables_length {
 
 	<div class="container">
 
-		<h4 style="text-align: center; margin-top: 20px;">
+		<h4 style="text-align: center; margin-top: 20px;     color: #387f7b;">
 			<span id="subscribes_header"></span>
 		</h4>
 
@@ -191,25 +191,25 @@ div.material-table .table-footer .dataTables_length {
 						<table id="tab1" class="purchase-table">
 							<thead>
 								<tr>
-									<th style="text-align: center; border-radius: 0;">
+									<th style="text-align: center; border-radius: 0;     background-color: #70b9b2; color: #e8f7f7;">
 										<p class="tb_head_id"></p>
 									</th>
-									<th style="text-align: center; border-radius: 0;">
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
 										<p class="tb_head_name"></p>
 									</th>
-									<th style="text-align: center; border-radius: 0;">
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
 										<p class="tb_head_room"></p>
 									</th>
-									<th style="text-align: center; border-radius: 0;">
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
 										<p class="tb_head_sdate"></p>
 									</th>
-									<th style="text-align: center; border-radius: 0;">
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
 										<p class="tb_head_edate"></p>
 									</th>
-									<th style="text-align: center; border-radius: 0;">
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
 										<p class="tb_head_price"></p>
 									</th>
-									<th style="text-align: center; border-radius: 0;"></th>
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -284,17 +284,17 @@ div.material-table .table-footer .dataTables_length {
 						<table id="tab2" class="purchase-table">
 							<thead>
 								<tr>
-									<th style="text-align: center; border-radius: 0;"><p
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_id"></p></th>
-									<th style="text-align: center; border-radius: 0;"><p
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_name"></p></th>
-									<th style="text-align: center; border-radius: 0;"><p
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_room"></p></th>
-									<th style="text-align: center; border-radius: 0;"><p
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_sdate"></p></th>
-									<th style="text-align: center; border-radius: 0;"><p
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_edate"></p></th>
-									<th style="text-align: center; border-radius: 0;"><p
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_price"></p></th>
 								</tr>
 							</thead>
@@ -360,21 +360,21 @@ div.material-table .table-footer .dataTables_length {
 						<table id="tab3" class="purchase-table">
 							<thead>
 								<tr>
-									<th style="text-align: center; border-radius: 0;"><p
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_id">ID</p></th>
-									<th style="text-align: center; border-radius: 0;"><p
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_name"></p></th>
-									<th style="text-align: center; border-radius: 0;"><p
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_room"></p></th>
-									<th style="text-align: center; border-radius: 0;"><p
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_sdate"></p></th>
-									<th style="text-align: center; border-radius: 0;"><p
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_edate"></p></th>
-									<th style="text-align: center; border-radius: 0;"><p
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_price"></p></th>
-									<th style="text-align: center; border-radius: 0;"><p
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_status"></p></th>
-									<th style="text-align: center; border-radius: 0;"></th>
+									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"></th>
 								</tr>
 							</thead>
 							<tbody>
