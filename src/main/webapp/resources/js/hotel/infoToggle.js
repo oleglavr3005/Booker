@@ -1,13 +1,15 @@
 function showInfo(id){
+	var flag = false;
 	var elem1 = document.getElementById("details_panel"+id);
-	var style = document.defaultView.getComputedStyle(elem1, null)
-			.getPropertyValue("display");
+	jQuery('#details_panel' + id).hide();
 	var i = document.getElementById("showInfo"+id);
-	if (style == 'none') {
-		elem1.style.display = "block";
+	if (flag == true) {
+		jQuery('#details_panel' + id).slideUp();
 		i.setAttribute("data-tooltip", "Hide additional info");
+		flag = false;
 	} else {
-		elem1.style.display = "none";
+		jQuery('#details_panel' + id).slideDown();
 		i.setAttribute("data-tooltip", "Show additional info");
+		flag = true;
 	}
 }

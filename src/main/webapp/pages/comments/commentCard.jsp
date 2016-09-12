@@ -51,12 +51,12 @@
 						</label>
 					</div>
 					<div class="col s6" style="margin-top: 15px;">
-						<div class="vote-block " data-id="28" data-total="427" data-rating="2006" rel="v:rating" style="overflow: inherit;">
+						<div class="vote-block" rel="v:rating" style="overflow: inherit;">
 					        <div typeof="v:Rating">
 					            <div itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
 					                <meta itemprop="bestRating" content="5">
 					                <meta property="v:rating" content="1">
-					                <meta itemprop="ratingCount" property="v:votes" content="427">
+					                <meta itemprop="ratingCount" property="v:votes">
 					            </div>
 					        </div>
 					        <ol class="rating show-current">
@@ -65,11 +65,11 @@
 					            <li>3</li>
 					            <li>2</li>
 					            <li>1</li>
-					            <li class="current"><span style="width:93.957845433255%"></span></li>
+					            <li class="current"><span style="width:20%"></span></li>
 					        </ol>
 					        <span id="manager_hotel_star" style="font-size: 14; position: relative; left: 10px; top: 8px;"></span>
 							<span id="rate_span" style="font-size: 14; position: relative; left: 10px; top: 8px;">1</span>
-							<span style="font-size: 14; position: relative; left: 5px; top: 8px;"> / 5</span>
+							<span style="font-size: 14; position: relative; left: 10px; top: 8px;"> / 5</span>
 					    </div>
 					</div>
 				</div>
