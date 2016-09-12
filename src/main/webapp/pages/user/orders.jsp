@@ -825,37 +825,41 @@ $(document).ready(function()
 	$(document).ready(function() {
 		
 		$.ajax({
+			async : false,
 			dataType : 'json',
 			url : "../get_chart_data",
 			type : 'POST',
 			success : function(respond) {
-				if (respond != false && respond.donutData.length > 0) {
-					var morisData = respond.donutData;
-				} else {
-					var morisData = [{ label: "No hotels", value: 0}];
+				var morisDonutData = [{ label: "No hotels", value: 0}];
+				var morisLineData = [{ year: "0", value: 0}];
+				
+				if (respond != false) {					
+					if(respond.donutData.length > 0) {
+						morisDonutData = respond.donutData;
+					}
+					
+					if(respond.lineData.length > 0) {
+						morisLineData = respond.lineData;
+					}					
 				}
 				
 				Morris.Donut({
 					  element: 'donutChart',
-					  data: morisData,
+					  data: morisDonutData,
 					 colors: ['#26A69A', 'rgb(18, 68, 76)', 'lightblue']
+				});
+				
+				Morris.Line({
+					  element: 'lineChart',
+					  data: morisLineData,
+					  xkey: 'year',
+					  ykeys: ['value'],
+					  labels: ['Value'],
+					  lineColors: ['rgb(18, 68, 76)']
 				});
 			}
 		});
 		
-		Morris.Line({
-			  element: 'lineChart',
-			  data: [
-			    { year: '2008', value: 20 },
-			    { year: '2009', value: 10 },
-			    { year: '2010', value: 5 },
-			    { year: '2011', value: 5 },
-			    { year: '2012', value: 20 }
-			  ],
-			  xkey: 'year',
-			  ykeys: ['value'],
-			  labels: ['Value']
-			});
 	});
 	
 	</script>
