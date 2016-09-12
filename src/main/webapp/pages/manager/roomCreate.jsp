@@ -192,7 +192,7 @@
 							<!-- 1 BEDS COUNT -->
 
 							<div class="row" style="margin-bottom: 0px">
-								<input id="single" type="number" class="validate" name="single"
+								<input id="single" onchange="checkBeds()" type="number" class="validate" name="single"
 									min=0 max=100> <label id="singleLbl"
 									data-error="${fmtPeople}" for="single"><span
 										id="room_concrete_single"></span> </label>
@@ -203,7 +203,7 @@
 							<!-- 2 BEDS COUNT -->
 
 							<div class="row" style="margin-bottom: 0px">
-								<input id="double" type="number" class="validate" name="single"
+								<input id="double" onchange="checkBeds()" type="number" class="validate" name="single"
 									min=0 max=100> <label id="doubleLbl"
 									data-error="${fmtPeople}" for="double"><span
 										id="room_concrete_double"></span></label>

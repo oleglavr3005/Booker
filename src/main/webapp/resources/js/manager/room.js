@@ -96,17 +96,22 @@ function updateRoom(room) {
 function validate() {
 	var ok = true;
 	ok = checkRoomNumber($('#hotel_name').val(), $('#number').val()) && ok;
-	ok = checkBedsCount('single', 'double');
-	ok = numberIsValid('days', 1, 365) && ok;
 	ok = numberIsValid('single', 0, 20) && ok;
 	ok = numberIsValid('double', 0, 20) && ok;
+	ok = checkBedsCount('single', 'double');
+	ok = numberIsValid('days', 1, 365) && ok;
 	ok = numberIsValid('number', 1, 9999999) && ok;
 	ok = numberIsValid('price', 1, 99999999) && ok;
 	ok = numberIsValid('percentage', 0, 99) && ok;
 	return ok;
 }
 
+function checkBeds(){
+	checkBedsCount('single', 'double');
+}
+
 function checkBedsCount(field1, field2) {
+	debugger;
 	var single = $('#' + field1).val();
 	var double = $('#' + field2).val();
 	if (single + double == 0) {

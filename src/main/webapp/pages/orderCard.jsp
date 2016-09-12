@@ -250,7 +250,7 @@ b {
 				<div class="row" style="margin-right: 10px;">
 					<div class="col s2">
 						<a id="remove${order.id}" class="waves-effect waves-light btn"
-							style="background: #F55151; color: #FFFFFF; font-size: 1rem;"
+							style="background: #F55151; color: #FFFFFF; font-size: 1rem; text-transform: none;"
 							onclick="removeOrderCard(${order.id})"><span
 							class="btn_remove"></span></a>
 					</div>
@@ -269,7 +269,7 @@ b {
 					</div>
 					<div class="col s2 ">
 						<a id="book${order.id}" class="waves-effect waves-light btn"
-							style="background: #26A69A; color: #FFFFFF; font-size: 1rem;"
+							style="background: #26A69A; color: #FFFFFF; font-size: 1rem; text-transform: none;"
 							onclick="bookOrderCard(${order.id},${order.room.daysCount})"><span
 							class="order_card_order"></span></a>
 					</div>
@@ -309,14 +309,14 @@ b {
 		</div>
 		<div class="col s2 offset-s3">
 			<a id="clearBtn" class="waves-effect waves-light btn"
-				style="background: #F55151; color: #FFFFFF; font-size: 1rem;" onclick="clearCart()"><span
+				style="background: #F55151; color: #FFFFFF; font-size: 1rem;text-transform: none;" onclick="clearCart()"><span
 				id="order_card_clear"></span></a>
 		</div>
 		<div class="col s2 offset-s1">
 			<a class="waves-effect waves-light btn"
-				style="background: #26A69A; color: #FFFFFF; font-size: 1rem;"
+				style="background: #26A69A; color: #FFFFFF; font-size: 1rem; text-transform: none;"
 				onclick="bookOrderCard(null,${summary})"><span
-				id="order_card_order"></span></a>
+				id="order_card_order_all"></span></a>
 		</div>
 	</div>
 	<div id="field" class="divider" style="margin-bottom: 5px;"></div>

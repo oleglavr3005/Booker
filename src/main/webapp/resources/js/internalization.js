@@ -78,9 +78,10 @@
 		order_card_from : "From: ",  
 		order_card_to : " To: ",
 		order_card_order : "Order",
+		order_card_order_all : "Order all",
 		order_card_total_price : "Total price : ",
 		order_card_uan : " UAH",
-		order_card_clear : "Clear",
+		order_card_clear : "Clear cart",
 		
 		header_regist : "Registration",
 		
@@ -339,9 +340,10 @@
 		order_card_from : "З: ",  
 		order_card_to : " До: ",
 		order_card_order : "Забронювати",
+		order_card_order_all : "Забронювати всі",
 		order_card_total_price : "Загальна сума : ",
 		order_card_uan : " Грн",
-		order_card_clear : "Очистити",
+		order_card_clear : "Очистити кошик",
 			
 		index_room_noDeposit : "Без передоплати",
 		header_regist : "Реєстрація",
@@ -584,13 +586,16 @@
 			tooltip_price : "Ціна",
 			tooltip_show_info : "Показувати додаткову інфу",
 			tooltip_no_deposit : "Без передплати",
+			tooltip_room_type : "Тип номера",
+			tooltip_money_to_pay : "Оплатити",
+			tooltip_you_pay : "Загальна сума",
 		},
 		en : {
 			index_room_wifi : "Wifi",
 			index_room_shower : "Shower",
 			index_room_parking : "Parking",
 			index_room_conditioner : "Air conditioner",
-			index_room_pool : "Swiming pool",
+			index_room_pool : "Swimming pool",
 			index_room_gym : "Fit gym",
 			index_room_balcony : "Balcony",
 			index_search_stars : "Stars",
@@ -609,6 +614,9 @@
 			tooltip_price : "Price",
 			tooltip_show_info : "Show additional info",
 			tooltip_no_deposit : "No deposit",
+			tooltip_room_type : "Room's type",
+			tooltip_money_to_pay : "Money to pay",
+			tooltip_you_pay : "Total sum",
 			
 		}
 	};
