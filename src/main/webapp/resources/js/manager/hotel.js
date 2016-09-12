@@ -4,6 +4,13 @@ var hotel_street = "";
 var hotel_x = 0;
 var hotel_y = 0;
 
+var createSucces = "hotel was created";
+var createFail = "hotel wasnt created";
+var updateSucces = "hotel was updated";
+var updateFail = "hotel wasnt updated";
+var wrongData = "INVALID DATA";
+var numberBusy = "this number is allready in use";
+
 var places;
 
 function initAutocomplete() {
@@ -34,18 +41,18 @@ function createHotel() {
 		}, function(result) {
 			if (result != 'error') {
 				$('#create_error').css('color', 'green');
-				$('#create_error').text("SUCCES");
+				$('#create_error').text(createSucces);
 				$('#create_button').attr("disabled", true);
 				setTimeout(function() {
 					document.location.href = '/booker/cabinet/my_hotels/'
 							+ result;
 				}, 2000);
 			} else {
-				$('#create_error').text("FAIL");
+				$('#create_error').text(createFail);
 			}
 		});
 	} else {
-		$('#create_error').text("INVALID DATA");
+		$('#create_error').text(wrongData);
 	}
 }
 
@@ -67,16 +74,16 @@ function updateHotel(hotelId) {
 		}, function(result) {
 			if (result != 'false') {
 				$('#create_error').css('color', 'green');
-				$('#create_error').text("SUCCES");
+				$('#create_error').text(updateSucces);
 				setTimeout(function() {
 					$('#create_error').visibility = "none";
 				}, 2000);
 			} else {
-				$('#create_error').text("FAIL");
+				$('#create_error').text(updateFail);
 			}
 		});
 	} else {
-		$('#create_error').text("INVALID DATA");
+		$('#create_error').text(wrongData);
 	}
 }
 

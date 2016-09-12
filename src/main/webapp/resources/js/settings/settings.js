@@ -1,6 +1,9 @@
 var wrongMail;
 var usedMail;
 
+var succesTitle = "SUCCESFULLY CHANGED PASSWORD";
+var oldHeader = "OLD HEADER TEXT INSERT HERE";
+
 function saveContactData() {
 	var phone = $('#phoneNumber').val();
 	var phoneCheck = document.getElementById('phoneCheckBox').checked;
@@ -228,10 +231,10 @@ function savePassword(header, succesfull) {
 			$('#currentPassword').val('');
 			$('#newPassword').val('');
 			$('#repeatPassword').val('');
-			$('#pwd_title').text("SUCCESFULLY CHANGED PASSWORD");
+			$('#pwd_title').text(succesTitle);
 			$('#pwd_title').css('color', 'green');
 			setTimeout(function() {
-				$('#pwd_title').text("OLD HEADER TEXT INSERT HERE");
+				$('#pwd_title').text(oldHeader);
 				$('#pwd_title').css('color', '#333333');
 			}, 3000);
 		}

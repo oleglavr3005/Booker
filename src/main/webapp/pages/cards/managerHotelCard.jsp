@@ -66,8 +66,8 @@ b {
 							class="hotel_button_previous"></span>
 					</button>
 					<button type="button" class="btn btn-primary next">
-						<span class="hotel_button_next"></span>
-						<i class="glyphicon glyphicon-chevron-right"></i>
+						<span class="hotel_button_next"></span> <i
+							class="glyphicon glyphicon-chevron-right"></i>
 					</button>
 				</div>
 			</div>
@@ -81,7 +81,7 @@ b {
 		<div class="col s3">
 			<c:if test="${countOfHotels == 0}">
 				<h5 style="color: red; margin-bottom: 63px;">
-					<fmt:message key="card.no.periodicals" />
+					<span id="card_no_periodicals"></span>
 				</h5>
 			</c:if>
 		</div>

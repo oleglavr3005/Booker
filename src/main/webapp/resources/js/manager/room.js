@@ -1,3 +1,10 @@
+var createSucces = "room was created";
+var createFail = "room wasnt created";
+var updateSucces = "room was updated";
+var updateFail = "room wasnt updated";
+var wrongData = "INVALID DATA";
+var numberBusy = "this number is allready in use";
+
 function createRoom() {
 	// var img = $('#photos').val() == '' ? 'new_hotel.jpg' :
 	// $('#photos').val();
@@ -29,17 +36,17 @@ function createRoom() {
 		}, function(result) {
 			if (result != 'error') {
 				$('#create_error').css('color', 'green');
-				$('#create_error').text("SUCCES");
+				$('#create_error').text(createSucces);
 				$('#create_button').attr("disabled", true);
 				setTimeout(function() {
 					document.location.href = '/booker/cabinet/room/' + result;
 				}, 2000);
 			} else {
-				$('#create_error').text("FAIL");
+				$('#create_error').text(createFail);
 			}
 		});
 	} else {
-		$('#create_error').text("INVALID DATA");
+		$('#create_error').text(wrongData);
 	}
 }
 
@@ -73,16 +80,16 @@ function updateRoom(room) {
 		}, function(result) {
 			if (result != 'false') {
 				$('#create_error').css('color', 'green');
-				$('#create_error').text("SUCCES");
+				$('#create_error').text(updateSucces);
 				setTimeout(function() {
 					$('#create_error').visibility = "none";
 				}, 2000);
 			} else {
-				$('#create_error').text("FAIL");
+				$('#create_error').text(updateFail);
 			}
 		});
 	} else {
-		$('#create_error').text("INVALID DATA");
+		$('#create_error').text(wrongData);
 	}
 }
 
@@ -125,13 +132,13 @@ function checkRoomNumber(id, nmb) {
 		isValid = (data == "true");
 		if (!isValid) {
 			invalid('number');
-			$('#numberLbl').attr("data-error", "ROOM_BUSY");
+			$('#numberLbl').attr("data-error", numberBusy);
 		} else {
 			valid('number');
 		}
 	}).error(function(data) {
 		isValid = false;
-		$('#numberLbl').attr("data-error", "ROOM_BUSY");
+		$('#numberLbl').attr("data-error", numberBusy);
 		invalid('number');
 	});
 	return isValid;
