@@ -45,8 +45,8 @@
 		shoping_card_date_desc : "Date desc",
 		shoping_card_price_asc : "Price asc",
 		shoping_card_price_desc : "Price desc",
-		shopping_cart_modal_header : "THX for your order",
-		shopping_cart_click : "Click if you want to look at your order list : ",
+		shopping_cart_modal_header : "Thanks for your order",
+		shopping_cart_click : "Go to your order list : ",
 		
 		room_concret_deleted : "Deleted",
 		room_concret_save : "Save",
@@ -191,7 +191,9 @@
 		card_no_periodicals : "No numbers found",
 		card_no_hotels: "No Hotels",
 		room_card_count: "Total price?",
-
+		room_card_info1 : "You will get 100% refund in case of cancelling order only in",
+		room_card_info2 : " days before moving in, after these period refund will be only",
+		room_card_info3 : "Free book",
 		subscribes_header : "List of orders",
 		card_status_active : "Active",
 		subscribes_table_remove : "Cancel",
@@ -304,8 +306,8 @@
 		shoping_card_date_desc : "По спаданням дати",
 		shoping_card_price_asc : "За зростанням ціни",
 		shoping_card_price_desc : "За спаданням ціни",
-		shopping_cart_modal_header : "THX для ваших замовлень",
-		shopping_cart_click : "Нажміть якщо ви хочете подивитися на список замовлень : ",
+		shopping_cart_modal_header : "Дякуємо за замовлення",
+		shopping_cart_click : "Переглянути список замовлень : ",
 			
 		room_concret_deleted : "Видалити",
 		room_concret_save : "Зберегти",
@@ -452,7 +454,10 @@
 		card_no_hotels : "Готелів не знайдено",
 
 		room_card_count: "Вартість кімнати??",
-
+		room_card_info1 : "Ви отримаєте 100% повернення при відміні замовлення тільки за ",
+		room_card_info2 : " днів перед приїздом, після цього повернення становитиме тільки ",
+		room_card_info3 : "Без передплати",
+		
 		subscribes_header : "Список замовлень",
 		card_status_active : "Активне",
 		subscribes_table_remove : "Скасувати",
@@ -570,13 +575,16 @@
 			tooltip_phone_number : "Номер телефону",
 			tooltip_showe_all_info : "Показати всю інформацію",
 			tooltip_rating : "Рейтинг",
+			tooltip_order_date: "Дата замовлення",
 			tooltip_start_date : "Початкова дата",
 			tooltip_end_date : "Кінцева дата",
 			tooltip_double_beds : "Подвійне ліжко", 
 			tooltip_food : "Їжа", 
 			tooltip_single_beds : "Одинарне ліжко",
 			tooltip_price : "Ціна",
-			
+			tooltip_show_info : "Показувати додаткову інфу",
+			tooltip_no_deposit : "Без передплати",
+			tooltip_room_type : "Тип номера",
 		},
 		en : {
 			index_room_wifi : "Wifi",
@@ -593,13 +601,16 @@
 			tooltip_phone_number : "Phone number",
 			tooltip_showe_all_info : "Show full info",
 			tooltip_rating : "Rating",
+			tooltip_order_date: "Order date",
 			tooltip_start_date : "Start date",
 			tooltip_end_date : "End date",
 			tooltip_double_beds : "Double beds", 
 			tooltip_food : "Food", 
 			tooltip_single_beds : "Single beds",
 			tooltip_price : "Price",
-			
+			tooltip_show_info : "Show additional info",
+			tooltip_no_deposit : "No deposit",
+			tooltip_room_type : "Room's type",
 			
 		}
 	};
