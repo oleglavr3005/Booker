@@ -1,5 +1,7 @@
 var mapping = $('#mapping').val();
 
+var removed = 'REMOVED';
+
 function removeOrderCard(orderId) {
 	if (!$('#remove' + orderId).attr('disabled')) {
 
@@ -44,7 +46,11 @@ function removeOrderTable(orderId) {
 			$('.order' + orderId).remove();
 		});
 	});
-	$("#t" + orderId).addClass('disabled');
+	//$("#t" + orderId).addClass('disabled');
+	$("#active_btn" + orderId).remove();
+	$("#all_btn" + orderId).remove();
+	$("#active_after_status" + orderId).html(removed);
+	$("#all_after_status" + orderId).html(removed);
 }
 
 function removeOrder(orderId) {
