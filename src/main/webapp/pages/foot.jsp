@@ -6,7 +6,7 @@
 
 	<section class="" style="   background-color: #387f7b  !important;">
 		<div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
-		<img alt="" src="resources/images/footer.png" style="width: 1400px;">
+		<img alt="" src="${pageContext.servletContext.contextPath}/resources/images/footer.png" style="width: 1400px;">
 
 		</div>
 		<div class="row" style="background-color: #0d353c; margin: auto;">
