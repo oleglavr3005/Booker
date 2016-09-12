@@ -225,10 +225,10 @@ div.material-table .table-footer .dataTables_length {
 										<td style="text-align: center;">${activeOrder.room.type}</td>
 
 										<td style="text-align: center;"><span
-											id="start_date${activeOrder.id}">${activeOrder.startDate}</span></td>
+											id="start_date${activeOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${activeOrder.startDate}" /></span></td>
 
-										<td style="text-align: center;"><span
-											id="end_date${activeOrder.id}">${activeOrder.endDate}</span></td>
+										<td style="text-align: center;"><span 
+											id="end_date${activeOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${activeOrder.endDate}" /></span></td>
 
 										<script type="text/javascript"
 											src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
@@ -311,10 +311,10 @@ div.material-table .table-footer .dataTables_length {
 										<td style="text-align: center;">${finishedOrder.room.type}</td>
 
 										<td style="text-align: center;"><span
-											id="start_date${finishedOrder.id}">${finishedOrder.startDate}</span></td>
+											id="start_date${finishedOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${finishedOrder.startDate}" /></span></td>
 
-										<td style="text-align: center;"><span
-											id="end_date${finishedOrder.id}">${finishedOrder.endDate}</span></td>
+										<td style="text-align: center;"><span 
+											id="end_date${finishedOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${finishedOrder.endDate}" /></span></td>
 
 										<script type="text/javascript"
 											src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
@@ -390,10 +390,10 @@ div.material-table .table-footer .dataTables_length {
 										<td style="text-align: center;">${allOrder.room.type}</td>
 
 										<td style="text-align: center;"><span
-											id="start_date${allOrder.id}">${allOrder.startDate}</span></td>
+											id="start_date${allOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${allOrder.startDate}" /></span></td>
 
-										<td style="text-align: center;"><span
-											id="end_date${allOrder.id}">${allOrder.endDate}</span></td>
+										<td style="text-align: center;"><span 
+											id="end_date${allOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${allOrder.endDate}" /></span></td>
 
 										<script type="text/javascript"
 											src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
