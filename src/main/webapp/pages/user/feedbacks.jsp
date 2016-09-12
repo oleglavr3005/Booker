@@ -36,7 +36,7 @@ b {
 							<h4 style="font-size: 1.3rem; margin-top: 0; margin-bottom: 10px;">
 								<c:out value="${feedback.hotel.name}"></c:out>
 							</h4>
-							<a class="tooltipped" data-position="icon" data-tooltip="Stars"
+							<a class="tooltipped index_search_stars" data-position="icon" data-tooltip="Stars"
 								style="color: #0d0d0d; text-decoration: none;"
 								data-tooltip-id="5701b81f-c345-f4bd-c005-58f8e04f7175"><c:forEach
 									var="i" begin="1" end="${feedback.rating}">
