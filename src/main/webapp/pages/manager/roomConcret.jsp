@@ -187,8 +187,8 @@
 							<!-- 1 BEDS COUNT -->
 
 							<div class="row">
-								<input id="single" value="${room.bedsCount}" type="number"
-									class="validate" name="single" min=1 max=100> <label
+								<input id="single" onchange="checkBeds()" value="${room.bedsCount}" type="number"
+									class="validate" name="single" min=0 max=100> <label
 									id="singleLbl" data-error="${fmtPeople}" for="single"><span
 									id="room_concrete_single"></span> </label>
 							</div>
@@ -213,8 +213,8 @@
 
 							<div class="row">
 								<input id="number" value="${room.number}" type="number"
-									class="validate" name="days" min=1 max=365> <label
-									id="daysLbl" data-error="" for="days"><span
+									class="validate" name="number" min=1 max=99999> <label
+									id="numberLbl" data-error="" for="number"><span
 									id="room_concrete_number"></span></label>
 							</div>
 
@@ -224,8 +224,8 @@
 
 							<div class="row">
 								<input id="price" value="${room.price}" type="number"
-									class="validate" name="percentage" min=1 max=100> <label
-									id="percentageLbl" data-error="" for="percentage"><span
+									class="validate" name="price" min=1 max=100> <label
+									id="priceLbl" data-error="" for="price"><span
 									id="room_concrete_price"></span> </label>
 							</div>
 
@@ -261,8 +261,8 @@
 							<!-- 2 BEDS COUNT -->
 
 							<div class="row">
-								<input id="double" value="${room.doubleBedsCount}" type="number"
-									class="validate" name="single" min=1 max=100> <label
+								<input id="double" onchange="checkBeds()" value="${room.doubleBedsCount}" type="number"
+									class="validate" name="single" min=0 max=100> <label
 									id="doubleLbl" data-error="${fmtPeople}" for="double"><span
 									id="room_concrete_double"></span> </label>
 							</div>
@@ -274,8 +274,8 @@
 							<div class="row">
 								<input id="percentage" value="${room.percentage}" type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
-									class="validate" name="percentage" min=1 max=100> <label
-									id="percentageLbl2" data-error="" for="percentage"><span
+									class="validate" name="percentage" min=0 max=100> <label
+									id="percentageLbl" data-error="" for="percentage"><span
 									id="room_concrete_percentage"></span></label>
 							</div>
 
