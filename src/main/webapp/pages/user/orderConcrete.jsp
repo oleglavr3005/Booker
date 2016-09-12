@@ -280,10 +280,10 @@ div #sidebar-wrapper {
 							<!-- ROOM TYPE MARKER -->
 							<div class="row ">
 								<div class="col s12">
-									<h5 style="font-size: 1rem; margin: 0 0 0 0;">
-										@icon for Room type@ ROOM_TYPE :
-										<c:out value="${room.type }"></c:out>
-									</h5>
+									<a class="tooltipped tooltip_room_type" data-position="icon"
+										data-tooltip="Location" style="color: #0d0d0d;"><i
+										class="fa fa-hotel invert" aria-hidden="true"></i></a>
+									<span>${room.type}</span>
 								</div>
 							</div>
 							<!-- END OF ROOM TYPE MARKER -->

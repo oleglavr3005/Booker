@@ -584,6 +584,7 @@
 			tooltip_price : "Ціна",
 			tooltip_show_info : "Показувати додаткову інфу",
 			tooltip_no_deposit : "Без передплати",
+			tooltip_room_type : "Тип номера",
 		},
 		en : {
 			index_room_wifi : "Wifi",
@@ -609,6 +610,7 @@
 			tooltip_price : "Price",
 			tooltip_show_info : "Show additional info",
 			tooltip_no_deposit : "No deposit",
+			tooltip_room_type : "Room's type",
 			
 		}
 	};
