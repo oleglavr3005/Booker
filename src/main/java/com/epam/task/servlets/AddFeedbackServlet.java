@@ -15,9 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.epam.task.database.dto.FeedbackDto;
 import com.epam.task.database.model.Feedback;
 import com.epam.task.database.model.Hotel;
+import com.epam.task.database.model.Order;
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.FeedbackService;
 import com.epam.task.database.service.HotelService;
+import com.epam.task.database.service.OrderService;
 import com.epam.task.util.StringUtil;
 
 @WebServlet("/addFeedback")
@@ -39,16 +41,25 @@ public class AddFeedbackServlet extends HttpServlet {
 			response.sendError(500);
 			return;
 		}
-		//removed user check : filter has already done it, removed code would never work!
+		int userId = ((User) request.getSession().getAttribute("user")).getId();
+		int hotelId = Integer.parseInt(hotelIdString);
+		
+		//ADDED CHECK: if user has no finished orders in this hotel, he cannot leave feedback
+		List<Order> finishedOrdersInHotel = new OrderService().getFinishedOrdersByUserAndHotel(userId, hotelId);
+		if(finishedOrdersInHotel.isEmpty()) {
+			response.setContentType("text/plain");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write("false");
+			response.getWriter().flush();
+			return;
+		}
 		
 		int rating = Integer.parseInt(ratingString);
-		int hotelId = Integer.parseInt(hotelIdString);
 
 		HotelService hotelService = new HotelService();
 		FeedbackService feedbackService = new FeedbackService();
 		
 		Hotel hotel = hotelService.getHotelById(hotelId);
-		int userId = ((User) request.getSession().getAttribute("user")).getId();
 		Feedback userFeedback = feedbackService.getFeedBackByUserAndHotel(userId, hotelId);
 		
 		int success;
@@ -72,8 +83,8 @@ public class AddFeedbackServlet extends HttpServlet {
 			hotel.setRating(newRating);
 			hotelService.updateHotelRating(hotel);
 			
-			List<Feedback> listFeedBack = new ArrayList<Feedback>();	//WTF????? 
-			listFeedBack.add(userFeedback);								//List with a single element? Logic?
+			List<Feedback> listFeedBack = new ArrayList<Feedback>();
+			listFeedBack.add(userFeedback);
 			request.setAttribute("feedbacks", FeedbackDto.listConverter(listFeedBack));
 			request.getRequestDispatcher("/pages/comments/oneComment.jsp").forward(request, response);
 		} else {
