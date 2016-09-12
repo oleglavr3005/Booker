@@ -472,10 +472,10 @@ div.material-table .table-footer .dataTables_length {
 				</div>
 				
 				<div>
-					<h4 style="text-align: center; margin-top: 170px;">
+					<h4 style="text-align: center; margin-top: 200px;">
 						<span id="orders_charts_MONTHCHART">MONTHLY ACTIVITY</span>
 					</h4>
-					<div id="lineChart" style="height: 250px;"></div>
+					<div id="lineChart" style="height: 250px; margin-bottom:30px"></div>
 				</div>
 			
 			</div>
