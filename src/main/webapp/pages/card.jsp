@@ -201,7 +201,7 @@ b {
 								class="card_edit"></span></a> <a
 								class="waves-effect waves-light btn"
 								href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"
-								style="margin-top: 30px; margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+								style="margin-top: 30px; margin-left: 0px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;     font-size: 10px;">
 								<span class="manager_hotel_card_info"></span>
 							</a>
 						</div>

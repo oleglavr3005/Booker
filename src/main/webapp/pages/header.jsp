@@ -220,7 +220,7 @@ img.logo {
 											<button id="registrationConfirmButton" type="submit"
 												class="btn-flat btn-success login col s2 offset-s1"
 												onclick="confirmRegistration(languages.error.current.emailLbl, languages.error.current.mailPasswordLbl, languages.error.current.header_regist_succes, languages.error.current.header_regist_confirmmail, languages.error.current.header_error_fail, languages.error.current.header_regist);"
-												style="margin-left: 15px;">
+												style="margin-left: 15px; width: 24%;">
 												<span class="header_regist_confirm"> </span>
 											</button>
 											<button
