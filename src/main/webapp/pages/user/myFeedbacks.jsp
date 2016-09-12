@@ -67,7 +67,15 @@
 		<jsp:include page="../foot.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
 
-	<script src="${pageContext.servletContext.contextPath}/resources/js/customerSlider.js"></script>
+	<script src="${pageContext.servletContext.contextPath}/resources/js/customerSlider.js">
+		$(document).ready(function(){
+			$(".date_posted").each(function(index, element){
+				var date = element.innerText;
+				date = date.substring(0 , date.indexOf('.'));
+				element.textContent = date;
+			});
+		});
+	</script>
 	
 </body>
 </html>

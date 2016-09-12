@@ -48,3 +48,11 @@ function addNewComment(hotelId_val){
 		$el.parent().find('.current span').css('width',1 * 20 + '%');
 	});
 }
+
+$(document).ready(function(){
+	$(".date_posted").each(function(index, element){
+		var date = element.innerText;
+		date = date.substring(0 , date.indexOf('.'));
+		element.textContent = date;
+	});
+});
