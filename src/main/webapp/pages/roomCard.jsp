@@ -121,11 +121,11 @@ b {
 
 						<!-- BEDS ICON ZONE -->
 						<div class="row">
-							<a class="tooltipped" data-position="icon"
+							<a class="tooltipped tooltip_double_beds" data-position="icon"
 								data-tooltip="Double beds" style="color: #0d0d0d;"><img
 								class="invert" style="max-width: 7%;"
 								src="${pageContext.servletContext.contextPath}/resources/images/double_bed.png" /></a>
-							<span>${room.doubleBedsCount}</span> <a class="tooltipped"
+							<span>${room.doubleBedsCount}</span> <a class="tooltipped tooltip_single_beds"
 								data-position="icon" data-tooltip="Single beds"
 								style="color: #0d0d0d;"><img class="invert"
 								style="max-width: 7%;"
@@ -136,7 +136,7 @@ b {
 
 						<!-- ROOM FOOD ZONE -->
 						<div class="row">
-							<a class="tooltipped" data-position="icon" data-tooltip="Food"
+							<a class="tooltipped tooltip_food" data-position="icon" data-tooltip="Food"
 								style="color: #0d0d0d;"><i
 								class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span>
 						</div>
@@ -144,11 +144,11 @@ b {
 
 						<!-- ROOM PRICE ZONE -->
 						<div class="row">
-							<a class="tooltipped" data-position="icon"
+							<a class="tooltipped tooltip_price" data-position="icon"
 								data-tooltip="Price for one day" style="color: #0d0d0d;"><i
 								class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${room.price}</span>
 
-							<i id="showInfo${room.id}" onclick="showInfo(${room.id})" class="fa fa-lg fa-info invert tooltipped" data-tooltip="Show additional info" 
+							<i id="showInfo${room.id}" onclick="showInfo(${room.id})" class="fa fa-lg fa-info invert tooltipped tooltip_show_info" data-tooltip="Show additional info" 
 								aria-hidden="true"></i>
 
 							<%-- 							<c:if test="${room.daysCount == -1}"> --%>
@@ -166,13 +166,13 @@ b {
 						<div class="row"
 							style="float: right; text-align: right; font-size: 0.3rem; color:black">
 							<c:if test="${room.wifi == true}">
-								<a id="index_room_wifi" class="tooltipped"
+								<a class="tooltipped index_room_wifi"
 									data-position="icon" data-tooltip="Wifi"
 									style="color: #0d0d0d;"><i class="material-icons invert">wifi</i></a>
 							</c:if>
 
 							<c:if test="${room.shower == true}">
-								<a id="index_room_shower" class="tooltipped"
+								<a class="tooltipped index_room_shower"
 									data-position="icon" data-tooltip="Shower"><img
 									class="invert" style="max-width: 10%; margin-top: -1.5rem"
 									src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" />
@@ -180,31 +180,31 @@ b {
 							</c:if>
 
 							<c:if test="${room.parking == true}">
-								<a id="index_room_parking" class="tooltipped"
+								<a class="tooltipped index_room_parking"
 									data-position="icon" data-tooltip="Parking"
 									style="color: #0d0d0d;"><i class="material-icons invert">local_parking</i></a>
 							</c:if>
 
 							<c:if test="${room.condition == true}">
-								<a id="index_room_conditioner" class="tooltipped"
+								<a class="tooltipped index_room_conditioner"
 									data-position="icon" data-tooltip="Condition"
 									style="color: #0d0d0d;"><i class="material-icons invert">toys</i></a>
 							</c:if>
 
 							<c:if test="${room.pool == true}">
-								<a id="index_room_pool" class="tooltipped"
+								<a class="tooltipped index_room_pool"
 									data-position="icon" data-tooltip="Pool"
 									style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
 							</c:if>
 
 							<c:if test="${room.gym == true}">
-								<a id="index_room_gym" class="tooltipped"
+								<a class="tooltipped index_room_gym"
 									data-position="icon" data-tooltip="Gym" style="color: #0d0d0d;">
 									<i class="material-icons invert">fitness_center</i></a>
 							</c:if>
 
 							<c:if test="${room.balcony == true}">
-								<a id="index_room_balcony" class="tooltipped"
+								<a class="tooltipped index_room_balcony"
 									data-position="icon" data-tooltip="Balcony"><img
 									class="invert" style="max-width: 10%; margin-top: -1.5rem"
 									src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" />
@@ -250,14 +250,15 @@ b {
 						<c:choose>
 							<c:when test="${room.daysCount > -1}">
 								<div
-									style="border: 1px solid red; border-radius: 10px; padding: 5px; background-color: rgba(255, 0, 0, 0.3);">YOU
-									WILL GET 100% REFUND IN CASE OF CANCELING ORDER ONLY IN
-									${room.daysCount} DAYS BEFORE MOVING IN, AFTER THESE PERIOD
-									REFUND WILL BE ONLY ${room.percentage}%</div>
+									style="border: 1px solid red; border-radius: 10px; padding: 5px; background-color: rgba(255, 0, 0, 0.3);">
+									<span class="room_card_info1">YOU
+									WILL GET 100% REFUND IN CASE OF CANCELING ORDER ONLY IN</span>
+									${room.daysCount} <span class="room_card_info2">DAYS BEFORE MOVING IN, AFTER THESE PERIOD
+									REFUND WILL BE ONLY</span> ${room.percentage}%</div>
 							</c:when>
 							<c:otherwise>
 								<div
-									style="border: 1px solid green; border-radius: 10px; padding: 5px; background-color: rgba(0, 255, 0, 0.3);">FREE_BOOK</div>
+									style="border: 1px solid green; border-radius: 10px; padding: 5px; background-color: rgba(0, 255, 0, 0.3);"><span class="room_card_info3">FREE_BOOK</span></div>
 							</c:otherwise>
 						</c:choose>
 					</div>
