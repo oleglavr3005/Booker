@@ -1,9 +1,3 @@
-var createSucces = "room was created";
-var createFail = "room wasnt created";
-var updateSucces = "room was updated";
-var updateFail = "room wasnt updated";
-var wrongData = "INVALID DATA";
-var numberBusy = "this number is allready in use";
 
 function createRoom() {
 	// var img = $('#photos').val() == '' ? 'new_hotel.jpg' :
@@ -36,17 +30,17 @@ function createRoom() {
 		}, function(result) {
 			if (result != 'error') {
 				$('#create_error').css('color', 'green');
-				$('#create_error').text(createSucces);
+				$('#create_error').text(languages.script.current.hotel.createSucces);
 				$('#create_button').attr("disabled", true);
 				setTimeout(function() {
 					document.location.href = '/booker/cabinet/room/' + result;
 				}, 2000);
 			} else {
-				$('#create_error').text(createFail);
+				$('#create_error').text(languages.script.current.hotel.createFail);
 			}
 		});
 	} else {
-		$('#create_error').text(wrongData);
+		$('#create_error').text(languages.script.current.hotel.wrongData);
 	}
 }
 
@@ -80,16 +74,16 @@ function updateRoom(room) {
 		}, function(result) {
 			if (result != 'false') {
 				$('#create_error').css('color', 'green');
-				$('#create_error').text(updateSucces);
+				$('#create_error').text(languages.script.current.hotel.updateSucces);
 				setTimeout(function() {
 					$('#create_error').visibility = "none";
 				}, 2000);
 			} else {
-				$('#create_error').text(updateFail);
+				$('#create_error').text(languages.script.current.hotel.updateFail);
 			}
 		});
 	} else {
-		$('#create_error').text(wrongData);
+		$('#create_error').text(languages.script.current.hotel.wrongData);
 	}
 }
 
@@ -137,13 +131,13 @@ function checkRoomNumber(id, nmb) {
 		isValid = (data == "true");
 		if (!isValid) {
 			invalid('number');
-			$('#numberLbl').attr("data-error", numberBusy);
+			$('#numberLbl').attr("data-error", languages.script.current.hotel.numberBusy);
 		} else {
 			valid('number');
 		}
 	}).error(function(data) {
 		isValid = false;
-		$('#numberLbl').attr("data-error", numberBusy);
+		$('#numberLbl').attr("data-error", languages.script.current.hotel.numberBusy);
 		invalid('number');
 	});
 	return isValid;

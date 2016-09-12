@@ -30,7 +30,6 @@ function addNewComment(hotelId_val){
 		title : title_val
 	}, function(result) {
 		if(result != 'false'){
-			console.log(result);
 			jQuery('#newComment').after(result); 
 			var next_id = jQuery('#newComment').next().attr('id');
 			jQuery('#' + next_id).remove();
@@ -38,8 +37,7 @@ function addNewComment(hotelId_val){
 			jQuery('#newComment').after(result);
 			jQuery('#newComment').next().slideDown(500);
 		}else{
-			console.log(result);
-			jQuery('#newComment').after("<p>############## ERROR ############</p>"); 
+			jQuery('#newComment').after("<p>" + languages.script.current.message_error + "</p>"); 
 		}
 		jQuery('#comment').val('');
 		jQuery('#title_comment').val('');
