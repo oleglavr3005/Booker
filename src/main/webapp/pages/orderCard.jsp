@@ -132,7 +132,7 @@ b {
 										</div>
 										<div class="row">
 											<div>
-												<a class="tooltipped tooltip_start_date" data-position="icon"
+												<a class="tooltipped tooltip_end_date" data-position="icon"
 													data-tooltip="" style="color: #0d0d0d;"> <i
 													class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
 												<span class="order_card_to"> </span> <span
@@ -255,8 +255,8 @@ b {
 							class="btn_remove"></span></a>
 					</div>
 					<div class="col s2 offset-s6">
-						<a class="tooltipped" data-position="icon"
-							data-tooltip="Money to pay" style="color: #0d0d0d;"><i
+						<a class="tooltipped tooltip_money_to_pay" data-position="icon"
+							data-tooltip="" style="color: #0d0d0d;"><i
 							class="fa fa-lg fa-money invert" aria-hidden="true"></i></a>
 						<c:choose>
 							<c:when test="${order.room.daysCount == -1}">
@@ -300,9 +300,9 @@ b {
 	<div class="row">
 		<div class="col s3 offset-s1">
 			<span id="order_card_total_price"></span> <span>${summary/2}</span> <span
-				id="order_card_uan"></span> <a class="tooltipped"
+				id="order_card_uan"></span> <a class="tooltipped tooltip_you_pay"
 				data-position="icon"
-				data-tooltip="You pay a half of the sum for orders with deposit. And no money for orders with no deposit"
+				data-tooltip=""
 				style="color: #0d0d0d;"><i
 				class="fa fa-2x fa-exclamation-circle invert" aria-hidden="true"></i></a>
 
