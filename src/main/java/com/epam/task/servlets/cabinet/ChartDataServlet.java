@@ -21,6 +21,7 @@ import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.OrderService;
+import com.epam.task.util.MapUtil;
 
 @WebServlet("/get_chart_data")
 public class ChartDataServlet extends HttpServlet {
@@ -45,6 +46,7 @@ public class ChartDataServlet extends HttpServlet {
 				hotelsByTimes.put(hotelId, 1);				
 			}
 		}
+		hotelsByTimes = MapUtil.sortByValue(hotelsByTimes);
 		
 		Map<String, Integer> monthTimes = new HashMap<>(); //date, how many times
 		Calendar calendar = Calendar.getInstance();
@@ -77,6 +79,7 @@ public class ChartDataServlet extends HttpServlet {
 				JSONObject orderJson = new JSONObject();
 				orderJson.put("label", service.getHotelById(element.getKey()).getName()); //hotel
 				orderJson.put("value", element.getValue());						//times visited
+				orderJson.put("id", element.getKey()); //id
 				donutArray.put(orderJson);	
 			}
 			
