@@ -1,3 +1,7 @@
+var error = "ERROR OCCURED";
+var cvvError = "cvv wrong";
+var cardError = "card number is wrong";
+
 function createOrder(orders) {
 	// if(isPurchaseValid()){
 	$.post('create_order', {
@@ -183,7 +187,7 @@ function addToCart(roomId) {
 				$('#switchContent').html(orders);
 			});
 		} else {
-			$('#btn' + roomId).text("FAIL");
+			$('#btn' + roomId).text(error);
 			$('#btn' + roomId).attr('disabled', true);
 		}
 	});
@@ -267,14 +271,14 @@ function validateFields() {
 	var isValid = true;
 	if ($('#CVC').val().length != 3) {
 		$('#CVC').after(
-				'<div class="error" style="width: 150px;">CVCERROR</div>');
+				'<div class="error" style="width: 150px;">'+ cvvError +'</div>');
 		isValid = false;
 	}
 	if (isValid) {
 		var code = value($('#cardnum1').val()) + value($('#cardnum2').val())
 				+ value($('#cardnum3').val()) + value($('#cardnum4').val());
 		if (code.length != 16) {
-			$('#cardNumberError').html("CARDERROR");
+			$('#cardNumberError').html(cardError);
 			isValid = false;
 		}
 	}
@@ -308,11 +312,9 @@ function insertModal(result) {
 }
 
 function showModal(result) {
-//	debugger;
 	if (result.countOfHotels > 0) {
 		var url = 'http://localhost:8080/booker/hotel/';
 		for (var i = 0; i < 3 && i < result.countOfHotels; i++) {
-	//		alert(result.hotels[i].stars);
 			for(var y = 0; y < result.hotels[i].stars;y++){
 				$('#'+ i + y).removeClass("fa-star-o");
 				$('#'+ i + y).addClass("fa-star");
@@ -330,69 +332,4 @@ function showModal(result) {
 	} else {
 		document.getElementById('empty').style.display = 'block';
 	}
-}
-
-function modalMaker(result) {
-	var totalContent = '';
-	if (result.countOfHotels > 0) {
-		for (var i = 0; i < 3 && i < result.countOfHotels; i++) {
-			totalContent += contentMaker(result.hotels[i]);
-		}
-	} else {
-		totalContent = '<img alt="thank you for order"'
-				+ 'src="http://localhost:8080/booker/resources/images/order1.jpg"'
-				+ 'class="img-responsive center-block"'
-				+ 'style="max-width: 150px; max-height: 150px; margin-bottom: 10px; margin-top: 30px">';
-	}
-	return totalContent;
-}
-
-function contentMaker(hotel) {
-	var content = '<div class="row">' + '<div class="col s4">'
-			+ '	<a href="http://localhost:8080/booker/hotel/'
-			+ hotel.id
-			+ '">'
-			+ '		<img src="<i:urlToImage url="'
-			+ hotel.photo
-			+ '" />"'
-			+ '		style="height: 110px; width: 150px;">'
-			+ '	</a>'
-			+ '</div>'
-			+ '<div class="col s6">'
-			+ '<div class="row" style="margin-top: 15px; margin-bottom:10px">'
-			+ '<div class="col s5">'
-			+ '   <a href="http://localhost:8080/booker/hotel/'
-			+ hotel.id
-			+ '">'
-			+ hotel.name
-			+ '</a>'
-			+ '</div>'
-			+ '<div class="col s6 offset-s1">'
-			+ '    <a style="color: #0d0d0d; text-decoration: none;">'
-			+ '        <c:forEach var="i" begin="1" end="'
-			+ hotel.stars
-			+ '">'
-			+ '            <i class="fa fa-lg fa-star" aria-hidden="true"></i>'
-			+ '        </c:forEach>'
-			+ '        <c:forEach var="i" begin="'
-			+ hotel.stars
-			+ '" end="4">'
-			+ '            <i class="fa fa-lg fa-star-o" aria-hidden="true"></i>'
-			+ '        </c:forEach>'
-			+ '    </a></div></div>'
-			+ '	<div class="row"><i class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i><span>'
-			+ hotel.city
-			+ ' '
-			+ hotel.street
-			+ '</span></div>'
-			+ '</div>'
-			+ '<div class="col s2">'
-			+ '	<div class="row">'
-			+ '		<a class="waves-effect waves-light btn"'
-			+ '			href="http://localhost:8080/booker/hotel/'
-			+ hotel.id
-			+ '"'
-			+ '			style="margin-top: 30px; margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family:Times, serif;"><span>INFO</span></a>'
-			+ '	</div>' + '</div></div>';
-	return content;
 }

@@ -115,7 +115,7 @@ b {
 
 						<!-- ROOM TYPE ZONE -->
 						<div class="row" style="margin-top: 15px;">
-							<span>${room.type}</span>
+							<span> ${room.type} </span><span style="margin-left:5px;">№ ${room.number} </span>
 						</div>
 						<!-- 				END OF ROOM TYPE ZONE -->
 
