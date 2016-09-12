@@ -25,11 +25,12 @@ public class HotelDao {
 	private final String ORDER_BY_RATING_DESC = " ORDER BY rating DESC";
 	private final String PAGINATION = " LIMIT ?, 5";
 	
-	private final String SELECT_ALL_SUITABLE = "SELECT DISTINCT h.* FROM hotel h INNER JOIN room r ON h.hotel_id = r.hotel_id LEFT JOIN `order` o ON (o.room_id = r.room_id AND o.status NOT LIKE 'canceled') "
+	private final String SELECT_ALL_SUITABLE = "SELECT DISTINCT h.* FROM hotel h INNER JOIN room r ON h.hotel_id = r.hotel_id LEFT JOIN `order` o ON "
+			+ "(o.room_id = r.room_id AND o.status NOT LIKE 'canceled' AND (o.end_date > ? AND o.start_date < ?) ) "
 			+ "WHERE (h.name REGEXP ? OR h.city REGEXP ? OR h.street REGEXP ?) AND h.stars >= ? AND h.stars <= ? AND h.is_deleted = false AND "
 			+ "? <= (SELECT SUM(double_beds_count)*2 + SUM(beds_count) FROM room r2 WHERE r2.hotel_id = r.hotel_id GROUP BY r2.hotel_id) AND "
 			+ "r.price >= ? AND r.price <= ? AND r.is_deleted = false AND "
-			+ "(o.end_date IS NULL OR o.end_date <= ? OR o.start_date >= ?)";
+			+ "o.end_date IS NULL";
 
 	private final String TYPE_STANDART = "r.type LIKE 'STANDART'";
 	private final String TYPE_LUX = "r.type LIKE 'LUX'";
@@ -200,6 +201,9 @@ public class HotelDao {
 		SQL.append(PAGINATION);
 		try (PreparedStatement statement = connection.prepareStatement(SQL.toString())) {
 			int i = 1;
+			statement.setTimestamp(i++, startDate);
+			statement.setTimestamp(i++, endDate);
+			
 			statement.setString(i++, ".*" + name + ".*");
 			statement.setString(i++, ".*" + name + ".*");
 			statement.setString(i++, ".*" + name + ".*");
@@ -210,10 +214,7 @@ public class HotelDao {
 			statement.setInt(i++, people);
 			
 			statement.setInt(i++, minPrice);
-			statement.setInt(i++, maxPrice);
-			
-			statement.setTimestamp(i++, startDate);
-			statement.setTimestamp(i++, endDate);
+			statement.setInt(i++, maxPrice);			
 			
 			statement.setInt(i, (page-1)*5);
 			
@@ -407,6 +408,9 @@ public class HotelDao {
 		
 		try (PreparedStatement statement = connection.prepareStatement(SQL.toString())) {
 			int i = 1;
+			statement.setTimestamp(i++, startDate);
+			statement.setTimestamp(i++, endDate);
+			
 			statement.setString(i++, ".*" + name + ".*");
 			statement.setString(i++, ".*" + name + ".*");
 			statement.setString(i++, ".*" + name + ".*");
@@ -417,10 +421,7 @@ public class HotelDao {
 			statement.setInt(i++, people);
 			
 			statement.setInt(i++, minPrice);
-			statement.setInt(i++, maxPrice);
-			
-			statement.setTimestamp(i++, startDate);
-			statement.setTimestamp(i++, endDate);
+			statement.setInt(i++, maxPrice);			
 			
 			try (ResultSet result = statement.executeQuery()) {
 				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
