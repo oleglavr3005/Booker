@@ -152,7 +152,7 @@ b {
 							<span>${hotel.city} ${hotel.street}</span>
 						</div>
 						<div class="row" style="margin-bottom: 10px">
-							<a class="tooltipped placeholder_phone_number"
+							<a class="tooltipped tooltip_phone_number"
 								data-position="icon" data-tooltip=""
 								style="color: #0d0d0d; text-decoration: none;"><i
 								class="fa fa-lg fa-phone-square invert" aria-hidden="true"></i></a>
