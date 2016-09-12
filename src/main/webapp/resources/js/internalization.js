@@ -621,14 +621,48 @@
 			tooltip_show_info : "Show additional info",
 		}
 	};
-	
+	var script = {
+		en : {
+			calendar : {
+				min: 'measure create',
+		        max: 'measure create',
+		        now: 'now create',
+		        select: 'parse create validate',
+		        highlight: 'parse navigate create validate',
+		        view: 'parse create validate viewset',
+		        disable: 'deactivate',
+		        enable: 'activate'
+		    },
+		    message_error : 'Помилка створення коментаря',
+		    info_toggle_open : 'Show additional info',
+		    info_toggle_hide : 'Hide additional info',
+		    first : "First",
+		    last : "Last",
+		    hotel : {
+		    	createSucces : "hotel was created",
+		    	createFail : "hotel wasnt created",
+		    	updateSucces : "hotel was updated",
+		    	updateFail : "hotel wasnt updated",
+		    	wrongData : "INVALID DATA",
+		    	numberBusy : "this number is allready in use",
+		    	is_max : " is max",
+		    	enter_key : "Enter Keywords Here",
+		    	rows_per_page : "Rows per page:",
+		    	sInfo : "_START_ -_END_ of _TOTAL_",
+		    } 
+		},
+		ua : {
+				
+		},
+	};
 	languages.en = en;
 	languages.ua = ua;
 	
 	languages.data_error = data_error;
-	languages.data_error.current=en;
-	
+	languages.data_error.current = data_error.en;
 	languages.data_tooltip = data_tooltip;
+	languages.script = script;
+	languages.script.current = script.en;
 })();
 
 function changeLanguage(language){
@@ -636,6 +670,7 @@ function changeLanguage(language){
 		language = 'en';
 	}
 	currentLanguage = language;
+	languages.script.current = languages.script[currentLanguage];
 	$(document).ready(changeLanguageOnPage(language));
 	changeLanguageOnServer(language);
 }
@@ -643,6 +678,7 @@ function updateLanguage(){
 	if(currentLanguage != 'en' && currentLanguage != 'ua'){
 		currentLanguage = 'en';
 	}
+	languages.script.current = languages.script[currentLanguage];
 	$(document).ready(changeLanguageOnPage(currentLanguage));
 }
 function changeLanguageOnPage(language){

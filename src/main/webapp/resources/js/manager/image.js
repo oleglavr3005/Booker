@@ -4,7 +4,7 @@ $("#Img").click(function() {
 
 function checkMax(max){
 	if (parseInt($('#imgInput')[0].files.length)>max){
-        alert(max + " is max");
+        alert(max + languages.script.current.hotel.is_max);
         return;
        }
 }

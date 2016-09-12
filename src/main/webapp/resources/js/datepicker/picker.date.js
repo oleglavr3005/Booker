@@ -54,16 +54,7 @@ function DatePicker( picker, settings ) {
     calendar.$node = picker.$node
 
     // The queue of methods that will be used to build item objects.
-    calendar.queue = {
-        min: 'measure create',
-        max: 'measure create',
-        now: 'now create',
-        select: 'parse create validate',
-        highlight: 'parse navigate create validate',
-        view: 'parse create validate viewset',
-        disable: 'deactivate',
-        enable: 'activate'
-    }
+    calendar.queue = languages.script.current.calendar;
 
     // The component's item object.
     calendar.item = {}
@@ -1314,7 +1305,7 @@ DatePicker.defaults = (function( prefix ) {
             navDisabled: prefix + 'nav--disabled',
 
             month: prefix + 'month',
-            year: prefix + 'year',
+            year: prefix + 'year', 
 
             selectMonth: prefix + 'select--month',
             selectYear: prefix + 'select--year',
