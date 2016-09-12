@@ -252,7 +252,7 @@ div #sidebar-wrapper {
 								</a>
 							</div>
 							<div class="col s2 offset-s1" style="margin-top: 15px;">
-								<a class="tooltipped" data-position="icon" data-tooltip="Rating"
+								<a class="tooltipped tooltip_rating" data-position="icon" data-tooltip="Rating"
 									style="margin-left: 50px; color: #0d0d0d; text-decoration: none;">
 									<i class="fa fa-lg fa-thumbs-up invert" aria-hidden="true"></i>
 									<span>${hotel.rating }</span>

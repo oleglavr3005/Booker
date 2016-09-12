@@ -28,7 +28,6 @@
 	href="${pageContext.servletContext.contextPath}/resources/materialize/css/materialize.min.css"
 	media="screen,projection" />
 
-
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/languages.min.css">
 
@@ -41,6 +40,8 @@
 	href="${pageContext.servletContext.contextPath}/resources/css/table.css">
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/css/style.css">
+	
+<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.5.1.css">
 <style>
 .btn {
 	background: #26A69A;
@@ -224,10 +225,10 @@ div.material-table .table-footer .dataTables_length {
 										<td style="text-align: center;">${activeOrder.room.type}</td>
 
 										<td style="text-align: center;"><span
-											id="start_date${activeOrder.id}">${activeOrder.startDate}</span></td>
+											id="start_date${activeOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${activeOrder.startDate}" /></span></td>
 
-										<td style="text-align: center;"><span
-											id="end_date${activeOrder.id}">${activeOrder.endDate}</span></td>
+										<td style="text-align: center;"><span 
+											id="end_date${activeOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${activeOrder.endDate}" /></span></td>
 
 										<script type="text/javascript"
 											src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
@@ -310,10 +311,10 @@ div.material-table .table-footer .dataTables_length {
 										<td style="text-align: center;">${finishedOrder.room.type}</td>
 
 										<td style="text-align: center;"><span
-											id="start_date${finishedOrder.id}">${finishedOrder.startDate}</span></td>
+											id="start_date${finishedOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${finishedOrder.startDate}" /></span></td>
 
-										<td style="text-align: center;"><span
-											id="end_date${finishedOrder.id}">${finishedOrder.endDate}</span></td>
+										<td style="text-align: center;"><span 
+											id="end_date${finishedOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${finishedOrder.endDate}" /></span></td>
 
 										<script type="text/javascript"
 											src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
@@ -389,10 +390,10 @@ div.material-table .table-footer .dataTables_length {
 										<td style="text-align: center;">${allOrder.room.type}</td>
 
 										<td style="text-align: center;"><span
-											id="start_date${allOrder.id}">${allOrder.startDate}</span></td>
+											id="start_date${allOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${allOrder.startDate}" /></span></td>
 
-										<td style="text-align: center;"><span
-											id="end_date${allOrder.id}">${allOrder.endDate}</span></td>
+										<td style="text-align: center;"><span 
+											id="end_date${allOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${allOrder.endDate}" /></span></td>
 
 										<script type="text/javascript"
 											src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
@@ -463,15 +464,19 @@ div.material-table .table-footer .dataTables_length {
 			<!-- 				Tab #4 -->
 			<div id="test4" class="col s12">
 
-				<h4 style="text-align: center; margin-top: 20px;">
-					<span id="orders_charts_HOTELSCHART">MOST VISITED HOTELS</span>
-				</h4>
-				<div id="donutChart" style="height: 250px;"></div>
+				<div>
+					<h4 style="text-align: center; margin-top: 20px;">
+						<span id="orders_charts_HOTELSCHART">MOST VISITED HOTELS</span>
+					</h4>
+					<div id="donutChart" style="height: 250px; float: left"></div>
+				</div>
 				
-				<h4 style="text-align: center; margin-top: 20px;">
-					<span id="orders_charts_MONTHCHART">MONTHLY ACTIVITY</span>
-				</h4>
-				<div id="lineChart" style="height: 250px;"></div>
+				<div>
+					<h4 style="text-align: center; margin-top: 200px;">
+						<span id="orders_charts_MONTHCHART">MONTHLY ACTIVITY</span>
+					</h4>
+					<div id="lineChart" style="height: 250px; margin-bottom:30px"></div>
+				</div>
 			
 			</div>
 			<!-- 			End of Tab #4 -->
@@ -820,49 +825,8 @@ $(document).ready(function()
  	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
  	<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
-	<script type="text/javascript">
-	
-	$(document).ready(function() {
-		
-		$.ajax({
-			async : false,
-			dataType : 'json',
-			url : "../get_chart_data",
-			type : 'POST',
-			success : function(respond) {
-				var morisDonutData = [{ label: "No hotels", value: 0}];
-				var morisLineData = [{ year: "0", value: 0}];
-				
-				if (respond != false) {					
-					if(respond.donutData.length > 0) {
-						morisDonutData = respond.donutData;
-					}
-					
-					if(respond.lineData.length > 0) {
-						morisLineData = respond.lineData;
-					}					
-				}
-				
-				Morris.Donut({
-					  element: 'donutChart',
-					  data: morisDonutData,
-					 colors: ['#26A69A', 'rgb(18, 68, 76)', 'lightblue']
-				});
-				
-				Morris.Line({
-					  element: 'lineChart',
-					  data: morisLineData,
-					  xkey: 'year',
-					  ykeys: ['value'],
-					  labels: ['Value'],
-					  lineColors: ['rgb(18, 68, 76)']
-				});
-			}
-		});
-		
-	});
-	
-	</script>
+ 	<script type="text/javascript" 
+ 		src="${pageContext.servletContext.contextPath}/resources/js/charts/charts.js"></script>
 
 
 </body>
