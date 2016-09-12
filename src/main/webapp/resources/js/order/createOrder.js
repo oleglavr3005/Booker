@@ -47,7 +47,24 @@ function bookOrderCard(orderId, daysCount) {
 						if (res.booked == 'true') {
 							insertModal(res);
 							$('#modal1').openModal({
-								complete : onModalHide
+								complete : function() {
+									document.getElementById('empty').style.display = 'none';
+									for (var i = 0; i < 3; i++) {
+										document.getElementById('row' + i).style.display = 'none';
+										for(var y = 0; y < 5;y++){
+											if ($('#'+ i + y).hasClass('fa-star')){
+												$('#'+ i + y).removeClass("fa-star");
+												$('#'+ i + y).addClass("fa-star-o");
+											}
+										}
+									}
+									$.get('../refresh_cart', {
+										compareBy : $('#compare').val(),
+										page : $('#pageNmb').val()
+									}, function(orders) {
+										$('#switchContent').html(orders);
+									});
+								}
 							});
 
 							$('#book' + orderId).text("SUCCES");
@@ -111,7 +128,24 @@ function bookOrderCard(orderId, daysCount) {
 				if (res.booked == 'true') {
 					insertModal(res);
 					$('#modal1').openModal({
-						complete : onModalHide
+						complete : function() {
+							document.getElementById('empty').style.display = 'none';
+							for (var i = 0; i < 3; i++) {
+								document.getElementById('row' + i).style.display = 'none';
+								for(var y = 0; y < 5;y++){
+									if ($('#'+ i + y).hasClass('fa-star')){
+										$('#'+ i + y).removeClass("fa-star");
+										$('#'+ i + y).addClass("fa-star-o");
+									}
+								}
+							}
+							$.get('../refresh_cart', {
+								compareBy : $('#compare').val(),
+								page : $('#pageNmb').val()
+							}, function(orders) {
+								$('#switchContent').html(orders);
+							});
+						}
 					});
 
 					$('#book' + orderId).text("SUCCES");
@@ -274,9 +308,15 @@ function insertModal(result) {
 }
 
 function showModal(result) {
+//	debugger;
 	if (result.countOfHotels > 0) {
 		var url = 'http://localhost:8080/booker/hotel/';
 		for (var i = 0; i < 3 && i < result.countOfHotels; i++) {
+	//		alert(result.hotels[i].stars);
+			for(var y = 0; y < result.hotels[i].stars;y++){
+				$('#'+ i + y).removeClass("fa-star-o");
+				$('#'+ i + y).addClass("fa-star");
+			}
 			document.getElementById('row' + i).style.display = 'block';
 			$('#href' + i + '1').attr('href', url + result.hotels[i].id);
 			$('#href' + i + '2').attr('href', url + result.hotels[i].id);
@@ -285,6 +325,7 @@ function showModal(result) {
 			$('#hotelName' + i).html(result.hotels[i].name);
 			$('#location' + i).html(
 					result.hotels[i].city + " " + result.hotels[i].street);
+			
 		}
 	} else {
 		document.getElementById('empty').style.display = 'block';
@@ -355,12 +396,3 @@ function contentMaker(hotel) {
 			+ '	</div>' + '</div></div>';
 	return content;
 }
-
-var onModalHide = function() {
-	$.get('../refresh_cart', {
-		compareBy : $('#compare').val(),
-		page : $('#pageNmb').val()
-	}, function(orders) {
-		$('#switchContent').html(orders);
-	});
-};

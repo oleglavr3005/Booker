@@ -136,32 +136,32 @@
 
 		<!-- TEST ZONE -->
 
-		<div class="row">
-			<div class="col s2 offset-s1">
-				<a class="waves-effect waves-light btn"
-					style="background: #26A69A; color: #FFFFFF;"
-					onclick="testFunction(0)">0</a>
-			</div>
-			<div class="col s2 offset-s1">
-				<a class="waves-effect waves-light btn"
-					style="background: #26A69A; color: #FFFFFF;"
-					onclick="testFunction(1)">1</a>
-			</div>
-			<div class="col s2 offset-s1">
-				<a class="waves-effect waves-light btn"
-					style="background: #26A69A; color: #FFFFFF;"
-					onclick="testFunction(2)">2</a>
-			</div>
-			<div class="col s2 offset-s1">
-				<a class="waves-effect waves-light btn"
-					style="background: #26A69A; color: #FFFFFF;"
-					onclick="testFunction(3)">3</a>
-			</div>
-		</div>
+<!-- 		<div class="row"> -->
+<!-- 			<div class="col s2 offset-s1"> -->
+<!-- 				<a class="waves-effect waves-light btn" -->
+<!-- 					style="background: #26A69A; color: #FFFFFF;" -->
+<!-- 					onclick="testFunction(0)">0</a> -->
+<!-- 			</div> -->
+<!-- 			<div class="col s2 offset-s1"> -->
+<!-- 				<a class="waves-effect waves-light btn" -->
+<!-- 					style="background: #26A69A; color: #FFFFFF;" -->
+<!-- 					onclick="testFunction(1)">1</a> -->
+<!-- 			</div> -->
+<!-- 			<div class="col s2 offset-s1"> -->
+<!-- 				<a class="waves-effect waves-light btn" -->
+<!-- 					style="background: #26A69A; color: #FFFFFF;" -->
+<!-- 					onclick="testFunction(2)">2</a> -->
+<!-- 			</div> -->
+<!-- 			<div class="col s2 offset-s1"> -->
+<!-- 				<a class="waves-effect waves-light btn" -->
+<!-- 					style="background: #26A69A; color: #FFFFFF;" -->
+<!-- 					onclick="testFunction(3)">3</a> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 
 
-		<script type="text/javascript"
-			src="${pageContext.servletContext.contextPath}/resources/js/test/recommendModal.js"></script>
+<!-- 		<script type="text/javascript" -->
+<%-- 			src="${pageContext.servletContext.contextPath}/resources/js/test/recommendModal.js"></script> --%>
 
 
 		<!-- END OF TEST ZONE -->
