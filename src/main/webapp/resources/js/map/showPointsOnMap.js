@@ -33,7 +33,7 @@ function addMarker(place) {
     var marker = new google.maps.Marker({
         position:  pos,
         map: map,
-        draggable: true, //set marker draggable 
+        draggable: false, //set marker draggable 
         animation: google.maps.Animation.DROP, //bounce animation
         icon: {
             url: newURL
