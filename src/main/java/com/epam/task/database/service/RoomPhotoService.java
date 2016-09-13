@@ -1,6 +1,5 @@
 package com.epam.task.database.service;
 
-import java.util.Collection;
 import java.util.List;
 
 import com.epam.task.database.dao.manager.DaoManager;
@@ -33,6 +32,11 @@ public class RoomPhotoService {
 	public int deleteRoomPhoto(int element) {
 		return daoManager.executeAndClose(() -> daoManager.getRoomPhotoDao().deleteRoomPhoto(element));
 	}
+
+	public int updateRoomPhoto(RoomPhoto photo) {
+		return daoManager.executeAndClose(() -> daoManager.getRoomPhotoDao().updateRoomPhoto(photo));
+	}
+	
 	public static void main(String[] args) {
 		RoomPhotoService service = new RoomPhotoService();
 		service.testing();

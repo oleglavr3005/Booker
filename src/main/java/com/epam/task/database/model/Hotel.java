@@ -1,5 +1,6 @@
 package com.epam.task.database.model;
 
+import java.util.Comparator;
 import java.util.List;
 
 import com.epam.task.database.service.HotelPhotoService;
@@ -26,6 +27,19 @@ public class Hotel {
 		photos = new HotelPhotoService().getHotelPhotosByHotel(id);
 		if(photos.size() == 0) {
 			photos.add(new HotelPhoto(0, "no_hotel_pic.jpg", "", id, true));
+		} else {
+			photos.sort(new Comparator<HotelPhoto>() {
+				@Override
+				public int compare(HotelPhoto o1, HotelPhoto o2) {
+					if(o1.isMain()) {
+						return 1;
+					} else if (o2.isMain()) {
+						return -1;
+					} else {
+						return 0;
+					}
+				}
+			});
 		}
 	}
 	

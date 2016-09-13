@@ -1,5 +1,6 @@
 package com.epam.task.database.model;
 
+import java.util.Comparator;
 import java.util.List;
 
 import com.epam.task.database.model.enums.RoomFood;
@@ -35,6 +36,19 @@ public class Room {
 		photos = new RoomPhotoService().getRoomPhotosByRoom(id);
 		if(photos.size() == 0) {
 			photos.add(new RoomPhoto(0, "no-image.png", "", hotelId, true));
+		} else {
+			photos.sort(new Comparator<RoomPhoto>() {
+				@Override
+				public int compare(RoomPhoto o1, RoomPhoto o2) {
+					if(o1.isMain()) {
+						return 1;
+					} else if (o2.isMain()) {
+						return -1;
+					} else {
+						return 0;
+					}
+				}
+			});
 		}
 	}
 
