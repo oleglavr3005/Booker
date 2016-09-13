@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/fontawesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/jPage/style.css">
@@ -20,10 +21,12 @@ b {
 </style>
 <!-- MOVE TO HOTEL -->
 <div style="margin: 20px;"></div>
-<c:if test="${feedbacks == 0}">
+<c:if test="${fn:length(feedbacks) == 0}">
 	<h5 style="color: red; margin-bottom: 63px;">
 		<span id="feedback_without_feedback"></span>
 	</h5>
+		<img src="${pageContext.servletContext.contextPath}/resources/images/comment.png" alt="comments" 
+			class="img-responsive center-block" style="max-height:400px; opacity:.3; margin-bottom:50px"/>
 </c:if>
 
 <c:forEach var="feedback" items="${feedbacks}">
