@@ -44,7 +44,7 @@
 			<c:if test="${user != null && canComment != 'false'}">	
 			<div id="newComment" style="margin: 20px; overflow: hidden;">
 				<div class="row">
-					<div class="col s6" style="margin-top: 15px;">
+					<div class="col s6" style="margin-top: 15px; margin-left: 20px; margin-right: 20px;">
 						<input id="title_comment" class="validate" type="text" value="">
 						<label id="title_comment_label" data-error="" for="title_comment" class="">
 							<span id="title_comment_span"></span>
