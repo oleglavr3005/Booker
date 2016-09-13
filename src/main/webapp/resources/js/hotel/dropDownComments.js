@@ -36,6 +36,10 @@ function addNewComment(hotelId_val){
 				jQuery('#' + next_id).remove();
 				jQuery('#' + next_id).remove();
 				jQuery('#newComment').after(result);
+				var element = jQuery('#' + next_id + " .date_posted");
+				var date = element.text();
+				date = date.substring(0 , date.lastIndexOf(':'));
+				element.text(date);
 				jQuery('#newComment').next().slideDown();
 				
 				jQuery('#comment').val('');
@@ -53,7 +57,7 @@ function addNewComment(hotelId_val){
 $(document).ready(function(){
 	$(".date_posted").each(function(index, element){
 		var date = element.innerText;
-		date = date.substring(0 , date.indexOf('.'));
+		date = date.substring(0 , date.lastIndexOf(':'));
 		element.textContent = date;
 	});
 });

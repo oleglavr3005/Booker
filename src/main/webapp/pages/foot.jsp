@@ -9,13 +9,13 @@
 		<img alt="" src="${pageContext.servletContext.contextPath}/resources/images/footer.png" style="width: 1400px;">
 
 		</div>
-		<div class="row" style="background-color: #0d353c; margin: auto;">
+		<div class="row" style="background-color: #0d353c; margin: auto; padding: 10px;">
 			<div class="col s1 offset-s9"
-				style="height: 40px; color: #8c8c8c; margin-top: 20px; font-size: 20px;">
+				style="color: #8c8c8c; font-size: 20px;">
 				&#169 2016</div>
 
 			<div сlass="col s1 offset-s1"
-				style="color: #cccccc; margin-top: 20px; font-size: 15px;">
+				style="color: #cccccc; font-size: 15px;">
 				<span id="footer_copyright"> </span>
 			</div>
 		</div>
