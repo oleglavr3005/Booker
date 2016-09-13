@@ -185,7 +185,7 @@ $(document)
 											"sSearch" : "",
 											"sSearchPlaceholder" : languages.script.current.hotel.enter_key,
 											"sInfo" : languages.script.current.hotel.sInfo,
-											"sLengthMenu" : '<span>" + languages.script.current.hotel.rows_per_page + "</span><select class="browser-default">'
+											"sLengthMenu" : '<span>' + languages.script.current.hotel.rows_per_page + '</span><select class="browser-default">'
 													+ '<option value="10">10</option>'
 													+ '<option value="20">20</option>'
 													+ '<option value="30">30</option>'
