@@ -20,6 +20,11 @@ public class FeedbackDao {
 	private final String SELECT_ALL_FEEDBACK_BY_USER = "SELECT * FROM feedback WHERE user_id = ?;";
 	private final String SELECT_FEEDBACK_BY_ID = "SELECT * FROM feedback WHERE feedback_id = ?;";
 	private final String SELECT_FEEDBACK_BY_USER_AND_HOTEL = "SELECT * FROM feedback WHERE user_id = ? AND hotel_id = ?";
+
+	private final String ORDER_BY_DATE_ASC = " ORDER BY date ASC";
+	private final String ORDER_BY_DATE_DESC = " ORDER BY date DESC";
+	
+	private final String PAGINATION = " LIMIT ?, 5";
 	
 	public FeedbackDao(Connection connection) {
 		super();
@@ -123,6 +128,26 @@ public class FeedbackDao {
 		} catch(SQLException e){
 			e.printStackTrace();
 			return null;
+		}
+	}
+
+	public List<Feedback> getAllFeedbacksByUserAndPage(int userId, int page, String orderBy) {
+		String ORDER_BY;
+		if("compareByDateAsc".equals(orderBy)) {
+			ORDER_BY = ORDER_BY_DATE_ASC;
+		} else { //compareByDateDesc = default
+			ORDER_BY = ORDER_BY_DATE_DESC;
+		}
+		
+		try (PreparedStatement statment = connection.prepareStatement(SELECT_ALL_FEEDBACK_BY_USER + ORDER_BY + PAGINATION)){
+			statment.setInt(1, userId);
+			statment.setString(2, ORDER_BY);
+			statment.setInt(3, (page-1)*5);
+			ResultSet rs = statment.executeQuery();
+			return UniversalTransformer.getCollectionFromRS(rs, Feedback.class);
+		} catch(SQLException e){
+			e.printStackTrace();
+			return new ArrayList<>();
 		}
 	}
 }

@@ -25,7 +25,7 @@
 	<c:forEach var="hotel" items="${hotels}">
 	    {"id" : "<c:out value="${hotel.id}"></c:out>",
 		"name" : "<a href='${pageContext.servletContext.contextPath}/hotel/${hotel.id}'><c:out value="${hotel.name}"></c:out></a>",
-		"photo" : "${pageContext.servletContext.contextPath}/resources/images/photoOfHotels/${hotel.photos[0].img}",
+		"photo" : "<i:urlToImage url="${hotel.photos[0].img}" />",
 		"address" : "<c:out value="${hotel.city}"></c:out> <c:out value="${hotel.street}"></c:out>",
 		"phone" : "<c:out value="${hotel.phoneNumber}"></c:out>",
 		"lat" : "<c:out value="${hotel.XCoord}"></c:out>",
