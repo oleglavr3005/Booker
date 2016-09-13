@@ -111,13 +111,18 @@ public class FindRooms extends HttpServlet {
 			page--;
 		}
 
-		int userId = ((User) session.getAttribute("user")).getId();
-		//ADDED CHECK: if user has no finished orders in this hotel, he cannot leave feedback
-		List<Order> finishedOrdersInHotel = new OrderService().getFinishedOrdersByUserAndHotel(userId, hotelId);
-		if(finishedOrdersInHotel.isEmpty()) {
-			request.setAttribute("canComment", false);
+		User user = ((User) session.getAttribute("user"));
+		if(user != null) {
+			int userId = user.getId();
+			//ADDED CHECK: if user has no finished orders in this hotel, he cannot leave feedback
+			List<Order> finishedOrdersInHotel = new OrderService().getFinishedOrdersByUserAndHotel(userId, hotelId);
+			if(finishedOrdersInHotel.isEmpty()) {
+				request.setAttribute("canComment", false);
+			} else {
+				request.setAttribute("canComment", true);
+			}
 		} else {
-			request.setAttribute("canComment", true);
+			request.setAttribute("canComment", false);
 		}
 
 		request.setAttribute("countOfRooms", countOfRooms);
