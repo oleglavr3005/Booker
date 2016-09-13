@@ -304,10 +304,10 @@
 					</script>
 
 					<div class="row" style="margin-top: 20px;">
-						<div class="col s1 offset-s8">
+						<div class="col s1">
 							<span style="dispay:none" id="settings_confirmMail"></span>
 						</div>
-						<div class="col s3">
+						<div class="col s3 offset-s8">
 							<a id="savePersonal" class="waves-effect waves-light btn"
 								onclick="saveContactData()"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span

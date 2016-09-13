@@ -217,7 +217,7 @@ function updateHotelPhotos(id) {
 
 function validateComas(text) {
 	var re = /^([0-9]*)$/;
-	return re.test(field);
+	return re.test(text);
 }
 
 function removeHotelPhoto() {
@@ -231,7 +231,7 @@ function removeHotelPhoto() {
 
 function promoteToMain() {
 	var value = $('#images').val();
-	if (validateComas(values)) {
+	if (validateComas(value)) {
 		$.post('../../set_main_hotel_photo', {
 			photoId : '' + value,
 		}, function(result) {
@@ -243,7 +243,7 @@ function promoteToMain() {
 			}
 		});
 	} else {
-		alert("fail");
+		alert("validateFail");
 	}
 }
 

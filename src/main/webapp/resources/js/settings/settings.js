@@ -26,7 +26,7 @@ function saveContactData() {
 			mailNotif : mailCheck,
 		}, function(result) {
 			var res = $.parseJSON(result);
-			if (result != null) {
+			if (res.changed != null) {
 //				$('#email').val(res.email);
 //				clearField('email');
 				document.getElementById('settings_confirmMail').style.display = 'block';				
@@ -169,13 +169,14 @@ function emailIsValid(email) {
 		dataType : 'text',
 		data : {
 			"email" : email
-		}
-	}).success(function(data) {
-		var isValid = (data == "false");
-		if (!isValid) {
-			invalid('email');
-			$('#emailLbl').attr("data-error", languages.script.current.settings.usedMail);
-			return false;
+		},
+		success : function(data) {
+			var isValid = (data == "false");
+			if (!isValid) {
+				invalid('email');
+				$('#emailLbl').attr("data-error", languages.script.current.settings.usedMail);
+				return false;
+			}
 		}
 	});
 	return true;
