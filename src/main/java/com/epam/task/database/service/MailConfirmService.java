@@ -31,4 +31,8 @@ public class MailConfirmService {
 	public int removeMailConfirm(int id) {
 		return daoManager.executeAndClose(() -> daoManager.getMailConfirmDao().removeMailConfirm(id));
 	}
+
+	public int updateMailConfirm(MailConfirm mailConfirm) {
+		return daoManager.executeAndClose(() -> daoManager.getMailConfirmDao().updateMailConfirm(mailConfirm));
+	}
 }

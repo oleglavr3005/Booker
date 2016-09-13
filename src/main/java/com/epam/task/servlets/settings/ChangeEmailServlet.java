@@ -48,8 +48,6 @@ public class ChangeEmailServlet extends HttpServlet {
 			session.setAttribute("user", user);
 		} else {
 
-			//send email with confirm url
-
 			String confirmCode = ConfirmCodeGenerator.getCode();
 			new Thread(new Runnable() {
 
@@ -59,7 +57,15 @@ public class ChangeEmailServlet extends HttpServlet {
 				}
 			}).start();
 			
-			result = new MailConfirmService().insertMailConfirm(new MailConfirm(0, user.getId(), email, confirmCode));
+			MailConfirmService mailConfirmService = new MailConfirmService();
+			MailConfirm mailConfirm = mailConfirmService.getMailConfirmByUser(user.getId());
+			if(mailConfirm == null) {
+				result = mailConfirmService.insertMailConfirm(new MailConfirm(0, user.getId(), email, confirmCode));
+			} else {
+				mailConfirm.setEmail(email);
+				mailConfirm.setConfirmCode(confirmCode);
+				result = mailConfirmService.updateMailConfirm(mailConfirm);
+			}
 		}
 		
 		try {

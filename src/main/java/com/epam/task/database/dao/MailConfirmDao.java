@@ -18,6 +18,7 @@ public class MailConfirmDao {
 	
 	private final String INSERT = "INSERT INTO `mail_confirm` (user_id, e_mail, confirm_code) VALUES (?, ?, ?)";
 	private final String REMOVE = "DELETE FROM `mail_confirm` WHERE confirm_id = ?";
+	private final String UPDATE = "UPDATE `mail_confirm` SET user_id = ?, e_mail = ?, confirm_code = ? WHERE confirm_id = ?";
 	
 	public MailConfirmDao(Connection connection) {
 		super();
@@ -81,6 +82,21 @@ public class MailConfirmDao {
 		int result = 0;
 		try (PreparedStatement st = connection.prepareStatement(REMOVE)) {
 			st.setInt(1, id);
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public int updateMailConfirm(MailConfirm mailConfirm) {
+		int result = 0;
+		try (PreparedStatement st = connection.prepareStatement(UPDATE)) {
+			st.setInt(1, mailConfirm.getUserId());
+			st.setString(2, mailConfirm.getEmail());
+			st.setString(3, mailConfirm.getConfirmCode());
+			
+			st.setInt(4, mailConfirm.getId());
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
