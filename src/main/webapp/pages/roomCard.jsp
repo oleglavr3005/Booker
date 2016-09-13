@@ -275,7 +275,7 @@ b {
 
 <!-- PAGINATOR 3000 -->
 <div id="paginationdemo" class="row" style="margin-bottom: 0;">
-	<div id="demo5" class="col s4 offset-s5" style="margin-top: 10px;"></div>
+	<div id="demo5" class="col s6 offset-s4" style="margin-top: 10px;"></div>
 </div>
 <!-- END OF PAGINATOR 3000 -->
 

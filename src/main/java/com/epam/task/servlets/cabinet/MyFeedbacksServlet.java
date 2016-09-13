@@ -44,7 +44,7 @@ public class MyFeedbacksServlet extends HttpServlet {
 		request.setAttribute("currentPage", page);
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
-			request.getRequestDispatcher("/pages/comments/commentCard.jsp").forward(request, response);
+			request.getRequestDispatcher("/pages/user/feedbacks.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("/pages/user/myFeedbacks.jsp").forward(request, response);
 		}
