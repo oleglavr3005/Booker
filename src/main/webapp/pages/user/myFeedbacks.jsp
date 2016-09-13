@@ -57,8 +57,8 @@
 	<jsp:include page="../header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 	
-	<div class="container">
-		<div id="switchContent" class="row" style="margin-bottom: 0; min-height: 300px;">
+	<div class="container" style="min-height: 345px;">
+		<div id="switchContent" class="row" style="margin-bottom: 0;">
 			<jsp:include page="feedbacks.jsp"></jsp:include>
 		</div>
 	</div>
@@ -71,7 +71,7 @@
 		$(document).ready(function(){
 			$(".date_posted").each(function(index, element){
 				var date = element.innerText;
-				date = date.substring(0 , date.indexOf('.'));
+				date = date.substring(0 , date.lastIndexOf(':'));
 				element.textContent = date;
 			});
 		});
