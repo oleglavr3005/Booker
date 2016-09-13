@@ -7,7 +7,13 @@ $(document).ready(function() {
 		onSet : function(arg) {
 			if ('select' in arg) { // prevent closing on selecting month/year
 				this.close();
+				onDate();
+				onEndDate();				
 			}
+		},
+		onOpen : function() {
+			onDate();
+			onEndDate();	
 		}
 	});
 
@@ -25,7 +31,6 @@ function invalid(field) {
 }
 
 function onEndDate() {
-	debugger;
 	var dateToElement = document.getElementById("date_to");
 	var dateFromElement = document.getElementById("date_from");
 	var toText = dateToElement.value;
@@ -41,7 +46,6 @@ function onEndDate() {
 }
 
 function onDate() {
-	debugger;
 	var dateToElement = document.getElementById("date_to");
 	var dateFromElement = document.getElementById("date_from");
 	var selectedText = dateFromElement.value;

@@ -112,7 +112,7 @@ div #sidebar-wrapper {
 				</div>
 
 				<div class="col s3 offset-s2">
-					<input type="date" name="startDate" id="date_from"
+					<input type="text" name="startDate" id="date_from"
 						class="datepicker validate" onchange="onDate()"
 						style="cursor: default;" value="${startDate}"><label
 						id="startLbl" data-error="${fmtStart}" for="date_from"><span
@@ -120,7 +120,7 @@ div #sidebar-wrapper {
 				</div>
 
 				<div class="col s3 offset-s2">
-					<input type="date" name="endDate" id="date_to" onchange="onEndDate()"
+					<input type="text" name="endDate" id="date_to" onchange="onEndDate()"
 						class="datepicker validate" style="cursor: default;"
 						value="${endDate}"><label id="endLbl"
 						data-error="${fmtEnd}" for="date_to"><span
