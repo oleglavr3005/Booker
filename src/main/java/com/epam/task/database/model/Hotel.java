@@ -32,9 +32,9 @@ public class Hotel {
 				@Override
 				public int compare(HotelPhoto o1, HotelPhoto o2) {
 					if(o1.isMain()) {
-						return 1;
-					} else if (o2.isMain()) {
 						return -1;
+					} else if (o2.isMain()) {
+						return 1;
 					} else {
 						return 0;
 					}
