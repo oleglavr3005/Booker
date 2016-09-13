@@ -1,6 +1,7 @@
 package com.epam.task.servlets.manager;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.Hotel;
-import com.epam.task.database.model.Order;
 import com.epam.task.database.model.Room;
 import com.epam.task.database.model.RoomPhoto;
 import com.epam.task.database.model.User;
@@ -58,7 +58,8 @@ public class AddRoomServlet extends HttpServlet {
 		
 		String sendNotifString = request.getParameter("sendNotif");
 		
-		if (hotelIdString == null || number == null || type == null || doubleBedsCountString == null || bedsCountString == null ||
+		if (hotelIdString == null || number == null || !number.matches("^[1-9][0-9]*[a-zA-Zа-яА-ЯіІьїЇєЄґҐ]?(, *[1-9][0-9]*[a-zA-Zа-яА-ЯіІьїЇєЄґҐ]?)*$") || 
+				type == null || doubleBedsCountString == null || bedsCountString == null ||
 				priceString == null || food == null || roomImagesString == null || freeBookString == null ||
 				!StringUtil.isPositiveInteger(hotelIdString) || !StringUtil.isPositiveInteger(doubleBedsCountString) || !StringUtil.isPositiveInteger(bedsCountString) ||
 				!StringUtil.isPositiveInteger(priceString) || !StringUtil.isBoolean(freeBookString) ||
@@ -102,19 +103,31 @@ public class AddRoomServlet extends HttpServlet {
 			percentage = 0;
 		}
 		
-		int roomId = new RoomService().insertRoom(new Room(0, hotelId, number, type, bedsCount, doubleBedsCount, price, 
-				hasWifi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, food, daysCount, percentage, false));
+		
+		String[] numbers = number.split(", *");
+		List<Integer> roomIds = new ArrayList<>();
+		for(int i = 0; i<numbers.length; i++) {
+			int roomId = new RoomService().insertRoom(new Room(0, hotelId, numbers[i], type, bedsCount, doubleBedsCount, price, 
+					hasWifi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, food, daysCount, percentage, false));
 
-		if(roomImagesString.length() > 0 && roomId > 0) {
-			String[] roomImagesArray = roomImagesString.split(":::");
-			
-			RoomPhotoService roomPhotoService = new RoomPhotoService();
-			for (int i = 0; i < roomImagesArray.length; i++) {
-				roomPhotoService.insertRoomPhoto(new RoomPhoto(0, roomImagesArray[i], "", roomId));
+			if(roomId > 0) {
+				roomIds.add(roomId);
 			}
 		}
+
+		if(roomIds.size() > 0) {
+			String[] roomImagesArray = roomImagesString.split(":::");
+			RoomPhotoService roomPhotoService = new RoomPhotoService();
+			
+			for (Integer id : roomIds) {
+				for(int i = 0; i<roomImagesArray.length; i++){
+					roomPhotoService.insertRoomPhoto(new RoomPhoto(0, roomImagesArray[i], "", id));
+				}
+			}
+		}	
 		
-		if(Boolean.parseBoolean(sendNotifString) && roomId > 0) {
+		
+		if(Boolean.parseBoolean(sendNotifString) && roomIds.size() > 0) {
 			List<User> usersEmail = new UserService().getAllUsersWithEmailNotificationInHotel(hotelId);
 			List<User> usersPhone = new UserService().getAllUsersWithPhoneNotificationInHotel(hotelId);
 
@@ -133,7 +146,7 @@ public class AddRoomServlet extends HttpServlet {
 			}
 		}
 		
-		response.getWriter().write(roomId > 0 ? ""+roomId : "error");
+		response.getWriter().write(roomIds.size() > 0 ? ""+roomIds.get(0) : "error");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -148,7 +161,7 @@ public class AddRoomServlet extends HttpServlet {
 
 				"<div style='width: 100%; height:20px; background-color: #00000 position: relative color:white;'>Check out a new room!"
 				+ "<div style='top: 10px; background-color: white; padding:20px'>"
-				+ "<div><h1 style='color: #00264d;'> Hello, " + user.getFirstName() + "</h1>" + "<p>A new room was created in \""
+				+ "<div><h1 style='color: #00264d;'> Hello, " + user.getFirstName() + "</h1>" + "<p>A new rooms were created in \""
 				+ hotel.getName() + "\"! You may be interested in it, because you have orders in this hotel.</p>" + "</div>"
 						+ "<a href='" + href + "'>Check it out now!</a></div></div></body>";
 

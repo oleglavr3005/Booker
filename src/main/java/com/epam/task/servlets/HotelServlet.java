@@ -19,10 +19,13 @@ import com.epam.task.database.dto.FeedbackDto;
 import com.epam.task.database.model.Conveniences;
 import com.epam.task.database.model.Feedback;
 import com.epam.task.database.model.Hotel;
+import com.epam.task.database.model.Order;
 import com.epam.task.database.model.Room;
+import com.epam.task.database.model.User;
 import com.epam.task.database.service.ConveniencesService;
 import com.epam.task.database.service.FeedbackService;
 import com.epam.task.database.service.HotelService;
+import com.epam.task.database.service.OrderService;
 import com.epam.task.database.service.RoomService;
 
 @WebServlet("/hotel/*")
@@ -124,7 +127,16 @@ public class HotelServlet extends HttpServlet {
 		
 		request.setAttribute("countOfRooms", countOfRooms);
 		request.setAttribute("countOfPages", countOfPages);
-		request.setAttribute("currentPage", page);
+		request.setAttribute("currentPage", page);		
+
+		int userId = ((User) session.getAttribute("user")).getId();
+		//ADDED CHECK: if user has no finished orders in this hotel, he cannot leave feedback
+		List<Order> finishedOrdersInHotel = new OrderService().getFinishedOrdersByUserAndHotel(userId, id);
+		if(finishedOrdersInHotel.isEmpty()) {
+			request.setAttribute("canComment", false);
+		} else {
+			request.setAttribute("canComment", true);
+		}
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("/pages/roomCard.jsp").forward(request, response);
