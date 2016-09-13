@@ -272,7 +272,7 @@
 							<p>
 								<input type="checkbox" class="filled-in" id="phoneCheckBox"
 									name="phonoCheckBox" <c:if
-								test="${user.phoneNumber == null}">disabled</c:if>/> <label for="phoneCheckBox"> <span
+								test="${user.phoneNumber == null || user.phoneNumber == ''}">disabled</c:if>/> <label for="phoneCheckBox"> <span
 									id="settings_chk_mails">I WANT RECEIVE MESSAGES ABOUT
 										NEW ROOMS!</span></label>
 							</p>
