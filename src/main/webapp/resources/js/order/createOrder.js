@@ -318,7 +318,7 @@ function showModal(result) {
 			document.getElementById('row' + i).style.display = 'block';
 			$('#href' + i + '1').attr('href', url + result.hotels[i].id);
 			$('#href' + i + '2').attr('href', url + result.hotels[i].id);
-			document.getElementById("img" + i).src = "../resources/images/"
+			document.getElementById("img" + i).src = "/booker/get_image/"
 					+ result.hotels[i].photo;
 			$('#hotelName' + i).html(result.hotels[i].name);
 			$('#location' + i).html(

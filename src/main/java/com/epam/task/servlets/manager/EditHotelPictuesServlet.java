@@ -27,9 +27,16 @@ public class EditHotelPictuesServlet extends HttpServlet {
     		int hotelId = Integer.parseInt(request.getPathInfo().substring(1));
 			List<HotelPhoto> photos = new ImageSetter(request).uploadHotelImages();
 			HotelPhotoService hotelPhotoService = new HotelPhotoService();
+			List<HotelPhoto> existingPhotos = hotelPhotoService.getHotelPhotosByHotel(hotelId);
+			boolean isMain = false;
+			if(existingPhotos.isEmpty()) {
+				isMain = true;
+			}
 			for(HotelPhoto photo : photos){
 				photo.setHotelId(hotelId);
+				photo.setMain(isMain);
 				hotelPhotoService.insertHotelPhoto(photo);
+				isMain = false;
 			}
 			request.setAttribute("hotel", new HotelService().getHotelById(hotelId));
 			request.getRequestDispatcher("/pages/cards/hotelPhotoCard.jsp").forward(request, response);

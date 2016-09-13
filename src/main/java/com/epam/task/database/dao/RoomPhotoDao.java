@@ -15,7 +15,7 @@ public class RoomPhotoDao {
 	private Connection connection;
 
 	private final String SQL_GET_ALL = "SELECT * FROM room_photo;";
-	private final String SQL_CREATE_ROOM_PHOTO = "INSERT INTO room_photo (img, `desc`, room_id) VALUES (?, ?, ?);";
+	private final String SQL_CREATE_ROOM_PHOTO = "INSERT INTO room_photo (img, `desc`, room_id, is_main) VALUES (?, ?, ?, ?);";
 	private final String SQL_READ_ROOM_PHOTO_BY_ID = "SELECT * FROM room_photo WHERE room_photo_id = ?";
 	private final String SQL_READ_PHOTOS_BY_ROOM = "SELECT * FROM room_photo WHERE room_id = ?";
 	private final String SQL_DELETE_PHOTO_BY_ID = "DELETE FROM room_photo WHERE room_photo_id = ?";
@@ -46,6 +46,7 @@ public class RoomPhotoDao {
 			st.setString(1, photo.getImg());
 			st.setString(2, photo.getDesc());
 			st.setInt(3, photo.getRoomId());
+			st.setBoolean(4, photo.isMain());
 			result = st.executeUpdate();
 
 		} catch (SQLException e) {

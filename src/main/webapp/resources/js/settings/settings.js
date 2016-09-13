@@ -1,4 +1,5 @@
 function saveContactData() {
+	document.getElementById('settings_confirmMail').style.display = 'none';
 	var phone = $('#phoneNumber').val();
 	var phoneCheck = document.getElementById('phoneCheckBox').checked;
 	var mail = $('#email').val();
@@ -26,8 +27,9 @@ function saveContactData() {
 		}, function(result) {
 			var res = $.parseJSON(result);
 			if (result != null) {
-				$('#email').val(res.email);
-				clearField('email');
+//				$('#email').val(res.email);
+//				clearField('email');
+				document.getElementById('settings_confirmMail').style.display = 'block';				
 			}
 			 else {
 					invalid('email');

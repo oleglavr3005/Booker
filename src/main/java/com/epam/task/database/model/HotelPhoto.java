@@ -15,12 +15,16 @@ public class HotelPhoto {
 	@DataBaseField(fieldName = "hotel_id")
 	private int hotelId;
 
-	public HotelPhoto(int id,String img, String desc, int hotelId) {
+	@DataBaseField(fieldName = "is_main")
+	private boolean isMain;
+
+	public HotelPhoto(int id,String img, String desc, int hotelId, boolean isMain) {
 		super();
 		this.id=id;
 		this.img = img;
 		this.desc = desc;
 		this.hotelId = hotelId;
+		this.isMain = isMain;
 	}
 
 	public int getId() {
@@ -54,6 +58,14 @@ public class HotelPhoto {
 	public void setHotelId(int hotelId) {
 		this.hotelId = hotelId;
 	}
+
+	public boolean isMain() {
+		return isMain;
+	}
+
+	public void setMain(boolean isMain) {
+		this.isMain = isMain;
+	}	
 	
 	
 }

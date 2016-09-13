@@ -88,7 +88,6 @@
 .well {
 	padding: 0px;
 }
-
 </style>
 
 </head>
@@ -114,9 +113,9 @@
 
 			<!-- 			Tab Holder -->
 			<div class="col s10 offset-s1">
-				<ul class="tabs" style="background: #12444c; ">
+				<ul class="tabs" style="background: #12444c;">
 					<li class="tab col s3"><a class="active" href="#test1"
-						style=" color: #F7F7F7;"><b><p id="tab_personal">PERSONAL</p></b></a></li>
+						style="color: #F7F7F7;"><b><p id="tab_personal">PERSONAL</p></b></a></li>
 					<li class="tab col s3"><a href="#test2" style="color: #F7F7F7"><b><p
 									id="tab_contact">CONTACT</p></b></a></li>
 					<c:if test="${user.type eq 'USER' }">
@@ -132,15 +131,15 @@
 			<div id="test1" class="col s12">
 				<div class="container-fluid">
 					<div class="row settings-title">
-							<h4 style="text-align: center; margin-top: 20px;">
-								<span id="settings_header_PERSONAL"></span>
-							</h4>
+						<h4 style="text-align: center; margin-top: 20px;">
+							<span id="settings_header_PERSONAL"></span>
+						</h4>
 					</div>
 
 					<div class="row">
 						<div class="col s4">
 							<a href="#!"><img id="avatarImg"
-								style="max-height: 200px; padding: 10px; max-width: 290px; float:right"
+								style="max-height: 200px; padding: 10px; max-width: 290px; float: right"
 								<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
 								src="<i:urlToImage url="${user.image}" />">
 							</a> <input style="margin-top: 60px; display: none" type="file"
@@ -150,8 +149,10 @@
 
 							<div class="row fields">
 								<div class="input-field col s10">
-									<div class="ui pointing label" style="background-color: #f7f7f7;">
-										<span id="settings_enter_name" style="color: #b7b2b2; background-color: #9990; "></span>
+									<div class="ui pointing label"
+										style="background-color: #f7f7f7;">
+										<span id="settings_enter_name"
+											style="color: #b7b2b2; background-color: #9990;"></span>
 									</div>
 									<input id="name" type="text" class="validate"
 										value="${user.firstName}" length="45"> <label
@@ -160,8 +161,10 @@
 							</div>
 							<div class="row">
 								<div class="input-field col s10">
-									<div class="ui pointing label" style="background-color: #f7f7f7;">
-										<span id="settings_enter_surname" style="color: #b7b2b2; background-color: #9990; "></span>
+									<div class="ui pointing label"
+										style="background-color: #f7f7f7;">
+										<span id="settings_enter_surname"
+											style="color: #b7b2b2; background-color: #9990;"></span>
 									</div>
 									<input id="surname" type="text" class="validate"
 										value="${user.lastName}" length="45"> <label
@@ -187,15 +190,16 @@
 					<div class="divider"></div>
 
 					<div class="row" style="margin-bottom: 10px;">
-							<h4 id="pwd_title" style="text-align: center; margin-top: 20px;">
-								<span id="settings_header_pass"></span>
-							</h4>
+						<h4 id="pwd_title" style="text-align: center; margin-top: 20px;">
+							<span id="settings_header_pass"></span>
+						</h4>
 
 					</div>
 					<div class="row inline field fields">
 						<div class="input-field col s8 offset-s2">
 							<div class="ui pointing label" style="background-color: #f7f7f7;">
-								<span id="settings_enter_pass" style="color: #b7b2b2; background-color: #9990; "></span>
+								<span id="settings_enter_pass"
+									style="color: #b7b2b2; background-color: #9990;"></span>
 							</div>
 							<input id="currentPassword" type="password" class="validate">
 							<label id="currentPasswordLbl" data-error="${fmtPass}"
@@ -205,7 +209,8 @@
 					<div class="row inline field fields">
 						<div class="input-field col s8 offset-s2">
 							<div class="ui pointing label" style="background-color: #f7f7f7;">
-								<span id="settings_enter_passnew" style="color: #b7b2b2; background-color: #9990; "></span>
+								<span id="settings_enter_passnew"
+									style="color: #b7b2b2; background-color: #9990;"></span>
 							</div>
 							<input id="newPassword" type="password" class="validate">
 							<label id="newPasswordLbl" data-error="${fmtNewPass}"
@@ -215,7 +220,8 @@
 					<div class="row inline field fields">
 						<div class="input-field col s8 offset-s2">
 							<div class="ui pointing label" style="background-color: #f7f7f7;">
-								<span id="settings_enter_passrepeat" style="color: #b7b2b2; background-color: #9990; "></span>
+								<span id="settings_enter_passrepeat"
+									style="color: #b7b2b2; background-color: #9990;"></span>
 							</div>
 							<input id="repeatPassword" type="password" class="validate">
 							<label id="repeatPasswordLbl" data-error="${fmtRepPass}"
@@ -238,14 +244,15 @@
 			<!-- 				Tab #2 -->
 			<div id="test2" class="col s12">
 				<div class="container">
-						<h4 style="text-align: center; margin-top: 20px;">
-							<span id="settings_header_CONTACT"></span>
-						</h4>
+					<h4 style="text-align: center; margin-top: 20px;">
+						<span id="settings_header_CONTACT"></span>
+					</h4>
 
 					<div class="row fields">
 						<div class="input-field col s12">
 							<div class="ui pointing label" style="background-color: #f7f7f7;">
-								<span id="settings_enter_phone" style="color: #b7b2b2; background-color: #9990; "></span>
+								<span id="settings_enter_phone"
+									style="color: #b7b2b2; background-color: #9990;"></span>
 							</div>
 							<input id="phoneNumber" type="text" class="validate"
 								value="${user.phoneNumber}" length="45"> <label
@@ -264,31 +271,30 @@
 
 							<p>
 								<input type="checkbox" class="filled-in" id="phoneCheckBox"
-									name="phonoCheckBox" /> <label for="phoneCheckBox">
-									<span id="settings_chk_mails">I
-									WANT RECEIVE MESSAGES ABOUT NEW ROOMS!</span></label>
+									name="phonoCheckBox" <c:if
+								test="${user.phoneNumber == null}">disabled</c:if>/> <label for="phoneCheckBox"> <span
+									id="settings_chk_mails">I WANT RECEIVE MESSAGES ABOUT
+										NEW ROOMS!</span></label>
 							</p>
 						</div>
 					</div>
 
 
-					<c:if test="${user.socialNetworkId == null}">
-						<div class="row">
-							<div class="input-field col s12">
-								<div class="ui pointing label">
-									<span id="settings_enter_mail"></span>
-								</div>
-								<input id="email" type="email" class="validate"
-									value="${user.email}" length="80"> <label id="emailLbl"
-									data-error="${fmtMail}" for="email"> </label>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="email" type="email" class="validate"
+								<c:if test="${user.email.substring(user.email.length()-1) != '*'}"> value="${user.email}"</c:if>
+								length="80"> <label id="emailLbl"
+								data-error="${fmtMail}" for="email"><span id="settings_enter_mail"></span></label>
+							
 								<p>
 									<input type="checkbox" class="filled-in" id="eMailBox"
-										name="eMailBox" /> <label for="eMailBox">
-										<span id="settings_chk_mails"> </span></label>
+										name="eMailBox" <c:if
+								test="${user.email.substring(user.email.length()-1) == '*'}">disabled</c:if>/> <label for="eMailBox"> <span
+										id="settings_chk_mails"> </span></label>
 								</p>
-							</div>
 						</div>
-					</c:if>
+					</div>
 
 					<script>
 						$('#phoneCheckBox').attr('checked',
@@ -298,7 +304,10 @@
 					</script>
 
 					<div class="row" style="margin-top: 20px;">
-						<div class="col s3 offset-s9">
+						<div class="col s1 offset-s8">
+							<span style="dispay:none" id="settings_confirmMail"></span>
+						</div>
+						<div class="col s3">
 							<a id="savePersonal" class="waves-effect waves-light btn"
 								onclick="saveContactData()"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
@@ -325,8 +334,10 @@
 
 						<div class="row fields">
 							<div class="input-field col s9">
-								<div class="ui pointing label" style="background-color: #f7f7f7;">
-									<span id="settings_enter_request" style="color: #b7b2b2; background-color: #9990; "></span>
+								<div class="ui pointing label"
+									style="background-color: #f7f7f7;">
+									<span id="settings_enter_request"
+										style="color: #b7b2b2; background-color: #9990;"></span>
 								</div>
 								<textarea id="requestForm" class="materialize-textarea">${message}</textarea>
 							</div>

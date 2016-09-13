@@ -27,9 +27,16 @@ public class EditRoomPictures extends HttpServlet {
     		int roomId = Integer.parseInt(request.getPathInfo().substring(1));
 			List<RoomPhoto> photos = new ImageSetter(request).uploadRoomImages();
 			RoomPhotoService roomPhotoService = new RoomPhotoService();
+			List<RoomPhoto> existingPhotos = roomPhotoService.getRoomPhotosByRoom(roomId);
+			boolean isMain = false;
+			if(existingPhotos.isEmpty()) {
+				isMain = true;
+			}
 			for(RoomPhoto photo : photos){
 				photo.setRoomId(roomId);
+				photo.setMain(isMain);
 				roomPhotoService.insertRoomPhoto(photo);
+				isMain = false;
 			}
 			request.setAttribute("room", new RoomService().getRoomById(roomId));
 			request.getRequestDispatcher("/pages/cards/roomPhotoCard.jsp").forward(request, response);

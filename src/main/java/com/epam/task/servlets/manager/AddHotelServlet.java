@@ -60,8 +60,10 @@ public class AddHotelServlet extends HttpServlet {
 			String[] hotelImagesArray = hotelImagesString.split(":::");
 			HotelPhotoService hotelPhotoService = new HotelPhotoService();
 
+			boolean main = true;
 			for (int i = 0; i < hotelImagesArray.length; i++) {
-				hotelPhotoService.insertHotelPhoto(new HotelPhoto(0, hotelImagesArray[i], "", hotelId));
+				hotelPhotoService.insertHotelPhoto(new HotelPhoto(0, hotelImagesArray[i], "", hotelId, main));
+				main = false;
 			}
 		}		
 		
