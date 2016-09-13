@@ -8,7 +8,7 @@
 		<div class="row" style="margin-bottom: 0;">
 			<div class="media">
 				<img
-					src='<i:urlToImage url="${comment.user.image}" />'
+					src='/booker/get_image/${comment.user.image}'
 					style="margin-right: 0; padding-left: 11px; width: 10%;" width="60"
 					height="60" alt="Avatar" class="pull-left">
 				<div class="media-body">
@@ -27,8 +27,9 @@
 							value="${comment.date}"></c:out></span>
 				</div>
 			</div>
-			<p
-				style="margin: 20px 0 0 12px; padding-left: 1.5rem; border-left: 4px solid #ee6e73; word-wrap: break-word;">
+			<p style="margin: 20px 0 0 12px; padding-left: 1.5rem; border-left: 4px solid #ee6e73; word-wrap: break-word;">
+				<c:out value="${comment.title}"></c:out>
+				<br>
 				<c:out value="${comment.comment}"></c:out>
 			</p>
 		</div>

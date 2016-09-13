@@ -44,7 +44,7 @@
 			<c:if test="${user != null && canComment != 'false'}">	
 			<div id="newComment" style="margin: 20px; overflow: hidden;">
 				<div class="row">
-					<div class="col s6" style="margin-top: 15px; margin-left: 20px; margin-right: 20px;">
+					<div class="col s6" style="margin-top: 15px;">
 						<input id="title_comment" class="validate" type="text" value="">
 						<label id="title_comment_label" data-error="" for="title_comment" class="">
 							<span id="title_comment_span"></span>
@@ -75,7 +75,7 @@
 				</div>
 				<textarea id="comment" class="materialize-textarea validate" style="height: 80px;"></textarea>
 					<div id="comment_error_panel" class="row" style="display : none; padding-top: 20px;">
-					 <div style="border: 1px solid red; border-radius: 10px; padding: 15px; background-color: rgba(255, 0, 0, 0.3);">
+					 <div style="margin-left: 20px; margin-right: 20px; border: 1px solid red; border-radius: 10px; padding: 15px; background-color: rgba(255, 0, 0, 0.3);">
 						<span class="comment_error"></span>
 					</div>
 				</div>
@@ -86,7 +86,7 @@
 			</c:if>
 			<c:if test="${canComment == 'false'}">
 				<div class="row" style="padding-top: 20px;">
-					 <div style="border: 1px solid red; border-radius: 10px; padding: 15px; background-color: rgba(255, 0, 0, 0.3);">
+					 <div style="margin-left: 20px; margin-right: 20px; border: 1px solid red; border-radius: 10px; padding: 15px; background-color: rgba(255, 0, 0, 0.3);">
 						<span class="comment_can_not"></span>
 					</div>
 				</div>

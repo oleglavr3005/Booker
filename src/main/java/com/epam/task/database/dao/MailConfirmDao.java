@@ -12,8 +12,12 @@ public class MailConfirmDao {
 
 	private Connection connection;
 	
-	private final String SELECT_BY_ID = "SELECT * FROM `mail_confirm` WHERE id = ?";
+	private final String SELECT_BY_ID = "SELECT * FROM `mail_confirm` WHERE confirm_id = ?";
 	private final String SELECT_BY_USER = "SELECT * FROM `mail_confirm` WHERE user_id = ?";
+	private final String SELECT_BY_CODE = "SELECT * FROM `mail_confirm` WHERE confirm_code LIKE ?";
+	
+	private final String INSERT = "INSERT INTO `mail_confirm` (user_id, e_mail, confirm_code) VALUES (?, ?, ?)";
+	private final String REMOVE = "DELETE FROM `mail_confirm` WHERE confirm_id = ?";
 	
 	public MailConfirmDao(Connection connection) {
 		super();
@@ -46,5 +50,41 @@ public class MailConfirmDao {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public MailConfirm getMailConfirmByCode(String code) {
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_CODE)) {
+			statement.setString(1, code);
+			try (ResultSet result = statement.executeQuery()) {
+				return UniversalTransformer.getObjectFromRS(result, MailConfirm.class);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public int insertMailConfirm(MailConfirm mailConfirm) {
+		try (PreparedStatement statement = connection.prepareStatement(INSERT)) {
+			int i = 1;
+			statement.setInt(i++, mailConfirm.getUserId());
+			statement.setString(i++, mailConfirm.getEmail());
+			statement.setString(i++, mailConfirm.getConfirmCode());
+			return statement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+
+	public int removeMailConfirm(int id) {
+		int result = 0;
+		try (PreparedStatement st = connection.prepareStatement(REMOVE)) {
+			st.setInt(1, id);
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }
