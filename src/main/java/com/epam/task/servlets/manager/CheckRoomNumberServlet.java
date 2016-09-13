@@ -25,22 +25,30 @@ public class CheckRoomNumberServlet extends HttpServlet {
 		String hotelIdString = request.getParameter("hotelId");
 		String roomNumber = request.getParameter("roomNumber");
 		
-		if(hotelIdString == null || roomNumber == null || !StringUtil.isPositiveInteger(hotelIdString)) {
+		if(hotelIdString == null || roomNumber == null || 
+				!roomNumber.matches("^[1-9][0-9]*[a-zA-Zа-яА-ЯіІьїЇєЄґҐ]?(, *[1-9][0-9]*[a-zA-Zа-яА-ЯіІьїЇєЄґҐ]?)*$") || 
+				!StringUtil.isPositiveInteger(hotelIdString)) {
 			response.sendError(500);
 			return;
 		}
 
+		String[] numbers = roomNumber.split(", *");
+		
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
 		int hotelId = Integer.parseInt(hotelIdString);
+		
 		List<Room> rooms = new RoomService().getAllRoomsForHotel(hotelId);	//all rooms
-		for (Room room : rooms) {
-			if(room.getNumber().equals(roomNumber)){		//if number exists for this hotel
-				response.getWriter().write("false");		//we CANNOT create room, return false
-				response.getWriter().flush();
-				return;
+		for(int i = 0; i<numbers.length; i++) {
+			for (Room room : rooms) {
+				if(room.getNumber().equals(numbers[i])){		//if number exists for this hotel
+					response.getWriter().write("false");		//we CANNOT create room, return false
+					response.getWriter().flush();
+					return;
+				}
 			}
 		}
+		
 		response.getWriter().write("true");		//if we CAN create room, return true
 		response.getWriter().flush();
 	}
