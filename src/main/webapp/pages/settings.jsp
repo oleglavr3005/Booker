@@ -271,7 +271,8 @@
 
 							<p>
 								<input type="checkbox" class="filled-in" id="phoneCheckBox"
-									name="phonoCheckBox" /> <label for="phoneCheckBox"> <span
+									name="phonoCheckBox" <c:if
+								test="${user.phoneNumber == null}">disabled</c:if>/> <label for="phoneCheckBox"> <span
 									id="settings_chk_mails">I WANT RECEIVE MESSAGES ABOUT
 										NEW ROOMS!</span></label>
 							</p>
@@ -281,24 +282,17 @@
 
 					<div class="row">
 						<div class="input-field col s12">
-							<div class="ui pointing label">
-								<span id="settings_enter_mail"></span>
-							</div>
-
-							<%-- 							<c:if test="${user.email.substring(user.email.length()-1) != '*'}"> value="${user.email}"</c:if> --%>
-
 							<input id="email" type="email" class="validate"
 								<c:if test="${user.email.substring(user.email.length()-1) != '*'}"> value="${user.email}"</c:if>
-								value="${user.email}" length="80"> <label id="emailLbl"
-								data-error="${fmtMail}" for="email"> </label>
-							<c:if
-								test="${user.email.substring(user.email.length()-1) != '*'}">
+								length="80"> <label id="emailLbl"
+								data-error="${fmtMail}" for="email"><span id="settings_enter_mail"></span></label>
+							
 								<p>
 									<input type="checkbox" class="filled-in" id="eMailBox"
-										name="eMailBox" /> <label for="eMailBox"> <span
+										name="eMailBox" <c:if
+								test="${user.email.substring(user.email.length()-1) == '*'}">disabled</c:if>/> <label for="eMailBox"> <span
 										id="settings_chk_mails"> </span></label>
 								</p>
-							</c:if>
 						</div>
 					</div>
 
@@ -310,7 +304,10 @@
 					</script>
 
 					<div class="row" style="margin-top: 20px;">
-						<div class="col s3 offset-s9">
+						<div class="col s1 offset-s8">
+							<span style="dispay:none" id="settings_confirmMail"></span>
+						</div>
+						<div class="col s3">
 							<a id="savePersonal" class="waves-effect waves-light btn"
 								onclick="saveContactData()"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
