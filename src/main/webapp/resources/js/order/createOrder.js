@@ -1,7 +1,3 @@
-var error = "ERROR OCCURED";
-var cvvError = "cvv wrong";
-var cardError = "card number is wrong";
-
 function createOrder(orders) {
 	// if(isPurchaseValid()){
 	$.post('create_order', {
@@ -187,7 +183,7 @@ function addToCart(roomId) {
 				$('#switchContent').html(orders);
 			});
 		} else {
-			$('#btn' + roomId).text(error);
+			$('#btn' + roomId).text(languages.script.current.createOrder.error);
 			$('#btn' + roomId).attr('disabled', true);
 		}
 	});
@@ -271,14 +267,14 @@ function validateFields() {
 	var isValid = true;
 	if ($('#CVC').val().length != 3) {
 		$('#CVC').after(
-				'<div class="error" style="width: 150px;">'+ cvvError +'</div>');
+				'<div class="error" style="width: 150px;">'+ languages.script.current.createOrder.cvvError +'</div>');
 		isValid = false;
 	}
 	if (isValid) {
 		var code = value($('#cardnum1').val()) + value($('#cardnum2').val())
 				+ value($('#cardnum3').val()) + value($('#cardnum4').val());
 		if (code.length != 16) {
-			$('#cardNumberError').html(cardError);
+			$('#cardNumberError').html(languages.script.current.createOrder.cardError);
 			isValid = false;
 		}
 	}

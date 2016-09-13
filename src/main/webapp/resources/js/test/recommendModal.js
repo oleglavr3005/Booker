@@ -32,7 +32,7 @@ function testFunction(nmb) {
 function showModal(result) {
 	debugger;
 	if (result.countOfHotels > 0) {
-		var url = 'http://localhost:8080/booker/hotel/';
+		var url = window.location.protocol + "//" + window.location.host + '/booker/hotel/';
 		for (var i = 0; i < 3 && i < result.countOfHotels; i++) {
 		//	alert(result.hotels[i].stars);
 			for(var y = 0; y < result.hotels[i].stars;y++){

@@ -31,6 +31,7 @@ public class OrderDAO {
 	private final String SQL_GET_ORDER_BY_USER_AND_ID = "SELECT * FROM `order` WHERE user_id = ? AND order_id = ?";
 	private final String SQL_GET_ORDER_BY_ROOM_ID = "SELECT * FROM `order` WHERE room_id = ?";
 	private final String SQL_GET_ORDER_BY_HOTEL_ID = "SELECT o.* FROM `order` o INNER JOIN `room` r ON o.room_id = r.room_id WHERE r.hotel_id = ?";
+	private final String SQL_GET_FINISHED_ORDERS_BY_USER_AND_HOTEL = "SELECT o.* FROM `order` o INNER JOIN `room` r ON o.room_id = r.room_id WHERE o.user_id = ? AND r.hotel_id = ? AND o.end_date < ?";
 	
 	private final String PAGINATION = " LIMIT ?, 5";
 	private final String ORDER_BY_PRICE_ASC = " ORDER BY price ASC";
@@ -251,6 +252,20 @@ public class OrderDAO {
 		List<Order> orders = new ArrayList<>();
 		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ORDER_BY_HOTEL_ID)) {
 			statement.setInt(1, hotelId);
+			ResultSet rs = statement.executeQuery();
+			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return orders;
+	}
+
+	public List<Order> getFinishedOrdersByUserAndHotel(int userId, int hotelId) {
+		List<Order> orders = new ArrayList<>();
+		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_FINISHED_ORDERS_BY_USER_AND_HOTEL)) {
+			statement.setInt(1, userId);
+			statement.setInt(2, hotelId);
+			statement.setString(3, new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
 			ResultSet rs = statement.executeQuery();
 			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
 		} catch (SQLException e) {

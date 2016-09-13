@@ -118,7 +118,7 @@ img.logo {
 					<c:choose>
 						<c:when test="${user != null}">	
 								<div class="dropdown" style="padding-top:0.7rem;">
-								<span id="userNameSpan" style="font-size:1.3rem; margin-right:0.5rem; margin-top:20px">${user.firstName} ${user.lastName}</span>
+								<span id="userNameSpan" style="font-size:1.3rem; margin-right:0.5rem; margin-top:20px; color:#F7F7F7">${user.firstName} ${user.lastName}</span>
 									<img id="imageavatar"
 	<%-- 									src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}" --%>
 										src="<i:urlToImage url="${user.image}" />"
