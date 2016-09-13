@@ -61,8 +61,8 @@ public class AddRoomServlet extends HttpServlet {
 		if (hotelIdString == null || number == null || !number.matches("^[1-9][0-9]*[a-zA-Zа-яА-ЯіІьїЇєЄґҐ]?(, *[1-9][0-9]*[a-zA-Zа-яА-ЯіІьїЇєЄґҐ]?)*$") || 
 				type == null || doubleBedsCountString == null || bedsCountString == null ||
 				priceString == null || food == null || roomImagesString == null || freeBookString == null ||
-				!StringUtil.isPositiveInteger(hotelIdString) || !StringUtil.isPositiveInteger(doubleBedsCountString) || !StringUtil.isPositiveInteger(bedsCountString) ||
-				!StringUtil.isPositiveInteger(priceString) || !StringUtil.isBoolean(freeBookString) ||
+				!StringUtil.isNotNegativeInteger(hotelIdString) || !StringUtil.isNotNegativeInteger(doubleBedsCountString) || !StringUtil.isPositiveInteger(bedsCountString) ||
+				!StringUtil.isNotNegativeInteger(priceString) || !StringUtil.isBoolean(freeBookString) ||
 				!(type.equalsIgnoreCase("STANDART") || type.equalsIgnoreCase("LUX") || type.equalsIgnoreCase("DELUX")) || 
 				!(food.equalsIgnoreCase("NONE") || food.equalsIgnoreCase("BREAKFAST") || food.equalsIgnoreCase("TWICE") || food.equalsIgnoreCase("FULL")) ||
 				!StringUtil.isBoolean(sendNotifString)) {

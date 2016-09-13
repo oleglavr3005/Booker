@@ -10,6 +10,14 @@ public class StringUtil {
 		}
 	}
 	
+	public static boolean isNotNegativeInteger (String stringToCheck) {
+		try {
+			return Integer.parseInt(stringToCheck) >= 0 ? true : false;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
 	public static boolean isInRatingRange (String stringToCheck) {
 		try {
 			int rating = Integer.parseInt(stringToCheck);

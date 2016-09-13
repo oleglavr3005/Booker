@@ -51,8 +51,8 @@ public class EditRoomServlet extends HttpServlet {
 		
 		if (roomIdString == null || number == null || type == null || doubleBedsCountString == null || bedsCountString == null ||
 				priceString == null || food == null || freeBookString == null ||
-				!StringUtil.isPositiveInteger(roomIdString) || !StringUtil.isPositiveInteger(doubleBedsCountString) || !StringUtil.isPositiveInteger(bedsCountString) ||
-				!StringUtil.isPositiveInteger(priceString) || !StringUtil.isBoolean(freeBookString) ||
+				!StringUtil.isPositiveInteger(roomIdString) || !StringUtil.isNotNegativeInteger(doubleBedsCountString) || !StringUtil.isNotNegativeInteger(bedsCountString) ||
+				!StringUtil.isNotNegativeInteger(priceString) || !StringUtil.isBoolean(freeBookString) ||
 				!(type.equalsIgnoreCase("STANDART") || type.equalsIgnoreCase("LUX") || type.equalsIgnoreCase("DELUX")) || 
 				!(food.equalsIgnoreCase("NONE") || food.equalsIgnoreCase("BREAKFAST") || food.equalsIgnoreCase("TWICE") || food.equalsIgnoreCase("FULL")) ||
 				!StringUtil.isBoolean(deletedString)) {
