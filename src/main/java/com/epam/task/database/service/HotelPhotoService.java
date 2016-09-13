@@ -70,4 +70,8 @@ public class HotelPhotoService {
 		}
 	}
 
+	public int updateHotelPhoto(HotelPhoto photo) {
+		return daoManager.executeAndClose(() -> daoManager.getHotelPhotoDao().updateHotelPhoto(photo));
+	}
+
 }

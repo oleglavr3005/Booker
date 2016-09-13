@@ -87,7 +87,7 @@ public class ChangeEmailServlet extends HttpServlet {
 				"<div style='width: 100%; height:20px; background-color: #00000 position: relative color:white;'>Mail Confirmation"
 				+ "<div style='top: 10px; background-color: white; padding:20px'>"
 				+ "<div><h1 style='color: #00264d;'> Hello, " + name + "</h1>"
-				+ "<p>In order to confirm registration pls click here: </p>" + "</div><div id='one'><p>"
+				+ "<p>In order to confirm email pls click here: </p>" + "</div><div id='one'><p>"
 				+ link + "<p></div></div></div></body>";
 
 		MailSender.send(subject, text, email);
