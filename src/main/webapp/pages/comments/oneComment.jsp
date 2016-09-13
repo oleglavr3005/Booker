@@ -8,7 +8,7 @@
 		<div class="row" style="margin-bottom: 0;">
 			<div class="media">
 				<img
-					src="${pageContext.servletContext.contextPath}/resources/images/${comment.user.image}"
+					src='<i:urlToImage url="${comment.user.image}" />'
 					style="margin-right: 0; padding-left: 11px; width: 10%;" width="60"
 					height="60" alt="Avatar" class="pull-left">
 				<div class="media-body">
