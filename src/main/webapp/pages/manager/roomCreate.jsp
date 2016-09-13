@@ -180,8 +180,8 @@
 							<!-- NUMBER -->
 
 							<div class="row" style="margin-bottom: 0px">
-								<input id="number" type="number" class="validate" name="days"
-									min=1 max=365> <label id="numberLbl"
+								<input id="number" type="text" class="validate" name="number"
+									> <label id="numberLbl"
 									data-error="${fmtPeople}" for="number"><span
 										id="room_concrete_number"></span></label>
 							</div>
@@ -229,7 +229,7 @@
 							<div class="row" style="margin-bottom: 0px">
 								<input id="days" type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
-									class="validate" name="days" min=1 max=365> <label
+									class="validate" name="days" min=0 max=365> <label
 									id="daysLbl" data-error="${fmtPeople}" for="days"><span
 										id="room_concrete_days"></span> </label>
 							</div>
@@ -290,7 +290,7 @@
 
 							<p>
 								<input type="checkbox" class="filled-in" id="freeBook"
-									onclick="changeFreeBook()" name="freeBook" /> <label
+									onclick="changeFreeBookCreate()" name="freeBook" /> <label
 									id="room_free" for="freeBook">FREEBOOK</label>
 							</p>
 

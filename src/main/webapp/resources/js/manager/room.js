@@ -88,13 +88,14 @@ function updateRoom(room) {
 }
 
 function validate() {
+	debugger;
 	var ok = true;
 	ok = checkRoomNumber($('#hotel_name').val(), $('#number').val()) && ok;
+	ok = checkNumberRegex($('#number').val()) && ok;
 	ok = numberIsValid('single', 0, 20) && ok;
 	ok = numberIsValid('double', 0, 20) && ok;
 	ok = checkBedsCount('single', 'double');
-	ok = numberIsValid('days', 1, 365) && ok;
-	ok = numberIsValid('number', 1, 9999999) && ok;
+	ok = numberIsValid('days', 0, 365) && ok;
 	ok = numberIsValid('price', 1, 99999999) && ok;
 	ok = numberIsValid('percentage', 0, 99) && ok;
 	return ok;
@@ -102,6 +103,21 @@ function validate() {
 
 function checkBeds(){
 	checkBedsCount('single', 'double');
+}
+
+function validateNumber(field) {
+	var re = /^[1-9][0-9]*[a-zA-Z]?(, *[1-9][0-9]*[a-zA-Z]?)*$/;
+	return re.test(field);
+}
+
+function checkNumberRegex(number){
+	if (number.length >= 1 && validateNumber(number)) {
+		valid('number');
+		return true;
+	} else {
+		invalid('number');
+		return false;
+	}
 }
 
 function checkBedsCount(field1, field2) {
@@ -226,6 +242,12 @@ function changeFreeBook() {
 	var deleted = document.getElementById('isDeleted').checked;
 	$('#percentage').prop('disabled', freeBook || deleted);
 	$('#days').prop('disabled', freeBook || deleted);
+}
+
+function changeFreeBookCreate() {
+	var freeBook = document.getElementById('freeBook').checked;
+	$('#percentage').prop('disabled', freeBook);
+	$('#days').prop('disabled', freeBook);
 }
 
 
