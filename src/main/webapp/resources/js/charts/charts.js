@@ -24,7 +24,7 @@ $(document).ready(function() {
 			var chart = Morris.Donut({
 				  element: 'donutChart',
 				  data: morisDonutData,
-				 colors: ['#26A69A', 'rgb(18, 68, 76)', 'lightblue', '#26A69A', 'rgb(18, 68, 76)', 'lightblue']
+				 colors: ['#6094c7', '#0c4250', 'lightblue', '#26A69A', 'rgb(18, 68, 76)', '#407688', '#7bbfb9']
 			});
 
 			var top = morisDonutData.length > 5 ? 5 : morisDonutData.length;
