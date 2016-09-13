@@ -15,7 +15,8 @@ function initAutocomplete() {
 }
 
 function createHotel() {
-//	var img = $('#photos').val() == '' ? 'new_hotel.jpg' : $('#photos').val();
+	// var img = $('#photos').val() == '' ? 'new_hotel.jpg' :
+	// $('#photos').val();
 	var img = $('#photos').val();
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
 	getInfoFromGoogle();
@@ -34,14 +35,16 @@ function createHotel() {
 		}, function(result) {
 			if (result != 'error') {
 				$('#create_error').css('color', 'green');
-				$('#create_error').text(languages.script.current.hotel.createSucces);
+				$('#create_error').text(
+						languages.script.current.hotel.createSucces);
 				$('#create_button').attr("disabled", true);
 				setTimeout(function() {
 					document.location.href = '/booker/cabinet/my_hotels/'
 							+ result;
 				}, 2000);
 			} else {
-				$('#create_error').text(languages.script.current.hotel.createFail);
+				$('#create_error').text(
+						languages.script.current.hotel.createFail);
 			}
 		});
 	} else {
@@ -67,12 +70,14 @@ function updateHotel(hotelId) {
 		}, function(result) {
 			if (result != 'false') {
 				$('#create_error').css('color', 'green');
-				$('#create_error').text(languages.script.current.hotel.updateSucces);
+				$('#create_error').text(
+						languages.script.current.hotel.updateSucces);
 				setTimeout(function() {
 					$('#create_error').visibility = "none";
 				}, 2000);
 			} else {
-				$('#create_error').text(languages.script.current.hotel.updateFail);
+				$('#create_error').text(
+						languages.script.current.hotel.updateFail);
 			}
 		});
 	} else {
@@ -210,24 +215,51 @@ function updateHotelPhotos(id) {
 	}
 }
 
+function validateComas(text) {
+	var re = /^([0-9]*)$/;
+	return re.test(field);
+}
+
 function removeHotelPhoto() {
 	var values = $('#images').val();
 	$.post('../../remove_hotel_photo', {
 		images : '' + values,
-	}, function(hotels) {
-		$('#switchContent').html(hotels);
+	}, function(photos) {
+		$('#switchContent').html(photos);
 	});
+}
+
+function promoteToMain() {
+	var value = $('#images').val();
+	if (validateComas(values)) {
+		$.post('../../set_main_hotel_photo', {
+			photoId : '' + value,
+		}, function(result) {
+			if (result == "true"){
+				alert("succes");
+			}
+			else{
+				alert("fail");
+			}
+		});
+	} else {
+		alert("fail");
+	}
 }
 
 function getInfoFromGoogle() {
 	try {
-		if( places == undefined){
+		if (places == undefined) {
 			var displaySuggestions = function(predictions, status) {
-			    if (status != google.maps.places.PlacesServiceStatus.OK) { return; } 
+				if (status != google.maps.places.PlacesServiceStatus.OK) {
+					return;
+				}
 				places = predictions;
 			};
 			var service = new google.maps.places.AutocompleteService();
-			service.getQueryPredictions({ input: $("#address").val() }, displaySuggestions);
+			service.getQueryPredictions({
+				input : $("#address").val()
+			}, displaySuggestions);
 		}
 		hotel_x = places[0].geometry.location.lat();
 		hotel_y = places[0].geometry.location.lng();
@@ -247,15 +279,20 @@ function getInfoFromGoogle() {
 function changeIsDeleted() {
 	var deleted = document.getElementById('isDeleted').checked;
 	$('#name').prop('disabled', deleted);
-	//$('#rating').prop('readonly', deleted);
+	// $('#rating').prop('readonly', deleted);
 	$('#address').prop('disabled', deleted);
 	$('#phone').prop('disabled', deleted);
 	$('#desc').prop('disabled', deleted);
-	
+
 	if (deleted) {
 		$('#pushImage').addClass('disabled');
 	} else {
 		$('#pushImage').removeClass('disabled');
+	}
+	if (deleted) {
+		$('#btnToMain').addClass('disabled');
+	} else {
+		$('#btnToMain').removeClass('disabled');
 	}
 	if (deleted) {
 		$('#createBtn').addClass('disabled');
