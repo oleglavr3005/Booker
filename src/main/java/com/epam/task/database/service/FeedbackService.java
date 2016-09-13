@@ -44,4 +44,8 @@ public class FeedbackService {
 	public Feedback getFeedbackById(int feedbackId) {
 		return daoManager.executeAndClose(() -> daoManager.getFeedbackDao().getFeedbackById(feedbackId));
 	}
+
+	public List<Feedback> getAllFeedbacksByUserAndPage(int userId, int page, String compareBy) {
+		return daoManager.executeAndClose(() -> daoManager.getFeedbackDao().getAllFeedbacksByUserAndPage(userId, page, compareBy));
+	}
 }
