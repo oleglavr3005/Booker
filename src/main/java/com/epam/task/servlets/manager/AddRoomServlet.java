@@ -58,7 +58,7 @@ public class AddRoomServlet extends HttpServlet {
 		
 		String sendNotifString = request.getParameter("sendNotif");
 		
-		if (hotelIdString == null || number == null || !number.matches("^[1-9][0-9]*[a-zA-Z–∞-—è–ê-–Ø—ñ–Ü—å—ó–á—î–Ñ“ë“ê]?(, *[1-9][0-9]*[a-zA-Z–∞-—è–ê-–Ø—ñ–Ü—å—ó–á—î–Ñ“ë“ê]?)*$") || 
+		if (hotelIdString == null || number == null || !number.matches("^[1-9][0-9]*[a-zA-Z‡-ˇ¿-ﬂ≥≤¸øØ∫™¥•]?(, *[1-9][0-9]*[a-zA-Z‡-ˇ¿-ﬂ≥≤¸øØ∫™¥•]?)*$") || 
 				type == null || doubleBedsCountString == null || bedsCountString == null ||
 				priceString == null || food == null || roomImagesString == null || freeBookString == null ||
 				!StringUtil.isPositiveInteger(hotelIdString) || !StringUtil.isPositiveInteger(doubleBedsCountString) || !StringUtil.isPositiveInteger(bedsCountString) ||
