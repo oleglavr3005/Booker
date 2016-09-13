@@ -129,13 +129,18 @@ public class HotelServlet extends HttpServlet {
 		request.setAttribute("countOfPages", countOfPages);
 		request.setAttribute("currentPage", page);		
 
-		int userId = ((User) session.getAttribute("user")).getId();
-		//ADDED CHECK: if user has no finished orders in this hotel, he cannot leave feedback
-		List<Order> finishedOrdersInHotel = new OrderService().getFinishedOrdersByUserAndHotel(userId, id);
-		if(finishedOrdersInHotel.isEmpty()) {
-			request.setAttribute("canComment", false);
+		User user = ((User) session.getAttribute("user"));
+		if(user != null) {
+			int userId = user.getId();
+			//ADDED CHECK: if user has no finished orders in this hotel, he cannot leave feedback
+			List<Order> finishedOrdersInHotel = new OrderService().getFinishedOrdersByUserAndHotel(userId, id);
+			if(finishedOrdersInHotel.isEmpty()) {
+				request.setAttribute("canComment", false);
+			} else {
+				request.setAttribute("canComment", true);
+			}
 		} else {
-			request.setAttribute("canComment", true);
+			request.setAttribute("canComment", false);
 		}
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
