@@ -25,9 +25,7 @@ public class CheckRoomNumberServlet extends HttpServlet {
 		String hotelIdString = request.getParameter("hotelId");
 		String roomNumber = request.getParameter("roomNumber");
 		
-		if(hotelIdString == null || roomNumber == null || 
-				!roomNumber.matches("^[1-9][0-9]*[a-zA-Zà-ÿÀ-ß³²ü¿¯ºª´¥]?(, *[1-9][0-9]*[a-zA-Zà-ÿÀ-ß³²ü¿¯ºª´¥]?)*$") || 
-				!StringUtil.isPositiveInteger(hotelIdString)) {
+		if(hotelIdString == null || roomNumber == null || !StringUtil.isPositiveInteger(hotelIdString)) {
 			response.sendError(500);
 			return;
 		}
