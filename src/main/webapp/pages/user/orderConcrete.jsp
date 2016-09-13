@@ -14,7 +14,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>MAIN PAGE</title>
+<title>замовлення № ${order.id}</title>
 
 <link
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/bootstrap.min.css"
@@ -129,12 +129,12 @@ div #sidebar-wrapper {
 					<div class="modal-body next"></div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default pull-left prev">
-							<i class="glyphicon glyphicon-chevron-left"></i>
-							<span id="hotel_button_previous"></span>
+							<i class="glyphicon glyphicon-chevron-left"></i> <span
+								id="hotel_button_previous"></span>
 						</button>
 						<button type="button" class="btn btn-primary next">
-							<span id="hotel_button_next"></span>
-							<i class="glyphicon glyphicon-chevron-right"></i>
+							<span id="hotel_button_next"></span> <i
+								class="glyphicon glyphicon-chevron-right"></i>
 						</button>
 					</div>
 				</div>
@@ -154,13 +154,13 @@ div #sidebar-wrapper {
 					<div class="col s4">
 						<c:if test="${fn:length(hotel.photos) == 0}">
 							<a href="<i:urlToImage url="no.jpg" />" title="No image"
-								data-gallery> <img src="<i:urlToImage url="no.jpg" />"
-								alt="No image">
+								data-gallery> <img style="width: 350px; height: 260px;"
+								src="<i:urlToImage url="no.jpg" />" alt="No image">
 							</a>
 						</c:if>
 						<c:if test="${fn:length(hotel.photos) != 0}">
 							<a href='<i:urlToImage url="${hotel.photos[0].img}" />'
-								data-gallery> <img
+								data-gallery> <img style="width: 350px; height: 260px;"
 								src="<i:urlToImage url="${hotel.photos[0].img}" />">
 							</a>
 
@@ -228,9 +228,9 @@ div #sidebar-wrapper {
 									<c:if test="${room.condition == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
-											<a class="tooltipped index_room_conditioner" data-position="icon"
-												data-tooltip="Condition" style="color: #0d0d0d;"><i
-												class="material-icons invert">toys</i></a>
+											<a class="tooltipped index_room_conditioner"
+												data-position="icon" data-tooltip="Condition"
+												style="color: #0d0d0d;"><i class="material-icons invert">toys</i></a>
 										</div>
 									</c:if>
 
@@ -246,8 +246,9 @@ div #sidebar-wrapper {
 									<c:if test="${room.gym == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
-											<a class="tooltipped index_room_gym" data-position="icon" data-tooltip="Gym"
-												style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
+											<a class="tooltipped index_room_gym" data-position="icon"
+												data-tooltip="Gym" style="color: #0d0d0d;"><i
+												class="material-icons invert">fitness_center</i></a>
 										</div>
 									</c:if>
 
@@ -268,8 +269,9 @@ div #sidebar-wrapper {
 							<!-- MAP MARKER -->
 							<div class="row">
 								<div class="col s12">
-									<a class="tooltipped index_search_location" data-position="icon"
-										data-tooltip="Location" style="color: #0d0d0d;"><i
+									<a class="tooltipped index_search_location"
+										data-position="icon" data-tooltip="Location"
+										style="color: #0d0d0d;"><i
 										class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
 									<span>${hotel.city} ${hotel.street}</span>
 								</div>
@@ -282,8 +284,7 @@ div #sidebar-wrapper {
 								<div class="col s12">
 									<a class="tooltipped tooltip_room_type" data-position="icon"
 										data-tooltip="Location" style="color: #0d0d0d;"><i
-										class="fa fa-hotel invert" aria-hidden="true"></i></a>
-									<span>${room.type}</span>
+										class="fa fa-hotel invert" aria-hidden="true"></i></a> <span>${room.type}</span>
 								</div>
 							</div>
 							<!-- END OF ROOM TYPE MARKER -->
@@ -293,9 +294,8 @@ div #sidebar-wrapper {
 								<div class="col s12">
 									<a class="tooltipped tooltip_order_date" data-position="icon"
 										data-tooltip="Order date" style="color: #0d0d0d;"><i
-										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
-									<span id="order_concrete_order_date"></span> 
-									<span id="order_date">${order.orderDate}</span>
+										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> <span
+										id="order_concrete_order_date"></span> <span id="order_date">${order.orderDate}</span>
 								</div>
 							</div>
 							<!-- END OF ORDER DATE MARKER -->
@@ -305,9 +305,8 @@ div #sidebar-wrapper {
 								<div class="col s12">
 									<a class="tooltipped tooltip_start_date" data-position="icon"
 										data-tooltip="Start date" style="color: #0d0d0d;"><i
-										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> 
-									<span id="order_card_from"></span>
-									<span id="start_date">${order.startDate}</span>
+										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> <span
+										id="order_card_from"></span> <span id="start_date">${order.startDate}</span>
 								</div>
 							</div>
 							<!-- END OF START DATE MARKER -->
@@ -317,9 +316,8 @@ div #sidebar-wrapper {
 								<div class="col s12">
 									<a class="tooltipped tooltip_start_date" data-position="icon"
 										data-tooltip="End date" style="color: #0d0d0d;"><i
-										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
-									<span id="order_card_to"></span>
-									<span id="end_date">${order.endDate}</span>
+										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> <span
+										id="order_card_to"></span> <span id="end_date">${order.endDate}</span>
 								</div>
 							</div>
 							<!-- END OF END DATE MARKER -->
@@ -327,19 +325,54 @@ div #sidebar-wrapper {
 
 							<!-- ROW WITH STATUS | FOOD | PRICE -->
 							<div class="row ">
-								<div class="col s4">
+								<div class="col s12">
 									<!-- 						TWO DIFFERENT ICONS IF.ACTIVE OR IF.FINISHED -->
-									<span id="subscribes_table_status"></span><span> ${order.status}</span>
+									<span id="subscribes_table_status"></span>
+									<c:if test="${order.status == 'ACTIVE'}">
+										ADD SPAN FOR ACTIVE HERE  !!!!!!
+										<span id="subscribes_table_status_active"></span>
+									</c:if>
+									<c:if test="${order.status == 'FINISHED'}">
+										ADD SPAN FOR FINISHED HERE  !!!!!!
+										<span id="subscribes_table_status_finished"></span>
+									</c:if>
+									<c:if test="${order.status == 'CANCELED'}">
+										ADD SPAN FOR CANCELED HERE  !!!!!!
+										<span id="subscribes_table_status_canceled"></span>
+									</c:if>
 								</div>
-								<div class="col s4" style="margin-bottom: 0;">
+							</div>
+							<div class="row">
+								<div class="col s12" style="margin-bottom: 0;">
 									<a class="tooltipped tooltip_food" data-position="icon"
 										data-tooltip="Food type" style="color: #0d0d0d;"><i
-										class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span>
+										class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span
+										id="subscribes_table_roomfood"></span>
+									<c:if test="${room.food == 'NONE'}">
+										ADD SPAN FOR NONE HERE  !!!!!!
+										<span id="subscribes_table_roomfood_none"></span>
+									</c:if>
+									<c:if test="${room.food == 'BREAKFAST'}">
+										ADD SPAN FOR BREAKFAST HERE  !!!!!!
+										<span id="subscribes_table_roomfood_breakfast"></span>
+									</c:if>
+									<c:if test="${room.food == 'TWICE'}">
+										ADD SPAN FOR TWICE HERE  !!!!!!
+										<span id="subscribes_table_roomfood_twice"></span>
+									</c:if>
+									<c:if test="${room.food == 'FULL'}">
+										ADD SPAN FOR FULL HERE  !!!!!!
+										<span id="subscribes_table_roomfood_full"></span>
+									</c:if>
 								</div>
-								<div class="col s4">
-									<a class="tooltipped tooltip_price" data-position="icon" data-tooltip="Price"
-										style="color: #0d0d0d;"><i
-										class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${order.price}</span>
+							</div>
+							<div class="row">
+								<div class="col s12">
+									<a class="tooltipped tooltip_price" data-position="icon"
+										data-tooltip="Price" style="color: #0d0d0d;"><i
+										class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span
+										id="subscribes_table_price">ADD SPAN FOR PRICE HERE
+										!!!!!!</span> <span>${order.price}</span>
 									<c:if test="${room.daysCount == -1}">
 										<a class="tooltipped tooltip_no_deposit" data-position="icon"
 											data-tooltip="No deposit" style="color: #0d0d0d;"><i
@@ -359,17 +392,46 @@ div #sidebar-wrapper {
 
 				<div class="row">
 					<!-- 		here will be labedfor text area, comment ill be editable -->
-					<div class="col s7 offset-s1" style="border: 1px solid">${order.comment}</div>
-					<div class="col s4">
-						<c:if test="${order.status != ACTIVE}">
-							<div class="col s2 offset-s1"
-								style="margin-top: 18px; margin-left: 0;">
-								<%-- 						<a id="calceOrder" class="waves-effect waves-light btn" onclick="removeOrder(${order.id})" --%>
-								<%-- 							style="background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message --%>
-								<%-- 								key="Cancel" /></a> --%>
+					<div class="col s8 offset-s1">
+						<div
+							style="font-size: 15px; padding: 10px; border: solid 1px #000; border-radius: 10px; background-color: lightgray;">
+							<div class="ui pointing label"
+								style="padding: 5px; padding-left: 20px; padding-right: 20px;">
+								<span id="order_concret_comment">COMMENT</span>
 							</div>
-						</c:if>
+
+							<textarea
+								<c:if test="${order.status != 'ACTIVE'}">readonly</c:if>
+								class="materialize-textarea">${order.comment}</textarea>
+						</div>
+<!-- 						<div class="col s2 offset-s1"> -->
+<!-- 							<a class="waves-effect waves-light btn" id="create_button" -->
+<!-- 								onclick="updateComment()" -->
+<!-- 								style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"> -->
+<!-- 								<span id="request_approve"></span> -->
+<!-- 							</a> -->
+<!-- 						</div> -->
 					</div>
+
+					<div class="col s2 offset-s1">
+						<a class="waves-effect waves-light btn" id="create_button"
+							onclick="updateComment()"
+							style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+							<span id="request_approve"></span>
+						</a>
+					</div>
+
+
+					<!-- 					<div class="col s4"> -->
+					<%-- 						<c:if test="${order.status != ACTIVE}"> --%>
+					<!-- 							<div class="col s2 offset-s1" -->
+					<!-- 								style="margin-top: 18px; margin-left: 0;"> -->
+					<%-- 														<a id="calceOrder" class="waves-effect waves-light btn" onclick="removeOrder(${order.id})" --%>
+					<%-- 															style="background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><fmt:message --%>
+					<%-- 																key="Cancel" /></a> --%>
+					<!-- 							</div> -->
+					<%-- 						</c:if> --%>
+					<!-- 					</div> -->
 
 				</div>
 
@@ -385,6 +447,8 @@ div #sidebar-wrapper {
 
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/order/concrete.js"></script>
 
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
