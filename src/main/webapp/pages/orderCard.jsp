@@ -75,7 +75,7 @@ b {
 		<span id="card_no_periodicals"></span>
 	</h5>
 	<img src="${pageContext.servletContext.contextPath}/resources/images/cart.png" alt="shopping-cart" 
-		class="img-responsive center-block" style="max-height:400px; opacity:.3"/>
+		class="img-responsive center-block" style="max-height:400px; opacity:.3; margin-bottom:50px"/>
 </c:if>
 
 
