@@ -45,7 +45,7 @@
 			<div id="newComment" style="margin: 20px; overflow: hidden;">
 				<div class="row">
 					<div class="col s6" style="margin-top: 15px;">
-						<input id="title_comment" type="text" value="">
+						<input id="title_comment" class="validate" type="text" value="">
 						<label id="title_comment_label" data-error="" for="title_comment" class="">
 							<span id="title_comment_span"></span>
 						</label>
@@ -73,7 +73,7 @@
 					    </div>
 					</div>
 				</div>
-				<textarea id="comment" class="materialize-textarea" style="height: 80px;"></textarea>
+				<textarea id="comment" class="materialize-textarea validate" style="height: 80px;"></textarea>
 				<div style="margin-top: 20px;">
 					<a id="createComment" class="waves-effect waves-light btn" onclick="addNewComment(${hotel.id})" style="width: 200px;background: #26A69A;text-align: center;color: #F7F7F7;margin-left: calc(50% - 100px);"></a>
 				</div>

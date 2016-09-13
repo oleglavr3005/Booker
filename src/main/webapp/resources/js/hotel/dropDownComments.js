@@ -23,28 +23,31 @@ function addNewComment(hotelId_val){
 	var comment_val = jQuery('#comment').val();
 	var title_val = jQuery('#title_comment').val();
 	var rating_val = jQuery('#rate_span').text(); 
-	$.post(window.location.protocol + "//" + window.location.host + "/booker/addFeedback", {
-		comment : comment_val,
-		rating : rating_val,
-		hotelId : hotelId_val,
-		title : title_val
-	}, function(result) {
-		if(result != 'false'){
-			jQuery('#newComment').after(result); 
-			var next_id = jQuery('#newComment').next().attr('id');
-			jQuery('#' + next_id).remove();
-			jQuery('#' + next_id).remove();
-			jQuery('#newComment').after(result);
-			jQuery('#newComment').next().slideDown(500);
-		}else{
-			jQuery('#newComment').after("<p>" + languages.script.current.message_error + "</p>"); 
-		}
-		jQuery('#comment').val('');
-		jQuery('#title_comment').val('');
-		jQuery('#rate_span').text('1');
-		var $el = $(this);
-		$el.parent().find('.current span').css('width',1 * 20 + '%');
-	});
+	if(validateComment()){
+		$.post(window.location.protocol + "//" + window.location.host + "/booker/addFeedback", {
+			comment : comment_val,
+			rating : rating_val,
+			hotelId : hotelId_val,
+			title : title_val
+		}, function(result) {
+			if(result != 'false'){
+				jQuery('#newComment').after(result); 
+				var next_id = jQuery('#newComment').next().attr('id');
+				jQuery('#' + next_id).remove();
+				jQuery('#' + next_id).remove();
+				jQuery('#newComment').after(result);
+				jQuery('#newComment').next().slideDown(500);
+				
+				jQuery('#comment').val('');
+				jQuery('#title_comment').val('');
+				jQuery('#rate_span').text('1');
+				var $el = $(this);
+				$el.parent().find('.current span').css('width',1 * 20 + '%');
+			}else{
+				jQuery('#newComment').after("<p>" + languages.script.current.message_error + "</p>"); 
+			}
+		});
+	}
 }
 
 $(document).ready(function(){
@@ -54,3 +57,39 @@ $(document).ready(function(){
 		element.textContent = date;
 	});
 });
+
+function validateComment() {
+	var ok = true;
+	ok = commentIsValid($('#comment').val()) && ok;
+	ok = titleIsValid($('#title_comment').val()) && ok;
+	return ok;
+}
+function commentIsValid(comment) {
+	var isValid = comment.length >= 3 && comment.length < 999;
+	if (isValid) {
+		valid('comment');
+		return true;
+	} else {
+		invalid('comment');
+		return false;
+	}
+}
+function titleIsValid(title) {
+	var isValid = title.length >= 3 && title.length < 150;
+	if (isValid) {
+		valid('title_comment');
+		return true;
+	} else {
+		invalid('title_comment');
+		return false;
+	}
+}
+function valid(field) {
+	$('#' + field).removeClass("invalid");
+	$('#' + field).addClass("valid");
+}
+function invalid(field) {
+	$('#' + field + '_label').addClass("active");
+	$('#' + field).removeClass("valid");
+	$('#' + field).addClass("invalid");
+}

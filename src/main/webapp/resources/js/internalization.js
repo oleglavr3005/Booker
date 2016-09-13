@@ -1,12 +1,11 @@
 ﻿var languages = {};
 (function (){
 	var en = {
-			
+	
 		sort_by : "Sort by : ",
 		ooltip_you_pay : "You pay a half of the sum for orders with deposit. And no money for orders with no deposit",
 		feedback_without_feedback : "You have not left a feedback",
 		
-			
 		tab_personal : "Personal",
 		tab_contact : "Contacts",
 		tab_users : "Users",
@@ -633,7 +632,7 @@
 		        disable: 'deactivate',
 		        enable: 'activate'
 		    },
-		    message_error : 'Помилка створення коментаря',
+		    message_error : 'Can not add comment',
 		    info_toggle_open : 'Show additional info',
 		    info_toggle_hide : 'Hide additional info',
 		    first : "First",
@@ -652,8 +651,8 @@
 		    }, 
 		    createOrder : { 
 		    	error : "ERROR OCCURED",
-		    	cvvError : "cvv wrong",
-		    	cardError : "ard number is wrong",
+		    	cvvError : "Card number is wrong",
+		    	cardError : "Card number is wrong",
 		    	succes : "SUCCES",
 		    	removed : "REMOVED",
 		    	fald : "FAIL",
@@ -682,53 +681,69 @@
 		        disable: 'deactivate',
 		        enable: 'activate'
 		    },
-		    message_error : 'Помилка створення коментаря',
-		    info_toggle_open : 'Show additional info',
-		    info_toggle_hide : 'Hide additional info',
-		    first : "First",
-		    last : "Last",
+		    message_error : 'Неможли додати коментар',
+		    info_toggle_open : 'Показати додаткову інформацію',
+		    info_toggle_hide : 'Сховати додаткову інформацію',
+		    first : "Попередня",
+		    last : "Наступна",
 		    hotel : {
-		    	createSucces : "hotel was created",
-		    	createFail : "hotel wasnt created",
-		    	updateSucces : "hotel was updated",
-		    	updateFail : "hotel wasnt updated",
-		    	wrongData : "INVALID DATA",
-		    	numberBusy : "this number is allready in use",
-		    	is_max : " is max",
-		    	enter_key : "Enter Keywords Here",
-		    	rows_per_page : "Rows per page:",
-		    	sInfo : "_START_ -_END_ of _TOTAL_",
+		    	createSucces : "Готель створений",
+		    	createFail : "Готель не був створений",
+		    	updateSucces : "Готель оновлений",
+		    	updateFail : "Готель не був оновлений",
+		    	wrongData : "Невалідні дані",
+		    	numberBusy : "Це число вже використовуєтся",
+		    	is_max : " максимум",
+		    	enter_key : "Введіть ключові слова",
+		    	rows_per_page : "Рядків на сторінку:",
+		    	sInfo : "_ПОЧАТОК_ -_КІНЕЦЬ_ з _ВСЬОГО_",
 		    }, 
 		    createOrder : { 
 		    	error : "ERROR OCCURED",
-		    	cvvError : "cvv wrong",
-		    	cardError : "ard number is wrong",
-		    	succes : "SUCCES",
-		    	removed : "REMOVED",
-		    	fald : "FAIL",
+		    	cvvError : "Номер карточки не коректний",
+		    	cardError : "Номер карточки не коректний",
+		    	succes : "УСПІШНО",
+		    	removed : "ВИДАЛЕНИЙ ???",
+		    	fald : "Помилка",
 		    }, 
 		    registration : {
-		    	wrongMail : "Email is wrong",
-		    	busyMail : "Email is allready in use",
+		    	wrongMail : "Email не коректний",
+		    	busyMail : "Користувач з таким email вже зареєстрований",
 		    	regist : "Реєстрація",
-		    	succes : "SUCCES",
+		    	succes : "Успішно",
 		    	cont : "cont ????",
-		    	fald : "FAIL",
+		    	fald : "Помилка",
 		    }, 
 		    settings : {
-		    	succesTitle : "SUCCESFULLY CHANGED PASSWORD",
-		    	oldHeader : "OLD HEADER TEXT INSERT HERE",
+		    	succesTitle : "Успішна зміна пароля",
+		    	oldHeader : "OLD HEADER TEXT INSERT HERE ???",
 		    },
+		},
+	};
+	var placeholder = {
+		en : {
+			placeholder_phone_number : "Phone Number",
+			placeholder_address : "Address of hotel",
+			placeholder_name_hotel : "Name of Hotel",
+			placeholder_desc : "Description",
+			placeholder_enter_comment : "Enter comment to orders here",
+		},
+		ua : {
+			placeholder_phone_number : "Телефоний номер",
+			placeholder_address : "Адреса готеля",
+			placeholder_name_hotel : "Назва готеля",
+			placeholder_desc : "Опис",
+			placeholder_enter_comment : "Введіть коментар до всіх замовлень тут",
 		},
 	};
 	languages.en = en;
 	languages.ua = ua;
-	
 	languages.data_error = data_error;
 	languages.data_error.current = data_error.en;
 	languages.data_tooltip = data_tooltip;
 	languages.script = script;
 	languages.script.current = script.en;
+	languages.placeholder = placeholder;
 })();
 
 function changeLanguage(language){
@@ -751,6 +766,8 @@ function changeLanguageOnPage(language){
 	changeLanguageOnTags(language);
 	changeLanguageOfErrors(language);
 	changeLanguageOfDataTooltip(language);
+	changeLanguageOfDataPlaceholder(language);
+	changeLanguageOfDataPagination(language);
 }
 function changeLanguageOnTags(language){
 	for ( var prop in languages) {
@@ -784,6 +801,31 @@ function changeLanguageOfDataTooltip(language){
 			}
 			break;
 		}
+	}
+}
+function changeLanguageOfDataPlaceholder(language){
+	for ( var prop in languages) {
+		if(prop == language){
+			for ( var idElement in languages.placeholder[prop]){
+				$("#" + idElement).attr('placeholder', languages.placeholder[prop][idElement]);
+				$("." + idElement).attr('placeholder', languages.placeholder[prop][idElement]);
+			}
+			break;
+		}
+	}
+}
+function changeLanguageOfDataPagination(language){
+	if(language == 'en'){
+		$("#jPag-first").html("First");
+		$(".jPag-first").html("First");
+		$("#jPag-last").html("Last");
+		$(".jPag-last").html("Last");
+	}
+	if(language == 'ua'){
+		$("#jPag-first").html("Перша");
+		$(".jPag-first").html("Перша");
+		$("#jPag-last").html("Остання");
+		$(".jPag-last").html("Остання");
 	}
 }
 
