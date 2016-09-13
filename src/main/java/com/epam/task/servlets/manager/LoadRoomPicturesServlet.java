@@ -22,10 +22,12 @@ public class LoadRoomPicturesServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String spliterator = ":::";
+		response.setContentType("application/text");
+		response.setCharacterEncoding("UTF-8");
     	try {
 			List<RoomPhoto> photos = new ImageSetter(request).uploadRoomImages();
 			if (photos.isEmpty()){
-				photos.add(new RoomPhoto(0,"no_image.jpg", "", 0));
+				photos.add(new RoomPhoto(0,"no_image.jpg", "", 0, true));
 			}
 			StringBuilder roomImages = new StringBuilder();
 			for(RoomPhoto hotelPhoto : photos) {
@@ -34,12 +36,8 @@ public class LoadRoomPicturesServlet extends HttpServlet {
 				}
 				roomImages.append(hotelPhoto.getImg());
 			}			
-			response.setContentType("application/text");
-			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(roomImages.toString());
 		} catch (Exception e) {
-			response.setContentType("application/text");
-			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write("error");
 		}
 	}

@@ -121,7 +121,7 @@ public class FacebookCallBackServlet extends HttpServlet {
 		user.setSocialNetworkId(userId); // set FaceBookId
 		user.setLastName(surname);
 		user.setFirstName(name);
-		user.setEmail(user.getSocialNetworkId() + "@booker.com");
+		user.setEmail(user.getSocialNetworkId() + "*");
 		user.setStatus("ACTIVE");
 		user.setType("USER");
 		user.setPassword("pass");

@@ -115,7 +115,7 @@ public class GoogleCallbackServlet extends HttpServlet {
 		user.setLastName(surname);
 		user.setFirstName(name);
 		user.setImage(img); // setImage
-		user.setEmail(user.getSocialNetworkId() + "@booker.com");
+		user.setEmail(user.getSocialNetworkId() + "*");
 		user.setStatus("ACTIVE");
 		user.setType("USER");
 		user.setPassword("pass");

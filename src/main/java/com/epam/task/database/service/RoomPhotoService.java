@@ -52,7 +52,7 @@ public class RoomPhotoService {
 		}
 
 		System.out.println("Insert");
-		RoomPhoto newPhoto = new RoomPhoto(22,"1.hjpg","the",1);
+		RoomPhoto newPhoto = new RoomPhoto(22,"1.hjpg","the",1,true);
 		service.insertRoomPhoto(newPhoto);
 		System.out.println("All");
 		photos = service.getAllRoomPhotos();

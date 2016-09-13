@@ -52,7 +52,7 @@ public class HotelPhotoService {
 		}
 
 		System.out.println("Insert");
-		HotelPhoto newPhoto = new HotelPhoto(100, "1.hjpg", "the", 1);
+		HotelPhoto newPhoto = new HotelPhoto(100, "1.hjpg", "the", 1,true);
 		service.insertHotelPhoto(newPhoto);
 		System.out.println("All");
 		photos = service.getAllHotelPhotos();

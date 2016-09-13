@@ -25,7 +25,7 @@ public class Hotel {
 		
 		photos = new HotelPhotoService().getHotelPhotosByHotel(id);
 		if(photos.size() == 0) {
-			photos.add(new HotelPhoto(0, "no_hotel_pic.jpg", "", id));
+			photos.add(new HotelPhoto(0, "no_hotel_pic.jpg", "", id, true));
 		}
 	}
 	

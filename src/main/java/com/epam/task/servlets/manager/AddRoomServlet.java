@@ -120,8 +120,10 @@ public class AddRoomServlet extends HttpServlet {
 			RoomPhotoService roomPhotoService = new RoomPhotoService();
 			
 			for (Integer id : roomIds) {
+				boolean main = true;
 				for(int i = 0; i<roomImagesArray.length; i++){
-					roomPhotoService.insertRoomPhoto(new RoomPhoto(0, roomImagesArray[i], "", id));
+					roomPhotoService.insertRoomPhoto(new RoomPhoto(0, roomImagesArray[i], "", id, main));
+					main = false;
 				}
 			}
 		}	
