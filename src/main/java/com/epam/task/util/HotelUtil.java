@@ -9,6 +9,7 @@ import java.util.Set;
 
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.Order;
+import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.OrderService;
 import com.epam.task.database.service.RoomService;
@@ -90,12 +91,14 @@ public class HotelUtil {
 				if(userId != currentUserId) {
 					List<Order> userOrders = orderService.getOrdersByUser(userId); //get all user's orders
 					for (Order order : userOrders) {
-						int roomId = order.getRoomId();
-						int holelId = roomService.getRoomById(roomId).getHotelId();
-						if(hotelsVisited.containsKey(holelId)) {	//increment
-							hotelsVisited.put(holelId, hotelsVisited.get(hotelId) + 1);
-						} else {									//put
-							hotelsVisited.put(holelId, 1);
+						if(order.getStatus() != OrderStatus.ORDER) {
+							int roomId = order.getRoomId();
+							int roomHotelId = roomService.getRoomById(roomId).getHotelId();
+							if(hotelsVisited.containsKey(roomHotelId)) {	//increment
+								hotelsVisited.put(roomHotelId, hotelsVisited.get(roomHotelId) + 1);
+							} else {									//put
+								hotelsVisited.put(roomHotelId, 1);
+							}
 						}
 					}
 				}
