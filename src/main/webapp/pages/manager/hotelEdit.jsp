@@ -13,7 +13,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>MAIN PAGE</title>
+<title>${hotel.name}</title>
 
 <link
 	href="${pageContext.servletContext.contextPath}/resources/css/rangeSlider/rangeStyle.css"
@@ -143,11 +143,11 @@ div #sidebar-wrapper {
 							<!-- 						STARS -->
 							<input id="rating" onchange="rate()" type="number"
 								value="${hotel.stars}" class="rating" min=0 max=5 step=1
-								data-size="xs" data-stars="5"> 
-<!-- 								<span -->
-<!-- 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><span -->
-<!-- 								id="manager_hotel_star"></span><span id="rate_span">0</span> / 5 -->
-<!-- 								|</span> -->
+								data-size="xs" data-stars="5">
+							<!-- 								<span -->
+							<!-- 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><span -->
+							<!-- 								id="manager_hotel_star"></span><span id="rate_span">0</span> / 5 -->
+							<!-- 								|</span> -->
 							<script>
 // 								function rate() {
 
@@ -229,8 +229,8 @@ div #sidebar-wrapper {
 
 				<p>
 					<input type="checkbox" class="filled-in" id="isDeleted"
-						onclick="changeIsDeleted()" name="isDeleted" /> <label for="isDeleted"><span
-						id="admin_deleted"></span></label>
+						onclick="changeIsDeleted()" name="isDeleted" /> <label
+						for="isDeleted"><span id="admin_deleted"></span></label>
 				</p>
 
 
@@ -264,7 +264,7 @@ div #sidebar-wrapper {
 		</div>
 
 		<div class="row">
-			<div class="col s3 offset-s3">
+			<div class="col s3 offset-s1">
 
 				<a id="pushImage" class="waves-effect waves-light btn"
 					style="background: #26A69A; color: #FFFFFF; margin: 0 auto;"
@@ -276,6 +276,12 @@ div #sidebar-wrapper {
 					accept="image/*" />
 				<!-- 				END OF INPUT -->
 
+			</div>
+
+			<div class="col s3 offset-s1">
+				<a id="btnToMain" class="waves-effect waves-light btn"
+					style="background: #e68a00;; color: #FFFFFF; margin: 0 auto;"
+					onclick="promoteToMain()"><span id="btn_main"></span>MAIN </a>
 			</div>
 
 			<div class="col s3 offset-s1">
@@ -295,7 +301,7 @@ div #sidebar-wrapper {
 					<div class="table-header">
 						<span class="table-title" id="room_header"></span>
 						<div class="actions">
-							<a id="createBtn" 
+							<a id="createBtn"
 								href="${pageContext.servletContext.contextPath}/cabinet/create_room"
 								class="my-btn waves-effect waves-light btn"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
@@ -343,24 +349,26 @@ div #sidebar-wrapper {
 												data-tooltip="Parking" style="color: #0d0d0d;"><i
 												class="material-icons invert">local_parking</i></a>
 										</c:if> <c:if test="${room.condition == true}">
-											<a class="tooltipped index_room_conditioner" data-position="icon"
-												data-tooltip="Condition" style="color: #0d0d0d;"><i
-												class="material-icons invert">toys</i></a>
+											<a class="tooltipped index_room_conditioner"
+												data-position="icon" data-tooltip="Condition"
+												style="color: #0d0d0d;"><i class="material-icons invert">toys</i></a>
 										</c:if> <c:if test="${room.pool == true}">
 											<a class="tooltipped index_room_pool" data-position="icon"
 												data-tooltip="Pool" style="color: #0d0d0d;"><i
 												class="material-icons invert">pool</i></a>
 										</c:if> <c:if test="${room.gym == true}">
-											<a class="tooltipped index_room_gym" data-position="icon" data-tooltip="Gym"
-												style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
+											<a class="tooltipped index_room_gym" data-position="icon"
+												data-tooltip="Gym" style="color: #0d0d0d;"><i
+												class="material-icons invert">fitness_center</i></a>
 										</c:if> <c:if test="${room.balcony == true}">
 											<a class="tooltipped index_room_balcony" data-position="icon"
 												data-tooltip="Balcony"><img class="invert"
 												style="width: 18px; margin-top: -0.8em;"
 												src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
 										</c:if></td>
-									<td><a class="tooltipped tooltip_food" data-position="icon"
-										data-tooltip="Food" style="color: #0d0d0d;"><i
+									<td><a class="tooltipped tooltip_food"
+										data-position="icon" data-tooltip="Food"
+										style="color: #0d0d0d;"><i
 											class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span></td>
 									<td><c:if test="${room.daysCount >= 0}">
 											<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
