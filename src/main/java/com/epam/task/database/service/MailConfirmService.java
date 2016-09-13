@@ -19,4 +19,16 @@ public class MailConfirmService {
 	public MailConfirm getMailConfirmByUser(int userId) {
 		return daoManager.executeAndClose(() -> daoManager.getMailConfirmDao().getMailConfirmByUser(userId));
 	}
+
+	public int insertMailConfirm(MailConfirm mailConfirm) {
+		return daoManager.executeAndClose(() -> daoManager.getMailConfirmDao().insertMailConfirm(mailConfirm));
+	}
+
+	public MailConfirm getMailConfirmByCode(String code) {
+		return daoManager.executeAndClose(() -> daoManager.getMailConfirmDao().getMailConfirmByCode(code));
+	}
+
+	public int removeMailConfirm(int id) {
+		return daoManager.executeAndClose(() -> daoManager.getMailConfirmDao().removeMailConfirm(id));
+	}
 }
