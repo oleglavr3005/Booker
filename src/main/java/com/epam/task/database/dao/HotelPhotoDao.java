@@ -19,6 +19,8 @@ public class HotelPhotoDao {
 	private final String SQL_READ_HOTEL_PHOTO_BY_ID = "SELECT * FROM hotel_photo WHERE hotel_photo_id = ?";
 	private final String SQL_READ_PHOTOS_BY_HOTEL = "SELECT * FROM hotel_photo WHERE hotel_id = ?";
 	private final String SQL_DELETE_PHOTO_BY_ID = "DELETE FROM hotel_photo WHERE hotel_photo_id = ?";
+	
+	private final String UPDATE = "UPDATE `hotel_photo` SET img = ?, desc = ?, hotel_id = ?, is_main = ? WHERE hotel_photo_id = ?";
 
 	// private final String SQL_UPDATE_HOTEL_PHOTO = "";
 
@@ -87,6 +89,22 @@ public class HotelPhotoDao {
 			statement.setInt(1, hotelPhotoId);
 			return statement.executeUpdate();
 		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+
+	public int updateHotelPhoto(HotelPhoto photo) {
+		try (PreparedStatement statement = connection.prepareStatement(UPDATE)) {
+			int i = 1;
+			statement.setString(i++, photo.getImg());
+			statement.setString(i++, photo.getDesc());
+			statement.setInt(i++, photo.getHotelId());
+			statement.setBoolean(i++, photo.isMain());
+
+			statement.setInt(i, photo.getId());
+			return statement.executeUpdate();
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return -1;
 		}
