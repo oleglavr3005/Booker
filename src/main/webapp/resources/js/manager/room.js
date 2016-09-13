@@ -105,7 +105,6 @@ function checkBeds(){
 }
 
 function checkBedsCount(field1, field2) {
-	debugger;
 	var single = $('#' + field1).val();
 	var double = $('#' + field2).val();
 	if (single + double == 0) {
