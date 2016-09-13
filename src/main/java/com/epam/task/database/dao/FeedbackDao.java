@@ -141,8 +141,7 @@ public class FeedbackDao {
 		
 		try (PreparedStatement statment = connection.prepareStatement(SELECT_ALL_FEEDBACK_BY_USER + ORDER_BY + PAGINATION)){
 			statment.setInt(1, userId);
-			statment.setString(2, ORDER_BY);
-			statment.setInt(3, (page-1)*5);
+			statment.setInt(2, (page-1)*5);
 			ResultSet rs = statment.executeQuery();
 			return UniversalTransformer.getCollectionFromRS(rs, Feedback.class);
 		} catch(SQLException e){
