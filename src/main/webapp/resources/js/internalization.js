@@ -2,6 +2,9 @@
 (function (){
 	var en = {
 	
+		shopping_card_notice : "Notice: your orders will be stored in the shopping cart only for 30 minutes!",
+		tab_charts : "CHARTS",
+		comment_can_not : "Ви не можете залишити коментар, оскільки ще не відвідали цей готель.",
 		sort_by : "Sort by : ",
 		ooltip_you_pay : "You pay a half of the sum for orders with deposit. And no money for orders with no deposit",
 		feedback_without_feedback : "You have not left a feedback",
@@ -12,7 +15,7 @@
 		tab_ended : "Ended",
 		tab_all : "All",
 		tab_active : "Active",
-		
+		tab_charts : "CHARTS",
 		card_edit : "Edit",
 		
 		//admin page
@@ -260,7 +263,10 @@
 		btn_approve : "Approve",
 	}
 	var ua = {
-			
+		
+		shopping_card_notice : "Notice: your orders will be stored in the shopping cart only for 30 minutes!",
+		tab_charts : "CHARTS",
+		comment_can_not : "Ви не можете залишити коментар, оскільки ще не відвідали цей готель.",
 		sort_by : "Сортувати за : ",
 		ooltip_you_pay : "You pay a half of the sum for orders with deposit. And no money for orders with no deposit",
 		feedback_without_feedback : "You have not left a feedback",	

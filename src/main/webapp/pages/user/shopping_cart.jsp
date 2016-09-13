@@ -93,9 +93,7 @@
 			<span class="user_cart_header"></span>
 		</h4>
 		
-		<h6 style="margin-top: 20px;">
-			Notice: your orders will be stored in the shopping cart only for 30 minutes!
-		</h6>
+		<h6 class="shopping_card_notice" style="margin-top: 20px;"></h6>
 
 		<!-- <div class="row"><span id="shoping_card_shop_list"></span></div> -->
 		<div class="row">

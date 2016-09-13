@@ -36,15 +36,15 @@ function addNewComment(hotelId_val){
 				jQuery('#' + next_id).remove();
 				jQuery('#' + next_id).remove();
 				jQuery('#newComment').after(result);
-				jQuery('#newComment').next().slideDown(500);
+				jQuery('#newComment').next().slideDown();
 				
 				jQuery('#comment').val('');
 				jQuery('#title_comment').val('');
 				jQuery('#rate_span').text('1');
-				var $el = $(this);
-				$el.parent().find('.current span').css('width',1 * 20 + '%');
+				jQuery('.current span').css('width',20 + '%');
 			}else{
-				jQuery('#newComment').after("<p>" + languages.script.current.message_error + "</p>"); 
+				jQuery('#comment_error').text(languages.script.current.message_error);
+				jQuery('#comment_error_panel').next().slideDown();
 			}
 		});
 	}
