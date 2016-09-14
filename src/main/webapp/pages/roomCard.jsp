@@ -115,8 +115,18 @@ b {
 
 						<!-- ROOM TYPE ZONE -->
 						<div class="row" style="margin-top: 15px;">
-							<span> ${room.type} </span> <span style="margin-left: 5px;"
-								class="roomCard_countOfFree"> </span> : ${room.amount} 
+							<c:if test="${room.type == 'STANDART'}">
+								<span id="subscribes_table_roomtype_standart"></span>
+							</c:if>
+							<c:if test="${room.type == 'LUX'}">
+								<span id="subscribes_table_roomtype_lux"></span>
+							</c:if>
+							<c:if test="${room.type == 'DELUX'}">
+								<span id="subscribes_table_roomtype_delux"></span>
+							</c:if>
+
+							<span style="margin-left: 5px;" class="roomCard_countOfFree">
+							</span> ${room.amount}
 						</div>
 						<!-- 				END OF ROOM TYPE ZONE -->
 
@@ -139,13 +149,25 @@ b {
 						<div class="row">
 							<a class="tooltipped tooltip_food" data-position="icon"
 								data-tooltip="Food" style="color: #0d0d0d;"><i
-								class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span>
+								class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a>
+							<c:if test="${room.food == 'NONE'}">
+								<span id="subscribes_table_roomfood_none"></span>
+							</c:if>
+							<c:if test="${room.food == 'BREAKFAST'}">
+								<span id="subscribes_table_roomfood_breakfast"></span>
+							</c:if>
+							<c:if test="${room.food == 'TWICE'}">
+								<span id="subscribes_table_roomfood_twice"></span>
+							</c:if>
+							<c:if test="${room.food == 'FULL'}">
+								<span id="subscribes_table_roomfood_full"></span>
+							</c:if>
 						</div>
 						<!-- END OF ROOM FOOD ZONE -->
 
 						<!-- ROOM PRICE ZONE -->
 						<div class="row">
-							<div class="col s6">
+							<div class="col s6" style="margin-left: -13px;">
 								<a class="tooltipped tooltip_price" data-position="icon"
 									data-tooltip="Price for one day" style="color: #0d0d0d;"><i
 									class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span>${room.price}</span>
@@ -161,12 +183,16 @@ b {
 								<%-- 									aria-hidden="true"></i></a> --%>
 								<%-- 							</c:if> --%>
 							</div>
+							<c:if test="${user != null}">
+								<div class="col s4 offset-s2" style="margin-top: -20;">
+									<input id="countOfRooms${room.id}" type="number"
+										class="validate" name="countOfRooms" min=1
+										max="${room.amount}">
+								</div>
+							</c:if>
 						</div>
-						
-						<div class="col s2 offset-s4">
-							<input id="countOfRooms${room.id}" type="number" class="validate"
-								name="countOfRooms" min=1 max="${room.amount}">
-						</div>
+
+
 						<!-- END OF ROOM PRICE ZONE -->
 
 					</div>
@@ -239,11 +265,11 @@ b {
 							</c:if>
 							<c:if test="${user == null}">
 								<div class="row">
-									<div class="col s3" style="float: right">
-										<a class="waves-effect waves-light btn" disabled
-											style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-											<span class="room_card_need_login"></span>
-										</a>
+									<div class="col s9 offset-s1">
+<!-- 										<a class="waves-effect waves-light btn" disabled -->
+<!-- 											style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"> -->
+											<label><span class="room_card_need_login"></span></label>
+<!-- 										</a> -->
 									</div>
 								</div>
 							</c:if>

@@ -273,7 +273,16 @@ div #sidebar-wrapper {
 								<div class="col s12">
 									<a class="tooltipped tooltip_room_type" data-position="icon"
 										data-tooltip="Location" style="color: #0d0d0d;"><i
-										class="fa fa-hotel invert" aria-hidden="true"></i></a> <span>${room.type}</span>
+										class="fa fa-hotel invert" aria-hidden="true"></i></a>
+									<c:if test="${room.type == 'STANDART'}">
+										<span id="subscribes_table_roomtype_standart"></span>
+									</c:if>
+									<c:if test="${room.type == 'LUX'}">
+										<span id="subscribes_table_roomtype_lux"></span>
+									</c:if>
+									<c:if test="${room.type == 'DELUX'}">
+										<span id="subscribes_table_roomtype_delux"></span>
+									</c:if>
 								</div>
 							</div>
 							<!-- END OF ROOM TYPE MARKER -->
@@ -385,13 +394,13 @@ div #sidebar-wrapper {
 								<c:if test="${order.status != 'ACTIVE'}">readonly</c:if>
 								class="materialize-textarea">${order.comment}</textarea>
 						</div>
-<!-- 						<div class="col s2 offset-s1"> -->
-<!-- 							<a class="waves-effect waves-light btn" id="create_button" -->
-<!-- 								onclick="updateComment()" -->
-<!-- 								style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"> -->
-<!-- 								<span id="request_approve"></span> -->
-<!-- 							</a> -->
-<!-- 						</div> -->
+						<!-- 						<div class="col s2 offset-s1"> -->
+						<!-- 							<a class="waves-effect waves-light btn" id="create_button" -->
+						<!-- 								onclick="updateComment()" -->
+						<!-- 								style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"> -->
+						<!-- 								<span id="request_approve"></span> -->
+						<!-- 							</a> -->
+						<!-- 						</div> -->
 					</div>
 
 					<div class="col s2 offset-s1">
