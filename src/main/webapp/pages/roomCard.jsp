@@ -70,7 +70,7 @@ b {
 
 <c:forEach var="room" items="${rooms}">
 
-		<input id="ids${room.id}" type="hidden" value="${room.allRoomIds}" />
+	<input id="ids${room.id}" type="hidden" value="${room.allRoomIds}" />
 
 	<div id="hotel_card_${room.id}" class="col s10 offset-s1">
 		<div class="card">
