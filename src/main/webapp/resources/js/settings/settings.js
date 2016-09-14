@@ -29,12 +29,15 @@ function saveContactData() {
 			if (res.changed != null) {
 //				$('#email').val(res.email);
 //				clearField('email');
-				document.getElementById('settings_confirmMail').style.display = 'block';				
+				$('#settings_confirmMail').html = 'PLS CONFIRM MAIL';				
 			}
 			 else {
 					invalid('email');
 			 }
 		});
+	}
+	else {
+		invalid('email');
 	}
 }
 
@@ -154,13 +157,14 @@ function validateNumber(field) {
 }
 
 function emailIsValid(email) {
+	var isValid = true;
 	if (email == '') {
-		return null;
+		return false;
 	}
 	if (email.length < 5 || email.length > 45 || !validateEmail(email)) {
 		invalid('email');
 		$('#emailLbl').attr("data-error", languages.script.current.settings.wrongMail);
-		return null;
+		return false;
 	}
 	$.ajax({
 		async : false,
@@ -171,15 +175,20 @@ function emailIsValid(email) {
 			"email" : email
 		},
 		success : function(data) {
-			var isValid = (data == "false");
+			isValid = (data == "true");//true
 			if (!isValid) {
 				invalid('email');
 				$('#emailLbl').attr("data-error", languages.script.current.settings.usedMail);
 				return false;
 			}
+		},
+		error : function(data) {
+			isValid = false;
+			$('#emailLbl').attr("data-error", languages.script.current.registration.wrongMail);
+			invalid('email');
 		}
 	});
-	return true;
+	return isValid;
 }
 
 function savePassword(header, succesfull) {
