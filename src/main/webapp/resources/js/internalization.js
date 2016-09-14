@@ -2,10 +2,10 @@
 (function (){
 	var en = {
 	
-		comment_not_user : "Ввійдіть, щоб залишити коментар",
+		comment_not_user : "Log in to post a comment",
 		shopping_card_notice : "Notice: your orders will be stored in the shopping cart only for 30 minutes!",
-		tab_charts : "CHARTS",
-		comment_can_not : "Ви не можете залишити коментар, оскільки ще не відвідали цей готель.",
+		tab_charts : "Charts",
+		comment_can_not : "You can not leave comments as have not stayed in the hotel.",
 		sort_by : "Sort by : ",
 		ooltip_you_pay : "You pay a half of the sum for orders with deposit. And no money for orders with no deposit",
 		feedback_without_feedback : "You have not left a feedback",
@@ -265,12 +265,12 @@
 	}
 	var ua = {
 		comment_not_user : "Ввійдіть, щоб залишити коментар",
-		shopping_card_notice : "Notice: your orders will be stored in the shopping cart only for 30 minutes!",
-		tab_charts : "CHARTS",
+		shopping_card_notice : "Увага: ваші замовлення будуть зберігатися в кошику тільки протягом 30 хвилин!",
+		tab_charts : "Графіки",
 		comment_can_not : "Ви не можете залишити коментар, оскільки ще не відвідали цей готель.",
 		sort_by : "Сортувати за : ",
 		ooltip_you_pay : "You pay a half of the sum for orders with deposit. And no money for orders with no deposit",
-		feedback_without_feedback : "You have not left a feedback",	
+		feedback_without_feedback : "Ви ще не залишили відгуку",	
 		
 		tab_personal : "Особисті налаштування",
 		tab_contact : "Контакти",
@@ -759,7 +759,7 @@ function changeLanguage(language){
 	}
 	currentLanguage = language;
 	languages.script.current = languages.script[currentLanguage];
-	$(document).ready(changeLanguageOnPage(language));
+	$(document).ready(setTimeout('changeLanguageOnPage(currentLanguage)' , 200));
 	changeLanguageOnServer(language);
 }
 function updateLanguage(){
@@ -767,7 +767,7 @@ function updateLanguage(){
 		currentLanguage = 'en';
 	}
 	languages.script.current = languages.script[currentLanguage];
-	$(document).ready(changeLanguageOnPage(currentLanguage));
+	$(document).ready(setTimeout('changeLanguageOnPage(currentLanguage)' , 200));
 }
 function changeLanguageOnPage(language){
 	changeLanguageOnTags(language);
