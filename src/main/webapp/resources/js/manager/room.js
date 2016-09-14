@@ -228,6 +228,29 @@ function updateRoomPhotos(id) {
 	}
 }
 
+function validateComas(text) {
+	var re = /^([0-9]*)$/;
+	return re.test(text);
+}
+
+function promoteToMain() {
+	var value = $('#images').val();
+	if (validateComas(value)) {
+		$.post('../../set_main_room_photo', {
+			photoId : '' + value,
+		}, function(result) {
+			if (result == "true"){
+				alert("succes");
+			}
+			else{
+				alert("fail");
+			}
+		});
+	} else {
+		alert("validateFail");
+	}
+}
+
 function removeRoomPhoto() {
 	var values = $('#images').val();
 	$.get('../../remove_room_photo', {

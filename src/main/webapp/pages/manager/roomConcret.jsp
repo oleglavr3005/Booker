@@ -187,9 +187,10 @@
 							<!-- 1 BEDS COUNT -->
 
 							<div class="row">
-								<input id="single" onchange="checkBeds()" value="${room.bedsCount}" type="number"
-									class="validate" name="single" min=0 max=100> <label
-									id="singleLbl" data-error="${fmtPeople}" for="single"><span
+								<input id="single" onchange="checkBeds()"
+									value="${room.bedsCount}" type="number" class="validate"
+									name="single" min=0 max=100> <label id="singleLbl"
+									data-error="${fmtPeople}" for="single"><span
 									id="room_concrete_single"></span> </label>
 							</div>
 
@@ -261,9 +262,10 @@
 							<!-- 2 BEDS COUNT -->
 
 							<div class="row">
-								<input id="double" onchange="checkBeds()" value="${room.doubleBedsCount}" type="number"
-									class="validate" name="single" min=0 max=100> <label
-									id="doubleLbl" data-error="${fmtPeople}" for="double"><span
+								<input id="double" onchange="checkBeds()"
+									value="${room.doubleBedsCount}" type="number" class="validate"
+									name="single" min=0 max=100> <label id="doubleLbl"
+									data-error="${fmtPeople}" for="double"><span
 									id="room_concrete_double"></span> </label>
 							</div>
 
@@ -348,7 +350,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col s3 offset-s3">
+				<div class="col s3 offset-s1">
 
 					<a id="btn_add_image" class="waves-effect waves-light btn"
 						style="background: #26A69A; color: #FFFFFF; margin: 0 auto;"
@@ -360,6 +362,12 @@
 						accept="image/*" />
 					<!-- 				END OF INPUT -->
 
+				</div>
+
+				<div class="col s3 offset-s1">
+					<a id="btnToMain" class="waves-effect waves-light btn"
+						style="background: #e68a00;; color: #FFFFFF; margin: 0 auto;"
+						onclick="promoteToMain()"><span id="btn_main"></span>MAIN </a>
 				</div>
 
 				<div class="col s3 offset-s1">

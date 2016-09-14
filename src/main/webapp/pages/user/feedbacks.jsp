@@ -81,11 +81,8 @@ b {
 
 
 <script type="text/javascript">
-debugger;
                                 var pagesCount = '${countOfPages}';
                                 var currentPage = '${currentPage}';
-                                alert(pagesCount);
-                                alert(currentPage);
 
                                 if (pagesCount > 1) {
                                     jQuery(function() {
