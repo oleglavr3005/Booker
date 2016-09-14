@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,13 +32,15 @@ public class AddToCartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		int userId = ((User) session.getAttribute("user")).getId();
-		String roomIdString = request.getParameter("roomId");
-		if (roomIdString == null || !StringUtil.isPositiveInteger(roomIdString)) {
+		String allRoomIdsString = request.getParameter("allRoomIds");
+		String amountString = request.getParameter("amount");
+		if (allRoomIdsString == null || !StringUtil.isPositiveInteger(amountString)) {
 			response.sendError(500);
 			return;
 		}
-		
-		int roomId = Integer.parseInt(roomIdString);
+		String[] allRoomIds = allRoomIdsString.split(":");
+		int amount = Integer.parseInt(amountString);
+
 		Timestamp startDate;
 		Timestamp endDate;
 		try {
@@ -53,16 +57,30 @@ public class AddToCartServlet extends HttpServlet {
 
 		int daysCount = (int)( (endDate.getTime() - startDate.getTime()) 
                 / (1000 * 60 * 60 * 24) );
-		int price = new RoomService().getRoomById(roomId).getPrice() * daysCount;
 		
-		boolean available = new RoomService().isRoomAvailable(roomId, startDate, endDate);
-		if(available) {
-			int result = new OrderService().insertOrder(new Order(0, userId, roomId, startDate, endDate, "ORDER", orderDate, price, "", ""));
-			if(result == 0) {
-				available = false;
+		int added = 0;
+		List<Order> orders = new ArrayList<>();
+		for(int i = 0; i<amount; i++) {
+			
+			int roomId = Integer.parseInt(allRoomIds[i]);
+			int price = new RoomService().getRoomById(roomId).getPrice() * daysCount;
+			
+			boolean available = new RoomService().isRoomAvailable(roomId, startDate, endDate);
+			if(available) {
+				orders.add(new Order(0, userId, roomId, startDate, endDate, "ORDER", orderDate, price, "", ""));
 			}
 		}
-		response.getWriter().write(available ? "true" : "false");
+		
+		if(orders.size() == amount) {
+			for(Order order : orders) {
+				int result = new OrderService().insertOrder(order);
+				if(result > 0) {
+					added++;
+				}
+			}
+		}
+		
+		response.getWriter().write(added == amount ? "true" : "false");
 
 	}
 
