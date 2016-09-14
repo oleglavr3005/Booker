@@ -363,7 +363,7 @@ div #sidebar-wrapper {
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col s3">
+			<div class="col s4">
 				<h6>
 					<c:if test="${countOfRooms > 0 }">
 						<span id="hotel_count_room"></span>
@@ -374,7 +374,7 @@ div #sidebar-wrapper {
 					</c:if>
 				</h6>
 			</div>
-			<div class="col s5 offset-s4">
+			<div class="col s5 offset-s3">
 				<c:if test="${countOfRooms > 0 }">
 					<span id="sort_by" style="font-size: 15;position: relative;/* display: inline-block; */bottom: 3px;"></span>
 					<select id="compare" class="chosen-select optionstyle"
