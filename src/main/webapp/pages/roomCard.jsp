@@ -164,7 +164,7 @@ b {
 						</div>
 						
 						<div class="col s2 offset-s4">
-							<input id="countOfRooms" type="number" class="validate"
+							<input id="countOfRooms${room.id}" type="number" class="validate"
 								name="countOfRooms" min=1 max="${room.amount}">
 						</div>
 						<!-- END OF ROOM PRICE ZONE -->
