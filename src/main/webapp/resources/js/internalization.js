@@ -2,6 +2,7 @@
 (function (){
 	var en = {
 	
+		foot_language : "Language",
 		roomCard_countOfFree : " free rooms",
 		subscribes_table_status_active : "Active",
 		subscribes_table_status_finished : "Finished",
@@ -280,6 +281,8 @@
 		btn_approve : "Approve",
 	}
 	var ua = {
+			
+		foot_languege : "Мова",
 		roomCard_countOfFree : "Кількість вільних кімнат : ",
 		subscribes_table_status_active : "Активний",
 		subscribes_table_status_finished : "Завершений",

@@ -178,23 +178,23 @@ b {
 						<div class="row" style="margin-top: 14px">
 							<a class="tooltipped tooltip_rating" data-position="icon"
 								data-tooltip="Rating"
-								style="margin-left: 50px; color: #0d0d0d; text-decoration: none;">
+								style="padding: 0 20px 0 20px; margin-left: 50px; color: #0d0d0d; text-decoration: none;">
 								<i class="fa fa-lg fa-thumbs-up invert" aria-hidden="true"></i>
 								<span>${hotel.rating }</span>
 							</a>
 						</div>
 
 
-						<div class="row" style="margin-top: 64px">
+						<div class="row" style="margin-top: 64px; text-align: center;">
 
 							<a class="waves-effect waves-light btn"
 								href="${pageContext.servletContext.contextPath}/cabinet/my_hotels/${hotel.id}"
-								style="margin-left: 10px; background: #e68a00; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;
+								style="padding: 0 20px 0 20px; margin-left: 10px; background: #e68a00; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;
 															<c:if test="${user.id !=hotel.managerId}">visibility: hidden</c:if>"><span
 								class="card_edit"></span></a> <a
 								class="waves-effect waves-light btn"
 								href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"
-								style="margin-top: 30px; margin-left: 0px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+								style="adding: 0 20px 0 20px; margin-top: 30px; margin-left: 0px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
 								<span class="manager_hotel_card_info"></span>
 							</a>
 						</div>
