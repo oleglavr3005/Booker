@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import com.epam.task.comparators.PeopleRoomComparator;
+import com.epam.task.comparators.PriceRoomComparator;
 import com.epam.task.database.dto.FeedbackDto;
 import com.epam.task.database.dto.RoomDto;
 import com.epam.task.database.model.Conveniences;
@@ -104,14 +107,7 @@ public class HotelServlet extends HttpServlet {
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
 				startDate, endDate);
 		
-		String compareBy = request.getParameter("compareBy");
 		List<Feedback> feedbacks = new FeedbackService().getAllFeedbacksByHotel(id);
-//		List<Room> rooms = new RoomService().getAllSuitableRoomsForHotel(id, page, 
-//				typeStandart, typeLux, typeDelux, 
-//				foodNone, foodBreakfast, foodTwice, foodFull, 
-//				minPrice, maxPrice, people,
-//				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
-//				startDate, endDate, compareBy);
 		request.setAttribute("hotel", hotel);
 		
 		//////MAGIC
@@ -146,8 +142,17 @@ public class HotelServlet extends HttpServlet {
 		}
 		
 		//////EO MAGIC
-		
-		//roomTemplates.sort(); TODO
+
+		String compareBy = request.getParameter("compareBy");
+		if("compareByPriceAsc".equals(compareBy)) {
+			roomTemplates.sort(new PriceRoomComparator());
+		} else if("compareByPriceDesc".equals(compareBy)) {
+			roomTemplates.sort(Collections.reverseOrder(new PriceRoomComparator()));
+		} else if("compareByPeopleAsc".equals(compareBy)) {
+			roomTemplates.sort(new PeopleRoomComparator());
+		} else { //compareByPeopleDesc or null
+			roomTemplates.sort(Collections.reverseOrder(new PeopleRoomComparator()));
+		}
 		
 		int countOfPages = (int) Math.ceil(roomTemplates.size() / 5.0);
 		if (page > countOfPages) {

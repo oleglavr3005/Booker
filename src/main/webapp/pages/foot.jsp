@@ -10,8 +10,19 @@
 
 		</div>
 		<div class="row" style="background-color: #0d353c; margin: auto; padding: 10px;">
+		<div class="col s1" style=" float: left;">
+				<li class="dropup"><a class="dropdown-toggle"
+			data-toggle="dropdown" style="color: #9bbac0;">lang <i
+				class="fa fa-flag-o" aria-hidden="true"></i></a>
+			<ul class="dropdown-menu">
+				<li><a class="language" rel="uk" onclick="changeLanguage('ua')" ><span
+						class="lang-sm lang-lbl" lang="uk"></span></a></li>
+				<li><a class="language" rel="en" onclick="changeLanguage('en')"><span
+						class="lang-sm lang-lbl" lang="en"></span></a></li>
+			</ul></li>
+			</div>
 			<div class="col s1 offset-s9"
-				style="color: #8c8c8c; font-size: 20px;">
+				style="color: #8c8c8c; font-size: 20px;     margin-left: 65%;">
 				&#169 2016</div>
 
 			<div сlass="col s1 offset-s1"

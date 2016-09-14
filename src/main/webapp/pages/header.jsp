@@ -103,16 +103,6 @@ img.logo {
 					<img class="logo" src="${pageContext.servletContext.contextPath}/resources/themes/images/logo.png" alt="Periodicals" />
 				</a>
 			</div>
-			<div class="col s1">
-				<div class="col s1" style=" padding-left: 0;">
-					<a id="en_button" class="waves-effect waves-light btn" onclick="changeLanguage('en')" 
-					style="margin: 20px 10px 0 0;padding: 0;padding-left: 10px;padding-right: 28px;width: 100%;background: #26A69A;color: #F7F7F7;font-family: 'Times NewRoman', Times, serif;">EN</a>
-				</div>
-				<div class="col s1 offset-s3">
-					<a id="ua_button" class="waves-effect waves-light btn" onclick="changeLanguage('ua')" 
-					style="margin: 20px 10px 0 0;padding-left: 10px;padding-right: 28px;width: 100%;background: #26A69A;color: #F7F7F7;font-family: 'Times NewRoman', Times, serif;">UA</a>
-				</div>
-			</div>
 			<div id="navbar" class="navbar-header" style="width: 340px; margin-bottom: 0px; float:right">
 				<ul class="nav navbar-nav navbar-right" style="padding-top: 5px;">
 					<c:choose>
