@@ -11,8 +11,8 @@ function createOrder(orders) {
 function bookOrderCard(orderId, daysCount) {
 	var localComment = orderId == null ? $('#comment').val() : $(
 			'#comment' + orderId).val();
-	var code = value($('#cardnum1').val()) + value($('#cardnum2').val())
-			+ value($('#cardnum3').val()) + value($('#cardnum4').val());
+	var code = value($('#cardnum1' + orderId).val()) + value($('#cardnum2' + orderId).val())
+			+ value($('#cardnum3' + orderId).val()) + value($('#cardnum4' + orderId).val());
 
 	var flag;
 	if (orderId != null) {
@@ -34,8 +34,8 @@ function bookOrderCard(orderId, daysCount) {
 			// need 2 pay at all
 
 			// validate info for purchase
-			if ($('#subscribing_form').html() != null) {
-				if (validateFields()) {
+			if ($('#subscribing_form' + orderId).html() != null) {
+				if (validateFields(orderId)) {
 					$.post(url, {
 						orderId : orderId,
 						cardNumber : code,
@@ -75,28 +75,28 @@ function bookOrderCard(orderId, daysCount) {
 							$('#book' + orderId).attr('disabled', true);
 						}
 					});
-					closeBuyContent();
+					closeBuyContent(orderId);
 				} else {
 					return;
 				}
 			} else {
-				var content = '<div id="subscribing_form">'
+				var content = '<div id="subscribing_form' + orderId + '">'
 						+
 
 						'<div class="row">'
-						+ '<div class="col s3"><div style="margin-top:50px;">CARD:</div></div>'
+						+ '<div class="col s3"><div style="margin-top:50px;"></div></div>'
 						+ '<div class="col s8 cardDetail">'
-						+ '<div class="row" style="margin-bottom: 0px;"><div id="cardNumber" class="col s8">'
-						+ '<input id="cardnum1" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(1)" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
-						+ '<input id="cardnum2" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(2)" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
-						+ '<input id="cardnum3" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(3)" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
-						+ '<input id="cardnum4" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
+						+ '<div class="row" style="margin-bottom: 0px;"><div id="cardNumber' + orderId + '" class="col s8">'
+						+ '<input id="cardnum1' + orderId + '" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(1,' + orderId + ')" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
+						+ '<input id="cardnum2' + orderId + '" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(2,' + orderId + ')" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
+						+ '<input id="cardnum3' + orderId + '" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(3,' + orderId + ')" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
+						+ '<input id="cardnum4' + orderId + '" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
 						+ '</div>'
-						+ '<div id="cardNumberError" class="error col s4" style="height: 35px; margin: -10px 0 0 130px;"></div></div>'
+						+ '<div id="cardNumberError' + orderId + '" class="error col s4" style="height: 35px; margin: -10px 0 0 130px;"></div></div>'
 						+ '<div class="row" style="margin-bottom: 0px;"><div class="col s2 offset-s1">'
 						+ '<select style="width: 70px;" class="selectTag"><option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option></select>'
 						+ '</div><div class="col s2"><select class="selectTag" style="width: 70px;"><option>2016</option><option>2017</option><option>2018</option><option>2019</option><option>2020</option><option>2021</option><option>2022</option><option>2023</option><option>2024</option><option>2025</option><option>2026</option><option>2027</option></select>'
-						+ '</div><div class="col s1">cvv:</div><div class="col s2"><input id="CVC" type="password" maxlength="3" style="margin-top:-20px; font-size: 20px;"/>'
+						+ '</div><div class="col s1">cvv:</div><div class="col s2"><input id="CVC' + orderId + '" type="password" maxlength="3" style="margin-top:-20px; font-size: 20px;"/>'
 						+ '</div>'
 						+
 
@@ -113,7 +113,7 @@ function bookOrderCard(orderId, daysCount) {
 					$('#field').after(content); // book all
 				}
 
-				$("#subscribing_form").html(content);
+				$("#subscribing_form" + orderId).html(content);
 			}
 
 		} else {
@@ -164,8 +164,6 @@ function addToCart(roomId) {
 	debugger;
 	var rooms = $('#ids'+roomId).val();
 	var am = $('#countOfRooms'+roomId).val();
-	alert(rooms);
-	alert(am);
 	$.post('../add_to_cart', {
 		allRoomIds : rooms,
 		amount : am,
@@ -270,30 +268,30 @@ function endDateIsValid() {
 	}
 }
 
-function validateFields() {
+function validateFields(orderId) {
 	$('.error').empty();
 	var isValid = true;
-	if ($('#CVC').val().length != 3) {
-		$('#CVC').after(
+	if ($('#CVC' + orderId).val().length != 3) {
+		$('#CVC' + orderId).after(
 				'<div class="error" style="width: 150px;">'+ languages.script.current.createOrder.cvvError +'</div>');
 		isValid = false;
 	}
 	if (isValid) {
-		var code = value($('#cardnum1').val()) + value($('#cardnum2').val())
-				+ value($('#cardnum3').val()) + value($('#cardnum4').val());
+		var code = value($('#cardnum1' + orderId).val()) + value($('#cardnum2' + orderId).val())
+				+ value($('#cardnum3' + orderId).val()) + value($('#cardnum4' + orderId).val());
 		if (code.length != 16) {
-			$('#cardNumberError').html(languages.script.current.createOrder.cardError);
+			$('#cardNumberError' + orderId).html(languages.script.current.createOrder.cardError);
 			isValid = false;
 		}
 	}
 	return isValid;
 }
 
-function closeBuyContent() {
-	$("#subscribing_form").animate({
+function closeBuyContent(orderId) {
+	$("#subscribing_form" + orderId).animate({
 		height : "0px"
 	}, 500, function() {
-		$('#subscribing_form').remove();
+		$('#subscribing_form' + orderId).remove();
 	});
 }
 
@@ -301,9 +299,9 @@ function value(value) {
 	return value == null ? '' : value;
 }
 
-function focusAnother(id) {
-	if (isLengthFull('#cardnum' + id)) {
-		$('#cardnum' + (id + 1)).focus();
+function focusAnother(id,orderId) {
+	if (isLengthFull('#cardnum' + id + '' + orderId)) {
+		$('#cardnum' + (id + 1) + '' + orderId).focus();
 	}
 }
 
