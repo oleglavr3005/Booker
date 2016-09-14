@@ -294,7 +294,7 @@ b {
 
 	<div class="row">
 		<div class="col s8 offset-s2">
-			<textarea id="comment" class="materialize-textarea placeholder_enter_comment"
+			<textarea id="comment" class="materialize-textarea placeholder_enter_comments"
 				placeholder=""></textarea>
 		</div>
 	</div>
