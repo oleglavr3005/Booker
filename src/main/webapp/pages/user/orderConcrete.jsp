@@ -14,7 +14,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>замовлення № ${order.id}</title>
+<title>Order № ${order.id}</title>
 
 <link
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/bootstrap.min.css"
@@ -180,11 +180,8 @@ div #sidebar-wrapper {
 							</div>
 						</c:if>
 					</div>
-
-
 					<div class="col s8">
 						<div class="container-fluid">
-
 							<!-- HOTEL NAME + ICONS -->
 							<div class="row" style="margin-bottom: 0;">
 								<div class="col s8">
@@ -194,7 +191,6 @@ div #sidebar-wrapper {
 												value="${hotel.name}"></c:out></a>
 									</h5>
 								</div>
-
 								<div class="col s4"
 									style="padding-left: 0px; padding-right: 0px;">
 									<c:if test="${room.wifi == true}">
@@ -205,7 +201,6 @@ div #sidebar-wrapper {
 												class="material-icons invert">wifi</i></a>
 										</div>
 									</c:if>
-
 									<c:if test="${room.shower == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 32px; height: 32px;">
@@ -215,7 +210,6 @@ div #sidebar-wrapper {
 												src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
 										</div>
 									</c:if>
-
 									<c:if test="${room.parking == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
@@ -224,7 +218,6 @@ div #sidebar-wrapper {
 												class="material-icons invert">local_parking</i></a>
 										</div>
 									</c:if>
-
 									<c:if test="${room.condition == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
@@ -233,7 +226,6 @@ div #sidebar-wrapper {
 												style="color: #0d0d0d;"><i class="material-icons invert">toys</i></a>
 										</div>
 									</c:if>
-
 									<c:if test="${room.pool == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
@@ -242,7 +234,6 @@ div #sidebar-wrapper {
 												class="material-icons invert">pool</i></a>
 										</div>
 									</c:if>
-
 									<c:if test="${room.gym == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
@@ -251,7 +242,6 @@ div #sidebar-wrapper {
 												class="material-icons invert">fitness_center</i></a>
 										</div>
 									</c:if>
-
 									<c:if test="${room.balcony == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 32px; height: 32px;">
@@ -264,7 +254,6 @@ div #sidebar-wrapper {
 								</div>
 							</div>
 							<!-- END OF HOTEL NAME + ICONS -->
-
 
 							<!-- MAP MARKER -->
 							<div class="row">
@@ -329,15 +318,12 @@ div #sidebar-wrapper {
 									<!-- 						TWO DIFFERENT ICONS IF.ACTIVE OR IF.FINISHED -->
 									<span id="subscribes_table_status"></span>
 									<c:if test="${order.status == 'ACTIVE'}">
-										ADD SPAN FOR ACTIVE HERE  !!!!!!
 										<span id="subscribes_table_status_active"></span>
 									</c:if>
 									<c:if test="${order.status == 'FINISHED'}">
-										ADD SPAN FOR FINISHED HERE  !!!!!!
 										<span id="subscribes_table_status_finished"></span>
 									</c:if>
 									<c:if test="${order.status == 'CANCELED'}">
-										ADD SPAN FOR CANCELED HERE  !!!!!!
 										<span id="subscribes_table_status_canceled"></span>
 									</c:if>
 								</div>
@@ -349,19 +335,15 @@ div #sidebar-wrapper {
 										class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span
 										id="subscribes_table_roomfood"></span>
 									<c:if test="${room.food == 'NONE'}">
-										ADD SPAN FOR NONE HERE  !!!!!!
 										<span id="subscribes_table_roomfood_none"></span>
 									</c:if>
 									<c:if test="${room.food == 'BREAKFAST'}">
-										ADD SPAN FOR BREAKFAST HERE  !!!!!!
 										<span id="subscribes_table_roomfood_breakfast"></span>
 									</c:if>
 									<c:if test="${room.food == 'TWICE'}">
-										ADD SPAN FOR TWICE HERE  !!!!!!
 										<span id="subscribes_table_roomfood_twice"></span>
 									</c:if>
 									<c:if test="${room.food == 'FULL'}">
-										ADD SPAN FOR FULL HERE  !!!!!!
 										<span id="subscribes_table_roomfood_full"></span>
 									</c:if>
 								</div>
@@ -371,8 +353,7 @@ div #sidebar-wrapper {
 									<a class="tooltipped tooltip_price" data-position="icon"
 										data-tooltip="Price" style="color: #0d0d0d;"><i
 										class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> <span
-										id="subscribes_table_price">ADD SPAN FOR PRICE HERE
-										!!!!!!</span> <span>${order.price}</span>
+										id="subscribes_table_price"></span> <span>${order.price}</span>
 									<c:if test="${room.daysCount == -1}">
 										<a class="tooltipped tooltip_no_deposit" data-position="icon"
 											data-tooltip="No deposit" style="color: #0d0d0d;"><i
@@ -397,7 +378,7 @@ div #sidebar-wrapper {
 							style="font-size: 15px; padding: 10px; border: solid 1px #000; border-radius: 10px; background-color: lightgray;">
 							<div class="ui pointing label"
 								style="padding: 5px; padding-left: 20px; padding-right: 20px;">
-								<span id="order_concret_comment">COMMENT</span>
+								<span id="order_concret_comment"></span>
 							</div>
 
 							<textarea

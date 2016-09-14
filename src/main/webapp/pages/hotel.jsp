@@ -375,8 +375,8 @@ div #sidebar-wrapper {
 				</h6>
 			</div>
 			<div class="col s5 offset-s4">
-				<span id="sort_by" style="font-size: 15;position: relative;/* display: inline-block; */bottom: 3px;"></span>
 				<c:if test="${countOfRooms > 0 }">
+					<span id="sort_by" style="font-size: 15;position: relative;/* display: inline-block; */bottom: 3px;"></span>
 					<select id="compare" class="chosen-select optionstyle"
 						onchange="findPage(window.location.href,1)"><span
 						id="hotel_price"></span>
