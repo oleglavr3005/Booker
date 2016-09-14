@@ -2,6 +2,7 @@
 (function (){
 	var en = {
 	
+		comment_not_user : "Ввійдіть, щоб залишити коментар",
 		shopping_card_notice : "Notice: your orders will be stored in the shopping cart only for 30 minutes!",
 		tab_charts : "CHARTS",
 		comment_can_not : "Ви не можете залишити коментар, оскільки ще не відвідали цей готель.",
@@ -263,7 +264,7 @@
 		btn_approve : "Approve",
 	}
 	var ua = {
-		
+		comment_not_user : "Ввійдіть, щоб залишити коментар",
 		shopping_card_notice : "Notice: your orders will be stored in the shopping cart only for 30 minutes!",
 		tab_charts : "CHARTS",
 		comment_can_not : "Ви не можете залишити коментар, оскільки ще не відвідали цей готель.",
