@@ -84,7 +84,7 @@ function bookOrderCard(orderId, daysCount) {
 						+
 
 						'<div class="row">'
-						+ '<div class="col s3"><div style="margin-top:50px;"></div></div>'
+// + '<div class="col s3"><div style="margin-top:50px;"></div></div>'
 						+ '<div class="col s8 cardDetail">'
 						+ '<div class="row" style="margin-bottom: 0px;"><div id="cardNumber' + orderId + '" class="col s8">'
 						+ '<input id="cardnum1' + orderId + '" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(1,' + orderId + ')" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
@@ -101,10 +101,16 @@ function bookOrderCard(orderId, daysCount) {
 						+
 
 						'</div>'
-						+ // col s8
+						+ // row
 
-						'</div>' + // row
+						'</div>' // col s8
 
+						+ '<div class="col s3">'
+						+ '<div class="input-field" style="margin-top:50px;"><input id="phone' + orderId + '" ' 
+						+ 'class="validate" value="${user.phoneNumber}"/><label ' 
+						+ 'id="phone' + orderId + 'Lbl" data-error="" for="phone' + orderId + '">ENTER PHONE NUMBER</label></div>' 
+						+'</div>'
+						
 						'</div>' + // form
 						'</div>'
 				if (orderId != null) {
@@ -267,9 +273,26 @@ function endDateIsValid() {
 	}
 }
 
+function phoneIsValid(phone,orderId) {
+	alert("phoneIsValid(" + phone + ');');
+	if (phone.length <= 15 && phone.length >= 8 && validateNumber(phone)) {
+		valid('phone' + orderId);
+		return true;
+	} else {
+		invalid('phone' + orderId);
+		return false;
+	}
+}
+
+function validateNumber(field) {
+	var re = /^([0-9]*)$/;
+	return re.test(field);
+}
+
 function validateFields(orderId) {
 	$('.error').empty();
 	var isValid = true;
+	isValid = isValid && phoneIsValid($('#phoneNumber'+orderId).val(),orderId);
 	if ($('#CVC' + orderId).val().length != 3) {
 		$('#CVC' + orderId).after(
 				'<div class="error" style="width: 150px;">'+ languages.script.current.createOrder.cvvError +'</div>');
