@@ -104,7 +104,7 @@
 						<span id="periodicals_number_for_all_users">${countOfOrders}</span>
 					</c:if>
 					<c:if test="${countOfOrders <= 0 }">
-						<span id="card_no_hotels"></span>
+						<span id="card_no_orders"></span>
 					</c:if>
 				</h6>
 			</div>
@@ -336,11 +336,11 @@
 	</script>
 
 	<script>
-		var count = $
-		{
-			countOfOrders
-		};
-		$('#periodicals_number_for_all_users').html(count);
+// 		var count = $
+// 		{
+// 			countOfOrders
+// 		};
+// 		$('#periodicals_number_for_all_users').html(count);
 	</script>
 
 </body>
