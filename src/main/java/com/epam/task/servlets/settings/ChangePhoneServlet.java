@@ -36,7 +36,11 @@ public class ChangePhoneServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		
-		user.setPhoneNumber(phoneNumber);
+		if(phoneNumber.length() == 0) {
+			user.setPhoneNumber(null);
+		} else {
+			user.setPhoneNumber(phoneNumber);
+		}
 			
 		if(phoneNumber.length() == 0) {
 			user.setPhoneNotif(false);

@@ -221,12 +221,12 @@ b {
 
 <!-- PAGINATOR 3000 -->
 <div id="paginationdemo" class="row">
-	<div id="demo5" class="col s4 offset-s5"></div>
+	<div id="demo5" class="col s6 offset-s4"></div>
 </div>
 <!-- END OF PAGINATOR 3000 -->
 
-<script type="text/javascript"
-	src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script>
+<!-- <script type="text/javascript" -->
+<%-- 	src="${pageContext.servletContext.contextPath}/resources/js/jQuery/jquery-3.1.0.min.js"></script> --%>
 <script type="text/javascript">
 		var pagesCount = '${countOfPages}';
 		var currentPage = '${currentPage}';

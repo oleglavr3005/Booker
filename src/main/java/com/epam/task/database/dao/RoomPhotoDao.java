@@ -14,12 +14,14 @@ public class RoomPhotoDao {
 
 	private Connection connection;
 
-	private final String SQL_GET_ALL = "SELECT * FROM room_photo;";
-	private final String SQL_CREATE_ROOM_PHOTO = "INSERT INTO room_photo (img, `desc`, room_id, is_main) VALUES (?, ?, ?, ?);";
+	private final String SQL_GET_ALL = "SELECT * FROM room_photo";
+	private final String SQL_CREATE_ROOM_PHOTO = "INSERT INTO room_photo (img, `desc`, room_id, is_main) VALUES (?, ?, ?, ?)";
 	private final String SQL_READ_ROOM_PHOTO_BY_ID = "SELECT * FROM room_photo WHERE room_photo_id = ?";
 	private final String SQL_READ_PHOTOS_BY_ROOM = "SELECT * FROM room_photo WHERE room_id = ?";
 	private final String SQL_DELETE_PHOTO_BY_ID = "DELETE FROM room_photo WHERE room_photo_id = ?";
 	
+	private final String SQL_UPDATE_PHOTO = "UPDATE `room_photo` SET img = ?, `desc` = ?, room_id = ?, is_main = ? WHERE room_photo_id = ?";
+
 	public RoomPhotoDao(Connection connection) {
 		super();
 		this.connection = connection;
@@ -84,6 +86,22 @@ public class RoomPhotoDao {
 			statement.setInt(1, roomPhotoId);
 			return statement.executeUpdate();
 		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+
+	public int updateRoomPhoto(RoomPhoto photo) {
+		try (PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_PHOTO)) {
+			int i = 1;
+			statement.setString(i++, photo.getImg());
+			statement.setString(i++, photo.getDesc());
+			statement.setInt(i++, photo.getRoomId());
+			statement.setBoolean(i++, photo.isMain());
+
+			statement.setInt(i, photo.getId());
+			return statement.executeUpdate();
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return -1;
 		}

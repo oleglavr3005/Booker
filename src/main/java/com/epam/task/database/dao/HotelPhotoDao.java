@@ -20,7 +20,7 @@ public class HotelPhotoDao {
 	private final String SQL_READ_PHOTOS_BY_HOTEL = "SELECT * FROM hotel_photo WHERE hotel_id = ?";
 	private final String SQL_DELETE_PHOTO_BY_ID = "DELETE FROM hotel_photo WHERE hotel_photo_id = ?";
 	
-	private final String UPDATE = "UPDATE `hotel_photo` SET img = ?, desc = ?, hotel_id = ?, is_main = ? WHERE hotel_photo_id = ?";
+	private final String UPDATE = "UPDATE `hotel_photo` SET img = ?, `desc` = ?, hotel_id = ?, is_main = ? WHERE hotel_photo_id = ?";
 
 	// private final String SQL_UPDATE_HOTEL_PHOTO = "";
 

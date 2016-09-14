@@ -7,6 +7,9 @@
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/fontawesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/jPage/style.css">
 
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath}/resources/css/jPage/style.css">
+
 <style>
 b {
 	margin-left: 8px;
@@ -75,48 +78,67 @@ b {
 </c:forEach>
 
 <!-- PAGINATOR 3000 -->
-<div id="paginationdemo" class="row" style="margin-bottom: 0;">
-	<div id="demo5" class="col s4 offset-s5" style="margin-top: 10px;"></div>
+<div id="paginationdemo" class="row">
+	<div id="demo5" class="col s6 offset-s4"></div>
 </div>
 <!-- END OF PAGINATOR 3000 -->
 
-<!-- IMPORTED -->
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<!-- END OF IMPORTED -->
-<script type="text/javascript"
-	src="${pageContext.servletContext.contextPath}/resources/js/feedback.js"></script>
-<script type="text/javascript"
-	src="${pageContext.servletContext.contextPath}/resources/js/search/search.js"></script>
-<script type="text/javascript"
-	src="${pageContext.servletContext.contextPath}/resources/js/jPage/paginate.js"></script>
+
+<script type="text/javascript">
+                                var pagesCount = '${countOfPages}';
+                                var currentPage = '${currentPage}';
+
+                                if (pagesCount > 1) {
+                                    jQuery(function() {
+                                        jQuery("#demo5").paginate({
+                                            count: pagesCount,
+                                            start: currentPage,
+                                            display: 5,
+                                            border: false,
+                                            //		border_color			: '#fff',
+                                            text_color: '#fff',
+                                            background_color: '#26A69A',
+                                            //		border_hover_color		: '#ccc',
+                                            text_hover_color: '#000',
+                                            background_hover_color: '#CFCFCF',
+                                            images: true,
+                                            mouse: 'press',
+                                            onChange: function(page) {
+                                                findPage(window.location.href, page);
+                                            }
+                                        });
+                                    });
+                                }
+
+                            </script>
 
 <script
 	src="${pageContext.servletContext.contextPath}/resources/js/order/createOrder.js"
 	type="text/javascript"></script>
 <script>
-	var pagesCount = '${countOfPages}';
-	var currentPage = '${currentPage}';
-	if (pagesCount > 1) {
-		jQuery(function() {
-			jQuery("#demo5").paginate({
-				count : pagesCount,
-				start : currentPage,
-				display : 5,
-				border : false,
-				//		border_color			: '#fff',
-				text_color : '#fff',
-				background_color : '#26A69A',
-				//		border_hover_color		: '#ccc',
-				text_hover_color : '#000',
-				background_hover_color : '#CFCFCF',
-				images : true,
-				mouse : 'press',
-				onChange : function(page) {
-					findPage(window.location.href,page);
-				}
-			});
-		});
-	}
+// 	var pagesCount = '${countOfPages}';
+// 	var currentPage = '${currentPage}';
+// 	if (pagesCount > 1) {
+// 		jQuery(function() {
+// 			jQuery("#demo5").paginate({
+// 				count : pagesCount,
+// 				start : currentPage,
+// 				display : 5,
+// 				border : false,
+// 				//		border_color			: '#fff',
+// 				text_color : '#fff',
+// 				background_color : '#26A69A',
+// 				//		border_hover_color		: '#ccc',
+// 				text_hover_color : '#000',
+// 				background_hover_color : '#CFCFCF',
+// 				images : true,
+// 				mouse : 'press',
+// 				onChange : function(page) {
+// 					findPage(window.location.href,page);
+// 				}
+// 			});
+// 		});
+// 	}
 	
 	$(document).ready(function(){
 	    $('.tooltipped').tooltip({delay: 50,position: 'top'});

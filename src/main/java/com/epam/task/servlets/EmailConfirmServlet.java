@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.epam.task.database.model.MailConfirm;
 import com.epam.task.database.model.User;
@@ -31,6 +32,13 @@ public class EmailConfirmServlet extends HttpServlet {
 				User user = userService.getUserById(confirm.getUserId());
 				user.setEmail(confirm.getEmail());
 				userService.updateUser(user);
+				
+				HttpSession session = request.getSession();
+				User userInSession = (User) session.getAttribute("user");
+				if(userInSession != null && user.getId() == userInSession.getId()) {
+					session.setAttribute("user", user);
+				}
+				
 				response.sendRedirect(request.getContextPath() + "/home");
 				mailConfirmService.removeMailConfirm(confirm.getId());
 			} else {
