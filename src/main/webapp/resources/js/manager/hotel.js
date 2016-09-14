@@ -231,12 +231,14 @@ function removeHotelPhoto() {
 
 function promoteToMain() {
 	var value = $('#images').val();
+	var source = $('#source' + value).val();
 	if (validateComas(value)) {
 		$.post('../../set_main_hotel_photo', {
 			photoId : '' + value,
 		}, function(result) {
-			if (result == "true"){
-				alert("succes");
+			if (result != "false"){
+				document.getElementById("Img").src = "/booker/get_image/"
+						+ result;
 			}
 			else{
 				alert("fail");

@@ -13,8 +13,8 @@
 	<c:forEach var="photo" items="${hotel.photos}">
 		<c:if test="${photo.id != 0}">
 			<option data-img-src="<i:urlToImage url="${photo.img }" />"
-			value="${photo.id}">${photo.desc }</option>
-		</c:if>		
+				value="${photo.id}">${photo.desc }</option>
+		</c:if>
 	</c:forEach>
 </select>
 
