@@ -159,6 +159,9 @@ public class FindRooms extends HttpServlet {
 		if (page > countOfPages) {
 			page--;
 		}
+		if(page < 1) {
+			page = 1;
+		}
 		
 		List<RoomDto> roomTemplatesByPage = new ArrayList<>();
 		int start = (page-1)*5;
