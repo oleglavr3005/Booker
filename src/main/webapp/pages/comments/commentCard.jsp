@@ -41,7 +41,7 @@
 <div class="col s10 offset-s1">
 	<div class="card">
 		<div class="container-fluid">
-			<c:if test="${user != null && canComment != 'false'}">	
+			<c:if test="${user != null && canComment != false}">	
 			<div id="newComment" style="margin: 20px; overflow: hidden;">
 				<div class="row">
 					<div class="col s6" style="margin-top: 15px;">
@@ -84,10 +84,17 @@
 				</div>
 			</div>
 			</c:if>
-			<c:if test="${canComment == 'false'}">
+			<c:if test="${user != null && canComment == 'false'}">
 				<div class="row" style="padding-top: 20px;">
 					 <div style="margin-left: 20px; margin-right: 20px; border: 1px solid red; border-radius: 10px; padding: 15px; background-color: rgba(255, 0, 0, 0.3);">
 						<span class="comment_can_not"></span>
+					</div>
+				</div>
+			</c:if>
+			<c:if test="${user == null}">
+				<div class="row" style="padding-top: 20px;">
+					 <div style="margin-left: 20px; margin-right: 20px; border: 1px solid red; border-radius: 10px; padding: 15px; background-color: rgba(255, 0, 0, 0.3);">
+						<span class="comment_not_user"></span>
 					</div>
 				</div>
 			</c:if>
