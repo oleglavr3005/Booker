@@ -27,12 +27,12 @@
 							value="${comment.date}"></c:out></span>
 				</div>
 			</div>
-			<p style="margin: 20px 0 0 12px; padding-left: 1.5rem; border-left: 4px solid #ee6e73; word-wrap: break-word;">
-				<span class="title_comment_span"></span>
+			<div style="margin: 20px 0 0 12px; padding-left: 1.5rem; border-left: 4px solid #ee6e73; word-wrap: break-word;">
+				<span class="title_comment_span" style="font-weight: bold; margin : 0;"></span> : 
 				<c:out value="${comment.title}"></c:out>
 				<br>
 				<c:out value="${comment.comment}"></c:out>
-			</p>
+			</div>
 		</div>
 	</div>
 </c:forEach>

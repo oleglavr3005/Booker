@@ -37,7 +37,8 @@ b {
 					<div class="media col">
 						<div class="media-body">
 							<h4 style="font-size: 1.3rem; margin-top: 0; margin-bottom: 10px;">
-								<c:out value="${feedback.hotel.name}"></c:out>
+								<a href="/booker/hotel/<c:out value="${feedback.hotel.id}"/>">
+								<c:out value="${feedback.hotel.name}"/></a>
 							</h4>
 							<a class="tooltipped index_search_stars" data-position="icon" data-tooltip="Stars"
 								style="color: #0d0d0d; text-decoration: none;"
@@ -54,9 +55,12 @@ b {
 					</div>
 				</div>
 				<div class="row" style="margin-bottom: 5px; padding-top: 0;">
-					<p style="margin: 10px;">
+					<div style="margin: 10px;">
+						<span class="title_comment_span" style="font-weight: bold; margin : 0;"></span> : 
+						<c:out value="${feedback.title}"></c:out>
+						<br>
 						<c:out value="${feedback.comment}"></c:out>
-					</p>
+					</div>
 				</div>
 				<div class="row" style="padding-left: calc(50% - 80px);">
 					<a class="waves-effect waves-light btn" onclick="deleteComment(${feedback.id})"

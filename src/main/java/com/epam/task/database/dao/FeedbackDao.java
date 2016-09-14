@@ -16,9 +16,9 @@ public class FeedbackDao {
 	private final String INSERT_FEEDBACK = "INSERT INTO feedback (user_id, hotel_id, rating, title, comment, date) VALUES (?, ?, ?, ?, ?, ?)";
 	private final String UPDATE_FEEDBACK = "UPDATE feedback SET user_id = ?, hotel_id = ?, rating = ?, comment = ?, title = ?, date = ? WHERE feedback_id = ?";
 	private final String DELETE_FEEDBACK = "DELETE FROM feedback WHERE feedback_id = ?";
-	private final String SELECT_ALL_FEEDBACK_BY_HOTEL = "SELECT * FROM feedback WHERE hotel_id = ?;";
-	private final String SELECT_ALL_FEEDBACK_BY_USER = "SELECT * FROM feedback WHERE user_id = ?;";
-	private final String SELECT_FEEDBACK_BY_ID = "SELECT * FROM feedback WHERE feedback_id = ?;";
+	private final String SELECT_ALL_FEEDBACK_BY_HOTEL = "SELECT * FROM feedback WHERE hotel_id = ?";
+	private final String SELECT_ALL_FEEDBACK_BY_USER = "SELECT * FROM feedback WHERE user_id = ?";
+	private final String SELECT_FEEDBACK_BY_ID = "SELECT * FROM feedback WHERE feedback_id = ?";
 	private final String SELECT_FEEDBACK_BY_USER_AND_HOTEL = "SELECT * FROM feedback WHERE user_id = ? AND hotel_id = ?";
 
 	private final String ORDER_BY_DATE_ASC = " ORDER BY date ASC";
@@ -141,8 +141,7 @@ public class FeedbackDao {
 		
 		try (PreparedStatement statment = connection.prepareStatement(SELECT_ALL_FEEDBACK_BY_USER + ORDER_BY + PAGINATION)){
 			statment.setInt(1, userId);
-			statment.setString(2, ORDER_BY);
-			statment.setInt(3, (page-1)*5);
+			statment.setInt(2, (page-1)*5);
 			ResultSet rs = statment.executeQuery();
 			return UniversalTransformer.getCollectionFromRS(rs, Feedback.class);
 		} catch(SQLException e){
