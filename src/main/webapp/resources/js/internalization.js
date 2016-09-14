@@ -2,6 +2,22 @@
 (function (){
 	var en = {
 	
+		roomCard_countOfFree : " free rooms",
+		subscribes_table_status_active : "Active",
+		subscribes_table_status_finished : "Finished",
+		subscribes_table_status_canceled : "Canceled",
+		subscribes_table_roomfood_full : "Full",
+		subscribes_table_roomfood_twice : "Twice",
+		subscribes_table_roomfood_breakfast : "Breakfast",
+		subscribes_table_roomfood_none : "None",
+		subscribes_table_roomfood : "Food : ",
+		subscribes_table_price : "Price",
+		orderConcret_title : "Order №",
+		order_concret_comment : "Comment",
+		myfeedbacks_count_of_feedbacks : " number of feedback",
+		myfeedbacks_no_feedbacks : " no feedback", 
+		myfeedbacks_header : "My feedback",		
+			
 		comment_not_user : "Log in to post a comment",
 		shopping_card_notice : "Notice: your orders will be stored in the shopping cart only for 30 minutes!",
 		tab_charts : "Charts",
@@ -106,7 +122,7 @@
 		title_comment_span : "Title", 
 		createComment : "Add comment",
 		
-		hiddenError : "Error with info",
+		hiddenError : "You must enter the start and end date for booking rooms.",
 		
 		order_card_from : "From: ",  
 		order_card_to : " To: ",
@@ -264,6 +280,22 @@
 		btn_approve : "Approve",
 	}
 	var ua = {
+		roomCard_countOfFree : "Кількість вільних кімнат : ",
+		subscribes_table_status_active : "Активний",
+		subscribes_table_status_finished : "Завершений",
+		subscribes_table_status_canceled : "Відмінений",
+		subscribes_table_roomfood_full : "Все включено",
+		subscribes_table_roomfood_twice : "Сніданок і вечеря",
+		subscribes_table_roomfood_breakfast : "Сніданок",
+		subscribes_table_roomfood_none : "Немає",
+		subscribes_table_roomfood : "Харчування : ",
+		subscribes_table_price : "Ціна",
+		orderConcret_title : "Замовлення №",
+		order_concret_comment : "Коментарій",
+		myfeedbacks_count_of_feedbacks : " кількість відгуків",
+		myfeedbacks_no_feedbacks : " немає відгуків", 
+		myfeedbacks_header : "Мої відгуки",	
+			
 		comment_not_user : "Ввійдіть, щоб залишити коментар",
 		shopping_card_notice : "Увага: ваші замовлення будуть зберігатися в кошику тільки протягом 30 хвилин!",
 		tab_charts : "Графіки",
@@ -342,7 +374,7 @@
 		createComment : "Додати коментар",
 		hotel_button_previous : "Попередній", 
 		hotel_button_next : "Наступний",
-		hiddenError : "Помилка. Неправильні дані", 
+		hiddenError : "Необхідно ввести початкову і кінцеву дату для бронювання кімнати.", 
 		room_card_add_to_cart : "В кошик", 
 		room_card_need_login : "Увійдіть щоб забронювати", 
 		order_card_from : "З: ",  
