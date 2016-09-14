@@ -398,7 +398,7 @@ public class RoomDao {
 		}
 	}
 
-	public int getSuitableRoomsNumber(int id, boolean typeStandart, boolean typeLux, boolean typeDelux,
+	public List<Room> getSuitableRooms(int id, boolean typeStandart, boolean typeLux, boolean typeDelux,
 			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull, int minPrice, int maxPrice,
 			int people, boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, boolean hasPool,
 			boolean hasGym, boolean hasBalcony, boolean noDeposit, Timestamp startDate, Timestamp endDate) {
@@ -491,11 +491,11 @@ public class RoomDao {
 			statement.setInt(i++, people);
 			
 			try (ResultSet rs = statement.executeQuery()) {
-				return UniversalTransformer.getCollectionFromRS(rs, Room.class).size();
+				return UniversalTransformer.getCollectionFromRS(rs, Room.class);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return -1;
+			return new ArrayList<>();
 		}
 	}
 }
