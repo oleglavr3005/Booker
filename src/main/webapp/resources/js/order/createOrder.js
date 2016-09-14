@@ -194,6 +194,7 @@ function addToCart(roomId) {
 			$('#btn' + roomId).attr('disabled', true);
 		}
 	});
+	updateLanguage();
 }
 
 function isInfoValid() {
