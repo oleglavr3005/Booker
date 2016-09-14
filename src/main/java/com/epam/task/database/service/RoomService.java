@@ -147,12 +147,12 @@ public class RoomService {
 		return daoManager.executeAndClose(() -> daoManager.getRoomDao().isRoomAvailable(roomId, startDate, endDate));
 	}
 
-	public int getSuitableRoomsNumber(int id, boolean typeStandart, boolean typeLux, boolean typeDelux,
+	public List<Room> getSuitableRooms(int id, boolean typeStandart, boolean typeLux, boolean typeDelux,
 			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull, int minPrice, int maxPrice,
 			int people, boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, boolean hasPool,
 			boolean hasGym, boolean hasBalcony, boolean noDeposit, Timestamp startDate, Timestamp endDate) {
 		
-		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getSuitableRoomsNumber(id,
+		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getSuitableRooms(id,
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull,
 				minPrice, maxPrice, people,

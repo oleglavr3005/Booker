@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,7 +16,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import com.epam.task.comparators.PeopleRoomComparator;
+import com.epam.task.comparators.PriceRoomComparator;
 import com.epam.task.database.dto.FeedbackDto;
+import com.epam.task.database.dto.RoomDto;
 import com.epam.task.database.model.Conveniences;
 import com.epam.task.database.model.Feedback;
 import com.epam.task.database.model.Hotel;
@@ -96,36 +100,83 @@ public class HotelServlet extends HttpServlet {
 
 		String pageString = request.getParameter("page");
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
-		int countOfRooms = new RoomService().getSuitableRoomsNumber(id, 
+		List<Room> allRooms = new RoomService().getSuitableRooms(id, 
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull, 
 				minPrice, maxPrice, people,
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
 				startDate, endDate);
 		
-		int countOfPages = (int) Math.ceil(countOfRooms / 5.0);
+		List<Feedback> feedbacks = new FeedbackService().getAllFeedbacksByHotel(id);
+		request.setAttribute("hotel", hotel);
+		
+		//////MAGIC
+		
+		List<RoomDto> roomTemplates = new ArrayList<>();
+		for(Room room : allRooms) {
+			boolean exists = false;
+			for(RoomDto templ : roomTemplates) {
+				if(templ.getHotelId() == room.getHotelId() && templ.getType().equals(room.getType()) &&
+						templ.getBedsCount() == room.getBedsCount() && templ.getDoubleBedsCount() == room.getDoubleBedsCount() &&
+						templ.getPrice() == room.getPrice() && templ.getWifi() == room.getWifi() && 
+						templ.getShower() == room.getShower() && templ.getParking() == room.getParking() &&
+						templ.getCondition() == room.getCondition() && templ.getPool() == room.getPool() &&
+						templ.getGym() == room.getGym() && templ.getBalcony() == room.getBalcony() &&
+						templ.getFood().equals(room.getFood()) && templ.getDaysCount() == room.getDaysCount() &&
+						templ.getPercentage() == room.getPercentage()) { 
+														//if this tempalte alredy exists, add room id in it
+					templ.addRoom(room.getId());
+					exists = true;
+					break;
+				}
+			}
+			if (!exists) { //create template
+				RoomDto template = new RoomDto(room.getHotelId(), room.getType().toString(), 
+						room.getBedsCount(), room.getDoubleBedsCount(), room.getPrice(), 
+						room.getWifi(), room.getShower(), room.getParking(), room.getCondition(), 
+						room.getPool(), room.getGym(), room.getBalcony(), 
+						room.getFood().toString(), room.getDaysCount(), room.getPercentage());
+				template.addRoom(room.getId());
+				roomTemplates.add(template);
+			}
+		}
+		
+		//////EO MAGIC
+
+		String compareBy = request.getParameter("compareBy");
+		if("compareByPriceAsc".equals(compareBy)) {
+			roomTemplates.sort(new PriceRoomComparator());
+		} else if("compareByPriceDesc".equals(compareBy)) {
+			roomTemplates.sort(Collections.reverseOrder(new PriceRoomComparator()));
+		} else if("compareByPeopleAsc".equals(compareBy)) {
+			roomTemplates.sort(new PeopleRoomComparator());
+		} else { //compareByPeopleDesc or null
+			roomTemplates.sort(Collections.reverseOrder(new PeopleRoomComparator()));
+		}
+		
+		int countOfPages = (int) Math.ceil(roomTemplates.size() / 5.0);
 		if (page > countOfPages) {
 			page--;
 		}
+		if(page < 1) {
+			page = 1;
+		}
 		
-		String compareBy = request.getParameter("compareBy");
-		List<Feedback> feedbacks = new FeedbackService().getAllFeedbacksByHotel(id);
-		List<Room> rooms = new RoomService().getAllSuitableRoomsForHotel(id, page, 
-				typeStandart, typeLux, typeDelux, 
-				foodNone, foodBreakfast, foodTwice, foodFull, 
-				minPrice, maxPrice, people,
-				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
-				startDate, endDate, compareBy);
-		request.setAttribute("hotel", hotel);
+		List<RoomDto> roomTemplatesByPage = new ArrayList<>();
+		int start = (page-1)*5;
+		int end = roomTemplates.size() < start+5 ? roomTemplates.size() : start+5;
+		for(int i = start; i<end; i++) {
+			roomTemplatesByPage.add(roomTemplates.get(i));
+		}
 		
 		List<Hotel> hotels = new ArrayList<Hotel>();  		//
 		hotels.add(hotel);
 		request.setAttribute("hotels", hotels);				//
 		request.setAttribute("conveniences", conveniences);
 		request.setAttribute("feedbacks", FeedbackDto.listConverter(feedbacks));
-		request.setAttribute("rooms", rooms);		
+		request.setAttribute("rooms", roomTemplatesByPage);		
 		
-		request.setAttribute("countOfRooms", countOfRooms);
+		request.setAttribute("countOfRooms", roomTemplates.size());
 		request.setAttribute("countOfPages", countOfPages);
 		request.setAttribute("currentPage", page);		
 

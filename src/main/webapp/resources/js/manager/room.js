@@ -88,7 +88,6 @@ function updateRoom(room) {
 }
 
 function validate() {
-	debugger;
 	var ok = true;
 	ok = checkRoomNumber($('#hotel_name').val(), $('#number').val()) && ok;
 	ok = checkNumberRegex($('#number').val()) && ok;
@@ -239,8 +238,9 @@ function promoteToMain() {
 		$.post('../../set_main_room_photo', {
 			photoId : '' + value,
 		}, function(result) {
-			if (result == "true"){
-				alert("succes");
+			if (result != "false"){
+				document.getElementById("Img").src = "/booker/get_image/"
+						+ result;
 			}
 			else{
 				alert("fail");
