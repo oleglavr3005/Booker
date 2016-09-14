@@ -99,12 +99,12 @@ public class FindRooms extends HttpServlet {
 
 		String pageString = request.getParameter("page");
 		int page = pageString == null ? 1 : Integer.parseInt(pageString);
-		int countOfRooms = new RoomService().getSuitableRoomsNumber(hotelId, 
+		int countOfRooms = new RoomService().getSuitableRooms(hotelId, 
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull, 
 				minPrice, maxPrice, people,
 				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
-				startDate, endDate);
+				startDate, endDate).size();
 		
 		int countOfPages = (int) Math.ceil(countOfRooms / 5.0);
 		if (page > countOfPages) {
