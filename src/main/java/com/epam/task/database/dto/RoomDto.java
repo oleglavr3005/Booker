@@ -13,12 +13,13 @@ public class RoomDto extends Room{
 	private List<RoomPhoto> allPhotos = new ArrayList<>();
 	private String allRoomIds = "";
 	private int amount = 0;
+	private static int staticId = 1;
 	
 	public RoomDto(int hotelId, String type, int bedsCount, int doubleBedsCount,
 			int price, boolean wifi, boolean shower, boolean parking, boolean condition, boolean pool, boolean gym,
 			Boolean balcony, String food, int daysCount, int percentage) {
 		
-		super(0, hotelId, "0", type, bedsCount, doubleBedsCount, price, wifi, shower, parking, condition, pool, gym,
+		super(staticId++, hotelId, "0", type, bedsCount, doubleBedsCount, price, wifi, shower, parking, condition, pool, gym,
 				balcony, food, daysCount, percentage, false);
 	}
 	
