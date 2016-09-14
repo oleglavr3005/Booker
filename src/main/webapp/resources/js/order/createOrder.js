@@ -161,7 +161,11 @@ function bookOrderCard(orderId, daysCount) {
 }
 
 function addToCart(roomId) {
+	var rooms = $('#ids'+roomId).val();
 	$.post('../add_to_cart', {
+		allRoomIds : rooms,
+		amount: $('#countOfRooms').val(),
+		
 		roomId : roomId,
 		people : $('#people').val(),
 		startDate : $('#date_from').val(),
