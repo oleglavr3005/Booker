@@ -156,7 +156,7 @@ public class HotelServlet extends HttpServlet {
 		
 		List<RoomDto> roomTemplatesByPage = new ArrayList<>();
 		int start = (page-1)*5;
-		int end = roomTemplatesByPage.size() > start+5 ? roomTemplatesByPage.size() : start+5;
+		int end = roomTemplates.size() < start+5 ? roomTemplates.size() : start+5;
 		for(int i = start; i<end; i++) {
 			roomTemplatesByPage.add(roomTemplates.get(i));
 		}

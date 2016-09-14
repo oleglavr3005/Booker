@@ -53,12 +53,12 @@ public class RoomDto extends Room{
 		return amount;
 	}
 	
-	public List<Integer> getRoomIds() {
-		return roomIds;
+	public String getAllRoomIds() {
+		return allRoomIds;
 	}
 	
-	public String getRoomIdsAsString() {
-		return allRoomIds;
+	public List<Integer> getRoomIds() {
+		return roomIds;
 	}
 	
 	private String createRoomIdsString(String spliterator) {
