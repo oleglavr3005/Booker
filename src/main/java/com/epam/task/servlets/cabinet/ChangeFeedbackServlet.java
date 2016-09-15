@@ -1,6 +1,8 @@
 package com.epam.task.servlets.cabinet;
 
 import java.io.IOException;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -64,7 +66,9 @@ public class ChangeFeedbackServlet extends HttpServlet {
 				}
 				newRating /= feedbacks.size(); 
 			}
-			hotel.setRating(newRating);
+			DecimalFormat df = new DecimalFormat(".##");
+			df.setRoundingMode(RoundingMode.UP);
+			hotel.setRating(Double.parseDouble(df.format(newRating)));
 			hotelService.updateHotel(hotel);
 		}
 		
