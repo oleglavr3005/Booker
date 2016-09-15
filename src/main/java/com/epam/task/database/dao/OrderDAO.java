@@ -27,6 +27,7 @@ public class OrderDAO {
 	private final String SQL_REMOVE_ORDER = "DELETE FROM `order` WHERE order_id = ?";
 	private final String SQL_REMOVE_ORDERS_BY_STATUS = "DELETE FROM `order` WHERE user_id = ? AND `status` LIKE ?";
 	private final String SQL_GET_ALL_ORDERS_BY_USER_AND_STATUS = "SELECT * FROM `order` WHERE `status` LIKE ? AND user_id = ?";
+	private final String SQL_GET_ALL_ORDERS_BY_HOTEL_AND_STATUS = "SELECT o.* FROM `order` o INNER JOIN `room` r ON o.room_id = r.room_id WHERE o.`status` LIKE ? AND r.hotel_id = ?";
 	private final String SQL_GET_ORDER_BY_USER_ID = "SELECT * FROM `order` WHERE user_id = ?";
 	private final String SQL_GET_ORDER_BY_USER_AND_ID = "SELECT * FROM `order` WHERE user_id = ? AND order_id = ?";
 	private final String SQL_GET_ORDER_BY_ROOM_ID = "SELECT * FROM `order` WHERE room_id = ?";
@@ -266,6 +267,19 @@ public class OrderDAO {
 			statement.setInt(1, userId);
 			statement.setInt(2, hotelId);
 			statement.setString(3, new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+			ResultSet rs = statement.executeQuery();
+			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return orders;
+	}
+
+	public List<Order> getOrdersByHotelAndStatus(int hotelId, OrderStatus status) {
+		List<Order> orders = new ArrayList<>();
+		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ALL_ORDERS_BY_HOTEL_AND_STATUS)) {
+			statement.setString(1, status.toString());
+			statement.setInt(2, hotelId);
 			ResultSet rs = statement.executeQuery();
 			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
 		} catch (SQLException e) {
