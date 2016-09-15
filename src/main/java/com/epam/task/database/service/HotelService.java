@@ -4,7 +4,9 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import com.epam.task.database.dao.manager.DaoManager;
+import com.epam.task.database.dto.SmsDto;
 import com.epam.task.database.model.Hotel;
+import com.epam.task.util.sms.SmsSender;
 
 public class HotelService {
 private DaoManager daoManager;
@@ -84,5 +86,11 @@ private DaoManager daoManager;
 
 	public List<Hotel> getAllHotelsByManagerAndPage(int managerId, int page, String orderBy) {
 		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getAllHotelsByManagerAndPage(managerId, page, orderBy));
+	}
+	
+	private void sendMobileConfirmationAboutPurchase(SmsDto smsDto) {
+		System.out.println(smsDto.getNumber() + " " + smsDto.getText());
+		//dto will have list and here will be list iteratin maybe idk
+		SmsSender.sendSms(smsDto.getNumber(), smsDto.getText(), smsDto.getNmb());
 	}
 }
