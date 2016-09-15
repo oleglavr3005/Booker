@@ -185,6 +185,7 @@ b {
 							</div>
 							<c:if test="${user != null && startDate != null}">
 								<div class="col s4 offset-s2" style="margin-top: -20;">
+								<span class="room_orderedrooms"></span>
 									<input id="countOfRooms${room.id}" type="number"
 										class="validate" name="countOfRooms" min=1 value=1
 										max="${room.amount}">

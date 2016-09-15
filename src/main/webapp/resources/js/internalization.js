@@ -62,7 +62,7 @@
 		request_approve : "Approve",
 		request_decline : "Decline",
 		
-		manager_hotel_card_info : "Info",
+		manager_hotel_card_info : "Details",
 		manager_hotel_card_edit : "Edit",
 		manager_hotel_card_removed : "Removed",
 		manager_hotel_card_active : "Active",
@@ -97,6 +97,7 @@
 		room_card_info1 : "You will get 100% refund in case of cancelling order only in",
 		room_card_info2 : " days before moving in, after these period refund will be only",
 		room_card_info3 : "Free book",
+		room_orderedrooms : "Rooms to order",
 		
 		label_wifi : "WiFi",
 		label_shower : "Shower",
@@ -331,7 +332,7 @@
 		request_approve : "Підтвердити",
 		request_decline : "Відхилити",
 		
-		manager_hotel_card_info : "Інформація",
+		manager_hotel_card_info : "Деталі",
 		manager_hotel_card_edit : "Редагувати",
 		manager_hotel_card_removed : "Видалений",
 		manager_hotel_card_active : "Активний",
@@ -419,16 +420,16 @@
 		index_room_type_food_twice: "Сніданок і вечеря",
 		index_room_type_food_full: "Все включено",
 		
-		hotel_option_star_asc : "зростанням кіл. зірок",
-		hotel_option_star_desc : "спаданням кіл. зірок",
-		hotel_option_people_asc : "зростанням кіл. місць",
-		hotel_option_people_desc : "спаданням кіл. місць",
+		hotel_option_star_asc : "зростанням к-сті зірок",
+		hotel_option_star_desc : "спаданням к-сті зірок",
+		hotel_option_people_asc : "зростанням к-сті  місць",
+		hotel_option_people_desc : "спаданням к-сті  місць",
 		
 		map_button : "Карта", 
 		search : "Пошук",
 		
-		index_option_star_asc : "зростанням кіл. зірок",
-		index_option_star_desc : "спаданням кіл. зірок",
+		index_option_star_asc : "зростанням к-сті  зірок",
+		index_option_star_desc : "спаданням к-сті  зірок",
 		index_option_rating_asc : "зростанням рейтингу",
 		index_option_rating_desc : "спаданням рейтингу",	
 
@@ -506,6 +507,7 @@
 		room_card_info1 : "Ви отримаєте 100% повернення при відміні замовлення тільки за ",
 		room_card_info2 : " днів перед приїздом, після цього повернення становитиме тільки ",
 		room_card_info3 : "Без передплати",
+		room_orderedrooms : "Замовити кімнат",
 		
 		subscribes_header : "Список замовлень",
 		card_status_active : "Активне",
