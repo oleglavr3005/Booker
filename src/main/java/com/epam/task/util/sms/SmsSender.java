@@ -22,6 +22,10 @@ public class SmsSender {
 
 	}
 	
+	public static void main(String[] args) {
+		sendSms("0630489892","sss",0);
+	}
+	
 	
 
 }
