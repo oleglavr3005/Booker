@@ -24,7 +24,7 @@
 				</ul>
 			</li>
 		</div>
-			<div class="col s2" style="color: #8c8c8c; font-size: 20px; margin-left: 65%; float : right">
+			<div class="col s1" style="color: #8c8c8c; font-size: 20px; margin-left: 60%;">
 				&#169 2016</div>
 			<div сlass="col s1 offset-s1"
 				style="color: #cccccc; font-size: 15px;">
