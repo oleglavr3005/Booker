@@ -389,27 +389,25 @@ div #sidebar-wrapper {
 								style="padding: 5px; padding-left: 20px; padding-right: 20px;">
 								<span id="order_concret_comment"></span>
 							</div>
-	<div class="input-field">
-							<textarea id="comment"
-								<c:if test="${order.status != 'ACTIVE'}">readonly</c:if>
-								class="materialize-textarea">${order.comment}</textarea>
-								<label id="commentLbl" data-error="COMMENT IS NOT VALID!" for="name"></label></div>
+							<div class="input-field">
+								<textarea id="comment"
+									<c:if test="${order.status != 'ACTIVE'}">readonly</c:if>
+									class="materialize-textarea">${order.comment}</textarea>
+								<label id="commentLbl" data-error="COMMENT IS NOT VALID!"
+									for="name"></label>
+							</div>
 						</div>
-						<!-- 						<div class="col s2 offset-s1"> -->
-						<!-- 							<a class="waves-effect waves-light btn" id="create_button" -->
-						<!-- 								onclick="updateComment()" -->
-						<!-- 								style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"> -->
-						<!-- 								<span id="request_approve"></span> -->
-						<!-- 							</a> -->
-						<!-- 						</div> -->
 					</div>
 
 					<div class="col s2 offset-s1">
-						<a class="waves-effect waves-light btn" id="create_button"
-							onclick="updateComment()"
-							style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-							<span id="request_approve"></span>
-						</a>
+						<div class="row">
+							<a class="waves-effect waves-light btn" id="create_button"
+								onclick="updateComment(${order.id})"
+								style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+								<span id="request_approve"></span>
+							</a>
+						</div>
+						<div class="row" id="commentInfo"></div>
 					</div>
 
 

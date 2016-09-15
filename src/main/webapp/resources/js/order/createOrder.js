@@ -86,7 +86,7 @@ function bookOrderCard(orderId, daysCount) {
 
 						'<div class="row">'
 // + '<div class="col s3"><div style="margin-top:50px;"></div></div>'
-						+ '<div class="col s8 cardDetail offset-s2">'
+						+ '<div class="col s6 cardDetail offset-s2">'
 						+ '<div class="row" style="margin-bottom: 0px;"><div id="cardNumber' + orderId + '" class="col s8">'
 						+ '<input id="cardnum1' + orderId + '" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(1,' + orderId + ')" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
 						+ '<input id="cardnum2' + orderId + '" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(2,' + orderId + ')" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
@@ -106,9 +106,9 @@ function bookOrderCard(orderId, daysCount) {
 
 						'</div>' // col s8
 						
-						+ '<div class="col s2"><a id="makePurchase' + orderId + '" class="my-btn waves-effect waves-light btn' + 
+						+ '<div class="col s2 offset-s1"><a id="makePurchase' + orderId + '" class="my-btn waves-effect waves-light btn' + 
 						'" style="background: #9FA1C4; margin-top:30px; color: #FFFFFF; font-family: "Times NewRoman", Times, serif;" onclick="bookOrderCard(' + orderId + ',' + daysCount + ')">' + 
-						'<i class="fa fa-check-circle-o" aria-hidden="true" style="font-size: 14px;">PAY IT!</i></a></div>' + 
+						'PAY IT!</a></div>' + 
 
 //						+ '<div class="col s3">'
 //						+ '<div class="input-field" style="margin-top:50px;"><input id="phone' + orderId + '" ' 

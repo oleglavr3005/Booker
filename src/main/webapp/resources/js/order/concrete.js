@@ -1,16 +1,25 @@
-function updateComment(){
+function updateComment(orderId) {
 	debugger;
 	var comment = $('#comment').val();
-	if (validateComment(comment)){
+	if (validateComment(comment)) {
 		alert("post to update");
-	}
-	else{
+		$.post("../../change_order_comment", {
+			orderId : orderId,
+			comment : comment
+		}, function(result) {
+			if (result == 'true') {
+				$('#commentInfo').text("SUCCES");
+			} else {
+				$('#commentInfo').text("FAIL");
+			}
+		});
+	} else {
 		alert("invalid");
 	}
 }
 
 function textIsValid(field) {
-	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’,?\|;:]}[{=+-_.!/'" ]*)$/;
+	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’,?.!/'" ]*)$/;
 	return re.test(field);
 }
 

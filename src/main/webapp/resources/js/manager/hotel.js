@@ -15,6 +15,7 @@ function initAutocomplete() {
 }
 
 function createHotel() {
+	debugger;
 	// var img = $('#photos').val() == '' ? 'new_hotel.jpg' :
 	// $('#photos').val();
 	var img = $('#photos').val();
@@ -53,6 +54,7 @@ function createHotel() {
 }
 
 function updateHotel(hotelId) {
+	debugger;
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
 	getInfoFromGoogle();
 	if (validate()) {
@@ -101,7 +103,7 @@ function engLetIsValid(field) {
 }
 
 function textIsValid(field) {
-	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’,?\|;:]}[{=+-_.!/'" ]*)$/;
+	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’,?=+-_.!/'" ]*)$/;
 	return re.test(field);
 }
 

@@ -340,8 +340,9 @@ div #sidebar-wrapper {
 				</h6>
 			</div>
 			<div class="col s5 offset-s4">
+			<c:if test="${countOfHotels > 0 }">
 				<span class="sort_by" style="font-size: 15;position: relative;/* display: inline-block; */bottom: 3px;"></span>
-				<c:if test="${countOfHotels > 0 }">
+				
 					<select id="compare" class="chosen-select optionstyle"
 						onchange="findPage(window.location.href,1)">
 						<option id="index_option_star_asc" class="optionstyle"
