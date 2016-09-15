@@ -266,7 +266,7 @@
 		room_concrete_double : "Double beds",
 		room_concrete_price : "Price",
 		room_concrete_days : "Days before to pay",
-		room_concrete_percentage: "Deposit percentage",
+		room_concrete_percentage: "Deposit return percentage",
 		
 		settings_header_USERS : "Users",
 		settings_header_CONTACT : "Contacts",
@@ -544,7 +544,7 @@
 		room_concrete_double : "Двомісні ліжка",
 		room_concrete_price : "Ціна",
 		room_concrete_days : "Дні для оплати",
-		room_concrete_percentage: "Відсоток завдатку",
+		room_concrete_percentage: "Відсоток повернення завдатку",
 		
 		admin_deleted : "Видалити",
 		//admin page

@@ -1,6 +1,7 @@
 package com.epam.task.servlets.manager;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.epam.task.database.model.HotelPhoto;
 import com.epam.task.database.service.HotelPhotoService;
 import com.epam.task.database.service.HotelService;
 
@@ -34,7 +36,18 @@ public class RemoveHotelPhotoServlet extends HttpServlet {
     			if(hotelId == 0){
     				hotelId = hotelPhotoService.getHotelPhotoById(Integer.parseInt(photoIds[i])).getHotelId();
     			}
-    			hotelPhotoService.deleteHotelPhoto(Integer.parseInt(photoIds[i]));
+    			int photoId = Integer.parseInt(photoIds[i]);
+    			HotelPhoto hotelPhoto = hotelPhotoService.getHotelPhotoById(photoId);
+    			hotelPhotoService.deleteHotelPhoto(photoId);
+    			if(hotelPhoto.isMain()) {
+    				//set another main photo
+    				List<HotelPhoto> hotelPhotos = hotelPhotoService.getHotelPhotosByHotel(hotelId);
+    				if(!hotelPhotos.isEmpty()) {
+    					HotelPhoto p = hotelPhotos.get(0);
+    					p.setMain(true);
+    					hotelPhotoService.updateHotelPhoto(p);
+    				}
+    			}
     		}
 			request.setAttribute("hotel", new HotelService().getHotelById(hotelId));
 			request.getRequestDispatcher("/pages/cards/hotelPhotoCard.jsp").forward(request, response);
