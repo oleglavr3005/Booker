@@ -70,12 +70,16 @@ b {
 
 <div class="divider" style="margin-bottom: 20px;"></div>
 
+<input id="count" type="hidden" value="${countOfOrders}" />
+
 <c:if test="${countOfOrders == 0}">
 	<h5 style="color: red; margin-bottom: 63px;">
 		<span id="card_no_periodicals"></span>
 	</h5>
-	<img src="${pageContext.servletContext.contextPath}/resources/images/cart.png" alt="shopping-cart" 
-		class="img-responsive center-block" style="max-height:400px; opacity:.3; margin-bottom:50px"/>
+	<img
+		src="${pageContext.servletContext.contextPath}/resources/images/cart.png"
+		alt="shopping-cart" class="img-responsive center-block"
+		style="max-height: 400px; opacity: .3; margin-bottom: 50px" />
 </c:if>
 
 
@@ -121,12 +125,14 @@ b {
 								<div class="row" style="margin-top: 15px; margin-bottom: 0px">
 									<div class="col s6">
 										<div class="row">
-											<a href="${pageContext.servletContext.contextPath}/hotel/${order.hotel.id}">${order.hotel.name}</a>
+											<a
+												href="${pageContext.servletContext.contextPath}/hotel/${order.hotel.id}">${order.hotel.name}</a>
 										</div>
 										<div class="row" style="margin-top: 15px;">
 											<div>
-												<a class="tooltipped tooltip_start_date" data-position="icon"
-													data-tooltip="" style="color: #0d0d0d;"><i
+												<a class="tooltipped tooltip_start_date"
+													data-position="icon" data-tooltip=""
+													style="color: #0d0d0d;"><i
 													class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a>
 												<span class="order_card_from"></span> <span
 													id="start_date${order.id}">${order.startDate}</span>
@@ -155,8 +161,8 @@ b {
 										<div class="row">${order.room.type}</div>
 
 										<div class="row">
-											<a class="tooltipped tooltip_double_beds" data-position="icon"
-												data-tooltip="" style="color: #0d0d0d;"><img
+											<a class="tooltipped tooltip_double_beds"
+												data-position="icon" data-tooltip="" style="color: #0d0d0d;"><img
 												class="invert" style="max-width: 15%;"
 												src="${pageContext.servletContext.contextPath}/resources/images/double_bed.png" /></a>
 											<span>${order.room.doubleBedsCount}</span> <a
@@ -196,8 +202,9 @@ b {
 								<div class="row"
 									style="float: right; text-align: right; font-size: 0.3rem">
 									<c:if test="${order.room.wifi == true}">
-										<a class="tooltipped index_room_wifi" data-position="icon" data-tooltip=""
-											style="color: #0d0d0d;"><i class="material-icons invert">wifi</i></a>
+										<a class="tooltipped index_room_wifi" data-position="icon"
+											data-tooltip="" style="color: #0d0d0d;"><i
+											class="material-icons invert">wifi</i></a>
 									</c:if>
 
 									<c:if test="${order.room.shower == true}">
@@ -214,19 +221,21 @@ b {
 									</c:if>
 
 									<c:if test="${order.room.condition == true}">
-										<a class="tooltipped index_room_conditioner" data-position="icon"
-											data-tooltip="" style="color: #0d0d0d;"><i
+										<a class="tooltipped index_room_conditioner"
+											data-position="icon" data-tooltip="" style="color: #0d0d0d;"><i
 											class="material-icons invert">toys</i></a>
 									</c:if>
 
 									<c:if test="${order.room.pool == true}">
-										<a class="tooltipped index_room_pool" data-position="icon" data-tooltip=""
-											style="color: #0d0d0d;"><i class="material-icons invert">pool</i></a>
+										<a class="tooltipped index_room_pool" data-position="icon"
+											data-tooltip="" style="color: #0d0d0d;"><i
+											class="material-icons invert">pool</i></a>
 									</c:if>
 
 									<c:if test="${order.room.gym == true}">
-										<a class="tooltipped index_room_gym" data-position="icon" data-tooltip=""
-											style="color: #0d0d0d;"><i class="material-icons invert">fitness_center</i></a>
+										<a class="tooltipped index_room_gym" data-position="icon"
+											data-tooltip="" style="color: #0d0d0d;"><i
+											class="material-icons invert">fitness_center</i></a>
 									</c:if>
 
 									<c:if test="${order.room.balcony == true}">
@@ -294,7 +303,8 @@ b {
 
 	<div class="row">
 		<div class="col s8 offset-s2">
-			<textarea id="comment" class="materialize-textarea placeholder_enter_comment"
+			<textarea id="comment"
+				class="materialize-textarea placeholder_enter_comments"
 				placeholder=""></textarea>
 		</div>
 	</div>
@@ -303,16 +313,14 @@ b {
 		<div class="col s3 offset-s1">
 			<span id="order_card_total_price"></span> <span>${summary/2}</span> <span
 				id="order_card_uan"></span> <a class="tooltipped tooltip_you_pay"
-				data-position="icon"
-				data-tooltip=""
-				style="color: #0d0d0d;"><i
+				data-position="icon" data-tooltip="" style="color: #0d0d0d;"><i
 				class="fa fa-2x fa-exclamation-circle invert" aria-hidden="true"></i></a>
 
 		</div>
 		<div class="col s2 offset-s3">
 			<a id="clearBtn" class="waves-effect waves-light btn"
-				style="background: #F55151; color: #FFFFFF; font-size: 1rem;text-transform: none;" onclick="clearCart()"><span
-				id="order_card_clear"></span></a>
+				style="background: #F55151; color: #FFFFFF; font-size: 1rem; text-transform: none;"
+				onclick="clearCart()"><span id="order_card_clear"></span></a>
 		</div>
 		<div class="col s2 offset-s1">
 			<a class="waves-effect waves-light btn"
@@ -367,5 +375,9 @@ b {
 	$(document).ready(function(){
 	    $('.tooltipped').tooltip({delay: 50,position: 'top'});
 	  });
-	
+	</script>
+
+<script>
+	var count = $('#count').val();
+		$('#periodicals_number_for_all_users').html(count);
 	</script>

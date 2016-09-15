@@ -104,13 +104,13 @@
 						<span id="periodicals_number_for_all_users">${countOfOrders}</span>
 					</c:if>
 					<c:if test="${countOfOrders <= 0 }">
-						<span id="card_no_hotels"></span>
+						<span id="card_no_orders"></span>
 					</c:if>
 				</h6>
 			</div>
 			<div class="col s5 offset-s4">
-				<span class="sort_by" style="font-size: 15;position: relative;/* display: inline-block; */bottom: 3px;"></span>
 				<c:if test="${countOfOrders > 0 }">
+					<span class="sort_by" style="font-size: 15;position: relative;/* display: inline-block; */bottom: 3px;"></span>
 					<select id="compare" class="chosen-select optionstyle"
 						onchange="findPage(window.location.href,1)">
 						<option id="shoping_card_date_asc" class="optionstyle"
@@ -336,11 +336,11 @@
 	</script>
 
 	<script>
-		var count = $
-		{
-			countOfOrders
-		};
-		$('#periodicals_number_for_all_users').html(count);
+// 		var count = $
+// 		{
+// 			countOfOrders
+// 		};
+// 		$('#periodicals_number_for_all_users').html(count);
 	</script>
 
 </body>

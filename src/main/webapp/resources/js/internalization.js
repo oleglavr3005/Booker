@@ -2,10 +2,27 @@
 (function (){
 	var en = {
 	
-		comment_not_user : "Ввійдіть, щоб залишити коментар",
+		foot_language : "Language",
+		roomCard_countOfFree : " free rooms",
+		subscribes_table_status_active : "Active",
+		subscribes_table_status_finished : "Finished",
+		subscribes_table_status_canceled : "Canceled",
+		subscribes_table_roomfood_full : "Full",
+		subscribes_table_roomfood_twice : "Twice",
+		subscribes_table_roomfood_breakfast : "Breakfast",
+		subscribes_table_roomfood_none : "None",
+		subscribes_table_roomfood : "Food : ",
+		subscribes_table_price : "Price",
+		orderConcret_title : "Order №",
+		order_concret_comment : "Comment",
+		myfeedbacks_count_of_feedbacks : " number of feedback",
+		myfeedbacks_no_feedbacks : " no feedback", 
+		myfeedbacks_header : "My feedback",		
+			
+		comment_not_user : "Log in to post a comment",
 		shopping_card_notice : "Notice: your orders will be stored in the shopping cart only for 30 minutes!",
-		tab_charts : "CHARTS",
-		comment_can_not : "Ви не можете залишити коментар, оскільки ще не відвідали цей готель.",
+		tab_charts : "Charts",
+		comment_can_not : "You can not leave comments as have not stayed in the hotel.",
 		sort_by : "Sort by : ",
 		ooltip_you_pay : "You pay a half of the sum for orders with deposit. And no money for orders with no deposit",
 		feedback_without_feedback : "You have not left a feedback",
@@ -106,7 +123,7 @@
 		title_comment_span : "Title", 
 		createComment : "Add comment",
 		
-		hiddenError : "Error with info",
+		hiddenError : "You must enter the start and end date for booking rooms.",
 		
 		order_card_from : "From: ",  
 		order_card_to : " To: ",
@@ -141,9 +158,9 @@
 		index_option_people_desc : "people, desc",
 		
 		hotel_option_star_asc : "star, asc",
-		hotel_option_star_desc : "star, desc",
+		hotel_option_star_desc : "star <i class='tiny material-icons' style='transform: rotate(-90deg);'>trending_flat</i>",
 		hotel_option_people_asc : "people, asc",
-		hotel_option_people_desc : "people, desc",
+		hotel_option_people_desc : "people <i class='tiny material-icons' style='transform: rotate(-90deg);'>trending_flat</i>",
 		hotel_price : "Price",
 		hotel_button_previous : "Previous", 
 		hotel_button_next : "Next",
@@ -264,13 +281,31 @@
 		btn_approve : "Approve",
 	}
 	var ua = {
+			
+		foot_language : "Мова",
+		roomCard_countOfFree : "Кількість вільних кімнат : ",
+		subscribes_table_status_active : "Активний",
+		subscribes_table_status_finished : "Завершений",
+		subscribes_table_status_canceled : "Відмінений",
+		subscribes_table_roomfood_full : "Все включено",
+		subscribes_table_roomfood_twice : "Сніданок і вечеря",
+		subscribes_table_roomfood_breakfast : "Сніданок",
+		subscribes_table_roomfood_none : "Немає",
+		subscribes_table_roomfood : "Харчування : ",
+		subscribes_table_price : "Ціна",
+		orderConcret_title : "Замовлення №",
+		order_concret_comment : "Коментарій",
+		myfeedbacks_count_of_feedbacks : " кількість відгуків",
+		myfeedbacks_no_feedbacks : " немає відгуків", 
+		myfeedbacks_header : "Мої відгуки",	
+			
 		comment_not_user : "Ввійдіть, щоб залишити коментар",
-		shopping_card_notice : "Notice: your orders will be stored in the shopping cart only for 30 minutes!",
-		tab_charts : "CHARTS",
+		shopping_card_notice : "Увага: ваші замовлення будуть зберігатися в кошику тільки протягом 30 хвилин!",
+		tab_charts : "Графіки",
 		comment_can_not : "Ви не можете залишити коментар, оскільки ще не відвідали цей готель.",
 		sort_by : "Сортувати за : ",
 		ooltip_you_pay : "You pay a half of the sum for orders with deposit. And no money for orders with no deposit",
-		feedback_without_feedback : "You have not left a feedback",	
+		feedback_without_feedback : "Ви ще не залишили відгуку",	
 		
 		tab_personal : "Особисті налаштування",
 		tab_contact : "Контакти",
@@ -311,10 +346,10 @@
 		tb_head_status : "Статус",
 
 		shoping_card_shop_list : "Список покупок",
-		shoping_card_date_asc : "даті, зростання",
-		shoping_card_date_desc : "даті, спадання",
-		shoping_card_price_asc : "ціні, зростання",
-		shoping_card_price_desc : "ціні, спадання",
+		shoping_card_date_asc : "зростанням дати",
+		shoping_card_date_desc : "спаданням дати",
+		shoping_card_price_asc : "зростанням ціни",
+		shoping_card_price_desc : "спаданням ціни",
 		shopping_cart_modal_header : "Дякуємо за замовлення",
 		shopping_cart_click : "Переглянути список замовлень : ",
 			
@@ -342,7 +377,7 @@
 		createComment : "Додати коментар",
 		hotel_button_previous : "Попередній", 
 		hotel_button_next : "Наступний",
-		hiddenError : "Помилка. Неправильні дані", 
+		hiddenError : "Необхідно ввести початкову і кінцеву дату для бронювання кімнати.", 
 		room_card_add_to_cart : "В кошик", 
 		room_card_need_login : "Увійдіть щоб забронювати", 
 		order_card_from : "З: ",  
@@ -379,18 +414,18 @@
 		index_room_type_food_twice: "Сніданок і вечеря",
 		index_room_type_food_full: "Все включено",
 		
-		hotel_option_star_asc : "зіркам, зростання",
-		hotel_option_star_desc : "зіркам, спадання",
-		hotel_option_people_asc : "міскості, зростання",
-		hotel_option_people_desc : "міскості, спадання",
+		hotel_option_star_asc : "зростанням кіл. зірок",
+		hotel_option_star_desc : "спаданням кіл. зірок",
+		hotel_option_people_asc : "зростанням кіл. місць",
+		hotel_option_people_desc : "спаданням кіл. місць",
 		
 		map_button : "Карта", 
 		search : "Пошук",
 		
-		index_option_star_asc : "зіркам, зростання",
-		index_option_star_desc : "зіркам, спадання",
-		index_option_rating_asc : "рейтингу, зростання",
-		index_option_rating_desc : "рейтингу, спадання",	
+		index_option_star_asc : "зростанням кіл. зірок",
+		index_option_star_desc : "спаданням кіл. зірок",
+		index_option_rating_asc : "зростанням рейтингу",
+		index_option_rating_desc : "спаданням рейтингу",	
 
 		concrete_date_from : "Приїжджаю",
 		concrete_date_to : "Від'їжджаю",
@@ -642,8 +677,6 @@
 		    message_error : 'Can not add comment',
 		    info_toggle_open : 'Show additional info',
 		    info_toggle_hide : 'Hide additional info',
-		    first : "First",
-		    last : "Last",
 		    hotel : {
 		    	createSucces : "hotel was created",
 		    	createFail : "hotel wasnt created",
@@ -691,8 +724,6 @@
 		    message_error : 'Неможли додати коментар',
 		    info_toggle_open : 'Показати додаткову інформацію',
 		    info_toggle_hide : 'Сховати додаткову інформацію',
-		    first : "Попередня",
-		    last : "Наступна",
 		    hotel : {
 		    	createSucces : "Готель створений",
 		    	createFail : "Готель не був створений",
@@ -733,14 +764,16 @@
 			placeholder_address : "Address of hotel",
 			placeholder_name_hotel : "Name of Hotel",
 			placeholder_desc : "Description",
-			placeholder_enter_comment : "Enter comment to orders here",
+			placeholder_enter_comment : "Enter comment to order here",
+			placeholder_enter_comments : "Enter comment to orders here",
 		},
 		ua : {
 			placeholder_phone_number : "Телефоний номер",
 			placeholder_address : "Адреса готеля",
 			placeholder_name_hotel : "Назва готеля",
 			placeholder_desc : "Опис",
-			placeholder_enter_comment : "Введіть коментар до всіх замовлень тут",
+			placeholder_enter_comment : "Введіть коментар до замовленя тут",
+			placeholder_enter_comments : "Введіть коментар до всіх замовлень тут",
 		},
 	};
 	languages.en = en;
@@ -759,7 +792,7 @@ function changeLanguage(language){
 	}
 	currentLanguage = language;
 	languages.script.current = languages.script[currentLanguage];
-	$(document).ready(changeLanguageOnPage(language));
+	$(document).ready(setTimeout('changeLanguageOnPage(currentLanguage)' , 200));
 	changeLanguageOnServer(language);
 }
 function updateLanguage(){
@@ -767,7 +800,7 @@ function updateLanguage(){
 		currentLanguage = 'en';
 	}
 	languages.script.current = languages.script[currentLanguage];
-	$(document).ready(changeLanguageOnPage(currentLanguage));
+	$(document).ready(setTimeout('changeLanguageOnPage(currentLanguage)' , 200));
 }
 function changeLanguageOnPage(language){
 	changeLanguageOnTags(language);
