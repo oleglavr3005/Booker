@@ -727,6 +727,10 @@
 		    	succesTitle : "SUCCESFULLY CHANGED PASSWORD",
 		    	oldHeader : "OLD HEADER TEXT INSERT HERE",
 		    },
+		    message : {
+		    	success : "success",
+		    	danger : "danger",
+		    }
 		},
 		ua : {
 			calendar : {
@@ -776,6 +780,10 @@
 		    	succesTitle : "Успішна зміна пароля",
 		    	oldHeader : "OLD HEADER TEXT INSERT HERE ???",
 		    },
+		    message : {
+		    	success : "success",
+		    	danger : "danger",
+		    }
 		},
 	};
 	var placeholder = {
