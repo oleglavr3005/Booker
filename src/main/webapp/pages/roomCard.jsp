@@ -77,23 +77,23 @@ b {
 			<div class="container-fluid">
 				<div class="row" style="margin-top: 15px; margin-bottom: 0px;">
 					<div class="card-image col s4" style="position: relative;">
-						<div id="links">
-							<c:if test="${fn:length(room.photos) == 0}">
+						<div id="links${room.id}">
+							<c:if test="${fn:length(room.allPhotos) == 0}">
 								<a href="<i:urlToImage url="no.jpg" />" title="No image"
-									data-gallery> <img src="<i:urlToImage url="no.jpg" />"
+									data-gallery="#blueimp-gallery-${room.id}"> <img src="<i:urlToImage url="no.jpg" />"
 									alt="No image">
 								</a>
 							</c:if>
-							<c:if test="${fn:length(room.photos) != 0}">
-								<a href='<i:urlToImage url="${room.photos[0].img}" />'
-									data-gallery> <img
-									src="<i:urlToImage url="${room.photos[0].img }" />"
+							<c:if test="${fn:length(room.allPhotos) != 0}">
+								<a href='<i:urlToImage url="${room.allPhotos[0].img}" />'
+									data-gallery="#blueimp-gallery-${room.id}"> <img
+									src="<i:urlToImage url="${room.allPhotos[0].img }" />"
 									style="height: 170px; width: 200px; padding: 10px;">
 								</a>
 
 								<div style="display: none;">
-									<c:forEach items="${room.photos}" var="photo" begin="1">
-										<a href='<i:urlToImage url="${photo.img}" />' data-gallery>
+									<c:forEach items="${room.allPhotos}" var="photo" begin="1">
+										<a href='<i:urlToImage url="${photo.img}" />' data-gallery="#blueimp-gallery-${room.id}">
 											<img style="height: 60px;"
 											src="<i:urlToImage url="${photo.img}" />"
 											alt="<c:out value="${photo.id }"></c:out>">
