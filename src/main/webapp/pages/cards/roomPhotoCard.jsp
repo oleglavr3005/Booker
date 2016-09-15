@@ -8,26 +8,17 @@
 	href="${pageContext.servletContext.contextPath}/resources/js/image-picker/image-picker.css"
 	rel="stylesheet">
 
+<input id="main" type="hidden" value="${room.photos[0].img}" />
+
 <select class="image-picker masonry show-html" id="images"
 	multiple="multiple">
 	<c:forEach var="photo" items="${room.photos}">
 		<c:if test="${photo.id != 0}">
-		<c:if test="${main == ''}">
-				<script>
-			$('#main').val(${photo.img});
-		</script>
-			</c:if>
 			<option data-img-src="<i:urlToImage url="${photo.img }" />"
 				value="${photo.id}">${photo.desc }</option>
 		</c:if>
 	</c:forEach>
 </select>
-
-<c:if test="${main == ''}">
-	<script>
-			$('#main').val("new_room.jpg");
-		</script>
-</c:if>
 
 <script>
 document.getElementById("Img").src = "/booker/get_image/"
