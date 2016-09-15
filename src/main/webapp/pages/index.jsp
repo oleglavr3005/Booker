@@ -93,237 +93,220 @@ div #sidebar-wrapper {
 	<jsp:include page="header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 
-	<div class="container">
-		<h4 style="text-align: center; margin-top: 20px;">
-			<span id="index_search_header"></span>
-		</h4>
-
-		<!-- 		FORM START -->
-		<form id="myForm" action="search" method="post">
-			<input id="togler" type="hidden" name="togler" value="${togler}" />
-
-			<div class="row">
-
-				<div class="input-field col s8 offset-s2">
-					<input id="nam" type="text" class="validate" name="name"
-						value="${name}"> <label id="nameLbl"
-						data-error="${fmtName}" for="nam"><span
-						id="index_search_name"></span> </label>
-				</div>
-
-				<div class="input-field col s3 offset-s2">
-					<input type="text" name="startDate" id="date_from"
-						class="datepicker validate" onchange="onDate()"
-						style="cursor: default;" value="${startDate}"><label
-						id="startLbl" data-error="${fmtStart}" for="date_from"><span
-						id="index_search_start"></span></label>
-				</div>
-
-				<div class="input-field col s3 offset-s2">
-					<input type="text" name="endDate" id="date_to" onchange="onEndDate()"
-						class="datepicker validate" style="cursor: default;"
-						value="${endDate}"><label id="endLbl"
-						data-error="${fmtEnd}" for="date_to"><span
-						id="index_search_end"></span></label>
-				</div>
-
-			</div>
-
-			<div class="row">
-
-				<div class="col s3 offset-s2">
-					<div class="container-fluid">
-						<div class="row">
-							<i id="star1" class="fa fa-star col s1 fa-2x" aria-hidden="true"></i>
-							<i id="star2" class="fa fa-star col s1 offset-s1 fa-2x"
-								aria-hidden="true"></i> <i id="star3"
-								class="fa fa-star col s1 offset-s1 fa-2x" aria-hidden="true"></i>
-							<i id="star4" class="fa fa-star col s1 offset-s1 fa-2x"
-								aria-hidden="true"></i> <i id="star5"
-								class="fa fa-star col s1 offset-s1 fa-2x" aria-hidden="true"></i>
-						</div>
-
-						<div class="row">
-							<label class="labelstyle"><span id="index_search_price"></span></label>
-
-							<section class="range-slider">
-								<div id="rangeSlider"></div>
-							</section>
-						</div>
+	<div class="row">
+		<div class="col s6 offset-s1">
+			<h4 style="text-align: center; margin-top: 20px;">
+				<span id="index_search_header"></span>
+			</h4>
+	
+			<!-- 		FORM START -->
+			<form id="myForm" action="search" method="post">
+				<input id="togler" type="hidden" name="togler" value="${togler}" />
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="nam" type="text" class="validate" name="name"
+							value="${name}"> <label id="nameLbl"
+							data-error="${fmtName}" for="nam"><span
+							id="index_search_name"></span> </label>
+					</div>
+					<div class="input-field col s6">
+						<input type="text" name="startDate" id="date_from"
+							class="datepicker validate" onchange="onDate()"
+							style="cursor: default;" value="${startDate}"><label
+							id="startLbl" data-error="${fmtStart}" for="date_from"><span
+							id="index_search_start"></span></label>
+					</div>
+					<div class="input-field col s6">
+						<input type="text" name="endDate" id="date_to" onchange="onEndDate()"
+							class="datepicker validate" style="cursor: default;"
+							value="${endDate}"><label id="endLbl"
+							data-error="${fmtEnd}" for="date_to"><span
+							id="index_search_end"></span></label>
 					</div>
 				</div>
-
-				<div class="input-field col s3 offset-s2">
-					<input id="people" value="${people}" type="number"
-						class="rating validate" name="people" min=1 max=1000>
-					<!-- 					<input id="" type="text" class=""  -->
-					<!-- 						value="">  -->
-					<label id="pplLbl" data-error="${fmtPeople}" for="pplCount"><span
-						id="index_search_ppl"></span></label>
-				</div>
-
-
-
-			</div>
-			<div class="row">
-				<div id="search_divider" class="divider"
-					style="margin-bottom: 20px;"></div>
-
-				<div id="togle_place" class="col s12" style="margin-top: 18px;">
-					<div id="details_panel" style="display: none">
-						<div class="row">
+				<div class="row">
+					<div class="col s6">
+						<div class="container-fluid">
 							<div class="row">
-								<div class="col s4 offset-s1 ">
-
-									<h6 id="room_type" style="margin-bottom: 15px;"></h6>
-									<p>
-										<input type="checkbox" class="filled-in" id="typeStandart"
-											name="typeStandart" /> <label id="index_room_type_standart"
-											for="typeStandart"></label>
-									</p>
-									<p>
-										<input type="checkbox" class="filled-in" id="typeLux"
-											name="typeLux" /> <label id="index_room_type_lux"
-											for="typeLux"></label>
-									</p>
-									<p>
-										<input type="checkbox" class="filled-in" id="typeDelux"
-											name="typeDelux" /> <label id="index_room_type_delux"
-											for="typeDelux"></label>
-									</p>
-									<h6 id="room_food" style="margin-bottom: 15px;"></h6>
-									<p>
-										<input type="checkbox" class="filled-in" id="foodNone"
-											name="foodNone" /><label id="index_room_type_food_none"
-											for="foodNone"></label>
-									</p>
-									<p>
-										<input type="checkbox" class="filled-in" id="foodBreakfast"
-											name="foodBreakfast" /> <label
-											id="index_room_type_food_breakfast" for="foodBreakfast">BREAKFAST</label>
-									</p>
-									<p>
-										<input type="checkbox" class="filled-in" id="foodTwice"
-											name="foodTwice" /> <label id="index_room_type_food_twice"
-											for="foodTwice"></label>
-									</p>
-									<p>
-										<input type="checkbox" class="filled-in" id="foodFull"
-											name="foodFull" /> <label id="index_room_type_food_full"
-											for="foodFull">Full</label>
-									</p>
-
-								</div>
-								<div class="col s4 offset-s2 ">
-
-									<p style="margin-top: 20px;">
-										<input type="checkbox" class="filled-in" id="hasWiFi"
-											name="hasWiFi" /> <label id="label_wifi" for="hasWiFi"></label>
-									</p>
-									<p>
-										<input type="checkbox" class="filled-in" id="hasShower"
-											name="hasShower" /> <label id="label_shower" for="hasShower"></label>
-									</p>
-									<p>
-										<input type="checkbox" class="filled-in" id="hasParking"
-											name="hasParking" /> <label id="label_parking"
-											for="hasParking"></label>
-									</p>
-									<p>
-										<input type="checkbox" class="filled-in" id="hasCondition"
-											name="hasCondition" /> <label id="label_condition"
-											for="hasCondition"></label>
-									</p>
-									<p>
-										<input type="checkbox" class="filled-in" id="hasPool"
-											name="hasPool" /> <label id="label_pool" for="hasPool"></label>
-									</p>
-									<p>
-										<input type="checkbox" class="filled-in" id="hasGym"
-											name="hasGym" /> <label id="label_gym" for="hasGym"></label>
-									</p>
-									<p>
-										<input type="checkbox" class="filled-in" id="hasBalcony"
-											name="hasBalcony" /> <label id="label_balcony"
-											for="hasBalcony"></label>
-									</p>
-									<p>
-										<input type="checkbox" class="filled-in" id="noDeposit"
-											name="noDeposit" /> <label id="index_room_noDeposit"
-											for="noDeposit"></label>
-									</p>
-								</div>
+								<i id="star1" class="fa fa-star col s1 fa-2x" aria-hidden="true"></i>
+								<i id="star2" class="fa fa-star col s1 offset-s1 fa-2x"
+									aria-hidden="true"></i> <i id="star3"
+									class="fa fa-star col s1 offset-s1 fa-2x" aria-hidden="true"></i>
+								<i id="star4" class="fa fa-star col s1 offset-s1 fa-2x"
+									aria-hidden="true"></i> <i id="star5"
+									class="fa fa-star col s1 offset-s1 fa-2x" aria-hidden="true"></i>
 							</div>
 							<div class="row">
-								<div class="col s2" style="    width: 12%;">
-									<div class="rangePrint" id="printMinPrice" style="">
-										<%-- 									${minPrice} --%>
-										<input onchange="updateMinPrice()" id="inputPrintMinPrice" type="number"
-											name="inputPrintMinPrice" value="${minPrice}"
-											min="${minPrice}" max="${maxPrice}"
-											style="margin-bottom: 0px; text-align: center; margin-top: -5px; height: 1.5rem;">
-									</div>
-								</div>
-								<div class="col s8">
-									<label class="labelstyle"> <span
-										id="index_search_price_2"></span>
-									</label>
-									<section class="range-slider">
-										<div id="priceSlider"></div>
-									</section>
-								</div>
-								<div class="col s2" style="    width: 12%;">
-									<div class="rangePrint" id="printMaxPrice">
-										<%-- 									${maxPrice} --%>
-										<input onchange="updateMaxPrice()" id="inputPrintMaxPrice" type="number"
-											name="inputPrintMaxPrice" min="${minPrice}" max="${maxPrice}"
-											value="${maxPrice}"
-											style="margin-bottom: 0px; text-align: center; margin-top: -5px; height: 1.5rem;">
-									</div>
-								</div>
+								<label class="labelstyle"><span id="index_search_price"></span></label>
+	
+								<section class="range-slider">
+									<div id="rangeSlider"></div>
+								</section>
 							</div>
-
 						</div>
 					</div>
-
-					<div class="row">
-						<div class="col s2 offset-s1">
-							<a id="map_button" class="waves-effect waves-light btn"
-								style="width: 100%; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"></a>
-						</div>
-						<div class="col s6">
-							<!-- onclick="togle()" -->
-							<a id="togle" class="waves-effect waves-light btn"
-								style="background: #26A69A; text-align: center; width: 100%; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><i
-								id="arrow_icon" class="fa fa-angle-double-down col s1 fa-2x"
-								aria-hidden="true" style="margin-left: 45%"></i></a>
-						</div>
-						<div class="col s2">
-							<a id="search" class="waves-effect waves-light btn"
-								onclick="searchForm()"
-								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif; "></a>
-						</div>
+					<div class="input-field col s6">
+						<input id="people" value="${people}" type="number"
+							class="rating validate" name="people" min=1 max=1000>
+						<!-- 					<input id="" type="text" class=""  -->
+						<!-- 						value="">  -->
+						<label id="pplLbl" data-error="${fmtPeople}" for="pplCount"><span
+							id="index_search_ppl"></span></label>
 					</div>
-					<!-- MAP ========================================================================== -->
-					<jsp:include page="map.jsp"></jsp:include>
-					<!-- MAP End======================================================================= -->
 				</div>
-			</div>
-
-
-			<input id="minStars" type="hidden" value="${minStars}"
-				name="minStars" /> <input id="maxStars" type="hidden"
-				value="${maxStars}" name="maxStars" /> <input id="minPrice"
-				type="hidden" value="${minPrice}" name="minPrice" /> <input
-				id="maxPrice" type="hidden" value="${maxPrice}" name="maxPrice" />
-			<input id="minUserPrice" type="hidden" value="${minUserPrice}"
-				name="minUserPrice" /> <input id="maxUserPrice" type="hidden"
-				value="${maxUserPrice}" name="maxUserPrice" />
-			<!-- 				<input type="submit" value="Submit"> -->
-		</form>
-
-		<!-- 		FORM END -->
-
+				<div class="row">
+					<div id="search_divider" class="divider" style="margin-bottom: 20px;"></div>
+					<div id="togle_place" class="col s12" style="margin-top: 18px;">
+						<div id="details_panel" style="display: none">
+							<div class="row">
+								<div class="row">
+									<div class="col s4 offset-s1 ">
+	
+										<h6 id="room_type" style="margin-bottom: 15px;"></h6>
+										<p>
+											<input type="checkbox" class="filled-in" id="typeStandart"
+												name="typeStandart" /> <label id="index_room_type_standart"
+												for="typeStandart"></label>
+										</p>
+										<p>
+											<input type="checkbox" class="filled-in" id="typeLux"
+												name="typeLux" /> <label id="index_room_type_lux"
+												for="typeLux"></label>
+										</p>
+										<p>
+											<input type="checkbox" class="filled-in" id="typeDelux"
+												name="typeDelux" /> <label id="index_room_type_delux"
+												for="typeDelux"></label>
+										</p>
+										<h6 id="room_food" style="margin-bottom: 15px;"></h6>
+										<p>
+											<input type="checkbox" class="filled-in" id="foodNone"
+												name="foodNone" /><label id="index_room_type_food_none"
+												for="foodNone"></label>
+										</p>
+										<p>
+											<input type="checkbox" class="filled-in" id="foodBreakfast"
+												name="foodBreakfast" /> <label
+												id="index_room_type_food_breakfast" for="foodBreakfast">BREAKFAST</label>
+										</p>
+										<p>
+											<input type="checkbox" class="filled-in" id="foodTwice"
+												name="foodTwice" /> <label id="index_room_type_food_twice"
+												for="foodTwice"></label>
+										</p>
+										<p>
+											<input type="checkbox" class="filled-in" id="foodFull"
+												name="foodFull" /> <label id="index_room_type_food_full"
+												for="foodFull">Full</label>
+										</p>
+	
+									</div>
+									<div class="col s4 offset-s2 ">
+	
+										<p style="margin-top: 20px;">
+											<input type="checkbox" class="filled-in" id="hasWiFi"
+												name="hasWiFi" /> <label id="label_wifi" for="hasWiFi"></label>
+										</p>
+										<p>
+											<input type="checkbox" class="filled-in" id="hasShower"
+												name="hasShower" /> <label id="label_shower" for="hasShower"></label>
+										</p>
+										<p>
+											<input type="checkbox" class="filled-in" id="hasParking"
+												name="hasParking" /> <label id="label_parking"
+												for="hasParking"></label>
+										</p>
+										<p>
+											<input type="checkbox" class="filled-in" id="hasCondition"
+												name="hasCondition" /> <label id="label_condition"
+												for="hasCondition"></label>
+										</p>
+										<p>
+											<input type="checkbox" class="filled-in" id="hasPool"
+												name="hasPool" /> <label id="label_pool" for="hasPool"></label>
+										</p>
+										<p>
+											<input type="checkbox" class="filled-in" id="hasGym"
+												name="hasGym" /> <label id="label_gym" for="hasGym"></label>
+										</p>
+										<p>
+											<input type="checkbox" class="filled-in" id="hasBalcony"
+												name="hasBalcony" /> <label id="label_balcony"
+												for="hasBalcony"></label>
+										</p>
+										<p>
+											<input type="checkbox" class="filled-in" id="noDeposit"
+												name="noDeposit" /> <label id="index_room_noDeposit"
+												for="noDeposit"></label>
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col s2" style="    width: 12%;">
+										<div class="rangePrint" id="printMinPrice" style="">
+											<%-- 									${minPrice} --%>
+											<input onchange="updateMinPrice()" id="inputPrintMinPrice" type="number"
+												name="inputPrintMinPrice" value="${minPrice}"
+												min="${minPrice}" max="${maxPrice}"
+												style="margin-bottom: 0px; text-align: center; margin-top: -5px; height: 1.5rem;">
+										</div>
+									</div>
+									<div class="col s8">
+										<label class="labelstyle"> <span
+											id="index_search_price_2"></span>
+										</label>
+										<section class="range-slider">
+											<div id="priceSlider"></div>
+										</section>
+									</div>
+									<div class="col s2" style="    width: 12%;">
+										<div class="rangePrint" id="printMaxPrice">
+											<%-- 									${maxPrice} --%>
+											<input onchange="updateMaxPrice()" id="inputPrintMaxPrice" type="number"
+												name="inputPrintMaxPrice" min="${minPrice}" max="${maxPrice}"
+												value="${maxPrice}"
+												style="margin-bottom: 0px; text-align: center; margin-top: -5px; height: 1.5rem;">
+										</div>
+									</div>
+								</div>
+	
+							</div>
+						</div>
+	
+						<div class="row">
+							<div class="col s9">
+								<!-- onclick="togle()" -->
+								<a id="togle" class="waves-effect waves-light btn"
+									style="background: #26A69A; text-align: center; width: 100%; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><i
+									id="arrow_icon" class="fa fa-angle-double-down col s1 fa-2x"
+									aria-hidden="true" style="margin-left: 45%"></i></a>
+							</div>
+							<div class="col s3">
+								<a id="search" class="waves-effect waves-light btn"
+									onclick="searchForm()"
+									style="width: 100%; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif; "></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<input id="minStars" type="hidden" value="${minStars}"
+					name="minStars" /> <input id="maxStars" type="hidden"
+					value="${maxStars}" name="maxStars" /> <input id="minPrice"
+					type="hidden" value="${minPrice}" name="minPrice" /> <input
+					id="maxPrice" type="hidden" value="${maxPrice}" name="maxPrice" />
+				<input id="minUserPrice" type="hidden" value="${minUserPrice}"
+					name="minUserPrice" /> <input id="maxUserPrice" type="hidden"
+					value="${maxUserPrice}" name="maxUserPrice" />
+				<!-- 				<input type="submit" value="Submit"> -->
+			</form>
+	
+			<!-- 		FORM END -->
+		</div>
+		<div class="col s4">
+			<!-- MAP ========================================================================== -->
+			<jsp:include page="map.jsp"></jsp:include>
+			<!-- MAP End======================================================================= -->
+		</div>
 	</div>
 
 	<div class="container">
@@ -440,22 +423,7 @@ div #sidebar-wrapper {
 		})();
 
 		(function() {
-			var flag = 0;
-			var fladTwo = 0;
-			jQuery('#google_map').hide();
-			jQuery('#map_button').on('click', function() {
-				if (flag == 0) {
-					jQuery('#google_map').slideDown(500);
-					flag = 1;
-					if (fladTwo == 0) {
-						setTimeout(map_initialize, 500);
-						fladTwo = 1;
-					}
-				} else {
-					jQuery('#google_map').slideUp(500);
-					flag = 0;
-				}
-			});
+			map_initialize();
 		})();
 	</script>
 

@@ -68,5 +68,5 @@
 <script	src="${pageContext.servletContext.contextPath}/resources/js/map/showPointsOnMap.js"></script>
 
 <div class="col s12" style="margin-top: 18px; padding: 0;">
-	<div id="google_map" style="height: 400px; width: 83%;"></div>
+	<div id="google_map" style="margin: 0; height: 430px; width: 100%;"></div>
 </div>

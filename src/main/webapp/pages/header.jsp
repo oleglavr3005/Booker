@@ -164,7 +164,7 @@ img.logo {
 							<span class="header_regist"> </span></a>
 								<div id="signupModal" class="modal">
 									<div class="modal-header">
-										<h4 id="registrationHeader">
+										<h4 id="registrationHeader" style="margin-bottom: 0;">
 											<span class="header_regist"> </span>
 										</h4>
 									</div>
