@@ -10,7 +10,7 @@ function updateComment(){
 }
 
 function textIsValid(field) {
-	var re = /^([-a-zA-Zа-яА-Я0-9іІьїЇєЄ’.!/'" ]*)$/;
+	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’,?\|;:]}[{=+-_.!/'" ]*)$/;
 	return re.test(field);
 }
 
@@ -30,6 +30,7 @@ function valid(field) {
 }
 
 function invalid(field) {
+	$('#' + field + 'Lbl').addClass("active");
 	$('#' + field).removeClass("valid");
 	$('#' + field).addClass("invalid");
 }

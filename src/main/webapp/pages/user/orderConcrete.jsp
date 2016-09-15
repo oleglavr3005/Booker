@@ -389,10 +389,11 @@ div #sidebar-wrapper {
 								style="padding: 5px; padding-left: 20px; padding-right: 20px;">
 								<span id="order_concret_comment"></span>
 							</div>
-
+	<div class="input-field">
 							<textarea id="comment"
 								<c:if test="${order.status != 'ACTIVE'}">readonly</c:if>
 								class="materialize-textarea">${order.comment}</textarea>
+								<label id="commentLbl" data-error="COMMENT IS NOT VALID!" for="name"></label></div>
 						</div>
 						<!-- 						<div class="col s2 offset-s1"> -->
 						<!-- 							<a class="waves-effect waves-light btn" id="create_button" -->
