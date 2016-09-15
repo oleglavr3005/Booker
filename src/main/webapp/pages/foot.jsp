@@ -25,11 +25,11 @@
 			</li>
 		</div>
 		<div сlass="col s1 offset-s1"
-				style="color: #cccccc;float:right; font-size: 15px;">
-				<span id="footer_copyright"> </span>
+				style="color: #cccccc;float:right; font-size: 15px; margin-top: 5px;">
+				<span>Lighthouse group 2016</span>
 			</div>
 			<div class="col s1" style="color: #8c8c8c; font-size: 20px;padding-right:5px; float:right; width:auto;">
-				&#169 2016</div>
+				<img src="${pageContext.servletContext.contextPath}/resources/themes/images/foot1.png"></div>
 			
 		</div>
 	</section>
