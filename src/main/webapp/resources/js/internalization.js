@@ -718,18 +718,18 @@
 		    registration : {
 		    	wrongMail : "Email is wrong",
 		    	busyMail : "Email is allready in use",
-		    	regist : "Реєстрація",
-		    	succes : "SUCCES",
-		    	cont : "cont ????",
-		    	fald : "FAIL",
+		    	regist : "Registration",
+		    	succes : "Registration succes",
+		    	cont : "To complete the registration, go to the specified e-mail",
+		    	fald : "Registration fald",
 		    }, 
 		    settings : {
 		    	succesTitle : "SUCCESFULLY CHANGED PASSWORD",
 		    	oldHeader : "OLD HEADER TEXT INSERT HERE",
 		    },
 		    message : {
-		    	success : "success",
-		    	danger : "danger",
+		    	success : "Success change feedback",
+		    	danger : "Fald change feedback",
 		    }
 		},
 		ua : {
@@ -772,17 +772,17 @@
 		    	wrongMail : "Email не коректний",
 		    	busyMail : "Користувач з таким email вже зареєстрований",
 		    	regist : "Реєстрація",
-		    	succes : "Успішно",
-		    	cont : "cont ????",
-		    	fald : "Помилка",
+		    	succes : "Реєстрація пройшла успішно",
+		    	cont : "Для завершення реєстрації перейділь на вказаний e-mail",
+		    	fald : "Помилка реєстрації",
 		    }, 
 		    settings : {
 		    	succesTitle : "Успішна зміна пароля",
 		    	oldHeader : "OLD HEADER TEXT INSERT HERE ???",
 		    },
 		    message : {
-		    	success : "success",
-		    	danger : "danger",
+		    	success : "Редагування відгуку пройшло успішно",
+		    	danger : "Помилка редагування відгуку",
 		    }
 		},
 	};

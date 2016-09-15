@@ -24,8 +24,8 @@ function confirmRegistration(){
 
 function validateRegistrationForm() {
 	var ok = true;
-	ok = surnameIsValid($('#surname').val()) && ok;
-	ok = nameIsValid($('#name').val()) && ok;
+	ok = regSurnameIsValid($('#surname').val()) && ok;
+	ok = regNameIsValid($('#name').val()) && ok;
 	ok = emailIsValid($('#email').val()) && ok;
 	ok = passwordIsValid($('#password').val()) && ok;
 	ok = confirmPasswordIsValid($('#password').val(), $('#сpassword').val()) && ok;
@@ -53,7 +53,7 @@ function validateLetters(field) {
 	return re.test(field);
 }
 
-function surnameIsValid(name) {
+function regSurnameIsValid(name) {
 	if (name.length >= 1 && name.length <= 45
 			&& validateLetters(name)) {
 		valid('surname');
@@ -64,7 +64,7 @@ function surnameIsValid(name) {
 	}
 }
 
-function nameIsValid(name) {
+function regNameIsValid(name) {
 	if (name.length >= 1 && name.length <= 45
 			&& validateLetters(name)) {
 		valid('name');

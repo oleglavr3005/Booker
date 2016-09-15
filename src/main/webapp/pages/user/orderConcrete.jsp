@@ -152,22 +152,22 @@ div #sidebar-wrapper {
 			<div id="links">
 				<div class="row">
 					<div class="col s4">
-						<c:if test="${fn:length(hotel.photos) == 0}">
+						<c:if test="${fn:length(room.photos) == 0}">
 							<a href="<i:urlToImage url="no.jpg" />" title="No image"
 								data-gallery> <img style="width: 350px; height: 260px;"
 								src="<i:urlToImage url="no.jpg" />" alt="No image">
 							</a>
 						</c:if>
-						<c:if test="${fn:length(hotel.photos) != 0}">
-							<a href='<i:urlToImage url="${hotel.photos[0].img}" />'
+						<c:if test="${fn:length(room.photos) != 0}">
+							<a href='<i:urlToImage url="${room.photos[0].img}" />'
 								data-gallery> <img style="width: 350px; height: 260px;"
-								src="<i:urlToImage url="${hotel.photos[0].img}" />">
+								src="<i:urlToImage url="${room.photos[0].img}" />">
 							</a>
 
 
 							<div style="overflow-x: auto;">
 								<div style="margin: 10px; white-space: nowrap;">
-									<c:forEach items="${hotel.photos}" var="photo" begin="1">
+									<c:forEach items="${room.photos}" var="photo" begin="1">
 										<div style="display: inline-block;">
 											<a href='<i:urlToImage url="${photo.img}" />' data-gallery>
 												<img style="height: 60px;"
@@ -391,7 +391,7 @@ div #sidebar-wrapper {
 							</div>
 							<div class="input-field">
 								<textarea id="comment"
-									<c:if test="${order.status != 'ACTIVE'}">readonly</c:if>
+									<c:if test="${order.status != 'ACTIVE' || user.type == 'MANAGER'}">readonly</c:if>
 									class="materialize-textarea">${order.comment}</textarea>
 								<label id="commentLbl" data-error="COMMENT IS NOT VALID!"
 									for="name"></label>
@@ -399,16 +399,18 @@ div #sidebar-wrapper {
 						</div>
 					</div>
 
-					<div class="col s2 offset-s1">
-						<div class="row">
-							<a class="waves-effect waves-light btn" id="create_button"
-								onclick="updateComment(${order.id})"
-								style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-								<span id="request_approve"></span>
-							</a>
+					<c:if test="${order.status == 'ACTIVE' && user.type == 'USER'}">
+						<div class="col s2 offset-s1">
+							<div class="row">
+								<a class="waves-effect waves-light btn" id="create_button"
+									onclick="updateComment(${order.id})"
+									style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+									<span id="request_approve"></span>
+								</a>
+							</div>
+							<div class="row" id="commentInfo"></div>
 						</div>
-						<div class="row" id="commentInfo"></div>
-					</div>
+					</c:if>
 
 
 					<!-- 					<div class="col s4"> -->
