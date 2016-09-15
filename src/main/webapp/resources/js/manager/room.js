@@ -3,9 +3,10 @@ function createRoom() {
 	// var img = $('#photos').val() == '' ? 'new_hotel.jpg' :
 	// $('#photos').val();
 	var img = $('#photos').val();
+	alert( $('#hotelId').val());
 	if (validate()) {
 		$.get('../add_room', {
-			hotelId : $('#hotel_name').val(),
+			hotelId : $('#hotelId').val(),
 			type : $('#roomType').val(),
 			number : $('#number').val(),
 			bedsCount : $('#single').val(),

@@ -24,12 +24,13 @@
 				</ul>
 			</li>
 		</div>
-			<div class="col s1" style="color: #8c8c8c; font-size: 20px; margin-left: 60%;">
-				&#169 2016</div>
-			<div сlass="col s1 offset-s1"
-				style="color: #cccccc; font-size: 15px;">
-				<span id="footer_copyright"> </span>
+		<div сlass="col s1 offset-s1"
+				style="color: #cccccc;float:right; font-size: 15px; margin-top: 5px;">
+				<span>Lighthouse group 2016</span>
 			</div>
+			<div class="col s1" style="color: #8c8c8c; font-size: 20px;padding-right:5px; float:right; width:auto;">
+				<img src="${pageContext.servletContext.contextPath}/resources/themes/images/foot1.png"></div>
+			
 		</div>
 	</section>
 	

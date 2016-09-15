@@ -101,7 +101,7 @@
 	<input id="photos" type="hidden" />
 	<input id="hotelId" type="hidden" value="${hotelId}" />
 	<input id="lang" type="hidden" value="${language}" />
-
+	
 	<!-- Header ========================================================================= -->
 	<jsp:include page="../header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
@@ -129,17 +129,16 @@
 
 				<!-- 				HOTEL NAME -->
 
-				<div class="row">
-					<label class="labelstyle"><span
-							id="roomCreate_hotel"></span> </label> <select id="hotel_name"
-						class="chosen-select optionstyle">
-						<option class="optionstyle" selected="selected"
-							value="${hotels[0].id}">${hotels[0].name}</option>
-						<c:forEach var="hotel" items="${hotels}" begin="1">
-							<option class="optionstyle" value="${hotel.id}">${hotel.name}</option>
-						</c:forEach>
-					</select>
-				</div>
+<!-- 				<div class="row"> -->
+<!-- 					<label class="labelstyle"><span id="roomCreate_hotel"></span> -->
+<!-- 					</label> <select id="hotel_name" class="chosen-select optionstyle"> -->
+<!-- 						<option class="optionstyle" selected="selected" -->
+<%-- 							value="${hotels[0].id}">${hotels[0].name}</option> --%>
+<%-- 						<c:forEach var="hotel" items="${hotels}" begin="1"> --%>
+<%-- 							<option class="optionstyle" value="${hotel.id}">${hotel.name}</option> --%>
+<%-- 						</c:forEach> --%>
+<!-- 					</select> -->
+<!-- 				</div> -->
 
 				<!-- 			END OF HOTEL NAME -->
 
@@ -147,9 +146,13 @@
 				<!-- 						ROOM TYPE -->
 				<div class="row">
 					<select id="roomType" class="chosen-select optionstyle">
-						<option class="optionstyle" value="STANDART" selected="selected">STANDART</option>
-						<option class="optionstyle" value="LUX">LUX</option>
-						<option class="optionstyle" value="DELUX">DELUX</option>
+						<option id="subscribes_table_roomtype_standart"
+							class="optionstyle" value="STANDART" selected="selected">
+						</option>
+						<option id="subscribes_table_roomtype_lux" class="optionstyle"
+							value="LUX"></option>
+						<option id="subscribes_table_roomtype_delux" class="optionstyle"
+							value="DELUX"></option>
 					</select>
 				</div>
 				<!-- 						END OF ROOM TYPE -->
@@ -159,11 +162,14 @@
 				<!-- 						FOOD TYPE -->
 				<div class="row">
 					<select id="foodType" class="chosen-select optionstyle">
-						<option class="optionstyle" value="NONE" selected="selected">NONE
-						</option>
-						<option class="optionstyle" value="BREAKFAST">BREAKFAST</option>
-						<option class="optionstyle" value="TWICE">TWICE</option>
-						<option class="optionstyle" value="FULL">FULL</option>
+						<option id="subscribes_table_roomfood_none" class="optionstyle"
+							value="NONE" selected="selected"></option>
+						<option id="subscribes_table_roomfood_breakfast"
+							class="optionstyle" value="BREAKFAST"></option>
+						<option id="subscribes_table_roomfood_twice" class="optionstyle"
+							value="TWICE"></option>
+						<option id="subscribes_table_roomfood_full" class="optionstyle"
+							value="FULL"></option>
 					</select>
 				</div>
 				<!-- 						END OF FOOD TYPE -->
@@ -180,10 +186,9 @@
 							<!-- NUMBER -->
 
 							<div class="row" style="margin-bottom: 0px">
-								<input id="number" type="text" class="validate" name="number"
-									> <label id="numberLbl"
-									data-error="${fmtPeople}" for="number"><span
-										id="room_concrete_number"></span></label>
+								<input id="number" type="text" class="validate" name="number">
+								<label id="numberLbl" data-error="${fmtPeople}" for="number"><span
+									id="room_concrete_number"></span></label>
 							</div>
 
 							<!-- 							END OF NUMBER -->
@@ -192,10 +197,10 @@
 							<!-- 1 BEDS COUNT -->
 
 							<div class="row" style="margin-bottom: 0px">
-								<input id="single" onchange="checkBeds()" type="number" class="validate" name="single"
-									min=0 max=100> <label id="singleLbl"
-									data-error="${fmtPeople}" for="single"><span
-										id="room_concrete_single"></span> </label>
+								<input id="single" onchange="checkBeds()" type="number"
+									class="validate" name="single" min=0 max=100> <label
+									id="singleLbl" data-error="${fmtPeople}" for="single"><span
+									id="room_concrete_single"></span> </label>
 							</div>
 
 							<!-- 							END OF 1 BEDS COUNT -->
@@ -203,10 +208,10 @@
 							<!-- 2 BEDS COUNT -->
 
 							<div class="row" style="margin-bottom: 0px">
-								<input id="double" onchange="checkBeds()" type="number" class="validate" name="single"
-									min=0 max=100> <label id="doubleLbl"
-									data-error="${fmtPeople}" for="double"><span
-										id="room_concrete_double"></span></label>
+								<input id="double" onchange="checkBeds()" type="number"
+									class="validate" name="single" min=0 max=100> <label
+									id="doubleLbl" data-error="${fmtPeople}" for="double"><span
+									id="room_concrete_double"></span></label>
 							</div>
 
 							<!-- 							END OF 2 BEDS COUNT -->
@@ -219,7 +224,7 @@
 								<input id="price" type="number" class="validate"
 									name="percentage" min=1 max=1000000> <label
 									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><span
-										id="room_concrete_price"></span> </label>
+									id="room_concrete_price"></span> </label>
 							</div>
 
 							<!-- 							END OF PRICE -->
@@ -231,7 +236,7 @@
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="days" min=0 max=365> <label
 									id="daysLbl" data-error="${fmtPeople}" for="days"><span
-										id="room_concrete_days"></span> </label>
+									id="room_concrete_days"></span> </label>
 							</div>
 
 							<!-- 							END OF DAYS COUNT -->
@@ -243,7 +248,7 @@
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="percentage" min=0 max=100> <label
 									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><span
-										id="room_concrete_percentage"></span> </label>
+									id="room_concrete_percentage"></span> </label>
 							</div>
 
 							<!-- 							END OF PERCENTAGE COUNT -->
@@ -266,24 +271,28 @@
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasParking"
-									name="hasParking" /> <label id="label_parking" for="hasParking">PARKING</label>
+									name="hasParking" /> <label id="label_parking"
+									for="hasParking">PARKING</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasCondition"
-									name="hasCondition" /> <label id="label_condition"for="hasCondition">AIR
-									CONDITION</label>
+									name="hasCondition" /> <label id="label_condition"
+									for="hasCondition">AIR CONDITION</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasPool"
-									name="hasPool" /> <label id="label_pool"for="hasPool">SWIM POOL</label>
+									name="hasPool" /> <label id="label_pool" for="hasPool">SWIM
+									POOL</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasGym"
-									name="hasGym" /> <label id="label_gym"for="hasGym">FIT GYM</label>
+									name="hasGym" /> <label id="label_gym" for="hasGym">FIT
+									GYM</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasBalcony"
-									name="hasBalcony" /> <label id="label_balcony"for="hasBalcony">BALCONY</label>
+									name="hasBalcony" /> <label id="label_balcony"
+									for="hasBalcony">BALCONY</label>
 							</p>
 
 							<!-- 							FREE BOOK -->
@@ -297,14 +306,16 @@
 							<!-- 							SEND NOTIF -->
 							<p style="margin-top: 20px;">
 								<input type="checkbox" class="filled-in" id="sendNotif"
-									name="sendNotif" /> <label id="lbl_sendnotif" for="sendNotif">SEND NOTIF</label>
+									name="sendNotif" /> <label id="lbl_sendnotif" for="sendNotif">SEND
+									NOTIF</label>
 							</p>
 
 							<div class="row">
 								<a class="waves-effect waves-light btn" id="create_button"
 									onclick="createRoom()"
 									style="margin-left: 10px; text-align: center; width: 100%; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-									<span id="settings_enter_save">SAVE</span></a>
+									<span id="settings_enter_save">SAVE</span>
+								</a>
 								<p id="create_error" style="color: red"></p>
 							</div>
 							<script>

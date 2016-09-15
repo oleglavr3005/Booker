@@ -302,7 +302,7 @@ div #sidebar-wrapper {
 						<span class="table-title" id="room_header"></span>
 						<div class="actions">
 							<a id="createBtn"
-								href="${pageContext.servletContext.contextPath}/cabinet/create_room"
+								href="${pageContext.servletContext.contextPath}/cabinet/create_room?hotelId=${hotel.id}" 
 								class="my-btn waves-effect waves-light btn"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
 								<span class="btn_create_room"></span>
