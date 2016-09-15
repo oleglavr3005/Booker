@@ -36,7 +36,7 @@
 		tab_active : "Active",
 		tab_charts : "CHARTS",
 		card_edit : "Edit",
-		
+		card_no_orders : "Shopping cart is empty",
 		//admin page
 		admin_edit_name : "Hotel's name",
 		admin_edit_rating : "Rating",
@@ -502,7 +502,7 @@
 		card_header : "Всього пропозицій ",
 		card_no_periodicals : "Наявних  пропозицій немає",
 		card_no_hotels : "Готелів не знайдено",
-
+		card_no_orders : "Ваш кошик порожній",
 		room_card_count: "Вартість кімнати??",
 		room_card_info1 : "Ви отримаєте 100% повернення при відміні замовлення тільки за ",
 		room_card_info2 : " днів перед приїздом, після цього повернення становитиме тільки ",
@@ -521,7 +521,7 @@
 		card_status_ended : "Завершене",
 		card_status_removed : "Скасоване",
 
-		user_cart_header :"Кошик покупця",
+		user_cart_header :"Кошик",
 		
 		admin_edit_name : "Назва готелю",
 		admin_edit_rating : "Рейтинг",
