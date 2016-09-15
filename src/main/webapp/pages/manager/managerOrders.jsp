@@ -222,7 +222,7 @@ div.material-table .table-footer .dataTables_length {
 								<c:forEach var="order" items="${activeOrders}">
 									<tr class="order${order.id}">
 										<td class="lalign" style="text-align: center;"><a
-											href="${pageContext.servletContext.contextPath}/cabinet/order/${order.id}">#${order.id}</a></td>
+											href="${pageContext.servletContext.contextPath}/cabinet/manager_order/${order.id}">#${order.id}</a></td>
 
 										<td style="text-align: center;">${order.user.firstName} ${order.user.lastName}</td>
 										<td style="text-align: center;"><span
@@ -304,7 +304,7 @@ div.material-table .table-footer .dataTables_length {
 								<c:forEach var="order" items="${finishedOrders}">
 									<tr class="order${order.id}">
 										<td class="lalign" style="text-align: center;"><a
-											href="${pageContext.servletContext.contextPath}/cabinet/order/${order.id}">#${order.id}</a></td>
+											href="${pageContext.servletContext.contextPath}/cabinet/manager_order/${order.id}">#${order.id}</a></td>
 
 										<td style="text-align: center;">${order.user.firstName} ${order.user.lastName}</td>
 										<td style="text-align: center;"><span
@@ -389,7 +389,7 @@ div.material-table .table-footer .dataTables_length {
 								<c:forEach var="order" items="${allOrders}">
 									<tr class="order${order.id}">
 										<td class="lalign" style="text-align: center;"><a
-											href="${pageContext.servletContext.contextPath}/cabinet/order/${order.id}">#${order.id}</a></td>
+											href="${pageContext.servletContext.contextPath}/cabinet/manager_order/${order.id}">#${order.id}</a></td>
 
 										<td style="text-align: center;">${order.user.firstName} ${order.user.lastName}</td>
 										<td style="text-align: center;"><span
