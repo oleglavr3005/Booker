@@ -13,7 +13,7 @@ public class SmsSender {
 //	}
 	
 
-	public static void sendSms(String number, String text, int nmb) {
+	public static void sendSms(String number, String text) {
 
 		SendApi sd = new SendApi(LOGIN, PASS, "utf-8", true);
 		System.out.println(text);
@@ -23,7 +23,7 @@ public class SmsSender {
 	}
 	
 	public static void main(String[] args) {
-		sendSms("0630489892","sss",0);
+		sendSms("0630489892","sss");
 	}
 	
 	
