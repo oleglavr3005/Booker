@@ -391,7 +391,7 @@ div #sidebar-wrapper {
 							</div>
 							<div class="input-field">
 								<textarea id="comment"
-									<c:if test="${order.status != 'ACTIVE'}">readonly</c:if>
+									<c:if test="${order.status != 'ACTIVE' || user.type == 'MANAGER'}">readonly</c:if>
 									class="materialize-textarea">${order.comment}</textarea>
 								<label id="commentLbl" data-error="COMMENT IS NOT VALID!"
 									for="name"></label>
@@ -399,16 +399,18 @@ div #sidebar-wrapper {
 						</div>
 					</div>
 
-					<div class="col s2 offset-s1">
-						<div class="row">
-							<a class="waves-effect waves-light btn" id="create_button"
-								onclick="updateComment(${order.id})"
-								style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-								<span id="request_approve"></span>
-							</a>
+					<c:if test="${order.status == 'ACTIVE' && user.type == 'USER'}">
+						<div class="col s2 offset-s1">
+							<div class="row">
+								<a class="waves-effect waves-light btn" id="create_button"
+									onclick="updateComment(${order.id})"
+									style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+									<span id="request_approve"></span>
+								</a>
+							</div>
+							<div class="row" id="commentInfo"></div>
 						</div>
-						<div class="row" id="commentInfo"></div>
-					</div>
+					</c:if>
 
 
 					<!-- 					<div class="col s4"> -->
