@@ -31,17 +31,19 @@ function addNewComment(hotelId_val){
 			title : title_val
 		}, function(result) {
 			if(result != 'false'){
-				jQuery('#newComment').after(result); 
-				var next_id = jQuery('#newComment').next().attr('id');
-				jQuery('#' + next_id).remove();
-				jQuery('#' + next_id).remove();
+				var r = result.substring(result.indexOf('id') + 4)
+				var id = r.substring(0, r.indexOf('"'));
+				var double_el = jQuery('#' + id);
+				setTimeout('double_el.remove();', 501);
+				double_el.slideUp(500);
+				
 				jQuery('#newComment').after(result);
-				var element = jQuery('#' + next_id + " .date_posted");
+				var element = jQuery('#' + id + " .date_posted");
 				var date = element.text();
 				date = date.substring(0 , date.lastIndexOf(':'));
 				element.text(date);
 				$(".title_comment_span").text(languages[currentLanguage].title_comment_span);
-				jQuery('#newComment').next().slideDown();
+				jQuery('#newComment').next().slideDown(500);
 				
 				jQuery('#comment').val('');
 				jQuery('#title_comment').val('');

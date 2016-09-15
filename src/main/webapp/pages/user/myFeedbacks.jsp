@@ -83,9 +83,6 @@ div #sidebar-wrapper {
 						<span id="myfeedbacks_header"> </span>
 						<span id="myfeedbacks_count_of_feedbacks">${countOfFeedbacks}</span>
 					</c:if>
-					<c:if test="${countOfFeedbacks <= 0 }">
-						<span id="myfeedbacks_no_feedbacks"></span>
-					</c:if>
 				</h6>
 			</div>
 			<div class="col s5 offset-s2" >

@@ -17,6 +17,7 @@ import com.epam.task.database.service.OrderService;
 import com.epam.task.database.service.RoomService;
 import com.epam.task.util.MailSender;
 import com.epam.task.util.StringUtil;
+import com.epam.task.util.sms.SmsSender;
 
 @WebServlet("/cancel_order")
 public class CancelOrderServlet extends HttpServlet {
@@ -60,7 +61,7 @@ public class CancelOrderServlet extends HttpServlet {
 			}
 			String email = user.getEmail();
 			String phone = user.getPhoneNumber();
-			if (email != null) {
+			if (email != null && user.getEmailNotif()) {
 				new Thread(new Runnable() {
 
 					@Override
@@ -69,8 +70,18 @@ public class CancelOrderServlet extends HttpServlet {
 					}
 				}).start();
 			}
-			if (phone != null) {
-				// TODO: SEND SMS WITH moneyToReturn
+			if (phone != null && user.getPhoneNotif()) {
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						String text = "You order was canceled.";
+						if(moneyToReturn > 0) {
+							text += " You will receive a refund on card " + order.getCardNumber() + " (" + moneyToReturn + " Grn)";
+						}
+						SmsSender.sendSms(phone, text);
+					}
+				}).start();
 			}
 		}
 		order.setStatus(OrderStatus.CANCELED);

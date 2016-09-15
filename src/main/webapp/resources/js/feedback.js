@@ -15,7 +15,7 @@ function deleteFeedback(commentId) {
 function updateFeedback(commentId) {
 	var comment_val = jQuery('#feedback_' + commentId).val();
 	var title_val = jQuery('#title_feedback_' + commentId).val();
-	var rating_val = jQuery('#rate_span_' + commentId).text(); 
+	var rating_val = jQuery('#feedbacks_card_' + commentId + ' #rate_span').text(); 
 	
 	$.post(window.location.protocol + "//" + window.location.host + "/booker/change_feedback", {
 		feedbackId : commentId,
@@ -24,11 +24,13 @@ function updateFeedback(commentId) {
 		comment : comment_val
 	}, function(result) {
 		if(result == 'true'){ 
-			var comment = jQuery("#feedbacks_card_" + commentId);
-			comment.slideUp(500);
-			setTimeout('comment.remove()', 501);
+			var text = languages.script.current.message.success;
+			var content = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + text + '</div>';
+			jQuery('#button_panel_' + commentId).after(content);
 		}else{ 
-			$("#feedback_error_" + commentId).text("#### ERROR ####"); 
+			var text = languages.script.current.message.danger;
+			var content = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + text + '</div>';
+			jQuery('#button_panel_' + commentId).after(content);
 		}
 	});
 }
