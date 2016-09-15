@@ -103,6 +103,13 @@ div #sidebar-wrapper {
 	<jsp:include page="../header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 
+<!-- 	TEMP BUTTON FOR STATISTIC -->
+	<a class="waves-effect waves-light btn" id="create_button"
+					href="${pageContext.servletContext.contextPath}/cabinet/hotel_orders/${hotel.id}" 
+					style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
+					id=btn_update></span></a>
+<!-- 	END OF TEMP BUTTON FOR STATISTIC -->
+	
 	<div class="container" style="margin-top: 20px">
 
 		<div class="row">
