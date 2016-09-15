@@ -11,7 +11,7 @@ function addComments(delta) {
 	var max = indexShowComments + delta;
 	if(max >= comments.length){ 
 		max = comments.length;
-		jQuery("#commentButton").addClass("disabled");
+		jQuery("#commentButton").hide();
 	}
 	for(var i = 0; i < max; i++){
 		jQuery("#" + arrayComment[i]).slideDown(250);
