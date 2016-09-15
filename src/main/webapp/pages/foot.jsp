@@ -13,7 +13,7 @@
 		<div class="col s2" style=" float: left;">
 			<li class="dropup">
 				<a class="dropdown-toggle" data-toggle="dropdown" style="color: #ccd9dc; font-size: 18;">
-					<span class="foot_language">lang</span> 
+					<span class="foot_language"></span> 
 					<i class="fa fa-flag-o" aria-hidden="true"></i>
 				</a>
 				<ul class="dropdown-menu" style="font-size: 18;">
@@ -24,10 +24,8 @@
 				</ul>
 			</li>
 		</div>
-			<div class="col s1 offset-s9"
-				style="color: #8c8c8c; font-size: 20px;     margin-left: 65%;">
+			<div class="col s1 offset-s9" style="color: #8c8c8c; font-size: 20px;     margin-left: 65%;">
 				&#169 2016</div>
-
 			<div сlass="col s1 offset-s1"
 				style="color: #cccccc; font-size: 15px;">
 				<span id="footer_copyright"> </span>

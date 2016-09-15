@@ -282,7 +282,7 @@
 	}
 	var ua = {
 			
-		foot_languege : "Мова",
+		foot_language : "Мова",
 		roomCard_countOfFree : "Кількість вільних кімнат : ",
 		subscribes_table_status_active : "Активний",
 		subscribes_table_status_finished : "Завершений",
