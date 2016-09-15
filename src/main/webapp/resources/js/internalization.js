@@ -282,7 +282,7 @@
 	}
 	var ua = {
 			
-		foot_languege : "Мова",
+		foot_language : "Мова",
 		roomCard_countOfFree : "Кількість вільних кімнат : ",
 		subscribes_table_status_active : "Активний",
 		subscribes_table_status_finished : "Завершений",
@@ -677,8 +677,6 @@
 		    message_error : 'Can not add comment',
 		    info_toggle_open : 'Show additional info',
 		    info_toggle_hide : 'Hide additional info',
-		    first : "First",
-		    last : "Last",
 		    hotel : {
 		    	createSucces : "hotel was created",
 		    	createFail : "hotel wasnt created",
@@ -726,8 +724,6 @@
 		    message_error : 'Неможли додати коментар',
 		    info_toggle_open : 'Показати додаткову інформацію',
 		    info_toggle_hide : 'Сховати додаткову інформацію',
-		    first : "Попередня",
-		    last : "Наступна",
 		    hotel : {
 		    	createSucces : "Готель створений",
 		    	createFail : "Готель не був створений",
