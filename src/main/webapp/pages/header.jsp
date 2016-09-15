@@ -216,8 +216,8 @@ img.logo {
 											<button
 												class="modal-action modal-close waves-effect waves-red btn-flat col s2 offset-s1"
 												data-dismiss="modal" aria-hidden="true"
-												style="margin-left: 10px;">
-												<span class="header_regist_close"> </span>
+												style="margin-left: 20px; margin-top:5px;">
+												<span class="header_auth_close"> </span>
 											</button>
 										</div>
 	
