@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.epam.task.database.model.User;
-import com.epam.task.database.service.HotelService;
 import com.epam.task.util.StringUtil;
 
 @WebServlet("/cabinet/create_room")
@@ -26,9 +24,9 @@ public class RoomCreatePageServlet extends HttpServlet {
 			return;
 		}
 		
-		int managerId = ((User) request.getSession().getAttribute("user")).getId();
+		//int managerId = ((User) request.getSession().getAttribute("user")).getId();
 		request.setAttribute("hotelId", Integer.parseInt(hotelIdString));
-		request.setAttribute("hotels", new HotelService().getAllHotelsByManager(managerId));
+		//request.setAttribute("hotels", new HotelService().getAllHotelsByManager(managerId));
 		request.getRequestDispatcher("/pages/manager/roomCreate.jsp").forward(request, response);
 	}
 
