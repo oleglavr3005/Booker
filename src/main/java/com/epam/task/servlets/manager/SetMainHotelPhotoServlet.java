@@ -54,9 +54,11 @@ public class SetMainHotelPhotoServlet extends HttpServlet {
 			hotelPhotoService.updateHotelPhoto(p);
 		}
 		photo.setMain(true);			//set current photo as main
-		int updated = hotelPhotoService.updateHotelPhoto(photo);
-		
-		response.getWriter().write(updated > 0 ? photo.getImg() : "false");
+		hotelPhotoService.updateHotelPhoto(photo);
+
+		request.setAttribute("hotel", new HotelService().getHotelById(hotel.getId()));
+		request.getRequestDispatcher("/pages/cards/hotelPhotoCard.jsp").forward(request, response);
+		//response.getWriter().write(updated > 0 ? photo.getImg() : "false");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
