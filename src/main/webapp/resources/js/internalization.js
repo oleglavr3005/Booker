@@ -333,7 +333,7 @@
 		
 		my_feedback_delete : "Видалити",
 		order_concrete_order_date : "Дата замовлення",
-		tab_ended : "Завершенні",
+		tab_ended : "Завершені",
 		tab_all : "Всі",
 		tab_active : "Активні",
 	
@@ -770,6 +770,7 @@
 			placeholder_desc : "Description",
 			placeholder_enter_comment : "Enter comment to order here",
 			placeholder_enter_comments : "Enter comment to orders here",
+			placeholder_hellopage_search : "Enter city or hotel",
 		},
 		ua : {
 			placeholder_phone_number : "Телефоний номер",
@@ -778,6 +779,7 @@
 			placeholder_desc : "Опис",
 			placeholder_enter_comment : "Введіть коментар до замовленя тут",
 			placeholder_enter_comments : "Введіть коментар до всіх замовлень тут",
+			placeholder_hellopage_search : "Введіть місто чи готель",
 		},
 	};
 	languages.en = en;
