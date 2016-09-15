@@ -1,10 +1,24 @@
-function updateComment(){
+function updateComment(orderId) {
 	debugger;
 	var comment = $('#comment').val();
-	if (validateComment(comment)){
+	if (validateComment(comment)) {
 		alert("post to update");
-	}
-	else{
+		$.post("../../change_order_comment", {
+			orderId : orderId,
+			comment : comment
+		}, function(result) {
+			if (result == 'true') {
+				alert("succes");
+				$('#book' + orderId).text("SUCCES");
+				$('#book' + orderId).attr('disabled', true);
+				$('#remove' + orderId).attr('disabled', true);
+			} else {
+				alert("fail");
+				$('#book' + orderId).text("FAIL");
+				$('#book' + orderId).attr('disabled', true);
+			}
+		});
+	} else {
 		alert("invalid");
 	}
 }
