@@ -1,6 +1,6 @@
 package com.epam.task.database.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import com.epam.task.database.transformers.DataBaseField;
 
@@ -13,12 +13,12 @@ public class Counter {
 	private int hotelId;
 
 	@DataBaseField(fieldName = "date")
-	private Date date;
+	private Timestamp date;
 
 	@DataBaseField(fieldName = "count")
 	private int count;
 
-	public Counter(int id, int hotelId, Date date, int count) {
+	public Counter(int id, int hotelId, Timestamp date, int count) {
 		this.id = id;
 		this.hotelId = hotelId;
 		this.date = date;
@@ -41,11 +41,11 @@ public class Counter {
 		this.hotelId = hotelId;
 	}
 
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 

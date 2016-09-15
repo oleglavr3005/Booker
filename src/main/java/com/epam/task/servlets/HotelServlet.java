@@ -21,12 +21,14 @@ import com.epam.task.comparators.PriceRoomComparator;
 import com.epam.task.database.dto.FeedbackDto;
 import com.epam.task.database.dto.RoomDto;
 import com.epam.task.database.model.Conveniences;
+import com.epam.task.database.model.Counter;
 import com.epam.task.database.model.Feedback;
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.Order;
 import com.epam.task.database.model.Room;
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.ConveniencesService;
+import com.epam.task.database.service.CounterService;
 import com.epam.task.database.service.FeedbackService;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.OrderService;
@@ -197,6 +199,15 @@ public class HotelServlet extends HttpServlet {
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("/pages/roomCard.jsp").forward(request, response);
 		} else {	
+			CounterService counterService = new CounterService();
+			Counter counter = counterService.getCounterByHotelAndDate(hotel.getId(), 
+					new Timestamp(new java.util.Date().getTime()));
+			if(counter == null) {
+				counterService.insertCounter(new Counter(0, hotel.getId(), new Timestamp(new java.util.Date().getTime()), 1));
+			} else {
+				counter.setCount(counter.getCount() + 1);
+				counterService.updateCounter(counter);
+			}
 			request.getRequestDispatcher("/pages/hotel.jsp").forward(request, response);
 		}
 	}

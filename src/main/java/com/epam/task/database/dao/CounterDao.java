@@ -1,11 +1,13 @@
 package com.epam.task.database.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.epam.task.database.model.Counter;
 import com.epam.task.database.transformers.UniversalTransformer;
@@ -18,7 +20,7 @@ public class CounterDao {
 	private final String UPDATE_COUNTER = "UPDATE `visitor_counter` SET hotel_id = ?, date = ?, `count` = ? WHERE visitor_counter_id = ?";
 	private final String SELECT_COUNTER_BY_HOTEL = "SELECT * FROM `visitor_counter` WHERE hotel_id = ?";
 	private final String SELECT_COUNTER_BY_ID = "SELECT * FROM `visitor_counter` WHERE visitor_counter_id = ?";
-	private final String SELECT_COUNTER_BY_HOTEL_AND_DATE = "SELECT * FROM `visitor_counter` WHERE hotel_id = ? AND date LIKE ?";
+	private final String SELECT_COUNTER_BY_HOTEL_AND_DATE = "SELECT * FROM `visitor_counter` WHERE hotel_id = ? AND date = ?";
 
 	public CounterDao(Connection connection) {
 		super();
@@ -55,14 +57,14 @@ public class CounterDao {
 		}
 	}
 
-	public Counter getCounterByHotel(int hotelId) {
+	public List<Counter> getCountersByHotel(int hotelId) {
 		try (PreparedStatement statment = connection.prepareStatement(SELECT_COUNTER_BY_HOTEL)){
 			statment.setInt(1, hotelId);
 			ResultSet rs = statment.executeQuery();
-			return UniversalTransformer.getObjectFromRS(rs, Counter.class);
+			return UniversalTransformer.getCollectionFromRS(rs, Counter.class);
 		} catch(SQLException e){
 			e.printStackTrace();
-			return null;
+			return new ArrayList<>();
 		}
 	}
 
@@ -77,7 +79,7 @@ public class CounterDao {
 		}
 	}
 
-	public Counter getCounterByHotelAndDate(int hotelId, Date date) {
+	public Counter getCounterByHotelAndDate(int hotelId, Timestamp date) {
 		try (PreparedStatement statment = connection.prepareStatement(SELECT_COUNTER_BY_HOTEL_AND_DATE)){
 			statment.setInt(1, hotelId);
 			statment.setString(2, new SimpleDateFormat("yyyy-MM-dd").format(date));

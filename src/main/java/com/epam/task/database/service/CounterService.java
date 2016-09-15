@@ -1,6 +1,7 @@
 package com.epam.task.database.service;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.List;
 
 import com.epam.task.database.dao.manager.DaoManager;
 import com.epam.task.database.model.Counter;
@@ -22,15 +23,15 @@ public class CounterService {
 		return daoManager.executeAndClose(() -> daoManager.getCounterDao().updateCounter(counter));
 	}
 	
-	public Counter getCounterByHotel(int hotelId){
-		return daoManager.executeAndClose(() -> daoManager.getCounterDao().getCounterByHotel(hotelId));
+	public List<Counter> getCountersByHotel(int hotelId){
+		return daoManager.executeAndClose(() -> daoManager.getCounterDao().getCountersByHotel(hotelId));
 	}
 	
 	public Counter getCounterById(int id){
 		return daoManager.executeAndClose(() -> daoManager.getCounterDao().getCounterById(id));
 	}
 	
-	public Counter getCounterByHotelAndDate(int hotelId, Date date){
+	public Counter getCounterByHotelAndDate(int hotelId, Timestamp date){
 		return daoManager.executeAndClose(() -> daoManager.getCounterDao().getCounterByHotelAndDate(hotelId, date));
 	}
 }
