@@ -11,7 +11,7 @@ function createOrder(orders) {
 function bookOrderCard(orderId, daysCount,phoneNumber) {
 	var localComment = orderId == null ? $('#comment').val() : $(
 			'#comment' + orderId).val();
-	if (validateComment(localComment)){
+	if (validateComment(localComment,orderId)){
 	var code = value($('#cardnum1' + orderId).val()) + value($('#cardnum2' + orderId).val())
 			+ value($('#cardnum3' + orderId).val()) + value($('#cardnum4' + orderId).val());
 
@@ -229,12 +229,12 @@ function textIsValid(field) {
 	return re.test(field);
 }
 
-function validateComment(comment) {
+function validateComment(comment,orderId) {
 	if (comment == "" || (comment.length >= 5 && comment.length <= 1000 && textIsValid(comment))) {
-		valid('comment');
+		valid('comment' + orderId);
 		return true;
 	} else {
-		invalid('comment');
+		invalid('comment' + orderId);
 		return false;
 	}
 }
@@ -312,7 +312,7 @@ function validateNumber(field) {
 function validateFields(orderId) {
 	$('.error').empty();
 	var isValid = true;
-	isValid = isValid && phoneIsValid($('#phoneNumber'+orderId).val(),orderId);
+	//isValid = isValid && phoneIsValid($('#phoneNumber'+orderId).val(),orderId);
 	if ($('#CVC' + orderId).val().length != 3) {
 		$('#CVC' + orderId).after(
 				'<div class="error" style="width: 150px;">'+ languages.script.current.createOrder.cvvError +'</div>');

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="i" uri="../../WEB-INF/PrintImage.tld"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <html lang="en">
 
@@ -40,7 +40,7 @@
 	href="${pageContext.servletContext.contextPath}/resources/css/table.css">
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/css/style.css">
-	
+
 <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.5.1.css">
 <style>
 .btn {
@@ -160,7 +160,7 @@ div.material-table .table-footer .dataTables_length {
 
 	<div class="container">
 
-		<h4 style="text-align: center; margin-top: 20px;     color: #387f7b;">
+		<h4 style="text-align: center; margin-top: 20px; color: #387f7b;">
 			<span id="subscribes_header"></span>
 		</h4>
 
@@ -192,25 +192,32 @@ div.material-table .table-footer .dataTables_length {
 						<table id="tab1" class="purchase-table">
 							<thead>
 								<tr>
-									<th style="text-align: center; border-radius: 0;     background-color: #70b9b2; color: #e8f7f7;">
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
 										<p class="tb_head_id"></p>
 									</th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
 										<p class="tb_head_name"></p>
 									</th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
 										<p class="tb_head_room"></p>
 									</th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
 										<p class="tb_head_sdate"></p>
 									</th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
 										<p class="tb_head_edate"></p>
 									</th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
 										<p class="tb_head_price"></p>
 									</th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"></th>
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -222,13 +229,23 @@ div.material-table .table-footer .dataTables_length {
 										<td style="text-align: center;"><a
 											href="${pageContext.servletContext.contextPath}/hotel/${activeOrder.hotel.id}">${activeOrder.hotel.name}</a></td>
 
-										<td style="text-align: center;">${activeOrder.room.type}</td>
+										<td style="text-align: center;">
+											<c:if test="${activeOrder.room.type == 'STANDART'}">
+												<span id="subscribes_table_roomtype_standart"></span>
+											</c:if> <c:if test="${activeOrder.room.type == 'LUX'}">
+												<span id="subscribes_table_roomtype_lux"></span>
+											</c:if> <c:if test="${activeOrder.room.type == 'DELUX'}">
+												<span id="subscribes_table_roomtype_delux"></span>
+											</c:if>
+										</td>
 
 										<td style="text-align: center;"><span
-											id="start_date${activeOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${activeOrder.startDate}" /></span></td>
+											id="start_date${activeOrder.id}"><fmt:formatDate
+													pattern="yyyy-MM-dd" value="${activeOrder.startDate}" /></span></td>
 
-										<td style="text-align: center;"><span 
-											id="end_date${activeOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${activeOrder.endDate}" /></span></td>
+										<td style="text-align: center;"><span
+											id="end_date${activeOrder.id}"><fmt:formatDate
+													pattern="yyyy-MM-dd" value="${activeOrder.endDate}" /></span></td>
 
 										<script type="text/javascript"
 											src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
@@ -285,17 +302,23 @@ div.material-table .table-footer .dataTables_length {
 						<table id="tab2" class="purchase-table">
 							<thead>
 								<tr>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_id"></p></th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_name"></p></th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_room"></p></th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_sdate"></p></th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_edate"></p></th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_price"></p></th>
 								</tr>
 							</thead>
@@ -311,10 +334,12 @@ div.material-table .table-footer .dataTables_length {
 										<td style="text-align: center;">${finishedOrder.room.type}</td>
 
 										<td style="text-align: center;"><span
-											id="start_date${finishedOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${finishedOrder.startDate}" /></span></td>
+											id="start_date${finishedOrder.id}"><fmt:formatDate
+													pattern="yyyy-MM-dd" value="${finishedOrder.startDate}" /></span></td>
 
-										<td style="text-align: center;"><span 
-											id="end_date${finishedOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${finishedOrder.endDate}" /></span></td>
+										<td style="text-align: center;"><span
+											id="end_date${finishedOrder.id}"><fmt:formatDate
+													pattern="yyyy-MM-dd" value="${finishedOrder.endDate}" /></span></td>
 
 										<script type="text/javascript"
 											src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
@@ -361,21 +386,29 @@ div.material-table .table-footer .dataTables_length {
 						<table id="tab3" class="purchase-table">
 							<thead>
 								<tr>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_id">ID</p></th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_name"></p></th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_room"></p></th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_sdate"></p></th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_edate"></p></th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_price"></p></th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"><p
 											class="tb_head_status"></p></th>
-									<th style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"></th>
+									<th
+										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;"></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -390,10 +423,12 @@ div.material-table .table-footer .dataTables_length {
 										<td style="text-align: center;">${allOrder.room.type}</td>
 
 										<td style="text-align: center;"><span
-											id="start_date${allOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${allOrder.startDate}" /></span></td>
+											id="start_date${allOrder.id}"><fmt:formatDate
+													pattern="yyyy-MM-dd" value="${allOrder.startDate}" /></span></td>
 
-										<td style="text-align: center;"><span 
-											id="end_date${allOrder.id}"><fmt:formatDate pattern="yyyy-MM-dd" value="${allOrder.endDate}" /></span></td>
+										<td style="text-align: center;"><span
+											id="end_date${allOrder.id}"><fmt:formatDate
+													pattern="yyyy-MM-dd" value="${allOrder.endDate}" /></span></td>
 
 										<script type="text/javascript"
 											src="${pageContext.servletContext.contextPath}/resources/js/order/format.js"></script>
@@ -411,8 +446,7 @@ div.material-table .table-footer .dataTables_length {
 													class="card_status_active"></span></td>
 												<td style="text-align: center;"><span
 													style="color: red" id="all_after_status${allOrder.id}"></span>
-													<a
-													id="all_btn${allOrder.id }"
+													<a id="all_btn${allOrder.id }"
 													class="my-btn waves-effect waves-light btn"
 													style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif;"
 													onclick="removeOrderTable(${allOrder.id})"> <span
@@ -459,8 +493,8 @@ div.material-table .table-footer .dataTables_length {
 				</c:choose>
 			</div>
 			<!-- 			End of Tab #3 -->
-			
-			
+
+
 			<!-- 				Tab #4 -->
 			<div id="test4" class="col s12">
 
@@ -470,17 +504,17 @@ div.material-table .table-footer .dataTables_length {
 					</h4>
 					<div id="donutChart" style="height: 250px; float: left"></div>
 				</div>
-				
+
 				<div>
 					<h4 style="text-align: center; margin-top: 200px;">
 						<span id="orders_charts_MONTHCHART">MONTHLY ACTIVITY</span>
 					</h4>
-					<div id="lineChart" style="height: 250px; margin-bottom:30px"></div>
+					<div id="lineChart" style="height: 250px; margin-bottom: 30px"></div>
 				</div>
-			
+
 			</div>
 			<!-- 			End of Tab #4 -->
-			
+
 		</div>
 	</div>
 
@@ -821,12 +855,14 @@ $(document).ready(function()
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/order/removeOrder.js"></script>
 
-			<!-- CHARTS -->
- 	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
- 	<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+	<!-- CHARTS -->
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
- 	<script type="text/javascript" 
- 		src="${pageContext.servletContext.contextPath}/resources/js/charts/charts.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/charts/charts.js"></script>
 
 
 </body>
