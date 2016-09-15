@@ -280,6 +280,8 @@
 		btn_remove_selected : "Remove selected",
 		btn_decline : "Decline",
 		btn_approve : "Approve",
+		btn_declined : "Declined",
+		btn_approved : "Approved",
 		btn_send : "Send",
 	}
 	var ua = {
@@ -569,6 +571,8 @@
 		btn_remove_selected : "Видалити обране",
 		btn_decline : "Відхилити",
 		btn_approve : "Підтвердити",
+		btn_declined : "Відхилено",
+		btn_approved : "Підтверджено",
 		btn_send : "Надіслати",
 
 		header_regist: "Реєстрація",
