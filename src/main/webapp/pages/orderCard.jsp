@@ -70,7 +70,7 @@ b {
 
 <div class="divider" style="margin-bottom: 20px;"></div>
 
-	<input id="count" type="hidden" value="${countOfOrders}" />
+<input id="count" type="hidden" value="${countOfOrders}" />
 
 <c:if test="${countOfOrders == 0}">
 	<h5 style="color: red; margin-bottom: 63px;">
@@ -376,8 +376,8 @@ b {
 	    $('.tooltipped').tooltip({delay: 50,position: 'top'});
 	  });
 	</script>
-	
-	<script>
+
+<script>
 	var count = $('#count').val();
 		$('#periodicals_number_for_all_users').html(count);
 	</script>

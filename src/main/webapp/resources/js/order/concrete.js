@@ -1,12 +1,12 @@
 function updateComment(){
-	var comment = $('#comment').html();
+	debugger;
+	var comment = $('#comment').val();
 	if (validateComment(comment)){
 		alert("post to update");
 	}
 	else{
 		alert("invalid");
 	}
-	alert("WRTIE THIS FUCNTION IN ORDER/CONCRETE.JS");
 }
 
 function textIsValid(field) {
@@ -15,7 +15,7 @@ function textIsValid(field) {
 }
 
 function validateComment(comment) {
-	if (comment.length >= 10 && comment.length <= 1000 && textIsValid(comment)) {
+	if (comment.length >= 5 && comment.length <= 1000 && textIsValid(comment)) {
 		valid('comment');
 		return true;
 	} else {

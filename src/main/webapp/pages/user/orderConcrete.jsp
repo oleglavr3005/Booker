@@ -390,7 +390,7 @@ div #sidebar-wrapper {
 								<span id="order_concret_comment"></span>
 							</div>
 
-							<textarea
+							<textarea id="comment"
 								<c:if test="${order.status != 'ACTIVE'}">readonly</c:if>
 								class="materialize-textarea">${order.comment}</textarea>
 						</div>

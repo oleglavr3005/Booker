@@ -8,9 +8,10 @@ function createOrder(orders) {
 	// }
 }
 
-function bookOrderCard(orderId, daysCount) {
+function bookOrderCard(orderId, daysCount,phoneNumber) {
 	var localComment = orderId == null ? $('#comment').val() : $(
 			'#comment' + orderId).val();
+	if (validateComment(localComment)){
 	var code = value($('#cardnum1' + orderId).val()) + value($('#cardnum2' + orderId).val())
 			+ value($('#cardnum3' + orderId).val()) + value($('#cardnum4' + orderId).val());
 
@@ -105,11 +106,11 @@ function bookOrderCard(orderId, daysCount) {
 
 						'</div>' // col s8
 
-						+ '<div class="col s3">'
-						+ '<div class="input-field" style="margin-top:50px;"><input id="phone' + orderId + '" ' 
-						+ 'class="validate" value="${user.phoneNumber}"/><label ' 
-						+ 'id="phone' + orderId + 'Lbl" data-error="" for="phone' + orderId + '">ENTER PHONE NUMBER</label></div>' 
-						+'</div>'
+//						+ '<div class="col s3">'
+//						+ '<div class="input-field" style="margin-top:50px;"><input id="phone' + orderId + '" ' 
+//						+ 'class="validate" value="' + phoneNumber + '"/><label ' 
+//						+ 'id="phone' + orderId + 'Lbl" data-error="" for="phone' + orderId + '">ENTER PHONE NUMBER</label></div>' 
+//						+'</div>'
 						
 						'</div>' + // form
 						'</div>'
@@ -164,6 +165,10 @@ function bookOrderCard(orderId, daysCount) {
 			});
 		}
 	}
+	}
+	else {
+		alert("invalid comment");
+	}
 }
 
 function addToCart(roomId) {
@@ -217,6 +222,21 @@ function invalid(field) {
 	$('#' + field + 'Lbl').addClass("active");
 	$('#' + field).removeClass("valid");
 	$('#' + field).addClass("invalid");
+}
+
+function textIsValid(field) {
+	var re = /^([-a-zA-Zа-яА-Я0-9іІьїЇєЄ’.!/'" ]*)$/;
+	return re.test(field);
+}
+
+function validateComment(comment) {
+	if (comment == "" || (comment.length >= 5 && comment.length <= 1000 && textIsValid(comment))) {
+		valid('comment');
+		return true;
+	} else {
+		invalid('comment');
+		return false;
+	}
 }
 
 function validateNumber(field) {
