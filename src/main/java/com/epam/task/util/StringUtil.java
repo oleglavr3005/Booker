@@ -21,7 +21,7 @@ public class StringUtil {
 	public static boolean isInRatingRange (String stringToCheck) {
 		try {
 			int rating = Integer.parseInt(stringToCheck);
-			return (rating > 0 && rating < 11) ? true : false;
+			return (rating > 0 && rating < 5) ? true : false;
 		} catch (Exception e) {
 			return false;
 		}

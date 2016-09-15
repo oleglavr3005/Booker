@@ -1,7 +1,9 @@
 package com.epam.task.servlets;
 
 import java.io.IOException;
+import java.math.RoundingMode;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -80,7 +82,9 @@ public class AddFeedbackServlet extends HttpServlet {
 				newRating += feedback.getRating();
 			}
 			newRating /= feedbacks.size(); 
-			hotel.setRating(newRating);
+			DecimalFormat df = new DecimalFormat(".##");
+			df.setRoundingMode(RoundingMode.UP);
+			hotel.setRating(Double.parseDouble(df.format(newRating)));
 			hotelService.updateHotelRating(hotel);
 			
 			List<Feedback> listFeedBack = new ArrayList<Feedback>();
