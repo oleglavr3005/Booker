@@ -24,7 +24,7 @@ b {
 <!-- MOVE TO HOTEL -->
 <div style="margin: 20px;"></div>
 <c:if test="${fn:length(feedbacks) == 0}">
-	<h5 style="color: red; margin-bottom: 63px;">
+	<h5 style="color: red; margin-bottom: 63px; text-align: center;">
 		<span id="feedback_without_feedback"></span>
 	</h5>
 		<img src="${pageContext.servletContext.contextPath}/resources/images/comment.png" alt="comments" 
@@ -66,13 +66,13 @@ b {
 							            <li class="current"><span style="width:${feedback.rating * 20}%"></span></li>
 							        </ol>
 							        <span class="manager_hotel_star" style="font-size: 14; position: relative; left: 10px; top: 8px;"></span>
-									<span id="rate_span_${feedback.id}" style="font-size: 14; position: relative; left: 10px; top: 8px;">1</span>
+									<span id="rate_span" style="font-size: 14; position: relative; left: 10px; top: 8px;">${feedback.rating}</span>
 									<span style="font-size: 14; position: relative; left: 10px; top: 8px;"> / 5</span>
 							    </div>
 							</div>
 						</div>
 						<textarea id="feedback_${feedback.id}" class="materialize-textarea validate" style="padding-top: 0;"><c:out value="${feedback.comment}"/></textarea>
-						<div class="row" style="text-align: center;">
+						<div id="button_panel_${feedback.id}" class="row" style="text-align: center;">
 							<a class="waves-effect waves-light btn" onclick="deleteFeedback(${feedback.id})"
 								style="margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
 								<span class="feedback_error_${feedback.id}"></span>
