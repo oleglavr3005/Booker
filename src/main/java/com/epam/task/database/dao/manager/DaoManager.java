@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import com.epam.task.database.dao.ConveniencesDao;
+import com.epam.task.database.dao.CounterDao;
 import com.epam.task.database.dao.FeedbackDao;
 import com.epam.task.database.dao.HotelDao;
 import com.epam.task.database.dao.HotelPhotoDao;
@@ -28,6 +29,7 @@ public class DaoManager {
 	private ConveniencesDao conveniencesDao;
     private RequestDao requestDao;
     private MailConfirmDao mailConfirmDao;
+    private CounterDao counterDao;
     
     public DaoManager() {
     }
@@ -109,6 +111,14 @@ public class DaoManager {
 		else
 			mailConfirmDao.setConnection(getConnection());
 		return mailConfirmDao;
+	}
+
+	public CounterDao getCounterDao() {
+		if (counterDao == null)
+			counterDao = new CounterDao(getConnection());
+		else
+			counterDao.setConnection(getConnection());
+		return counterDao;
 	}
 	
     public <T> T executeAndClose(DaoCommand<T> command){
