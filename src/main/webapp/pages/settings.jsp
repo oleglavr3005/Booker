@@ -349,7 +349,7 @@
 								<a id="savePersonal" class="waves-effect waves-light btn"
 									onclick="createRequest()"
 									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-									class="settings_enter_save"></span></a>
+									class="btn_send"></span></a>
 							</div>
 						</div>
 
