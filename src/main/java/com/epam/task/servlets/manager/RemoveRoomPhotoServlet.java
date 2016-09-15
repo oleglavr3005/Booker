@@ -1,12 +1,15 @@
 package com.epam.task.servlets.manager;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.epam.task.database.model.RoomPhoto;
 import com.epam.task.database.service.RoomPhotoService;
 import com.epam.task.database.service.RoomService;
 
@@ -33,7 +36,18 @@ public class RemoveRoomPhotoServlet extends HttpServlet {
     			if(roomId == 0){
     				roomId = roomPhotoService.getRoomPhotoById(Integer.parseInt(photoIds[i])).getRoomId();
     			}
-    			roomPhotoService.deleteRoomPhoto(Integer.parseInt(photoIds[i]));
+    			int photoId = Integer.parseInt(photoIds[i]);
+    			RoomPhoto roomPhoto = roomPhotoService.getRoomPhotoById(photoId);
+    			roomPhotoService.deleteRoomPhoto(photoId);
+    			if(roomPhoto.isMain()) {
+    				//set another main photo
+    				List<RoomPhoto> roomPhotos = roomPhotoService.getRoomPhotosByRoom(roomId);
+    				if(!roomPhotos.isEmpty()) {
+    					RoomPhoto p = roomPhotos.get(0);
+    					p.setMain(true);
+    					roomPhotoService.updateRoomPhoto(p);
+    				}
+    			}
     		}
 			request.setAttribute("room", new RoomService().getRoomById(roomId));
 			request.getRequestDispatcher("/pages/cards/roomPhotoCard.jsp").forward(request, response);
