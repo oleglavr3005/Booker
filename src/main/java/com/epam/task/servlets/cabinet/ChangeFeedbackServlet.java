@@ -68,7 +68,7 @@ public class ChangeFeedbackServlet extends HttpServlet {
 			}
 			DecimalFormat df = new DecimalFormat(".##");
 			df.setRoundingMode(RoundingMode.UP);
-			hotel.setRating(Double.parseDouble(df.format(newRating)));
+			hotel.setRating(Double.parseDouble(df.format(newRating).replaceAll(",", ".")));
 			hotelService.updateHotel(hotel);
 		}
 		

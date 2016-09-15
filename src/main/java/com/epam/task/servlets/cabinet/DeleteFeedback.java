@@ -62,7 +62,7 @@ public class DeleteFeedback extends HttpServlet {
 				Hotel hotel = hotelService.getHotelById(hotelId);
 				DecimalFormat df = new DecimalFormat(".##");
 				df.setRoundingMode(RoundingMode.UP);
-				hotel.setRating(Double.parseDouble(df.format(newRating)));
+				hotel.setRating(Double.parseDouble(df.format(newRating).replaceAll(",", ".")));
 				hotelService.updateHotel(hotel);
 			}
 			response.getWriter().write(result > 0 ? "true" : "false");
