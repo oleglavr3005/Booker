@@ -102,10 +102,6 @@
 	<input id="hotelId" type="hidden" value="${hotelId}" />
 	<input id="lang" type="hidden" value="${language}" />
 	
-	<script>
-		alert($('#hotelId').val());
-	</script>
-
 	<!-- Header ========================================================================= -->
 	<jsp:include page="../header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
@@ -133,16 +129,16 @@
 
 				<!-- 				HOTEL NAME -->
 
-				<div class="row">
-					<label class="labelstyle"><span id="roomCreate_hotel"></span>
-					</label> <select id="hotel_name" class="chosen-select optionstyle">
-						<option class="optionstyle" selected="selected"
-							value="${hotels[0].id}">${hotels[0].name}</option>
-						<c:forEach var="hotel" items="${hotels}" begin="1">
-							<option class="optionstyle" value="${hotel.id}">${hotel.name}</option>
-						</c:forEach>
-					</select>
-				</div>
+<!-- 				<div class="row"> -->
+<!-- 					<label class="labelstyle"><span id="roomCreate_hotel"></span> -->
+<!-- 					</label> <select id="hotel_name" class="chosen-select optionstyle"> -->
+<!-- 						<option class="optionstyle" selected="selected" -->
+<%-- 							value="${hotels[0].id}">${hotels[0].name}</option> --%>
+<%-- 						<c:forEach var="hotel" items="${hotels}" begin="1"> --%>
+<%-- 							<option class="optionstyle" value="${hotel.id}">${hotel.name}</option> --%>
+<%-- 						</c:forEach> --%>
+<!-- 					</select> -->
+<!-- 				</div> -->
 
 				<!-- 			END OF HOTEL NAME -->
 
