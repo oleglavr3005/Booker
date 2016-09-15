@@ -579,12 +579,12 @@
 	}
 	var data_error = {
 		ua: {
-			nameLbl: "nameLbl",
-			surnameLbl: "surnameLbl",
-			emailLbl: "emailLbl",
-			passwordLbl: "passwordLbl",
-			сpasswordLbl: "сpasswordLbl",
-			mailPasswordLbl: "mailPasswordLbl",
+			nameLbl: "Некоректне імя",
+			surnameLbl: "Некоректне прізвище",
+			emailLbl: "Некоректний емейл",
+			passwordLbl: "Некоректний пароль",
+			сpasswordLbl: "Непідтверджений пароль",
+			mailPasswordLbl: "Некоректний емейл чи пароль",
 			
 			header_regist_succes: "header_regist_succes",
 			header_regist_confirmmail: "header_regist_confirmmail",
