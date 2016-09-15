@@ -135,4 +135,8 @@ public class OrderService {
 	public List<Order> getFinishedOrdersByUserAndHotel(int userId, int hotelId) {
 		return daoManager.executeAndClose(() -> daoManager.getOrderDao().getFinishedOrdersByUserAndHotel(userId, hotelId));
 	}
+
+	public List<Order> getOrdersByHotelAndStatus(int hotelId, OrderStatus status) {
+		return daoManager.executeAndClose(() -> daoManager.getOrderDao().getOrdersByHotelAndStatus(hotelId, status));
+	}
 }

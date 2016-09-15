@@ -13,9 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.epam.task.database.model.Order;
+import com.epam.task.database.model.Room;
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.OrderStatus;
+import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.OrderService;
+import com.epam.task.database.service.RoomService;
 
 @WebFilter("/cabinet/order/*")
 public class UserOrderFilter implements Filter {
@@ -44,7 +47,17 @@ public class UserOrderFilter implements Filter {
 			if(order != null && order.getStatus() != OrderStatus.ORDER) {
 				chain.doFilter(request, response);
 			} else {
-				((HttpServletResponse) response).sendError(404);
+				if(order != null) {
+					Room room = new RoomService().getRoomById(order.getRoomId());
+					int managerId = new HotelService().getHotelById(room.getHotelId()).getManagerId();
+					if(managerId == user.getId()) {
+						chain.doFilter(request, response);
+					} else {
+						((HttpServletResponse) response).sendError(404);
+					}
+				} else {
+					((HttpServletResponse) response).sendError(404);
+				}
 			}
 		} else {		//throw the unexpected visitor on the error page
 			((HttpServletResponse) response).sendError(404);

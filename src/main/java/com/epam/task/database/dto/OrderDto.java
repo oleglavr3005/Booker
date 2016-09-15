@@ -7,13 +7,16 @@ import java.util.List;
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.Order;
 import com.epam.task.database.model.Room;
+import com.epam.task.database.model.User;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.RoomService;
+import com.epam.task.database.service.UserService;
 
 public class OrderDto extends Order {
 	
 	private Hotel hotel;
 	private Room room;
+	private User user;
 	
 	public OrderDto(Order order){
 		this(order.getId(), order.getUserId(), order.getRoomId(), order.getStartDate(), order.getEndDate(), order.getStatus().toString(),
@@ -25,6 +28,7 @@ public class OrderDto extends Order {
 		super(id, userId, roomId, startDate, endDate, status, orderDate, price, comment, cardNumber);
 		room = new RoomService().getRoomById(roomId);
 		hotel = new HotelService().getHotelById(room.getHotelId());
+		user = new UserService().getUserById(userId);
 	}
 	
 	public static List<OrderDto> listConverter(List<Order> orders){
@@ -41,6 +45,10 @@ public class OrderDto extends Order {
 
 	public Room getRoom() {
 		return room;
+	}
+
+	public User getUser() {
+		return user;
 	}
 
 }
