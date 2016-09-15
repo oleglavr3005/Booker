@@ -194,7 +194,7 @@ div.material-table .table-footer .dataTables_length {
 									</th>
 									<th
 										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
-										<p class="tb_head_name"></p>
+										<p class="tb_manager_head_name"></p>
 									</th>
 									<th
 										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
@@ -214,7 +214,7 @@ div.material-table .table-footer .dataTables_length {
 									</th>
 									<th
 										style="text-align: center; border-radius: 0; background-color: #70b9b2; color: #e8f7f7;">
-										<p class="tb_head_room"></p>
+										<p class="tb_head_room_number"></p>
 									</th>
 									</tr>
 							</thead>
@@ -247,7 +247,7 @@ div.material-table .table-footer .dataTables_length {
 
 										<td style="text-align: center;">${order.price}</td>
 
-										<td style="text-align: center;">${order.room}</td>
+										<td style="text-align: center;">${order.room.number}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -329,7 +329,7 @@ div.material-table .table-footer .dataTables_length {
 
 										<td style="text-align: center;">${order.price}</td>
 
-										<td style="text-align: center;">${order.room}</td>
+										<td style="text-align: center;">${order.room.number}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -414,7 +414,7 @@ div.material-table .table-footer .dataTables_length {
 
 										<td style="text-align: center;">${order.price}</td>
 
-										<td style="text-align: center;">${order.room}</td>
+										<td style="text-align: center;">${order.room.number}</td>
 
 										<td style="text-align: center;">
 										<c:if test="${order.status == 'ACTIVE'}">
