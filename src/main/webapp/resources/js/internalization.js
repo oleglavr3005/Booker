@@ -29,6 +29,7 @@
 		
 		tab_personal : "Personal",
 		tab_contact : "Contacts",
+		tab_manage : "Manager",
 		tab_users : "Users",
 		tab_ended : "Ended",
 		tab_all : "All",
@@ -279,6 +280,7 @@
 		btn_remove_selected : "Remove selected",
 		btn_decline : "Decline",
 		btn_approve : "Approve",
+		btn_send : "Send",
 	}
 	var ua = {
 			
@@ -310,6 +312,7 @@
 		tab_personal : "Особисті налаштування",
 		tab_contact : "Контакти",
 		tab_users : "Користувачі",
+		tab_manage : "Менеджер",
 		admin_page_id : "ID",
 		admin_page_fNane : "І'мя",
 		admin_page_lName : "Прізвище",
@@ -333,7 +336,7 @@
 		
 		my_feedback_delete : "Видалити",
 		order_concrete_order_date : "Дата замовлення",
-		tab_ended : "Завершенні",
+		tab_ended : "Завершені",
 		tab_all : "Всі",
 		tab_active : "Активні",
 	
@@ -566,6 +569,7 @@
 		btn_remove_selected : "Видалити обране",
 		btn_decline : "Відхилити",
 		btn_approve : "Підтвердити",
+		btn_send : "Надіслати",
 
 		header_regist: "Реєстрація",
 	}
@@ -770,6 +774,7 @@
 			placeholder_desc : "Description",
 			placeholder_enter_comment : "Enter comment to order here",
 			placeholder_enter_comments : "Enter comment to orders here",
+			placeholder_hellopage_search : "Enter city or hotel",
 		},
 		ua : {
 			placeholder_phone_number : "Телефоний номер",
@@ -778,6 +783,7 @@
 			placeholder_desc : "Опис",
 			placeholder_enter_comment : "Введіть коментар до замовленя тут",
 			placeholder_enter_comments : "Введіть коментар до всіх замовлень тут",
+			placeholder_hellopage_search : "Введіть місто чи готель",
 		},
 	};
 	languages.en = en;

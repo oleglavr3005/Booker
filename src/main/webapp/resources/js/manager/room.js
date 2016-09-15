@@ -140,19 +140,19 @@ function checkRoomNumber(id, nmb) {
 		data : {
 			"hotelId" : id,
 			"roomNumber" : nmb
-		}
-	}).success(function(data) {
-		isValid = (data == "true");
-		if (!isValid) {
-			invalid('number');
+		}, success : function(data) {
+			isValid = (data == "true");
+			if (!isValid) {
+				invalid('number');
+				$('#numberLbl').attr("data-error", languages.script.current.hotel.numberBusy);
+			} else {
+				valid('number');
+			}
+		}, error : function(data) {
+			isValid = false;
 			$('#numberLbl').attr("data-error", languages.script.current.hotel.numberBusy);
-		} else {
-			valid('number');
+			invalid('number');
 		}
-	}).error(function(data) {
-		isValid = false;
-		$('#numberLbl').attr("data-error", languages.script.current.hotel.numberBusy);
-		invalid('number');
 	});
 	return isValid;
 }
