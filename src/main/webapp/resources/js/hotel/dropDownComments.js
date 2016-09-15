@@ -40,6 +40,7 @@ function addNewComment(hotelId_val){
 				var date = element.text();
 				date = date.substring(0 , date.lastIndexOf(':'));
 				element.text(date);
+				$(".title_comment_span").text(languages[currentLanguage].title_comment_span);
 				jQuery('#newComment').next().slideDown();
 				
 				jQuery('#comment').val('');
@@ -69,7 +70,7 @@ function validateComment() {
 	return ok;
 }
 function commentIsValid(comment) {
-	var isValid = comment.length >= 3 && comment.length < 999;
+	var isValid = comment.length < 999;
 	if (isValid) {
 		valid('comment');
 		return true;

@@ -237,14 +237,8 @@ function promoteToMain() {
 	if (validateComas(value)) {
 		$.post('../../set_main_hotel_photo', {
 			photoId : '' + value,
-		}, function(result) {
-			if (result != "false"){
-				document.getElementById("Img").src = "/booker/get_image/"
-						+ result;
-			}
-			else{
-				alert("fail");
-			}
+		}, function(photos) {
+			$('#switchContent').html(photos);
 		});
 	} else {
 		alert("validateFail");

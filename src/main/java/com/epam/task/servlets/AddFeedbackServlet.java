@@ -84,7 +84,7 @@ public class AddFeedbackServlet extends HttpServlet {
 			newRating /= feedbacks.size(); 
 			DecimalFormat df = new DecimalFormat(".##");
 			df.setRoundingMode(RoundingMode.UP);
-			hotel.setRating(Double.parseDouble(df.format(newRating)));
+			hotel.setRating(Double.parseDouble(df.format(newRating).replace(",", ".")));
 			hotelService.updateHotelRating(hotel);
 			
 			List<Feedback> listFeedBack = new ArrayList<Feedback>();
