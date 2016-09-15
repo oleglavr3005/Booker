@@ -8,14 +8,9 @@ function updateComment(orderId) {
 			comment : comment
 		}, function(result) {
 			if (result == 'true') {
-				alert("succes");
-				$('#book' + orderId).text("SUCCES");
-				$('#book' + orderId).attr('disabled', true);
-				$('#remove' + orderId).attr('disabled', true);
+				$('#commentInfo').text("SUCCES");
 			} else {
-				alert("fail");
-				$('#book' + orderId).text("FAIL");
-				$('#book' + orderId).attr('disabled', true);
+				$('#commentInfo').text("FAIL");
 			}
 		});
 	} else {
@@ -24,7 +19,7 @@ function updateComment(orderId) {
 }
 
 function textIsValid(field) {
-	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’,?\|;:]}[{=+-_.!/'" ]*)$/;
+	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’,?.!/'" ]*)$/;
 	return re.test(field);
 }
 

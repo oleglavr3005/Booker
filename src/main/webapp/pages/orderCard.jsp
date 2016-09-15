@@ -89,23 +89,23 @@ b {
 			<div class="container-fluid">
 				<div class="row" style="margin-top: 15px; margin-bottom: 10px;">
 					<div class="card-image col s4" style="position: relative;">
-						<div id="links">
+						<div id="links${order.id}">
 							<c:if test="${fn:length(order.room.photos) == 0}">
 								<a href="<i:urlToImage url="no.jpg" />" title="No image"
-									data-gallery> <img src="<i:urlToImage url="no.jpg" />"
+									data-gallery="#blueimp-gallery-${order.id}"> <img src="<i:urlToImage url="no.jpg" />"
 									alt="No image">
 								</a>
 							</c:if>
 							<c:if test="${fn:length(order.room.photos) != 0}">
 								<a href='<i:urlToImage url="${order.room.photos[0].img}" />'
-									data-gallery> <img
+									data-gallery="#blueimp-gallery-${order.id}"> <img
 									src="<i:urlToImage url="${order.room.photos[0].img }" />"
 									style="height: 170px; width: 200px; padding: 10px;">
 								</a>
 
 								<div style="display: none;">
 									<c:forEach items="${order.room.photos}" var="photo" begin="1">
-										<a href='<i:urlToImage url="${photo.img}" />' data-gallery>
+										<a href='<i:urlToImage url="${photo.img}" />' data-gallery="#blueimp-gallery-${order.id}">
 											<img style="height: 60px;"
 											src="<i:urlToImage url="${photo.img}" />"
 											alt="<c:out value="${photo.id }"></c:out>">

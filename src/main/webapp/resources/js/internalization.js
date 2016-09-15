@@ -29,6 +29,7 @@
 		
 		tab_personal : "Personal",
 		tab_contact : "Contacts",
+		tab_manage : "Manager",
 		tab_users : "Users",
 		tab_ended : "Ended",
 		tab_all : "All",
@@ -279,6 +280,9 @@
 		btn_remove_selected : "Remove selected",
 		btn_decline : "Decline",
 		btn_approve : "Approve",
+		btn_declined : "Declined",
+		btn_approved : "Approved",
+		btn_send : "Send",
 	}
 	var ua = {
 			
@@ -310,6 +314,7 @@
 		tab_personal : "Особисті налаштування",
 		tab_contact : "Контакти",
 		tab_users : "Користувачі",
+		tab_manage : "Менеджер",
 		admin_page_id : "ID",
 		admin_page_fNane : "І'мя",
 		admin_page_lName : "Прізвище",
@@ -566,6 +571,9 @@
 		btn_remove_selected : "Видалити обране",
 		btn_decline : "Відхилити",
 		btn_approve : "Підтвердити",
+		btn_declined : "Відхилено",
+		btn_approved : "Підтверджено",
+		btn_send : "Надіслати",
 
 		header_regist: "Реєстрація",
 	}

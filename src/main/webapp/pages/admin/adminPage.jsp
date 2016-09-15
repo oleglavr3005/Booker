@@ -225,11 +225,11 @@
 											
 										</c:if><c:if test="${request.status == 'DECLINED'}">
 											<div style="color: #F55151;">
-												<strong><span class="btn_decline"></span></strong>
+												<strong><span class="btn_declined"></span></strong>
 											</div>
 										</c:if> <c:if test="${request.status == 'APPROVED'}">
 											<div style="color: #3c763d;">
-												<strong><span class="btn_approve"></span></strong>
+												<strong><span class="btn_approved"></span></strong>
 											</div>
 
 										</c:if></td>
