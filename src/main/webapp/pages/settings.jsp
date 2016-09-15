@@ -273,7 +273,7 @@
 								<input type="checkbox" class="filled-in" id="phoneCheckBox"
 									name="phonoCheckBox" <c:if
 								test="${user.phoneNumber == null || user.phoneNumber == ''}">disabled</c:if>/> <label for="phoneCheckBox"> <span
-									id="settings_chk_mails">I WANT RECEIVE MESSAGES ABOUT
+									class="settings_chk_mails">I WANT RECEIVE MESSAGES ABOUT
 										NEW ROOMS!</span></label>
 							</p>
 						</div>
@@ -291,7 +291,7 @@
 									<input type="checkbox" class="filled-in" id="eMailBox"
 										name="eMailBox" <c:if
 								test="${user.email.substring(user.email.length()-1) == '*'}">disabled</c:if>/> <label for="eMailBox"> <span
-										id="settings_chk_mails"> </span></label>
+										class="settings_chk_mails"> </span></label>
 								</p>
 						</div>
 					</div>
