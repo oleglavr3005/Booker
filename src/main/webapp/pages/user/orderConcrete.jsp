@@ -152,22 +152,22 @@ div #sidebar-wrapper {
 			<div id="links">
 				<div class="row">
 					<div class="col s4">
-						<c:if test="${fn:length(hotel.photos) == 0}">
+						<c:if test="${fn:length(room.photos) == 0}">
 							<a href="<i:urlToImage url="no.jpg" />" title="No image"
 								data-gallery> <img style="width: 350px; height: 260px;"
 								src="<i:urlToImage url="no.jpg" />" alt="No image">
 							</a>
 						</c:if>
-						<c:if test="${fn:length(hotel.photos) != 0}">
-							<a href='<i:urlToImage url="${hotel.photos[0].img}" />'
+						<c:if test="${fn:length(room.photos) != 0}">
+							<a href='<i:urlToImage url="${room.photos[0].img}" />'
 								data-gallery> <img style="width: 350px; height: 260px;"
-								src="<i:urlToImage url="${hotel.photos[0].img}" />">
+								src="<i:urlToImage url="${room.photos[0].img}" />">
 							</a>
 
 
 							<div style="overflow-x: auto;">
 								<div style="margin: 10px; white-space: nowrap;">
-									<c:forEach items="${hotel.photos}" var="photo" begin="1">
+									<c:forEach items="${room.photos}" var="photo" begin="1">
 										<div style="display: inline-block;">
 											<a href='<i:urlToImage url="${photo.img}" />' data-gallery>
 												<img style="height: 60px;"
