@@ -2,6 +2,7 @@
 (function (){
 	var en = {
 	
+		my_feedback_edit : "Save",
 		foot_language : "Language",
 		roomCard_countOfFree : " free rooms",
 		subscribes_table_status_active : "Active",
@@ -15,7 +16,6 @@
 		subscribes_table_price : "Price",
 		orderConcret_title : "Order №",
 		order_concret_comment : "Comment",
-		myfeedbacks_count_of_feedbacks : " number of feedback",
 		myfeedbacks_no_feedbacks : " no feedback", 
 		myfeedbacks_header : "My feedback",		
 			
@@ -286,6 +286,7 @@
 	}
 	var ua = {
 			
+		my_feedback_edit : "Зберегти",
 		foot_language : "Мова",
 		roomCard_countOfFree : "Кількість вільних кімнат : ",
 		subscribes_table_status_active : "Активний",
@@ -299,7 +300,6 @@
 		subscribes_table_price : "Ціна",
 		orderConcret_title : "Замовлення №",
 		order_concret_comment : "Коментарій",
-		myfeedbacks_count_of_feedbacks : " кількість відгуків",
 		myfeedbacks_no_feedbacks : " немає відгуків", 
 		myfeedbacks_header : "Мої відгуки",	
 			
