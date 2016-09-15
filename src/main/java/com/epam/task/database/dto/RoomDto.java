@@ -41,6 +41,9 @@ public class RoomDto extends Room{
 				allPhotos.add(roomPhoto);
 			}
 		}
+		if(allPhotos.isEmpty()) {
+			allPhotos.add(new RoomPhoto(0, "no-image.png", "", 0, true));
+		}
 		boolean added = roomIds.add(roomId);
 		if(added) {
 			amount++;
