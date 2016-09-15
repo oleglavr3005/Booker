@@ -41,7 +41,6 @@ public class HomeServlet extends HttpServlet {
 
 		request.setAttribute("countOfHotels", countOfHotels);
 		request.setAttribute("countOfPages", countOfPages);
-		request.setAttribute("hotels", allHotels);
 		request.setAttribute("suitableHotels", hotels);
 		request.setAttribute("currentPage", page);
 		
@@ -58,6 +57,7 @@ public class HomeServlet extends HttpServlet {
 //					session.removeAttribute(name);
 //				}
 //			}
+			request.setAttribute("hotels", allHotels);
 			session.setAttribute("minPrice", roomService.getMinPrice());
 			session.setAttribute("maxPrice", roomService.getMaxPrice());
 			request.getRequestDispatcher("pages/index.jsp").forward(request, response);

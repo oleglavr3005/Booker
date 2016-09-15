@@ -155,11 +155,11 @@ public class FindHotelsServlet extends HttpServlet {
 				startDate, endDate, page, compareBy);
 		
 		request.setAttribute("suitableHotels", suitableHotels);
-		request.setAttribute("hotels", allHotels);
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
 		} else {
+			request.setAttribute("hotels", allHotels);
 			request.getRequestDispatcher("pages/index.jsp").forward(request, response);
 		}
 	}
