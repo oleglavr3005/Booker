@@ -76,9 +76,9 @@ div #sidebar-wrapper {
 	<div class="container" style="min-height: 345px;">
 
 
-		<div class="row">
-			<div class="col s3">
-				<h6>
+		<div class="row" style="padding-top: 30px; margin: 0;">
+			<div class="col s3 offset-s1">
+				<h6 style="font-size: 1.2rem;">
 					<c:if test="${countOfFeedbacks > 0 }">
 						<span id="myfeedbacks_header"> </span>
 						<span id="myfeedbacks_count_of_feedbacks">${countOfFeedbacks}</span>
@@ -88,18 +88,20 @@ div #sidebar-wrapper {
 					</c:if>
 				</h6>
 			</div>
-			<div class="col s5 offset-s4">
-				<c:if test="${countOfFeedbacks > 0 }">
-				<span class="sort_by"
-					style="font-size: 15; position: relative; /* display: inline-block; */ bottom: 3px;"></span>
-					<select id="compare" class="chosen-select optionstyle"
-						onchange="findPage(window.location.href,1)">
-						<option id="feedbacks_option_date_asc" class="optionstyle"
-							value="compareByDateAsc"></option>
-						<option id="feedbacks_option_date_desc" class="optionstyle"
-							value="compareByDateDesc" selected="selected"></option>
-					</select>
-				</c:if>
+			<div class="col s5 offset-s2" >
+				<div style="float: right;">
+					<c:if test="${countOfFeedbacks > 0 }">
+					<span class="sort_by"
+						style="font-size: 15; position: relative; /* display: inline-block; */ bottom: 3px;"></span>
+						<select id="compare" class="chosen-select optionstyle"
+							onchange="findPage(window.location.href,1)">
+							<option id="shoping_card_date_asc" class="optionstyle"
+								value="compareByDateAsc"></option>
+							<option id="shoping_card_date_desc" class="optionstyle"
+								value="compareByDateDesc" selected="selected"></option>
+						</select>
+					</c:if>
+				</div>
 			</div>
 		</div>
 

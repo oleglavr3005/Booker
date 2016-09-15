@@ -6,9 +6,8 @@
 
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/fontawesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/jPage/style.css">
-
-<link rel="stylesheet"
-	href="${pageContext.servletContext.contextPath}/resources/css/jPage/style.css">
+<link href="${pageContext.servletContext.contextPath}/resources/css/rating.css" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/jPage/style.css">
 
 <style>
 b {
@@ -43,34 +42,47 @@ b {
 								<a href="/booker/hotel/<c:out value="${feedback.hotel.id}"/>">
 								<c:out value="${feedback.hotel.name}"/></a>
 							</h4>
-							<a class="tooltipped index_search_stars" data-position="icon" data-tooltip="Stars"
-								style="color: #0d0d0d; text-decoration: none;"
-								data-tooltip-id="5701b81f-c345-f4bd-c005-58f8e04f7175"><c:forEach
-									var="i" begin="1" end="${feedback.rating}">
-									<i class="fa fa-lg fa-star" aria-hidden="true"></i>
-								</c:forEach> <c:forEach var="i" begin="${feedback.rating}" end="4">
-									<i class="fa fa-lg fa-star-o" aria-hidden="true"></i>
-								</c:forEach></a>
-							<span class="date_posted" style="padding-left: 20px;">
-								<c:out value="${feedback.date}"></c:out>
-							</span>
+							<div class="col s6" style="margin-top: 15px; padding-left: 0;">
+								<input id="title_feedback_${feedback.id}" class="validate" type="text" value="<c:out value="${feedback.title}"/>">
+								<label id="title_feedback_${feedback.id}_label" data-error="" for="title_feedback_${feedback.id}" class="">
+									<span id="title_feedback_span_${feedback.id}"></span>
+								</label>
+							</div>
+							<div class="col s6" style="margin-top: 15px;">
+								<div class="vote-block" rel="v:rating" style="overflow: inherit;">
+							        <div typeof="v:Rating">
+							            <div itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+							                <meta itemprop="bestRating" content="5">
+							                <meta property="v:rating" content="1">
+							                <meta itemprop="ratingCount" property="v:votes">
+							            </div>
+							        </div>
+							        <ol class="rating show-current">
+							            <li>5</li>
+							            <li>4</li>
+							            <li>3</li>
+							            <li>2</li>
+							            <li>1</li>
+							            <li class="current"><span style="width:${feedback.rating * 20}%"></span></li>
+							        </ol>
+							        <span class="manager_hotel_star" style="font-size: 14; position: relative; left: 10px; top: 8px;"></span>
+									<span id="rate_span_${feedback.id}" style="font-size: 14; position: relative; left: 10px; top: 8px;">1</span>
+									<span style="font-size: 14; position: relative; left: 10px; top: 8px;"> / 5</span>
+							    </div>
+							</div>
+						</div>
+						<textarea id="feedback_${feedback.id}" class="materialize-textarea validate" style="padding-top: 0;"><c:out value="${feedback.comment}"/></textarea>
+						<div class="row" style="text-align: center;">
+							<a class="waves-effect waves-light btn" onclick="deleteFeedback(${feedback.id})"
+								style="margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+								<span class="feedback_error_${feedback.id}"></span>
+								<span class="my_feedback_delete"></span>
+							</a>
+							<a class="waves-effect waves-light btn" onclick="updateFeedback(${feedback.id})" style="background: #26A69A;text-align: center;color: #F7F7F7;">
+								<span class="my_feedback_edit">Edit</span>
+							</a>
 						</div>
 					</div>
-				</div>
-				<div class="row" style="margin-bottom: 5px; padding-top: 0;">
-					<div style="margin: 10px;">
-						<span class="title_comment_span" style="font-weight: bold; margin : 0;"></span> : 
-						<c:out value="${feedback.title}"></c:out>
-						<br>
-						<c:out value="${feedback.comment}"></c:out>
-					</div>
-				</div>
-				<div class="row" style="padding-left: calc(50% - 80px);">
-					<a class="waves-effect waves-light btn" onclick="deleteComment(${feedback.id})"
-						style="width: 160px; margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-						<span class="feedback_error"></span>
-						<span class="my_feedback_delete"></span>
-					</a>
 				</div>
 			</div>
 		</div>
@@ -144,3 +156,4 @@ b {
 	    $('.tooltipped').tooltip({delay: 50,position: 'top'});
 	  });
 </script>
+<script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/hotel/rating.js"></script>
