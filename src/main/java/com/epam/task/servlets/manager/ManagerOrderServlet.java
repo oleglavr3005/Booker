@@ -1,28 +1,26 @@
-package com.epam.task.servlets.cabinet;
+package com.epam.task.servlets.manager;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
-
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.Order;
 import com.epam.task.database.model.Room;
+import com.epam.task.database.model.User;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.OrderService;
 import com.epam.task.database.service.RoomService;
+import com.epam.task.database.service.UserService;
 
-@WebServlet("/cabinet/order/*")
-public class OrderConcreteServlet extends HttpServlet {
+@WebServlet("/cabinet/manager_order/*")
+public class ManagerOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final Logger LOGGER = Logger.getLogger(OrderConcreteServlet.class);
 
-    public OrderConcreteServlet() {
+    public ManagerOrderServlet() {
         super();
     }
 
@@ -36,18 +34,14 @@ public class OrderConcreteServlet extends HttpServlet {
 		Order order = new OrderService().getOrderById(orderId);
 		Room room = new RoomService().getRoomById(order.getRoomId());
 		Hotel hotel = new HotelService().getHotelById(room.getHotelId());		
-//		List<HotelPhoto> hotelPhoto = new HotelPhotoService().getHotelPhotosByHotel(room.getHotelId());
+		User user = new UserService().getUserById(order.getUserId());
 		
 		request.setAttribute("hotel", hotel);
 		request.setAttribute("order", order);
 		request.setAttribute("room", room);
-//		if (hotelPhoto.size() > 0) {
-//			request.setAttribute("MainPhoto", hotelPhoto.get(0));
-//			hotelPhoto.remove(0);
-//			request.setAttribute("hotelPhotos", hotelPhoto);
-//		}
+		request.setAttribute("user", user);
 		
-		request.getRequestDispatcher("/pages/user/orderConcrete.jsp").forward(request, response);
+		request.getRequestDispatcher("/pages/manager/managerOrderConcrete.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
