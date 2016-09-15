@@ -197,35 +197,35 @@
 					</div>
 					<div class="row inline field fields">
 						<div class="input-field col s8 offset-s2">
-							<div class="ui pointing label" style="background-color: #f7f7f7;">
-								<span id="settings_enter_pass"
-									style="color: #b7b2b2; background-color: #9990;"></span>
-							</div>
+<!-- 							<div class="ui pointing label" style="background-color: #f7f7f7;"> -->
+<!-- 								<span id="settings_enter_pass" -->
+<!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
+<!-- 							</div> -->
 							<input id="currentPassword" type="password" class="validate">
 							<label id="currentPasswordLbl" data-error="${fmtPass}"
-								for="currentPassword"></label>
+								for="currentPassword"><span id="settings_enter_pass"></span></label>
 						</div>
 					</div>
 					<div class="row inline field fields">
 						<div class="input-field col s8 offset-s2">
-							<div class="ui pointing label" style="background-color: #f7f7f7;">
-								<span id="settings_enter_passnew"
-									style="color: #b7b2b2; background-color: #9990;"></span>
-							</div>
+<!-- 							<div class="ui pointing label" style="background-color: #f7f7f7;"> -->
+<!-- 								<span id="settings_enter_passnew" -->
+<!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
+<!-- 							</div> -->
 							<input id="newPassword" type="password" class="validate">
 							<label id="newPasswordLbl" data-error="${fmtNewPass}"
-								for="newPassword"></label>
+								for="newPassword"><span id="settings_enter_passnew"></span></label>
 						</div>
 					</div>
 					<div class="row inline field fields">
 						<div class="input-field col s8 offset-s2">
-							<div class="ui pointing label" style="background-color: #f7f7f7;">
-								<span id="settings_enter_passrepeat"
-									style="color: #b7b2b2; background-color: #9990;"></span>
-							</div>
+<!-- 							<div class="ui pointing label" style="background-color: #f7f7f7;"> -->
+<!-- 								<span id="settings_enter_passrepeat" -->
+<!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
+<!-- 							</div> -->
 							<input id="repeatPassword" type="password" class="validate">
 							<label id="repeatPasswordLbl" data-error="${fmtRepPass}"
-								for="repeatPassword"></label>
+								for="repeatPassword"><span id="settings_enter_passrepeat"></span></label>
 						</div>
 					</div>
 					<div class="row" style="margin-top: 20px;">
@@ -250,13 +250,13 @@
 
 					<div class="row fields">
 						<div class="input-field col s12">
-							<div class="ui pointing label" style="background-color: #f7f7f7;">
-								<span id="settings_enter_phone"
-									style="color: #b7b2b2; background-color: #9990;"></span>
-							</div>
+<!-- 							<div class="ui pointing label" style="background-color: #f7f7f7;"> -->
+<!-- 								<span id="settings_enter_phone" -->
+<!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
+<!-- 							</div> -->
 							<input id="phoneNumber" type="text" class="validate"
 								value="${user.phoneNumber}" length="45"> <label
-								id="phoneLbl" data-error="${fmtName}" for="phoneNumber">
+								id="phoneLbl" data-error="${fmtName}" for="phoneNumber"><span id="settings_enter_phone"></span>
 							</label>
 
 							<!-- 							<div class="switch"> -->

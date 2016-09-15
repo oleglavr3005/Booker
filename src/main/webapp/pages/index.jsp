@@ -104,14 +104,14 @@ div #sidebar-wrapper {
 
 			<div class="row">
 
-				<div class="col s8 offset-s2">
+				<div class="input-field col s8 offset-s2">
 					<input id="nam" type="text" class="validate" name="name"
 						value="${name}"> <label id="nameLbl"
 						data-error="${fmtName}" for="nam"><span
 						id="index_search_name"></span> </label>
 				</div>
 
-				<div class="col s3 offset-s2">
+				<div class="input-field col s3 offset-s2">
 					<input type="text" name="startDate" id="date_from"
 						class="datepicker validate" onchange="onDate()"
 						style="cursor: default;" value="${startDate}"><label
@@ -119,7 +119,7 @@ div #sidebar-wrapper {
 						id="index_search_start"></span></label>
 				</div>
 
-				<div class="col s3 offset-s2">
+				<div class="input-field col s3 offset-s2">
 					<input type="text" name="endDate" id="date_to" onchange="onEndDate()"
 						class="datepicker validate" style="cursor: default;"
 						value="${endDate}"><label id="endLbl"
@@ -153,7 +153,7 @@ div #sidebar-wrapper {
 					</div>
 				</div>
 
-				<div class="col s3 offset-s2">
+				<div class="input-field col s3 offset-s2">
 					<input id="people" value="${people}" type="number"
 						class="rating validate" name="people" min=1 max=1000>
 					<!-- 					<input id="" type="text" class=""  -->

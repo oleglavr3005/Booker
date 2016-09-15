@@ -275,26 +275,20 @@ function getInfoFromGoogle() {
 }
 
 function changeIsDeleted() {
-	var deleted = document.getElementById('isDeleted').checked;
-	$('#name').prop('disabled', deleted);
-	// $('#rating').prop('readonly', deleted);
-	$('#address').prop('disabled', deleted);
-	$('#phone').prop('disabled', deleted);
-	$('#desc').prop('disabled', deleted);
-
-	if (deleted) {
-		$('#pushImage').addClass('disabled');
-	} else {
-		$('#pushImage').removeClass('disabled');
-	}
-	if (deleted) {
-		$('#btnToMain').addClass('disabled');
-	} else {
-		$('#btnToMain').removeClass('disabled');
-	}
-	if (deleted) {
-		$('#createBtn').addClass('disabled');
-	} else {
-		$('#createBtn').removeClass('disabled');
-	}
+//	var deleted = document.getElementById('isDeleted').checked;
+//	$('#name').prop('disabled', deleted);
+//	// $('#rating').prop('readonly', deleted);
+//	$('#address').prop('disabled', deleted);
+//	$('#phone').prop('disabled', deleted);
+//	$('#desc').prop('disabled', deleted);
+//
+//	if (deleted) {
+//		$('#pushImage').addClass('disabled');
+//		$('#createBtn').addClass('disabled');
+//		$('#btnToMain').addClass('disabled');
+//	} else {
+//		$('#pushImage').removeClass('disabled');
+//		$('#btnToMain').removeClass('disabled');
+//		$('#createBtn').removeClass('disabled');
+//	}
 }

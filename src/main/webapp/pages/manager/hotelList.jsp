@@ -95,7 +95,7 @@
 <body>
 	<input id="photos" type="hidden" />
 	<input id="lang" type="hidden" value="${language}" />
-
+	
 	<!-- Header ========================================================================= -->
 	<jsp:include page="../header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
@@ -227,10 +227,7 @@
 					style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
 					<span id=btn_create>CREATE</span>
 				</a>
-				<p id="create_error" style="color: red"></p>
-
-				
-			
+				<p id="create_error" style="color: red"></p>			
 			</div>
 			</div>
 	</div>
@@ -263,7 +260,6 @@
 			</div>
 		</div>
 
-
 		<!-- SWITCH CONTENT -->
 		<div id="switchContent" class="row">
 			<jsp:include page="../cards/managerHotelCard.jsp"></jsp:include>
@@ -271,7 +267,6 @@
 		<!-- END OF SWITCH CONTENT -->
 
 	</div>
-
 
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="../foot.jsp"></jsp:include>
