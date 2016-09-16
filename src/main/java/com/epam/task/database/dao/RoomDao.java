@@ -35,12 +35,17 @@ public class RoomDao {
 	
 	private final String HAS_WIFI = " AND r.has_wifi = true";
 	private final String HAS_SHOWER = " AND r.has_shower = true";
-	private final String HAS_PARKING = " AND r.has_parking = true";
 	private final String HAS_CONDITION = " AND r.has_condition = true";
-	private final String HAS_POOL = " AND r.has_pool = true";
-	private final String HAS_GYM = " AND r.has_gym = true";
 	private final String HAS_BALCONY = " AND r.has_balcony = true";
+	private final String HAS_TV = " AND r.has_tv = true";
 	private final String NO_DEPOSIT = " AND r.days_count < 0";
+	
+	private final String HAS_PARKING = " AND h.has_parking = true";
+	private final String HAS_POOL = " AND h.has_pool = true";
+	private final String HAS_GYM = " AND h.has_gym = true";
+	private final String HAS_SPA = " AND h.has_spa = true";
+	private final String HAS_SERVICE = " AND h.has_service = true";
+	private final String HAS_CLEANER = " AND h.has_cleaner = true";
 
 	private final String ORDER_BY_PRICE_ASC = " ORDER BY price ASC";
 	private final String ORDER_BY_PRICE_DESC = " ORDER BY price DESC";
@@ -54,19 +59,19 @@ public class RoomDao {
 	private final String GET_ROOM_BY_ID = "SELECT * FROM room WHERE room_id = ?";
 
 	private final String SQL_INSERT_ROOM = "INSERT INTO room "
-			+ "(hotel_id, number, type, beds_count, double_beds_count, price, has_wifi, has_shower, has_parking,"
-			+ " has_condition, has_pool, has_gym, has_balcony, food, days_count, percentage, is_deleted) "
-			+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+			+ "(hotel_id, number, type, beds_count, double_beds_count, price, has_wifi, has_shower,"
+			+ " has_condition, has_balcony, has_tv, food, days_count, percentage, is_deleted) "
+			+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 	private final String SQL_UPDATE_ROOM = "UPDATE room "
 			+ "SET hotel_id= ?, number= ?, type= ?, beds_count= ?, double_beds_count= ?, price= ?, has_wifi= ?, "
-			+ "has_shower= ?, has_parking= ?, has_condition= ?, has_pool= ?, has_gym= ?, "
-			+ "has_balcony= ?, food= ?, days_count= ?, percentage= ?, is_deleted= ? "
-			+ "WHERE room_id= ?;";
+			+ "has_shower= ?, has_condition= ?, "
+			+ "has_balcony= ?, has_tv = ?, food= ?, days_count= ?, percentage= ?, is_deleted= ? "
+			+ "WHERE room_id= ?";
 
 	private final String SQL_CHANGE_ROOM_STATUS = "UPDATE room " 
 			+ "SET is_deleted = ? "
-			+ "WHERE room_id = ? ;";
+			+ "WHERE room_id = ?";
 	
 	private final String GET_MIN_PRICE = "SELECT MIN(price) FROM room WHERE is_deleted = false";
 	private final String GET_MAX_PRICE = "SELECT MAX(price) FROM room WHERE is_deleted = false";
@@ -112,7 +117,8 @@ public class RoomDao {
 			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull,
 			int minPrice, int maxPrice, int people,
 			boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, 
-			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit,
+			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean hasSpa, 
+			boolean hasService, boolean hasCleaner, boolean hasTv, boolean noDeposit,
 			Timestamp startDate, Timestamp endDate, String orderBy) {
 
 		StringBuilder SQL = new StringBuilder(GET_ALL_SUITABLE_ROOMS_FOR_HOTEL);
@@ -171,11 +177,17 @@ public class RoomDao {
 		if (hasShower) {
 			SQL.append(HAS_SHOWER);
 		}
-		if (hasParking) {
-			SQL.append(HAS_PARKING);
-		}
 		if (hasCondition) {
 			SQL.append(HAS_CONDITION);
+		}
+		if (hasBalcony) {
+			SQL.append(HAS_BALCONY);
+		}
+		if (noDeposit) {
+			SQL.append(NO_DEPOSIT);
+		}
+		if (hasParking) {
+			SQL.append(HAS_PARKING);
 		}
 		if (hasPool) {
 			SQL.append(HAS_POOL);
@@ -183,11 +195,17 @@ public class RoomDao {
 		if (hasGym) {
 			SQL.append(HAS_GYM);
 		}
-		if (hasBalcony) {
-			SQL.append(HAS_BALCONY);
+		if (hasSpa) {
+			SQL.append(HAS_SPA);
 		}
-		if (noDeposit) {
-			SQL.append(NO_DEPOSIT);
+		if (hasService) {
+			SQL.append(HAS_SERVICE);
+		}
+		if (hasCleaner) {
+			SQL.append(HAS_CLEANER);
+		}
+		if (hasTv) {
+			SQL.append(HAS_TV);
 		}
 		
 		String ORDER_BY;
@@ -261,11 +279,9 @@ public class RoomDao {
 			st.setInt(i++, room.getPrice());
 			st.setBoolean(i++, room.getWifi());
 			st.setBoolean(i++, room.getShower());
-			st.setBoolean(i++, room.getParking());
 			st.setBoolean(i++, room.getCondition());
-			st.setBoolean(i++, room.getPool());
-			st.setBoolean(i++, room.getGym());
 			st.setBoolean(i++, room.getBalcony());
+			st.setBoolean(i++, room.getTv());
 			st.setString(i++, room.getFood().toString());
 			st.setInt(i++, room.getDaysCount());
 			st.setInt(i++, room.getPercentage());
@@ -296,11 +312,9 @@ public class RoomDao {
 			st.setInt(i++, room.getPrice());
 			st.setBoolean(i++, room.getWifi());
 			st.setBoolean(i++, room.getShower());
-			st.setBoolean(i++, room.getParking());
 			st.setBoolean(i++, room.getCondition());
-			st.setBoolean(i++, room.getPool());
-			st.setBoolean(i++, room.getGym());
 			st.setBoolean(i++, room.getBalcony());
+			st.setBoolean(i++, room.getTv());
 			st.setString(i++, room.getFood().toString());
 			st.setInt(i++, room.getDaysCount());
 			st.setInt(i++, room.getPercentage());
@@ -401,7 +415,8 @@ public class RoomDao {
 	public List<Room> getSuitableRooms(int id, boolean typeStandart, boolean typeLux, boolean typeDelux,
 			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull, int minPrice, int maxPrice,
 			int people, boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, boolean hasPool,
-			boolean hasGym, boolean hasBalcony, boolean noDeposit, Timestamp startDate, Timestamp endDate) {
+			boolean hasGym, boolean hasBalcony, boolean hasSpa, boolean hasService, boolean hasCleaner, boolean hasTv,
+			boolean noDeposit, Timestamp startDate, Timestamp endDate) {
 		
 		StringBuilder SQL = new StringBuilder(GET_ALL_SUITABLE_ROOMS_FOR_HOTEL);
 		//ROOM TYPE
@@ -459,11 +474,17 @@ public class RoomDao {
 		if (hasShower) {
 			SQL.append(HAS_SHOWER);
 		}
-		if (hasParking) {
-			SQL.append(HAS_PARKING);
-		}
 		if (hasCondition) {
 			SQL.append(HAS_CONDITION);
+		}
+		if (hasBalcony) {
+			SQL.append(HAS_BALCONY);
+		}
+		if (noDeposit) {
+			SQL.append(NO_DEPOSIT);
+		}
+		if (hasParking) {
+			SQL.append(HAS_PARKING);
 		}
 		if (hasPool) {
 			SQL.append(HAS_POOL);
@@ -471,11 +492,17 @@ public class RoomDao {
 		if (hasGym) {
 			SQL.append(HAS_GYM);
 		}
-		if (hasBalcony) {
-			SQL.append(HAS_BALCONY);
+		if (hasSpa) {
+			SQL.append(HAS_SPA);
 		}
-		if (noDeposit) {
-			SQL.append(NO_DEPOSIT);
+		if (hasService) {
+			SQL.append(HAS_SERVICE);
+		}
+		if (hasCleaner) {
+			SQL.append(HAS_CLEANER);
+		}
+		if (hasTv) {
+			SQL.append(HAS_TV);
 		}
 				
 		try (PreparedStatement statement = connection.prepareStatement(SQL.toString())) {

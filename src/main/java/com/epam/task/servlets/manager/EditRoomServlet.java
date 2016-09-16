@@ -34,11 +34,9 @@ public class EditRoomServlet extends HttpServlet {
 		
 		String hasWiFiString = request.getParameter("hasWiFi");
 		String hasShowerString = request.getParameter("hasShower");
-		String hasParkingString = request.getParameter("hasParking");
 		String hasConditionString = request.getParameter("hasCondition");
-		String hasPoolString = request.getParameter("hasPool");
-		String hasGymString = request.getParameter("hasGym");
 		String hasBalconyString = request.getParameter("hasBalcony");
+		String hasTvString = request.getParameter("hasTv");
 		
 		String food = request.getParameter("food");	//NONE BREAKFAST TWICE FULL
 
@@ -55,7 +53,8 @@ public class EditRoomServlet extends HttpServlet {
 				!StringUtil.isNotNegativeInteger(priceString) || !StringUtil.isBoolean(freeBookString) ||
 				!(type.equalsIgnoreCase("STANDART") || type.equalsIgnoreCase("LUX") || type.equalsIgnoreCase("DELUX")) || 
 				!(food.equalsIgnoreCase("NONE") || food.equalsIgnoreCase("BREAKFAST") || food.equalsIgnoreCase("TWICE") || food.equalsIgnoreCase("FULL")) ||
-				!StringUtil.isBoolean(deletedString)) {
+				!StringUtil.isBoolean(deletedString) || !StringUtil.isBoolean(hasWiFiString) || !StringUtil.isBoolean(hasShowerString) ||
+				!StringUtil.isBoolean(hasConditionString) || !StringUtil.isBoolean(hasBalconyString) || !StringUtil.isBoolean(hasTvString)) {
 			response.sendError(500);
 			return;
 		}
@@ -89,11 +88,9 @@ public class EditRoomServlet extends HttpServlet {
 		
 		boolean hasWifi = Boolean.parseBoolean(hasWiFiString);
 		boolean hasShower = Boolean.parseBoolean(hasShowerString);
-		boolean hasParking = Boolean.parseBoolean(hasParkingString);
 		boolean hasCondition = Boolean.parseBoolean(hasConditionString);
-		boolean hasPool = Boolean.parseBoolean(hasPoolString);
-		boolean hasGym = Boolean.parseBoolean(hasGymString);
 		boolean hasBalcony = Boolean.parseBoolean(hasBalconyString);
+		boolean hasTv = Boolean.parseBoolean(hasTvString);
 		int daysCount;
 		int percentage;
 		
@@ -114,11 +111,9 @@ public class EditRoomServlet extends HttpServlet {
 		
 		room.setWifi(hasWifi);
 		room.setShower(hasShower);
-		room.setParking(hasParking);
 		room.setCondition(hasCondition);
-		room.setPool(hasPool);
-		room.setGym(hasGym);
 		room.setBalcony(hasBalcony);
+		room.setTv(hasTv);
 
 		room.setDaysCount(daysCount);
 		room.setPercentage(percentage);

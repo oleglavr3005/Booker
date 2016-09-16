@@ -43,8 +43,8 @@ public class GetRandomHotelsServlet extends HttpServlet {
 				JSONObject hotelJson = new JSONObject();
 				hotelJson.put("id", hotel.getId());
 				hotelJson.put("name", hotel.getName());
-				hotelJson.put("city", hotel.getCity());
-				hotelJson.put("street", hotel.getStreet());
+//				hotelJson.put("city", hotel.getCity());
+//				hotelJson.put("street", hotel.getStreet());
 				hotelJson.put("stars", hotel.getStars());
 				hotelJson.put("rating", hotel.getRating());
 				hotelJson.put("phoneNumber", hotel.getPhoneNumber());

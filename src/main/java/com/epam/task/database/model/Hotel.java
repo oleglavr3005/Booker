@@ -8,13 +8,13 @@ import com.epam.task.database.transformers.DataBaseField;
 
 public class Hotel {
 
-	public Hotel(int id, String name, String city, String street, int stars, String desc, int managerId,
-			double xCoord, double yCoord, double rating, boolean isDeleted, String phoneNumber) {
+	public Hotel(int id, String name, String location, int stars, String desc, int managerId,
+			double xCoord, double yCoord, double rating, boolean isDeleted, String phoneNumber,
+			boolean parking, boolean pool, boolean gym, boolean spa, boolean service, boolean cleaner) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.city = city;
-		this.street = street;
+		this.location = location;
 		this.stars = stars;
 		this.desc = desc;
 		this.managerId = managerId;
@@ -23,6 +23,13 @@ public class Hotel {
 		this.rating = rating;
 		this.isDeleted = isDeleted;
 		this.phoneNumber = phoneNumber;
+
+		this.parking = parking;
+		this.pool = pool;
+		this.gym = gym;
+		this.spa = spa;
+		this.service = service;
+		this.cleaner = cleaner;
 		
 		photos = new HotelPhotoService().getHotelPhotosByHotel(id);
 		if(photos.size() == 0) {
@@ -47,10 +54,8 @@ public class Hotel {
 	private int id;
 	@DataBaseField(fieldName = "name")
 	private String name;
-	@DataBaseField(fieldName = "city")
-	private String city;
-	@DataBaseField(fieldName = "street")
-	private String street;
+	@DataBaseField(fieldName = "location")
+	private String location;
 	@DataBaseField(fieldName = "stars")
 	private int stars;
 	@DataBaseField(fieldName = "desc")
@@ -68,6 +73,19 @@ public class Hotel {
 	@DataBaseField(fieldName = "phone_number")
 	private String phoneNumber;
 	
+	@DataBaseField(fieldName = "has_parking")
+	private boolean parking;
+	@DataBaseField(fieldName = "has_pool")
+	private boolean pool;
+	@DataBaseField(fieldName = "has_gym")
+	private boolean gym;
+	@DataBaseField(fieldName = "has_spa")
+	private boolean spa;
+	@DataBaseField(fieldName = "has_service")
+	private boolean service;
+	@DataBaseField(fieldName = "has_cleaner")
+	private boolean cleaner;
+	
 	private List<HotelPhoto> photos;
 	
 	public int getId() {
@@ -82,17 +100,11 @@ public class Hotel {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCity() {
-		return city;
+	public String getLocation() {
+		return location;
 	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getStreet() {
-		return street;
-	}
-	public void setStreet(String street) {
-		this.street = street;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	public int getStars() {
 		return stars;
@@ -154,13 +166,49 @@ public class Hotel {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	public boolean getParking() {
+		return parking;
+	}
+	public void setParking(boolean parking) {
+		this.parking = parking;
+	}
+	public boolean getPool() {
+		return pool;
+	}
+	public void setPool(boolean pool) {
+		this.pool = pool;
+	}
+	public boolean getGym() {
+		return gym;
+	}
+	public void setGym(boolean gym) {
+		this.gym = gym;
+	}
+	public boolean getSpa() {
+		return spa;
+	}
+	public void setSpa(boolean spa) {
+		this.spa = spa;
+	}
+	public boolean getService() {
+		return service;
+	}
+	public void setService(boolean service) {
+		this.service = service;
+	}
+	public boolean getCleaner() {
+		return cleaner;
+	}
+	public void setCleaner(boolean cleaner) {
+		this.cleaner = cleaner;
+	}
 	@Override
 	public String toString() {
-		return "Hotel [id=" + id + ", name=" + name + ", city=" + city + ", street=" + street + ", stars=" + stars
-				+ ", desc=" + desc + ", managerId=" + managerId + ", xCoord=" + xCoord + ", yCoord=" + yCoord
-				+ ", rating=" + rating + ", isDeleted=" + isDeleted + ", phoneNumber=" + phoneNumber + ", photos="
+		return "Hotel [id=" + id + ", name=" + name + ", location=" + location + ", stars=" + stars + ", desc=" + desc
+				+ ", managerId=" + managerId + ", xCoord=" + xCoord + ", yCoord=" + yCoord + ", rating=" + rating
+				+ ", isDeleted=" + isDeleted + ", phoneNumber=" + phoneNumber + ", parking=" + parking + ", pool="
+				+ pool + ", gym=" + gym + ", spa=" + spa + ", service=" + service + ", cleaner=" + cleaner + ", photos="
 				+ photos + "]";
-	}
-	
+	}	
 	
 }

@@ -85,6 +85,11 @@ public class HotelServlet extends HttpServlet {
 		boolean hasPool = session.getAttribute("hasPool") == null ? false : (boolean) session.getAttribute("hasPool");
 		boolean hasGym = session.getAttribute("hasGym") == null ? false : (boolean) session.getAttribute("hasGym");
 		boolean hasBalcony = session.getAttribute("hasBalcony") == null ? false : (boolean) session.getAttribute("hasBalcony");
+		boolean hasSpa = session.getAttribute("hasSpa") == null ? false : (boolean) session.getAttribute("hasSpa");
+		boolean hasService = session.getAttribute("hasService") == null ? false : (boolean) session.getAttribute("hasService");
+		boolean hasCleaner = session.getAttribute("hasCleaner") == null ? false : (boolean) session.getAttribute("hasCleaner");
+		boolean hasTv = session.getAttribute("hasTv") == null ? false : (boolean) session.getAttribute("hasTv");
+		
 		boolean noDeposit = session.getAttribute("noDeposit") == null ? false : (boolean) session.getAttribute("noDeposit");
 		
 		Timestamp startDate;
@@ -106,7 +111,8 @@ public class HotelServlet extends HttpServlet {
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull, 
 				minPrice, maxPrice, people,
-				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
+				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, 
+				hasSpa, hasService, hasCleaner, hasTv, noDeposit, 
 				startDate, endDate);
 		
 		List<Feedback> feedbacks = new FeedbackService().getAllFeedbacksByHotel(id);
@@ -121,9 +127,9 @@ public class HotelServlet extends HttpServlet {
 				if(templ.getHotelId() == room.getHotelId() && templ.getType().equals(room.getType()) &&
 						templ.getBedsCount() == room.getBedsCount() && templ.getDoubleBedsCount() == room.getDoubleBedsCount() &&
 						templ.getPrice() == room.getPrice() && templ.getWifi() == room.getWifi() && 
-						templ.getShower() == room.getShower() && templ.getParking() == room.getParking() &&
-						templ.getCondition() == room.getCondition() && templ.getPool() == room.getPool() &&
-						templ.getGym() == room.getGym() && templ.getBalcony() == room.getBalcony() &&
+						templ.getShower() == room.getShower() && templ.getTv() == room.getTv() &&
+						templ.getCondition() == room.getCondition() &&
+						templ.getBalcony() == room.getBalcony() &&
 						templ.getFood().equals(room.getFood()) && templ.getDaysCount() == room.getDaysCount() &&
 						templ.getPercentage() == room.getPercentage()) { 
 														//if this tempalte alredy exists, add room id in it
@@ -135,8 +141,8 @@ public class HotelServlet extends HttpServlet {
 			if (!exists) { //create template
 				RoomDto template = new RoomDto(room.getHotelId(), room.getType().toString(), 
 						room.getBedsCount(), room.getDoubleBedsCount(), room.getPrice(), 
-						room.getWifi(), room.getShower(), room.getParking(), room.getCondition(), 
-						room.getPool(), room.getGym(), room.getBalcony(), 
+						room.getWifi(), room.getShower(), room.getCondition(), 
+						room.getBalcony(), room.getTv(),
 						room.getFood().toString(), room.getDaysCount(), room.getPercentage());
 				template.addRoom(room.getId());
 				roomTemplates.add(template);

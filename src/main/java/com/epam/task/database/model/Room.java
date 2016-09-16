@@ -10,9 +10,9 @@ import com.epam.task.database.transformers.DataBaseField;
 
 public class Room {
 		
-	public Room(int id, int hotelId, String number, String type, Integer bedsCount, Integer doubleBedsCount,
-			Integer price, Boolean wifi, Boolean shower, Boolean parking, Boolean condition, Boolean pool, Boolean gym,
-			Boolean balcony, String food, Integer daysCount, Integer percentage, Boolean deleted) {
+	public Room(int id, int hotelId, String number, String type, int bedsCount, int doubleBedsCount,
+			int price, boolean wifi, boolean shower, boolean condition,
+			boolean balcony, boolean tv, String food, int daysCount, int percentage, boolean deleted) {
 		super();
 		this.id = id;
 		this.hotelId = hotelId;
@@ -23,11 +23,9 @@ public class Room {
 		this.price = price;
 		this.wifi = wifi;
 		this.shower = shower;
-		this.parking = parking;
 		this.condition = condition;
-		this.pool = pool;
-		this.gym = gym;
 		this.balcony = balcony;
+		this.tv = tv;
 		this.food = food == null ? null : RoomFood.valueOf(food);
 		this.daysCount = daysCount;
 		this.percentage = percentage;
@@ -79,20 +77,14 @@ public class Room {
 	@DataBaseField(fieldName = "has_shower")
 	private boolean shower;
 
-	@DataBaseField(fieldName = "has_parking")
-	private boolean parking;
-
 	@DataBaseField(fieldName = "has_condition")
 	private boolean condition;
 
-	@DataBaseField(fieldName = "has_pool")
-	private boolean pool;
-
-	@DataBaseField(fieldName = "has_gym")
-	private boolean gym;
-
 	@DataBaseField(fieldName = "has_balcony")
 	private boolean balcony;
+	
+	@DataBaseField(fieldName = "has_tv")
+	private boolean tv;
 	
 	@DataBaseField(fieldName = "food")
 	private RoomFood food;
@@ -180,36 +172,12 @@ public class Room {
 		this.shower = shower;
 	}
 
-	public Boolean getParking() {
-		return parking;
-	}
-
-	public void setParking(Boolean parking) {
-		this.parking = parking;
-	}
-
 	public Boolean getCondition() {
 		return condition;
 	}
 
 	public void setCondition(Boolean condition) {
 		this.condition = condition;
-	}
-
-	public Boolean getPool() {
-		return pool;
-	}
-
-	public void setPool(Boolean pool) {
-		this.pool = pool;
-	}
-
-	public Boolean getGym() {
-		return gym;
-	}
-
-	public void setGym(Boolean gym) {
-		this.gym = gym;
 	}
 
 	public Boolean getBalcony() {
@@ -264,13 +232,22 @@ public class Room {
 		this.photos = photos;
 	}
 
+	
+	public boolean getTv() {
+		return tv;
+	}
+
+	public void setTv(boolean tv) {
+		this.tv = tv;
+	}
+
 	@Override
 	public String toString() {
 		return "Room [id=" + id + ", hotelId=" + hotelId + ", number=" + number + ", type=" + type + ", bedsCount="
 				+ bedsCount + ", doubleBedsCount=" + doubleBedsCount + ", price=" + price + ", wifi=" + wifi
-				+ ", shower=" + shower + ", parking=" + parking + ", condition=" + condition + ", pool=" + pool
-				+ ", gym=" + gym + ", balcony=" + balcony + ", food=" + food + ", daysCount=" + daysCount
-				+ ", percentage=" + percentage + ", deleted=" + deleted + "]";
-	}	
+				+ ", shower=" + shower + ", condition=" + condition + ", balcony=" + balcony + ", tv=" + tv + ", food="
+				+ food + ", daysCount=" + daysCount + ", percentage=" + percentage + ", deleted=" + deleted
+				+ ", photos=" + photos + "]";
+	}
 
 }

@@ -31,14 +31,16 @@ public class RoomService {
 			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull,
 			int minPrice, int maxPrice, int people,
 			boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, 
-			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit,
+			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean hasSpa, 
+			boolean hasService, boolean hasCleaner, boolean hasTv, boolean noDeposit,
 			Timestamp startDate, Timestamp endDate, String compareBy) {
 		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllSuitableRoomsForHotel(id, page, 
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull,
 				minPrice, maxPrice, people,
 				hasWiFi, hasShower, hasParking, hasCondition, 
-				hasPool, hasGym, hasBalcony, noDeposit,
+				hasPool, hasGym, hasBalcony, hasSpa, 
+				hasService, hasCleaner, hasTv, noDeposit,
 				startDate, endDate, compareBy));
 	}
 
@@ -150,14 +152,15 @@ public class RoomService {
 	public List<Room> getSuitableRooms(int id, boolean typeStandart, boolean typeLux, boolean typeDelux,
 			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull, int minPrice, int maxPrice,
 			int people, boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, boolean hasPool,
-			boolean hasGym, boolean hasBalcony, boolean noDeposit, Timestamp startDate, Timestamp endDate) {
+			boolean hasGym, boolean hasBalcony, boolean hasSpa, boolean hasService, boolean hasCleaner, boolean hasTv, 
+			boolean noDeposit, Timestamp startDate, Timestamp endDate) {
 		
 		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getSuitableRooms(id,
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull,
 				minPrice, maxPrice, people,
 				hasWiFi, hasShower, hasParking, hasCondition, 
-				hasPool, hasGym, hasBalcony, noDeposit,
+				hasPool, hasGym, hasBalcony, hasSpa, hasService, hasCleaner, hasTv, noDeposit,
 				startDate, endDate));
 	}
 

@@ -27,7 +27,8 @@ private DaoManager daoManager;
 			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull, 			//food type
 			int minPrice, int maxPrice,																//price
 			boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, 			//additional
-			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit, 
+			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean hasSpa, 
+			boolean hasService, boolean hasCleaner, boolean hasTv, boolean noDeposit, 
 			Timestamp startDate, Timestamp endDate, int page, String compareBy) {
 		
 		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getAllSuitableHotelsByPage(
@@ -35,7 +36,8 @@ private DaoManager daoManager;
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull, 
 				minPrice, maxPrice, 
-				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
+				hasWiFi, hasShower, hasParking, hasCondition, hasPool, 
+				hasGym, hasBalcony, hasSpa, hasService, hasCleaner, hasTv, noDeposit, 
 				startDate, endDate, page, compareBy));
 	}
 	
@@ -66,7 +68,8 @@ private DaoManager daoManager;
 	public List<Hotel> getAllSuitableHotels(String name, int minStars, int maxStars, int people, boolean typeStandart,
 			boolean typeLux, boolean typeDelux, boolean foodNone, boolean foodBreakfast, boolean foodTwice,
 			boolean foodFull, int minPrice, int maxPrice, boolean hasWiFi, boolean hasShower, boolean hasParking,
-			boolean hasCondition, boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit,
+			boolean hasCondition, boolean hasPool, boolean hasGym, boolean hasBalcony, boolean hasSpa, 
+			boolean hasService, boolean hasCleaner, boolean hasTv, boolean noDeposit,
 			Timestamp startDate, Timestamp endDate) {
 		
 		return daoManager.executeAndClose(() -> daoManager.getHotelDao().getAllSuitableHotels(
@@ -74,7 +77,8 @@ private DaoManager daoManager;
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull, 
 				minPrice, maxPrice, 
-				hasWiFi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, noDeposit, 
+				hasWiFi, hasShower, hasParking, hasCondition, hasPool, 
+				hasGym, hasBalcony, hasSpa, hasService, hasCleaner, hasTv, noDeposit, 
 				startDate, endDate));
 	}
 
