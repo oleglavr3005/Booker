@@ -88,7 +88,7 @@ b {
 								<a href='<i:urlToImage url="${room.allPhotos[0].img}" />'
 									data-gallery="#blueimp-gallery-${room.id}"> <img
 									src="<i:urlToImage url="${room.allPhotos[0].img }" />"
-									style="height: 170px; width: 200px; padding: 10px;">
+									style="padding: 10px;">
 								</a>
 
 								<div style="display: none;">
@@ -200,7 +200,7 @@ b {
 
 					<div class="col s3">
 						<div class="row"
-							style="float: right; text-align: right; font-size: 0.3rem; color: black">
+							style="float: right; text-align: right; font-size: 0.3rem; color: black; margin-right: 0px;">
 							<c:if test="${room.wifi == true}">
 								<a class="tooltipped index_room_wifi" data-position="icon"
 									data-tooltip="Wifi" style="color: #0d0d0d;"><i

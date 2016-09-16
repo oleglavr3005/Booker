@@ -268,7 +268,12 @@ div #sidebar-wrapper {
 								data-tooltip="Show map" style="cursor: pointer;">${hotel.city}
 								${hotel.street}</a>
 						</div>
-
+						<div class="row" style="margin-bottom: 10px">
+							<a class="tooltipped tooltip_phone_number" data-position="icon"
+								data-tooltip="" style="color: #0d0d0d; margin-left: -2px; text-decoration: none;"><i
+								class="fa fa-lg fa-phone-square invert" aria-hidden="true"></i></a>
+							<span>${hotel.phoneNumber}</span>
+						</div>
 						<div class="row" style="margin-bottom: 5px">
 							<a id="index_search_description" class="tooltipped"
 								data-position="icon" data-tooltip=""
@@ -363,7 +368,7 @@ div #sidebar-wrapper {
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col s4">
+			<div class="col s4 offset-s1">
 				<h6>
 					<c:if test="${countOfRooms > 0 }">
 						<span id="hotel_count_room"></span>
@@ -374,7 +379,7 @@ div #sidebar-wrapper {
 					</c:if>
 				</h6>
 			</div>
-			<div class="col s5 offset-s3">
+			<div class="col s5 offset-s2">
 				<c:if test="${countOfRooms > 0 }">
 					<span id="sort_by" style="font-size: 15;position: relative;/* display: inline-block; */bottom: 3px;"></span>
 					<select id="compare" class="chosen-select optionstyle"
