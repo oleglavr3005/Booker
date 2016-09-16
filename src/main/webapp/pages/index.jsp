@@ -315,14 +315,11 @@ div #sidebar-wrapper {
 						<span id="card_header"> </span>
 						<span id="periodicals_number_for_all_users">${countOfHotels}</span>
 					</c:if>
-					<c:if test="${countOfHotels <= 0 }">
-						<span id="card_no_hotels"></span>
-					</c:if>
 				</h6>
 			</div>
 			<div class="col s5 offset-s4">
 				<c:if test="${countOfHotels > 0 }">
-					<div style="float : left">
+					<div style="float: right">
 					<span class="sort_by" style="font-size: 15; position: relative; /* display: inline-block; */ bottom: 3px;"></span>
 					<select id="compare" class="chosen-select optionstyle"
 						onchange="findPage(window.location.href,1)">
