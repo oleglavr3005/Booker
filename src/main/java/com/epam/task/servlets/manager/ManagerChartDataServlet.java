@@ -95,9 +95,9 @@ public class ManagerChartDataServlet extends HttpServlet {
 			} else {
 				monthNumber = "third";
 			}
-			Map<String, Integer> monthMap = new HashMap<>();
-			monthMap.put(monthNumber, seasonTimes.get(season).get(monthNumber) + 1);
-			seasonTimes.put(season, monthMap);
+			Map<String, Integer> monthMap = seasonTimes.get(season);
+			monthMap.put(monthNumber, monthMap.get(monthNumber) + 1);
+			//seasonTimes.put(season, monthMap);
 		}
 		
 		response.setContentType("text/plain");
