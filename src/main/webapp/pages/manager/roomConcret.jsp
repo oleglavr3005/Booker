@@ -115,7 +115,7 @@
 			<div class="col s3">
 				<!-- 					PHOTO -->
 				<div class="row">
-					<img id="Img" style="height: 100px; padding: 10px; width: 110px;"
+					<img id="Img" style="height: 210px; padding: 10px; width: 290px;"
 						<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
 								src="<i:urlToImage url="${room.photos[0].img }" />">
 
