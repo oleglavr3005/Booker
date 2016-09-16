@@ -210,36 +210,12 @@ div #sidebar-wrapper {
 												src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
 										</div>
 									</c:if>
-									<c:if test="${room.parking == true}">
-										<div class="col s1"
-											style="margin-top: 10px; width: 24px; cursor: default;">
-											<a class="tooltipped index_room_parking" data-position="icon"
-												data-tooltip="Parking" style="color: #0d0d0d;"><i
-												class="material-icons invert">local_parking</i></a>
-										</div>
-									</c:if>
 									<c:if test="${room.condition == true}">
 										<div class="col s1"
 											style="margin-top: 10px; width: 24px; cursor: default;">
 											<a class="tooltipped index_room_conditioner"
 												data-position="icon" data-tooltip="Condition"
 												style="color: #0d0d0d;"><i class="material-icons invert">toys</i></a>
-										</div>
-									</c:if>
-									<c:if test="${room.pool == true}">
-										<div class="col s1"
-											style="margin-top: 10px; width: 24px; cursor: default;">
-											<a class="tooltipped index_room_pool" data-position="icon"
-												data-tooltip="Pool" style="color: #0d0d0d;"><i
-												class="material-icons invert">pool</i></a>
-										</div>
-									</c:if>
-									<c:if test="${room.gym == true}">
-										<div class="col s1"
-											style="margin-top: 10px; width: 24px; cursor: default;">
-											<a class="tooltipped index_room_gym" data-position="icon"
-												data-tooltip="Gym" style="color: #0d0d0d;"><i
-												class="material-icons invert">fitness_center</i></a>
 										</div>
 									</c:if>
 									<c:if test="${room.balcony == true}">
@@ -249,6 +225,15 @@ div #sidebar-wrapper {
 												data-tooltip="Balcony"><img class="invert"
 												style="max-width: 230%;"
 												src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
+										</div>
+									</c:if>
+
+									<c:if test="${room.tv == true}">
+										<div class="col s1"
+											style="margin-top: 10px; width: 32px; height: 32px;">
+											<a class="tooltipped index_room_tv"
+												data-position="icon" data-tooltip="Television"
+												style="color: #0d0d0d;"><i class="material-icons invert">tv</i></a>
 										</div>
 									</c:if>
 								</div>
