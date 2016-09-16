@@ -277,7 +277,7 @@ div #sidebar-wrapper {
 						<div class="row" style="margin-bottom: 5px">
 							<a id="index_search_description" class="tooltipped"
 								data-position="icon" data-tooltip=""
-								style="color: #0d0d0d; cursor: default"><i
+								style="color: #0d0d0d; cursor: default; margin-left: -4px;"><i
 								class="material-icons invert" style="font-size: 20px;">receipt</i></a>
 							<span>${hotel.desc}</span>
 						</div>
