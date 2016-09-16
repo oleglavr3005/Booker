@@ -265,8 +265,7 @@ div #sidebar-wrapper {
 								style="color: #0d0d0d; text-decoration: none;"><i
 								class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
 							<a id="hotel_map_button" class="tooltipped" data-position="icon"
-								data-tooltip="Show map" style="cursor: pointer;">${hotel.city}
-								${hotel.street}</a>
+								data-tooltip="Show map" style="cursor: pointer;">${hotel.location}</a>
 						</div>
 						<div class="row" style="margin-bottom: 10px">
 							<a class="tooltipped tooltip_phone_number" data-position="icon"
