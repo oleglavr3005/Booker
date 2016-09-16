@@ -250,7 +250,8 @@
 		card_status_removed : "Cancelled",
 
 		user_cart_header :"Shopping Cart",
-		
+		orders_charts_HOTELSCHART : "Most visited hotels",
+		orders_charts_MONTHCHART : "Monthly activity",
 		//hotelList
 		room_header : "Rooms",
 		room_type: "Type", 
@@ -505,7 +506,7 @@
 		card_no_orders : "Ваш кошик порожній",
 		room_card_count: "Вартість кімнати??",
 		room_card_info1 : "Ви отримаєте 100% повернення при відміні замовлення тільки за ",
-		room_card_info2 : " днів перед приїздом, після цього повернення становитиме тільки ",
+		room_card_info2 : "гів перед приїздом, після цього повернення становитиме тільки ",
 		room_card_info3 : "Без передплати",
 		room_orderedrooms : "Замовити кімнат",
 		
@@ -522,6 +523,8 @@
 		card_status_removed : "Скасоване",
 
 		user_cart_header :"Кошик",
+		orders_charts_HOTELSCHART : "Найчастіше відвідувані готелі",
+		orders_charts_MONTHCHART : "Щомісячна активність",
 		
 		admin_edit_name : "Назва готелю",
 		admin_edit_rating : "Рейтинг",
@@ -763,12 +766,13 @@
 		    	sInfo : "_ПОЧАТОК_ -_КІНЕЦЬ_ з _ВСЬОГО_",
 		    }, 
 		    createOrder : { 
-		    	error : "ERROR OCCURED",
+		    	error : "ПОМИЛКА",
 		    	cvvError : "Номер карточки не коректний",
 		    	cardError : "Номер карточки не коректний",
 		    	succes : "УСПІШНО",
 		    	removed : "ВИДАЛЕНИЙ ???",
 		    	fald : "Помилка",
+		    	makePurchase : "Оплатити",
 		    }, 
 		    registration : {
 		    	wrongMail : "Email не коректний",
