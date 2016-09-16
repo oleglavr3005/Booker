@@ -134,16 +134,16 @@
 						</h4>
 					</div>
 
-					<table id="users">
+					<table id="users" style=" border-bottom: 0px solid #111;">
 						<thead>
-							<tr>
-								<th id="admin_page_id"></th>
-								<th id="admin_page_fName"></th>
-								<th id="admin_page_lName"></th>
-								<th id="admin_page_mail"></th>
-								<th id="admin_page_phone"></th>
-								<th id="admin_page_type"></th>
-								<th id="admin_page_status"></th>
+							<tr style="background-color: #70b9b2; color: #e8f7f7;">
+								<th id="admin_page_id" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_fName" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_lName" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_mail" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_phone" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_type" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_status" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -185,14 +185,14 @@
 					</div>
 
 
-					<table id="requests">
+					<table id="requests" style=" border-bottom: 0px solid #111;">
 						<thead>
-							<tr>
-								<th id="admin_page_id"></th>
-								<th id="admin_page_userId"></th>
-								<th id="admin_page_reqDate"></th>
-								<th id="admin_page_message"></th>
-								<th id="admin_page_status"></th>
+							<tr style="background-color: #70b9b2; color: #e8f7f7;">
+								<th id="admin_page_id" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_userId" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_reqDate" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_message" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_status" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
 							</tr>
 						</thead>
 						<tbody>
