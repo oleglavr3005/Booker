@@ -107,7 +107,7 @@ $(document).ready(function() {
 				  labels: ['Visitors'],
 				  lineColors: ['rgb(18, 68, 76)'],
 				  hideHover : true,
-				  xLabels : "date"
+				  xLabels : "day"
 			});
 		}
 	});
