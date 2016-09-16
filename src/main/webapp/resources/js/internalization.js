@@ -160,9 +160,9 @@
 		index_option_people_desc : "people, desc",
 		
 		hotel_option_star_asc : "star, asc",
-		hotel_option_star_desc : "star <i class='tiny material-icons' style='transform: rotate(-90deg);'>trending_flat</i>",
+		hotel_option_star_desc : "star, desc",
 		hotel_option_people_asc : "people, asc",
-		hotel_option_people_desc : "people <i class='tiny material-icons' style='transform: rotate(-90deg);'>trending_flat</i>",
+		hotel_option_people_desc : "people, desc ",
 		hotel_price : "Price",
 		hotel_button_previous : "Previous", 
 		hotel_button_next : "Next",
@@ -301,7 +301,7 @@
 		subscribes_table_roomfood : "Харчування : ",
 		subscribes_table_price : "Ціна",
 		orderConcret_title : "Замовлення №",
-		order_concret_comment : "Коментарій",
+		order_concret_comment : "Коментар",
 		myfeedbacks_no_feedbacks : " немає відгуків", 
 		myfeedbacks_header : "Мої відгуки",	
 			
