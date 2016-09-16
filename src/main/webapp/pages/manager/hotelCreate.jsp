@@ -144,7 +144,7 @@
 						<input id="rating" value="0" type="number" class="rating" min=1
 							max=5 step=1 data-size="xs" data-stars="5"> <label
 							id="ratingLbl" data-error="RATING SHOULD BE 1-5" for="rating"><span
-							id="admin_edit_rating"></span> </label>
+							id="admin_edit_stars"></span> </label>
 
 						<!-- 							END OF STARS -->
 					</div>
@@ -187,7 +187,7 @@
 								POOL</label>
 						</p>
 					</div>
-					<div class="col s3 offset-s1">
+					<div class="col s4">
 						<p>
 							<input type="checkbox" class="filled-in" id="hasGym"
 								name="hasGym" /> <label id="label_gym" for="hasGym">FIT
@@ -201,7 +201,7 @@
 						
 
 					</div>
-					<div class="col s3 offset-s1">
+					<div class="col s4">
 						<p>
 							<input type="checkbox" class="filled-in" id="hasService"
 								name="hasService" /> <label id="label_service" for="hasService">SERVICE</label>

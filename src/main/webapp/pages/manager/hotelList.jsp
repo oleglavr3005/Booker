@@ -104,8 +104,7 @@
 		<div class="row">
 			<div class="col s10 offset-s1">
 				<a class="waves-effect waves-light btn" id="create_button"
-<%-- 					href="${pageContext.servletContext.contextPath}/cabinet/create_hotel"  --%>
-					href="${pageContext.servletContext.contextPath}/pages/manager/hotelCreate.jsp" 
+					href="${pageContext.servletContext.contextPath}/cabinet/create_hotel" 
 					style="margin-left: 10px; width:100%; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
 					<span id=btn_create>CREATE</span>
 				</a>

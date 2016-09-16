@@ -117,7 +117,7 @@ div #sidebar-wrapper {
 				<div class="row">
 					<!-- 					PHOTO -->
 
-					<img id="Img" style="height: 200px; padding: 10px; width: 200px;"
+					<img id="Img" style="height: 170px; padding: 10px; width: 200px;"
 						<%-- 														src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
  								src="<i:urlToImage url="${hotel.photos[0].img }" />">
 					<!-- 					END OF PHOTO -->
