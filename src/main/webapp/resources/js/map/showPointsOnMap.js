@@ -50,7 +50,7 @@ function addMarker(place) {
         '<div class="marker-info-win">' +
             '<div class="marker-inner-win">'+
                 '<span class="info-content">'+
-                    '<img src="' + place.photo + '" alt="ALT" height="115" width="83" style="float: right; margin: 21px 5px 5px 5px;">'+
+                    '<img src="' + place.photo + '" alt="ALT" height="115" width="83" style="float: right; margin: 21px 0px 5px 5px; width: 100px;">'+
                     '<h1 class="marker-heading">'+ place.name +'</h1>' +
                     '<p>' + place.address + '<br>Phone. ' + place.phone + '</p></span>'+
                 '</div></div>');
