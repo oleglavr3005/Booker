@@ -1,4 +1,4 @@
-6<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -95,145 +95,21 @@
 <body>
 	<input id="photos" type="hidden" />
 	<input id="lang" type="hidden" value="${language}" />
-	
+
 	<!-- Header ========================================================================= -->
 	<jsp:include page="../header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 
-	<div class="container" style="margin-top: 20px">
-
+	<div class="container">
 		<div class="row">
-			<div class="col s3">
-				<!-- 					PHOTO -->
-				<a href="#!"><img id="Img"
-					style="height: 200px; padding: 10px; width: 200px;"
-					src="<i:urlToImage url="new_hotel.png" />"> </a>
-				<!-- 					END OF PHOTO -->
-				<!-- 				INPUT -->
-				<input multiple style="margin-top: 60px; display: none" type="file"
-					id="imgInput" onchange="uploadHotel('')" accept="image/*" />
-				<!-- 				END OF INPUT -->
-			</div>
-
-
-			<div class="col s9">
-				<div class="container-fluid">
-
-					<div class="row">
-						<div class="col s6">
-
-							<!-- 						NAME -->
-
-							<div class="input-field">
-								<input id="name" type="text" class="validate" length="45"
-									placeholder=""> <label id="nameLbl"
-									data-error="NAME INVALID" for="name"><span
-									id="admin_edit_name"></span></label>
-							</div>
-
-							<!-- 							END OF NAME -->
-
-						</div>
-
-						<div class="col s6" style="margin-top: 15px;">
-
-							<!-- 						STARS -->
-							<input id="rating" onchange="rate()" value="0" type="number"
-								class="rating" min=0 max=5 step=1 data-size="xs" data-stars="5">
-							<label id="ratingLbl" data-error="RATING SHOULD BE 1-5"
-								for="rating"><span id="admin_edit_rating"></span> </label>
-							<!-- 							<span -->
-							<%-- 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><span --%>
-							<%-- 									key="manager.hotel.star" />STAR : <span id="rate_span">0</span> --%>
-							<!-- 								/ 5 |</span> -->
-							<script>
-								function rate() {
-
-									var count = document
-											.getElementById("rate_span");
-									count.innerHTML = $('#rating').val();
-
-								}
-							</script>
-
-							<!-- 							END OF STARS -->
-
-						</div>
-					</div>
-
-					<div class="row">
-
-						<div class="col s8">
-
-							<!-- 						ADDRESS -->
-
-							<div class="input-field">
-								<input id="address" type="text" class="validate" length="145"
-									placeholder=""> <label id="addressLbl"
-									data-error="ADDRESS IS INVALID" for="address"><span
-									id="admin_edit_address"></span> </label>
-							</div>
-							<!-- 							END OF ADDRESS -->
-
-						</div>
-
-						<div class="col s4">
-
-							<!-- 						PHONE -->
-
-							<div class="input-field">
-								<input id="phone" type="text" class="validate" length="20"
-									placeholder=""> <label id="phoneLbl"
-									data-error="PHONE NUMBER IS INVALID" for="phone"><span
-									id="admin_edit_phone"></span></label>
-							</div>
-
-							<!-- 							END OF PHONE -->
-
-						</div>
-
-
-
-
-					</div>
-
-
-				</div>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col s9">
-				<!-- 						DESC -->
-
-							<div class="input-field">
-								<textarea placeholder="" id="desc"
-									class="materialize-textarea" class="validate">${message}</textarea>
-								<label id="descLbl" data-error="DESCRIPTION IS INVALID"
-									for="desc"><span id="admin_edit_desc"></span> </label>
-							</div>
-
-							<!-- 							END OF DESC -->
-			</div>
-			<div class="col s3">
-			<!-- 							SEND NOTIF -->
-				<p style="margin-top: 20px;">
-					<input type="checkbox" class="filled-in" id="sendNotif"
-						name="sendNotif" /> <label for="sendNotif">
-						<span id=lbl_sendnotif>SEND NOTIF</span></label>
-				</p>
-			<a class="waves-effect waves-light btn" id="create_button"
-					onclick="createHotel()"
-					style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+			<div class="col s10 offset-s1">
+				<a class="waves-effect waves-light btn" id="create_button"
+					href="${pageContext.servletContext.contextPath}/cabinet/create_hotel" 
+					style="margin-left: 10px; width:100%; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
 					<span id=btn_create>CREATE</span>
 				</a>
-				<p id="create_error" style="color: red"></p>			
 			</div>
-			</div>
-	</div>
-
-
-	<div class="container">
+		</div>
 		<div class="row">
 			<div class="col s3">
 				<h6>
@@ -247,14 +123,19 @@
 				</h6>
 			</div>
 			<div class="col s5 offset-s4">
-				<span class="sort_by" style="font-size: 15;position: relative;/* display: inline-block; */bottom: 3px;"></span>
+				<span class="sort_by"
+					style="font-size: 15; position: relative; /* display: inline-block; */ bottom: 3px;"></span>
 				<c:if test="${countOfHotels > 0 }">
 					<select id="compare" class="chosen-select optionstyle"
 						onchange="findPage(window.location.href,1)">
-						<option class="optionstyle index_option_star_asc" value="compareByStarsAsc"></option>
-						<option class="optionstyle index_option_star_desc" value="compareByStarsDesc"></option>
-						<option class="optionstyle index_option_rating_asc" value="compareByRatingAsc"></option>
-						<option class="optionstyle index_option_rating_desc" value="compareByRatingDesc" selected="selected"></option>
+						<option class="optionstyle index_option_star_asc"
+							value="compareByStarsAsc"></option>
+						<option class="optionstyle index_option_star_desc"
+							value="compareByStarsDesc"></option>
+						<option class="optionstyle index_option_rating_asc"
+							value="compareByRatingAsc"></option>
+						<option class="optionstyle index_option_rating_desc"
+							value="compareByRatingDesc" selected="selected"></option>
 					</select>
 				</c:if>
 			</div>

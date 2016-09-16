@@ -73,8 +73,8 @@ b {
 <input id="count" type="hidden" value="${countOfOrders}" />
 
 <c:if test="${countOfOrders == 0}">
-	<h5 style="color: red; margin-bottom: 63px;">
-		<span id="card_no_periodicals"></span>
+	<h5 style="color: red; margin-bottom: 63px; text-align: center;">
+		<span id="card_no_orders"></span>
 	</h5>
 	<img
 		src="${pageContext.servletContext.contextPath}/resources/images/cart.png"

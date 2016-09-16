@@ -44,6 +44,7 @@
 		admin_edit_phone : "Phone",
 		admin_edit_desc : "Description",	
 		admin_edit_city : "City",
+		admin_edit_stars : "Stars",
 		admin_header : "Admin",
 		admin_page_id : "ID",
 		admin_page_fNane : "First name",
@@ -532,6 +533,7 @@
 		admin_edit_phone : "Телефон",
 		admin_edit_desc : "Опис",
 		admin_edit_city : "Місто",
+		admin_edit_stars : "Зірки",
 		manager_hotel_star : " К-сть зірок : ",
 		
 		room_header : "Кімнати",

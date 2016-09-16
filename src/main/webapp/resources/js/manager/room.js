@@ -274,10 +274,7 @@ function changeIsDeleted() {
 	$('#price').prop('disabled', deleted);
 	$('#hasWiFi').prop('disabled', deleted);
 	$('#hasShower').prop('disabled', deleted);
-	$('#hasParking').prop('disabled', deleted);
 	$('#hasCondition').prop('disabled', deleted);
-	$('#hasPool').prop('disabled', deleted);
-	$('#hasGym').prop('disabled', deleted);
 	$('#hasBalcony').prop('disabled', deleted);
 	if (deleted) {
 		$('#btn_add_image').addClass('disabled');

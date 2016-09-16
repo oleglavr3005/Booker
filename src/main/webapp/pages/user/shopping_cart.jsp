@@ -92,9 +92,9 @@
 		<h4 style="text-align: center; margin-top: 20px;">
 			<span class="user_cart_header"></span>
 		</h4>
-		
-		<h6 class="shopping_card_notice" style="margin-top: 20px;"></h6>
-
+		<c:if test="${countOfOrders <= 0 }">
+			<h6 class="shopping_card_notice" style="margin-top: 20px;"></h6>
+		</c:if>
 		<!-- <div class="row"><span id="shoping_card_shop_list"></span></div> -->
 		<div class="row">
 			<div class="col s3">
@@ -102,9 +102,6 @@
 					<c:if test="${countOfOrders > 0 }">
 						<span class="card_header"></span>
 						<span id="periodicals_number_for_all_users">${countOfOrders}</span>
-					</c:if>
-					<c:if test="${countOfOrders <= 0 }">
-						<span id="card_no_orders"></span>
 					</c:if>
 				</h6>
 			</div>

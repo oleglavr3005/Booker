@@ -103,13 +103,13 @@ div #sidebar-wrapper {
 	<jsp:include page="../header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 
-<!-- 	TEMP BUTTON FOR STATISTIC -->
+	<!-- 	TEMP BUTTON FOR STATISTIC -->
 	<a class="waves-effect waves-light btn" id="create_button"
-					href="${pageContext.servletContext.contextPath}/cabinet/hotel_orders/${hotel.id}" 
-					style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-					id=btn_update></span></a>
-<!-- 	END OF TEMP BUTTON FOR STATISTIC -->
-	
+		href="${pageContext.servletContext.contextPath}/cabinet/hotel_orders/${hotel.id}"
+		style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
+		id=btn_update></span></a>
+	<!-- 	END OF TEMP BUTTON FOR STATISTIC -->
+
 	<div class="container" style="margin-top: 20px">
 
 		<div class="row">
@@ -123,138 +123,134 @@ div #sidebar-wrapper {
 					<!-- 					END OF PHOTO -->
 				</div>
 
-			</div>
-
-
-			<div class="col s9">
-				<div class="container-fluid">
-
-					<div class="row">
-						<div class="col s6">
-
-							<!-- 						NAME -->
-
-							<div class="input-field">
-								<input id="name" type="text" class="validate" length="45"
-									value="${hotel.name}" placeholder="Name of Hotel"> <label
-									id="nameLbl" data-error="${fmtName}" for="name"><span
-									id="admin_edit_name"></span></label>
-							</div>
-
-							<!-- 							END OF NAME -->
-
-						</div>
-
-						<div class="col s6" style="margin-top: 15px;">
-
-							<!-- 						STARS -->
-							<input id="rating" onchange="rate()" type="number"
-								value="${hotel.stars}" class="rating" min=0 max=5 step=1
-								data-size="xs" data-stars="5">
-							<!-- 								<span -->
-							<!-- 								style="margin-left: 25px; margin-top: 20px; padding-top: 20px;"><span -->
-							<!-- 								id="manager_hotel_star"></span><span id="rate_span">0</span> / 5 -->
-							<!-- 								|</span> -->
-							<script>
-// 								function rate() {
-
-// 									var count = document
-// 											.getElementById("rate_span");
-// 									count.innerHTML = $('#rating').val();
-
-// 								}
-							</script>
-
-							<!-- 							END OF STARS -->
-
-						</div>
-					</div>
-
-					<div class="row">
-
-						<div class="col s8">
-							<!-- 						ADDRESS -->
-							<div class="input-field">
-								<input id="address" type="text" class="validate" length="145"
-									placeholder="Address of hotel"
-									value="${hotel.city} ${hotel.street}"> <label
-									id="cityLbl" data-error="${fmtName}" for="city"><span
-									id="admin_edit_city"></span></label>
-							</div>
-							<!-- 							END OF ADDRESS -->
-
-						</div>
-
-
-
-						<div class="col s4">
-
-							<!-- 						PHONE -->
-
-							<div class="input-field">
-								<input id="phone" type="text" class="validate" length="45"
-									placeholder="Name of phone" value="${hotel.phoneNumber}">
-								<label id="phoneLbl" data-error="${fmtName}" for="phone"><span
-									id="admin_edit_phone"></span></label>
-							</div>
-
-							<!--####################### END OF PHONE ############################# -->
-
-						</div>
-
-
-
-
-					</div>
-
-					<div class="row">
-
-						<div class="col s12"></div>
-					</div>
+				<div class="row">
+					<p>
+						<input type="checkbox" class="filled-in" id="isDeleted"
+							onclick="changeIsDeleted()" name="isDeleted" /> <label
+							for="isDeleted"><span id="admin_deleted"></span></label>
+					</p>
 
 				</div>
+
+
 			</div>
+
+			<div class="col s9">
+
+				<div class="row">
+					<div class="col s5 offset-s1">
+						<!-- 						NAME -->
+						<div class="input-field">
+							<input id="name" type="text" class="validate" length="45"
+								value="${hotel.name}"> <label id="nameLbl"
+								data-error="NAME INVALID" for="name"><span
+								id="admin_edit_name"></span></label>
+						</div>
+						<!-- 							END OF NAME -->
+					</div>
+					<div class="col s5 offset-s1">
+						<!-- 						STARS -->
+						<input id="rating" value="${hotel.stars}" type="number"
+							class="rating" min=1 max=5 step=1 data-size="xs" data-stars="5">
+						<label id="ratingLbl" data-error="RATING SHOULD BE 1-5"
+							for="rating"><span id="admin_edit_stars"></span> </label>
+
+						<!-- 							END OF STARS -->
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col s7 offset-s1">
+						<!-- 						ADDRESS -->
+						<div class="input-field">
+							<input id="address" type="text" class="validate" length="145"
+								value="${hotel.location}"> <label id="addressLbl"
+								data-error="ADDRESS IS INVALID" for="address"><span
+								id="admin_edit_address"></span> </label>
+						</div>
+						<!-- 						END OF ADDRESS -->
+					</div>
+					<div class="col s3 offset-s1">
+						<!-- 						PHONE -->
+						<div class="input-field">
+							<input id="phone" type="text" class="validate" length="20"
+								value="${hotel.phoneNumber}"> <label id="phoneLbl"
+								data-error="PHONE NUMBER IS INVALID" for="phone"><span
+								id="admin_edit_phone"></span></label>
+						</div>
+						<!-- 							END OF PHONE -->
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col s3 offset-s1">
+						<!-- 								CHECKBOX -->
+						<p>
+							<input type="checkbox" class="filled-in" id="hasParking"
+								name="hasParking" /> <label id="label_parking" for="hasParking">PARKING</label>
+						</p>
+						<p>
+							<input type="checkbox" class="filled-in" id="hasPool"
+								name="hasPool" /> <label id="label_pool" for="hasPool">SWIM
+								POOL</label>
+						</p>
+					</div>
+					<div class="col s4">
+						<p>
+							<input type="checkbox" class="filled-in" id="hasGym"
+								name="hasGym" /> <label id="label_gym" for="hasGym">FIT
+								GYM</label>
+						</p>
+						<p>
+							<input type="checkbox" class="filled-in" id="hasSpa"
+								name="hasSpa" /> <label id="label_spa" for="hasSpa">SPA
+							</label>
+						</p>
+					</div>
+					<div class="col s4">
+						<p>
+							<input type="checkbox" class="filled-in" id="hasService"
+								name="hasService" /> <label id="label_service" for="hasService">SERVICE</label>
+						</p>
+						<p>
+							<input type="checkbox" class="filled-in" id="hasCleaner"
+								name="hasCleaner" /> <label id="label_cleaner" for="hasCleaner">CLEANER</label>
+						</p>
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 		<div class="row">
-			<div class="col s10">
-				<!-- 						DESC -->
+			<!-- 						DESC -->
+			<div class="input-field">
 
-				<div class="input-field">
-					<textarea placeholder="Desc" id="desc" class="materialize-textarea"
-						class="validate" length="999">${hotel.desc}</textarea>
-					<label id="descLbl" data-error="${fmtName}" for="desc"><span
-						id="admin_edit_desc"></span></label>
-				</div>
-
-				<!-- 							END OF DESC -->
-
-
+				<textarea placeholder=""
+					style="padding-bottom: 10px; padding-top: 10px; padding-left: 15px;"
+					id="desc" class="materialize-textarea" class="validate"
+					length="999">${hotel.desc}</textarea>
+				<label id="descLbl" data-error="${fmtName}" for="desc"><span
+					id="admin_edit_desc"></span></label>
 			</div>
-			<div class="col s2">
+			<!-- 							END OF DESC -->
+		</div>
 
-
-				<p>
-					<input type="checkbox" class="filled-in" id="isDeleted"
-						onclick="changeIsDeleted()" name="isDeleted" /> <label
-						for="isDeleted"><span id="admin_deleted"></span></label>
-				</p>
-
-
+		<div class="row">
+			<!-- 							SEND NOTIF -->
+			<div class="col s12">
 				<a class="waves-effect waves-light btn" id="create_button"
 					onclick="updateHotel(${hotel.id})"
 					style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
 					id=btn_update></span></a>
 				<p id="create_error" style="color: red"></p>
-
-				<!-- CREATE BUTTON -->
-				<script>
-// 						$('#isDeleted').attr('checked',
-// 								'${hotel.isDeleted}' == 'true');
-					</script>
-
 			</div>
 		</div>
+
+		<!-- CREATE BUTTON -->
+
+
 	</div>
 
 
@@ -309,7 +305,7 @@ div #sidebar-wrapper {
 						<span class="table-title" id="room_header"></span>
 						<div class="actions">
 							<a id="createBtn"
-								href="${pageContext.servletContext.contextPath}/cabinet/create_room?hotelId=${hotel.id}" 
+								href="${pageContext.servletContext.contextPath}/cabinet/create_room?hotelId=${hotel.id}"
 								class="my-btn waves-effect waves-light btn"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
 								<span class="btn_create_room"></span>
@@ -424,7 +420,15 @@ div #sidebar-wrapper {
 	$(document).ready(function(){
 	    $('.tooltipped').tooltip({delay: 50,position: 'top'});
 	  });
-	
+	</script>
+
+	<script>
+		$('#hasParking').attr('checked', '${hotel.parking}' == 'true');
+		$('#hasPool').attr('checked', '${room.pool}' == 'true');
+		$('#hasGym').attr('checked', '${room.gym}' == 'true');
+		$('#hasSpa').attr('checked', '${room.spa}' == 'true');
+		$('#hasService').attr('checked', '${room.service}' == 'true');
+		$('#hasCleaner').attr('checked', '${room.cleaner}' == 'true');
 	</script>
 
 
