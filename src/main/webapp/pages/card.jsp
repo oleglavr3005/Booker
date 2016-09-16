@@ -72,10 +72,10 @@ b {
 <div class="divider" style="margin-bottom: 20px;"></div>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col s3">
+		<div style="text-align: center;">
 			<c:if test="${countOfHotels == 0}">
 				<h5 style="color: red; margin-bottom: 63px;">
-					<span id="card_no_periodicals"></span> 
+					<span id="card_no_hotels"></span> 
 				</h5>
 			</c:if>
 		</div>

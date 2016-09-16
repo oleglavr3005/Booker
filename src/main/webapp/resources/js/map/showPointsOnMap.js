@@ -6,10 +6,14 @@ var map;
 function map_initialize() {
 	console.log("map_initialize");
     //Google map option
-	var mapCenter = new google.maps.LatLng(hotelsJson[0].lat, hotelsJson[0].lon); //Google map Coordinates
+	if(hotelsJson[0] == undefined){
+		var mapCenter = new google.maps.LatLng(49.8440167, 24.026212299999997);
+	} else {
+		var mapCenter = new google.maps.LatLng(hotelsJson[0].lat, hotelsJson[0].lon); //Google map Coordinates
+	}
     var googleMapOptions = {
         center: mapCenter, // map center
-        zoom: 15, //zoom level, 0 = earth view to higher value
+        zoom: 11, //zoom level, 0 = earth view to higher value
         panControl: true, //enable pan Control
         zoomControl: true, //enable zoom control
         zoomControlOptions: {
