@@ -13,13 +13,17 @@ function checkBoxFiller() {
 
 	$('.hasWiFi').attr('checked', "${hasWiFi}");
 	$('.hasShower').attr('checked', "${hasShower}");
-	$('.hasParking').attr('checked', "${hasParking}");
+	$('.hasTv').attr('checked', "${hasTv}");
 	$('.hasCondition').attr('checked', "${hasCondition}");
-
-	$('.hasPool').attr('checked', "${hasPool}");
-	$('.hasGym').attr('checked', "${hasGym}");
 	$('.hasBalcony').attr('checked', "${hasBalcony}");
 	$('.noDeposit').attr('checked', "${noDeposit}");
+
+	$('.hasParking').attr('checked', "${hasParking}");
+	$('.hasPool').attr('checked', "${hasPool}");
+	$('.hasGym').attr('checked', "${hasGym}");
+	$('.hasSpa').attr('checked', "${hasSpa}");
+	$('.hasService').attr('checked', "${hasService}");
+	$('.hasCleaner').attr('checked', "${hasCleaner}");
 }
 
 function find() {
