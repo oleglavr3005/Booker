@@ -704,7 +704,7 @@
 
 		    	March : 'March', Mar : 'Mar',
 		    	April : 'April', Apr : 'Apr',
-		    	May : 'May',
+		    	May : 'May', My : 'May',
 
 		    	June : 'June', Jun : 'Jun',
 		    	July : 'July', Jul : 'Jul',
@@ -798,7 +798,38 @@
 		        enable: 'activate'
 		    },
 		    datepicker : {
+		    	December : 'Грудень', Dec : 'Гру',
+		    	January : 'Січень', Jan : 'Січ',
+		    	February : 'Лютий', Feb : 'Лют',
+
+		    	March : 'Березень', Mar : 'Бер',
+		    	April : 'Квітень', Apr : 'Кві',
+		    	May : 'Травень', My : 'Тра',
+
+		    	June : 'Червень', Jun : 'Чер',
+		    	July : 'Липень', Jul : 'Лип',
+		    	August : 'Серпень', Aug : 'Сер',
+
+		    	September : 'Вересень', Sep : 'Вер',
+		    	October : 'Жовтень', Oct : 'Жов',
+		    	November : 'Листопад', Nov : 'Лис',
 		    	
+		    	Sunday : 'Субота', Sun : 'Сб',
+		    	Monday : 'Понеділок', Mon : 'Пн',
+		    	Tuesday : 'Вівторок', Tue : 'Вт',
+		    	Wednesday : 'Середа', Wed : 'Ср',
+		    	Thursday : 'Четвер', Thu : 'Чт',
+		    	Friday : 'П\'ятниця', Fri : 'Пт',
+		    	Saturday : 'Неділя', Sat : 'Нд',
+		    	
+		    	today: 'Сьогодні',
+				clear: 'Очистити',
+				close: 'Закрити',
+				
+				labelMonthNext: 'Наступний місяць',
+				labelMonthPrev: 'Попередній місяць',
+				labelMonthSelect: 'Оберіть місяць',
+				labelYearSelect: 'Оберіть рік'
 		    },
 		    chart : {
 		    	no_hotels : 'Готелів не знайдено',
