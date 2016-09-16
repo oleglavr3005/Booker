@@ -1,3 +1,5 @@
+var chart;
+
 $(document).ready(function() {
 	var hotelIdField = $("#hotelId");	
 	var today = convertDate(new Date());
@@ -97,7 +99,7 @@ $(document).ready(function() {
 				}				
 			}
 			
-			Morris.Line({
+			chart = Morris.Line({
 				  element: 'visitorsChart',
 				  data: morisVisitorsData,
 				  xkey: 'date',

@@ -32,6 +32,31 @@ function invalid(field) {
 	$('#' + field).addClass("invalid");
 }
 
+function loadNewData() {
+	var startDateField = $("#date_from");
+	var endDateField = $("#date_to");
+	if(endDateField.hasClass("valid") && startDateField.hasClass("valid")) {
+		var hotelIdField = $("#hotelId");	
+		$.ajax({
+			async : false,
+			data : {
+				hotelId : hotelIdField.val(),
+				startDate: startDateField.val(),
+				endDate: endDateField.val()
+			},
+			dataType : 'json',
+			url : "../../get_visitors_chart_data",
+			type : 'POST',
+			success : function(respond) {					
+				if (respond != false && respond.visitorsData.length > 0) {	
+					chart.setData(respond.visitorsData);
+				}
+				
+			}
+		});
+	}
+}
+
 function onVisitorsEndDate() {
 	var dateToElement = document.getElementById("date_to");
 	var dateFromElement = document.getElementById("date_from");
