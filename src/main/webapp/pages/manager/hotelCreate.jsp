@@ -141,7 +141,7 @@
 					</div>
 					<div class="col s5 offset-s1">
 						<!-- 						STARS -->
-						<input id="rating" value="0" type="number" class="rating" min=1
+						<input id="rating" value="1" type="number" class="rating" min=1
 							max=5 step=1 data-size="xs" data-stars="5"> <label
 							id="ratingLbl" data-error="RATING SHOULD BE 1-5" for="rating"><span
 							id="admin_edit_stars"></span> </label>
@@ -198,8 +198,6 @@
 								name="hasSpa" /> <label id="label_spa" for="hasSpa">SPA
 							</label>
 						</p>
-						
-
 					</div>
 					<div class="col s4">
 						<p>
