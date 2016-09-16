@@ -96,13 +96,12 @@ div #sidebar-wrapper {
 	<jsp:include page="header.jsp"></jsp:include>
 
 
-<div style="background: url('https://cdn6.agoda.net/images/ABTest/ABTest5692/home-1920x590-liguria-italy.jpg'); height: 590px;">
+<div style="background: url('${pageContext.servletContext.contextPath}/resources/images/page404.jpg'); height: 590px;">
 <div class="container">
-<div style="margin-top: 200px; ">
-  <div class="row" style="background-color: RGB(0, 0, 0);   opacity: .8; border-radius: 10px;">
+<div style="margin-top: 400px; ">
+  <div class="row" style="   opacity: .8; border-radius: 10px;">
   <div style="text-align: center;">
-<h1>Error, 404</h1>
-<h2>Page not found</h2>
+<h2 style="color: #101010;margin-top: 0px;margin-left: 20px;">Page not found</h2>
 </div>
        
 </div>
@@ -111,7 +110,7 @@ div #sidebar-wrapper {
 
 </div>
 	<!-- Footer ========================================================================== -->
-	<jsp:include page="foot.jsp"></jsp:include>
+	<jsp:include page="footError.jsp"></jsp:include>
 	<!-- Footer End====================================================================== -->
 
 

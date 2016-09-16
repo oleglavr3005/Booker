@@ -170,7 +170,7 @@ img.logo {
 									</div>
 									<div class="modal-content" style="margin-top: -10px">
 										<div class="form-horizontal registrationFrm">
-											<div class=row>
+											<div class=row style="margin-bottom: 25px;">
 												<div class="col s6">
 													<div class="input-field">
 														<input id="name" type="text" class="validate"> <label
@@ -188,13 +188,13 @@ img.logo {
 													</div>
 												</div>
 											</div>
-											<div class="input-field">
+											<div class="input-field" style="padding: 0 10px 0 10px;">
 												<input id="email" type="email" class="validate"> <label
 													id="emailLbl" data-error="" for="email">
 													<span class="header_regist_mail"> </span>
 												</label>
 											</div>
-											<div class=row>
+											<div class=row style="margin-top: 10px; ">
 												<div class="col s6">
 													<div class="input-field">
 														<input id="password" type="password" class="validate">
