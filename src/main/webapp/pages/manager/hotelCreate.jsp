@@ -133,7 +133,7 @@
 						<!-- 						NAME -->
 						<div class="input-field">
 							<input id="name" type="text" class="validate" length="45"
-								placeholder=""> <label id="nameLbl"
+								onkeyup="setHotelName()"> <label id="nameLbl"
 								data-error="NAME INVALID" for="name"><span
 								id="admin_edit_name"></span></label>
 						</div>
@@ -141,11 +141,10 @@
 					</div>
 					<div class="col s5 offset-s1">
 						<!-- 						STARS -->
-						<input id="rating" value="1" type="number" class="rating" min=1
-							max=5 step=1 data-size="xs" data-stars="5"> <label
-							id="ratingLbl" data-error="STARS SHOULD BE 1-5" for="rating"><span
-							id="admin_edit_stars"></span> </label>
-
+						<input id="rating" type="number" class="rating" min=1 max=5 step=1
+							data-size="xs" data-stars="5" onchange="setHotelStars()">
+						<label id="ratingLbl" data-error="STARS SHOULD BE 1-5"
+							for="rating"><span id="admin_edit_stars"></span> </label>
 						<!-- 							END OF STARS -->
 					</div>
 				</div>
@@ -155,8 +154,8 @@
 						<!-- 						ADDRESS -->
 						<div class="input-field">
 							<input id="address" type="text" class="validate" length="145"
-								placeholder=""> <label id="addressLbl"
-								data-error="ADDRESS IS INVALID" for="address"><span
+								onkeyup="setHotelLocation()" placeholder=""> <label
+								id="addressLbl" data-error="ADDRESS IS INVALID" for="address"><span
 								id="admin_edit_address"></span> </label>
 						</div>
 						<!-- 						END OF ADDRESS -->
@@ -165,8 +164,8 @@
 						<!-- 						PHONE -->
 						<div class="input-field">
 							<input id="phone" type="text" class="validate" length="20"
-								placeholder=""> <label id="phoneLbl"
-								data-error="PHONE NUMBER IS INVALID" for="phone"><span
+								onkeyup="setHotelPhone()" placeholder=""> <label
+								id="phoneLbl" data-error="PHONE NUMBER IS INVALID" for="phone"><span
 								id="admin_edit_phone"></span></label>
 						</div>
 						<!-- 							END OF PHONE -->
@@ -217,7 +216,9 @@
 			<!-- 						DESC -->
 
 			<div class="input-field">
-				<textarea placeholder="" style="padding-bottom: 10px;padding-top: 10px;padding-left: 15px;"id="desc" class="materialize-textarea"
+				<textarea placeholder=""
+					style="padding-bottom: 10px; padding-top: 10px; padding-left: 15px;"
+					onkeyup="setHotelDesc()" id="desc" class="materialize-textarea"
 					class="validate">${message}</textarea>
 				<label id="descLbl" data-error="DESCRIPTION IS INVALID" for="desc"><span
 					id="admin_edit_desc"></span> </label>
@@ -238,6 +239,80 @@
 				<p id="create_error" style="color: red"></p>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="card">
+				<div class="container-fluid">
+					<div class="row" style="margin-top: 15px; margin-bottom: 10px;">
+						<div class="card-image col s4" style="position: relative;">
+							<div>
+								<img id="ImgCard"
+									style="height: 180px; width: 230px; padding: 10px;"
+									src="<i:urlToImage url="new_hotel.png" />">
+							</div>
+
+						</div>
+
+						<div class="col s6">
+
+							<div class="row"
+								style="margin-top: 15px; margin-bottom: 10px; font-size: 1.3rem; padding-left: 0;">
+								<div class="col s7">
+									<span id="hotel_card_name"></span>
+								</div>
+								<div class="col s4 offset-s1">
+									<a class="tooltipped index_search_stars" data-position="icon"
+										data-tooltip="" style="color: #0d0d0d; text-decoration: none;">
+										<i id="card_star_1" class="fa fa fa-star-o" aria-hidden="true"></i>
+										<i id="card_star_2" class="fa fa fa-star-o" aria-hidden="true"></i>
+										<i id="card_star_3" class="fa fa fa-star-o" aria-hidden="true"></i>
+										<i id="card_star_4" class="fa fa fa-star-o" aria-hidden="true"></i>
+										<i id="card_star_5" class="fa fa fa-star-o" aria-hidden="true"></i>
+									</a>
+								</div>
+							</div>
+
+
+							<div class="row" style="margin-bottom: 10px;">
+								<a class="tooltipped index_search_location" data-position="icon"
+									data-tooltip="" style="color: #0d0d0d; text-decoration: none;"><i
+									class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
+								<span id="hotel_card_location"></span>
+							</div>
+
+							<div class="row" style="margin-bottom: 10px">
+								<a class="tooltipped tooltip_phone_number" data-position="icon"
+									data-tooltip=""
+									style="color: #0d0d0d; margin-left: -2px; text-decoration: none;"><i
+									class="fa fa-lg fa-phone-square invert" aria-hidden="true"></i></a>
+								<span id="hotel_card_phoneNumber"></span>
+							</div>
+
+							<div class="row" style="margin-bottom: 5px">
+								<div class="col s1" style="padding: 0px; margin-right: -25px;">
+									<a class="tooltipped index_search_description"
+										data-position="icon" data-tooltip=""
+										style="color: #0d0d0d; margin-left: -4px; cursor: default"><i
+										class="material-icons invert" style="font-size: 20px;">receipt</i></a>
+								</div>
+								<div class="col s10" style="display: inline-block"
+									id="hotel_card_desc"></div>
+								<%-- 								<span id="hotelInfo${hotel.id}">${hotel.desc.substring(0, hotel.desc.length() < 150 ? hotel.desc.length() : 150)}</span> --%>
+								<%-- 								<a onclick="changeInfo(${hotel.id})" style="cursor: pointer" --%>
+								<!-- 									class="tooltipped tooltip_showe_all_info" data-position="icon" -->
+								<%-- 									data-tooltip="" id="dots${hotel.id}">...</a> <input --%>
+								<%-- 									id="infoOpened${hotel.id}" type="hidden" value="false" /> <input --%>
+								<%-- 									id="fullInfo${hotel.id}" type="hidden" value="${hotel.desc}" /> --%>
+								<%-- 								<input id="shortInfo${hotel.id}" type="hidden" --%>
+								<%-- 									value="${hotel.desc.substring(0, hotel.desc.length() < 150 ? hotel.desc.length() : 150)}" /> --%>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
 	</div>
 
 	<!-- Footer ========================================================================== -->
@@ -255,6 +330,9 @@
 	<script
 		src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU&libraries=places&callback=initAutocomplete"
 		async defer></script>
+	<script>
+		init();
+	</script>
 </body>
 
 </html>
