@@ -175,7 +175,7 @@ div #sidebar-wrapper {
 				<div id="details_panel" style="display: none">
 					<div class="row">
 						<div class="row">
-							<div class="col s4 offset-s1 ">
+							<div class="col s4 offset-s2">
 
 								<h6 id="room_type" style="margin-bottom: 15px;"></h6>
 								<p>
@@ -322,9 +322,8 @@ div #sidebar-wrapper {
 			</div>
 			<div class="col s5 offset-s4">
 				<c:if test="${countOfHotels > 0 }">
-					<span class="sort_by"
-						style="font-size: 15; position: relative; /* display: inline-block; */ bottom: 3px;"></span>
-
+					<div style="float : left">
+					<span class="sort_by" style="font-size: 15; position: relative; /* display: inline-block; */ bottom: 3px;"></span>
 					<select id="compare" class="chosen-select optionstyle"
 						onchange="findPage(window.location.href,1)">
 						<option id="index_option_star_asc" class="optionstyle"
@@ -336,6 +335,7 @@ div #sidebar-wrapper {
 						<option id="index_option_rating_desc" class="optionstyle"
 							value="compareByRatingDesc" selected="selected"></option>
 					</select>
+					</div>
 				</c:if>
 			</div>
 		</div>
