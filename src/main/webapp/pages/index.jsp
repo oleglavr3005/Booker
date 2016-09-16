@@ -175,7 +175,7 @@ div #sidebar-wrapper {
 				<div id="details_panel" style="display: none">
 					<div class="row">
 						<div class="row">
-							<div class="col s4 offset-s2">
+							<div class="col s3 offset-s1">
 
 								<h6 id="room_type" style="margin-bottom: 15px;"></h6>
 								<p>
@@ -216,25 +216,12 @@ div #sidebar-wrapper {
 								</p>
 
 							</div>
-							<div class="col s4 offset-s2 ">
-
-								<p style="margin-top: 20px;">
-									<input type="checkbox" class="filled-in" id="hasWiFi"
-										name="hasWiFi" /> <label id="label_wifi" for="hasWiFi"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="hasShower"
-										name="hasShower" /> <label id="label_shower" for="hasShower"></label>
-								</p>
+							<div class="col s3 offset-s1 ">
+								<h6 id="hotel_conveniences" style="margin-bottom: 15px;"></h6>
 								<p>
 									<input type="checkbox" class="filled-in" id="hasParking"
 										name="hasParking" /> <label id="label_parking"
 										for="hasParking"></label>
-								</p>
-								<p>
-									<input type="checkbox" class="filled-in" id="hasCondition"
-										name="hasCondition" /> <label id="label_condition"
-										for="hasCondition"></label>
 								</p>
 								<p>
 									<input type="checkbox" class="filled-in" id="hasPool"
@@ -243,6 +230,42 @@ div #sidebar-wrapper {
 								<p>
 									<input type="checkbox" class="filled-in" id="hasGym"
 										name="hasGym" /> <label id="label_gym" for="hasGym"></label>
+								</p>
+								<p>
+									<input type="checkbox" class="filled-in" id="hasSpa"
+										name="hasSpa" /> <label id="label_spa"
+										for="hasSpa"></label>
+								</p>
+								<p>
+									<input type="checkbox" class="filled-in" id="hasService"
+										name="hasService" /> <label id="label_service"
+										for="hasService"></label>
+								</p>
+								<p>
+									<input type="checkbox" class="filled-in" id="hasCleaner"
+										name="hasCleaner" /> <label id="label_cleaner"
+										for="hasCleaner"></label>
+								</p>
+							</div>
+							<div class="col s3 offset-s1 ">
+								<h6 id="room_conveniences" style="margin-bottom: 15px;"></h6>
+								<p>
+									<input type="checkbox" class="filled-in" id="hasWiFi"
+										name="hasWiFi" /> <label id="label_wifi" for="hasWiFi"></label>
+								</p>
+								<p>
+									<input type="checkbox" class="filled-in" id="hasShower"
+										name="hasShower" /> <label id="label_shower" for="hasShower"></label>
+								</p>
+								<p>
+									<input type="checkbox" class="filled-in" id="hasTv"
+										name="hasTv" /> <label id="label_tv"
+										for="hasTv"></label>
+								</p>
+								<p>
+									<input type="checkbox" class="filled-in" id="hasCondition"
+										name="hasCondition" /> <label id="label_condition"
+										for="hasCondition"></label>
 								</p>
 								<p>
 									<input type="checkbox" class="filled-in" id="hasBalcony"
