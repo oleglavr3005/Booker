@@ -35,7 +35,7 @@ public class Room {
 		
 		photos = new RoomPhotoService().getRoomPhotosByRoom(id);
 		if(photos.size() == 0) {
-			photos.add(new RoomPhoto(0, "no-image.png", "", hotelId, true));
+			photos.add(new RoomPhoto(0, "no_room_pic.jpg", "", hotelId, true));
 		} else {
 			photos.sort(new Comparator<RoomPhoto>() {
 				@Override
