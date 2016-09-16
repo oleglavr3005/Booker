@@ -227,7 +227,6 @@ public class HotelDao {
 			
 			statement.setString(i++, ".*" + name + ".*");
 			statement.setString(i++, ".*" + name + ".*");
-			statement.setString(i++, ".*" + name + ".*");
 			
 			statement.setInt(i++, minStars);
 			statement.setInt(i++, maxStars);
@@ -458,7 +457,6 @@ public class HotelDao {
 			statement.setTimestamp(i++, startDate);
 			statement.setTimestamp(i++, endDate);
 			
-			statement.setString(i++, ".*" + name + ".*");
 			statement.setString(i++, ".*" + name + ".*");
 			statement.setString(i++, ".*" + name + ".*");
 			
