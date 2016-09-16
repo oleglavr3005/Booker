@@ -127,16 +127,16 @@ b {
 					<div class="col s6">
 
 						<div class="row" style="margin-top: 15px; margin-bottom: 10px; font-size: 1.3rem; padding-left: 0;">
-							<div class="col s8">
-								<a href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"><h5>${hotel.name}</h5></a>
+							<div class="col s5">
+								<a href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"><span>${hotel.name}</span></a>
 							</div>
-							<div class="col s4">
+							<div class="col s6 offset-s1">
 								<a class="tooltipped index_search_stars" data-position="icon"
 									data-tooltip="" style="color: #0d0d0d; text-decoration: none;">
 									<c:forEach var="i" begin="1" end="${hotel.stars}">
-										<i class="fa fa-lg fa-star" aria-hidden="true"></i>
+										<i class="fa fa fa-star" aria-hidden="true"></i>
 									</c:forEach> <c:forEach var="i" begin="${hotel.stars}" end="4">
-										<i class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+										<i class="fa fa fa-star-o" aria-hidden="true"></i>
 									</c:forEach>
 								</a>
 							</div>
