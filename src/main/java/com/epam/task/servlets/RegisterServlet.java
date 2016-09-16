@@ -54,6 +54,8 @@ public class RegisterServlet extends HttpServlet {
 			
 			user.setLanguage("en");
 			
+			user.setImage("avatar.png");
+			
 			UserService userService = new UserService();
 			userService.insertUser(user);
 
