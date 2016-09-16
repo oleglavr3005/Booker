@@ -273,10 +273,6 @@
 								<input type="checkbox" class="filled-in" id="hasTv"
 									name="hasTv" /> <label id="label_tv" for="hasTv">TV</label>
 							</p>
-							
-							
-							
-							
 							<p>
 								<input type="checkbox" class="filled-in" id="hasCondition"
 									name="hasCondition" /> <label id="label_condition"
@@ -321,13 +317,6 @@
 								$('#freeBook').attr('checked',
 										'${room.daysCount}' < 0);
 							</script>
-
-							<!-- 				END OF FREE BOOK -->
-
-							<!-- 								END OF CHECKBOX -->
-
-
-
 
 						</div>
 

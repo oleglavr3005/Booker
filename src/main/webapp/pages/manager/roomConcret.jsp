@@ -116,15 +116,7 @@
 				<!-- 					PHOTO -->
 				<div class="row">
 					<img id="Img" style="height: 210px; padding: 10px; width: 290px;"
-						<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
-								src="<i:urlToImage url="${room.photos[0].img }" />">
-
-					<!-- 					END OF PHOTO -->
-					<!-- 				INPUT -->
-					<%-- 					<input style="margin-top: 5px; display:none" type="file" id="imgInput"  --%>
-					<%-- 						onchange="uploadRoom()" accept="image/*" /> --%>
-					<!-- 				END OF INPUT -->
-
+						src="<i:urlToImage url="${room.photos[0].img }" />">
 					<a class="waves-effect waves-light btn" id="create_button"
 						onclick="updateRoom(${room.id})"
 						style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
@@ -132,32 +124,20 @@
 					</a>
 					<p id="create_error" style="color: red"></p>
 				</div>
-
 				<div class="row">
 					<p>
 						<input type="checkbox" class="filled-in" id="isDeleted"
 							onclick="changeIsDeleted()" name="isDeleted" /> <label
 							id="room_concret_deleted" for="isDeleted"></label>
 					</p>
-
-					<script>
-// 						$('#isDeleted').attr('checked',
-// 								'${room.deleted}' == 'true');
-					</script>
-
 					<p>
 						<input type="checkbox" class="filled-in" id="freeBook"
 							onclick="changeFreeBook()" name="freeBook" /> <label
 							id="room_concret_freebook" for="freeBook"></label>
 					</p>
 
-
-
 				</div>
-
-
 			</div>
-
 
 			<div class="col s9">
 				<div class="container-fluid">
@@ -180,9 +160,6 @@
 								</select>
 							</div>
 							<!-- 						END OF ROOM TYPE -->
-
-
-
 
 							<!-- 1 BEDS COUNT -->
 
@@ -297,24 +274,14 @@
 									name="hasShower" /> <label id="label_shower" for="hasShower">SHOWER</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="hasParking"
-									name="hasParking" /> <label id="label_parking"
-									for="hasParking">PARKING</label>
+								<input type="checkbox" class="filled-in" id="hasTv"
+									name="hasTv" /> <label id="label_tv"
+									for="hasTv">TV</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasCondition"
 									name="hasCondition" /> <label id="label_condition"
 									for="hasCondition">AIR CONDITION</label>
-							</p>
-							<p>
-								<input type="checkbox" class="filled-in" id="hasPool"
-									name="hasPool" /> <label id="label_pool" for="hasPool">SWIM
-									POOL</label>
-							</p>
-							<p>
-								<input type="checkbox" class="filled-in" id="hasGym"
-									name="hasGym" /> <label id="label_gym" for="hasGym">FIT
-									GYM</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasBalcony"
@@ -333,12 +300,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
-
-
 
 	<div class="container">
 		<div class="row">
@@ -407,11 +368,8 @@
 	<script>
 		$('#hasWiFi').attr('checked', '${room.wifi}' == 'true');
 		$('#hasShower').attr('checked', '${room.shower}' == 'true');
-		$('#hasParking').attr('checked', '${room.parking}' == 'true');
+		$('#hasTv').attr('checked', '${room.tv}' == 'true');
 		$('#hasCondition').attr('checked', '${room.condition}' == 'true');
-
-		$('#hasPool').attr('checked', '${room.pool}' == 'true');
-		$('#hasGym').attr('checked', '${room.gym}' == 'true');
 		$('#hasBalcony').attr('checked', '${room.balcony}' == 'true');
 		
 		$('#freeBook').attr('checked', '${room.daysCount}' < 0);
