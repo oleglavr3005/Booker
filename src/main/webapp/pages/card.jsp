@@ -72,10 +72,10 @@ b {
 <div class="divider" style="margin-bottom: 20px;"></div>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col s3">
+		<div style="text-align: center;">
 			<c:if test="${countOfHotels == 0}">
 				<h5 style="color: red; margin-bottom: 63px;">
-					<span id="card_no_periodicals"></span> 
+					<span id="card_no_hotels"></span> 
 				</h5>
 			</c:if>
 		</div>
@@ -128,7 +128,7 @@ b {
 
 						<div class="row" style="margin-top: 15px; margin-bottom: 10px">
 							<div class="col s5">
-								<a href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"><h4>${hotel.name}</h4></a>
+								<a href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"><h5>${hotel.name}</h5></a>
 							</div>
 							<div class="col s6 offset-s1">
 								<a class="tooltipped index_search_stars" data-position="icon"
@@ -152,7 +152,7 @@ b {
 
 						<div class="row" style="margin-bottom: 10px">
 							<a class="tooltipped tooltip_phone_number" data-position="icon"
-								data-tooltip="" style="color: #0d0d0d; text-decoration: none;"><i
+								data-tooltip="" style="color: #0d0d0d; margin-left: -2px; text-decoration: none;"><i
 								class="fa fa-lg fa-phone-square invert" aria-hidden="true"></i></a>
 							<span>${hotel.phoneNumber}</span>
 						</div>
@@ -160,7 +160,7 @@ b {
 						<div class="row" style="margin-bottom: 5px">
 							<a class="tooltipped index_search_description"
 								data-position="icon" data-tooltip=""
-								style="color: #0d0d0d; cursor: default"><i
+								style="color: #0d0d0d; margin-left: -4px; cursor: default"><i
 								class="material-icons invert" style="font-size: 20px;">receipt</i></a>
 							<span id="hotelInfo${hotel.id}">${hotel.desc.substring(0, hotel.desc.length() < 150 ? hotel.desc.length() : 150)}</span>
 							<a onclick="changeInfo(${hotel.id})" style="cursor: pointer"
