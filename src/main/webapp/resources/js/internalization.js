@@ -822,9 +822,9 @@
 		    	Friday : 'П\'ятниця', Fri : 'Пт',
 		    	Saturday : 'Неділя', Sat : 'Нд',
 		    	
-		    	today: 'Сьогодні',
-				clear: 'Очистити',
-				close: 'Закрити',
+		    	today: 'Зараз',
+				clear: 'Відміна',
+				close: 'Х',
 				
 				labelMonthNext: 'Наступний місяць',
 				labelMonthPrev: 'Попередній місяць',
