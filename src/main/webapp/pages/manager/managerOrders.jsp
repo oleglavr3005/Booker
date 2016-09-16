@@ -13,7 +13,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>Booker | My Orders</title>
+<title>Booker | Hotel Orders</title>
 <link rel="icon" type="image/ico"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.ico">
 <link
@@ -446,20 +446,44 @@ div.material-table .table-footer .dataTables_length {
 			<!-- 				Tab #4 -->
 			<div id="test4" class="col s12">
 
-				<div>
-					<h4 style="text-align: center; margin-top: 20px;">
-						<span id="orders_charts_HOTELSCHART">MOST VISITED HOTELS</span>
-					</h4>
-					<div id="donutChart" style="height: 250px; float: left"></div>
-				</div>
+				<input type="hidden" id="hotelId" value="${hotelId}">
 
 				<div>
-					<h4 style="text-align: center; margin-top: 200px;">
-						<span id="orders_charts_MONTHCHART">MONTHLY ACTIVITY</span>
+					<h4 style="text-align: center; margin-top: 20px;">
+						<span id="orders_charts_ORDERS_MONTH_CHART">ORDERS BY MONTH</span>
 					</h4>
 					<div id="lineChart" style="height: 250px; margin-bottom: 30px"></div>
 				</div>
+				
+				<div>
+					<h4 style="text-align: center; margin-top: 20px;">
+						<span id="orders_charts_SEASON_CHART">POPULARITY BY SEASON</span>
+					</h4>
+					<div id="barChart" style="height: 250px; margin-bottom: 30px"></div>
+				</div>
 
+				<div>
+					<h4 style="text-align: center; margin-top: 20px;">
+						<span id="orders_charts_VISITORS">VISITORS</span>
+					</h4>
+					
+					<div class="input-field col s5 offset-s1">
+						<input type="text" name="startDate" id="date_from"
+							class="datepicker validate" onchange="onVisitorsDate()"
+							style="cursor: default;"><label
+							id="startLbl" data-error="${fmtStart}" for="date_from"><span
+							id="chart_date_start"></span></label>
+					</div>
+					<div class="input-field col s5 offset-s1">
+						<input type="text" name="endDate" id="date_to" onchange="onVisitorsEndDate()"
+							class="datepicker validate" style="cursor: default;">
+							<label id="endLbl"
+							data-error="${fmtEnd}" for="date_to"><span
+							id="chart_date_end"></span></label>
+					</div>
+					
+					<div id="visitorsChart" style="height: 250px; margin: 100px 0px 50px 0px"></div>
+				</div>
 			</div>
 			<!-- 			End of Tab #4 -->
 
@@ -773,8 +797,15 @@ div.material-table .table-footer .dataTables_length {
 		src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
 	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/resources/js/charts/charts.js"></script>
+		src="${pageContext.servletContext.contextPath}/resources/js/charts/managerCharts.js"></script>
 
+	<!-- 	DATEPICKER -->
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/picker.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/picker.date.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/visitorsDatepicker.js"></script>
 
 </body>
 </html>
