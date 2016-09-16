@@ -128,8 +128,7 @@ b {
 
 						<div class="row" style="margin-top: 15px; margin-bottom: 10px">
 							<div class="col s5">
-								<a
-									href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}">${hotel.name}</a>
+								<a href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"><h4>${hotel.name}</h4></a>
 							</div>
 							<div class="col s6 offset-s1">
 								<a class="tooltipped index_search_stars" data-position="icon"
