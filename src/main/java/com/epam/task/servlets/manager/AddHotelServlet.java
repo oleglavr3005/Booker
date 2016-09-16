@@ -30,20 +30,29 @@ public class AddHotelServlet extends HttpServlet {
 		User manager = (User) request.getSession().getAttribute("user");
 		
 		String name = request.getParameter("name");
-		String city = request.getParameter("city");
-		String street = request.getParameter("street");
+		String location = request.getParameter("location");
 		String starsString = request.getParameter("stars");
 		String description = request.getParameter("description");
 		String xCoordString = request.getParameter("xCoord");
 		String yCoordString = request.getParameter("yCoord");
 		String phoneNumber = request.getParameter("phoneNumber");
+
+		String hasParkingString = request.getParameter("hasParking");
+		String hasPoolString = request.getParameter("hasPool");
+		String hasGymString = request.getParameter("hasGym");
+		String hasSpaString = request.getParameter("hasSpa");
+		String hasServiceString = request.getParameter("hasService");
+		String hasCleanerString = request.getParameter("hasCleaner");
+		
 		String hotelImagesString = request.getParameter("hotelImages");
 		String sendNotifString = request.getParameter("sendNotif");
 		
-		if (name == null || city == null || street == null || starsString == null || description == null ||
+		if (name == null || location == null || starsString == null || description == null ||
 				xCoordString == null || yCoordString == null || phoneNumber == null || hotelImagesString == null ||
 				hotelImagesString.equals("error") || !StringUtil.isInStarsRange(starsString) || 
-				!StringUtil.isDouble(xCoordString) || !StringUtil.isDouble(yCoordString) || !StringUtil.isBoolean(sendNotifString)) {
+				!StringUtil.isDouble(xCoordString) || !StringUtil.isDouble(yCoordString) || !StringUtil.isBoolean(sendNotifString) || 
+				!StringUtil.isBoolean(hasParkingString) || !StringUtil.isBoolean(hasPoolString) || !StringUtil.isBoolean(hasGymString) || 
+				!StringUtil.isBoolean(hasSpaString) || !StringUtil.isBoolean(hasServiceString) || !StringUtil.isBoolean(hasCleanerString)) {
 			response.sendError(500);
 			return;
 		}
@@ -52,7 +61,16 @@ public class AddHotelServlet extends HttpServlet {
 		double xCoord = Double.parseDouble(xCoordString);
 		double yCoord = Double.parseDouble(yCoordString);
 		
-		int hotelId = new HotelService().insertHotel(new Hotel(0, name, city, street, stars, description, manager.getId(), xCoord, yCoord, 0, false, phoneNumber));
+		boolean hasParking = Boolean.parseBoolean(hasParkingString);
+		boolean hasPool = Boolean.parseBoolean(hasPoolString);
+		boolean hasGym = Boolean.parseBoolean(hasGymString);
+		boolean hasSpa = Boolean.parseBoolean(hasSpaString);
+		boolean hasService = Boolean.parseBoolean(hasServiceString);
+		boolean hasCleaner = Boolean.parseBoolean(hasCleanerString);
+		
+		int hotelId = new HotelService().insertHotel(new Hotel(0, name, location, stars, description, 
+				manager.getId(), xCoord, yCoord, 0, false, phoneNumber,
+				hasParking, hasPool, hasGym, hasSpa, hasService, hasCleaner));
 		
 		if(hotelImagesString.length() > 0 && hotelId > 0) {
 			String[] hotelImagesArray = hotelImagesString.split(":::");

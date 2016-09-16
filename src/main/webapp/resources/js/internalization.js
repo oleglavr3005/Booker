@@ -697,6 +697,53 @@
 		        disable: 'deactivate',
 		        enable: 'activate'
 		    },
+		    datepicker : {
+		    	December : 'December', Dec : 'Dec',
+		    	January : 'January', Jan : 'Jan',
+		    	February : 'February', Feb : 'Feb',
+
+		    	March : 'March', Mar : 'Mar',
+		    	April : 'April', Apr : 'Apr',
+		    	May : 'May',
+
+		    	June : 'June', Jun : 'Jun',
+		    	July : 'July', Jul : 'Jul',
+		    	August : 'August', Aug : 'Aug',
+
+		    	September : 'September', Sep : 'Sep',
+		    	October : 'October', Oct : 'Oct',
+		    	November : 'November', Nov : 'Nov',
+		    	
+		    	Sunday : 'Sunday', Sun : 'Sun',
+		    	Monday : 'Monday', Mon : 'Mon',
+		    	Tuesday : 'Tuesday', Tue : 'Tue',
+		    	Wednesday : 'Wednesday', Wed : 'Wed',
+		    	Thursday : 'Thursday', Thu : 'Thu',
+		    	Friday : 'Friday', Fri : 'Fri',
+		    	Saturday : 'Saturday', Sat : 'Sat',
+		    	
+		    	today: 'Today',
+				clear: 'Clear',
+				close: 'Close',
+				
+				labelMonthNext: 'Next month',
+				labelMonthPrev: 'Previous month',
+				labelMonthSelect: 'Select a month',
+				labelYearSelect: 'Select a year'
+		    },
+		    chart : {
+		    	no_hotels : 'No hotels',
+		    	top: 'Top',
+		    	orders : 'Orders count',
+		    	winter : 'Winter',
+		    	spring: 'Spring',
+		    	summer: 'Summer',
+		    	autumn : 'Autumn',
+		    	visitors : 'Visitors count',
+		    	first_month : 'First month',
+		    	second_month : 'Second month',
+		    	third_month : 'Third month'
+		    },
 		    message_error : 'Can not add comment',
 		    info_toggle_open : 'Show additional info',
 		    info_toggle_hide : 'Hide additional info',
@@ -749,6 +796,22 @@
 		        view: 'parse create validate viewset',
 		        disable: 'deactivate',
 		        enable: 'activate'
+		    },
+		    datepicker : {
+		    	
+		    },
+		    chart : {
+		    	no_hotels : 'Готелів не знайдено',
+		    	top: 'Топ',
+		    	orders : 'К-ть замовлень',
+		    	winter : 'Зима',
+		    	spring: 'Весна',
+		    	summer: 'Літо',
+		    	autumn : 'Осінь',
+		    	visitors : 'К-ть відвідувачів',
+		    	first_month : 'Перший місяць',
+		    	second_month : 'Другий місяць',
+		    	third_month : 'Третій місяць'
 		    },
 		    message_error : 'Неможли додати коментар',
 		    info_toggle_open : 'Показати додаткову інформацію',

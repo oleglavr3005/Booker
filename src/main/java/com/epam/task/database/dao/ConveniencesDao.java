@@ -38,17 +38,8 @@ public class ConveniencesDao {
 				if(room.getShower() == true){
 					conveniences.setShower(true);
 				}
-				if(room.getParking() == true){
-					conveniences.setParking(true);
-				}
 				if(room.getCondition() == true){
 					conveniences.setCondition(true);
-				}
-				if(room.getPool() == true){
-					conveniences.setPool(true);
-				}
-				if(room.getGym() == true){
-					conveniences.setGym(true);
 				}
 				if(room.getBalcony() == true){
 					conveniences.setBalcony(true);

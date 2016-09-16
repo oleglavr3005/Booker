@@ -42,11 +42,9 @@ public class AddRoomServlet extends HttpServlet {
 		
 		String hasWiFiString = request.getParameter("hasWiFi");
 		String hasShowerString = request.getParameter("hasShower");
-		String hasParkingString = request.getParameter("hasParking");
 		String hasConditionString = request.getParameter("hasCondition");
-		String hasPoolString = request.getParameter("hasPool");
-		String hasGymString = request.getParameter("hasGym");
 		String hasBalconyString = request.getParameter("hasBalcony");
+		String hasTvString = request.getParameter("hasTv");
 		
 		String food = request.getParameter("food");	//NONE BREAKFAST TWICE FULL
 		String freeBookString = request.getParameter("freeBook");
@@ -65,7 +63,8 @@ public class AddRoomServlet extends HttpServlet {
 				!StringUtil.isNotNegativeInteger(priceString) || !StringUtil.isBoolean(freeBookString) ||
 				!(type.equalsIgnoreCase("STANDART") || type.equalsIgnoreCase("LUX") || type.equalsIgnoreCase("DELUX")) || 
 				!(food.equalsIgnoreCase("NONE") || food.equalsIgnoreCase("BREAKFAST") || food.equalsIgnoreCase("TWICE") || food.equalsIgnoreCase("FULL")) ||
-				!StringUtil.isBoolean(sendNotifString)) {
+				!StringUtil.isBoolean(sendNotifString) || !StringUtil.isBoolean(hasWiFiString) || !StringUtil.isBoolean(hasShowerString) ||
+				!StringUtil.isBoolean(hasConditionString) || !StringUtil.isBoolean(hasBalconyString) || !StringUtil.isBoolean(hasTvString)) {
 			response.sendError(500);
 			return;
 		}
@@ -87,11 +86,9 @@ public class AddRoomServlet extends HttpServlet {
 		
 		boolean hasWifi = Boolean.parseBoolean(hasWiFiString);
 		boolean hasShower = Boolean.parseBoolean(hasShowerString);
-		boolean hasParking = Boolean.parseBoolean(hasParkingString);
 		boolean hasCondition = Boolean.parseBoolean(hasConditionString);
-		boolean hasPool = Boolean.parseBoolean(hasPoolString);
-		boolean hasGym = Boolean.parseBoolean(hasGymString);
 		boolean hasBalcony = Boolean.parseBoolean(hasBalconyString);
+		boolean hasTv = Boolean.parseBoolean(hasTvString);
 		int daysCount;
 		int percentage;
 		
@@ -108,7 +105,7 @@ public class AddRoomServlet extends HttpServlet {
 		List<Integer> roomIds = new ArrayList<>();
 		for(int i = 0; i<numbers.length; i++) {
 			int roomId = new RoomService().insertRoom(new Room(0, hotelId, numbers[i], type, bedsCount, doubleBedsCount, price, 
-					hasWifi, hasShower, hasParking, hasCondition, hasPool, hasGym, hasBalcony, food, daysCount, percentage, false));
+					hasWifi, hasShower, hasCondition, hasBalcony, hasTv, food, daysCount, percentage, false));
 
 			if(roomId > 0) {
 				roomIds.add(roomId);

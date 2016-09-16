@@ -86,6 +86,11 @@ public class FindHotelsServlet extends HttpServlet {
 			session.setAttribute("hasPool", togler == true? request.getParameter("hasPool") != null : false);
 			session.setAttribute("hasGym", togler == true? request.getParameter("hasGym") != null : false);
 			session.setAttribute("hasBalcony", togler == true? request.getParameter("hasBalcony") != null : false);
+			session.setAttribute("hasSpa", togler == true? request.getParameter("hasSpa") != null : false);
+			session.setAttribute("hasService", togler == true? request.getParameter("hasService") != null : false);
+			session.setAttribute("hasCleaner", togler == true? request.getParameter("hasCleaner") != null : false);
+			session.setAttribute("hasTv", togler == true? request.getParameter("hasTv") != null : false);
+			
 			session.setAttribute("noDeposit", togler == true? request.getParameter("noDeposit") != null : false);
 			
 			String startDateString = request.getParameter("startDate");
@@ -128,7 +133,9 @@ public class FindHotelsServlet extends HttpServlet {
 				(int) session.getAttribute("minUserPrice"), (int) session.getAttribute("maxUserPrice"), 
 				(boolean) session.getAttribute("hasWiFi"), (boolean) session.getAttribute("hasShower"), (boolean) session.getAttribute("hasParking"), 
 				(boolean) session.getAttribute("hasCondition"), (boolean) session.getAttribute("hasPool"), (boolean) session.getAttribute("hasGym"), 
-				(boolean) session.getAttribute("hasBalcony"), (boolean) session.getAttribute("noDeposit"), 
+				(boolean) session.getAttribute("hasBalcony"), (boolean) session.getAttribute("hasSpa"), 
+				(boolean) session.getAttribute("hasService"), (boolean) session.getAttribute("hasCleaner"), 
+				(boolean) session.getAttribute("hasTv"), (boolean) session.getAttribute("noDeposit"), 
 				startDate, endDate);
 		
 		int countOfHotels = allHotels.size();
@@ -151,7 +158,9 @@ public class FindHotelsServlet extends HttpServlet {
 				(int) session.getAttribute("minUserPrice"), (int) session.getAttribute("maxUserPrice"), 
 				(boolean) session.getAttribute("hasWiFi"), (boolean) session.getAttribute("hasShower"), (boolean) session.getAttribute("hasParking"), 
 				(boolean) session.getAttribute("hasCondition"), (boolean) session.getAttribute("hasPool"), (boolean) session.getAttribute("hasGym"), 
-				(boolean) session.getAttribute("hasBalcony"), (boolean) session.getAttribute("noDeposit"), 
+				(boolean) session.getAttribute("hasBalcony"), (boolean) session.getAttribute("hasSpa"), 
+				(boolean) session.getAttribute("hasService"), (boolean) session.getAttribute("hasCleaner"), 
+				(boolean) session.getAttribute("hasTv"), (boolean) session.getAttribute("noDeposit"), 
 				startDate, endDate, page, compareBy);
 		
 		request.setAttribute("suitableHotels", suitableHotels);

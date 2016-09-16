@@ -27,7 +27,7 @@ public class HotelDao {
 	
 	private final String SELECT_ALL_SUITABLE = "SELECT DISTINCT h.* FROM hotel h INNER JOIN room r ON h.hotel_id = r.hotel_id LEFT JOIN `order` o ON "
 			+ "(o.room_id = r.room_id AND o.status NOT LIKE 'canceled' AND (o.end_date > ? AND o.start_date < ?) ) "
-			+ "WHERE (h.name REGEXP ? OR h.city REGEXP ? OR h.street REGEXP ?) AND h.stars >= ? AND h.stars <= ? AND h.is_deleted = false AND "
+			+ "WHERE (h.name REGEXP ? OR h.location REGEXP ?) AND h.stars >= ? AND h.stars <= ? AND h.is_deleted = false AND "
 			+ "? <= (SELECT SUM(double_beds_count)*2 + SUM(beds_count) FROM room r2 WHERE r2.hotel_id = r.hotel_id GROUP BY r2.hotel_id) AND "
 			+ "r.price >= ? AND r.price <= ? AND r.is_deleted = false AND "
 			+ "o.end_date IS NULL";
@@ -43,23 +43,31 @@ public class HotelDao {
 	
 	private final String HAS_WIFI = " AND r.has_wifi = true";
 	private final String HAS_SHOWER = " AND r.has_shower = true";
-	private final String HAS_PARKING = " AND r.has_parking = true";
 	private final String HAS_CONDITION = " AND r.has_condition = true";
-	private final String HAS_POOL = " AND r.has_pool = true";
-	private final String HAS_GYM = " AND r.has_gym = true";
 	private final String HAS_BALCONY = " AND r.has_balcony = true";
+	private final String HAS_TV = " AND r.has_tv = true";
 	private final String NO_DEPOSIT = " AND r.days_count < 0";
 	
-	private final String INSERT_HOTEL = "INSERT INTO `hotel` (name, city, street, stars, `desc`,"
+	private final String HAS_PARKING = " AND h.has_parking = true";
+	private final String HAS_POOL = " AND h.has_pool = true";
+	private final String HAS_GYM = " AND h.has_gym = true";
+	private final String HAS_SPA = " AND h.has_spa = true";
+	private final String HAS_SERVICE = " AND h.has_service = true";
+	private final String HAS_CLEANER = " AND h.has_cleaner = true";
+	
+	private final String INSERT_HOTEL = "INSERT INTO `hotel` (name, location, stars, `desc`,"
 			+ " manager_id, x_coord, y_coord, rating,"
-			+ " is_deleted, phone_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			+ " is_deleted, phone_number, has_parking, has_pool, has_gym, has_spa, has_service, has_cleaner) "
+			+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private final String SELECT_BY_ID = "SELECT * FROM `hotel` WHERE hotel_id = ?";
 	
 	
 	private final String CHANGE_HOTEL_STATUS = "UPDATE `hotel` SET is_deleted = ? WHERE hotel_id = ?";
 	private final String UPDATE_HOTEL = "UPDATE `hotel` SET name = ?,"
-			+ " city = ?, street = ?, stars = ?, `desc` = ?, manager_id = ?,"
-			+ " x_coord = ?, y_coord = ?, rating = ?, is_deleted = ?, phone_number = ? WHERE hotel_id = ?";
+			+ " location = ?, stars = ?, `desc` = ?, manager_id = ?,"
+			+ " x_coord = ?, y_coord = ?, rating = ?, is_deleted = ?, phone_number = ?,"
+			+ " has_parking = ?, has_pool = ?, has_gym = ?, has_spa = ?, has_service = ?,"
+			+ " has_cleaner = ? WHERE hotel_id = ?";
 	private final String UPDATE_HOTEL_RATING = "UPDATE `hotel` SET rating = ? WHERE hotel_id = ?";
 	public HotelDao(Connection connection){
 		super();
@@ -108,7 +116,8 @@ public class HotelDao {
 			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull, 			//food type
 			int minPrice, int maxPrice,																//price
 			boolean hasWiFi, boolean hasShower, boolean hasParking, boolean hasCondition, 			//additional
-			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit, 
+			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean hasSpa, 
+			boolean hasService, boolean hasCleaner, boolean hasTv, boolean noDeposit, 
 			Timestamp startDate, Timestamp endDate, int page, String orderBy){												//dates
 		
 		StringBuilder SQL = new StringBuilder(SELECT_ALL_SUITABLE);
@@ -159,31 +168,43 @@ public class HotelDao {
 			}
 			SQL.append(")");
 		}
-		
-		//ADDITIONAL
-		if(hasWiFi) {
+
+		// ADDITIONAL
+		if (hasWiFi) {
 			SQL.append(HAS_WIFI);
 		}
-		if(hasShower) {
+		if (hasShower) {
 			SQL.append(HAS_SHOWER);
 		}
-		if(hasParking) {
-			SQL.append(HAS_PARKING);
-		}
-		if(hasCondition) {
+		if (hasCondition) {
 			SQL.append(HAS_CONDITION);
 		}
-		if(hasPool) {
-			SQL.append(HAS_POOL);
-		}
-		if(hasGym) {
-			SQL.append(HAS_GYM);
-		}
-		if(hasBalcony) {
+		if (hasBalcony) {
 			SQL.append(HAS_BALCONY);
 		}
-		if(noDeposit) {
+		if (noDeposit) {
 			SQL.append(NO_DEPOSIT);
+		}
+		if (hasParking) {
+			SQL.append(HAS_PARKING);
+		}
+		if (hasPool) {
+			SQL.append(HAS_POOL);
+		}
+		if (hasGym) {
+			SQL.append(HAS_GYM);
+		}
+		if (hasSpa) {
+			SQL.append(HAS_SPA);
+		}
+		if (hasService) {
+			SQL.append(HAS_SERVICE);
+		}
+		if (hasCleaner) {
+			SQL.append(HAS_CLEANER);
+		}
+		if (hasTv) {
+			SQL.append(HAS_TV);
 		}
 		
 		String ORDER_BY;
@@ -243,8 +264,7 @@ public class HotelDao {
 		try (PreparedStatement statement = connection.prepareStatement(INSERT_HOTEL, Statement.RETURN_GENERATED_KEYS)) {
 			int i = 1;
 			statement.setString(i++, hotel.getName());
-			statement.setString(i++, hotel.getCity());
-			statement.setString(i++, hotel.getStreet());
+			statement.setString(i++, hotel.getLocation());
 			statement.setInt(i++, hotel.getStars());
 			statement.setString(i++, hotel.getDesc());
 			statement.setInt(i++, hotel.getManagerId());
@@ -253,6 +273,14 @@ public class HotelDao {
 			statement.setDouble(i++, hotel.getRating());
 			statement.setBoolean(i++, hotel.getIsDeleted());
 			statement.setString(i++, hotel.getPhoneNumber());
+			
+			statement.setBoolean(i++, hotel.getParking());
+			statement.setBoolean(i++, hotel.getPool());
+			statement.setBoolean(i++, hotel.getGym());
+			statement.setBoolean(i++, hotel.getSpa());
+			statement.setBoolean(i++, hotel.getService());
+			statement.setBoolean(i++, hotel.getCleaner());
+			
 			statement.executeUpdate();
 			
 			ResultSet rs = statement.getGeneratedKeys();
@@ -293,8 +321,7 @@ public class HotelDao {
 		try (PreparedStatement statement = connection.prepareStatement(UPDATE_HOTEL)) {
 			int i = 1;
 			statement.setString(i++, hotel.getName());
-			statement.setString(i++, hotel.getCity());
-			statement.setString(i++, hotel.getStreet());
+			statement.setString(i++, hotel.getLocation());
 			statement.setInt(i++, hotel.getStars());
 			statement.setString(i++, hotel.getDesc());
 			statement.setInt(i++, hotel.getManagerId());
@@ -303,6 +330,13 @@ public class HotelDao {
 			statement.setDouble(i++, hotel.getRating());
 			statement.setBoolean(i++, hotel.getIsDeleted());
 			statement.setString(i++, hotel.getPhoneNumber());
+			
+			statement.setBoolean(i++, hotel.getParking());
+			statement.setBoolean(i++, hotel.getPool());
+			statement.setBoolean(i++, hotel.getGym());
+			statement.setBoolean(i++, hotel.getSpa());
+			statement.setBoolean(i++, hotel.getService());
+			statement.setBoolean(i++, hotel.getCleaner());
 
 			statement.setInt(i, hotel.getId());
 			return statement.executeUpdate();
@@ -328,7 +362,8 @@ public class HotelDao {
 	public List<Hotel> getAllSuitableHotels(String name, int minStars, int maxStars, int people, boolean typeStandart,
 			boolean typeLux, boolean typeDelux, boolean foodNone, boolean foodBreakfast, boolean foodTwice,
 			boolean foodFull, int minPrice, int maxPrice, boolean hasWiFi, boolean hasShower, boolean hasParking,
-			boolean hasCondition, boolean hasPool, boolean hasGym, boolean hasBalcony, boolean noDeposit,
+			boolean hasCondition, boolean hasPool, boolean hasGym, boolean hasBalcony, 
+			boolean hasSpa, boolean hasService, boolean hasCleaner, boolean hasTv, boolean noDeposit,
 			Timestamp startDate, Timestamp endDate) {
 
 		StringBuilder SQL = new StringBuilder(SELECT_ALL_SUITABLE);
@@ -379,31 +414,43 @@ public class HotelDao {
 			}
 			SQL.append(")");
 		}
-		
-		//ADDITIONAL
-		if(hasWiFi) {
+
+		// ADDITIONAL
+		if (hasWiFi) {
 			SQL.append(HAS_WIFI);
 		}
-		if(hasShower) {
+		if (hasShower) {
 			SQL.append(HAS_SHOWER);
 		}
-		if(hasParking) {
-			SQL.append(HAS_PARKING);
-		}
-		if(hasCondition) {
+		if (hasCondition) {
 			SQL.append(HAS_CONDITION);
 		}
-		if(hasPool) {
-			SQL.append(HAS_POOL);
-		}
-		if(hasGym) {
-			SQL.append(HAS_GYM);
-		}
-		if(hasBalcony) {
+		if (hasBalcony) {
 			SQL.append(HAS_BALCONY);
 		}
-		if(noDeposit) {
+		if (noDeposit) {
 			SQL.append(NO_DEPOSIT);
+		}
+		if (hasParking) {
+			SQL.append(HAS_PARKING);
+		}
+		if (hasPool) {
+			SQL.append(HAS_POOL);
+		}
+		if (hasGym) {
+			SQL.append(HAS_GYM);
+		}
+		if (hasSpa) {
+			SQL.append(HAS_SPA);
+		}
+		if (hasService) {
+			SQL.append(HAS_SERVICE);
+		}
+		if (hasCleaner) {
+			SQL.append(HAS_CLEANER);
+		}
+		if (hasTv) {
+			SQL.append(HAS_TV);
 		}
 		
 		try (PreparedStatement statement = connection.prepareStatement(SQL.toString())) {

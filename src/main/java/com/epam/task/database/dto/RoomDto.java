@@ -16,11 +16,11 @@ public class RoomDto extends Room{
 	private static int staticId = 1;
 	
 	public RoomDto(int hotelId, String type, int bedsCount, int doubleBedsCount,
-			int price, boolean wifi, boolean shower, boolean parking, boolean condition, boolean pool, boolean gym,
-			Boolean balcony, String food, int daysCount, int percentage) {
+			int price, boolean wifi, boolean shower, boolean condition,
+			boolean balcony, boolean tv, String food, int daysCount, int percentage) {
 		
-		super(staticId++, hotelId, "0", type, bedsCount, doubleBedsCount, price, wifi, shower, parking, condition, pool, gym,
-				balcony, food, daysCount, percentage, false);
+		super(staticId++, hotelId, "0", type, bedsCount, doubleBedsCount, price, wifi, shower, condition,
+				balcony, tv, food, daysCount, percentage, false);
 	}
 	
 	public boolean addRoom(int roomId) {
@@ -80,28 +80,5 @@ public class RoomDto extends Room{
 	public List<RoomPhoto> getAllPhotos() {
 		return allPhotos;
 	}
-	
-//	private List<RoomPhoto> createPhotoList() {
-//		List<RoomPhoto> allPhotos = new ArrayList<>();
-//		
-//		RoomService service = new RoomService();
-//		for(Integer roomId : roomIds) {
-//			List<RoomPhoto> roomPhotos = service.getRoomById(roomId).getPhotos();
-//			for(RoomPhoto photo : roomPhotos) {
-//				boolean contains = false;
-//				for(RoomPhoto allPhoto : allPhotos) {
-//					if(allPhoto.getImg().equals(photo.getImg())) {
-//						contains = true;
-//						break;
-//					}
-//				}
-//				if(!contains) {	//if not contains, add
-//					allPhotos.add(photo);
-//				}
-//			}
-//		}
-//		
-//		return allPhotos;
-//	}
 	
 }
