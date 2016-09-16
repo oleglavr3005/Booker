@@ -11,11 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.HotelPhoto;
-import com.epam.task.database.model.Room;
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.HotelPhotoService;
 import com.epam.task.database.service.HotelService;
-import com.epam.task.database.service.RoomService;
 import com.epam.task.database.service.UserService;
 import com.epam.task.util.MailSender;
 import com.epam.task.util.StringUtil;
@@ -69,7 +67,6 @@ public class AddHotelServlet extends HttpServlet {
 		
 		if(Boolean.parseBoolean(sendNotifString) && hotelId > 0) {
 			List<User> usersEmail = new UserService().getAllUsersWithEmailNotification();
-			List<User> usersPhone = new UserService().getAllUsersWithPhoneNotification();
 
 			for(User user : usersEmail) {
 				new Thread(new Runnable() {
@@ -79,10 +76,6 @@ public class AddHotelServlet extends HttpServlet {
 						sendMail(user, hotelId, "http://localhost:8080/booker/hotel/" + hotelId);
 					}
 				}).start();
-			}
-
-			for(User user : usersPhone) {
-				//send sms
 			}
 		}
 		
