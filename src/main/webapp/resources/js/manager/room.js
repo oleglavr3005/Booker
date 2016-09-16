@@ -16,10 +16,8 @@ function createRoom() {
 
 			hasWiFi : document.getElementById('hasWiFi').checked,
 			hasShower : document.getElementById('hasShower').checked,
-			hasParking : document.getElementById('hasParking').checked,
+			hasTv : document.getElementById('hasTv').checked,			
 			hasCondition : document.getElementById('hasCondition').checked,
-			hasPool : document.getElementById('hasPool').checked,
-			hasGym : document.getElementById('hasGym').checked,
 			hasBalcony : document.getElementById('hasBalcony').checked,
 			freeBook : document.getElementById('freeBook').checked,
 			sendNotif : document.getElementById('sendNotif').checked,
@@ -61,10 +59,8 @@ function updateRoom(room) {
 
 			hasWiFi : document.getElementById('hasWiFi').checked,
 			hasShower : document.getElementById('hasShower').checked,
-			hasParking : document.getElementById('hasParking').checked,
+			hasTv : document.getElementById('hasTv').checked,			
 			hasCondition : document.getElementById('hasCondition').checked,
-			hasPool : document.getElementById('hasPool').checked,
-			hasGym : document.getElementById('hasGym').checked,
 			hasBalcony : document.getElementById('hasBalcony').checked,
 			freeBook : document.getElementById('freeBook').checked,
 			deleted : document.getElementById('isDeleted').checked,

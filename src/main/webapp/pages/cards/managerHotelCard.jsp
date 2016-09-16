@@ -132,7 +132,7 @@ b {
 						<div class="row" style="margin-top: 15px; margin-bottom: 0px">
 							<div class="col s5">
 								<a
-									href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}">${hotel.name}</a>
+									href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"><h5>${hotel.name}</h5></a>
 							</div>
 							<div class="col s6 offset-s1">
 								<a class="tooltipped index_search_stars" data-position="icon"
@@ -154,14 +154,14 @@ b {
 						<div class="row" style="margin-bottom: 10px">
 							<a class="tooltipped tooltip_phone_number"
 								data-position="icon" data-tooltip=""
-								style="color: #0d0d0d; text-decoration: none;"><i
+								style="color: #0d0d0d; margin-left: -2px; text-decoration: none;"><i
 								class="fa fa-lg fa-phone-square invert" aria-hidden="true"></i></a>
 							<span>${hotel.phoneNumber}</span>
 						</div>
 						<div class="row" style="margin-bottom: 5px">
 							<a class="tooltipped index_search_description"
 								data-position="icon" data-tooltip=""
-								style="color: #0d0d0d; cursor: default"><i
+								style="color: #0d0d0d; margin-left: -4px; cursor: default"><i
 								class="material-icons invert" style="font-size: 20px;">receipt</i></a>
 							<span id="hotelInfo${hotel.id}">${hotel.desc.substring(0, hotel.desc.length() < 150 ? hotel.desc.length() : 150)}</span>
 							<a onclick="changeInfo(${hotel.id})" style="cursor: pointer"
