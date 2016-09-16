@@ -115,7 +115,7 @@ public class AddRoomServlet extends HttpServlet {
 			}
 		}
 
-		if(roomIds.size() > 0) {
+		if(roomImagesString.length() > 0 && roomIds.size() > 0) {
 			String[] roomImagesArray = roomImagesString.split(":::");
 			RoomPhotoService roomPhotoService = new RoomPhotoService();
 			
@@ -131,7 +131,6 @@ public class AddRoomServlet extends HttpServlet {
 		
 		if(Boolean.parseBoolean(sendNotifString) && roomIds.size() > 0) {
 			List<User> usersEmail = new UserService().getAllUsersWithEmailNotificationInHotel(hotelId);
-			List<User> usersPhone = new UserService().getAllUsersWithPhoneNotificationInHotel(hotelId);
 
 			for(User user : usersEmail) {
 				new Thread(new Runnable() {
@@ -141,10 +140,6 @@ public class AddRoomServlet extends HttpServlet {
 						sendMail(user, hotelId, "http://localhost:8080/booker/hotel/" + hotelId);
 					}
 				}).start();
-			}
-
-			for(User user : usersPhone) {
-				//send sms
 			}
 		}
 		

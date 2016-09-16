@@ -3,7 +3,6 @@ function createRoom() {
 	// var img = $('#photos').val() == '' ? 'new_hotel.jpg' :
 	// $('#photos').val();
 	var img = $('#photos').val();
-	alert( $('#hotelId').val());
 	if (validate()) {
 		$.get('../add_room', {
 			hotelId : $('#hotelId').val(),
@@ -90,7 +89,7 @@ function updateRoom(room) {
 
 function validate() {
 	var ok = true;
-	ok = checkRoomNumber($('#hotel_name').val(), $('#number').val()) && ok;
+	ok = checkRoomNumber($('#hotelId').val(), $('#number').val()) && ok;
 	ok = checkNumberRegex($('#number').val()) && ok;
 	ok = numberIsValid('single', 0, 20) && ok;
 	ok = numberIsValid('double', 0, 20) && ok;

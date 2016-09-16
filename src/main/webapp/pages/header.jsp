@@ -170,17 +170,23 @@ img.logo {
 									</div>
 									<div class="modal-content" style="margin-top: -10px">
 										<div class="form-horizontal registrationFrm">
-											<div class="input-field">
-												<input id="name" type="text" class="validate"> <label
-													id="nameLbl" data-error="" for="name">
-													<span class="header_regist_name"> </span>
-												</label>
-											</div>
-											<div class="input-field">
-												<input id="surname" type="text" class="validate"> <label
-													id="surnameLbl" data-error="" for="surname">
-													<span class="header_regist_surname"> </span>
-												</label>
+											<div class=row>
+												<div class="col s6">
+													<div class="input-field">
+														<input id="name" type="text" class="validate"> <label
+															id="nameLbl" data-error="" for="name">
+															<span class="header_regist_name"> </span>
+														</label>
+													</div>
+												</div>
+												<div class="col s6">
+													<div class="input-field">
+														<input id="surname" type="text" class="validate"> <label
+															id="surnameLbl" data-error="" for="surname">
+															<span class="header_regist_surname"> </span>
+														</label>
+													</div>
+												</div>
 											</div>
 											<div class="input-field">
 												<input id="email" type="email" class="validate"> <label
@@ -188,19 +194,27 @@ img.logo {
 													<span class="header_regist_mail"> </span>
 												</label>
 											</div>
-											<div class="input-field">
-												<input id="password" type="password" class="validate">
-												<label id="passwordLbl" data-error=""
-													for="password">
-													<span class="header_regist_pass"> </span></label>
+											<div class=row>
+												<div class="col s6">
+													<div class="input-field">
+														<input id="password" type="password" class="validate">
+														<label id="passwordLbl" data-error=""
+															for="password">
+															<span class="header_regist_pass"> </span></label>
+													</div>
+												</div>
+												<div class="col s6">
+													<div class="input-field">
+														<input id="сpassword" type="password" class="validate">
+														<label id="сpasswordLbl" data-error=""
+															for="сpassword">
+															<span class="header_regist_cpass"> </span>
+														</label>
+													</div>
+												</div>
 											</div>
-											<div class="input-field">
-												<input id="сpassword" type="password" class="validate">
-												<label id="сpasswordLbl" data-error=""
-													for="сpassword">
-													<span class="header_regist_cpass"> </span>
-												</label>
-											</div>
+											
+											
 										</div>
 	
 	
@@ -237,15 +251,15 @@ img.logo {
 										<div class="form-horizontal loginFrm">
 											<div class="input-field">
 												<input id="emailAuth" type="email" class="validate">
-												<label id="emailAuthLbl" data-error="${fmtMail}"
+												<label id="emailAuthLbl" data-error=""
 													for="emailAuth">
 													<span class="header_author_mail"> </span>
 												</label>
 											</div>
 											<div class="input-field">
-												<input id="passwordAuth" type="password"> <label
-													id="mailPasswordLbl" data-error="${fmtMailPass}"
-													for="passwordAuth">
+												<input id="passwordAuth" type="password"> 
+												<label id="mailPasswordLbl" data-error="" 
+													for="passwordAuth" style="width: 200px;">
 													<span class="header_author_pass"> </span>
 												</label>
 											</div>

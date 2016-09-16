@@ -54,22 +54,22 @@
 	font-family: 'Times NewRoman', Times, serif;
 }
 
-tr {
+.purchase-table tr {
 	height: 15px;
 }
 
-tr:nth-child(even) {
+.purchase-table tr:nth-child(even) {
 	background-color: #eee;
 }
 
-tr:nth-child(odd) {
+.purchase-table tr:nth-child(odd) {
 	background-color: #fff;
 }
 
-th {
+.purchase-table th {
 	background-color: #E0C022;
-	color: white;
-}
+ 	color: white;
+ } 
 
 td, th {
 	text-align: center;

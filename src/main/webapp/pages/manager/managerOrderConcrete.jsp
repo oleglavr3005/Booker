@@ -255,37 +255,30 @@ div #sidebar-wrapper {
 							</div>
 							<!-- END OF HOTEL NAME + ICONS -->
 
-							<!-- MAP MARKER -->
+							<!-- USER MARKER -->
 							<div class="row">
 								<div class="col s12">
-									<a class="tooltipped index_search_location"
-										data-position="icon" data-tooltip="Location"
+									<a class="tooltipped index_search_user"
+										data-position="icon" data-tooltip="USER-INFO"
 										style="color: #0d0d0d;"><i
-										class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
-									<span>${hotel.city} ${hotel.street}</span>
+										class="fa fa-lg fa-user invert" aria-hidden="true"></i></a>
+									<span>${user.firstName} ${user.lastName}</span>
 								</div>
 							</div>
-							<!-- END OF MAP MARKER -->
+							<!-- END OF USER MARKER -->
 
 
-							<!-- ROOM TYPE MARKER -->
+							<!-- ROOM NUMBER MARKER -->
 							<div class="row ">
 								<div class="col s12">
-									<a class="tooltipped tooltip_room_type" data-position="icon"
-										data-tooltip="Location" style="color: #0d0d0d;"><i
-										class="fa fa-hotel invert" aria-hidden="true"></i></a>
-									<c:if test="${room.type == 'STANDART'}">
-										<span id="subscribes_table_roomtype_standart"></span>
-									</c:if>
-									<c:if test="${room.type == 'LUX'}">
-										<span id="subscribes_table_roomtype_lux"></span>
-									</c:if>
-									<c:if test="${room.type == 'DELUX'}">
-										<span id="subscribes_table_roomtype_delux"></span>
-									</c:if>
+									<a class="tooltipped tooltip_number" data-position="icon"
+										data-tooltip="ROOM_NUMBER" style="color: #0d0d0d;"><i
+										class="fa fa-hashtag invert" aria-hidden="true"></i></a>
+									<span id="manager_order_concrete_number"> ROOM_NUMBER </span><span> ${room.number}</span>
+									
 								</div>
 							</div>
-							<!-- END OF ROOM TYPE MARKER -->
+							<!-- END OF ROOM NUMBER MARKER -->
 
 							<!-- ORDER DATE MARKER -->
 							<div class="row ">

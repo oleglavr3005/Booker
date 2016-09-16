@@ -68,11 +68,11 @@ function bookOrderCard(orderId, daysCount) {
 								}
 							});
 
-							$('#book' + orderId).text("SUCCES");
+//							$('#book' + orderId).text("SUCCES");
 							$('#book' + orderId).attr('disabled', true);
 							$('#remove' + orderId).attr('disabled', true);
 						} else {
-							$('#book' + orderId).text("FAIL");
+//							$('#book' + orderId).text("FAIL");
 							$('#book' + orderId).attr('disabled', true);
 						}
 					});
@@ -86,7 +86,7 @@ function bookOrderCard(orderId, daysCount) {
 
 						'<div class="row">'
 // + '<div class="col s3"><div style="margin-top:50px;"></div></div>'
-						+ '<div class="col s6 cardDetail offset-s2">'
+						+ '<div class="col s8 cardDetail offset-s1">'
 						+ '<div class="row" style="margin-bottom: 0px;"><div id="cardNumber' + orderId + '" class="col s8">'
 						+ '<input id="cardnum1' + orderId + '" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(1,' + orderId + ')" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
 						+ '<input id="cardnum2' + orderId + '" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(2,' + orderId + ')" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
@@ -159,11 +159,11 @@ function bookOrderCard(orderId, daysCount) {
 						}
 					});
 
-					$('#book' + orderId).text("SUCCES");
+//					$('#book' + orderId).text("SUCCES");
 					$('#book' + orderId).attr('disabled', true);
 					$('#remove' + orderId).attr('disabled', true);
 				} else {
-					$('#book' + orderId).text("FAIL");
+//					$('#book' + orderId).text("FAIL");
 					$('#book' + orderId).attr('disabled', true);
 				}
 			});
