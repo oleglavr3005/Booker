@@ -347,28 +347,21 @@ div #sidebar-wrapper {
 												data-tooltip="Shower"><img class="invert"
 												style="width: 18px; margin-top: -0.8em;"
 												src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
-										</c:if> <c:if test="${room.parking == true}">
-											<a class="tooltipped index_room_parking" data-position="icon"
-												data-tooltip="Parking" style="color: #0d0d0d;"><i
-												class="material-icons invert">local_parking</i></a>
-										</c:if> <c:if test="${room.condition == true}">
+										</c:if>  <c:if test="${room.condition == true}">
 											<a class="tooltipped index_room_conditioner"
 												data-position="icon" data-tooltip="Condition"
 												style="color: #0d0d0d;"><i class="material-icons invert">toys</i></a>
-										</c:if> <c:if test="${room.pool == true}">
-											<a class="tooltipped index_room_pool" data-position="icon"
-												data-tooltip="Pool" style="color: #0d0d0d;"><i
-												class="material-icons invert">pool</i></a>
-										</c:if> <c:if test="${room.gym == true}">
-											<a class="tooltipped index_room_gym" data-position="icon"
-												data-tooltip="Gym" style="color: #0d0d0d;"><i
-												class="material-icons invert">fitness_center</i></a>
 										</c:if> <c:if test="${room.balcony == true}">
 											<a class="tooltipped index_room_balcony" data-position="icon"
 												data-tooltip="Balcony"><img class="invert"
 												style="width: 18px; margin-top: -0.8em;"
 												src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
-										</c:if></td>
+										</c:if><c:if test="${room.tv == true}">
+											<a class="tooltipped index_room_tv"
+												data-position="icon" data-tooltip="Television"
+												style="color: #0d0d0d;"><i class="material-icons invert">tv</i></a>
+										</c:if>
+							</td>
 									<td><a class="tooltipped tooltip_food"
 										data-position="icon" data-tooltip="Food"
 										style="color: #0d0d0d;"><i

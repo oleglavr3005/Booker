@@ -281,43 +281,37 @@ div #sidebar-wrapper {
 							<span>${hotel.desc}</span>
 						</div>
 						<div class="row" style="height: 10px; margin-left: -12;">
-							<c:if test="${conveniences.wiFi == true}">
-								<a id="index_room_wifi" class="tooltipped" data-position="icon"
-									data-tooltip="Wifi" style="color: #0d0d0d;"><i
-									class="material-icons invert">wifi</i></a>
+							<c:if test="${hotel.parking == true}">
+								<a id="index_room_parking" class="tooltipped" data-position="icon"
+									data-tooltip="Parking" style="color: #0d0d0d;"><i
+									class="material-icons invert">local_parking</i></a>
 							</c:if>
-							<c:if test="${conveniences.shower == true}">
-								<a id="index_room_shower" class="tooltipped"
-									data-position="icon" data-tooltip="Shower"><img
-									class="invert" style="max-width: 5%; margin-top: -1rem"
-									src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
-							</c:if>
-							<c:if test="${conveniences.parking == true}">
-								<a id="index_room_parking" class="tooltipped"
-									data-position="icon" data-tooltip="Parking"
-									style="color: #0d0d0d;"><i class="material-icons invert">local_parking</i></a>
-							</c:if>
-							<c:if test="${conveniences.condition == true}">
-								<a id="index_room_conditioner" class="tooltipped"
-									data-position="icon" data-tooltip="Condition"
-									style="color: #0d0d0d;"><i class="material-icons invert">toys</i></a>
-							</c:if>
-							<c:if test="${conveniences.pool == true}">
+							<c:if test="${hotel.pool == true}">
 								<a id="index_room_pool" class="tooltipped" data-position="icon"
 									data-tooltip="Pool" style="color: #0d0d0d;"><i
 									class="material-icons invert">pool</i></a>
 							</c:if>
-							<c:if test="${conveniences.gym == true}">
+							<c:if test="${hotel.gym == true}">
 								<a id="index_room_gym" class="tooltipped" data-position="icon"
 									data-tooltip="Gym" style="color: #0d0d0d;"><i
 									class="material-icons invert">fitness_center</i></a>
 							</c:if>
-							<c:if test="${conveniences.balcony == true}">
-								<a id="index_room_balcony" class="tooltipped"
-									data-position="icon" data-tooltip="Balcony"><img
+							<c:if test="${hotel.spa == true}">
+								<a id="index_room_spa" class="tooltipped" data-position="icon"
+									data-tooltip="Spa" style="color: #0d0d0d;"><i
+									class="material-icons invert">spa</i></a>
+							</c:if>
+							<c:if test="${hotel.service == true}">
+								<a id="index_room_service" class="tooltipped" data-position="icon"
+									data-tooltip="Room service" style="color: #0d0d0d;"><i
+									class="material-icons invert">room_service</i></a>
+							</c:if>
+							<c:if test="${hotel.cleaner == true}">
+								<a id="index_room_cleaner" class="tooltipped"
+									data-position="icon" data-tooltip="Dry cleaner"><img
 									class="invert"
 									style="max-width: 230%; height: 230%; margin-top: -18px;"
-									src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
+									src="${pageContext.servletContext.contextPath}/resources/images/cleaner.png" /></a>
 							</c:if>
 						</div>
 					</div>

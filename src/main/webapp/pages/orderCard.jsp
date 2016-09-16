@@ -214,28 +214,10 @@ b {
 											src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
 									</c:if>
 
-									<c:if test="${order.room.parking == true}">
-										<a class="tooltipped index_room_parking" data-position="icon"
-											data-tooltip="" style="color: #0d0d0d;"><i
-											class="material-icons invert">local_parking</i></a>
-									</c:if>
-
 									<c:if test="${order.room.condition == true}">
 										<a class="tooltipped index_room_conditioner"
 											data-position="icon" data-tooltip="" style="color: #0d0d0d;"><i
 											class="material-icons invert">toys</i></a>
-									</c:if>
-
-									<c:if test="${order.room.pool == true}">
-										<a class="tooltipped index_room_pool" data-position="icon"
-											data-tooltip="" style="color: #0d0d0d;"><i
-											class="material-icons invert">pool</i></a>
-									</c:if>
-
-									<c:if test="${order.room.gym == true}">
-										<a class="tooltipped index_room_gym" data-position="icon"
-											data-tooltip="" style="color: #0d0d0d;"><i
-											class="material-icons invert">fitness_center</i></a>
 									</c:if>
 
 									<c:if test="${order.room.balcony == true}">
@@ -243,6 +225,12 @@ b {
 											data-tooltip=""><img class="invert"
 											style="max-width: 10%; margin-top: -1.5rem"
 											src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
+									</c:if>
+
+									<c:if test="${order.room.tv == true}">
+										<a class="tooltipped index_room_tv"
+											data-position="icon" data-tooltip="Television"
+											style="color: #0d0d0d;"><i class="material-icons invert">tv</i></a>
 									</c:if>
 								</div>
 							</div>
