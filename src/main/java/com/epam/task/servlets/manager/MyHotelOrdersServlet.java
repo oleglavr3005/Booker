@@ -48,7 +48,8 @@ public class MyHotelOrdersServlet extends HttpServlet {
 		List<Order> allOrders = orderService.getOrdersByHotelAndStatus(hotelId, OrderStatus.ACTIVE);
 		allOrders.addAll(finishedOrders);
 		allOrders.addAll(canceledOrders);
-		
+
+		request.setAttribute("hotelId", hotelId);
 		request.setAttribute("allOrders", OrderDto.listConverter(allOrders));
 		request.setAttribute("activeOrders", OrderDto.listConverter(activeOrders));
 		request.setAttribute("finishedOrders", OrderDto.listConverter(finishedOrders));

@@ -199,14 +199,16 @@ public class HotelServlet extends HttpServlet {
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("/pages/roomCard.jsp").forward(request, response);
 		} else {	
-			CounterService counterService = new CounterService();
-			Counter counter = counterService.getCounterByHotelAndDate(hotel.getId(), 
-					new Timestamp(new java.util.Date().getTime()));
-			if(counter == null) {
-				counterService.insertCounter(new Counter(0, hotel.getId(), new Timestamp(new java.util.Date().getTime()), 1));
-			} else {
-				counter.setCount(counter.getCount() + 1);
-				counterService.updateCounter(counter);
+			if(hotel.getManagerId() != user.getId()) {
+				CounterService counterService = new CounterService();
+				Counter counter = counterService.getCounterByHotelAndDate(hotel.getId(), 
+						new Timestamp(new java.util.Date().getTime()));
+				if(counter == null) {
+					counterService.insertCounter(new Counter(0, hotel.getId(), new Timestamp(new java.util.Date().getTime()), 1));
+				} else {
+					counter.setCount(counter.getCount() + 1);
+					counterService.updateCounter(counter);
+				}
 			}
 			request.getRequestDispatcher("/pages/hotel.jsp").forward(request, response);
 		}

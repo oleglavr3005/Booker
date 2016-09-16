@@ -1,5 +1,7 @@
 package com.epam.task.util;
 
+import java.text.SimpleDateFormat;
+
 public class StringUtil {
 	
 	public static boolean isPositiveInteger (String stringToCheck) {
@@ -78,6 +80,15 @@ public class StringUtil {
 	public static boolean isDouble(String stringToCheck) {
 		try {
 			Double.parseDouble(stringToCheck);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	public static boolean isDateInFormat(String stringToCheck, String format) {
+		try {
+			new SimpleDateFormat(format).parse(stringToCheck);
 			return true;
 		} catch (Exception e) {
 			return false;
