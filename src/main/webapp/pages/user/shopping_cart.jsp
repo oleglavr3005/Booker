@@ -103,9 +103,6 @@
 						<span class="card_header"></span>
 						<span id="periodicals_number_for_all_users">${countOfOrders}</span>
 					</c:if>
-					<c:if test="${countOfOrders <= 0 }">
-						<span id="card_no_orders"></span>
-					</c:if>
 				</h6>
 			</div>
 			<div class="col s5 offset-s4">
