@@ -424,11 +424,11 @@ div #sidebar-wrapper {
 
 	<script>
 		$('#hasParking').attr('checked', '${hotel.parking}' == 'true');
-		$('#hasPool').attr('checked', '${room.pool}' == 'true');
-		$('#hasGym').attr('checked', '${room.gym}' == 'true');
-		$('#hasSpa').attr('checked', '${room.spa}' == 'true');
-		$('#hasService').attr('checked', '${room.service}' == 'true');
-		$('#hasCleaner').attr('checked', '${room.cleaner}' == 'true');
+		$('#hasPool').attr('checked', '${hotel.pool}' == 'true');
+		$('#hasGym').attr('checked', '${hotel.gym}' == 'true');
+		$('#hasSpa').attr('checked', '${hotel.spa}' == 'true');
+		$('#hasService').attr('checked', '${hotel.service}' == 'true');
+		$('#hasCleaner').attr('checked', '${hotel.cleaner}' == 'true');
 	</script>
 
 
