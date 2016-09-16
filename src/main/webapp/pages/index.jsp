@@ -108,14 +108,14 @@ div #sidebar-wrapper {
 							data-error="${fmtName}" for="nam"><span
 							id="index_search_name"></span> </label>
 					</div>
-					<div class="input-field col s6">
+					<div class=" col s6">
 						<input type="text" name="startDate" id="date_from"
 							class="datepicker validate" onchange="onDate()"
 							style="cursor: default;" value="${startDate}"><label
 							id="startLbl" data-error="${fmtStart}" for="date_from"><span
 							id="index_search_start"></span></label>
 					</div>
-					<div class="input-field col s6">
+					<div class=" col s6">
 						<input type="text" name="endDate" id="date_to"
 							onchange="onEndDate()" class="datepicker validate"
 							style="cursor: default;" value="${endDate}"><label
