@@ -15,7 +15,6 @@ function initAutocomplete() {
 }
 
 function createHotel() {
-	debugger;
 	// var img = $('#photos').val() == '' ? 'new_hotel.jpg' :
 	// $('#photos').val();
 	var img = $('#photos').val();
@@ -25,14 +24,20 @@ function createHotel() {
 		$.get('../add_hotel', {
 			name : $('#name').val(),
 			stars : star,
-			city : hotel_city,
-			street : hotel_street,
+			location : hotel_city,
 			description : $('#desc').val(),
 			phoneNumber : $('#phone').val(),
 			xCoord : hotel_x,
 			yCoord : hotel_y,
 			hotelImages : img,
 			sendNotif : document.getElementById('sendNotif').checked,
+			
+			hasParking : document.getElementById('hasParking').checked,
+			hasPool : document.getElementById('hasPool').checked,
+			hasGym : document.getElementById('hasGym').checked,
+			hasSpa : document.getElementById('hasSpa').checked,
+			hasService : document.getElementById('hasService').checked,
+			hasCleaner : document.getElementById('hasCleaner').checked,
 		}, function(result) {
 			if (result != 'error') {
 				$('#create_error').css('color', 'green');
@@ -62,11 +67,18 @@ function updateHotel(hotelId) {
 			hotelId : hotelId,
 			name : $('#name').val(),
 			stars : star,
-			city : hotel_city,
-			street : hotel_street,
+			location : hotel_city,
 			description : $('#desc').val(),
 			phoneNumber : $('#phone').val(),
 			deleted : document.getElementById('isDeleted').checked,
+			
+			hasParking : document.getElementById('hasParking').checked,
+			hasPool : document.getElementById('hasPool').checked,
+			hasGym : document.getElementById('hasGym').checked,
+			hasSpa : document.getElementById('hasSpa').checked,
+			hasService : document.getElementById('hasService').checked,
+			hasCleaner : document.getElementById('hasCleaner').checked,
+			
 			xCoord : hotel_x,
 			yCoord : hotel_y,
 		}, function(result) {

@@ -270,24 +270,17 @@
 									name="hasShower" /> <label id="label_shower" for="hasShower">SHOWER</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="hasParking"
-									name="hasParking" /> <label id="label_parking"
-									for="hasParking">PARKING</label>
+								<input type="checkbox" class="filled-in" id="hasTv"
+									name="hasTv" /> <label id="label_tv" for="hasTv">TV</label>
 							</p>
+							
+							
+							
+							
 							<p>
 								<input type="checkbox" class="filled-in" id="hasCondition"
 									name="hasCondition" /> <label id="label_condition"
 									for="hasCondition">AIR CONDITION</label>
-							</p>
-							<p>
-								<input type="checkbox" class="filled-in" id="hasPool"
-									name="hasPool" /> <label id="label_pool" for="hasPool">SWIM
-									POOL</label>
-							</p>
-							<p>
-								<input type="checkbox" class="filled-in" id="hasGym"
-									name="hasGym" /> <label id="label_gym" for="hasGym">FIT
-									GYM</label>
 							</p>
 							<p>
 								<input type="checkbox" class="filled-in" id="hasBalcony"
