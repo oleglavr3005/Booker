@@ -5,7 +5,7 @@ $(document).ready(function() {
 		url : "../get_chart_data",
 		type : 'POST',
 		success : function(respond) {
-			var morisDonutData = [{ label: "No hotels", value: 1}];
+			var morisDonutData = [{ label: languages.script.current.chart.no_hotels, value: 1}];
 			var today = new Date();			
 			var morisLineData = [{ year: today.getFullYear() + "-" + (today.getMonth()+1 < 10 ? "0" + (today.getMonth()+1) : (today.getMonth()+1)), value: 0}];
 			var onclick = false;
@@ -29,7 +29,7 @@ $(document).ready(function() {
 			});
 
 			var top = morisDonutData.length > 5 ? 5 : morisDonutData.length;
-			$( "#donutChart" ).after("<h5 id='elementAfter' style='margin-top:40px'>Top " + top + ":</h5>");
+			$( "#donutChart" ).after("<h5 id='elementAfter' style='margin-top:40px'>" + languages.script.current.chart.top + " " + top + ":</h5>");
 			var elementAfter = $( "#elementAfter" );
 			var font = 2;
 			var index = 1;
@@ -54,7 +54,7 @@ $(document).ready(function() {
 				  data: morisLineData,
 				  xkey: 'year',
 				  ykeys: ['value'],
-				  labels: ['Orders'],
+				  labels: [languages.script.current.chart.orders],
 				  lineColors: ['rgb(18, 68, 76)'],
 				  hideHover : true,
 				  xLabels : "month"

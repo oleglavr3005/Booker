@@ -16,7 +16,19 @@ $(document).ready(function() {
 		onOpen : function() {
 			onDate();
 			onEndDate();	
-		}, min: tomorrow
+		}, 
+		min: tomorrow,
+		monthsFull: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+		monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+		weekdaysFull: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+		weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+		today: 'Today',
+		clear: 'Clear',
+		close: 'Close',
+		labelMonthNext: 'Next month',
+		labelMonthPrev: 'Previous month',
+		labelMonthSelect: 'Select a month',
+		labelYearSelect: 'Select a year'
 	});
 
 });
@@ -73,7 +85,6 @@ function onDate() {
 	var curr_year = d.getFullYear();
 	var date = curr_year + "-" + curr_month + "-" + curr_date;
 	dateToElement.value = date;
-	// var changeDate = document.getElementById('date_to').
 };
 
 function addDays(date, days) {

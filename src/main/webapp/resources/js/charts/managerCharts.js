@@ -36,10 +36,10 @@ $(document).ready(function() {
 		success : function(respond) {	
 			var morisLineData = [{ year: today.substring(0, today.length-3), value: 0}];
 			var morisBarData = [
-							    { season: 'Winter', first: 0, second: 0, third: 0 },
-							    { season: 'Spring', first: 0,  second: 0, third: 0 },
-							    { season: 'Summer', first: 0,  second: 0, third: 0 },
-							    { season: 'Autumn', first: 0,  second: 0, third: 0 },
+							    { season: languages.script.current.chart.winter, first: 0, second: 0, third: 0 },
+							    { season: languages.script.current.chart.spring, first: 0,  second: 0, third: 0 },
+							    { season: languages.script.current.chart.summer, first: 0,  second: 0, third: 0 },
+							    { season: languages.script.current.chart.autumn, first: 0,  second: 0, third: 0 },
 							  ];
 			
 			if (respond != false) {									
@@ -57,7 +57,7 @@ $(document).ready(function() {
 				  data: morisLineData,
 				  xkey: 'year',
 				  ykeys: ['value'],
-				  labels: ['Orders'],
+				  labels: [languages.script.current.chart.orders],
 				  lineColors: ['rgb(18, 68, 76)'],
 				  hideHover : true,
 				  xLabels : "month"
@@ -68,7 +68,9 @@ $(document).ready(function() {
 				  data: morisBarData,
 				  xkey: 'season',
 				  ykeys: ['first', 'second', 'third'],
-				  labels: ['First month', 'Second month', 'Third month'],
+				  labels: [languages.script.current.chart.first_month, 
+				           languages.script.current.chart.second_month, 
+				           languages.script.current.chart.third_month],
 				  barColors: ['#26A69A', 'rgb(18, 68, 76)', '#7bbfb9'],
 				  hideHover: true
 				});
@@ -104,7 +106,7 @@ $(document).ready(function() {
 				  data: morisVisitorsData,
 				  xkey: 'date',
 				  ykeys: ['value'],
-				  labels: ['Visitors'],
+				  labels: [languages.script.current.chart.visitors],
 				  lineColors: ['rgb(18, 68, 76)'],
 				  hideHover : true,
 				  xLabels : "day"

@@ -70,23 +70,24 @@ public class ManagerChartDataServlet extends HttpServlet {
 		}
 		
 		Map<String, Map<String, Integer>> seasonTimes = new HashMap<>();
-		seasonTimes.put("Spring", createMap());
-		seasonTimes.put("Summer", createMap());
-		seasonTimes.put("Autumn", createMap());
-		seasonTimes.put("Winter", createMap());
+		String language = user.getLanguage();
+		seasonTimes.put(language.equals("ua") ? "Весна" : "Spring", createMap());
+		seasonTimes.put(language.equals("ua") ? "Літо" : "Summer", createMap());
+		seasonTimes.put(language.equals("ua") ? "Осінь" : "Autumn", createMap());
+		seasonTimes.put(language.equals("ua") ? "Зима" : "Winter", createMap());
 		for(OrderDto order : orders) {
 			calendar.setTime(order.getStartDate());
 			int month = calendar.get(Calendar.MONTH) + 1;
 			String monthNumber;
 			String season;
 			if(month >= 3 && month <=5) {	//spring
-				season = "Spring";
+				season = language.equals("ua") ? "Весна" : "Spring";
 			} else if (month >= 6 && month <=8) {	//summer
-				season = "Summer";
+				season = language.equals("ua") ? "Літо" : "Summer";
 			} else if (month >= 9 && month <=11) {	//fall
-				season = "Autumn";
+				season = language.equals("ua") ? "Осінь" : "Autumn";
 			} else {	//winter
-				season = "Winter";
+				season = language.equals("ua") ? "Зима" : "Winter";
 			}
 			if(month == 3 || month == 6 || month == 9 || month == 12) {
 				monthNumber = "first";
@@ -97,7 +98,6 @@ public class ManagerChartDataServlet extends HttpServlet {
 			}
 			Map<String, Integer> monthMap = seasonTimes.get(season);
 			monthMap.put(monthNumber, monthMap.get(monthNumber) + 1);
-			//seasonTimes.put(season, monthMap);
 		}
 		
 		response.setContentType("text/plain");
