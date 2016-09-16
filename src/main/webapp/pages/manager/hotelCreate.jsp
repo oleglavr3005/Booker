@@ -143,7 +143,7 @@
 						<!-- 						STARS -->
 						<input id="rating" value="1" type="number" class="rating" min=1
 							max=5 step=1 data-size="xs" data-stars="5"> <label
-							id="ratingLbl" data-error="RATING SHOULD BE 1-5" for="rating"><span
+							id="ratingLbl" data-error="STARS SHOULD BE 1-5" for="rating"><span
 							id="admin_edit_stars"></span> </label>
 
 						<!-- 							END OF STARS -->

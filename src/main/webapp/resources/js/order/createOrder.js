@@ -181,14 +181,11 @@ function addToCart(roomId) {
 	$.post('../add_to_cart', {
 		allRoomIds : rooms,
 		amount : am,
-		
 		people : $('#people').val(),
 		startDate : $('#date_from').val(),
 		endDate : $('#date_to').val(),
 	}, function(result) {
-
 		$('#btn' + roomId).onclick = null;
-
 		if (result == 'true') {
 			$('#btn' + roomId).attr('disabled', true);			
 			var url = window.location.href;
@@ -200,13 +197,13 @@ function addToCart(roomId) {
 				compareBy : compare
 			}, function(orders) {
 				$('#switchContent').html(orders);
+				$(document).ready(updateLanguage());
 			});
 		} else {
 			$('#btn' + roomId).text(languages.script.current.createOrder.error);
 			$('#btn' + roomId).attr('disabled', true);
 		}
 	});
-	updateLanguage();
 }
 
 function isInfoValid() {

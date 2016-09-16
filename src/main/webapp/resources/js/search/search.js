@@ -58,6 +58,7 @@ function find() {
 
 	}, function(hotels) {
 		$('#switchContent').html(hotels);
+		$(document).ready(updateLanguage());
 	});
 }
 
@@ -74,9 +75,9 @@ function searchRooms(hotelId) {
 			endDate : $('#date_to').val(),
 		}, function(hotels) {
 			$('#switchContent').html(hotels);
+			$(document).ready(updateLanguage());
 		});
 	}
-	updateLanguage();
 }
 
 function simpleSearch() {
@@ -188,6 +189,6 @@ function findPage(url,pageNumber) {
 		compareBy : compare
 	}, function(orders) {
 		$('#switchContent').html(orders);
+		$(document).ready(updateLanguage());
 	});
-	updateLanguage();
 }
