@@ -1,12 +1,5 @@
-function createOrder(orders) {
-	// if(isPurchaseValid()){
-	$.post('create_order', {
-		orders : order
-	}, function(subscriveId) {
-		// create modal
-	});
-	// }
-}
+var addToCartSucces = "CAPS_LOCK_Room was successfully added to cart";
+var addToCartFail = "CAPS_LOCK_Room cannot be added to cart";
 
 function bookOrderCard(orderId, daysCount) {
 	var localComment = orderId == null ? $('#comment').val() : $(
@@ -196,10 +189,12 @@ function addToCart(roomId) {
 				page : pageNumber,
 				compareBy : compare
 			}, function(orders) {
+				 Materialize.toast(addToCartSucces, 3000);
 				$('#switchContent').html(orders);
 				$(document).ready(updateLanguage());
 			});
 		} else {
+			 Materialize.toast(addToCartFail, 3000);
 			$('#btn' + roomId).text(languages.script.current.createOrder.error);
 			$('#btn' + roomId).attr('disabled', true);
 		}

@@ -1,5 +1,7 @@
+var succes = "COMMENT SUCCES CHANGED";
+var fail = "COMMENT SUCCES CHANGED";
+
 function updateComment(orderId) {
-	debugger;
 	var comment = $('#comment').val();
 	if (validateComment(comment)) {
 		alert("post to update");
@@ -8,9 +10,11 @@ function updateComment(orderId) {
 			comment : comment
 		}, function(result) {
 			if (result == 'true') {
-				$('#commentInfo').text("SUCCES");
+				  Materialize.toast(succes, 3000);
+//				$('#commentInfo').text("SUCCES");
 			} else {
-				$('#commentInfo').text("FAIL");
+				  Materialize.toast(fail, 3000);
+//				$('#commentInfo').text("FAIL");
 			}
 		});
 	} else {

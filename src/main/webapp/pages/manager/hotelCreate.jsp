@@ -146,7 +146,7 @@
 					</div>
 					<div class="col s5 offset-s1">
 						<!-- 						STARS -->
-						<input id="rating" type="number" class="rating" min=1 max=5 step=1
+						<input id="rating" type="number" value="1" class="rating" min=0 max=5 step=1
 							data-size="xs" data-stars="5" onchange="setHotelStars()">
 						<label id="ratingLbl" data-error="STARS SHOULD BE 1-5"
 							for="rating"><span id="admin_edit_stars"></span> </label>

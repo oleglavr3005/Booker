@@ -105,13 +105,11 @@ function createRequest(flag) {
 }
 
 function requestValidate(field) {
-	debugger;
 	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’,?.!'" ]*)$/;
 	return re.test(field);
 }
 
 function requestIsValid() {
-	debugger;
 	var request = $('#requestForm').val();
 	if ((request == "")
 			|| (request.length > 10 && request.length < 999 && requestValidate(request))) {
@@ -279,14 +277,15 @@ function savePassword(header, succesfull) {
 					$('#currentPassword').val('');
 					$('#newPassword').val('');
 					$('#repeatPassword').val('');
-					$('#pwd_title').text(
-							languages.script.current.settings.succesTitle);
-					$('#pwd_title').css('color', 'green');
-					setTimeout(function() {
-						$('#pwd_title').text(
-								languages.script.current.settings.oldHeader);
-						$('#pwd_title').css('color', '#333333');
-					}, 3000);
+					  Materialize.toast(languages.script.current.settings.succesTitle, 3000);
+//					$('#pwd_title').text(
+//							languages.script.current.settings.succesTitle);
+//					$('#pwd_title').css('color', 'green');
+//					setTimeout(function() {
+//						$('#pwd_title').text(
+//								languages.script.current.settings.oldHeader);
+//						$('#pwd_title').css('color', '#333333');
+//					}, 3000);
 				}
 			});
 }

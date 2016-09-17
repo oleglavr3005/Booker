@@ -1,5 +1,8 @@
 var mapping = $('#mapping').val();
 
+var orderRemovedSucces = "ORDER WAS SUCCES REMOVED";
+var orderRemovedFail = "AN ERROR OCCURED DURING ORDER REMOVING";
+
 var removed = '';
 
 function removeOrderCard(orderId) {
@@ -9,11 +12,13 @@ function removeOrderCard(orderId) {
 			orderId : orderId
 		}, function(result) {
 			if (result == 'true') {
+				Materialize.toast(orderRemovedSucces, 3000);
 				$('#remove' + orderId).text(languages.script.current.createOrder.succes);
 				$('#remove' + orderId).attr('disabled', true);
 				$('#book' + orderId).text(languages.script.current.createOrder.removed);
 				$('#book' + orderId).attr('disabled', true);
 			} else {
+				Materialize.toast(orderRemovedFail, 3000);
 				$('#remove' + orderId).text(languages.script.current.createOrder.fald);
 				$('#remove' + orderId).attr('disabled', true);
 			}
