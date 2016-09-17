@@ -141,7 +141,7 @@ div #sidebar-wrapper {
 						</div>
 						<!-- 							END OF NAME -->
 					</div>
-					<div class="col s5 offset-s1">
+					<div class="col s6" style="margin-top: 10px; padding-left: 20px;">
 						<!-- 						STARS -->
 						<input id="rating" value="${hotel.stars}" type="number"
 							class="rating" min=0 max=5 step=1 data-size="xs" data-stars="5">
@@ -233,7 +233,7 @@ div #sidebar-wrapper {
 		<div class="row">
 			<!-- 							SEND NOTIF -->
 			<div class="col s12">
-			
+
 				<!-- 	BUTTON FOR STATISTIC -->
 				<a class="waves-effect waves-light btn" id="statistic_button"
 					href="${pageContext.servletContext.contextPath}/cabinet/hotel_orders/${hotel.id}"
@@ -347,7 +347,7 @@ div #sidebar-wrapper {
 												data-tooltip="Shower"><img class="invert"
 												style="width: 18px; margin-top: -0.8em;"
 												src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" /></a>
-										</c:if>  <c:if test="${room.condition == true}">
+										</c:if> <c:if test="${room.condition == true}">
 											<a class="tooltipped index_room_conditioner"
 												data-position="icon" data-tooltip="Condition"
 												style="color: #0d0d0d;"><i class="material-icons invert">toys</i></a>
@@ -356,12 +356,12 @@ div #sidebar-wrapper {
 												data-tooltip="Balcony"><img class="invert"
 												style="width: 18px; margin-top: -0.8em;"
 												src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
-										</c:if><c:if test="${room.tv == true}">
-											<a class="tooltipped index_room_tv"
-												data-position="icon" data-tooltip="Television"
-												style="color: #0d0d0d;"><i class="material-icons invert">tv</i></a>
 										</c:if>
-							</td>
+										<c:if test="${room.tv == true}">
+											<a class="tooltipped index_room_tv" data-position="icon"
+												data-tooltip="Television" style="color: #0d0d0d;"><i
+												class="material-icons invert">tv</i></a>
+										</c:if></td>
 									<td><a class="tooltipped tooltip_food"
 										data-position="icon" data-tooltip="Food"
 										style="color: #0d0d0d;"><i

@@ -144,7 +144,7 @@
 						</div>
 						<!-- 							END OF NAME -->
 					</div>
-					<div class="col s5 offset-s1">
+					<div class="col s6" style="margin-top: 10px; padding-left: 20px;">
 						<!-- 						STARS -->
 						<input id="rating" type="number" value="1" class="rating" min=0 max=5 step=1
 							data-size="xs" data-stars="5" onchange="setHotelStars()">

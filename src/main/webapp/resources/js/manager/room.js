@@ -5,7 +5,7 @@ var roomUpdateFail = "ROOM CANNOT BE CREATED";
 
 function createRoom() {
 	var img = $('#photos').val();
-	if (validate()) {
+	if (validate(true)) {
 		$.get('../add_room', {
 			hotelId : $('#hotelId').val(),
 			type : $('#roomType').val(),
@@ -50,7 +50,7 @@ function updateRoom(room) {
 	var hotel = $('#roomId').val();
 	var x = 0;
 	var y = 0;
-	if (validate()) {
+	if (validate(false)) {
 		$.get('../../edit_room', {
 			roomId : room,
 			hotelId : hotel,
@@ -89,10 +89,10 @@ function updateRoom(room) {
 	}
 }
 
-function validate() {
+function validate(flag) {
 	var ok = true;
 	ok = checkRoomNumber($('#hotelId').val(), $('#number').val()) && ok;
-	ok = checkNumberRegex($('#number').val()) && ok;
+	ok = checkNumberRegex($('#number').val(),flag) && ok;
 	ok = numberIsValid('single', 0, 20) && ok;
 	ok = numberIsValid('double', 0, 20) && ok;
 	ok = checkBedsCount('single', 'double');
@@ -107,14 +107,28 @@ function checkBeds(){
 }
 
 function validateNumber(field) {
-	var re = /^[1-9][0-9]*[a-zA-Z]?(, *[1-9][0-9]*[a-zA-Z]?)*$/;
+	var re = /^[1-9][0-9]*[a-zа-яіїє]?(, *[1-9][0-9]*[a-zа-яіїє]?)*$/;
 	return re.test(field);
 }
 
-function checkNumberRegex(number){
-	if (number.length >= 1 && validateNumber(number)) {
-		valid('number');
-		return true;
+
+function validateSingleNumber(field) {
+	var re = /^[1-9][0-9]*[a-zа-яіїє]?$/;
+	return re.test(field);
+}
+
+function checkNumberRegex(number,flag){
+	if (number.length >= 1) {
+		if (flag && validateNumber(number)){
+			valid('number');
+			return true;
+		}
+		else {
+			if (validateSingleNumber(number)){
+				valid('number');
+				return true;
+			}
+		}
 	} else {
 		invalid('number');
 		return false;
