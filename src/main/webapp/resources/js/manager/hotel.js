@@ -1,6 +1,5 @@
 var image = null;
 var hotel_location = '';
-
 var places;
 
 function initAutocomplete() {
@@ -11,11 +10,55 @@ function initAutocomplete() {
 		setHotelLocation();
 	});
 }
+function createHotel(){
+	getInfoFromGoogle('createHotel', -1);
+}
+function updateHotel(hotelId) {
+	getInfoFromGoogle('createHotel', hotelId);
+}
+	
+function getInfoFromGoogle(str, id) {
+	try {
+		var input = document.getElementById('address');
+		var text = input.value;
+		text = text.replace(' ', '+');
+		text = text.replace(' ', '+');
+		text = text.replace(' ', '+');
+		text = text.replace(' ', '+');
+		text = text.replace(' ', '+');
+		text = text.replace(' ', '+');
+		text = text.replace(' ', '+');
+		text = text.replace(' ', '+');
+		$.post('https://maps.googleapis.com/maps/api/geocode/json?address='+text+'&language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU',
+		 {}, function(result){
+			places = result.results;
+			hotel_x = places[0].geometry.location.lat;
+			hotel_y = places[0].geometry.location.lng;
+			hotel_location = places[0].formatted_address;
+			var index = places[0].formatted_address;
+			index = index.substring(index.lastIndexOf(",") + 2).trim();
+			var re = /^([0-9]*)$/;
+			if(re.test(index)){
+				hotel_location = hotel_location.substring(0, hotel_location.lastIndexOf(","));
+			}
+			if(str == "createHotel"){
+				createHotelAfter();
+			}
+			if(str == "updateHotel"){
+				updateHotelAfter(id)
+			}
+		 }
+		)	
+	} catch (err) {
+		invalid('address');
+		return;
+	}
+}
 
-function createHotel() {
+
+function createHotelAfter() {
 	var img = $('#photos').val();
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
-	getInfoFromGoogle();
 	if (validate()) {
 		$.get('../add_hotel', {
 			name : $('#name').val(),
@@ -54,10 +97,8 @@ function createHotel() {
 	}
 }
 
-function updateHotel(hotelId) {
-	debugger;
+function updateHotelAfter(hotelId) {
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
-	getInfoFromGoogle();
 	if (validate()) {
 		$.get('../../edit_hotel', {
 			hotelId : hotelId,
@@ -97,7 +138,6 @@ function updateHotel(hotelId) {
 
 function validate() {
 	var ok = true;
-	debugger;
 	ok = nameIsValid($('#name').val()) && ok;
 	ok = starsIsValid($('#rating').val()) && ok;
 	ok = addressIsValid(hotel_location) && ok;
@@ -158,7 +198,7 @@ function subAddressIsValid(address){
 	while(flag == true){
 		if(a.indexOf(",") >= 0){
 			index ++;
-			a.substring(a.indexOf(",") + 1);
+			ф = a.substring(a.indexOf(",") + 1);
 		} else {
 			flag = false;
 		}
@@ -272,34 +312,6 @@ function promoteToMain() {
 	}
 }
 
-function getInfoFromGoogle() {
-	try {
-		if (places == undefined) {
-			var displaySuggestions = function(predictions, status) {
-				if (status != google.maps.places.PlacesServiceStatus.OK) {
-					return;
-				}
-				places = predictions;
-			};
-			var service = new google.maps.places.AutocompleteService();
-			service.getQueryPredictions({
-				input : $("#address").val()
-			}, displaySuggestions);
-		}
-		hotel_x = places[0].geometry.location.lat();
-		hotel_y = places[0].geometry.location.lng();
-		hotel_location = places[0].formatted_address;
-		var index = places[0].formatted_address;
-		index = index.substring(index.lastIndexOf(",") + 2).trim();
-		var re = /^([0-9]*)$/;
-		if(re.test(index)){
-			hotel_location = hotel_location.substring(0, hotel_location.lastIndexOf(","));
-		}
-	} catch (err) {
-		invalid('address');
-		return;
-	}
-}
 
 function changeIsDeleted() {
 //	var deleted = document.getElementById('isDeleted').checked;
