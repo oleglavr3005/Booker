@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:if test="${newRating == null}">
+<script> var newRating = ${newRating}</script> 
+</c:if>
 <c:forEach var="comment" items="${feedbacks}">
 	<div class="comment_card" id="comment_id_${comment.id}"
 		style="margin: 20px; display: none">
