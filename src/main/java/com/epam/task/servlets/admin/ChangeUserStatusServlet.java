@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.model.enums.UserStatus;
+import com.epam.task.database.service.OrderService;
 import com.epam.task.database.service.UserService;
 
 @WebServlet("/change_user_status")
@@ -27,8 +29,13 @@ public class ChangeUserStatusServlet extends HttpServlet {
 			return;
 		}
 		
+		UserStatus statusEnum = UserStatus.valueOf(status);
+		int userId = Integer.parseInt(userIdString);
+		if(statusEnum == UserStatus.BANNED) {	//clear cart
+			new OrderService().removeAllOrdersByStatus(userId, OrderStatus.ORDER);
+		}
 		int changed = new UserService()
-				.updateUserStatus(Integer.parseInt(userIdString), UserStatus.valueOf(status));
+				.updateUserStatus(userId, statusEnum);
 		
 		response.getWriter().write(changed > 0 ? "true" : "false");
 	}

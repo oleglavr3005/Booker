@@ -79,7 +79,7 @@ b {
 <c:if test="${countOfHotels == 0}">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col">
+			<div style="text-align: center;">
 				<h5 style="color: red; margin-bottom: 63px;">
 					<span id="card_no_hotels"></span>
 				</h5>

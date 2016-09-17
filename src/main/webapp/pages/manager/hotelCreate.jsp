@@ -114,8 +114,7 @@
 			<div class="col s3">
 				<div class="row">
 					<!-- 					PHOTO -->
-					<a href="#!"><img id="Img"
-						style="height: 200px; padding: 10px; width: 200px;"
+					<a href="#!"><img id="Img" style="padding-top: 10px; width: 100%; max-height: 195px;"
 						src="<i:urlToImage url="new_hotel.png" />"> </a>
 					<!-- 					END OF PHOTO -->
 					<!-- 				INPUT -->

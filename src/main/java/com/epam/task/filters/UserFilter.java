@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.epam.task.database.model.User;
+import com.epam.task.database.model.enums.UserStatus;
 
-@WebFilter({ "/cabinet/*", "/add_to_cart", "/remove_from_cart", "/clear_cart", "/book_all", "/book", 
-	"/cancel_order", "/check_order", "/change_info", "/change_password", "/change_image", "/change_email", 
-	"/change_phone", "/create_request", "/add_feedback", "/change_feedback", "/deleteFeedback", "/refresh_cart", "/get_chart_data" })
+@WebFilter({ "/cabinet/*", "/cancel_order", "/change_info", "/change_password", "/change_image", "/change_email", 
+	"/change_phone", "/refresh_cart", "/get_chart_data" })
 public class UserFilter implements Filter {
 
     public UserFilter() {
@@ -32,7 +32,7 @@ public class UserFilter implements Filter {
 		
 		User user = (User) httpSession.getAttribute("user");
 		
-		if(user != null) {
+		if(user != null && user.getStatus() != UserStatus.PENDING) {
 			chain.doFilter(request, response);
 		} else {		//throw the unexpected visitor on the error page
 			((HttpServletResponse) response).sendError(404);

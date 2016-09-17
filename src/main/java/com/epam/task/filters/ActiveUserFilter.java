@@ -10,17 +10,16 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.UserStatus;
-import com.epam.task.database.service.HotelService;
-import com.epam.task.database.service.UserService;
 
-@WebFilter("/hotel/*")
-public class UserHotelFilter implements Filter {
+@WebFilter({ "/add_to_cart", "/remove_from_cart", "/clear_cart", "/book_all", "/book", 
+	"/check_order", "/create_request", "/add_feedback", "/change_feedback", "/deleteFeedback" })
+public class ActiveUserFilter implements Filter {
 
-    public UserHotelFilter() {
+    public ActiveUserFilter() {
     }
 
 	public void destroy() {
@@ -28,20 +27,13 @@ public class UserHotelFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-
-		int hotelId;
-		try {
-			hotelId = Integer.parseInt(httpRequest.getPathInfo().substring(1));
-		} catch (Exception e) {
-			((HttpServletResponse) response).sendError(404);
-			return;
-		}
+		HttpSession httpSession = httpRequest.getSession(true);
 		
-		Hotel hotel = new HotelService().getHotelById(hotelId);
-		User manager = new UserService().getUserById(hotel.getManagerId());
-		if(hotel != null && hotel.getIsDeleted() == false && manager.getStatus() != UserStatus.BANNED) {
+		User user = (User) httpSession.getAttribute("user");
+		
+		if(user != null && user.getStatus() == UserStatus.ACTIVE) {
 			chain.doFilter(request, response);
-		} else {
+		} else {		//throw the unexpected visitor on the error page
 			((HttpServletResponse) response).sendError(404);
 		}
 	}

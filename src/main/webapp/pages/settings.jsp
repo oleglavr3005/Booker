@@ -330,7 +330,7 @@
 			</div>
 			<!-- 			End of Tab #2 -->
 
-			<c:if test="${user.type eq 'USER' }">
+			<c:if test="${user.type eq 'USER' && user.status != 'BANNED'}">
 				<!-- 			Tab #3 -->
 				<div id="test3" class="col s12">
 
