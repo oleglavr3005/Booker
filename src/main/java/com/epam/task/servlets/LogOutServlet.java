@@ -22,6 +22,7 @@ public class LogOutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		session.invalidate();
+		session = request.getSession(true);
 		if(user != null) {
 			session.setAttribute("language", user.getLanguage());
 		}
