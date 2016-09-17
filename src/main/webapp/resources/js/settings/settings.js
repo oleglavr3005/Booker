@@ -98,16 +98,16 @@ function createRequest(flag) {
 	}
 }
 
-function requestValidate() {
-	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’,?=+-_.!/'" ]*)$/;
+function requestValidate(field) {
+	debugger;
+	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’,?.!'" ]*)$/;
 	return re.test(field);
 }
 
 function requestIsValid() {
 	debugger;
 	var request = $('#requestForm').val();
-	if ((request == "")
-			|| (request > 10 && request < 999 && requestValidate(request))) {
+	if ((request == "") || (request.length > 10 && request.length < 999 && requestValidate(request))) {
 		return true;
 	}
 	$('#requestForm').removeClass("valid");
