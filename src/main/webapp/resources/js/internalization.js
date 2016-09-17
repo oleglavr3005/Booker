@@ -1102,7 +1102,7 @@ function updateDatePickerMonthS() {
 function updateDatePickerMonth() {
 	mon = document.getElementsByClassName('picker__select--month')[0];
 	for(var i = 0 ; i < 12; i++){
-		var text = mon.options[0].text;
+		var text = mon.options[1].text;
 		if (currentLanguage == 'en') {
 			for ( var ua_mon in languages.script.ua.datepicker) {
 				if (languages.script.ua.datepicker[ua_mon] == text) {
