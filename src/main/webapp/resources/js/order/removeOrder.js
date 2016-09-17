@@ -22,6 +22,7 @@ function removeOrderCard(orderId) {
 				page : $('#pageNmb').val()
 			}, function(orders) {
 				$('#switchContent').html(orders);
+				$(document).ready(updateLanguage());
 			});
 		});
 	}
@@ -30,6 +31,7 @@ function removeOrderCard(orderId) {
 function clearCart() {
 	$.post('../clear_cart', {}, function(orders) {
 		$('#switchContent').html(orders);
+		$(document).ready(updateLanguage());
 	});
 }
 
