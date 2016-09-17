@@ -364,7 +364,6 @@ function setHotelPhone(){
 }
 
 function setHotelDesc(){
-//	GetContent();
 	var text = $('#desc').val();
 	if (text.length > 999)
 		return;
@@ -373,26 +372,4 @@ function setHotelDesc(){
 
 function setHotelConv(){
 	
-}
-
-function GetContent () {
-    var elem = document.getElementById ("hotel_card_desc");
-    var message = "";
-    if (elem.outerHTML !== undefined) {
-        message += "outer HTML : " + elem.outerHTML;
-    }
-    if (elem.outerText !== undefined) {
-        message += "nouter text : " + elem.outerText;
-    }
-
-    message += "ninner HTML : " + elem.innerHTML;
-
-    if (elem.textContent === undefined) {
-        message += "ninner text : " + elem.innerText;
-    }
-    else {
-        message += "ninner text : " + elem.textContent;
-    }
-
-    alert (message);
 }
