@@ -1,8 +1,5 @@
 var image = null;
-var hotel_city = "";
-var hotel_street = "";
-var hotel_x = 0;
-var hotel_y = 0;
+var hotel_location = '';
 
 var places;
 
@@ -24,7 +21,7 @@ function createHotel() {
 		$.get('../add_hotel', {
 			name : $('#name').val(),
 			stars : star,
-			location : hotel_city,
+			location : hotel_location,
 			description : $('#desc').val(),
 			phoneNumber : $('#phone').val(),
 			xCoord : hotel_x,
@@ -146,11 +143,27 @@ function starsIsValid(stars) {
 }
 
 function addressIsValid(address) {
-	if (address.length >= 5 && address.length <= 145 && checkAddress(address)) {
+	if (address.length >= 5 && address.length <= 145 && checkAddress(address) && subAddressIsValid(address)) {
 		valid('address');
 		return true;
 	} else {
 		invalid('address');
+		return false;
+	}
+}
+function subAddressIsValid(address){
+	var flag = true;
+	var a = address;
+	var index = 0;
+	while(flag == true){
+		if(a.indexOf(",") >= 0){
+			index ++;
+			a.sustring(a.indexOf(","));
+		}
+	}
+	if(index > 4){
+		return true;
+	} else {
 		return false;
 	}
 }
@@ -273,13 +286,13 @@ function getInfoFromGoogle() {
 		}
 		hotel_x = places[0].geometry.location.lat();
 		hotel_y = places[0].geometry.location.lng();
-		var address = places[0].formatted_address;
-		var subAddress = address.substring(0, address.lastIndexOf(","));
-		subAddress = subAddress.substring(0, subAddress.lastIndexOf(","));
-		hotel_city = subAddress.substring(subAddress.lastIndexOf(",") + 1)
-				.trim();
-		;
-		hotel_street = subAddress.substring(0, subAddress.lastIndexOf(","));
+		hotel_location = places[0].formatted_address;
+		var index = places[0].formatted_address;
+		index = index.substring(index.lastIndexOf(",") + 2).trim();
+		var re = /^([0-9]*)$/;
+		if(re.test(index)){
+			hotel_location = hotel_location.substring(0, hotel_location.lastIndexOf(","));
+		}
 	} catch (err) {
 		invalid('address');
 		return;
