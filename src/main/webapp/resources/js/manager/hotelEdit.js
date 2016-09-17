@@ -196,7 +196,7 @@ $(document)
 										},
 										"drawCallback": function(settings ) {
 											$(".tooltipped").tooltip();
-								//			$('#datatable').ready(updateLanguage()); 
+										$('#datatable').ready(updateLanguage()); 
 					                        },
 										bAutoWidth : false,
 										aoColumnDefs : [ {
