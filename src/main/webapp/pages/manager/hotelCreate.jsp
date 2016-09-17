@@ -183,34 +183,34 @@
 					<div class="col s3 offset-s1">
 						<!-- 								CHECKBOX -->
 						<p>
-							<input type="checkbox" class="filled-in" id="hasParking"
+							<input onclick="setHotelCon(1,'hasParking')" type="checkbox" class="filled-in" id="hasParking"
 								name="hasParking" /> <label id="label_parking" for="hasParking">PARKING</label>
 						</p>
 						<p>
-							<input type="checkbox" class="filled-in" id="hasPool"
+							<input onclick="setHotelCon(2,'hasPool')" type="checkbox" class="filled-in" id="hasPool"
 								name="hasPool" /> <label id="label_pool" for="hasPool">SWIM
 								POOL</label>
 						</p>
 					</div>
 					<div class="col s4">
 						<p>
-							<input type="checkbox" class="filled-in" id="hasGym"
+							<input onclick="setHotelCon(3,'hasGym')" type="checkbox" class="filled-in" id="hasGym"
 								name="hasGym" /> <label id="label_gym" for="hasGym">FIT
 								GYM</label>
 						</p>
 						<p>
-							<input type="checkbox" class="filled-in" id="hasSpa"
+							<input onclick="setHotelCon(4,'hasSpa')" type="checkbox" class="filled-in" id="hasSpa"
 								name="hasSpa" /> <label id="label_spa" for="hasSpa">SPA
 							</label>
 						</p>
 					</div>
 					<div class="col s4">
 						<p>
-							<input type="checkbox" class="filled-in" id="hasService"
+							<input onclick="setHotelCon(5,'hasService')" type="checkbox" class="filled-in" id="hasService"
 								name="hasService" /> <label id="label_service" for="hasService">SERVICE</label>
 						</p>
 						<p>
-							<input type="checkbox" class="filled-in" id="hasCleaner"
+							<input onclick="setHotelCon(6,'hasCleaner')" type="checkbox" class="filled-in" id="hasCleaner"
 								name="hasCleaner" /> <label id="label_cleaner" for="hasCleaner">CLEANER</label>
 						</p>
 					</div>
@@ -291,34 +291,10 @@
 												</a>
 											</div>
 						
-											<div class="row" style="margin-top: 14px; float:right">
-													<a id="index_room_parking" class="tooltipped" data-position="icon"
-														data-tooltip="Parking" style="color: #0d0d0d; float:right"><i
-														class="material-icons invert" style="font-size:1.3rem">local_parking</i></a>
+<!-- 											<div class="row" style="margin-top: 14px; float:right"> -->
+<!-- 													############ --> 
 
-													<a id="index_room_pool" class="tooltipped" data-position="icon"
-														data-tooltip="Pool" style="color: #0d0d0d; float:right"><i
-														class="material-icons invert" style="font-size:1.3rem">pool</i></a>
-
-													<a id="index_room_gym" class="tooltipped" data-position="icon"
-														data-tooltip="Gym" style="color: #0d0d0d; float:right"><i
-														class="material-icons invert" style="font-size:1.3rem">fitness_center</i></a>
-
-													<a id="index_room_spa" class="tooltipped" data-position="icon"
-														data-tooltip="Spa" style="color: #0d0d0d; float:right"><i
-														class="material-icons invert" style="font-size:1.3rem">spa</i></a>
-
-													<a id="index_room_service" class="tooltipped" data-position="icon"
-														data-tooltip="Room service" style="color: #0d0d0d; float:right"><i
-														class="material-icons invert" style="font-size:1.3rem">room_service</i></a>
-
-													<a id="index_room_cleaner" class="tooltipped"
-														data-position="icon" data-tooltip="Dry cleaner"><img
-														class="invert"
-														style="max-width: 17%; max-height: 17%; float:right"
-														src="${pageContext.servletContext.contextPath}/resources/images/cleaner.png" /></a>
-
-											</div>
+<!-- 											</div> -->
 										</div>
 									</div>
 								</div>
@@ -326,10 +302,37 @@
 
 
 							<div class="row" style="margin-bottom: 10px;">
-								<a class="tooltipped index_search_location" data-position="icon"
+								<div style="padding:0px" class="col s6"><a class="tooltipped index_search_location" data-position="icon"
 									data-tooltip="" style="color: #0d0d0d; text-decoration: none;"><i
 									class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
-								<span id="hotel_card_location"></span>
+								<span id="hotel_card_location"></span></div>
+								<div class="col s4 offset-s2">
+									<a id="index_room_parking" class="tooltipped" data-position="icon"
+														data-tooltip="Parking" style="color: #0d0d0d; float:right"><i id="con1"
+														class="material-icons invert" style="display:none; font-size:1.3rem">local_parking</i></a>
+
+													<a id="index_room_pool" class="tooltipped" data-position="icon"
+														data-tooltip="Pool" style="color: #0d0d0d; float:right"><i id="con2"
+														class="material-icons invert" style="display:none; font-size:1.3rem">pool</i></a>
+
+													<a id="index_room_gym" class="tooltipped" data-position="icon"
+														data-tooltip="Gym" style="color: #0d0d0d; float:right"><i id="con3"
+														class="material-icons invert" style="display:none; font-size:1.3rem">fitness_center</i></a>
+
+													<a id="index_room_spa" class="tooltipped" data-position="icon"
+														data-tooltip="Spa" style="color: #0d0d0d; float:right"><i id="con4"
+														class="material-icons invert" style="display:none; font-size:1.3rem">spa</i></a>
+
+													<a id="index_room_service" class="tooltipped" data-position="icon"
+														data-tooltip="Room service" style="color: #0d0d0d; float:right"><i id="con5"
+														class="material-icons invert" style="display:none; font-size:1.3rem">room_service</i></a>
+
+													<a id="index_room_cleaner" class="tooltipped"
+														data-position="icon" data-tooltip="Dry cleaner"><img
+														class="invert" id="con6"
+														style="display:none; max-width: 17%; max-height: 17%; float:right"
+														src="${pageContext.servletContext.contextPath}/resources/images/cleaner.png" /></a>
+								</div>
 							</div>
 
 							<div class="row" style="margin-bottom: 10px">
