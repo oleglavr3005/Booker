@@ -250,8 +250,7 @@
 									<c:if
 								test="${user.phoneNumber == null || user.phoneNumber == ''}">disabled</c:if> />
 								<label for="phoneCheckBox"> <span
-									class="settings_chk_mails">I WANT RECEIVE MESSAGES ABOUT
-										NEW ROOMS!</span></label>
+									class="settings_chk_sms"></span></label>
 							</p>
 						</div>
 					</div>
@@ -261,9 +260,9 @@
 						<div class="input-field col s12">
 							<input id="email" type="email" class="validate"
 								<c:if test="${user.email.substring(user.email.length()-1) != '*'}"> value="${user.email}"</c:if>
-								length="80"> <label style="margin-top: -25px;"
+								length="80"> <label
 								id="emailLbl" data-error="${fmtMail}" for="email"><span
-								id="settings_enter_mail"></span></label>
+								id="settings_enter_email"></span></label>
 
 							<p>
 								<input style="" type="checkbox" class="filled-in" id="eMailBox"

@@ -158,7 +158,17 @@ b {
 									</div>
 
 									<div class="col s4 offset-s2">
-										<div class="row">${order.room.type}</div>
+										<div class="row">
+											<c:if test="${order.room.type == 'STANDART'}">
+												<span class="subscribes_table_roomtype_standart"></span>
+											</c:if>
+											<c:if test="${order.room.type == 'LUX'}">
+												<span class="subscribes_table_roomtype_lux"></span>
+											</c:if>
+											<c:if test="${order.room.type == 'DELUX'}">
+												<span class="subscribes_table_roomtype_delux"></span>
+											</c:if>
+										</div>
 
 										<div class="row">
 											<a class="tooltipped tooltip_double_beds"

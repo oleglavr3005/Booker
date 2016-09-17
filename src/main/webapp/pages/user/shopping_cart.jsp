@@ -100,7 +100,7 @@
 			<div class="col s3">
 				<h6>
 					<c:if test="${countOfOrders > 0 }">
-						<span class="card_header"></span>
+						<span class="shopping_cart_header"></span>
 						<span id="periodicals_number_for_all_users">${countOfOrders}</span>
 					</c:if>
 				</h6>
