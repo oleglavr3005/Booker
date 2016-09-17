@@ -88,6 +88,12 @@
 	opacity: .6;
 }
 
+.invert:hover {
+	-webkit-filter: invert(70%);
+	filter: invert(70%);
+	cursor: default;
+}
+
 .well {
 	padding: 0px;
 }
@@ -253,22 +259,39 @@
 
 						</div>
 
-						<div class="col s6">
+						<div class="col s8">
 
 							<div class="row"
 								style="margin-top: 15px; margin-bottom: 10px; font-size: 1.3rem; padding-left: 0;">
-								<div class="col s7">
-									<span id="hotel_card_name"></span>
-								</div>
-								<div class="col s4 offset-s1">
-									<a class="tooltipped index_search_stars" data-position="icon"
-										data-tooltip="" style="color: #0d0d0d; text-decoration: none;">
-										<i id="card_star_1" class="fa fa fa-star-o" aria-hidden="true"></i>
-										<i id="card_star_2" class="fa fa fa-star-o" aria-hidden="true"></i>
-										<i id="card_star_3" class="fa fa fa-star-o" aria-hidden="true"></i>
-										<i id="card_star_4" class="fa fa fa-star-o" aria-hidden="true"></i>
-										<i id="card_star_5" class="fa fa fa-star-o" aria-hidden="true"></i>
-									</a>
+								<div class="container-fluid" style="padding: 0px">
+									<div class="row" style="margin-bottom: 0px;">
+										<div class="col s6">
+											<span id="hotel_card_name"></span>
+										</div>
+										<div class="col s3">
+											<a class="tooltipped index_search_stars" data-position="icon"
+												data-tooltip=""
+												style="color: #0d0d0d; text-decoration: none;"> <i
+												id="card_star_1" class="fa fa fa-star-o" aria-hidden="true"></i>
+												<i id="card_star_2" class="fa fa fa-star-o"
+												aria-hidden="true"></i> <i id="card_star_3"
+												class="fa fa fa-star-o" aria-hidden="true"></i> <i
+												id="card_star_4" class="fa fa fa-star-o" aria-hidden="true"></i>
+												<i id="card_star_5" class="fa fa fa-star-o"
+												aria-hidden="true"></i>
+											</a>
+										</div>
+										<div class="col s2">
+											<div class="row" style="margin: 0px">
+												<a class="tooltipped tooltip_rating" data-position="icon"
+													data-tooltip="Rating"
+													style="padding: 0 20px 0 20px; margin-left: 30px;font-size: 17px; color: #0d0d0d; text-decoration: none;">
+													<i class="fa fa-lg fa-thumbs-up invert" aria-hidden="true"></i>
+													<span>5.0</span>
+												</a>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 
