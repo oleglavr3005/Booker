@@ -61,8 +61,13 @@ function savePersonalData() {
 	});
 }
 
-function createRequest() {
-	var req = $('#requestForm').val();
+function createRequest(flag) {
+	if (flag) {
+		var req = $('#requestForm').val();
+	}
+	else {
+		var req = "";
+	}
 	$.post('../create_request', {
 		message : req
 	}, function(result) {
