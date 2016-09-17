@@ -23,7 +23,8 @@ public class RequestDao {
 	private final String INSERT_REQUEST = "INSERT INTO `request` (user_id, message, request_date, status) VALUES (?, ?, ?, ?)";
 	private final String UPDATE_REQUEST = "UPDATE `request` SET user_id = ?, message = ?, request_date = ?, status = ? WHERE request_id = ?";
 	private final String CHANGE_REQUEST_STATUS = "UPDATE `request` SET status = ? WHERE request_id = ?";
-	
+	private final String REMOVE_REQUEST = "DELETE FROM `request` WHERE request_id = ?";
+
 	public RequestDao(Connection connection) {
 		super();
 		this.connection = connection;
@@ -119,5 +120,16 @@ public class RequestDao {
 			e.printStackTrace();
 			return -1;
 		}
+	}
+
+	public int removeRequest(int requestId) {
+		int result = 0;
+		try (PreparedStatement st = connection.prepareStatement(REMOVE_REQUEST)) {
+			st.setInt(1, requestId);
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

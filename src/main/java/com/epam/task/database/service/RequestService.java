@@ -42,4 +42,8 @@ public class RequestService {
 	public int updateRequestStatus(int requestId, RequestStatus status) {
 		return daoManager.executeAndClose(() -> daoManager.getRequestDao().updateRequestStatus(requestId, status));
 	}
+
+	public int removeRequest(int requestId) {
+		return daoManager.executeAndClose(() -> daoManager.getRequestDao().removeRequest(requestId));
+	}
 }
