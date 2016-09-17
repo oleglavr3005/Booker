@@ -63,7 +63,7 @@ function updateHotel(hotelId) {
 			hotelId : hotelId,
 			name : $('#name').val(),
 			stars : star,
-			location : hotel_city,
+			location : hotel_location,
 			description : $('#desc').val(),
 			phoneNumber : $('#phone').val(),
 			deleted : document.getElementById('isDeleted').checked,
@@ -100,7 +100,7 @@ function validate() {
 	debugger;
 	ok = nameIsValid($('#name').val()) && ok;
 	ok = starsIsValid($('#rating').val()) && ok;
-	ok = addressIsValid($('#address').val()) && ok;
+	ok = addressIsValid(hotel_location) && ok;
 	ok = phoneIsValid($('#phone').val()) && ok;
 	ok = descIsValid($('#desc').val()) && ok;
 	return ok;
@@ -152,19 +152,18 @@ function addressIsValid(address) {
 	}
 }
 function subAddressIsValid(address){
-	
-	return true;
-	
 	var flag = true;
 	var a = address;
 	var index = 0;
 	while(flag == true){
 		if(a.indexOf(",") >= 0){
 			index ++;
-			a.sustring(a.indexOf(","));
+			a.substring(a.indexOf(",") + 1);
+		} else {
+			flag = false;
 		}
 	}
-	if(index > 4){
+	if(index >= 4){
 		return true;
 	} else {
 		return false;
