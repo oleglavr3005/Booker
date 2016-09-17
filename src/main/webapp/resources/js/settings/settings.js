@@ -1,4 +1,6 @@
 var confirmMail = "PLS CONFIRM MAIL";
+var phoneChanged = "PHONE WAS SUCCESSFULLY CHANGED";
+var personalChanged = "YOUR DATA WAS SUCCESSFULLY CHANGED";
 var reqSent = "REQUEST WAS SUCCESSFULLY SENT";
 var reqSentAgaint = "REQUEST WAS SUCCESSFULLY SENT AGAIN";
 var reqUpdated = "REQUEST WAS SUCCESSFULLY UPDATED";
@@ -17,6 +19,7 @@ function saveContactData() {
 		}, function(result) {
 			var res = $.parseJSON(result);
 			if (result != null) {
+				  Materialize.toast(phoneChanged, 3000);
 				$('#phoneNumber').val(res.phoneNumber);
 				clearField('phoneNumber');
 			} else {
@@ -32,14 +35,15 @@ function saveContactData() {
 		}, function(result) {
 			var res = $.parseJSON(result);
 			if (res.changed != null) {
-				$('#settings_confirmMail').text(confirmMail);
-				$('#settings_confirmMail').show();
+				  Materialize.toast(confirmMail, 3000);
+//				$('#settings_confirmMail').text(confirmMail);
+//				$('#settings_confirmMail').show();
 			} else {
 				invalid('email');
 			}
-			setTimeout(function() {
-				$('#settings_confirmMail').hide();
-			}, 2000);
+//			setTimeout(function() {
+//				$('#settings_confirmMail').hide();
+//			}, 2000);
 		});
 	} else {
 		invalid('email');
@@ -61,6 +65,7 @@ function savePersonalData() {
 			$('#surname').val(res.lastName);
 			clearField('surname');
 			$('#userNameSpan').html(res.firstName + " " + res.lastName);
+			  Materialize.toast(personalChanged, 3000);
 		}
 	});
 }

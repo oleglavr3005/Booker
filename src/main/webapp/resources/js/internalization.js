@@ -597,6 +597,9 @@
 		header_regist: "Реєстрація",
 		aas : "Видаленоо",
 	}
+	
+//	DATAERROR #############################
+	
 	var data_error = {
 		ua: {
 			nameLbl: "Некоректне імя",
@@ -638,6 +641,9 @@
 			percentageLbl2 : "fmtPeople",
 		}
 	};
+	
+//	DATATOOLTIP #########################
+	
 	var data_tooltip = {
 		ua : {
 			index_room_wifi : "Wifi",
@@ -698,6 +704,9 @@
 			tooltip_show_info : "Show additional info",
 		}
 	};
+	
+//	SCRIPT ###########################
+	
 	var script = {
 		en : {
 			calendar : {
@@ -901,6 +910,9 @@
 		    }
 		},
 	};
+	
+//	PLACEHOLDER ###########################
+	
 	var placeholder = {
 		en : {
 			placeholder_phone_number : "Phone Number",

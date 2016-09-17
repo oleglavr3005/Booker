@@ -100,7 +100,7 @@ b {
 								<a href='<i:urlToImage url="${order.room.photos[0].img}" />'
 									data-gallery="#blueimp-gallery-${order.id}"> <img
 									src="<i:urlToImage url="${order.room.photos[0].img }" />"
-									style="height: 170px; width: 200px; padding: 10px;">
+									style="height: 170px; width: 230px; padding: 10px;">
 								</a>
 
 								<div style="display: none;">
