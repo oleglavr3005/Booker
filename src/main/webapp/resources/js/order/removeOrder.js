@@ -1,7 +1,7 @@
 var mapping = $('#mapping').val();
 
-var orderRemovedSucces = "ORDER WAS SUCCES REMOVED";
-var orderRemovedFail = "AN ERROR OCCURED DURING ORDER REMOVING";
+var orderRemovedSucces = languages.script.current.cart.removeSucces;
+var orderRemovedFail = languages.script.current.cart.removeFail;
 
 var removed = '';
 

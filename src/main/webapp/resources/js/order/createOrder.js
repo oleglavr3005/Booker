@@ -1,5 +1,5 @@
-var addToCartSucces = "CAPS_LOCK_Room was successfully added to cart";
-var addToCartFail = "CAPS_LOCK_Room cannot be added to cart";
+var addToCartSucces = languages.script.current.cart.addSucces;
+var addToCartFail = languages.script.current.cart.addFail;
 
 function bookOrderCard(orderId, daysCount) {
 	var localComment = orderId == null ? $('#comment').val() : $(

@@ -1,7 +1,7 @@
-var roomCreatedSucces = "ROOM WAS SUCCESSFULLY CREATED";
-var roomCreatedFail = "ROOM CANNOT BE CREATED";
-var roomUpdateSucces = "ROOM WAS SUCCESSFULLY CREATED";
-var roomUpdateFail = "ROOM CANNOT BE CREATED";
+var roomCreatedSucces = languages.script.current.room.createSucces;
+var roomCreatedFail = languages.script.current.room.createFail;
+var roomUpdateSucces = languages.script.current.room.updateSucces;
+var roomUpdateFail = languages.script.current.room.updateFail;
 
 function createRoom() {
 	var img = $('#photos').val();

@@ -850,6 +850,31 @@
 			message : {
 				success : "Success change feedback",
 				danger : "Fald change feedback",
+			},
+			room : {
+				createSucces : "room was created",
+				createFail : "room cannot be created",
+				updateSucces : "room was updated",
+				updateFail : "room cannot be updated",
+			},
+			cart : {
+				addSucces : "item was added to cart",
+				addFail : "item cannot be added to cart",
+				removeSucces : "item was removed from cart",
+				removeFail : "item cannot be removed from cart",
+			},
+			settings : {
+				confMail : "please confirm your new email",
+				phnChng : "your new phone number was saved",
+				prsnChang : "your data was saved",
+				reqSent : "your request was sent to administration",
+				reqSentAgain : "your request was sent again",
+				reqUpd : "your request was updated",
+				reqRmv : "your request was removed",
+			},
+			concrete : {
+				succ : "comment was updated",
+				fail : "comment cannot be updated",
 			}
 		},
 		ua : {
@@ -970,6 +995,31 @@
 			message : {
 				success : "Редагування відгуку пройшло успішно",
 				danger : "Помилка редагування відгуку",
+			},
+			room : {
+				createSucces : "кімнату було успішно створено",
+				createFail : "кімнату створити не вдалося",
+				updateSucces : "кімнату було успішно оновлено",
+				updateFail : "кімнату оновити не вдалося",
+			},
+			cart : {
+				addSucces : "предмет було додано до корзини",
+				addFail : "предмет додати в корзину не вдалося",
+				removeSucces : "предмет було видалено із корзини",
+				removeFail : "не вдалося вилучити предмет із корзини",
+			},
+			settings : {
+				confMail : "прошу підтвердити вказану пошту",
+				phnChng : "Ваш номер телефону було збережено",
+				prsnChang : "Ваша інформація була збережена",
+				reqSent : "Ваш запит було надіслано на розгляд адміністрації",
+				reqSentAgain : "Ваш запит було повторно надіслано на розгляд",
+				reqUpd : "Ваш запит було оновлено",
+				reqRmv : "Ваш запит було видалено",
+			},
+			concrete : {
+				succ : "коментар було оновлено",
+				fail : "коментар оновити не вдалося",
 			}
 		},
 	};

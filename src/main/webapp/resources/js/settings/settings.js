@@ -1,10 +1,10 @@
-var confirmMail = "PLS CONFIRM MAIL";
-var phoneChanged = "PHONE WAS SUCCESSFULLY CHANGED";
-var personalChanged = "YOUR DATA WAS SUCCESSFULLY CHANGED";
-var reqSent = "REQUEST WAS SUCCESSFULLY SENT";
-var reqSentAgaint = "REQUEST WAS SUCCESSFULLY SENT AGAIN";
-var reqUpdated = "REQUEST WAS SUCCESSFULLY UPDATED";
-var reqRemoved = "REQUEST WAS SUCCESSFULLY REMOVED";
+var confirmMail = languages.script.current.settings.confMail;
+var phoneChanged = languages.script.current.settings.phnChng;
+var personalChanged = languages.script.current.settings.prsnChang;
+var reqSent = languages.script.current.settings.reqSent;
+var reqSentAgaint = languages.script.current.settings.reqSentAgain;
+var reqUpdated = languages.script.current.settings.reqUpd;
+var reqRemoved = languages.script.current.settings.reqRmv;
 
 function saveContactData() {
 	$('#settings_confirmMail').hide();
@@ -85,21 +85,21 @@ function createRequest(flag) {
 				$('#settings_request_status_pending').show();
 				$('#settings_request_status_declined').hide();
 				  Materialize.toast(reqSent, 3000);
-				  $('#cancelRequest').show();
+				  $('#cancelRequest').css("visibility","visible");
 			} else {
 				if (result == 'sent_again') {
-					  $('#cancelRequest').show();
+					  $('#cancelRequest').css("visibility","visible");
 					$('#settings_request_status_declined').hide();
 					$('#settings_request_status_pending').show();
 					  Materialize.toast(reqSentAgaint, 3000);
 				} else {
 					if (result == 'updated') {
-						  $('#cancelRequest').show();
+						  $('#cancelRequest').css("visibility","visible");
 						  Materialize.toast(reqUpdated, 3000);
 					} else {
 						$('#req_status').hide();
 						  Materialize.toast(reqRemoved, 3000);
-						  $('#cancelRequest').hide();
+						  $('#cancelRequest').css("visibility","hidden");
 						  $('#requestForm').val("");
 					}
 				}

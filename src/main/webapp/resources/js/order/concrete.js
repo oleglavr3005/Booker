@@ -1,5 +1,5 @@
-var succes = "COMMENT SUCCES CHANGED";
-var fail = "COMMENT SUCCES CHANGED";
+var succes = languages.script.current.concrete.succ;
+var fail = languages.script.current.concrete.fail;
 
 function updateComment(orderId) {
 	var comment = $('#comment').val();
