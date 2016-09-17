@@ -91,6 +91,13 @@
 					</div>
 				</div>
 			</c:if>
+			<c:if test="${user != null && user.status == 'BANNED'}">
+				<div class="row" style="padding-top: 20px;">
+					 <div style="margin-left: 20px; margin-right: 20px; border: 1px solid red; border-radius: 10px; padding: 15px; background-color: rgba(255, 0, 0, 0.3);">
+						<span class="comment_user_is_banned"></span>
+					</div>
+				</div>
+			</c:if>
 			<c:if test="${user == null}">
 				<div class="row" style="padding-top: 20px;">
 					 <div style="margin-left: 20px; margin-right: 20px; border: 1px solid red; border-radius: 10px; padding: 15px; background-color: rgba(255, 0, 0, 0.3);">
