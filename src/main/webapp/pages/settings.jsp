@@ -197,10 +197,10 @@
 					</div>
 					<div class="row inline field fields">
 						<div class="input-field col s8 offset-s2">
-<!-- 							<div class="ui pointing label" style="background-color: #f7f7f7;"> -->
-<!-- 								<span id="settings_enter_pass" -->
-<!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
-<!-- 							</div> -->
+							<!-- 							<div class="ui pointing label" style="background-color: #f7f7f7;"> -->
+							<!-- 								<span id="settings_enter_pass" -->
+							<!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
+							<!-- 							</div> -->
 							<input id="currentPassword" type="password" class="validate">
 							<label id="currentPasswordLbl" data-error="${fmtPass}"
 								for="currentPassword"><span id="settings_enter_pass"></span></label>
@@ -208,10 +208,10 @@
 					</div>
 					<div class="row inline field fields">
 						<div class="input-field col s8 offset-s2">
-<!-- 							<div class="ui pointing label" style="background-color: #f7f7f7;"> -->
-<!-- 								<span id="settings_enter_passnew" -->
-<!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
-<!-- 							</div> -->
+							<!-- 							<div class="ui pointing label" style="background-color: #f7f7f7;"> -->
+							<!-- 								<span id="settings_enter_passnew" -->
+							<!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
+							<!-- 							</div> -->
 							<input id="newPassword" type="password" class="validate">
 							<label id="newPasswordLbl" data-error="${fmtNewPass}"
 								for="newPassword"><span id="settings_enter_passnew"></span></label>
@@ -219,13 +219,14 @@
 					</div>
 					<div class="row inline field fields">
 						<div class="input-field col s8 offset-s2">
-<!-- 							<div class="ui pointing label" style="background-color: #f7f7f7;"> -->
-<!-- 								<span id="settings_enter_passrepeat" -->
-<!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
-<!-- 							</div> -->
+							<!-- 							<div class="ui pointing label" style="background-color: #f7f7f7;"> -->
+							<!-- 								<span id="settings_enter_passrepeat" -->
+							<!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
+							<!-- 							</div> -->
 							<input id="repeatPassword" type="password" class="validate">
 							<label id="repeatPasswordLbl" data-error="${fmtRepPass}"
-								for="repeatPassword"><span id="settings_enter_passrepeat"></span></label>
+								for="repeatPassword"><span
+								id="settings_enter_passrepeat"></span></label>
 						</div>
 					</div>
 					<div class="row" style="margin-top: 20px;">
@@ -250,13 +251,14 @@
 
 					<div class="row fields">
 						<div class="input-field col s12">
-<!-- 							<div class="ui pointing label" style="background-color: #f7f7f7;"> -->
-<!-- 								<span id="settings_enter_phone" -->
-<!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
-<!-- 							</div> -->
+							<!-- 							<div class="ui pointing label" style="background-color: #f7f7f7;"> -->
+							<!-- 								<span id="settings_enter_phone" -->
+							<!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
+							<!-- 							</div> -->
 							<input id="phoneNumber" type="text" class="validate"
-								value="${user.phoneNumber}" length="45"> <label style="margin-top: -25px;"
-								id="phoneLbl" data-error="${fmtName}" for="phoneNumber"><span id="settings_enter_phone"></span>
+								value="${user.phoneNumber}" length="45"> <label
+								style="margin-top: -25px;" id="phoneLbl" data-error="${fmtName}"
+								for="phoneNumber"><span id="settings_enter_phone"></span>
 							</label>
 
 							<!-- 							<div class="switch"> -->
@@ -271,8 +273,10 @@
 
 							<p>
 								<input type="checkbox" class="filled-in" id="phoneCheckBox"
-									name="phonoCheckBox" <c:if
-								test="${user.phoneNumber == null || user.phoneNumber == ''}">disabled</c:if>/> <label for="phoneCheckBox"> <span
+									name="phonoCheckBox"
+									<c:if
+								test="${user.phoneNumber == null || user.phoneNumber == ''}">disabled</c:if> />
+								<label for="phoneCheckBox"> <span
 									class="settings_chk_mails">I WANT RECEIVE MESSAGES ABOUT
 										NEW ROOMS!</span></label>
 							</p>
@@ -283,16 +287,19 @@
 					<div class="row">
 						<div class="input-field col s12">
 							<input id="email" type="email" class="validate"
- 								<c:if test="${user.email.substring(user.email.length()-1) != '*'}"> value="${user.email}"</c:if> 
-								length="80"> <label style="margin-top: -25px;" id="emailLbl"
-								data-error="${fmtMail}" for="email"><span id="settings_enter_mail"></span></label>
-							
-								<p>
-									<input style="margin-top 5px" type="checkbox" class="filled-in" id="eMailBox"
-										name="eMailBox" <c:if
-								test="${user.email.substring(user.email.length()-1) == '*'}">disabled</c:if>/> <label for="eMailBox"> <span
-										class="settings_chk_mails"> </span></label>
-								</p>
+								<c:if test="${user.email.substring(user.email.length()-1) != '*'}"> value="${user.email}"</c:if>
+								length="80"> <label style="margin-top: -25px;"
+								id="emailLbl" data-error="${fmtMail}" for="email"><span
+								id="settings_enter_mail"></span></label>
+
+							<p>
+								<input style="" type="checkbox" class="filled-in" id="eMailBox"
+									name="eMailBox"
+									<c:if
+								test="${user.email.substring(user.email.length()-1) == '*'}">disabled</c:if> />
+								<label for="eMailBox"> <span class="settings_chk_mails">
+								</span></label>
+							</p>
 						</div>
 					</div>
 
@@ -305,8 +312,9 @@
 
 					<div class="row" style="margin-top: 20px;">
 						<div class="col s4 offset-s1">
-							<label ><span style="display:none" id="settings_confirmMail">text</span></label>
-							
+							<label><span style="display: none"
+								id="settings_confirmMail">text</span></label>
+
 						</div>
 						<div class="col s3 offset-s4">
 							<a id="savePersonal" class="waves-effect waves-light btn"
@@ -333,25 +341,41 @@
 							</h4>
 						</div>
 
+						<div id="req_status" class="row"
+							<c:if test="${request == null}"> style="display:none"
+						</c:if>>
+						<div class="col s3 offset-s3"><span id="settings_request_status_title">REQUEST STATUS : </span></div>
+							<div class="col s3 offset-s1">
+								 <span
+									<c:if test="${request.status == 'DECLINED'}">style="display:none"
+								</c:if>
+									id="settings_request_status_pending">PENDING</span> <span
+									<c:if test="${request.status == 'PENDING'}"> style="display:none" </c:if>
+									id="settings_request_status_declined">DECLINED</span>
+							</div>
+						</div>
+
 						<div class="row fields">
 							<div class="input-field col s12">
-								<textarea id="requestForm" class="materialize-textarea">${request.message}</textarea>
-								<label for="settings_enter_requests">
-									<span id="settings_enter_request"></span>
+								<textarea id="requestForm" class="materialize-textarea validate">${request.message}</textarea>
+								<label for="settings_enter_requests"> <span
+									id="settings_enter_request"></span>
 								</label>
 							</div>
 						</div>
-						
+
 						<div class="row" style="margin-top: 20px;">
-							<div class="col s2">
+							<div style = "<c:if test="${request == null}"> visibility: hidden; </c:if>" class="col s2">
 								<a id="cancelRequest" class="waves-effect waves-light btn"
 									onclick="createRequest(false)"
 									style="background: #F55151; 
-									<c:if test="${request.message == ''}"> visibility: hidden; </c:if>
 									color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
 									class="subscribes_table_remove"></span></a>
 							</div>
-							<div class="col s2 offset-s8">
+							<div id="settings_request_result" style="visibility: hidden;" class="col s6 offset-s1"> 
+								<span>text</span>
+							</div>
+							<div class="col s2 offset-s1">
 								<a id="createRequest" class="waves-effect waves-light btn"
 									onclick="createRequest(true)"
 									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
