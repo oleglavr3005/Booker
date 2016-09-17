@@ -2,9 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<c:if test="${newRating == null}">
-<script> var newRating = ${newRating}</script> 
-</c:if>
+
 <c:forEach var="comment" items="${feedbacks}">
 	<div class="comment_card" id="comment_id_${comment.id}"
 		style="margin: 20px; display: none">
@@ -18,6 +16,11 @@
 					<h4 style="font-size: 1.3rem; margin-top: 0; margin-bottom: 10px;">
 						<c:out value="${comment.user.firstName}"></c:out>
 						<c:out value="${comment.user.lastName}"></c:out>
+						<c:if test="${comment.user.status == 'BANNED'}">
+							<span class="feedback_banned" 
+								style="font-size: 0.7rem; background-color: darkslateblue; color: #f3eeee; padding: 0 4px 0 4px;  border-radius: 10px;">
+							</span>
+						</c:if>
 					</h4>
 					<a class="tooltipped" data-position="icon" data-tooltip="Stars"
 						style="color: #0d0d0d; text-decoration: none;"
@@ -39,3 +42,6 @@
 		</div>
 	</div>
 </c:forEach>
+<c:if test="${newRating != null}">
+<script> var newRating = ${newRating}</script> 
+</c:if>

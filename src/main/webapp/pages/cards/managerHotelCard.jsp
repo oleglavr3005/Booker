@@ -130,11 +130,11 @@ b {
 					</div>
 					<div class="col s6">
 						<div class="row" style="margin-top: 15px; margin-bottom: 10px; padding-left: 0;">
-							<div class="col s5" style="font-size: 1.3rem;">
+							<div class="col s8" style="font-size: 1.3rem;">
 								<a
 									href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"><span>${hotel.name}</span></a>
 							</div>
-							<div class="col s6 offset-s1">
+							<div class="col s4">
 								<a class="tooltipped index_search_stars" data-position="icon"
 									data-tooltip="" style="color: #0d0d0d; text-decoration: none;">
 									<c:forEach var="i" begin="1" end="${hotel.stars}">
