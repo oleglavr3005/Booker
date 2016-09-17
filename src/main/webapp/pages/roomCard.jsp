@@ -80,8 +80,8 @@ b {
 						<div id="links${room.id}">
 							<c:if test="${fn:length(room.allPhotos) == 0}">
 								<a href="<i:urlToImage url="no.jpg" />" title="No image"
-									data-gallery="#blueimp-gallery-${room.id}"> <img src="<i:urlToImage url="no.jpg" />"
-									alt="No image">
+									data-gallery="#blueimp-gallery-${room.id}"> <img
+									src="<i:urlToImage url="no.jpg" />" alt="No image">
 								</a>
 							</c:if>
 							<c:if test="${fn:length(room.allPhotos) != 0}">
@@ -93,8 +93,9 @@ b {
 
 								<div style="display: none;">
 									<c:forEach items="${room.allPhotos}" var="photo" begin="1">
-										<a href='<i:urlToImage url="${photo.img}" />' data-gallery="#blueimp-gallery-${room.id}">
-											<img style="height: 60px;"
+										<a href='<i:urlToImage url="${photo.img}" />'
+											data-gallery="#blueimp-gallery-${room.id}"> <img
+											style="height: 60px;"
 											src="<i:urlToImage url="${photo.img}" />"
 											alt="<c:out value="${photo.id }"></c:out>">
 										</a>
@@ -116,13 +117,13 @@ b {
 						<!-- ROOM TYPE ZONE -->
 						<div class="row" style="margin-top: 15px;">
 							<c:if test="${room.type == 'STANDART'}">
-								<span id="subscribes_table_roomtype_standart"></span>
+								<span class="subscribes_table_roomtype_standart"></span>
 							</c:if>
 							<c:if test="${room.type == 'LUX'}">
-								<span id="subscribes_table_roomtype_lux"></span>
+								<span class="subscribes_table_roomtype_lux"></span>
 							</c:if>
 							<c:if test="${room.type == 'DELUX'}">
-								<span id="subscribes_table_roomtype_delux"></span>
+								<span class="subscribes_table_roomtype_delux"></span>
 							</c:if>
 
 							<span style="margin-left: 5px;" class="roomCard_countOfFree">
@@ -175,22 +176,8 @@ b {
 								<i id="showInfo${room.id}" onclick="showInfo(${room.id})"
 									class="fa fa-lg fa-info invert tooltipped tooltip_show_info"
 									data-tooltip="Show additional info" aria-hidden="true"></i>
-
-								<%-- 							<c:if test="${room.daysCount == -1}"> --%>
-								<!-- 								<a class="tooltipped" data-position="icon" -->
-								<%-- 									data-tooltip="No deposit" style="color: #0d0d0d;"><i --%>
-								<%-- 									class="fa fa-2x fa-exclamation-circle invert" --%>
-								<%-- 									aria-hidden="true"></i></a> --%>
-								<%-- 							</c:if> --%>
 							</div>
-							<c:if test="${user != null && startDate != null}">
-								<div class="col s4 offset-s2" style="margin-top: -20;">
-								<span class="room_orderedrooms"></span>
-									<input id="countOfRooms${room.id}" type="number"
-										class="validate" name="countOfRooms" min=1 value=1
-										max="${room.amount}">
-								</div>
-							</c:if>
+
 						</div>
 
 
@@ -230,12 +217,26 @@ b {
 							</c:if>
 
 							<c:if test="${room.tv == true}">
-								<a class="tooltipped index_room_tv"
-									data-position="icon" data-tooltip="Television"
-									style="color: #0d0d0d;"><i class="material-icons invert">tv</i></a>
+								<a class="tooltipped index_room_tv" data-position="icon"
+									data-tooltip="Television" style="color: #0d0d0d;"><i
+									class="material-icons invert">tv</i></a>
 							</c:if>
 						</div>
-						<div class="row" style="margin-bottom: 0px; margin-top: 120px;">
+
+						<div class="row"
+							style="margin-bottom: 0px; margin-top: 80px;
+						<c:if test="${!(user != null && startDate != null)}"> visibility: hidden</c:if> ">
+							<div class="input-field col s7 offset-s4" style="margin-top: -20;">
+								<input id="countOfRooms${room.id}" type="number"
+									class="validate" name="countOfRooms" min=1 value=1
+									max="${room.amount}"><label id="nameLbl"
+									data-error="NAME INVALID" for="name"><span
+									class="room_orderedrooms"></span></label>
+							</div>
+						</div>
+
+
+						<div class="row">
 							<c:if test="${user != null && user.status != 'BANNED'}">
 								<div class="col s3" id="cont"></div>
 								<c:if test="${startDate != null}">
@@ -258,10 +259,10 @@ b {
 							<c:if test="${user == null}">
 								<div class="row">
 									<div class="col s9 offset-s1">
-<!-- 										<a class="waves-effect waves-light btn" disabled -->
-<!-- 											style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"> -->
-											<label><span class="room_card_need_login"></span></label>
-<!-- 										</a> -->
+										<!-- 										<a class="waves-effect waves-light btn" disabled -->
+										<!-- 											style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"> -->
+										<label><span class="room_card_need_login"></span></label>
+										<!-- 										</a> -->
 									</div>
 								</div>
 							</c:if>
