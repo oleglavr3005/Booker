@@ -49,11 +49,13 @@ function uploadHotel(rl) {
 	checkMax(20);
 	var picture = document.getElementById('photos');
 	var preview = document.querySelector('#Img');
+	var previewCard = document.querySelector('#ImgCard');
 	var file = document.querySelector('input[type=file]').files[0];
 	if (file) {
 		var reader = new FileReader();
 		reader.onloadend = function() {
 			preview.src = reader.result;
+			previewCard.src = reader.result;
 		//	avatar.src = reader.result;
 		}
 		reader.readAsDataURL(file);

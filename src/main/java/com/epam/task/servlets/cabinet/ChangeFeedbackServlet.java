@@ -72,7 +72,7 @@ public class ChangeFeedbackServlet extends HttpServlet {
 			hotelService.updateHotel(hotel);
 		}
 		
-		response.getWriter().write(success > 0 ? "true" : "false");
+		response.getWriter().write(""+hotel.getRating());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

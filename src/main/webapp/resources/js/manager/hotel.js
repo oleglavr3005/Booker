@@ -8,12 +8,11 @@ function initAutocomplete() {
 	var searchBox = new google.maps.places.SearchBox(input);
 	searchBox.addListener('places_changed', function() {
 		places = searchBox.getPlaces();
+		setHotelLocation();
 	});
 }
 
 function createHotel() {
-	// var img = $('#photos').val() == '' ? 'new_hotel.jpg' :
-	// $('#photos').val();
 	var img = $('#photos').val();
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
 	getInfoFromGoogle();
@@ -316,4 +315,84 @@ function changeIsDeleted() {
 //		$('#btnToMain').removeClass('disabled');
 //		$('#createBtn').removeClass('disabled');
 //	}
+}
+
+var noHotelName = 'ENTER_HOTEL_NAME';
+var noHotelLocation = 'ENTER_HOTEL_LOCATION';
+var noHotelPhone = 'ENTER_HOTEL_PHONE';
+var noHotelDesc = 'ENTER_HOTEL_DESC';
+
+function init(){
+	setHotelName();
+	setHotelStars();
+	setHotelLocation();
+	setHotelPhone();
+	setHotelDesc();
+}
+
+function setHotelName(){
+	var text = $('#name').val();
+	if (text.length > 45)
+		return;
+	$('#hotel_card_name').html(text == '' ? noHotelName : text);
+}
+
+function setHotelStars(){
+	var stars = $('#rating').val();
+	for(var y = 1; y < 6;y++){
+		$('#card_star_'+ y).removeClass("fa-star");
+		$('#card_star_'+ y).addClass("fa-star-o");
+	}
+	for(var y = 1; y <= stars;y++){
+		$('#card_star_'+ y).removeClass("fa-star-o");
+		$('#card_star_'+ y).addClass("fa-star");
+	}
+}
+
+function setHotelLocation(){
+	var text = $('#address').val();
+	if (text.length > 999)
+		return;
+	$('#hotel_card_location').text(text == '' ? noHotelLocation : text);	
+}
+
+function setHotelPhone(){
+	var text = $('#phone').val();
+	if (text.length > 45)
+		return;
+	$('#hotel_card_phoneNumber').text(text == '' ? noHotelPhone : text);	
+}
+
+function setHotelDesc(){
+//	GetContent();
+	var text = $('#desc').val();
+	if (text.length > 999)
+		return;
+	$('#hotel_card_desc').html(text == '' ? noHotelDesc : text);	
+}
+
+function setHotelConv(){
+	
+}
+
+function GetContent () {
+    var elem = document.getElementById ("hotel_card_desc");
+    var message = "";
+    if (elem.outerHTML !== undefined) {
+        message += "outer HTML : " + elem.outerHTML;
+    }
+    if (elem.outerText !== undefined) {
+        message += "nouter text : " + elem.outerText;
+    }
+
+    message += "ninner HTML : " + elem.innerHTML;
+
+    if (elem.textContent === undefined) {
+        message += "ninner text : " + elem.innerText;
+    }
+    else {
+        message += "ninner text : " + elem.textContent;
+    }
+
+    alert (message);
 }

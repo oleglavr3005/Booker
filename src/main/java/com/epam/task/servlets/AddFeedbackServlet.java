@@ -90,6 +90,7 @@ public class AddFeedbackServlet extends HttpServlet {
 			List<Feedback> listFeedBack = new ArrayList<Feedback>();
 			listFeedBack.add(userFeedback);
 			request.setAttribute("feedbacks", FeedbackDto.listConverter(listFeedBack));
+			request.setAttribute("newRating", hotel.getRating());
 			request.getRequestDispatcher("/pages/comments/oneComment.jsp").forward(request, response);
 		} else {
 			response.setContentType("text/plain");

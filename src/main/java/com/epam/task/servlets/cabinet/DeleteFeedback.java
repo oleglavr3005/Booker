@@ -48,9 +48,10 @@ public class DeleteFeedback extends HttpServlet {
 			
 			int hotelId = feedback.getHotelId();
 			int result = feedbackService.deleteFeedback(commentId);
-			
+
+			HotelService hotelService = new HotelService();
+			Hotel hotel = hotelService.getHotelById(hotelId);
 			if (result > 0) { //calculate new rating
-				HotelService hotelService = new HotelService();
 				List<Feedback> feedbacks = feedbackService.getAllFeedbacksByHotel(hotelId);
 				double newRating = 0;
 				if(feedbacks.size() != 0) {
@@ -59,13 +60,12 @@ public class DeleteFeedback extends HttpServlet {
 					}
 					newRating /= feedbacks.size(); 
 				}
-				Hotel hotel = hotelService.getHotelById(hotelId);
 				DecimalFormat df = new DecimalFormat(".##");
 				df.setRoundingMode(RoundingMode.UP);
 				hotel.setRating(Double.parseDouble(df.format(newRating).replaceAll(",", ".")));
 				hotelService.updateHotel(hotel);
 			}
-			response.getWriter().write(result > 0 ? "true" : "false");
+			response.getWriter().write(""+hotel.getRating());
 		} catch (Exception e) {
 			response.getWriter().write("false");
 		}

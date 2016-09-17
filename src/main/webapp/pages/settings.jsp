@@ -283,7 +283,7 @@
 					<div class="row">
 						<div class="input-field col s12">
 							<input id="email" type="email" class="validate"
-								<c:if test="${user.email.substring(user.email.length()-1) != '*'}"> value="${user.email}"</c:if>
+<%-- 								<c:if test="${user.email.substring(user.email.length()-1) != '*'}"> value="${user.email}"</c:if> --%>
 								length="80"> <label id="emailLbl"
 								data-error="${fmtMail}" for="email"><span id="settings_enter_mail"></span></label>
 							

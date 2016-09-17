@@ -127,16 +127,16 @@ b {
 					<div class="col s6">
 
 						<div class="row" style="margin-top: 15px; margin-bottom: 10px; font-size: 1.3rem; padding-left: 0;">
-							<div class="col s8">
-								<a href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"><h5>${hotel.name}</h5></a>
+							<div class="col s5">
+								<a href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"><span>${hotel.name}</span></a>
 							</div>
-							<div class="col s4">
+							<div class="col s6 offset-s1">
 								<a class="tooltipped index_search_stars" data-position="icon"
 									data-tooltip="" style="color: #0d0d0d; text-decoration: none;">
 									<c:forEach var="i" begin="1" end="${hotel.stars}">
-										<i class="fa fa-lg fa-star" aria-hidden="true"></i>
+										<i class="fa fa fa-star" aria-hidden="true"></i>
 									</c:forEach> <c:forEach var="i" begin="${hotel.stars}" end="4">
-										<i class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+										<i class="fa fa fa-star-o" aria-hidden="true"></i>
 									</c:forEach>
 								</a>
 							</div>
@@ -162,14 +162,17 @@ b {
 								data-position="icon" data-tooltip=""
 								style="color: #0d0d0d; margin-left: -4px; cursor: default"><i
 								class="material-icons invert" style="font-size: 20px;">receipt</i></a>
-							<span id="hotelInfo${hotel.id}">${hotel.desc.substring(0, hotel.desc.length() < 150 ? hotel.desc.length() : 150)}</span>
-							<a onclick="changeInfo(${hotel.id})" style="cursor: pointer"
-								class="tooltipped tooltip_showe_all_info" data-position="icon"
-								data-tooltip="" id="dots${hotel.id}">...</a> <input
+							<span id="hotelInfo${hotel.id}">${hotel.desc.substring(0, hotel.desc.length() < 200 ? hotel.desc.length() : 200)}</span>
+							
+							<c:if test="${hotel.desc.length() > 200}">
+								<a onclick="changeInfo(${hotel.id})" style="cursor: pointer"
+									class="tooltipped tooltip_showe_all_info" data-position="icon"
+									data-tooltip="" id="dots${hotel.id}">...</a>
+							</c:if> <input
 								id="infoOpened${hotel.id}" type="hidden" value="false" /> <input
 								id="fullInfo${hotel.id}" type="hidden" value="${hotel.desc}" />
 							<input id="shortInfo${hotel.id}" type="hidden"
-								value="${hotel.desc.substring(0, hotel.desc.length() < 150 ? hotel.desc.length() : 150)}" />
+								value="${hotel.desc.substring(0, hotel.desc.length() < 200 ? hotel.desc.length() : 200)}" />
 						</div>
 					</div>
 
@@ -177,10 +180,45 @@ b {
 						<div class="row" style="margin-top: 14px">
 							<a class="tooltipped tooltip_rating" data-position="icon"
 								data-tooltip="Rating"
-								style="padding: 0 20px 0 20px; margin-left: 50px; color: #0d0d0d; text-decoration: none;">
+								style="padding: 0 20px 0 20px; margin-left: 60px; color: #0d0d0d; text-decoration: none;">
 								<i class="fa fa-lg fa-thumbs-up invert" aria-hidden="true"></i>
 								<span>${hotel.rating }</span>
 							</a>
+						</div>
+						
+						<div class="row" style="margin-right:15px">
+							<c:if test="${hotel.parking == true}">
+								<a id="index_room_parking" class="tooltipped" data-position="icon"
+									data-tooltip="Parking" style="color: #0d0d0d; float:right"><i
+									class="material-icons invert" style="font-size:1.3rem">local_parking</i></a>
+							</c:if>
+							<c:if test="${hotel.pool == true}">
+								<a id="index_room_pool" class="tooltipped" data-position="icon"
+									data-tooltip="Pool" style="color: #0d0d0d; float:right"><i
+									class="material-icons invert" style="font-size:1.3rem">pool</i></a>
+							</c:if>
+							<c:if test="${hotel.gym == true}">
+								<a id="index_room_gym" class="tooltipped" data-position="icon"
+									data-tooltip="Gym" style="color: #0d0d0d; float:right"><i
+									class="material-icons invert" style="font-size:1.3rem">fitness_center</i></a>
+							</c:if>
+							<c:if test="${hotel.spa == true}">
+								<a id="index_room_spa" class="tooltipped" data-position="icon"
+									data-tooltip="Spa" style="color: #0d0d0d; float:right"><i
+									class="material-icons invert" style="font-size:1.3rem">spa</i></a>
+							</c:if>
+							<c:if test="${hotel.service == true}">
+								<a id="index_room_service" class="tooltipped" data-position="icon"
+									data-tooltip="Room service" style="color: #0d0d0d; float:right"><i
+									class="material-icons invert" style="font-size:1.3rem">room_service</i></a>
+							</c:if>
+							<c:if test="${hotel.cleaner == true}">
+								<a id="index_room_cleaner" class="tooltipped"
+									data-position="icon" data-tooltip="Dry cleaner"><img
+									class="invert"
+									style="max-width: 15%; max-height: 15%; float:right"
+									src="${pageContext.servletContext.contextPath}/resources/images/cleaner.png" /></a>
+							</c:if>
 						</div>
 
 

@@ -129,10 +129,10 @@ b {
 
 					</div>
 					<div class="col s6">
-						<div class="row" style="margin-top: 15px; margin-bottom: 0px">
-							<div class="col s5">
+						<div class="row" style="margin-top: 15px; margin-bottom: 10px; padding-left: 0;">
+							<div class="col s5" style="font-size: 1.3rem;">
 								<a
-									href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"><h5>${hotel.name}</h5></a>
+									href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"><span>${hotel.name}</span></a>
 							</div>
 							<div class="col s6 offset-s1">
 								<a class="tooltipped index_search_stars" data-position="icon"
@@ -177,10 +177,45 @@ b {
 						<div class="row" style="margin-top: 14px; margin-bottom: 5px;">
 							<a class="tooltipped tooltip_rating" data-position="icon"
 								data-tooltip=""
-								style="margin-left: 50px; color: #0d0d0d; text-decoration: none;">
+								style="margin-left: 80px; color: #0d0d0d; text-decoration: none;">
 								<i class="fa fa-lg fa-thumbs-up invert" aria-hidden="true"></i>
 								<span>${hotel.rating }</span>
 							</a>
+						</div>
+						
+						<div class="row" style="margin-right:15px; margin-top: 14px">
+							<c:if test="${hotel.parking == true}">
+								<a id="index_room_parking" class="tooltipped" data-position="icon"
+									data-tooltip="Parking" style="color: #0d0d0d; float:right"><i
+									class="material-icons invert" style="font-size:1.3rem">local_parking</i></a>
+							</c:if>
+							<c:if test="${hotel.pool == true}">
+								<a id="index_room_pool" class="tooltipped" data-position="icon"
+									data-tooltip="Pool" style="color: #0d0d0d; float:right"><i
+									class="material-icons invert" style="font-size:1.3rem">pool</i></a>
+							</c:if>
+							<c:if test="${hotel.gym == true}">
+								<a id="index_room_gym" class="tooltipped" data-position="icon"
+									data-tooltip="Gym" style="color: #0d0d0d; float:right"><i
+									class="material-icons invert" style="font-size:1.3rem">fitness_center</i></a>
+							</c:if>
+							<c:if test="${hotel.spa == true}">
+								<a id="index_room_spa" class="tooltipped" data-position="icon"
+									data-tooltip="Spa" style="color: #0d0d0d; float:right"><i
+									class="material-icons invert" style="font-size:1.3rem">spa</i></a>
+							</c:if>
+							<c:if test="${hotel.service == true}">
+								<a id="index_room_service" class="tooltipped" data-position="icon"
+									data-tooltip="Room service" style="color: #0d0d0d; float:right"><i
+									class="material-icons invert" style="font-size:1.3rem">room_service</i></a>
+							</c:if>
+							<c:if test="${hotel.cleaner == true}">
+								<a id="index_room_cleaner" class="tooltipped"
+									data-position="icon" data-tooltip="Dry cleaner"><img
+									class="invert"
+									style="max-width: 15%; max-height: 15%; float:right"
+									src="${pageContext.servletContext.contextPath}/resources/images/cleaner.png" /></a>
+							</c:if>
 						</div>
 						<div class="row">
 							<c:choose>
