@@ -20,19 +20,18 @@ import com.epam.task.comparators.PeopleRoomComparator;
 import com.epam.task.comparators.PriceRoomComparator;
 import com.epam.task.database.dto.FeedbackDto;
 import com.epam.task.database.dto.RoomDto;
-import com.epam.task.database.model.Conveniences;
 import com.epam.task.database.model.Counter;
 import com.epam.task.database.model.Feedback;
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.Order;
 import com.epam.task.database.model.Room;
 import com.epam.task.database.model.User;
-import com.epam.task.database.service.ConveniencesService;
 import com.epam.task.database.service.CounterService;
 import com.epam.task.database.service.FeedbackService;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.OrderService;
 import com.epam.task.database.service.RoomService;
+import com.epam.task.database.service.UserService;
 
 @WebServlet("/hotel/*")
 public class HotelServlet extends HttpServlet {
@@ -54,14 +53,6 @@ public class HotelServlet extends HttpServlet {
 		}
 
 		Hotel hotel = new HotelService().getHotelById(id);
-		Conveniences conveniences = null;
-		if(hotel != null){
-			conveniences = new ConveniencesService().getConveniencesForHotel(hotel.getId());
-		} else {
-			response.sendError(HttpServletResponse.SC_NOT_FOUND);
-			LOGGER.info("Bad user id for hotel, hotel not found");
-			return;
-		}
 		
 		HttpSession session = request.getSession(true);
 		boolean typeStandart = session.getAttribute("typeStandart") == null ? false : (boolean) session.getAttribute("typeStandart");
@@ -177,10 +168,8 @@ public class HotelServlet extends HttpServlet {
 			roomTemplatesByPage.add(roomTemplates.get(i));
 		}
 		
-		List<Hotel> hotels = new ArrayList<Hotel>();  		//
-		hotels.add(hotel);
-		request.setAttribute("hotels", hotels);				//
-		request.setAttribute("conveniences", conveniences);
+		User manager = new UserService().getUserById(hotel.getManagerId());
+		request.setAttribute("manager", manager.getFirstName() + " " + manager.getLastName());
 		request.setAttribute("feedbacks", FeedbackDto.listConverter(feedbacks));
 		request.setAttribute("rooms", roomTemplatesByPage);		
 		
