@@ -115,7 +115,7 @@
 					</c:if>
 				</h6>
 			</div>
-			<div class="col s5 offset-s4">
+			<div class="col s5 offset-s4" style="text-align: right;">
 				<c:if test="${countOfHotels > 0 }">
 					<span class="sort_by" style="font-size: 15; position: relative; /* display: inline-block; */ bottom: 3px;"></span>
 					<select id="compare" class="chosen-select optionstyle"
