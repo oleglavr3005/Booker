@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.epam.task.database.model.Hotel;
+import com.epam.task.database.model.User;
+import com.epam.task.database.model.enums.UserStatus;
 import com.epam.task.database.service.HotelService;
+import com.epam.task.database.service.UserService;
 
 @WebFilter("/hotel/*")
 public class UserHotelFilter implements Filter {
@@ -35,7 +38,8 @@ public class UserHotelFilter implements Filter {
 		}
 		
 		Hotel hotel = new HotelService().getHotelById(hotelId);
-		if(hotel != null && hotel.getIsDeleted() == false) {
+		User manager = new UserService().getUserById(hotel.getManagerId());
+		if(hotel != null && hotel.getIsDeleted() == false && manager.getStatus() != UserStatus.BANNED) {
 			chain.doFilter(request, response);
 		} else {
 			((HttpServletResponse) response).sendError(404);
