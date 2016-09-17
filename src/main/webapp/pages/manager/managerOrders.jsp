@@ -166,15 +166,15 @@ div.material-table .table-footer .dataTables_length {
 			<div class="col s8 offset-s2">
 				<ul class="tabs" style="background: #12444c;">
 					<li class="tab col s3"><a class="active" href="#test1"
-						style="color: #F7F7F7"><b><p id="tab_manager_table"></p></b></a></li>
+						style="color: #F7F7F7"><b><p id="tab_active"></p></b></a></li>
 					<li class="tab col s3"><a href="#test2" style="color: #F7F7F7"><b>
-								<p id="tab_manager_date_diagram"></p>
+								<p id="tab_ended"></p>
 						</b></a></li>
 					<li class="tab col s3"><a href="#test3" style="color: #F7F7F7"><b>
-								<p id="tab_manager_view_info"></p>
+								<p id="tab_all"></p>
 						</b></a></li>
 					<li class="tab col s3"><a href="#test4" style="color: #F7F7F7"><b>
-								<p id="tab_manager_popularity">CHARTS</p>
+								<p id="tab_charts"></p>
 						</b></a></li>
 				</ul>
 			</div>
