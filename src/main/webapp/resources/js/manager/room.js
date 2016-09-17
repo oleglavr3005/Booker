@@ -259,6 +259,7 @@ function changeFreeBookCreate() {
 	var freeBook = document.getElementById('freeBook').checked;
 	$('#percentage').prop('disabled', freeBook);
 	$('#days').prop('disabled', freeBook);
+	setRoomBook();
 }
 
 function changeIsDeleted() {
@@ -285,8 +286,17 @@ var roomStandart = "STANDART";
 var roomLux = "LUX";
 var roomDelux = "DELUX";
 
+var roomFoodNone = "NONE";
+var roomFoodBreak = "BREAKFAST";
+var roomFoodTwice = "TWICE";
+var roomFoodFull = "FULL";
+
+var p1 = "YOU WILL GET 100% REFUND IN CASE OF CANCELING ORDER ONLY IN ";
+var p2 = " DAYS BEFORE MOVING IN, AFTER THESE PERIOD REFUND WILL BE ONLY ";
+var p3 = "FREE_BOOK";
+
 function setRoomType(){
-	var text = $('#roomTypem').val();
+	var text = $('#roomType').val();
 	if (text == "STANDART"){
 		$('#room_create_card_type').text(roomStandart);
 	}
@@ -298,6 +308,78 @@ function setRoomType(){
 			$('#room_create_card_type').text(roomDelux );
 		}
 	}
+}
+
+function setRoomFood(){
+	var text = $('#foodType').val();
+	if (text == "NONE"){
+		$('#room_create_card_food').text(roomFoodNone);
+	}
+	else {
+		if (text == "BREAKFAST"){
+			$('#room_create_card_food').text(roomFoodBreak);
+		}
+		else {
+			if (text == "TWICE"){
+				$('#room_create_card_food').text(roomFoodTwice);
+			}
+			else {
+				$('#room_create_card_food').text(roomFoodFull );
+			}
+		}
+	}
+}
+
+function setRoomSingle(){
+	var text = $('#single').val();
+	$('#singleCountCard').html(text == '' ? 0 : text);
+}
+
+function setRoomDouble(){
+	var text = $('#double').val();
+	$('#doubleCountCard').html(text == '' ? 0 : text);
+}
+
+function setRoomPrice(){
+	var text = $('#price').val();
+	$('#room_create_card_price').html(text == '' ? 0 : text);
+}
+
+function setRoomBook(){
+	var freeBook = document.getElementById('freeBook').checked;
+	var container = $('#content');
+	$('#details_panel').show();
+	var content = p3;
+	if (freeBook == true){
+		container.html(content);
+		container.css("border-color", "green");
+		container.css("background-color", "rgba(0, 255, 0, 0.3)");
+	}
+	else{
+		content = p1 + ($('#days').val() < 1 ? 0 : $('#days').val()) + p2 + ($('#percentage').val() < 1 ? 0 : $('#percentage').val()) + "%";
+		container.html(content);
+		container.css("border-color", "red");
+		container.css("background-color", "rgba(255, 0, 0, 0.3)");
+	}
+}
+
+function setRoomCon(nmb,box){
+	var elem = $('#con'+nmb);
+	var flag = document.getElementById('' + box).checked;
+	if (flag){
+		elem.show();
+	}
+	else {
+		elem.hide();
+	}
+}
+
+function init(){
+	$('#room_create_card_type').text(roomStandart);
+	$('#room_create_card_food').text(roomFoodNone);
+	setRoomSingle();
+	setRoomDouble();
+	setRoomPrice();
 }
 
 
