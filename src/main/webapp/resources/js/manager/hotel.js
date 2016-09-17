@@ -97,6 +97,7 @@ function updateHotel(hotelId) {
 
 function validate() {
 	var ok = true;
+	debugger;
 	ok = nameIsValid($('#name').val()) && ok;
 	ok = starsIsValid($('#rating').val()) && ok;
 	ok = addressIsValid($('#address').val()) && ok;
@@ -151,6 +152,9 @@ function addressIsValid(address) {
 	}
 }
 function subAddressIsValid(address){
+	
+	return true;
+	
 	var flag = true;
 	var a = address;
 	var index = 0;
@@ -370,6 +374,13 @@ function setHotelDesc(){
 	$('#hotel_card_desc').html(text == '' ? noHotelDesc : text);	
 }
 
-function setHotelConv(){
-	
+function setHotelCon(nmb,box){
+	var elem = $('#con'+nmb);
+	var flag = document.getElementById('' + box).checked;
+	if (flag){
+		elem.show();
+	}
+	else {
+		elem.hide();
+	}
 }
