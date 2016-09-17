@@ -38,6 +38,7 @@
 		tab_all : "All",
 		tab_active : "Active",
 		tab_charts : "CHARTS",
+		tab_request: "REQUESTS",
 		card_edit : "Edit",
 		card_no_orders : "Shopping cart is empty",
 		//admin page
@@ -48,7 +49,7 @@
 		admin_edit_desc : "Description",	
 		admin_edit_city : "City",
 		admin_edit_stars : "Stars",
-		admin_header : "Admin",
+		admin_header : "Administration",
 		admin_page_id : "ID",
 		admin_page_fNane : "First name",
 		admin_page_lName : "Last name",
@@ -61,6 +62,8 @@
 		admin_page_userId : "User Id",
 		admin_page_reqDate : "Request date",
 		admin_page_message : "Message",
+		admin_page_no_email	: "No email for this user",
+		admin_page_no_phone	: "No phone for this user",
 		admin_deleted : "Deleted",
 		
 		request_approve : "Approve",
@@ -275,7 +278,7 @@
 		room_concrete_percentage: "Deposit return percentage",
 		
 		settings_header_USERS : "Users",
-		settings_header_CONTACT : "Contacts",
+		settings_header_REQUESTS : "Requests",
 		
 		btn_remove : "Remove",
 		btn_order : "Order",
@@ -324,6 +327,7 @@
 		tab_contact : "Контакти",
 		tab_users : "Користувачі",
 		tab_manage : "Менеджер",
+		tab_request : "Запити",
 		admin_page_id : "ID",
 		admin_page_fNane : "І'мя",
 		admin_page_lName : "Прізвище",
@@ -336,7 +340,8 @@
 		admin_page_userId : "ID користувача",
 		admin_page_reqDate : "Дата запиту",
 		admin_page_message : "Повідомлення",
-			
+		admin_page_no_email	: "Емейл відсутній",
+		admin_page_no_phone	: "Телефон відсутній",
 		request_approve : "Підтвердити",
 		request_decline : "Відхилити",
 		
@@ -571,9 +576,10 @@
 		admin_page_userId : "userId",
 		admin_page_reqDate : "Дата запиту",
 		admin_page_message : "Повідомлення",
-		admin_header : "Адміністратор",
+		admin_header : "Адміністрування",
 		settings_header_USERS : "Користувачі",
 		settings_header_CONTACT : "Контакти",
+		settings_header_REQUESTS : "Запити",
 		
 		btn_remove : "Видалити",
 		btn_order : "Замовити",
@@ -589,6 +595,7 @@
 		btn_send : "Надіслати",
 
 		header_regist: "Реєстрація",
+		aas : "Видаленоо",
 	}
 	var data_error = {
 		ua: {
@@ -772,7 +779,7 @@
 		    	cvvError : "Card number is wrong",
 		    	cardError : "Card number is wrong",
 		    	succes : "SUCCES",
-		    	removed : "REMOVED",
+		    	removed : "REMOVED!",
 		    	fald : "FAIL",
 		    }, 
 		    registration : {

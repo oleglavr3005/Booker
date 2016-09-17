@@ -26,7 +26,7 @@ public class SettingsServlet extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 		Request req = new RequestService().getRequestByUserId(user.getId());
 		
-		request.setAttribute("message", req == null ? "" : req.getMessage());
+		request.setAttribute("request", req);
 		request.getRequestDispatcher("/pages/settings.jsp").forward(request, response);
 	}
 

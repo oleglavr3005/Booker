@@ -236,7 +236,7 @@ b {
 							</c:if>
 						</div>
 						<div class="row" style="margin-bottom: 0px; margin-top: 120px;">
-							<c:if test="${user != null}">
+							<c:if test="${user != null && user.status != 'BANNED'}">
 								<div class="col s3" id="cont"></div>
 								<c:if test="${startDate != null}">
 									<a id="btn${room.id}" class="waves-effect waves-light btn"
@@ -251,6 +251,9 @@ b {
 								</c:if>
 
 
+							</c:if>
+							<c:if test="${user != null && user.status == 'BANNED'}">
+								<div class="room_card_YOURE_BANNED" class="col s2 offset-s6"></div>
 							</c:if>
 							<c:if test="${user == null}">
 								<div class="row">

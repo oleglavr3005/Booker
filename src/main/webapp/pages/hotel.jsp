@@ -260,12 +260,19 @@ div #sidebar-wrapper {
 							</div>
 						</div>
 						<div class="row">
-							<a id="index_search_location" class="tooltipped"
-								data-position="icon" data-tooltip=""
-								style="color: #0d0d0d; text-decoration: none;"><i
-								class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
-							<a id="hotel_map_button" class="tooltipped" data-position="icon"
-								data-tooltip="Show map" style="cursor: pointer;">${hotel.location}</a>
+							<div class="col s6">
+								<a id="index_search_location" class="tooltipped"
+									data-position="icon" data-tooltip=""
+									style="color: #0d0d0d; text-decoration: none; margin-left:-10px"><i
+									class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
+								<a id="hotel_map_button" class="tooltipped" data-position="icon"
+									data-tooltip="Show map" style="cursor: pointer;">${hotel.location}</a>
+							</div>
+							<div class="col s6">
+								<c:if test="${user.type == 'ADMIN'}">
+									<span class="hotel_manager"></span><span>: ${manager.firstName} ${manager.lastName} (id:${manager.id})</span>
+								</c:if>
+							</div>
 						</div>
 						<div class="row" style="margin-bottom: 10px">
 							<a class="tooltipped tooltip_phone_number" data-position="icon"
