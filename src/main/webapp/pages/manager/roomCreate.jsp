@@ -91,6 +91,12 @@
 	opacity: .6;
 }
 
+.invert:hover {
+	-webkit-filter: invert(70%);
+	filter: invert(70%);
+	cursor: default;
+}
+
 .well {
 	padding: 0px;
 }
@@ -101,7 +107,7 @@
 	<input id="photos" type="hidden" />
 	<input id="hotelId" type="hidden" value="${hotelId}" />
 	<input id="lang" type="hidden" value="${language}" />
-	
+
 	<!-- Header ========================================================================= -->
 	<jsp:include page="../header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
@@ -125,27 +131,9 @@
 
 				</div>
 
-
-
-				<!-- 				HOTEL NAME -->
-
-<!-- 				<div class="row"> -->
-<!-- 					<label class="labelstyle"><span id="roomCreate_hotel"></span> -->
-<!-- 					</label> <select id="hotel_name" class="chosen-select optionstyle"> -->
-<!-- 						<option class="optionstyle" selected="selected" -->
-<%-- 							value="${hotels[0].id}">${hotels[0].name}</option> --%>
-<%-- 						<c:forEach var="hotel" items="${hotels}" begin="1"> --%>
-<%-- 							<option class="optionstyle" value="${hotel.id}">${hotel.name}</option> --%>
-<%-- 						</c:forEach> --%>
-<!-- 					</select> -->
-<!-- 				</div> -->
-
-				<!-- 			END OF HOTEL NAME -->
-
-
 				<!-- 						ROOM TYPE -->
 				<div class="row">
-					<select id="roomType" class="chosen-select optionstyle">
+					<select id="roomType" class="chosen-select optionstyle" onchange="setRoomType()">
 						<option id="subscribes_table_roomtype_standart"
 							class="optionstyle" value="STANDART" selected="selected">
 						</option>
@@ -158,10 +146,9 @@
 				<!-- 						END OF ROOM TYPE -->
 
 
-
 				<!-- 						FOOD TYPE -->
 				<div class="row">
-					<select id="foodType" class="chosen-select optionstyle">
+					<select id="foodType" class="chosen-select optionstyle" onchange="setRoomFood()">
 						<option id="subscribes_table_roomfood_none" class="optionstyle"
 							value="NONE" selected="selected"></option>
 						<option id="subscribes_table_roomfood_breakfast"
@@ -186,7 +173,7 @@
 							<!-- NUMBER -->
 
 							<div class="row" style="margin-bottom: 0px">
-								<input id="number" type="text" class="validate" name="number">
+								<input onkeyup="setRoomNumber()" id="number" type="text" class="validate" name="number">
 								<label id="numberLbl" data-error="${fmtPeople}" for="number"><span
 									id="room_concrete_number"></span></label>
 							</div>
@@ -197,7 +184,7 @@
 							<!-- 1 BEDS COUNT -->
 
 							<div class="row" style="margin-bottom: 0px">
-								<input id="single" onchange="checkBeds()" type="number"
+								<input onkeyup="setRoomSingle()" id="single" onchange="checkBeds()" type="number"
 									class="validate" name="single" min=0 max=100> <label
 									id="singleLbl" data-error="${fmtPeople}" for="single"><span
 									id="room_concrete_single"></span> </label>
@@ -208,7 +195,7 @@
 							<!-- 2 BEDS COUNT -->
 
 							<div class="row" style="margin-bottom: 0px">
-								<input id="double" onchange="checkBeds()" type="number"
+								<input onkeyup="setRoomDouble()" id="double" onchange="checkBeds()" type="number"
 									class="validate" name="single" min=0 max=100> <label
 									id="doubleLbl" data-error="${fmtPeople}" for="double"><span
 									id="room_concrete_double"></span></label>
@@ -221,7 +208,7 @@
 							<!-- PRICE -->
 
 							<div class="row" style="margin-bottom: 0px">
-								<input id="price" type="number" class="validate"
+								<input onkeyup="setRoomPrice()" id="price" type="number" class="validate"
 									name="percentage" min=1 max=1000000> <label
 									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><span
 									id="room_concrete_price"></span> </label>
@@ -232,7 +219,7 @@
 							<!-- DAYS COUNT -->
 
 							<div class="row" style="margin-bottom: 0px">
-								<input id="days" type="number"
+								<input onkeyup="setRoomDays()" id="days" type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="days" min=0 max=365> <label
 									id="daysLbl" data-error="${fmtPeople}" for="days"><span
@@ -244,7 +231,7 @@
 							<!-- PERCENTAGE COUNT -->
 
 							<div class="row" style="margin-bottom: 0px">
-								<input id="percentage" type="number"
+								<input onkeyup="setRoomPerc()" id="percentage" type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="percentage" min=0 max=100> <label
 									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><span
@@ -257,29 +244,27 @@
 
 						<div class="col s5 offset-s1" style="margin-top: 20px;">
 
-
-
 							<!-- 								CHECKBOX -->
 
 							<p style="margin-top: 20px;">
-								<input type="checkbox" class="filled-in" id="hasWiFi"
+								<input onclick="setRoomCon(1)" type="checkbox" class="filled-in" id="hasWiFi"
 									name="hasWiFi" /> <label id="label_wifi" for="hasWiFi">WIFI</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="hasShower"
+								<input onclick="setRoomCon(2)" type="checkbox" class="filled-in" id="hasShower"
 									name="hasShower" /> <label id="label_shower" for="hasShower">SHOWER</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="hasTv"
-									name="hasTv" /> <label id="label_tv" for="hasTv">TV</label>
+								<input onclick="setRoomCon(3)" type="checkbox" class="filled-in" id="hasTv" name="hasTv" />
+								<label id="label_tv" for="hasTv">TV</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="hasCondition"
+								<input onclick="setRoomCon(4)" type="checkbox" class="filled-in" id="hasCondition"
 									name="hasCondition" /> <label id="label_condition"
 									for="hasCondition">AIR CONDITION</label>
 							</p>
 							<p>
-								<input type="checkbox" class="filled-in" id="hasBalcony"
+								<input onclick="setRoomCon(5)" type="checkbox" class="filled-in" id="hasBalcony"
 									name="hasBalcony" /> <label id="label_balcony"
 									for="hasBalcony">BALCONY</label>
 							</p>
@@ -327,8 +312,127 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col s10 offset-s1"></div>
-			<div class="col s1">.</div>
+
+			<div class="card">
+				<div class="container-fluid">
+					<div class="row" style="margin-top: 15px; margin-bottom: 0px;">
+						<div class="card-image col s4" style="position: relative;">
+							<div>
+								<img id="ImgCard"
+									style="height: 180px; width: 230px; padding: 10px;"
+									src="<i:urlToImage url="new_hotel.png" />">
+							</div>
+						</div>
+
+						<div class="col s5">
+
+							<!-- ROOM TYPE ZONE -->
+							<div class="row" style="margin-top: 15px;">
+									<span id="room_create_card_type"></span>
+								<span style="margin-left: 5px;" class="roomCard_countOfFree">
+								</span> 1
+							</div>
+							<!-- 				END OF ROOM TYPE ZONE -->
+
+							<!-- BEDS ICON ZONE -->
+							<div class="row">
+								<a class="tooltipped tooltip_double_beds" data-position="icon"
+									data-tooltip="Double beds" style="color: #0d0d0d;"><img
+									class="invert" style="max-width: 7%;"
+									src="${pageContext.servletContext.contextPath}/resources/images/double_bed.png" /></a>
+								<span id="doubleCountCard"></span> <a
+									class="tooltipped tooltip_single_beds" data-position="icon"
+									data-tooltip="Single beds" style="color: #0d0d0d;"><img
+									class="invert" style="max-width: 7%;"
+									src="${pageContext.servletContext.contextPath}/resources/images/single_bed.png" /></a>
+								<span id="singleCountCard"></span>
+							</div>
+							<!-- END OF BEDS ICON ZONE -->
+
+							<!-- ROOM FOOD ZONE -->
+							<div class="row">
+								<a class="tooltipped tooltip_food" data-position="icon"
+									data-tooltip="Food" style="color: #0d0d0d;"><i
+									class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a>
+									<span id="room_create_card_food"></span>
+							</div>
+							<!-- END OF ROOM FOOD ZONE -->
+
+							<!-- ROOM PRICE ZONE -->
+							<div class="row">
+								<div class="col s6" style="margin-left: -13px;">
+									<a class="tooltipped tooltip_price" data-position="icon"
+										data-tooltip="Price for one day" style="color: #0d0d0d;"><i
+										class="fa fa-lg fa-money invert" aria-hidden="true"></i></a> 
+									<span id="room_create_card_price"></span>
+
+									<i id="showInfo" onclick="showCardInfo()"
+										class="fa fa-lg fa-info invert tooltipped tooltip_show_info"
+										data-tooltip="Show additional info" aria-hidden="true"></i>
+								</div>
+							</div>
+
+
+							<!-- END OF ROOM PRICE ZONE -->
+
+						</div>
+
+						<div class="col s3">
+							<div class="row"
+								style="float: right; text-align: right; font-size: 0.3rem; color: black; margin-right: 0px;">
+									<a id="con1" class="tooltipped index_room_wifi" data-position="icon"
+										data-tooltip="Wifi" style="dispaly:none; color: #0d0d0d;"><i
+										class="material-icons invert">wifi</i></a>
+
+									<a id="con2" style="dispaly:none; "class="tooltipped index_room_shower" data-position="icon"
+										data-tooltip="Shower"><img class="invert"
+										style="max-width: 10%; margin-top: -1.5rem"
+										src="${pageContext.servletContext.contextPath}/resources/images/Shower-512.png" />
+									</a>
+
+									<a id="con3" class="tooltipped index_room_conditioner"
+										data-position="icon" data-tooltip="Condition"
+										style="dispaly:none; color: #0d0d0d;"><i class="material-icons invert">toys</i></a>
+
+									<a id="con4" style="dispaly:none; "class="tooltipped index_room_balcony" data-position="icon"
+										data-tooltip="Balcony"><img class="invert"
+										style="max-width: 10%; margin-top: -1.5rem"
+										src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" />
+									</a>
+
+									<a id="con5" class="tooltipped index_room_tv" data-position="icon"
+										data-tooltip="Television" style="dispaly:none; color: #0d0d0d;"><i
+										class="material-icons invert">tv</i></a>
+							</div>
+						</div>
+					</div>
+
+					<!-- 						INFO MONEY REFUND ZONE -->
+					<div class="row">
+						<div id="details_panel" class="col s12"
+							style="display: none">
+									<div id="content"
+										style="border: 1px solid; border-radius: 10px; padding: 5px; ">
+										<span class="room_card_info1">YOU WILL GET 100% REFUND
+											IN CASE OF CANCELING ORDER ONLY IN</span> ${room.daysCount} <span
+											class="room_card_info2">DAYS BEFORE MOVING IN, AFTER
+											THESE PERIOD REFUND WILL BE ONLY</span> ${room.percentage}%
+									</div>
+									<div
+										style="border: 1px solid green; border-radius: 10px; padding: 5px; ">
+										<span class="room_card_info3">FREE_BOOK</span>
+									</div>
+						</div>
+
+					</div>
+					<!-- 						END OF INFO MONEY REFUND ZONE -->
+background-color: rgba(255, 0, 0, 0.3);
+background-color: rgba(0, 255, 0, 0.3);
+
+				</div>
+
+
+			</div>
 
 		</div>
 	</div>

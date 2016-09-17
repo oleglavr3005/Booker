@@ -1,7 +1,5 @@
 
 function createRoom() {
-	// var img = $('#photos').val() == '' ? 'new_hotel.jpg' :
-	// $('#photos').val();
 	var img = $('#photos').val();
 	if (validate()) {
 		$.get('../add_room', {
@@ -263,7 +261,6 @@ function changeFreeBookCreate() {
 	$('#days').prop('disabled', freeBook);
 }
 
-
 function changeIsDeleted() {
 	var deleted = document.getElementById('isDeleted').checked;
 	$('#percentage').prop('disabled', deleted);
@@ -283,3 +280,26 @@ function changeIsDeleted() {
 	}
 	changeFreeBook();
 }
+
+var roomStandart = "STANDART";
+var roomLux = "LUX";
+var roomDelux = "DELUX";
+
+function setRoomType(){
+	var text = $('#roomTypem').val();
+	if (text == "STANDART"){
+		$('#room_create_card_type').text(roomStandart);
+	}
+	else {
+		if (text == "LUX"){
+			$('#room_create_card_type').text(roomLux);
+		}
+		else {
+			$('#room_create_card_type').text(roomDelux );
+		}
+	}
+}
+
+
+
+
