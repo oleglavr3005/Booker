@@ -144,7 +144,7 @@ div #sidebar-wrapper {
 					<div class="col s5 offset-s1">
 						<!-- 						STARS -->
 						<input id="rating" value="${hotel.stars}" type="number"
-							class="rating" min=1 max=5 step=1 data-size="xs" data-stars="5">
+							class="rating" min=0 max=5 step=1 data-size="xs" data-stars="5">
 						<label id="ratingLbl" data-error="RATING SHOULD BE 1-5"
 							for="rating"><span id="admin_edit_stars"></span> </label>
 

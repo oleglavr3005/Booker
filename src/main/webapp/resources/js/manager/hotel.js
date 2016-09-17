@@ -29,26 +29,30 @@ function getInfoFromGoogle(str, id) {
 		text = text.replace(' ', '+');
 		text = text.replace(' ', '+');
 		text = text.replace(' ', '+');
-		$.post('https://maps.googleapis.com/maps/api/geocode/json?address='+text+'&language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU',
-		 {}, function(result){
-			places = result.results;
-			hotel_x = places[0].geometry.location.lat;
-			hotel_y = places[0].geometry.location.lng;
-			hotel_location = places[0].formatted_address;
-			var index = places[0].formatted_address;
-			index = index.substring(index.lastIndexOf(",") + 2).trim();
-			var re = /^([0-9]*)$/;
-			if(re.test(index)){
-				hotel_location = hotel_location.substring(0, hotel_location.lastIndexOf(","));
-			}
-			if(str == "createHotel"){
-				createHotelAfter();
-			}
-			if(str == "updateHotel"){
-				updateHotelAfter(id)
-			}
-		 }
-		)	
+		if (validate()) {
+			$.post('https://maps.googleapis.com/maps/api/geocode/json?address='+text+'&language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU',
+			 {}, function(result){
+				places = result.results;
+				hotel_x = places[0].geometry.location.lat;
+				hotel_y = places[0].geometry.location.lng;
+				hotel_location = places[0].formatted_address;
+				var index = places[0].formatted_address;
+				index = index.substring(index.lastIndexOf(",") + 2).trim();
+				var re = /^([0-9]*)$/;
+				if(re.test(index)){
+					hotel_location = hotel_location.substring(0, hotel_location.lastIndexOf(","));
+				}
+				if(str == "createHotel"){
+					createHotelAfter();
+				}
+				if(str == "updateHotel"){
+					updateHotelAfter(id)
+				}
+			 }
+			)	
+		} else {
+			Materialize.toast(languages.script.current.hotel.wrongData, 4000);
+		}
 	} catch (err) {
 		invalid('address');
 		return;
