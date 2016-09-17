@@ -259,7 +259,7 @@
 
 						</div>
 
-						<div class="col s8">
+						<div class="col s7">
 
 							<div class="row"
 								style="margin-top: 15px; margin-bottom: 10px; font-size: 1.3rem; padding-left: 0;">
@@ -281,14 +281,43 @@
 												aria-hidden="true"></i>
 											</a>
 										</div>
-										<div class="col s2">
+										<div class="col s3">
 											<div class="row" style="margin: 0px">
 												<a class="tooltipped tooltip_rating" data-position="icon"
 													data-tooltip="Rating"
-													style="padding: 0 20px 0 20px; margin-left: 30px;font-size: 17px; color: #0d0d0d; text-decoration: none;">
+													style="padding: 0 20px 0 20px; margin-left: 30px;font-size: 15px; color: #0d0d0d; text-decoration: none;">
 													<i class="fa fa-lg fa-thumbs-up invert" aria-hidden="true"></i>
 													<span>5.0</span>
 												</a>
+											</div>
+						
+											<div class="row" style="margin-top: 14px; float:right">
+													<a id="index_room_parking" class="tooltipped" data-position="icon"
+														data-tooltip="Parking" style="color: #0d0d0d; float:right"><i
+														class="material-icons invert" style="font-size:1.3rem">local_parking</i></a>
+
+													<a id="index_room_pool" class="tooltipped" data-position="icon"
+														data-tooltip="Pool" style="color: #0d0d0d; float:right"><i
+														class="material-icons invert" style="font-size:1.3rem">pool</i></a>
+
+													<a id="index_room_gym" class="tooltipped" data-position="icon"
+														data-tooltip="Gym" style="color: #0d0d0d; float:right"><i
+														class="material-icons invert" style="font-size:1.3rem">fitness_center</i></a>
+
+													<a id="index_room_spa" class="tooltipped" data-position="icon"
+														data-tooltip="Spa" style="color: #0d0d0d; float:right"><i
+														class="material-icons invert" style="font-size:1.3rem">spa</i></a>
+
+													<a id="index_room_service" class="tooltipped" data-position="icon"
+														data-tooltip="Room service" style="color: #0d0d0d; float:right"><i
+														class="material-icons invert" style="font-size:1.3rem">room_service</i></a>
+
+													<a id="index_room_cleaner" class="tooltipped"
+														data-position="icon" data-tooltip="Dry cleaner"><img
+														class="invert"
+														style="max-width: 17%; max-height: 17%; float:right"
+														src="${pageContext.servletContext.contextPath}/resources/images/cleaner.png" /></a>
+
 											</div>
 										</div>
 									</div>
