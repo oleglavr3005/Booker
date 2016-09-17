@@ -1,3 +1,7 @@
+var roomCreatedSucces = "ROOM WAS SUCCESSFULLY CREATED";
+var roomCreatedFail = "ROOM CANNOT BE CREATED";
+var roomUpdateSucces = "ROOM WAS SUCCESSFULLY CREATED";
+var roomUpdateFail = "ROOM CANNOT BE CREATED";
 
 function createRoom() {
 	var img = $('#photos').val();
@@ -25,14 +29,16 @@ function createRoom() {
 
 		}, function(result) {
 			if (result != 'error') {
-				$('#create_error').css('color', 'green');
-				$('#create_error').text(languages.script.current.hotel.createSucces);
+				Materialize.toast(roomCreatedSucces, 3000);
+//				$('#create_error').css('color', 'green');
+//				$('#create_error').text(languages.script.current.hotel.createSucces);
 				$('#create_button').attr("disabled", true);
 				setTimeout(function() {
 					document.location.href = '/booker/cabinet/room/' + result;
 				}, 2000);
 			} else {
-				$('#create_error').text(languages.script.current.hotel.createFail);
+				Materialize.toast(roomCreatedFail, 3000);
+//				$('#create_error').text(languages.script.current.hotel.createFail);
 			}
 		});
 	} else {
@@ -67,13 +73,15 @@ function updateRoom(room) {
 			percentage : $('#percentage').val(),
 		}, function(result) {
 			if (result != 'false') {
-				$('#create_error').css('color', 'green');
-				$('#create_error').text(languages.script.current.hotel.updateSucces);
+				Materialize.toast(roomUpdateSucces, 3000);
+//				$('#create_error').css('color', 'green');
+//				$('#create_error').text(languages.script.current.hotel.updateSucces);
 				setTimeout(function() {
 					$('#create_error').visibility = "none";
 				}, 2000);
 			} else {
-				$('#create_error').text(languages.script.current.hotel.updateFail);
+				Materialize.toast(roomUpdateFail, 3000);
+//				$('#create_error').text(languages.script.current.hotel.updateFail);
 			}
 		});
 	} else {

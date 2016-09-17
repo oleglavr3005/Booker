@@ -14,7 +14,7 @@ function createHotel(){
 	getInfoFromGoogle('createHotel', -1);
 }
 function updateHotel(hotelId) {
-	getInfoFromGoogle('createHotel', hotelId);
+	getInfoFromGoogle('updateHotel', hotelId);
 }
 	
 function getInfoFromGoogle(str, id) {
