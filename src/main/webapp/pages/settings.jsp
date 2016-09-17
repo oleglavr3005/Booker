@@ -149,34 +149,20 @@
 
 							<div class="row fields">
 								<div class="input-field col s10">
-									<div class="ui pointing label"
-										style="background-color: #f7f7f7;">
-										<span id="settings_enter_name"
-											style="color: #b7b2b2; background-color: #9990;"></span>
-									</div>
 									<input id="name" type="text" class="validate"
 										value="${user.firstName}" length="45"> <label
-										id="nameLbl" data-error="${fmtName}" for="name"> </label>
+										id="nameLbl" data-error="${fmtName}" for="name"><span id="settings_enter_name"></span> </label>
 								</div>
 							</div>
 							<div class="row">
 								<div class="input-field col s10">
-									<div class="ui pointing label"
-										style="background-color: #f7f7f7;">
-										<span id="settings_enter_surname"
-											style="color: #b7b2b2; background-color: #9990;"></span>
-									</div>
 									<input id="surname" type="text" class="validate"
 										value="${user.lastName}" length="45"> <label
-										id="surnameLbl" data-error="${fmtSurname}" for="surname"></label>
+										id="surnameLbl" data-error="${fmtSurname}" for="surname"><span id="settings_enter_surname"></span></label>
 								</div>
 							</div>
-
-
 						</div>
 					</div>
-
-
 
 					<div class="row" style="margin-top: 20px;">
 						<div class="col s3 offset-s9">
@@ -251,25 +237,12 @@
 
 					<div class="row fields">
 						<div class="input-field col s12">
-							<!-- 							<div class="ui pointing label" style="background-color: #f7f7f7;"> -->
-							<!-- 								<span id="settings_enter_phone" -->
-							<!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
-							<!-- 							</div> -->
+							
 							<input id="phoneNumber" type="text" class="validate"
 								value="${user.phoneNumber}" length="45"> <label
-								style="margin-top: -25px;" id="phoneLbl" data-error="${fmtName}"
+								id="phoneLbl" data-error="${fmtName}"
 								for="phoneNumber"><span id="settings_enter_phone"></span>
 							</label>
-
-							<!-- 							<div class="switch"> -->
-							<!-- 								<label> Off <input type="checkbox" id="phoneCheckBox"> <span -->
-							<!-- 									class="lever"></span> On -->
-							<!-- 								</label> -->
-							<!-- 								<label for="phoneCheckBox">I  -->
-							<!--  									WANT RECEIVE MESSAGES ABOUT NEW ROOMS!</label>  -->
-							<!-- 							</div> -->
-
-
 
 							<p>
 								<input type="checkbox" class="filled-in" id="phoneCheckBox"
@@ -372,10 +345,8 @@
 									color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
 									class="subscribes_table_remove"></span></a>
 							</div>
-							<div id="settings_request_result" style="visibility: hidden;" class="col s6 offset-s1"> 
-								<span>text</span>
-							</div>
-							<div class="col s2 offset-s1">
+							
+							<div class="col s2 offset-s8">
 								<a id="createRequest" class="waves-effect waves-light btn"
 									onclick="createRequest(true)"
 									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span

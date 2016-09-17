@@ -37,6 +37,9 @@ function saveContactData() {
 			} else {
 				invalid('email');
 			}
+			setTimeout(function() {
+				$('#settings_confirmMail').hide();
+			}, 2000);
 		});
 	} else {
 		invalid('email');
@@ -63,7 +66,6 @@ function savePersonalData() {
 }
 
 function createRequest(flag) {
-	var resElem = document.getElementById('settings_request_result');
 	if (flag) {
 		var req = $('#requestForm').val();
 	} else {
@@ -73,27 +75,26 @@ function createRequest(flag) {
 		$.post('../create_request', {
 			message : req
 		}, function(result) {
-			resElem.style.visibility = "visible";
 			if (result == 'sent') {
 				$('#req_status').show();
 				$('#settings_request_status_pending').show();
 				$('#settings_request_status_declined').hide();
-				resElem.textContent = reqSent;
+				  Materialize.toast(reqSent, 3000);
 			} else {
 				if (result == 'sent_again') {
 					$('#settings_request_status_declined').hide();
 					$('#settings_request_status_pending').show();
-					resElem.textContent = reqSentAgaint;
+					  Materialize.toast(reqSentAgaint, 3000);
 				} else {
 					if (result == 'updated') {
-						resElem.textContent = reqUpdated;
+						  Materialize.toast(reqUpdated, 3000);
 					} else {
-						clearField('requestForm');
 						$('#req_status').hide();
-						resElem.textContent = reqRemoved;
+						  Materialize.toast(reqRemoved, 3000);
 					}
 				}
 			}
+			clearField('requestForm');
 		});
 	}
 }
@@ -107,7 +108,8 @@ function requestValidate(field) {
 function requestIsValid() {
 	debugger;
 	var request = $('#requestForm').val();
-	if ((request == "") || (request.length > 10 && request.length < 999 && requestValidate(request))) {
+	if ((request == "")
+			|| (request.length > 10 && request.length < 999 && requestValidate(request))) {
 		return true;
 	}
 	$('#requestForm').removeClass("valid");
