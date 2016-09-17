@@ -178,7 +178,7 @@ div.material-table .table-footer .dataTables_length {
 								<p id="tab_all"></p>
 						</b></a></li>
 					<li class="tab col s3"><a href="#test4" style="color: #F7F7F7"><b>
-								<p id="tab_charts">CHARTS</p>
+								<p id="tab_charts"></p>
 						</b></a></li>
 				</ul>
 			</div>
