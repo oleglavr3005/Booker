@@ -314,11 +314,9 @@ div #sidebar-wrapper {
 									class="material-icons invert">room_service</i></a>
 							</c:if>
 							<c:if test="${hotel.cleaner == true}">
-								<a id="index_room_cleaner" class="tooltipped"
-									data-position="icon" data-tooltip="Dry cleaner"><img
-									class="invert"
-									style="max-width: 230%; height: 230%; margin-top: -18px;"
-									src="${pageContext.servletContext.contextPath}/resources/images/cleaner.png" /></a>
+								<a id="index_room_cleaner" class="tooltipped" data-position="icon"
+									data-tooltip="Dry cleaner" style="color: #0d0d0d"><i
+									class="material-icons invert">local_laundry_service</i></a>
 							</c:if>
 						</div>
 					</div>

@@ -17,7 +17,7 @@ public class HotelDao {
 
 	private Connection connection;
 	
-	private final String SELECT_ALL_NOT_DELETED = "SELECT * FROM `hotel` WHERE is_deleted = false";
+	private final String SELECT_ALL_NOT_DELETED_NOT_BANNED = "SELECT * FROM `hotel` h INNER JOIN `user` u ON h.manager_id = u.user_id WHERE h.is_deleted = false AND u.status NOT LIKE 'BANNED'";
 	private final String SELECT_ALL_BY_MANAGER = "SELECT * FROM `hotel` WHERE manager_id = ?";
 	private final String ORDER_BY_STARS_ASC = " ORDER BY stars ASC";
 	private final String ORDER_BY_STARS_DESC = " ORDER BY stars DESC";
@@ -79,7 +79,7 @@ public class HotelDao {
 	}
 	
 	public List<Hotel> getAllHotels(){
-		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_NOT_DELETED);
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_NOT_DELETED_NOT_BANNED);
 				ResultSet result = statement.executeQuery()) {
 			return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
 		} catch (SQLException e) {
@@ -100,7 +100,7 @@ public class HotelDao {
 		} else { //compareByRatingDesc = default
 			ORDER_BY = ORDER_BY_RATING_DESC;
 		}
-		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_NOT_DELETED + ORDER_BY + PAGINATION)) {
+		try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_NOT_DELETED_NOT_BANNED + ORDER_BY + PAGINATION)) {
 			statement.setInt(1, (page-1)*5);
 			try (ResultSet result = statement.executeQuery()) {
 				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
