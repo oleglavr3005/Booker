@@ -43,16 +43,21 @@ public class CreateRequestServlet extends HttpServlet {
 		if (userRequest == null) { //if user has no request, create new
 			result = service.insertRequest(new Request(0, user.getId(), message, new Timestamp(new Date().getTime()), "PENDING"));
 			resultString = "sent";
-		} else { //else modify
-			if(userRequest.getStatus() == RequestStatus.DECLINED) {	//if was declined earlier
-				resultString = "sent_again";
-			} else {
-				resultString = "updated";
+		} else { //else modify or remove
+			if(message.length() > 0) {	//update
+				if(userRequest.getStatus() == RequestStatus.DECLINED) {	//if was declined earlier
+					resultString = "sent_again";
+				} else {
+					resultString = "updated";
+				}
+				userRequest.setMessage(message);
+				userRequest.setStatus("PENDING");
+				userRequest.setRequestDate(new Timestamp(new Date().getTime()));
+				result = service.updateRequest(userRequest);
+			} else {					//remove
+				result = service.removeRequest(userRequest.getId());
+				resultString = "removed";
 			}
-			userRequest.setMessage(message);
-			userRequest.setStatus("PENDING");
-			userRequest.setRequestDate(new Timestamp(new Date().getTime()));
-			result = service.updateRequest(userRequest);
 		}
 
 		response.getWriter().write(result > 0 ? resultString : "false");
