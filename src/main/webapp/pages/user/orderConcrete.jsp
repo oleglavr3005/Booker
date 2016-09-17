@@ -151,7 +151,7 @@ div #sidebar-wrapper {
 
 			<div id="links">
 				<div class="row">
-					<div class="col s4">
+					<div class="col s4 offset-s1">
 						<c:if test="${fn:length(room.photos) == 0}">
 							<a href="<i:urlToImage url="no.jpg" />" title="No image"
 								data-gallery> <img style="width: 350px; height: 260px;"
@@ -180,7 +180,7 @@ div #sidebar-wrapper {
 							</div>
 						</c:if>
 					</div>
-					<div class="col s8">
+					<div class="col s7">
 						<div class="container-fluid">
 							<!-- HOTEL NAME + ICONS -->
 							<div class="row" style="margin-bottom: 0;">
