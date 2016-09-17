@@ -79,21 +79,17 @@ function createHotelAfter() {
 			hasCleaner : document.getElementById('hasCleaner').checked,
 		}, function(result) {
 			if (result != 'error') {
-				$('#create_error').css('color', 'green');
-				$('#create_error').text(
-						languages.script.current.hotel.createSucces);
-				$('#create_button').attr("disabled", true);
+				Materialize.toast(languages.script.current.hotel.createSucces, 4000);
 				setTimeout(function() {
 					document.location.href = '/booker/cabinet/my_hotels/'
 							+ result;
 				}, 2000);
 			} else {
-				$('#create_error').text(
-						languages.script.current.hotel.createFail);
+				Materialize.toast(languages.script.current.hotel.createFail, 4000);
 			}
 		});
 	} else {
-		$('#create_error').text(languages.script.current.hotel.wrongData);
+		Materialize.toast(languages.script.current.hotel.wrongData, 4000);
 	}
 }
 
@@ -120,19 +116,13 @@ function updateHotelAfter(hotelId) {
 			yCoord : hotel_y,
 		}, function(result) {
 			if (result != 'false') {
-				$('#create_error').css('color', 'green');
-				$('#create_error').text(
-						languages.script.current.hotel.updateSucces);
-				setTimeout(function() {
-					$('#create_error').visibility = "none";
-				}, 2000);
+				Materialize.toast(languages.script.current.hotel.updateSucces, 4000);
 			} else {
-				$('#create_error').text(
-						languages.script.current.hotel.updateFail);
+				Materialize.toast(languages.script.current.hotel.updateFail, 4000);
 			}
 		});
 	} else {
-		$('#create_error').text(languages.script.current.hotel.wrongData);
+		Materialize.toast(languages.script.current.hotel.wrongData, 4000);
 	}
 }
 
@@ -198,7 +188,7 @@ function subAddressIsValid(address){
 	while(flag == true){
 		if(a.indexOf(",") >= 0){
 			index ++;
-			ф = a.substring(a.indexOf(",") + 1);
+			a = a.substring(a.indexOf(",") + 1);
 		} else {
 			flag = false;
 		}
