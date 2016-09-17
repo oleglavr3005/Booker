@@ -255,7 +255,7 @@
 <!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
 <!-- 							</div> -->
 							<input id="phoneNumber" type="text" class="validate"
-								value="${user.phoneNumber}" length="45"> <label
+								value="${user.phoneNumber}" length="45"> <label style="margin-top: -25px;"
 								id="phoneLbl" data-error="${fmtName}" for="phoneNumber"><span id="settings_enter_phone"></span>
 							</label>
 
@@ -283,12 +283,12 @@
 					<div class="row">
 						<div class="input-field col s12">
 							<input id="email" type="email" class="validate"
-<%-- 								<c:if test="${user.email.substring(user.email.length()-1) != '*'}"> value="${user.email}"</c:if> --%>
-								length="80"> <label id="emailLbl"
+ 								<c:if test="${user.email.substring(user.email.length()-1) != '*'}"> value="${user.email}"</c:if> 
+								length="80"> <label style="margin-top: -25px;" id="emailLbl"
 								data-error="${fmtMail}" for="email"><span id="settings_enter_mail"></span></label>
 							
 								<p>
-									<input type="checkbox" class="filled-in" id="eMailBox"
+									<input style="margin-top 5px" type="checkbox" class="filled-in" id="eMailBox"
 										name="eMailBox" <c:if
 								test="${user.email.substring(user.email.length()-1) == '*'}">disabled</c:if>/> <label for="eMailBox"> <span
 										class="settings_chk_mails"> </span></label>
@@ -304,11 +304,11 @@
 					</script>
 
 					<div class="row" style="margin-top: 20px;">
-						<div class="col s2 offset-s6">
-							<label ><span id="settings_confirmMail">text</span>TEXT2</label>
+						<div class="col s4 offset-s1">
+							<label ><span style="display:none" id="settings_confirmMail">text</span></label>
 							
 						</div>
-						<div class="col s3 offset-s1">
+						<div class="col s3 offset-s4">
 							<a id="savePersonal" class="waves-effect waves-light btn"
 								onclick="saveContactData()"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span

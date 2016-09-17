@@ -1,5 +1,7 @@
+var confirmMail = "PLS CONFIRM MAIL";
+
 function saveContactData() {
-	document.getElementById('settings_confirmMail').style.display = 'none';
+	$('#settings_confirmMail').hide();
 	var phone = $('#phoneNumber').val();
 	var phoneCheck = document.getElementById('phoneCheckBox').checked;
 	var mail = $('#email').val();
@@ -27,9 +29,8 @@ function saveContactData() {
 		}, function(result) {
 			var res = $.parseJSON(result);
 			if (res.changed != null) {
-//				$('#email').val(res.email);
-//				clearField('email');
-				$('#settings_confirmMail').html = 'PLS CONFIRM MAIL';				
+				$('#settings_confirmMail').text(confirmMail);
+				$('#settings_confirmMail').show();
 			}
 			 else {
 					invalid('email');
@@ -192,9 +193,6 @@ function emailIsValid(email) {
 }
 
 function savePassword(header, succesfull) {
-	// if ($('#currentPassword').val() == '' || $('#newPassword').val() == ''
-	// || $('#repeatPassword').val() == '')
-	// return;
 	if ($('#currentPassword').val().length < 6) {
 		invalid('currentPassword');
 		return;
@@ -216,21 +214,12 @@ function savePassword(header, succesfull) {
 		if (result == 'wrongOldPass') {
 			invalid('currentPassword');
 		}
-		// else if (result.currentPassword != '') {
-		// valid('currentPassword');
-		// }
 		if (result == 'shortNewPass') {
 			invalid('newPassword');
 		}
-		// else if (result.newPassword != '') {
-		// valid('newPassword');
-		// }
 		if (result == 'passwordsDontMatch') {
 			invalid('repeatPassword');
 		}
-		// else if (result.repeatPassword != '') {
-		// valid('repeatPassword');
-		// }
 		if (result == 'true') {
 			$('#currentPassword').val('');
 			$('#newPassword').val('');
@@ -273,11 +262,6 @@ function showPhoto() {
 			processData : false,
 			type : 'POST',
 			success : function(result) {
-//				if (result == 'error') {
-//					alert("IMG ERROR");
-//				}else{
-//					image = result;
-//				}
 			}
 		});
 	}
