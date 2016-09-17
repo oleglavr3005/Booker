@@ -73,7 +73,7 @@
 					    </div>
 					</div>
 				</div>
-				<textarea id="comment" class="materialize-textarea validate" style="height: 80px;"></textarea>
+				<textarea id="comment" class="materialize-textarea validate"></textarea>
 					<div id="comment_error_panel" class="row" style="display : none; padding-top: 20px;">
 					 <div style="margin-left: 20px; margin-right: 20px; border: 1px solid red; border-radius: 10px; padding: 15px; background-color: rgba(255, 0, 0, 0.3);">
 						<span class="comment_error"></span>

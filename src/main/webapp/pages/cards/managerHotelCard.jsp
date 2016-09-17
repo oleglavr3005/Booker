@@ -76,19 +76,17 @@ b {
 </div>
 <!-- end GALLERY -->
 <div class="divider" style="margin-bottom: 20px;"></div>
-<div class="container-fluid">
-	<div class="row">
-		<div class="col s3">
-			<c:if test="${countOfHotels == 0}">
+<c:if test="${countOfHotels == 0}">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
 				<h5 style="color: red; margin-bottom: 63px;">
-					<span id="card_no_periodicals"></span>
+					<span id="card_no_hotels"></span>
 				</h5>
-			</c:if>
+			</div>
 		</div>
 	</div>
-
-</div>
-
+</c:if>
 <c:forEach var="hotel" items="${suitableHotels}">
 	<div id="hotel_card_${hotel.id}" class="col s12">
 		<div class="card">

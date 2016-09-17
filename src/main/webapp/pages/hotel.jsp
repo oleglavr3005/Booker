@@ -372,7 +372,7 @@ div #sidebar-wrapper {
 					</c:if>
 				</h6>
 			</div>
-			<div class="col s5 offset-s2">
+			<div class="col s5 offset-s1">
 				<c:if test="${countOfRooms > 0 }">
 				<div style="float: right;">
 					<span id="sort_by" style="font-size: 15;position: relative;/* display: inline-block; */bottom: 3px;"></span>
