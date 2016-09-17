@@ -38,7 +38,7 @@ function addNewComment(hotelId_val){
 				double_el.slideUp(500);
 				
 				jQuery('#newComment').after(result);
-				var element = jQuery('#' + id + " .date_posted");
+				var element = jQuery('#' + id + " .date_posted:first");
 				var date = element.text();
 				date = date.substring(0 , date.lastIndexOf(':'));
 				element.text(date);
@@ -48,8 +48,9 @@ function addNewComment(hotelId_val){
 				jQuery('#comment').val('');
 				jQuery('#title_comment').val('');
 				jQuery('#rate_span').text('1');
+				jQuery('#hotel_rating').text(newRating);
 				jQuery('.current span').css('width',20 + '%');
-			}else{
+			}else{ 
 				jQuery('#comment_error').text(languages.script.current.message_error);
 				jQuery('#comment_error_panel').next().slideDown();
 			}

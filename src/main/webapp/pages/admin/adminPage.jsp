@@ -152,8 +152,26 @@
 									<td><c:out value="${user.id }"></c:out></td>
 									<td><c:out value="${user.firstName}"></c:out></td>
 									<td><c:out value="${user.lastName}"></c:out></td>
-									<td><c:out value="${user.email}"></c:out></td>
-									<td><c:out value="${user.phoneNumber}"></c:out></td>
+									<td>
+										<c:choose>
+											<c:when test="${user.email.substring(user.email.length()-1) != '*'}">
+												<c:out value="${user.email}"></c:out>
+											</c:when>
+											<c:otherwise>
+												<c:out value="No email for this user"></c:out>
+											</c:otherwise>
+										</c:choose>
+									</td>
+									<td>
+										<c:choose>
+											<c:when test="${user.phoneNumber.length() > 0}">
+												<c:out value="${user.phoneNumber}"></c:out>
+											</c:when>
+											<c:otherwise>
+												<c:out value="No phone for this user"></c:out>
+											</c:otherwise>
+										</c:choose>
+									</td>
 									<td><c:out value="${user.type}"></c:out></td>
 									<td><select id="userStatus${user.id}" class="combobox"
 										onchange="changeUserStatus(${user.id})">
@@ -211,10 +229,10 @@
 											<div id="req${request.id }d">
 											<a class="my-btn waves-effect waves-light btn"
 												style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif;"
-												onclick="chageStatus(${request.id},true,'')"><span class="btn_approve"></span></a>
+												onclick="chageStatus(${request.id},true,'')"><i class="fa fa-check-circle" aria-hidden="true"></i></a>
 											<a class="my-btn waves-effect waves-light btn"
 												style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; "
-												onclick="chageStatus(${request.id},false,'')"><span class="btn_decline"></span></a>
+												onclick="chageStatus(${request.id},false,'')"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
 												</div>
 												<div style="color: #F55151;" class="hidden" id="req${request.id }dc">
 												<strong><span class="btn_decline"></span></strong>

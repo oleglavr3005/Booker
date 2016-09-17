@@ -130,11 +130,11 @@ b {
 					</div>
 					<div class="col s6">
 						<div class="row" style="margin-top: 15px; margin-bottom: 10px; padding-left: 0;">
-							<div class="col s5" style="font-size: 1.3rem;">
+							<div class="col s8" style="font-size: 1.3rem;">
 								<a
 									href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"><span>${hotel.name}</span></a>
 							</div>
-							<div class="col s6 offset-s1">
+							<div class="col s4">
 								<a class="tooltipped index_search_stars" data-position="icon"
 									data-tooltip="" style="color: #0d0d0d; text-decoration: none;">
 									<c:forEach var="i" begin="1" end="${hotel.stars}">
@@ -163,14 +163,18 @@ b {
 								data-position="icon" data-tooltip=""
 								style="color: #0d0d0d; margin-left: -4px; cursor: default"><i
 								class="material-icons invert" style="font-size: 20px;">receipt</i></a>
-							<span id="hotelInfo${hotel.id}">${hotel.desc.substring(0, hotel.desc.length() < 150 ? hotel.desc.length() : 150)}</span>
-							<a onclick="changeInfo(${hotel.id})" style="cursor: pointer"
-								class="tooltipped tooltip_showe_all_info" data-position="icon"
-								data-tooltip="" id="dots${hotel.id}">...</a> <input
+							<span id="hotelInfo${hotel.id}">${hotel.desc.substring(0, hotel.desc.length() < 250 ? hotel.desc.length() : 250)}</span>
+							
+							<c:if test="${hotel.desc.length() > 250}">
+								<a onclick="changeInfo(${hotel.id})" style="cursor: pointer"
+									class="tooltipped tooltip_showe_all_info" data-position="icon"
+									data-tooltip="" id="dots${hotel.id}">...</a>
+							</c:if>
+							 <input
 								id="infoOpened${hotel.id}" type="hidden" value="false" /> <input
 								id="fullInfo${hotel.id}" type="hidden" value="${hotel.desc}" />
 							<input id="shortInfo${hotel.id}" type="hidden"
-								value="${hotel.desc.substring(0, hotel.desc.length() < 150 ? hotel.desc.length() : 150)}" />
+								value="${hotel.desc.substring(0, hotel.desc.length() < 250 ? hotel.desc.length() : 250)}" />
 						</div>
 					</div>
 					<div class="col s2">
