@@ -158,7 +158,7 @@
 												<c:out value="${user.email}"></c:out>
 											</c:when>
 											<c:otherwise>
-												<c:out value="No email for this user"></c:out>
+												<span class='admin_page_no_email'>No email for this user</span>
 											</c:otherwise>
 										</c:choose>
 									</td>
@@ -168,7 +168,7 @@
 												<c:out value="${user.phoneNumber}"></c:out>
 											</c:when>
 											<c:otherwise>
-												<c:out value="No phone for this user"></c:out>
+												<span class='admin_page_no_phone'>No phone for this user</span>
 											</c:otherwise>
 										</c:choose>
 									</td>

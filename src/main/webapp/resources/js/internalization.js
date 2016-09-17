@@ -62,6 +62,8 @@
 		admin_page_userId : "User Id",
 		admin_page_reqDate : "Request date",
 		admin_page_message : "Message",
+		admin_page_no_email	: "No email for this user",
+		admin_page_no_phone	: "No phone for this user",
 		admin_deleted : "Deleted",
 		
 		request_approve : "Approve",
@@ -338,7 +340,8 @@
 		admin_page_userId : "ID користувача",
 		admin_page_reqDate : "Дата запиту",
 		admin_page_message : "Повідомлення",
-			
+		admin_page_no_email	: "Емейл відсутній",
+		admin_page_no_phone	: "Телефон відсутній",
 		request_approve : "Підтвердити",
 		request_decline : "Відхилити",
 		
