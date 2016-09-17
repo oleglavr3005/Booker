@@ -169,7 +169,7 @@ public class HotelServlet extends HttpServlet {
 		}
 		
 		User manager = new UserService().getUserById(hotel.getManagerId());
-		request.setAttribute("manager", manager.getFirstName() + " " + manager.getLastName());
+		request.setAttribute("manager", manager);
 		request.setAttribute("feedbacks", FeedbackDto.listConverter(feedbacks));
 		request.setAttribute("rooms", roomTemplatesByPage);		
 		

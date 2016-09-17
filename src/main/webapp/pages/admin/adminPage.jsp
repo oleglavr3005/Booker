@@ -119,7 +119,7 @@
 						class="active" href="#test1" style="color: #F7F7F7"><b><p
 									id="tab_users"></p></b></a></li>
 					<li class="tab col s5 offset-s1"><a href="#test2"
-						style="color: #F7F7F7"><b><p id="tab_contact"></p></b></a></li>
+						style="color: #F7F7F7"><b><p id="tab_request"></p></b></a></li>
 				</ul>
 			</div>
 			<!-- 			End of Tab Holder -->
@@ -198,7 +198,7 @@
 				<div class="container-fluid">
 					<div class="row settings-title">
 						<h4>
-							<span id="settings_header_CONTACT"></span>
+							<span id="settings_header_REQUESTS"></span>
 						</h4>
 					</div>
 
@@ -206,11 +206,11 @@
 					<table id="requests" style=" border-bottom: 0px solid #111;">
 						<thead>
 							<tr style="background-color: #70b9b2; color: #e8f7f7;">
-								<th id="admin_page_id" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
-								<th id="admin_page_userId" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
-								<th id="admin_page_reqDate" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
-								<th id="admin_page_message" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
-								<th id="admin_page_status" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th class="admin_page_id" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th class="admin_page_userId" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th class="admin_page_reqDate" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th class="admin_page_message" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th class="admin_page_status" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -235,10 +235,10 @@
 												onclick="chageStatus(${request.id},false,'')"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
 												</div>
 												<div style="color: #F55151;" class="hidden" id="req${request.id }dc">
-												<strong><span class="btn_decline"></span></strong>
+												<strong><span class="btn_declined"></span></strong>
 												</div>
 												<div style="color: #3c763d;" class="hidden" id="req${request.id }ap">
-												<strong><span class="btn_approve"></span></strong>
+												<strong><span class="btn_approved"></span></strong>
 											</div>
 											
 										</c:if><c:if test="${request.status == 'DECLINED'}">

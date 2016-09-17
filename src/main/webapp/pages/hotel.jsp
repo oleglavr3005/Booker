@@ -270,7 +270,7 @@ div #sidebar-wrapper {
 							</div>
 							<div class="col s6">
 								<c:if test="${user.type == 'ADMIN'}">
-									<span class="hotel_manager"></span><span>: ${manager}</span>
+									<span class="hotel_manager"></span><span>: ${manager.firstName} ${manager.lastName} (id:${manager.id})</span>
 								</c:if>
 							</div>
 						</div>
