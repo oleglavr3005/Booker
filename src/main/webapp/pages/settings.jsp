@@ -337,8 +337,8 @@
 						</div>
 
 						<div class="row" style="margin-top: 20px;">
-							<div style = "<c:if test="${request == null}"> visibility: hidden; </c:if>" class="col s2">
-								<a id="cancelRequest" class="waves-effect waves-light btn"
+							<div id="cancelRequest" style = "<c:if test="${request == null}"> visibility: hidden; </c:if>" class="col s2">
+								<a class="waves-effect waves-light btn"
 									onclick="createRequest(false)"
 									style="background: #F55151; 
 									color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span

@@ -85,17 +85,22 @@ function createRequest(flag) {
 				$('#settings_request_status_pending').show();
 				$('#settings_request_status_declined').hide();
 				  Materialize.toast(reqSent, 3000);
+				  $('#cancelRequest').show();
 			} else {
 				if (result == 'sent_again') {
+					  $('#cancelRequest').show();
 					$('#settings_request_status_declined').hide();
 					$('#settings_request_status_pending').show();
 					  Materialize.toast(reqSentAgaint, 3000);
 				} else {
 					if (result == 'updated') {
+						  $('#cancelRequest').show();
 						  Materialize.toast(reqUpdated, 3000);
 					} else {
 						$('#req_status').hide();
 						  Materialize.toast(reqRemoved, 3000);
+						  $('#cancelRequest').hide();
+						  $('#requestForm').val("");
 					}
 				}
 			}
