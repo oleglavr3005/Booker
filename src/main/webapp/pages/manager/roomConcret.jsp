@@ -193,7 +193,7 @@
 								<input id="number" value="${room.number}" type="number"
 									class="validate" name="number" min=1 max=99999> <label
 									id="numberLbl" data-error="" for="number"><span
-									id="room_concrete_number"></span></label>
+									id="room_edit_number"></span></label>
 							</div>
 
 							<!-- 							END OF NUMBER -->
@@ -332,7 +332,7 @@
 				</div>
 
 				<div class="col s3 offset-s1">
-					<a id="btn_remove" class="waves-effect waves-light btn"
+					<a id="btn_remove_selected" class="waves-effect waves-light btn"
 						style="background: #F55151; color: #FFFFFF; margin: 0 auto;"
 						onclick="removeRoomPhoto()"></a>
 				</div>

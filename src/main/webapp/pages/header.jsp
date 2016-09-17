@@ -141,7 +141,7 @@ img.logo {
 											<li role="presentation" class="divider" style="border-color:lightgrey"></li>						
 											<li role="presentation"><a role="menuitem" tabindex="-1"
 											href="${pageContext.servletContext.contextPath}/cabinet/admin" style="color: #26A69A; font-size:1rem">
-											<i id="header_dropdown_admin_stuff" class="fa fa-trash" aria-hidden="true"></i></a></li>
+											<i id="header_dropdown_admin_stuff" class="fa fa-lock" aria-hidden="true"></i></a></li>
 										</c:if>
 										
 										<li role="presentation" class="divider" style="border-color:lightgrey"></li>

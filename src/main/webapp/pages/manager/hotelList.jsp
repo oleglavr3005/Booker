@@ -102,7 +102,7 @@
 				<a class="waves-effect waves-light btn" id="create_button"
 					href="${pageContext.servletContext.contextPath}/cabinet/create_hotel" 
 					style="margin-left: 10px; width:100%; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-					<span id=btn_create>CREATE</span>
+					<span id=btn_create_hotel></span>
 				</a>
 			</div>
 		</div>
@@ -110,7 +110,7 @@
 			<div class="col s3">
 				<h6>
 					<c:if test="${countOfHotels > 0 }">
-						<span id="card_header"></span>
+						<span id="my_hotels_header"></span>
 						<span id="periodicals_number_for_all_users">${countOfHotels}</span>
 					</c:if>
 				</h6>

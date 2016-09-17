@@ -41,10 +41,10 @@
 		card_edit : "Edit",
 		card_no_orders : "Shopping cart is empty",
 		// admin page
-		admin_edit_name : "Hotel's name",
+		admin_edit_name : "Hotel name",
 		admin_edit_rating : "Rating",
 		admin_edit_address : "Address",
-		admin_edit_phone : "Phone",
+		admin_edit_phone : "Phone number",
 		admin_edit_desc : "Description",
 		admin_edit_city : "City",
 		admin_edit_stars : "Stars",
@@ -63,7 +63,7 @@
 		admin_page_message : "Message",
 		admin_page_no_email : "No email for this user",
 		admin_page_no_phone : "No phone for this user",
-		admin_deleted : "Deleted",
+		admin_deleted : "Delete",
 
 		request_approve : "Approve",
 		request_decline : "Decline",
@@ -104,6 +104,7 @@
 		room_card_info2 : " days before moving in, after this date the sum will be only",
 		room_card_info3 : "Free book",
 		room_orderedrooms : "Amount of rooms",
+		room_card_YOURE_BANNED : "You cannot make a purchase because you are banned",
 
 		label_wifi : "WiFi",
 		label_shower : "Shower",
@@ -125,7 +126,7 @@
 		header_dropdown_feedbacks : " My feedbacks",
 		header_dropdown_settings : " Settings",
 		header_dropdown_hotels : " My hоtels",
-		header_dropdown_admin_stuff : " Administration",
+		header_dropdown_admin_stuff : " Administratiоn",
 		header_dropdown_log_out : " Lоg оut",
 
 		title_comment_span : "Title",
@@ -141,7 +142,7 @@
 		order_card_uan : " UAH",
 		order_card_clear : "Clear cart",
 
-		index_search_header : "Find Hotel",
+		index_search_header : "Find Hotels",
 		index_search_name : "Destination / Hotel Name:",
 		index_search_start : "Start date",
 		index_search_end : "End date",
@@ -240,8 +241,9 @@
 		settings_save_pass : "Save password",
 		settings_chk_mails : "I want to receive e-mail notifications!",
 		settings_chk_sms : "I want to receive sms notifications!",
-		lbl_sendnotif : "Send notif",
+		lbl_sendnotif : "Send out notifications",
 
+		my_hotels_header : "Total hotels",
 		card_header : "Hotels found",
 		shopping_cart_header : "Amount of goods in the cart",
 		card_no_periodicals : "No numbers found",
@@ -259,6 +261,10 @@
 		card_status_ended : "Finished",
 		card_status_removed : "Cancelled",
 
+		orders_charts_ORDERS_MONTH_CHART : "Orders my month",
+		orders_charts_SEASON_CHART : "Popularity by seasons",
+		orders_charts_VISITORS : "Visitors",
+
 		user_cart_header : "Shopping Cart",
 		orders_charts_HOTELSCHART : "Most visited hotels",
 		orders_charts_MONTHCHART : "Monthly activity",
@@ -273,12 +279,13 @@
 		room_price : "Price",
 
 		roomCreate_hotel : "In hotel",
-		room_concrete_number : "Number",
-		room_concrete_single : "Single beds",
-		room_concrete_double : "Double beds",
-		room_concrete_price : "Price",
-		room_concrete_days : "Days before to pay",
-		room_concrete_percentage : "Deposit return percentage",
+		room_concrete_number : "Room numbers splited by commas (Eg: 11, 2a, 3)",
+		room_edit_number : "Room number",
+		room_concrete_single : "Single beds count",
+		room_concrete_double : "Double beds count",
+		room_concrete_price : "Price for a night",
+		room_concrete_days : "Deadline (days) when user can receive a full money refund",
+		room_concrete_percentage : "Return percentage after deadline",
 
 		settings_header_USERS : "Users",
 		settings_header_REQUESTS : "Requests",
@@ -287,14 +294,17 @@
 		btn_order : "Order",
 		btn_create : "Create",
 		btn_update : "Update",
+		btnToMain : "Set photo as main",
+		btn_statistic : "Statistic",
 		btn_create_room : "Create room",
+		btn_create_hotel : "Create hotel",
 		btn_add_image : "Add image",
 		btn_remove_selected : "Remove selected",
 		btn_decline : "Decline",
 		btn_approve : "Approve",
 		btn_declined : "Declined",
 		btn_approved : "Approved",
-		btn_send : "Send",
+		btn_send : "Send"
 	}
 	var ua = {
 
@@ -409,6 +419,7 @@
 		order_card_total_price : "Загальна сума : ",
 		order_card_uan : " Грн",
 		order_card_clear : "Очистити кошик",
+		room_card_YOURE_BANNED : "Ви не можете здійснювати покупки, бо ви забанені",
 
 		index_room_noDeposit : "Без передоплати",
 		header_regist : "Реєстрація",
@@ -419,7 +430,7 @@
 
 		index_search_header : "Пошук готелів",
 		index_search_name : "Місце / назва готелю:",
-		index_search_price : "Зірки",
+		index_search_price : "Кількість зірок",
 		index_search_ppl : "Кількість гостей",
 		index_search_start : "Дата заселення",
 		index_search_end : "Дата виселення",
@@ -516,8 +527,9 @@
 		settings_chk_mails : "Хочу отримувати e-mail сповіщення!",
 		settings_chk_sms : "Хочу отримувати sms сповіщення!",
 
-		lbl_sendnotif : "Посилати повідомлення",
+		lbl_sendnotif : "Розіслати повідомлення",
 
+		my_hotels_header : "Загалом моїх готелів",
 		card_header : "Всього пропозицій ",
 		shopping_cart_header : "Товарів у кошику ",
 		card_no_periodicals : "Наявних  пропозицій немає",
@@ -541,6 +553,10 @@
 		card_status_ended : "Завершене",
 		card_status_removed : "Скасоване",
 
+		orders_charts_ORDERS_MONTH_CHART : "Замовлення по місяцях",
+		orders_charts_SEASON_CHART : "Популярність за сезонами",
+		orders_charts_VISITORS : "Відвідувачі",
+
 		user_cart_header : "Кошик",
 		orders_charts_HOTELSCHART : "Найчастіше відвідувані готелі",
 		orders_charts_MONTHCHART : "Активність по місяцях",
@@ -548,11 +564,11 @@
 		admin_edit_name : "Назва готелю",
 		admin_edit_rating : "Рейтинг",
 		admin_edit_address : "Адреса",
-		admin_edit_phone : "Телефон",
+		admin_edit_phone : "Номер телефону",
 		admin_edit_desc : "Опис",
 		admin_edit_city : "Місто",
-		admin_edit_stars : "Зірки",
-		manager_hotel_star : " К-сть зірок : ",
+		admin_edit_stars : "Кількість зірок",
+		manager_hotel_star : " К-ть зірок : ",
 
 		room_header : "Кімнати",
 		room_type : "Тип номера",
@@ -564,12 +580,13 @@
 		room_price : "Ціна",
 
 		roomCreate_hotel : "В готелі",
-		room_concrete_number : "Номер",
-		room_concrete_single : "Одномісні ліжка",
-		room_concrete_double : "Двомісні ліжка",
-		room_concrete_price : "Ціна",
-		room_concrete_days : "Дні для оплати",
-		room_concrete_percentage : "Відсоток повернення завдатку",
+		room_concrete_number : "Номери кімнат через кому (Напр.: 11, 2a, 3)",
+		room_edit_number : "Номер кімнати",
+		room_concrete_single : "Кількість одномісних ліжкок",
+		room_concrete_double : "Кількість двомісних ліжкок",
+		room_concrete_price : "Ціна за добу",
+		room_concrete_days : "Крайній термін (днів), коли користувач може отримати повне повернення коштів",
+		room_concrete_percentage : "Відсоток повернення завдатку після крайнього терміну",
 
 		admin_deleted : "Видалити",
 		// admin page
@@ -591,7 +608,10 @@
 		btn_order : "Замовити",
 		btn_create : "Створити",
 		btn_update : "Змінити",
+		btnToMain : "Зробити фото головним",
+		btn_statistic : "Статистика",
 		btn_create_room : "Створити кімнату",
+		btn_create_hotel : "Створити готель",
 		btn_add_image : "Додати фото",
 		btn_remove_selected : "Видалити обране",
 		btn_decline : "Відхилити",
@@ -601,7 +621,7 @@
 		btn_send : "Надіслати",
 
 		header_regist : "Реєстрація",
-		aas : "Видаленоо",
+		aas : "Видалено"
 	}
 	
 //	DATAERROR #############################
@@ -659,7 +679,7 @@
 			index_room_pool : "Басейн",
 			index_room_gym : "Тренажерний зал",
 			index_room_balcony : "Балкон",
-			index_search_stars : "Зірки",
+			index_search_stars : "Кількість зірок",
 			index_search_location : "Розташування",
 			index_search_description : "Опис",
 
@@ -958,22 +978,22 @@
 	
 	var placeholder = {
 		en : {
-			placeholder_phone_number : "Phone Number",
-			placeholder_address : "Address of hotel",
-			placeholder_name_hotel : "Name of Hotel",
+			placeholder_phone_number : "Phone number",
+			placeholder_address : "Hotel address",
+			placeholder_name_hotel : "Hotel name",
 			placeholder_desc : "Description",
-			placeholder_enter_comment : "Enter comment to order here",
-			placeholder_enter_comments : "Enter comment to orders here",
-			placeholder_hellopage_search : "Enter city or hotel",
+			placeholder_enter_comment : "Enter a comment to order here",
+			placeholder_enter_comments : "Enter a comment to orders here",
+			placeholder_hellopage_search : "Enter a city or a hotel name",
 		},
 		ua : {
 			placeholder_phone_number : "Телефоний номер",
-			placeholder_address : "Адреса готеля",
-			placeholder_name_hotel : "Назва готеля",
+			placeholder_address : "Адреса готелю",
+			placeholder_name_hotel : "Назва готелю",
 			placeholder_desc : "Опис",
 			placeholder_enter_comment : "Введіть коментар до замовленя тут",
 			placeholder_enter_comments : "Введіть коментар до всіх замовлень тут",
-			placeholder_hellopage_search : "Введіть місто чи готель",
+			placeholder_hellopage_search : "Введіть назву міста чи готелю",
 		},
 	};
 	languages.en = en;

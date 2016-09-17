@@ -284,13 +284,13 @@ div #sidebar-wrapper {
 			<div class="col s3 offset-s1">
 				<a id="btnToMain" class="waves-effect waves-light btn"
 					style="background: #e68a00;; color: #FFFFFF; margin: 0 auto;"
-					onclick="promoteToMain()"><span id="btn_main"></span>MAIN </a>
+					onclick="promoteToMain()"><span id="btn_main"></span></a>
 			</div>
 
 			<div class="col s3 offset-s1">
 				<a class="waves-effect waves-light btn"
 					style="background: #F55151; color: #FFFFFF; margin: 0 auto;"
-					onclick="removeHotelPhoto()"><span id="btn_remove"></span> </a>
+					onclick="removeHotelPhoto()"><span id="btn_remove_selected"></span> </a>
 			</div>
 		</div>
 

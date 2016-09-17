@@ -7,10 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.epam.task.database.model.Conveniences;
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.User;
-import com.epam.task.database.service.ConveniencesService;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.RoomService;
 
@@ -33,15 +31,11 @@ public class ManagerHotelServlet extends HttpServlet {
 		}
 		
 		Hotel hotel = new HotelService().getHotelById(id);
-		Conveniences conveniences = null;
-		if(hotel != null && hotel.getManagerId() == manager.getId() ){
-			conveniences = new ConveniencesService().getConveniencesForHotel(hotel.getId());
-		} else {
-			response.sendError(HttpServletResponse.SC_NOT_FOUND);
+		if(hotel == null || hotel.getManagerId() != manager.getId() ){
+			response.sendError(500);
 			return;
 		}
 
-		request.setAttribute("conveniences", conveniences);
 		request.setAttribute("hotel", hotel);
 		request.setAttribute("rooms", new RoomService().getAllRoomsForHotel(id));
 		
