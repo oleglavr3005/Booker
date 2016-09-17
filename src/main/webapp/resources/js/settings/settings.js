@@ -1,4 +1,8 @@
 var confirmMail = "PLS CONFIRM MAIL";
+var reqSent = "REQUEST WAS SUCCESSFULLY SENT";
+var reqSentAgaint = "REQUEST WAS SUCCESSFULLY SENT AGAIN";
+var reqUpdated = "REQUEST WAS SUCCESSFULLY UPDATED";
+var reqRemoved = "REQUEST WAS SUCCESSFULLY REMOVED";
 
 function saveContactData() {
 	$('#settings_confirmMail').hide();
@@ -12,17 +16,16 @@ function saveContactData() {
 			phoneNotif : phoneCheck,
 		}, function(result) {
 			var res = $.parseJSON(result);
-			 if (result != null) {
-			$('#phoneNumber').val(res.phoneNumber);
-			clearField('phoneNumber');
-			 }
-			 else {
-					invalid('phoneNumber');
-			 }
+			if (result != null) {
+				$('#phoneNumber').val(res.phoneNumber);
+				clearField('phoneNumber');
+			} else {
+				invalid('phoneNumber');
+			}
 		});
 	}
 
-	if (mailIsValid(mail,mailCheck)) {
+	if (mailIsValid(mail, mailCheck)) {
 		$.post('../change_email', {
 			email : mail,
 			mailNotif : mailCheck,
@@ -31,13 +34,11 @@ function saveContactData() {
 			if (res.changed != null) {
 				$('#settings_confirmMail').text(confirmMail);
 				$('#settings_confirmMail').show();
+			} else {
+				invalid('email');
 			}
-			 else {
-					invalid('email');
-			 }
 		});
-	}
-	else {
+	} else {
 		invalid('email');
 	}
 }
@@ -62,19 +63,56 @@ function savePersonalData() {
 }
 
 function createRequest(flag) {
+	var resElem = document.getElementById('settings_request_result');
 	if (flag) {
 		var req = $('#requestForm').val();
-	}
-	else {
+	} else {
 		var req = "";
 	}
-	$.post('../create_request', {
-		message : req
-	}, function(result) {
-		if (result == 'true') {
-			clearField('requestForm');
-		}
-	});
+	if (requestIsValid()) {
+		$.post('../create_request', {
+			message : req
+		}, function(result) {
+			resElem.style.visibility = "visible";
+			if (result == 'sent') {
+				$('#req_status').show();
+				$('#settings_request_status_pending').show();
+				$('#settings_request_status_declined').hide();
+				resElem.textContent = reqSent;
+			} else {
+				if (result == 'sent_again') {
+					$('#settings_request_status_declined').hide();
+					$('#settings_request_status_pending').show();
+					resElem.textContent = reqSentAgaint;
+				} else {
+					if (result == 'updated') {
+						resElem.textContent = reqUpdated;
+					} else {
+						clearField('requestForm');
+						$('#req_status').hide();
+						resElem.textContent = reqRemoved;
+					}
+				}
+			}
+		});
+	}
+}
+
+function requestValidate() {
+	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’,?=+-_.!/'" ]*)$/;
+	return re.test(field);
+}
+
+function requestIsValid() {
+	debugger;
+	var request = $('#requestForm').val();
+	if ((request == "")
+			|| (request > 10 && request < 999 && requestValidate(request))) {
+		return true;
+	}
+	$('#requestForm').removeClass("valid");
+	$('#requestForm').addClass("invalid");
+	return false;
 }
 
 function nameIsValid(name) {
@@ -90,13 +128,14 @@ function nameIsValid(name) {
 	}
 }
 
-function phoneIsValid(phone,check) {
+function phoneIsValid(phone, check) {
 	if (phone == '') {
 		document.getElementById('phoneCheckBox').checked = false;
 		valid('phoneNumber');
 		return true;
 	}
-	if ((phone == '') || phone.length <= 15 && phone.length >= 8 && validateNumber(phone)) {
+	if ((phone == '') || phone.length <= 15 && phone.length >= 8
+			&& validateNumber(phone)) {
 		valid('phoneNumber');
 		return true;
 	} else {
@@ -105,7 +144,7 @@ function phoneIsValid(phone,check) {
 	}
 }
 
-function mailIsValid(mail,check) {
+function mailIsValid(mail, check) {
 	if (mail == '') {
 		invalid('email');
 		return false;
@@ -169,7 +208,8 @@ function emailIsValid(email) {
 	}
 	if (email.length < 5 || email.length > 45 || !validateEmail(email)) {
 		invalid('email');
-		$('#emailLbl').attr("data-error", languages.script.current.settings.wrongMail);
+		$('#emailLbl').attr("data-error",
+				languages.script.current.settings.wrongMail);
 		return false;
 	}
 	$.ajax({
@@ -181,16 +221,18 @@ function emailIsValid(email) {
 			"email" : email
 		},
 		success : function(data) {
-			isValid = (data == "true");//true
+			isValid = (data == "true");// true
 			if (!isValid) {
 				invalid('email');
-				$('#emailLbl').attr("data-error", languages.script.current.settings.usedMail);
+				$('#emailLbl').attr("data-error",
+						languages.script.current.settings.usedMail);
 				return false;
 			}
 		},
 		error : function(data) {
 			isValid = false;
-			$('#emailLbl').attr("data-error", languages.script.current.registration.wrongMail);
+			$('#emailLbl').attr("data-error",
+					languages.script.current.registration.wrongMail);
 			invalid('email');
 		}
 	});
@@ -214,29 +256,32 @@ function savePassword(header, succesfull) {
 		oldPassword : $('#currentPassword').val(),
 		newPassword : $('#newPassword').val(),
 		newPasswordConfirm : $('#repeatPassword').val()
-	}, function(result) {
-		clearPasswordFields();
-		if (result == 'wrongOldPass') {
-			invalid('currentPassword');
-		}
-		if (result == 'shortNewPass') {
-			invalid('newPassword');
-		}
-		if (result == 'passwordsDontMatch') {
-			invalid('repeatPassword');
-		}
-		if (result == 'true') {
-			$('#currentPassword').val('');
-			$('#newPassword').val('');
-			$('#repeatPassword').val('');
-			$('#pwd_title').text(languages.script.current.settings.succesTitle);
-			$('#pwd_title').css('color', 'green');
-			setTimeout(function() {
-				$('#pwd_title').text(languages.script.current.settings.oldHeader);
-				$('#pwd_title').css('color', '#333333');
-			}, 3000);
-		}
-	});
+	},
+			function(result) {
+				clearPasswordFields();
+				if (result == 'wrongOldPass') {
+					invalid('currentPassword');
+				}
+				if (result == 'shortNewPass') {
+					invalid('newPassword');
+				}
+				if (result == 'passwordsDontMatch') {
+					invalid('repeatPassword');
+				}
+				if (result == 'true') {
+					$('#currentPassword').val('');
+					$('#newPassword').val('');
+					$('#repeatPassword').val('');
+					$('#pwd_title').text(
+							languages.script.current.settings.succesTitle);
+					$('#pwd_title').css('color', 'green');
+					setTimeout(function() {
+						$('#pwd_title').text(
+								languages.script.current.settings.oldHeader);
+						$('#pwd_title').css('color', '#333333');
+					}, 3000);
+				}
+			});
 }
 
 $("#avatarImg").click(function() {
