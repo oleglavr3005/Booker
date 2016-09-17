@@ -26,7 +26,7 @@
 			</c:if>
 		</c:when>
 		<c:otherwise>
-			<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js??language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU"></script>
+			<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU"></script>
 		</c:otherwise>
 		</c:choose>
 	</c:otherwise>

@@ -177,7 +177,7 @@
 $(document)
 		.ready(
 				function() {
-					$('#datatable')
+					var table=$('#datatable')
 							.dataTable(
 									{
 										"oLanguage" : {
@@ -194,6 +194,10 @@ $(document)
 													+ '<option value="-1">All</option>'
 													+ '</select></div>'
 										},
+										"drawCallback": function(settings ) {
+											$(".tooltipped").tooltip();
+								//			$('#datatable').ready(updateLanguage()); 
+					                        },
 										bAutoWidth : false,
 										aoColumnDefs : [ {
 											sWidth : "3%",
