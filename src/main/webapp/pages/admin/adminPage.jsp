@@ -129,7 +129,7 @@
 			<div id="test1" class="col s12">
 				<div class="container-fluid">
 					<div class="row settings-title">
-						<h4>
+						<h4 style="text-align: center; margin-top: 20px;">
 							<span id="settings_header_USERS"></span>
 						</h4>
 					</div>
@@ -203,7 +203,7 @@
 			<div id="test2" class="col s12">
 				<div class="container-fluid">
 					<div class="row settings-title">
-						<h4>
+						<h4 style="text-align: center; margin-top: 20px;">
 							<span id="settings_header_REQUESTS"></span>
 						</h4>
 					</div>

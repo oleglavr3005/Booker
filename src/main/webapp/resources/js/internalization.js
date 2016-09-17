@@ -391,7 +391,7 @@
 		header_dropdown_hotels : " Мої готелі",
 		header_dropdown_admin_stuff : " Адміністрування",
 		header_dropdown_log_out : " Вийти",
-		card_edit : "Редагувати",
+		card_edit : "Змінити",
 		title_comment_span : "Заголовок",
 		createComment : "Додати коментар",
 		hotel_button_previous : "Попередній",

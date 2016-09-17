@@ -253,7 +253,7 @@ b {
 							onclick="removeOrderCard(${order.id})"><span
 							class="btn_remove"></span></a>
 					</div>
-					<div class="col s2 offset-s6">
+					<div class="col s2 offset-s5">
 						<a class="tooltipped tooltip_money_to_pay" data-position="icon"
 							data-tooltip="" style="color: #0d0d0d;"><i
 							class="fa fa-lg fa-money invert" aria-hidden="true"></i></a>
@@ -266,7 +266,7 @@ b {
 							</c:otherwise>
 						</c:choose>
 					</div>
-					<div class="col s2 ">
+					<div class="col s3 right-align" >
 						<a id="book${order.id}" class="waves-effect waves-light btn"
 							style="background: #26A69A; color: #FFFFFF; font-size: 1rem;"
 							onclick="bookOrderCard(${order.id},${order.room.daysCount})"><span
@@ -305,12 +305,10 @@ b {
 				class="fa fa-2x fa-exclamation-circle invert" aria-hidden="true"></i></a>
 
 		</div>
-		<div class="col s2 offset-s3">
+		<div class="col s6 offset-s2 right-align">
 			<a id="clearBtn" class="waves-effect waves-light btn"
-				style="background: #F55151; color: #FFFFFF; font-size: 1rem;"
+				style="margin-right: 1rem; background: #F55151; color: #FFFFFF; font-size: 1rem;"
 				onclick="clearCart()"><span id="order_card_clear"></span></a>
-		</div>
-		<div class="col s2 offset-s1">
 			<a class="waves-effect waves-light btn"
 				style="background: #26A69A; color: #FFFFFF; font-size: 1rem;"
 				onclick="bookOrderCard(null,${summary})"><span
