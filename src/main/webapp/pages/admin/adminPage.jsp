@@ -38,8 +38,8 @@
 <link
 	href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"
 	rel="stylesheet">
-	
-	<link rel="stylesheet"
+
+<link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/css/style.css">
 <style>
 .btn {
@@ -134,16 +134,23 @@
 						</h4>
 					</div>
 
-					<table id="users" style=" border-bottom: 0px solid #111;">
+					<table id="users" style="border-bottom: 0px solid #111;">
 						<thead>
 							<tr style="background-color: #70b9b2; color: #e8f7f7;">
-								<th id="admin_page_id" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
-								<th id="admin_page_fName" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
-								<th id="admin_page_lName" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
-								<th id="admin_page_mail" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
-								<th id="admin_page_phone" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
-								<th id="admin_page_type" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
-								<th id="admin_page_status" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_id"
+									style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_fName"
+									style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_lName"
+									style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_mail"
+									style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_phone"
+									style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_type"
+									style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th id="admin_page_status"
+									style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -152,26 +159,25 @@
 									<td><c:out value="${user.id }"></c:out></td>
 									<td><c:out value="${user.firstName}"></c:out></td>
 									<td><c:out value="${user.lastName}"></c:out></td>
-									<td>
-										<c:choose>
-											<c:when test="${user.email.substring(user.email.length()-1) != '*'}">
+									<td><c:choose>
+											<c:when
+												test="${user.email.substring(user.email.length()-1) != '*'}">
 												<c:out value="${user.email}"></c:out>
 											</c:when>
 											<c:otherwise>
-												<span class='admin_page_no_email'>No email for this user</span>
+												<span class='admin_page_no_email'>No email for this
+													user</span>
 											</c:otherwise>
-										</c:choose>
-									</td>
-									<td>
-										<c:choose>
+										</c:choose></td>
+									<td><c:choose>
 											<c:when test="${user.phoneNumber.length() > 0}">
 												<c:out value="${user.phoneNumber}"></c:out>
 											</c:when>
 											<c:otherwise>
-												<span class='admin_page_no_phone'>No phone for this user</span>
+												<span class='admin_page_no_phone'>No phone for this
+													user</span>
 											</c:otherwise>
-										</c:choose>
-									</td>
+										</c:choose></td>
 									<td><c:out value="${user.type}"></c:out></td>
 									<td><select id="userStatus${user.id}" class="combobox"
 										onchange="changeUserStatus(${user.id})">
@@ -203,14 +209,19 @@
 					</div>
 
 
-					<table id="requests" style=" border-bottom: 0px solid #111;">
+					<table id="requests" style="border-bottom: 0px solid #111;">
 						<thead>
 							<tr style="background-color: #70b9b2; color: #e8f7f7;">
-								<th class="admin_page_id" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
-								<th class="admin_page_userId" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
-								<th class="admin_page_reqDate" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
-								<th class="admin_page_message" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
-								<th class="admin_page_status" style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th class="admin_page_id"
+									style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th class="admin_page_userId"
+									style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th class="admin_page_reqDate"
+									style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th class="admin_page_message"
+									style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
+								<th class="admin_page_status"
+									style="text-align: center; border-radius: 0; border-bottom: 0px solid #111;"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -227,21 +238,26 @@
 									<td style="text-align: center;" id="req${request.id }s"><c:if
 											test="${request.status == 'PENDING'}">
 											<div id="req${request.id }d">
-											<a class="my-btn waves-effect waves-light btn"
-												style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif;"
-												onclick="chageStatus(${request.id},true,'')"><i class="fa fa-check-circle" aria-hidden="true"></i></a>
-											<a class="my-btn waves-effect waves-light btn"
-												style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif; "
-												onclick="chageStatus(${request.id},false,'')"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
-												</div>
-												<div style="color: #F55151;" class="hidden" id="req${request.id }dc">
+												<a class="my-btn waves-effect waves-light btn"
+													style="background: #26A69A; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif;"
+													onclick="chageStatus(${request.id},true,'')"><i
+													class="fa fa-check-circle" aria-hidden="true"></i></a> <a
+													class="my-btn waves-effect waves-light btn"
+													style="background: #F55151; color: #FFFFFF; font-family: 'Times NewRoman', Times, serif;"
+													onclick="chageStatus(${request.id},false,'')"><i
+													class="fa fa-times-circle" aria-hidden="true"></i></a>
+											</div>
+											<div style="color: #F55151;" class="hidden"
+												id="req${request.id }dc">
 												<strong><span class="btn_declined"></span></strong>
-												</div>
-												<div style="color: #3c763d;" class="hidden" id="req${request.id }ap">
+											</div>
+											<div style="color: #3c763d;" class="hidden"
+												id="req${request.id }ap">
 												<strong><span class="btn_approved"></span></strong>
 											</div>
-											
-										</c:if><c:if test="${request.status == 'DECLINED'}">
+
+										</c:if>
+										<c:if test="${request.status == 'DECLINED'}">
 											<div style="color: #F55151;">
 												<strong><span class="btn_declined"></span></strong>
 											</div>
@@ -288,7 +304,15 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#users').DataTable({
-				stateSave : true
+				stateSave : true,
+				'length.dt': function(settings ) {
+					$('#users').ready(updateLanguage()); 
+					console.log('1');
+		                },
+							'drawCallback': function(settings ) {
+								$('#users').ready(updateLanguage()); 
+								console.log('2');
+					                }
 			});
 			$('#requests').DataTable({
 				stateSave : true
