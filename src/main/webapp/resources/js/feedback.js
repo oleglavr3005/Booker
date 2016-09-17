@@ -2,12 +2,12 @@ function deleteFeedback(commentId) {
 	$.post(window.location.protocol + "//" + window.location.host + "/booker/deleteFeedback", {
 		commentId : commentId
 	}, function(result) {
-		if(result == 'true'){ 
+		if(result != 'false'){ 
 			var comment = jQuery("#feedbacks_card_" + commentId);
 			comment.slideUp(500);
 			setTimeout('comment.remove()', 501);
 		}else{ 
-			$("#feedback_error_" + commentId).text("#### ERROR ####"); 
+			Materialize.toast("#### ERROR ####", 4000);
 		}
 	});
 }
@@ -23,15 +23,12 @@ function updateFeedback(commentId) {
 		rating : rating_val,
 		comment : comment_val
 	}, function(result) {
-		if(result == 'true'){ 
-			var text = languages.script.current.message.success;
-			var content = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + text + '</div>';
-			jQuery('#button_panel_' + commentId).after(content);
+		if(result != 'false'){ 
+			Materialize.toast(languages.script.current.message.success, 4000);
 		}else{ 
-			var text = languages.script.current.message.danger;
-			var content = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + text + '</div>';
-			jQuery('#button_panel_' + commentId).after(content);
+			Materialize.toast(languages.script.current.message.danger, 4000);
 		}
+		jQuery('#button_panel_' + commentId).after(content);
 	});
 }
 
