@@ -374,19 +374,21 @@ div #sidebar-wrapper {
 			</div>
 			<div class="col s5 offset-s2">
 				<c:if test="${countOfRooms > 0 }">
+				<div style="float: right;">
 					<span id="sort_by" style="font-size: 15;position: relative;/* display: inline-block; */bottom: 3px;"></span>
-					<select id="compare" class="chosen-select optionstyle"
-						onchange="findPage(window.location.href,1)"><span
-						id="hotel_price"></span>
-						<option id="hotel_option_star_asc" class="optionstyle"
-							value="compareByPriceAsc"></option>
-						<option id="hotel_option_star_desc" class="optionstyle"
-							value="compareByPriceDesc"></option>
-						<option id="hotel_option_people_asc" class="optionstyle"
-							value="compareByPeopleAsc"></option>
-						<option id="hotel_option_people_desc" class="optionstyle"
-							value="compareByPeopleDesc" selected="selected"></option>
-					</select>
+						<select id="compare" class="chosen-select optionstyle"
+							onchange="findPage(window.location.href,1)"><span
+							id="hotel_price"></span>
+							<option id="hotel_option_star_asc" class="optionstyle"
+								value="compareByPriceAsc"></option>
+							<option id="hotel_option_star_desc" class="optionstyle"
+								value="compareByPriceDesc"></option>
+							<option id="hotel_option_people_asc" class="optionstyle"
+								value="compareByPeopleAsc"></option>
+							<option id="hotel_option_people_desc" class="optionstyle"
+								value="compareByPeopleDesc" selected="selected"></option>
+						</select>
+					</div>
 				</c:if>
 			</div>
 		</div>
