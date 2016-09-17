@@ -334,20 +334,26 @@
 						</div>
 
 						<div class="row fields">
-							<div class="input-field col s9">
-								<div class="ui pointing label"
-									style="background-color: #f7f7f7;">
-									<span id="settings_enter_request"
-										style="color: #b7b2b2; background-color: #9990;"></span>
-								</div>
-								<textarea id="requestForm" class="materialize-textarea">${message}</textarea>
+							<div class="input-field col s12">
+								<textarea id="requestForm" class="materialize-textarea">${request.message}</textarea>
+								<label for="settings_enter_requests">
+									<span id="settings_enter_request"></span>
+								</label>
 							</div>
 						</div>
-
+						
 						<div class="row" style="margin-top: 20px;">
-							<div class="col s12">
-								<a id="savePersonal" class="waves-effect waves-light btn"
-									onclick="createRequest()"
+							<div class="col s2">
+								<a id="cancelRequest" class="waves-effect waves-light btn"
+									onclick="createRequest(false)"
+									style="background: #F55151; 
+									<c:if test="${request.message == ''}"> visibility: hidden; </c:if>
+									color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
+									class="subscribes_table_remove"></span></a>
+							</div>
+							<div class="col s2 offset-s8">
+								<a id="createRequest" class="waves-effect waves-light btn"
+									onclick="createRequest(true)"
 									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
 									class="btn_send"></span></a>
 							</div>
