@@ -231,11 +231,11 @@ div.material-table .table-footer .dataTables_length {
 
 										<td style="text-align: center;">
 											<c:if test="${activeOrder.room.type == 'STANDART'}">
-												<span id="subscribes_table_roomtype_standart"></span>
+												<span class="subscribes_table_roomtype_standart"></span>
 											</c:if> <c:if test="${activeOrder.room.type == 'LUX'}">
-												<span id="subscribes_table_roomtype_lux"></span>
+												<span class="subscribes_table_roomtype_lux"></span>
 											</c:if> <c:if test="${activeOrder.room.type == 'DELUX'}">
-												<span id="subscribes_table_roomtype_delux"></span>
+												<span class="subscribes_table_roomtype_delux"></span>
 											</c:if>
 										</td>
 
@@ -331,7 +331,13 @@ div.material-table .table-footer .dataTables_length {
 										<td style="text-align: center;"><a
 											href="${pageContext.servletContext.contextPath}/hotel/${finishedOrder.hotel.id}">${finishedOrder.hotel.name}</a></td>
 
-										<td style="text-align: center;">${finishedOrder.room.type}</td>
+										<td style="text-align: center;"><c:if test="${finishedOrder.room.type == 'STANDART'}">
+												<span class="subscribes_table_roomtype_standart"></span>
+											</c:if> <c:if test="${finishedOrder.room.type == 'LUX'}">
+												<span class="subscribes_table_roomtype_lux"></span>
+											</c:if> <c:if test="${finishedOrder.room.type == 'DELUX'}">
+												<span class="subscribes_table_roomtype_delux"></span>
+											</c:if></td>
 
 										<td style="text-align: center;"><span
 											id="start_date${finishedOrder.id}"><fmt:formatDate
@@ -420,7 +426,15 @@ div.material-table .table-footer .dataTables_length {
 										<td style="text-align: center;"><a
 											href="${pageContext.servletContext.contextPath}/hotel/${allOrder.hotel.id}">${allOrder.hotel.name}</a></td>
 
-										<td style="text-align: center;">${allOrder.room.type}</td>
+										<td style="text-align: center;">
+										<c:if test="${allOrder.room.type == 'STANDART'}">
+												<span class="subscribes_table_roomtype_standart"></span>
+											</c:if> <c:if test="${allOrder.room.type == 'LUX'}">
+												<span class="subscribes_table_roomtype_lux"></span>
+											</c:if> <c:if test="${allOrder.room.type == 'DELUX'}">
+												<span class="subscribes_table_roomtype_delux"></span>
+											</c:if>
+										</td>
 
 										<td style="text-align: center;"><span
 											id="start_date${allOrder.id}"><fmt:formatDate
@@ -750,7 +764,7 @@ $(document).ready(function()
 								.dataTable(
 										{
 											"oLanguage" : {
-												"sStripClasses" : "",
+												"sStripClasses" : "pholder_enter",
 												"sSearch" : "",
 												"sSearchPlaceholder" : "Enter Keywords Here",
 												"sInfo" : "_START_ -_END_ of _TOTAL_",
@@ -763,6 +777,11 @@ $(document).ready(function()
 														+ '<option value="-1">All</option>'
 														+ '</select></div>'
 											},
+											"drawCallback": function(  ) {
+
+					                           updateLanguage(); 
+
+					                        },
 											bAutoWidth : false
 //												aoColumnDefs : [ {
 //													sWidth : "18%",
@@ -797,6 +816,11 @@ $(document).ready(function()
 												+ '<option value="-1">All</option>'
 												+ '</select></div>'
 									},
+									"drawCallback": function(  ) {
+
+				                           updateLanguage(); 
+
+				                        },
 									bAutoWidth : false
 //										aoColumnDefs : [ {
 //											sWidth : "18%",
@@ -831,6 +855,11 @@ $(document).ready(function()
 												+ '<option value="-1">All</option>'
 												+ '</select></div>'
 									},
+									"drawCallback": function(  ) {
+
+				                           updateLanguage(); 
+
+				                        },
 									bAutoWidth : false
 //										aoColumnDefs : [ {
 //											sWidth : "18%",
