@@ -346,7 +346,7 @@
 		request_decline : "Відхилити",
 
 		manager_hotel_card_info : "Деталі",
-		manager_hotel_card_edit : "Редагувати",
+		manager_hotel_card_edit : "Змінити",
 		manager_hotel_card_removed : "Видалений",
 		manager_hotel_card_active : "Активний",
 

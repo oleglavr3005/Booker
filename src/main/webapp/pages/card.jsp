@@ -176,7 +176,7 @@ b {
 						</div>
 					</div>
 
-					<div class="col s2">
+					<div class="col s2 right-align">
 						<div class="row" style="margin-top: 14px">
 							<a class="tooltipped tooltip_rating" data-position="icon"
 								data-tooltip="Rating"
@@ -219,16 +219,16 @@ b {
 							</c:if>
 						</div>
 
-						<div class="row" style="margin-top: 64px; text-align: center;">
+						<div class="row" style="margin-top: 64px; margin-right: 10px">
 
 							<a class="waves-effect waves-light btn"
 								href="${pageContext.servletContext.contextPath}/cabinet/my_hotels/${hotel.id}"
-								style="padding: 0 20px 0 20px; margin-left: 10px; background: #e68a00; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;
+								style="background: #e68a00; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;
 															<c:if test="${user.id !=hotel.managerId}">visibility: hidden</c:if>"><span
 								class="card_edit"></span></a> <a
 								class="waves-effect waves-light btn"
 								href="${pageContext.servletContext.contextPath}/hotel/${hotel.id}"
-								style="adding: 0 20px 0 20px; margin-top: 30px; margin-left: 0px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+								style="margin-top: 30px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
 								<span class="manager_hotel_card_info"></span>
 							</a>
 						</div>
