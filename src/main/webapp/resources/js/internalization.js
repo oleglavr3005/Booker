@@ -67,6 +67,11 @@
 
 		request_approve : "Approve",
 		request_decline : "Decline",
+		admin_request_name : "User name",
+		admin_request_status : "Request status",
+		admin_request_status_pending : "Pending",
+		admin_request_status_approved : "Approved",
+		admin_request_status_declined : "Declined",
 
 		manager_hotel_card_info : "Details",
 		manager_hotel_card_edit : "Edit",
@@ -357,6 +362,11 @@
 		admin_page_no_phone : "Телефон відсутній",
 		request_approve : "Підтвердити",
 		request_decline : "Відхилити",
+		admin_request_name : "Користувач",
+		admin_request_status : "Статус запиту",
+		admin_request_status_pending : "Очікується",
+		admin_request_status_approved : "Схвалено",
+		admin_request_status_declined : "Відхилено",
 
 		manager_hotel_card_info : "Деталі",
 		manager_hotel_card_edit : "Змінити",
@@ -897,6 +907,9 @@
 			admin : {
 				activated : "user was activated",
 				banned : "user was banned",
+			},
+			error : {
+				func : "function impossible",
 			}
 		},
 		ua : {
@@ -1064,6 +1077,9 @@
 			admin : {
 				activated : "користувача розбанено",
 				banned : "користувача забанено",
+			},
+			error : {
+				func : "дія неможлива",
 			}
 		},
 	};

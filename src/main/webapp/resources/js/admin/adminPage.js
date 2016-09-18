@@ -3,7 +3,6 @@ var banned = languages.script.current.admin.banned;
 
 function changeUserStatus(id){
 	var sel = $('#userStatus' + id).val();
-	alert(sel);
 	$.post('../change_user_status', {
 		userId : id,
 		status : $('#userStatus' + id).val(),
