@@ -178,7 +178,18 @@
 													user</span>
 											</c:otherwise>
 										</c:choose></td>
-									<td><c:out value="${user.type}"></c:out></td>
+
+									<td><c:if test="${user.type == 'MANAGER'}">
+											<span class="admin_table_type_manager"></span>
+										</c:if>
+										<c:if test="${user.type == 'USER'}">
+											<span class="admin_table_type_user"></span>
+										</c:if>
+										<c:if test="${user.type == 'ADMIN'}">
+											<span class="admin_table_type_admin"></span>
+										</c:if>
+										</td>
+
 									<td><select id="userStatus${user.id}" class="combobox"
 										onchange="changeUserStatus(${user.id})">
 											<option class="admin_page_active" value="ACTIVE"
@@ -256,8 +267,7 @@
 												<strong><span class="btn_approved"></span></strong>
 											</div>
 
-										</c:if>
-										<c:if test="${request.status == 'DECLINED'}">
+										</c:if> <c:if test="${request.status == 'DECLINED'}">
 											<div style="color: #F55151;">
 												<strong><span class="btn_declined"></span></strong>
 											</div>
@@ -319,10 +329,10 @@
 			});
 		});
 	</script>
-	
+
 	<script type="text/javascript">
 	$(document).ready(function() {
-		changeLanguage("${language}");
+// 		changeLanguage("${language}");
 		document.title = languages.script.current.title.admin;
 	});
 	</script>
