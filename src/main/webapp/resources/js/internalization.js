@@ -2,6 +2,7 @@
 (function() {
 	var en = {
 
+		hootel_without_rooms : "This hotel has no rooms",
 		feedback_banned : "banned",
 		label_service : "Service",
 		label_cleaner : "Dry cleaner's",
@@ -324,6 +325,7 @@
 	}
 	var ua = {
 
+		hootel_without_rooms : "Цей готель немає кімнат",
 		feedback_banned : "забанений",
 		label_service : "Обслуговування",
 		label_cleaner : "Хімчистка",
@@ -1306,7 +1308,7 @@ function updateDatePickerMonthS() {
 function updateDatePickerMonth() {
 	mon = document.getElementsByClassName('picker__select--month')[0];
 	for(var i = 0 ; i < 12; i++){
-		var text = mon.options[1].text;
+		var text = mon.options[i].text;
 		if (currentLanguage == 'en') {
 			for ( var ua_mon in languages.script.ua.datepicker) {
 				if (languages.script.ua.datepicker[ua_mon] == text) {
