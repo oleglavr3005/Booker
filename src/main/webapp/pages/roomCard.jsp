@@ -252,22 +252,21 @@ b {
 								</c:if>
 
 								<c:if test="${startDate == null}">
-									<div class="hiddenError" class="col s2 offset-s6"></div>
+									<div>
+										<label style="color: red"><span class="hiddenError"></span></label>
+									</div>
 								</c:if>
 
 
 							</c:if>
 							<c:if test="${user != null && user.status == 'BANNED'}">
-								<div class="room_card_YOURE_BANNED" class="col s2 offset-s6"></div>
+								<div>
+									<label style="color: red"><span class="room_card_YOURE_BANNED"></span></label>
+								</div>
 							</c:if>
 							<c:if test="${user == null}">
-								<div class="row">
-									<div class="col s9 offset-s1">
-										<!-- 										<a class="waves-effect waves-light btn" disabled -->
-										<!-- 											style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"> -->
-										<label><span class="room_card_need_login"></span></label>
-										<!-- 										</a> -->
-									</div>
+								<div>
+									<label style="color: red"><span class="room_card_need_login"></span></label>
 								</div>
 							</c:if>
 
