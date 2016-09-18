@@ -159,7 +159,7 @@
 						<!-- 						ADDRESS -->
 						<div class="input-field">
 							<input id="address" type="text" class="validate" length="145"
-								onkeyup="setHotelLocation()" placeholder=""> <label
+								onkeyup="setHotelLocation()" > <label
 								id="addressLbl" data-error="ADDRESS IS INVALID" for="address"><span
 								id="admin_edit_address"></span> </label>
 						</div>
@@ -169,7 +169,7 @@
 						<!-- 						PHONE -->
 						<div class="input-field">
 							<input id="phone" type="text" class="validate" length="20"
-								onkeyup="setHotelPhone()" placeholder=""> <label
+								onkeyup="setHotelPhone()" > <label
 								id="phoneLbl" data-error="PHONE NUMBER IS INVALID" for="phone"><span
 								id="admin_edit_phone"></span></label>
 						</div>
@@ -221,7 +221,7 @@
 			<!-- 						DESC -->
 
 			<div class="input-field">
-				<textarea placeholder=""
+				<textarea 
 					style="padding-bottom: 10px; padding-top: 10px; padding-left: 15px;"
 					onkeyup="setHotelDesc()" id="desc" class="materialize-textarea"
 					class="validate">${message}</textarea>

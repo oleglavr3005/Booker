@@ -344,8 +344,8 @@ div #sidebar-wrapper {
 				</div>
 
 				<div class="col s3">
-					<input id="people" type="text" class="validate" name="people"
-						value="${people}"> <label id="pplLbl" data-error=""
+					<input id="people" type="number" class="validate" name="people"
+						value="${people}" min=1 max=1000> <label id="pplLbl" data-error=""
 						for="pplCount"><span id="index_search_ppl"></span></label>
 				</div>
 

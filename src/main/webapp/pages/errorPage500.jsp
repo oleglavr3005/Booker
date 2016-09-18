@@ -12,7 +12,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>Booker | 404</title>
+<title>Booker | Internal server error</title>
 
 <link
 	href="${pageContext.servletContext.contextPath}/resources/css/rangeSlider/rangeStyle.css"
@@ -96,12 +96,12 @@ div #sidebar-wrapper {
 	<jsp:include page="header.jsp"></jsp:include>
 
 
-<div style="background: url('${pageContext.servletContext.contextPath}/resources/images/page404.jpg'); height: 590px;">
+<div style="background: url('${pageContext.servletContext.contextPath}/resources/images/page500.jpg'); height: 590px;">
 <div class="container">
-<div style="margin-top: 400px; ">
+<div style="margin-top: 100px; ">
   <div class="row" style="   opacity: .8; border-radius: 10px;">
   <div style="text-align: center;">
-<h2 style="color: #101010;margin-top: 0px;margin-left: 20px;">Page not found</h2>
+<h2 style="color: #ccc;margin-top: 0px;margin-left: 20px;"><span id="server_error"></span></h2>
 </div>
        
 </div>
@@ -121,7 +121,7 @@ div #sidebar-wrapper {
 
 <script type="text/javascript">
 $(document).ready(function() {
-	document.title = languages.script.current.title.error;
+	document.title = languages.script.current.title.error500;
 });
 </script>
 
