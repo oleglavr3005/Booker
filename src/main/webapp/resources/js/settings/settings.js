@@ -1,4 +1,4 @@
-function savePhoneData(){
+function savePhoneData() {
 	var phone = $('#phoneNumber').val();
 	var phoneCheck = document.getElementById('phoneCheckBox').checked;
 	if (phoneIsValid(phone, phoneCheck)) {
@@ -8,7 +8,8 @@ function savePhoneData(){
 		}, function(result) {
 			var res = $.parseJSON(result);
 			if (result != null) {
-				  Materialize.toast(languages.script.current.settings.phnChng, 3000);
+				Materialize.toast(languages.script.current.settings.phnChng,
+						3000);
 				$('#phoneNumber').val(res.phoneNumber);
 				clearField('phoneNumber');
 			} else {
@@ -28,7 +29,8 @@ function saveMailData() {
 		}, function(result) {
 			var res = $.parseJSON(result);
 			if (res.changed != null) {
-				  Materialize.toast(languages.script.current.settings.confMail, 3000);
+				Materialize.toast(languages.script.current.settings.confMail,
+						3000);
 			} else {
 				invalid('email');
 			}
@@ -41,21 +43,24 @@ function saveMailData() {
 function savePersonalData() {
 	var name = $('#name').val();
 	var surname = $('#surname').val();
-	$.post('../change_info', {
-		firstName : nameIsValid(name),
-		lastName : surnameIsValid(surname)
-	}, function(result) {
-		var res = $.parseJSON(result);
-		if (result != null) {
-			$('#name').val(res.firstName);
-			clearField('name');
+	if (nameIsValid(name) && surnameIsValid(surname)) {
+		$.post('../change_info', {
+			firstName : nameIsValid(name),
+			lastName : surnameIsValid(surname)
+		}, function(result) {
+			var res = $.parseJSON(result);
+			if (result != null) {
+				$('#name').val(res.firstName);
+				clearField('name');
 
-			$('#surname').val(res.lastName);
-			clearField('surname');
-			$('#userNameSpan').html(res.firstName + " " + res.lastName);
-			  Materialize.toast(languages.script.current.settings.prsnChang, 3000);
-		}
-	});
+				$('#surname').val(res.lastName);
+				clearField('surname');
+				$('#userNameSpan').html(res.firstName + " " + res.lastName);
+				Materialize.toast(languages.script.current.settings.prsnChang,
+						3000);
+			}
+		});
+	}
 }
 
 function createRequest(flag) {
@@ -65,35 +70,57 @@ function createRequest(flag) {
 		var req = "";
 	}
 	if (requestIsValid()) {
-		$.post('../create_request', {
-			message : req
-		}, function(result) {
-			if (result == 'sent') {
-				$('#req_status').show();
-				$('#settings_request_status_pending').show();
-				$('#settings_request_status_declined').hide();
-				  Materialize.toast(languages.script.current.settings.reqSent, 3000);
-				  $('#cancelRequest').css("visibility","visible");
-			} else {
-				if (result == 'sent_again') {
-					  $('#cancelRequest').css("visibility","visible");
-					$('#settings_request_status_declined').hide();
-					$('#settings_request_status_pending').show();
-					  Materialize.toast(languages.script.current.settings.reqSentAgain, 3000);
-				} else {
-					if (result == 'updated') {
-						  $('#cancelRequest').css("visibility","visible");
-						  Materialize.toast(languages.script.current.settings.reqUpd, 3000);
-					} else {
-						$('#req_status').hide();
-						  Materialize.toast(languages.script.current.settings.reqRmv, 3000);
-						  $('#cancelRequest').css("visibility","hidden");
-						  $('#requestForm').val("");
-					}
-				}
-			}
-			clearField('requestForm');
-		});
+		$
+				.post(
+						'../create_request',
+						{
+							message : req
+						},
+						function(result) {
+							if (result == 'sent') {
+								$('#req_status').show();
+								$('#settings_request_status_pending').show();
+								$('#settings_request_status_declined').hide();
+								Materialize
+										.toast(
+												languages.script.current.settings.reqSent,
+												3000);
+								$('#cancelRequest')
+										.css("visibility", "visible");
+							} else {
+								if (result == 'sent_again') {
+									$('#cancelRequest').css("visibility",
+											"visible");
+									$('#settings_request_status_declined')
+											.hide();
+									$('#settings_request_status_pending')
+											.show();
+									Materialize
+											.toast(
+													languages.script.current.settings.reqSentAgain,
+													3000);
+								} else {
+									if (result == 'updated') {
+										$('#cancelRequest').css("visibility",
+												"visible");
+										Materialize
+												.toast(
+														languages.script.current.settings.reqUpd,
+														3000);
+									} else {
+										$('#req_status').hide();
+										Materialize
+												.toast(
+														languages.script.current.settings.reqRmv,
+														3000);
+										$('#cancelRequest').css("visibility",
+												"hidden");
+										$('#requestForm').val("");
+									}
+								}
+							}
+							clearField('requestForm');
+						});
 	}
 }
 
@@ -221,9 +248,9 @@ function emailIsValid(email) {
 		success : function(data) {
 			isValid = (data == "true");// true
 			if (!isValid) {
-//				invalid('email');
-//				$('#emailLbl').attr("data-error",
-//						languages.script.current.settings.usedMail);
+				// invalid('email');
+				// $('#emailLbl').attr("data-error",
+				// languages.script.current.settings.usedMail);
 				return false;
 			}
 		},
@@ -254,35 +281,35 @@ function savePassword(header, succesfull) {
 		oldPassword : $('#currentPassword').val(),
 		newPassword : $('#newPassword').val(),
 		newPasswordConfirm : $('#repeatPassword').val()
-	},
-			function(result) {
+	}, function(result) {
 		debugger;
-				clearPasswordFields();
-				if (result == 'wrongOldPass') {
-					invalid('currentPassword');
-				}
-				if (result == 'shortNewPass') {
-					invalid('newPassword');
-				}
-				if (result == 'passwordsDontMatch') {
-					invalid('repeatPassword');
-				}
-				if (result == 'true') {
-					$('#currentPassword').val('');
-					$('#newPassword').val('');
-					$('#repeatPassword').val('');
-//					  Materialize.toast(languages.script.current.settings.succesTitle, 3000);
-					  Materialize.toast(languages.script.current.settings.pass, 3000);
-//					$('#pwd_title').text(
-//							languages.script.current.settings.succesTitle);
-//					$('#pwd_title').css('color', 'green');
-//					setTimeout(function() {
-//						$('#pwd_title').text(
-//								languages.script.current.settings.oldHeader);
-//						$('#pwd_title').css('color', '#333333');
-//					}, 3000);
-				}
-			});
+		clearPasswordFields();
+		if (result == 'wrongOldPass') {
+			invalid('currentPassword');
+		}
+		if (result == 'shortNewPass') {
+			invalid('newPassword');
+		}
+		if (result == 'passwordsDontMatch') {
+			invalid('repeatPassword');
+		}
+		if (result == 'true') {
+			$('#currentPassword').val('');
+			$('#newPassword').val('');
+			$('#repeatPassword').val('');
+			// Materialize.toast(languages.script.current.settings.succesTitle,
+			// 3000);
+			Materialize.toast(languages.script.current.settings.pass, 3000);
+			// $('#pwd_title').text(
+			// languages.script.current.settings.succesTitle);
+			// $('#pwd_title').css('color', 'green');
+			// setTimeout(function() {
+			// $('#pwd_title').text(
+			// languages.script.current.settings.oldHeader);
+			// $('#pwd_title').css('color', '#333333');
+			// }, 3000);
+		}
+	});
 }
 
 $("#avatarImg").click(function() {

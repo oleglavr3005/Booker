@@ -316,14 +316,14 @@
 						<div id="req_status" class="row"
 							<c:if test="${request == null}"> style="display:none"
 						</c:if>>
-						<div class="col s3 offset-s3"><span id="settings_request_status_title">REQUEST STATUS : </span></div>
+						<div class="col s3 offset-s3"><span id="admin_request_status"></span></div>
 							<div class="col s3 offset-s1">
 								 <span
 									<c:if test="${request.status == 'DECLINED'}">style="display:none"
 								</c:if>
-									id="settings_request_status_pending">PENDING</span> <span
+									id="admin_request_status_pending">PENDING</span> <span
 									<c:if test="${request.status == 'PENDING'}"> style="display:none" </c:if>
-									id="settings_request_status_declined">DECLINED</span>
+									id="admin_request_status_declined">DECLINED</span>
 							</div>
 						</div>
 
