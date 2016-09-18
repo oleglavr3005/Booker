@@ -311,10 +311,10 @@
 			</div>
 
 			<div class="row">
-				<div class="col s3 offset-s1">
+				<div class="col s12 center-align">
 
 					<a id="btn_add_image" class="waves-effect waves-light btn"
-						style="background: #26A69A; color: #FFFFFF; margin: 0 auto;"
+						style="background: #26A69A; color: #FFFFFF; margin-right: 1rem"
 						onclick="pushInput()"></a>
 
 					<!-- 				INPUT -->
@@ -323,17 +323,12 @@
 						accept="image/*" />
 					<!-- 				END OF INPUT -->
 
-				</div>
-
-				<div class="col s3 offset-s1">
 					<a id="btnToMain" class="waves-effect waves-light btn"
-						style="background: #e68a00;; color: #FFFFFF; margin: 0 auto;"
+						style="background: #e68a00;; color: #FFFFFF; margin-right: 1rem"
 						onclick="promoteToMain()"><span id="btn_main"></span> </a>
-				</div>
-
-				<div class="col s3 offset-s1">
+						
 					<a id="btnRemovePhoto" class="waves-effect waves-light btn"
-						style="background: #F55151; color: #FFFFFF; margin: 0 auto;"
+						style="background: #F55151; color: #FFFFFF; "
 						onclick="removeRoomPhoto()"><span id="btn_remove_selected"></span></a>
 				</div>
 			</div>
