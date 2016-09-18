@@ -240,7 +240,7 @@ public class OrderDAO {
 		try (PreparedStatement st = connection.prepareStatement(SQL_BOOK_ALL_ORDERS_BY_USER)) {
 			st.setString(1, cardNumber);
 			st.setString(2, comment);
-			st.setInt(4, userId);
+			st.setInt(3, userId);
 			int result = st.executeUpdate();
 			if(result > 0) {
 				LOGGER.info("Orders by user booked");
@@ -256,7 +256,7 @@ public class OrderDAO {
 		try (PreparedStatement st = connection.prepareStatement(SQL_BOOK_ORDER_BY_ID)) {
 			st.setString(1, cardNumber);
 			st.setString(2, comment);
-			st.setInt(4, orderId);
+			st.setInt(3, orderId);
 			int result = st.executeUpdate();
 			if(result > 0) {
 				LOGGER.info("Order booked");
