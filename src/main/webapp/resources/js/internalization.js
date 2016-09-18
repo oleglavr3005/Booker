@@ -111,6 +111,9 @@
 		shoping_card_price_desc : "price, descending",
 		shopping_cart_modal_header : "Thanks for your order",
 		shopping_cart_click : "Go to your order list : ",
+		
+		hotel_conveniences : "Hotel Conveniences",
+		room_conveniences : "Room Conveniences",
 
 		room_concret_deleted : "Deleted",
 		room_concret_save : "Save",
@@ -425,6 +428,9 @@
 		shoping_card_price_desc : "спаданням ціни",
 		shopping_cart_modal_header : "Дякуємо за замовлення",
 		shopping_cart_click : "Переглянути список замовлень : ",
+		
+		hotel_conveniences : "Зручності готелю",
+		room_conveniences : "Зручності кімнати",
 
 		room_concret_deleted : "Видалити",
 		room_concret_save : "Зберегти",
