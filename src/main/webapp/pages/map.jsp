@@ -33,7 +33,6 @@
 </c:choose>
 
 <script>
-	hotelsJson = [];
 	hotelsJson = [ 
 	<c:forEach var="hotel" items="${hotels}">
 	    {"id" : "<c:out value="${hotel.id}"></c:out>",

@@ -110,6 +110,9 @@ public class HotelServlet extends HttpServlet {
 		
 		List<Feedback> feedbacks = new FeedbackService().getAllFeedbacksByHotel(id);
 		request.setAttribute("hotel", hotel);
+		List<Hotel> list =  new ArrayList<Hotel>();
+		list.add(hotel);
+		request.setAttribute("hotels",list);
 		
 		//////MAGIC
 		

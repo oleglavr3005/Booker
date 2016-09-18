@@ -67,7 +67,11 @@ b {
 		}
 	</script>
 
-
+<c:if test="${countOfRooms == 0}">
+	<h5 style="color: red; margin-bottom: 63px; text-align: center;">
+		<span id="hootel_without_rooms"></span>
+	</h5>
+</c:if>
 <c:forEach var="room" items="${rooms}">
 
 	<input id="ids${room.id}" type="hidden" value="${room.allRoomIds}" />
