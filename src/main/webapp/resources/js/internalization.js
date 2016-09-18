@@ -116,8 +116,8 @@
 		room_concret_save : "Save",
 		room_concret_freebook : "Freebook",
 		room_card_add_to_cart : "Add to cart",
-		room_card_need_login : "You need login",
-		room_card_count : "Total price?",
+		room_card_need_login : "You need to login",
+		room_card_count : "Total price",
 		room_card_info1 : "You will get 100% refund if you cancel the order at least in",
 		room_card_info2 : " days before moving in, after this date the sum will be only",
 		room_card_info3 : "Free book",
@@ -190,6 +190,8 @@
 		hotel_option_star_desc : "stars, descending",
 		hotel_option_people_asc : "people, ascending",
 		hotel_option_people_desc : "people, descending",
+		hotel_option_price_asc : "price, ascending",
+		hotel_option_price_desc : "price, descending",
 		hotel_price : "Price",
 		hotel_button_previous : "Previous",
 		hotel_button_next : "Next",
@@ -450,9 +452,9 @@
 		createComment : "Додати коментар",
 		hotel_button_previous : "Попередній",
 		hotel_button_next : "Наступний",
-		hiddenError : "Необхідно ввести початкову і кінцеву дату для бронювання кімнати.",
+		hiddenError : "Необхідно ввести початкову і кінцеву дату для бронювання номеру.",
 		room_card_add_to_cart : "В кошик",
-		room_card_need_login : "Увійдіть щоб забронювати",
+		room_card_need_login : "Увійдіть, щоб забронювати номер",
 		order_card_from : "З: ",
 		order_card_to : " До: ",
 		order_card_order : "Забронювати",
@@ -492,6 +494,8 @@
 		hotel_option_star_desc : "спаданням к-ті зірок",
 		hotel_option_people_asc : "зростанням к-ті  місць",
 		hotel_option_people_desc : "спаданням к-ті  місць",
+		hotel_option_price_asc : "зростанням ціни",
+		hotel_option_price_desc : "спаданням ціни",
 
 		map_button : "Карта",
 		search : "Пошук",
@@ -1183,6 +1187,46 @@
 			placeholder_hellopage_search : "Введіть назву міста чи готелю",
 		},
 	};
+	
+	var title = {
+			en : {
+				index : 'Booker | Search',
+				error404 : 'Booker | Page not found',
+				error500 : 'Booker | Internal server error',
+				home : 'Booker | Home',
+				settings : 'Booker | Settings',
+				feedbacks : 'Booker | My feedbacks',
+				order : 'Booker | Order',
+				orders : 'Booker | My orders',
+				cart : 'Booker | Shopping cart',
+				hotel_create : 'Booker | New hotel',
+				my_hotels : 'Booker | My hotels',
+				hotel_orders : 'Booker | Hotel orders',
+				new_room : 'Booker | New room',
+				room_edit : 'Booker | Room',
+				admin : 'Booker | Administration',
+				request : 'Booker | Request',
+			},
+			ua : {
+				index : 'Booker | Пошук',
+				error404 : 'Booker | Сторінку не знайдено',
+				error500 : 'Booker | Помилка сервера',
+				home : 'Booker | Головна',
+				settings : 'Booker | Налаштування',
+				feedbacks : 'Booker | Мої відгуки',
+				order : 'Booker | Замовлення',
+				orders : 'Booker | Мої замовлення',
+				cart : 'Booker | Кошик',
+				hotel_create : 'Booker | Новий готель',
+				my_hotels : 'Booker | Мої готелі',
+				hotel_orders : 'Booker | Замовлення на готель',
+				new_room : 'Booker | Новий номер',
+				room_edit : 'Booker | Номер',
+				admin : 'Booker | Адміністрування',
+				request : 'Booker | Запит'
+			},
+		};
+	
 	languages.en = en;
 	languages.ua = ua;
 	languages.data_error = data_error;
@@ -1191,12 +1235,14 @@
 	languages.script = script;
 	languages.script.current = script.en;
 	languages.placeholder = placeholder;
+	languages.title=title;
 })();
 
 function changeLanguage(language) {
 	if (language != 'en' && language != 'ua') {
 		language = 'en';
 	}
+	oldLanguage=currentLanguage;
 	currentLanguage = language;
 	languages.script.current = languages.script[currentLanguage];
 	$(document).ready(setTimeout('changeLanguageOnPage(currentLanguage)', 200));
@@ -1215,6 +1261,7 @@ function changeLanguageOnPage(language) {
 	changeLanguageOfDataTooltip(language);
 	changeLanguageOfDataPlaceholder(language);
 	changeLanguageOfDataPagination(language);
+	changeLanguageOnTitle(language);
 	updateDatePicker();
 }
 function changeLanguageOnTags(language) {
@@ -1228,6 +1275,20 @@ function changeLanguageOnTags(language) {
 		}
 	}
 }
+
+function changeLanguageOnTitle(language){
+	for ( var prop in languages) {
+		if (prop == oldLanguage) {
+			for ( var idElement in languages.title[prop]) {
+				
+					if	(languages.title[prop][idElement] == $(document).find("title").text())
+						$(document).find("title").text(languages.title[language][idElement]);
+			}
+			break;
+		}
+	}
+}
+
 function changeLanguageOfErrors(language) {
 	for ( var prop in languages) {
 		if (prop == language) {
