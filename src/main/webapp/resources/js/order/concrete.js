@@ -2,7 +2,6 @@
 function updateComment(orderId) {
 	var comment = $('#comment').val();
 	if (validateComment(comment)) {
-		alert("post to update");
 		$.post("../../change_order_comment", {
 			orderId : orderId,
 			comment : comment
@@ -16,12 +15,11 @@ function updateComment(orderId) {
 			}
 		});
 	} else {
-		alert("invalid");
 	}
 }
 
 function textIsValid(field) {
-	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’,?.!/'" ]*)$/;
+	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’,?=+-_.!/'" ]*)$/;
 	return re.test(field);
 }
 
