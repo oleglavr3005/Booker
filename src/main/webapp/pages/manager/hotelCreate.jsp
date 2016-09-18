@@ -158,7 +158,7 @@
 					<div class="col s7 offset-s1">
 						<!-- 						ADDRESS -->
 						<div class="input-field">
-							<input id="address" type="text" class="validate" length="145"
+							<input id="address" type="text" class="validate tooltip_address" length="145"
 								onkeyup="setHotelLocation()" > <label
 								id="addressLbl" data-error="ADDRESS IS INVALID" for="address"><span
 								id="admin_edit_address"></span> </label>
