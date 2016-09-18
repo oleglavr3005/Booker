@@ -60,11 +60,10 @@ function bookOrderCard(orderId, daysCount) {
 								}
 							});
 
-//							$('#book' + orderId).text("SUCCES");
 							$('#book' + orderId).attr('disabled', true);
 							$('#remove' + orderId).attr('disabled', true);
 						} else {
-//							$('#book' + orderId).text("FAIL");
+							 Materialize.toast(languages.script.current.cart.fail, 3000);
 							$('#book' + orderId).attr('disabled', true);
 						}
 					});
@@ -77,7 +76,6 @@ function bookOrderCard(orderId, daysCount) {
 						+
 
 						'<div class="row">'
-// + '<div class="col s3"><div style="margin-top:50px;"></div></div>'
 						+ '<div class="col s8 cardDetail offset-s1">'
 						+ '<div class="row" style="margin-bottom: 0px;"><div id="cardNumber' + orderId + '" class="col s8">'
 						+ '<input id="cardnum1' + orderId + '" style="margin-left: 25px; width: 60px; text-align: center;" maxlength="4" onkeyup="focusAnother(1,' + orderId + ')" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" type="text"/>'
@@ -100,13 +98,7 @@ function bookOrderCard(orderId, daysCount) {
 						
 						+ '<div class="col s2 offset-s1"><a id="makePurchase' + orderId + '" class="my-btn waves-effect waves-light btn' + 
 						'" style="background: #9FA1C4; margin-top:30px; color: #FFFFFF; font-family: "Times NewRoman", Times, serif;" onclick="bookOrderCard(' + orderId + ',' + daysCount + ')">' + 
-						'<span class="pay_button">PAY IT!</span></a></div>' + 
-
-//						+ '<div class="col s3">'
-//						+ '<div class="input-field" style="margin-top:50px;"><input id="phone' + orderId + '" ' 
-//						+ 'class="validate" value="' + phoneNumber + '"/><label ' 
-//						+ 'id="phone' + orderId + 'Lbl" data-error="" for="phone' + orderId + '">ENTER PHONE NUMBER</label></div>' 
-//						+'</div>'
+						'<span class="pay_button">' + languages.script.current.cart.pay + '!</span></a></div>' + 
 						
 						'</div>' + // form
 						'</div>'
@@ -151,11 +143,10 @@ function bookOrderCard(orderId, daysCount) {
 						}
 					});
 
-//					$('#book' + orderId).text("SUCCES");
 					$('#book' + orderId).attr('disabled', true);
 					$('#remove' + orderId).attr('disabled', true);
 				} else {
-//					$('#book' + orderId).text("FAIL");
+					 Materialize.toast(languages.script.current.cart.fail, 3000);
 					$('#book' + orderId).attr('disabled', true);
 				}
 			});
@@ -163,7 +154,7 @@ function bookOrderCard(orderId, daysCount) {
 	}
 	}
 	else {
-		alert("invalid comment");
+		//alert("invalid comment");
 	}
 }
 
@@ -289,7 +280,7 @@ function endDateIsValid() {
 }
 
 function phoneIsValid(phone,orderId) {
-	alert("phoneIsValid(" + phone + ');');
+	//alert("phoneIsValid(" + phone + ');');
 	if (phone.length <= 15 && phone.length >= 8 && validateNumber(phone)) {
 		valid('phone' + orderId);
 		return true;

@@ -910,6 +910,8 @@
 				addFail : "item cannot be added to cart",
 				removeSucces : "item was removed from cart",
 				removeFail : "item cannot be removed from cart",
+				pay : "Pay",
+				fail : "Room cannot be booked",
 			},
 			settings : {
 				confMail : "please confirm your new email",
@@ -1080,6 +1082,8 @@
 				addFail : "предмет додати в корзину не вдалося",
 				removeSucces : "предмет було видалено із корзини",
 				removeFail : "не вдалося вилучити предмет із корзини",
+				pay : "Оплатити",
+				fail : "Здійснити покупку не вдалося",
 			},
 			settings : {
 				confMail : "прошу підтвердити вказану пошту",
