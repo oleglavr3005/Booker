@@ -1,5 +1,4 @@
-var addToCartSucces = languages.script.current.cart.addSucces;
-var addToCartFail = languages.script.current.cart.addFail;
+
 
 function bookOrderCard(orderId, daysCount) {
 	var localComment = orderId == null ? $('#comment').val() : $(
@@ -189,12 +188,12 @@ function addToCart(roomId) {
 				page : pageNumber,
 				compareBy : compare
 			}, function(orders) {
-				 Materialize.toast(addToCartSucces, 3000);
+				 Materialize.toast(languages.script.current.cart.addSucces, 3000);
 				$('#switchContent').html(orders);
 				$(document).ready(updateLanguage());
 			});
 		} else {
-			 Materialize.toast(addToCartFail, 3000);
+			 Materialize.toast(languages.script.current.cart.addFail, 3000);
 			$('#btn' + roomId).text(languages.script.current.createOrder.error);
 			$('#btn' + roomId).attr('disabled', true);
 		}
