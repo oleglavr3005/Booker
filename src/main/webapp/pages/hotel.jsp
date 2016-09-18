@@ -260,7 +260,7 @@ div #sidebar-wrapper {
 							</div>
 						</div>
 						<div class="row">
-							<div class="col s6">
+							<div class="col s12">
 								<a id="index_search_location" class="tooltipped"
 									data-position="icon" data-tooltip=""
 									style="color: #0d0d0d; text-decoration: none; margin-left:-10px"><i
@@ -268,17 +268,19 @@ div #sidebar-wrapper {
 								<a id="hotel_map_button" class="tooltipped" data-position="icon"
 									data-tooltip="Show map" style="cursor: pointer;">${hotel.location}</a>
 							</div>
+						</div>
+						<div class="row" style="margin-bottom: 10px">
+							<div class="col s6">
+								<a class="tooltipped tooltip_phone_number" data-position="icon"
+									data-tooltip="" style="color: #0d0d0d; margin-left: -2px; text-decoration: none;"><i
+									class="fa fa-lg fa-phone-square invert" aria-hidden="true"></i></a>
+								<span>${hotel.phoneNumber}</span>
+							</div>
 							<div class="col s6">
 								<c:if test="${user.type == 'ADMIN'}">
 									<span class="hotel_manager"></span><span>: ${manager.firstName} ${manager.lastName} (id:${manager.id})</span>
 								</c:if>
 							</div>
-						</div>
-						<div class="row" style="margin-bottom: 10px">
-							<a class="tooltipped tooltip_phone_number" data-position="icon"
-								data-tooltip="" style="color: #0d0d0d; margin-left: -2px; text-decoration: none;"><i
-								class="fa fa-lg fa-phone-square invert" aria-hidden="true"></i></a>
-							<span>${hotel.phoneNumber}</span>
 						</div>
 						<div class="row" style="margin-bottom: 5px">
 							<a id="index_search_description" class="tooltipped"
@@ -360,9 +362,11 @@ div #sidebar-wrapper {
 			<!--           END OF SEARCH FORM -->
 
 		</div>
-		<!-- MAP ========================================================================== -->
-		<jsp:include page="map.jsp"></jsp:include>
-		<!-- MAP End======================================================================= -->
+		<div style="height: 400px">
+			<!-- MAP ========================================================================== -->
+			<jsp:include page="map.jsp"></jsp:include>
+			<!-- MAP End======================================================================= -->
+		</div>
 	</div>
 	<div class="container">
 		<div class="row">
@@ -371,9 +375,6 @@ div #sidebar-wrapper {
 					<c:if test="${countOfRooms > 0 }">
 						<span id="hotel_count_room"></span>
 						<span id="periodicals_number_for_all_users">${countOfRooms}</span>
-					</c:if>
-					<c:if test="${countOfRooms <= 0 }">
-						<span id="card_no_hotels"></span>
 					</c:if>
 				</h6>
 			</div>
