@@ -496,7 +496,6 @@ div #sidebar-wrapper {
 
 	<script type="text/javascript">
 	$(document).ready(function() {
-		changeLanguage("${language}");
 		document.title = languages.script.current.title.order +  ' №' + '${order.id}';
 	});
 	</script>

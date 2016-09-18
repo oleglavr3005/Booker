@@ -63,10 +63,20 @@
 		admin_page_message : "Message",
 		admin_page_no_email : "No email for this user",
 		admin_page_no_phone : "No phone for this user",
+		
+		admin_table_type_user : "user",
+		admin_table_type_manager : "manager",
+		admin_table_type_admin : "admin",
+		
 		admin_deleted : "Delete",
 
 		request_approve : "Approve",
 		request_decline : "Decline",
+		admin_request_name : "User name",
+		admin_request_status : "Request status",
+		admin_request_status_pending : "Pending",
+		admin_request_status_approved : "Approved",
+		admin_request_status_declined : "Declined",
 
 		manager_hotel_card_info : "Details",
 		manager_hotel_card_edit : "Edit",
@@ -355,8 +365,18 @@
 		admin_page_message : "Повідомлення",
 		admin_page_no_email : "e-mail відсутній",
 		admin_page_no_phone : "Телефон відсутній",
+		
+		admin_table_type_user : "користувач",
+		admin_table_type_manager : "менеджер",
+		admin_table_type_admin : "адміністратор",
+		
 		request_approve : "Підтвердити",
 		request_decline : "Відхилити",
+		admin_request_name : "Користувач",
+		admin_request_status : "Статус запиту",
+		admin_request_status_pending : "Очікується",
+		admin_request_status_approved : "Схвалено",
+		admin_request_status_declined : "Відхилено",
 
 		manager_hotel_card_info : "Деталі",
 		manager_hotel_card_edit : "Змінити",
@@ -860,10 +880,6 @@
 				cont : "To complete the registration, use a message with instructions sent on your e-mail",
 				fald : "Registration failed",
 			},
-			settings : {
-				succesTitle : "SUCCESFULLY CHANGED PASSWORD",
-				oldHeader : "OLD HEADER TEXT INSERT HERE",
-			},
 			message : {
 				success : "Success change feedback",
 				danger : "Fald change feedback",
@@ -888,10 +904,22 @@
 				reqSentAgain : "your request was sent again",
 				reqUpd : "your request was updated",
 				reqRmv : "your request was removed",
+				pass : "password was changed",
 			},
 			concrete : {
 				succ : "comment was updated",
 				fail : "comment cannot be updated",
+			},
+			request : {
+				approved : "request was approved",
+				declined : "request was declined",
+			},
+			admin : {
+				activated : "user was activated",
+				banned : "user was banned",
+			},
+			error : {
+				func : "function impossible",
 			}
 		},
 		ua : {
@@ -1022,10 +1050,6 @@
 				cont : "Для завершення реєстрації скористайтесь листом, надісланим на вказану e-mail адресу",
 				fald : "Помилка реєстрації",
 			},
-			settings : {
-				succesTitle : "Успішна зміна пароля",
-				oldHeader : "OLD HEADER TEXT INSERT HERE ???",
-			},
 			message : {
 				success : "Редагування відгуку пройшло успішно",
 				danger : "Помилка редагування відгуку",
@@ -1050,10 +1074,22 @@
 				reqSentAgain : "Ваш запит було повторно надіслано на розгляд",
 				reqUpd : "Ваш запит було оновлено",
 				reqRmv : "Ваш запит було видалено",
+				pass : "новий пароль збережено",
 			},
 			concrete : {
 				succ : "коментар було оновлено",
 				fail : "коментар оновити не вдалося",
+			},
+			request : {
+				approved : "запит підтверджено",
+				declined : "запит відхилено",
+			},
+			admin : {
+				activated : "користувача розбанено",
+				banned : "користувача забанено",
+			},
+			error : {
+				func : "дія неможлива",
 			}
 		},
 	};

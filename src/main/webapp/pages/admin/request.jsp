@@ -104,17 +104,17 @@
 	<div class="container" style="margin-top: 20px">
 
 		<div class="row">
-			<div class="col s3">
+			<div class="col s4">
 				<!-- 					PHOTO -->
 				<img id="Img"
-					style="height: 200px; padding: 10px; width: 200px;"
+					style="max-height: 200px; padding: 10px; max-width: 260px;"
 					src="<i:urlToImage url="${userPhoto}" />">
 				<!-- 					END OF PHOTO -->
 
 			</div>
 
 
-			<div class="col offset-s2 s7">
+			<div class="col s7" style="margin-top : 15px;">
 				<div class="container-fluid">
 
 					<div class="row">
@@ -122,7 +122,7 @@
 
 							<!-- 						NAME -->
 
-							<span id="request_name"></span> : <span>${firstName} </span> <span>
+							<span id="admin_request_name"></span> : <span>${firstName} </span> <span>
 								${lastName}</span>
 
 							<!-- 							END OF NAME -->
@@ -135,7 +135,7 @@
 
 							<!-- 						DATE -->
 
-							<span id="request_date"></span> : <span>${request.requestDate}
+							<span id="admin_page_reqDate"></span> : <span>${request.requestDate}
 							</span> <!-- 							END OF DATE -->
 						</div>
 					</div>
@@ -145,15 +145,15 @@
 
 							<!-- 						STATUS -->
 
-							<span id="request_status"></span> : 
+							<span id="admin_request_status"></span> : 
 							<c:if test="${request.status == 'APPROVED'}">
-								<span class="request_status_approved"></span>
+								<span class="admin_request_status_approved"></span>
 							</c:if>
 							<c:if test="${request.status == 'DECLINED'}">
-								<span class="request_status_declined"></span>
+								<span class="admin_request_status_declined"></span>
 							</c:if>
 							<c:if test="${request.status == 'PENDING'}">
-								<span class="request_status_pending"></span>
+								<span class="admin_request_status_pending"></span>
 							</c:if>
 						
 							 <!-- 							END OF STATUS -->
@@ -171,7 +171,7 @@
 			<div class="col s12">
 
 				<!-- 						MESSAGE -->
-				<div style="font-size: 15px; padding: 10px; 	border: solid 1px #000; border-radius: 10px; background-color: lightgray;">${request.message}</div>
+				<div style="min-height:150px; font-size: 15px; padding: 10px; 	border: solid 1px #000; border-radius: 10px; background-color: lightgray;">${request.message}</div>
 
 				<!-- 							END OF MESSAGE -->
 
@@ -180,7 +180,7 @@
 
 
 		<c:if test="${request.status == 'PENDING'}">
-			<div class="row">
+			<div id="btn_row" class="row">
 				<div class="col s3 offset-s2">
 					<a class="waves-effect waves-light btn" id="create_button"
 						onclick="chageStatus(${request.id},true,'../../')"
@@ -197,6 +197,8 @@
 				</div>
 			</div>
 		</c:if>
+		
+		<c:if test="${request.status != 'PENDING'}"><div style="height: 70px"></div></c:if>
 
 	</div>
 
@@ -210,7 +212,6 @@
 
 	<script type="text/javascript">
 	$(document).ready(function() {
-		changeLanguage("${language}");
 		document.title = languages.script.current.title.request +  ' №' + '${request.id}';
 	});
 	</script>

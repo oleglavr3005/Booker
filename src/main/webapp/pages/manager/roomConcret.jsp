@@ -381,7 +381,6 @@
 
 	<script type="text/javascript">
 	$(document).ready(function() {
-		changeLanguage("${language}");
 		document.title = languages.script.current.title.room_edit +  ' №' + '${room.number}';
 	});
 	</script>

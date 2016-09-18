@@ -440,7 +440,6 @@
 
 	<script type="text/javascript">
 	$(document).ready(function() {
-		changeLanguage("${language}");
 		document.title = languages.script.current.title.new_room;
 	});
 	</script>
