@@ -1,5 +1,5 @@
-
 function createRoom() {
+	debugger;
 	var img = $('#photos').val();
 	if (validate(true)) {
 		$.get('../add_room', {
@@ -14,7 +14,7 @@ function createRoom() {
 
 			hasWiFi : document.getElementById('hasWiFi').checked,
 			hasShower : document.getElementById('hasShower').checked,
-			hasTv : document.getElementById('hasTv').checked,			
+			hasTv : document.getElementById('hasTv').checked,
 			hasCondition : document.getElementById('hasCondition').checked,
 			hasBalcony : document.getElementById('hasBalcony').checked,
 			freeBook : document.getElementById('freeBook').checked,
@@ -25,16 +25,18 @@ function createRoom() {
 
 		}, function(result) {
 			if (result != 'error') {
-				Materialize.toast(languages.script.current.room.createSucces, 3000);
-//				$('#create_error').css('color', 'green');
-//				$('#create_error').text(languages.script.current.hotel.createSucces);
+				Materialize.toast(languages.script.current.room.createSucces,
+						3000);
+				// $('#create_error').css('color', 'green');
+				// $('#create_error').text(languages.script.current.hotel.createSucces);
 				$('#create_button').attr("disabled", true);
 				setTimeout(function() {
 					document.location.href = '/booker/cabinet/room/' + result;
 				}, 2000);
 			} else {
-				Materialize.toast(languages.script.current.room.createFail, 3000);
-//				$('#create_error').text(languages.script.current.hotel.createFail);
+				Materialize.toast(languages.script.current.room.createFail,
+						3000);
+				// $('#create_error').text(languages.script.current.hotel.createFail);
 			}
 		});
 	} else {
@@ -43,13 +45,12 @@ function createRoom() {
 }
 
 function updateRoom(room) {
-	var hotel = $('#roomId').val();
+	debugger;
 	var x = 0;
 	var y = 0;
-	if (validate(false)) {
+	if (validate(false,room)) {
 		$.get('../../edit_room', {
 			roomId : room,
-			hotelId : hotel,
 			type : $('#roomType').val(),
 			number : $('#number').val(),
 			bedsCount : $('#single').val(),
@@ -59,7 +60,7 @@ function updateRoom(room) {
 
 			hasWiFi : document.getElementById('hasWiFi').checked,
 			hasShower : document.getElementById('hasShower').checked,
-			hasTv : document.getElementById('hasTv').checked,			
+			hasTv : document.getElementById('hasTv').checked,
 			hasCondition : document.getElementById('hasCondition').checked,
 			hasBalcony : document.getElementById('hasBalcony').checked,
 			freeBook : document.getElementById('freeBook').checked,
@@ -69,15 +70,17 @@ function updateRoom(room) {
 			percentage : $('#percentage').val(),
 		}, function(result) {
 			if (result != 'false') {
-				Materialize.toast(languages.script.current.room.updateSucces, 3000);
-//				$('#create_error').css('color', 'green');
-//				$('#create_error').text(languages.script.current.hotel.updateSucces);
+				Materialize.toast(languages.script.current.room.updateSucces,
+						3000);
+				// $('#create_error').css('color', 'green');
+				// $('#create_error').text(languages.script.current.hotel.updateSucces);
 				setTimeout(function() {
 					$('#create_error').visibility = "none";
 				}, 2000);
 			} else {
-				Materialize.toast(languages.script.current.room.updateFail, 3000);
-//				$('#create_error').text(languages.script.current.hotel.updateFail);
+				Materialize.toast(languages.script.current.room.updateFail,
+						3000);
+				// $('#create_error').text(languages.script.current.hotel.updateFail);
 			}
 		});
 	} else {
@@ -85,10 +88,16 @@ function updateRoom(room) {
 	}
 }
 
-function validate(flag) {
+function validate(flag,id) {
+	debugger;
 	var ok = true;
-	ok = checkRoomNumber($('#hotelId').val(), $('#number').val()) && ok;
-	ok = checkNumberRegex($('#number').val(),flag) && ok;
+	if (flag){
+		ok = checkRoomNumberCreate($('#hotelId').val(), $('#number').val()) && ok;
+	}
+	else{
+		ok = checkRoomNumberUpdate(id, $('#number').val()) && ok;
+	}
+	ok = checkNumberRegex($('#number').val(), flag) && ok;
 	ok = numberIsValid('single', 0, 20) && ok;
 	ok = numberIsValid('double', 0, 20) && ok;
 	ok = checkBedsCount('single', 'double');
@@ -98,7 +107,7 @@ function validate(flag) {
 	return ok;
 }
 
-function checkBeds(){
+function checkBeds() {
 	checkBedsCount('single', 'double');
 }
 
@@ -107,22 +116,29 @@ function validateNumber(field) {
 	return re.test(field);
 }
 
-
 function validateSingleNumber(field) {
 	var re = /^[1-9][0-9]*[a-zа-яіїє]?$/;
 	return re.test(field);
 }
 
-function checkNumberRegex(number,flag){
+function checkNumberRegex(number, flag) {
+	debugger;
 	if (number.length >= 1) {
-		if (flag && validateNumber(number)){
-			valid('number');
-			return true;
-		}
-		else {
-			if (validateSingleNumber(number)){
+		if (flag) {
+			if (validateNumber(number)) {
 				valid('number');
 				return true;
+			} else {
+				invalid('number');
+				return false;
+			}
+		} else {
+			if (validateSingleNumber(number)) {
+				valid('number');
+				return true;
+			} else {
+				invalid('number');
+				return false;
 			}
 		}
 	} else {
@@ -142,7 +158,8 @@ function checkBedsCount(field1, field2) {
 	}
 }
 
-function checkRoomNumber(id, nmb) {
+function checkRoomNumberCreate(id, nmb) {
+	debugger;
 	var isValid = true;
 	$.ajax({
 		async : false,
@@ -152,17 +169,53 @@ function checkRoomNumber(id, nmb) {
 		data : {
 			"hotelId" : id,
 			"roomNumber" : nmb
-		}, success : function(data) {
+		},
+		success : function(data) {
 			isValid = (data == "true");
 			if (!isValid) {
 				invalid('number');
-				$('#numberLbl').attr("data-error", languages.script.current.hotel.numberBusy);
+				$('#numberLbl').attr("data-error",
+						languages.script.current.hotel.numberBusy);
 			} else {
 				valid('number');
 			}
-		}, error : function(data) {
+		},
+		error : function(data) {
 			isValid = false;
-			$('#numberLbl').attr("data-error", languages.script.current.hotel.numberBusy);
+			$('#numberLbl').attr("data-error",
+					languages.script.current.hotel.numberBusy);
+			invalid('number');
+		}
+	});
+	return isValid;
+}
+
+function checkRoomNumberUpdate(id, nmb) {
+	debugger;
+	var isValid = true;
+	$.ajax({
+		async : false,
+		url : '../check_room_number',
+		type : 'get',
+		dataType : 'text',
+		data : {
+			"roomId" : id,
+			"roomNumber" : nmb
+		},
+		success : function(data) {
+			isValid = (data == "true");
+			if (!isValid) {
+				invalid('number');
+				$('#numberLbl').attr("data-error",
+						languages.script.current.hotel.numberBusy);
+			} else {
+				valid('number');
+			}
+		},
+		error : function(data) {
+			isValid = false;
+			$('#numberLbl').attr("data-error",
+					languages.script.current.hotel.numberBusy);
 			invalid('number');
 		}
 	});
@@ -313,93 +366,84 @@ var p1 = "YOU WILL GET 100% REFUND IN CASE OF CANCELING ORDER ONLY IN ";
 var p2 = " DAYS BEFORE MOVING IN, AFTER THESE PERIOD REFUND WILL BE ONLY ";
 var p3 = "FREE_BOOK";
 
-function setRoomType(){
+function setRoomType() {
 	var text = $('#roomType').val();
-	if (text == "STANDART"){
+	if (text == "STANDART") {
 		$('#room_create_card_type').text(roomStandart);
-	}
-	else {
-		if (text == "LUX"){
+	} else {
+		if (text == "LUX") {
 			$('#room_create_card_type').text(roomLux);
-		}
-		else {
-			$('#room_create_card_type').text(roomDelux );
+		} else {
+			$('#room_create_card_type').text(roomDelux);
 		}
 	}
 }
 
-function setRoomFood(){
+function setRoomFood() {
 	var text = $('#foodType').val();
-	if (text == "NONE"){
+	if (text == "NONE") {
 		$('#room_create_card_food').text(roomFoodNone);
-	}
-	else {
-		if (text == "BREAKFAST"){
+	} else {
+		if (text == "BREAKFAST") {
 			$('#room_create_card_food').text(roomFoodBreak);
-		}
-		else {
-			if (text == "TWICE"){
+		} else {
+			if (text == "TWICE") {
 				$('#room_create_card_food').text(roomFoodTwice);
-			}
-			else {
-				$('#room_create_card_food').text(roomFoodFull );
+			} else {
+				$('#room_create_card_food').text(roomFoodFull);
 			}
 		}
 	}
 }
 
-function setRoomSingle(){
+function setRoomSingle() {
 	var text = $('#single').val();
 	$('#singleCountCard').html(text == '' ? 0 : text);
 }
 
-function setRoomDouble(){
+function setRoomDouble() {
 	var text = $('#double').val();
 	$('#doubleCountCard').html(text == '' ? 0 : text);
 }
 
-function setRoomPrice(){
+function setRoomPrice() {
 	var text = $('#price').val();
 	$('#room_create_card_price').html(text == '' ? 0 : text);
 }
 
-function setRoomBook(){
+function setRoomBook() {
 	var freeBook = document.getElementById('freeBook').checked;
 	var container = $('#content');
 	$('#details_panel').show();
 	var content = p3;
-	if (freeBook == true){
+	if (freeBook == true) {
 		container.html(content);
 		container.css("border-color", "green");
 		container.css("background-color", "rgba(0, 255, 0, 0.3)");
-	}
-	else{
-		content = p1 + ($('#days').val() < 1 ? 0 : $('#days').val()) + p2 + ($('#percentage').val() < 1 ? 0 : $('#percentage').val()) + "%";
+	} else {
+		content = p1 + ($('#days').val() < 1 ? 0 : $('#days').val()) + p2
+				+ ($('#percentage').val() < 1 ? 0 : $('#percentage').val())
+				+ "%";
 		container.html(content);
 		container.css("border-color", "red");
 		container.css("background-color", "rgba(255, 0, 0, 0.3)");
 	}
 }
 
-function setRoomCon(nmb,box){
-	var elem = $('#con'+nmb);
+function setRoomCon(nmb, box) {
+	var elem = $('#con' + nmb);
 	var flag = document.getElementById('' + box).checked;
-	if (flag){
+	if (flag) {
 		elem.show();
-	}
-	else {
+	} else {
 		elem.hide();
 	}
 }
 
-function init(){
+function init() {
 	$('#room_create_card_type').text(roomStandart);
 	$('#room_create_card_food').text(roomFoodNone);
 	setRoomSingle();
 	setRoomDouble();
 	setRoomPrice();
 }
-
-
-
-

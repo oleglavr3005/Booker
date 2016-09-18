@@ -220,8 +220,7 @@ div #sidebar-wrapper {
 			<!-- 						DESC -->
 			<div class="input-field">
 
-				<textarea placeholder=""
-					style="padding-bottom: 10px; padding-top: 10px; padding-left: 15px;"
+				<textarea style="padding-bottom: 10px; padding-top: 10px; padding-left: 15px;"
 					id="desc" class="materialize-textarea" class="validate"
 					length="999">${hotel.desc}</textarea>
 				<label id="descLbl" data-error="${fmtName}" for="desc"><span
