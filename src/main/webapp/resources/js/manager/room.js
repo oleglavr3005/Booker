@@ -291,6 +291,8 @@ function updateRoomPhotos(id) {
 			type : 'POST',
 			success : function(hotels) {
 				$('#switchContent').html(hotels);
+				$('#btnRemovePhoto').show();
+				$('#btnToMain').show();
 			}
 		});
 	}
