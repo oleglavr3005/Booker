@@ -210,7 +210,7 @@
 							<div class="row" style="margin-bottom: 0px">
 								<input onkeyup="setRoomPrice()" onchange="setRoomPrice()" id="price" type="number" class="validate"
 									name="percentage" min=1 max=1000000> <label
-									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><span
+									id="priceLbl" data-error="${fmtPeople}" for="price"><span
 									id="room_concrete_price"></span> </label>
 							</div>
 

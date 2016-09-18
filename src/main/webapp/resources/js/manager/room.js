@@ -1,5 +1,4 @@
 function createRoom() {
-	debugger;
 	var img = $('#photos').val();
 	if (validate(true)) {
 		$.get('../add_room', {
@@ -45,10 +44,10 @@ function createRoom() {
 }
 
 function updateRoom(room) {
-	debugger;
+	$('#create_error').hide();
 	var x = 0;
 	var y = 0;
-	if (validate(false,room)) {
+	if (validate(false, room)) {
 		$.get('../../edit_room', {
 			roomId : room,
 			type : $('#roomType').val(),
@@ -84,26 +83,33 @@ function updateRoom(room) {
 			}
 		});
 	} else {
+		$('#create_error').show();
 		$('#create_error').text(languages.script.current.hotel.wrongData);
 	}
 }
 
-function validate(flag,id) {
+function validate(flag, id) {
 	debugger;
 	var ok = true;
 	ok = checkNumberRegex($('#number').val(), flag) && ok;
-	if (flag){
-		ok = checkRoomNumberCreate($('#hotelId').val(), $('#number').val()) && ok;
-	}
-	else{
-		ok = checkRoomNumberUpdate(id, $('#number').val()) && ok;
+	if (flag) {
+		if (ok) {
+			ok = checkRoomNumberCreate($('#hotelId').val(), $('#number').val())
+					&& ok;
+		}
+	} else {
+		if (ok) {
+			ok = checkRoomNumberUpdate(id, $('#number').val()) && ok;
+		}
 	}
 	ok = numberIsValid('single', 0, 20) && ok;
 	ok = numberIsValid('double', 0, 20) && ok;
 	ok = checkBedsCount('single', 'double') && ok;
-	ok = numberIsValid('days', 0, 365) && ok;
 	ok = numberIsValid('price', 1, 99999999) && ok;
-	ok = numberIsValid('percentage', 0, 99) && ok;
+	if (!document.getElementById('freeBook').checked){
+		ok = numberIsValid('percentage', 1, 99) && ok;
+		ok = numberIsValid('days', 1, 365) && ok;
+	}
 	return ok;
 }
 
@@ -122,7 +128,6 @@ function validateSingleNumber(field) {
 }
 
 function checkNumberRegex(number, flag) {
-	debugger;
 	if (number.length >= 1) {
 		if (flag) {
 			if (validateNumber(number)) {
@@ -153,13 +158,13 @@ function checkBedsCount(field1, field2) {
 	if (single + double == 0) {
 		invalid('single');
 		invalid('double');
+		return false;
 	} else {
 		return true;
 	}
 }
 
 function checkRoomNumberCreate(id, nmb) {
-	debugger;
 	var isValid = true;
 	$.ajax({
 		async : false,
@@ -191,7 +196,6 @@ function checkRoomNumberCreate(id, nmb) {
 }
 
 function checkRoomNumberUpdate(id, nmb) {
-	debugger;
 	var isValid = true;
 	$.ajax({
 		async : false,
