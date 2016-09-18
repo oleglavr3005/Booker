@@ -143,7 +143,8 @@
 								<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
 								src="<i:urlToImage url="${user.image}" />">
 							</a> <input style="margin-top: 60px; display: none" type="file"
-								id="avatarInput" onchange="showPhoto()" accept="image/*" />
+								id="avatarInput" onchange="showPhoto()" accept="image/*" /> <label
+								style="padding-left: 10px;" id="settings_avatar_info"></label>
 						</div>
 						<div class="col s7 offset-s1">
 
@@ -151,14 +152,16 @@
 								<div class="input-field col s10">
 									<input id="name" type="text" class="validate"
 										value="${user.firstName}" length="45"> <label
-										id="nameLbl" data-error="${fmtName}" for="name"><span id="settings_enter_name"></span> </label>
+										id="nameLbl" data-error="${fmtName}" for="name"><span
+										id="settings_enter_name"></span> </label>
 								</div>
 							</div>
 							<div class="row">
 								<div class="input-field col s10">
 									<input id="surname" type="text" class="validate"
 										value="${user.lastName}" length="45"> <label
-										id="surnameLbl" data-error="${fmtSurname}" for="surname"><span id="settings_enter_surname"></span></label>
+										id="surnameLbl" data-error="${fmtSurname}" for="surname"><span
+										id="settings_enter_surname"></span></label>
 								</div>
 							</div>
 						</div>
@@ -225,12 +228,11 @@
 
 					<div class="row fields">
 						<div class="input-field col s12">
-							
+
 							<input id="phoneNumber" type="text" class="validate"
 								value="${user.phoneNumber}" length="15"> <label
-								id="phoneLbl" data-error="${fmtName}"
-								for="phoneNumber"><span id="settings_enter_phone"></span>
-							</label>
+								id="phoneLbl" data-error="${fmtName}" for="phoneNumber"><span
+								id="settings_enter_phone"></span> </label>
 
 							<p>
 								<input type="checkbox" class="filled-in" id="phoneCheckBox"
@@ -242,26 +244,25 @@
 							</p>
 						</div>
 					</div>
-					
+
 					<div class="row" style="margin-top: 20px;">
 						<div class="col s3 offset-s9">
-							<a class="waves-effect waves-light btn"
-								onclick="savePhoneData()"
+							<a class="waves-effect waves-light btn" onclick="savePhoneData()"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
 								class="settings_enter_save"></span> </a>
 						</div>
 					</div>
 
 					<div class="divider" style="margin-bottom: 15px;"></div>
-					
+
 
 
 					<div class="row">
 						<div class="input-field col s12">
 							<input id="email" type="email" class="validate"
 								<c:if test="${user.email.substring(user.email.length()-1) != '*'}"> value="${user.email}"</c:if>
-								length="80"> <label
-								id="emailLbl" data-error="${fmtMail}" for="email"><span
+								length="80"> <label id="emailLbl"
+								data-error="${fmtMail}" for="email"><span
 								id="settings_enter_email"></span></label>
 
 							<p>
@@ -316,9 +317,11 @@
 						<div id="req_status" class="row"
 							<c:if test="${request == null}"> style="display:none"
 						</c:if>>
-						<div class="col s3 offset-s3"><span id="admin_request_status"></span></div>
+							<div class="col s3 offset-s3">
+								<span id="admin_request_status"></span>
+							</div>
 							<div class="col s3 offset-s1">
-								 <span
+								<span
 									<c:if test="${request.status == 'DECLINED'}">style="display:none"
 								</c:if>
 									id="admin_request_status_pending">PENDING</span> <span
@@ -337,14 +340,15 @@
 						</div>
 
 						<div class="row" style="margin-top: 20px;">
-							<div id="cancelRequest" style = "<c:if test="${request == null}"> visibility: hidden; </c:if>" class="col s2">
+							<div id="cancelRequest"
+								style="<c:if test="${request == null}"> visibility: hidden; </c:if>"
+								class="col s2">
 								<a class="waves-effect waves-light btn"
 									onclick="createRequest(false)"
-									style="background: #F55151; 
-									color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
+									style="background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
 									class="subscribes_table_remove"></span></a>
 							</div>
-							
+
 							<div class="col s2 offset-s8">
 								<a id="createRequest" class="waves-effect waves-light btn"
 									onclick="createRequest(true)"
@@ -376,10 +380,10 @@
 			$('input#name, input#surname, input#email').characterCounter();
 		});
 	</script>
-<script type="text/javascript">
-$(document).ready(function() {
-	document.title = languages.script.current.title.settings;
-});
-</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			document.title = languages.script.current.title.settings;
+		});
+	</script>
 </body>
 </html>
