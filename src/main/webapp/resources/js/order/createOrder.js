@@ -96,7 +96,7 @@ function bookOrderCard(orderId, daysCount) {
 
 						'</div>' // col s8
 						
-						+ '<div class="col s2 offset-s1"><a id="makePurchase' + orderId + '" class="my-btn waves-effect waves-light btn' + 
+						+ '<div class="col s2"><a id="makePurchase' + orderId + '" class="my-btn waves-effect waves-light btn' + 
 						'" style="background: #9FA1C4; margin-top:30px; color: #FFFFFF; font-family: "Times NewRoman", Times, serif;" onclick="bookOrderCard(' + orderId + ',' + daysCount + ')">' + 
 						'<span class="pay_button">' + languages.script.current.cart.pay + '!</span></a></div>' + 
 						
