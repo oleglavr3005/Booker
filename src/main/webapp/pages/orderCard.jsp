@@ -100,7 +100,7 @@ b {
 								<a href='<i:urlToImage url="${order.room.photos[0].img}" />'
 									data-gallery="#blueimp-gallery-${order.id}"> <img
 									src="<i:urlToImage url="${order.room.photos[0].img }" />"
-									style="height: 170px; width: 230px; padding: 10px;">
+									style="width: 100%; padding: 10px;">
 								</a>
 
 								<div style="display: none;">
@@ -125,7 +125,7 @@ b {
 								<div class="row" style="margin-top: 15px; margin-bottom: 0px">
 									<div class="col s6">
 										<div class="row">
-											<a
+											<a style="font-size: 1.3rem;"
 												href="${pageContext.servletContext.contextPath}/hotel/${order.hotel.id}">${order.hotel.name}</a>
 										</div>
 										<div class="row" style="margin-top: 15px;">
@@ -186,7 +186,19 @@ b {
 										<div class="row">
 											<a class="tooltipped tooltip_food" data-position="icon"
 												data-tooltip="" style="color: #0d0d0d;"><i
-												class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${order.room.food}</span>
+												class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> 
+												<c:if test="${order.room.food == 'NONE'}">
+													<span class="subscribes_table_roomfood_none"></span>
+												</c:if>
+												<c:if test="${room.food == 'BREAKFAST'}">
+													<span class="subscribes_table_roomfood_breakfast"></span>
+												</c:if>
+												<c:if test="${room.food == 'TWICE'}">
+													<span class="subscribes_table_roomfood_twice"></span>
+												</c:if>
+												<c:if test="${room.food == 'FULL'}">
+													<span class="subscribes_table_roomfood_full"></span>
+												</c:if>
 										</div>
 
 										<div class="row">
