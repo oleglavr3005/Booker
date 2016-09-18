@@ -362,7 +362,7 @@ div #sidebar-wrapper {
 			<!--           END OF SEARCH FORM -->
 
 		</div>
-		<div style="height: 400px">
+		<div>
 			<!-- MAP ========================================================================== -->
 			<jsp:include page="map.jsp"></jsp:include>
 			<!-- MAP End======================================================================= -->
