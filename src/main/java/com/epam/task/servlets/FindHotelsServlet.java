@@ -119,13 +119,13 @@ public class FindHotelsServlet extends HttpServlet {
 		try {
 			startDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(session.getAttribute("startDate").toString()).getTime());
 		} catch (ParseException e) {
-        	LOGGER.error("Exception while parsing date " + session.getAttribute("startDate").toString(), e);
+        	LOGGER.error("Exception while parsing date " + session.getAttribute("startDate"), e);
 			startDate = new Timestamp(new Date().getTime());
 		}
 		try {
 			endDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(session.getAttribute("endDate").toString()).getTime());
 		} catch (ParseException e) {
-        	LOGGER.error("Exception while parsing date " + session.getAttribute("endDate").toString(), e);
+        	LOGGER.error("Exception while parsing date " + session.getAttribute("endDate"), e);
 			endDate = new Timestamp(new Date().getTime());
 		}
 		

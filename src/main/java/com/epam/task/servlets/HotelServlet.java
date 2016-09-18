@@ -88,13 +88,13 @@ public class HotelServlet extends HttpServlet {
 		try {
 			startDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(session.getAttribute("startDate").toString()).getTime());
 		} catch (Exception e) {
-        	LOGGER.error("Exception while parsing date " + session.getAttribute("startDate").toString(), e);
+        	LOGGER.error("Exception while parsing date " + session.getAttribute("startDate"), e);
 			startDate = new Timestamp(0);
 		}
 		try {
 			endDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(session.getAttribute("endDate").toString()).getTime());
 		} catch (Exception e) {
-        	LOGGER.error("Exception while parsing date " + session.getAttribute("endDate").toString(), e);
+        	LOGGER.error("Exception while parsing date " + session.getAttribute("endDate"), e);
         	endDate = new Timestamp(0);
 		}
 
