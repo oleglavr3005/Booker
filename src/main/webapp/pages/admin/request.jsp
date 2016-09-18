@@ -212,7 +212,6 @@
 
 	<script type="text/javascript">
 	$(document).ready(function() {
-		changeLanguage("${language}");
 		document.title = languages.script.current.title.request +  ' №' + '${request.id}';
 	});
 	</script>
