@@ -234,7 +234,7 @@ b {
 						<div class="row" style="margin-top: 39px; margin-right: 10px">
 							<a class="waves-effect waves-light btn"
 								href="${pageContext.servletContext.contextPath}/cabinet/my_hotels/${hotel.id}"
-								style="background: #e68a00; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;
+								style=" width: 100%; background: #e68a00; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;
 								<c:if test="${user.id != hotel.managerId}">visibility: hidden</c:if>
 								"><span
 								class="manager_hotel_card_edit"></span></a> <a

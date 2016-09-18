@@ -63,7 +63,7 @@ function getInfoFromGoogle(str, id) {
 function createHotelAfter() {
 	var img = $('#photos').val();
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
-	if (validate()) {
+	if (validate() && addressIsValid(hotel_location)) {
 		$.get('../add_hotel', {
 			name : $('#name').val(),
 			stars : star,
@@ -99,7 +99,7 @@ function createHotelAfter() {
 
 function updateHotelAfter(hotelId) {
 	var star = $('#rating').val() == '' ? 1 : $('#rating').val();
-	if (validate()) {
+	if (validate() && addressIsValid(hotel_location)) {
 		$.get('../../edit_hotel', {
 			hotelId : hotelId,
 			name : $('#name').val(),
@@ -134,7 +134,6 @@ function validate() {
 	var ok = true;
 	ok = nameIsValid($('#name').val()) && ok;
 	ok = starsIsValid($('#rating').val()) && ok;
-	ok = addressIsValid(hotel_location) && ok;
 	ok = phoneIsValid($('#phone').val()) && ok;
 	ok = descIsValid($('#desc').val()) && ok;
 	return ok;
