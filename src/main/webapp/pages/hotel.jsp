@@ -263,7 +263,7 @@ div #sidebar-wrapper {
 							<div class="col s12">
 								<a id="index_search_location" class="tooltipped"
 									data-position="icon" data-tooltip=""
-									style="color: #0d0d0d; text-decoration: none; margin-left:-10px"><i
+									style="color: #0d0d0d; text-decoration: none; margin-left:-1rem"><i
 									class="fa fa-lg icon-map-marker invert" aria-hidden="true"></i></a>
 								<a id="hotel_map_button" class="tooltipped" data-position="icon"
 									data-tooltip="Show map" style="cursor: pointer;">${hotel.location}</a>
@@ -272,7 +272,7 @@ div #sidebar-wrapper {
 						<div class="row" style="margin-bottom: 10px">
 							<div class="col s6">
 								<a class="tooltipped tooltip_phone_number" data-position="icon"
-									data-tooltip="" style="color: #0d0d0d; margin-left: -2px; text-decoration: none;"><i
+									data-tooltip="" style="color: #0d0d0d; margin-left: -1rem; text-decoration: none;"><i
 									class="fa fa-lg fa-phone-square invert" aria-hidden="true"></i></a>
 								<span>${hotel.phoneNumber}</span>
 							</div>
@@ -285,7 +285,7 @@ div #sidebar-wrapper {
 						<div class="row" style="margin-bottom: 5px">
 							<a id="index_search_description" class="tooltipped"
 								data-position="icon" data-tooltip=""
-								style="color: #0d0d0d; cursor: default; margin-left: -4px;"><i
+								style="color: #0d0d0d; cursor: default; margin-left: -0.4rem;"><i
 								class="material-icons invert" style="font-size: 20px;">receipt</i></a>
 							<span>${hotel.desc}</span>
 						</div>
