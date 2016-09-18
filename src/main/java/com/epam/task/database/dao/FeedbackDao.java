@@ -18,7 +18,7 @@ public class FeedbackDao {
 	
 	private final String SELECT_ALL_FEEDBACK = "SELECT * FROM feedback";
 	private final String INSERT_FEEDBACK = "INSERT INTO feedback (user_id, hotel_id, rating, title, comment, date) VALUES (?, ?, ?, ?, ?, ?)";
-	private final String UPDATE_FEEDBACK = "UPDATE feedback SET user_id = ?, hotel_id = ?, rating = ?, comment = ?, title = ?, date = ? WHERE feedback_id = ?";
+	private final String UPDATE_FEEDBACK = "UPDATE feedback SET user_id = ?, hotel_id = ?, rating = ?, title = ?, comment = ?, date = ? WHERE feedback_id = ?";
 	private final String DELETE_FEEDBACK = "DELETE FROM feedback WHERE feedback_id = ?";
 	private final String SELECT_ALL_FEEDBACK_BY_HOTEL = "SELECT * FROM feedback WHERE hotel_id = ?";
 	private final String SELECT_ALL_FEEDBACK_BY_USER = "SELECT * FROM feedback WHERE user_id = ?";

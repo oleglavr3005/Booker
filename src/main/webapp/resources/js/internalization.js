@@ -1183,6 +1183,16 @@
 			placeholder_hellopage_search : "Введіть назву міста чи готелю",
 		},
 	};
+	
+	var title = {
+			en : {
+				title1 : "Booker | My Orders",
+			},
+			ua : {
+				title1 : "Booker | Мої замовлення",
+			},
+		};
+	
 	languages.en = en;
 	languages.ua = ua;
 	languages.data_error = data_error;
@@ -1191,12 +1201,14 @@
 	languages.script = script;
 	languages.script.current = script.en;
 	languages.placeholder = placeholder;
+	languages.title=title;
 })();
 
 function changeLanguage(language) {
 	if (language != 'en' && language != 'ua') {
 		language = 'en';
 	}
+	oldLanguage=currentLanguage;
 	currentLanguage = language;
 	languages.script.current = languages.script[currentLanguage];
 	$(document).ready(setTimeout('changeLanguageOnPage(currentLanguage)', 200));
@@ -1215,6 +1227,7 @@ function changeLanguageOnPage(language) {
 	changeLanguageOfDataTooltip(language);
 	changeLanguageOfDataPlaceholder(language);
 	changeLanguageOfDataPagination(language);
+	changeLanguageOnTitle(language);
 	updateDatePicker();
 }
 function changeLanguageOnTags(language) {
@@ -1228,6 +1241,20 @@ function changeLanguageOnTags(language) {
 		}
 	}
 }
+
+function changeLanguageOnTitle(language){
+	for ( var prop in languages) {
+		if (prop == oldLanguage) {
+			for ( var idElement in languages.title[prop]) {
+				
+					if	(languages.title[prop][idElement] == $(document).find("title").text())
+						$(document).find("title").text(languages.title[language][idElement]);
+			}
+			break;
+		}
+	}
+}
+
 function changeLanguageOfErrors(language) {
 	for ( var prop in languages) {
 		if (prop == language) {
