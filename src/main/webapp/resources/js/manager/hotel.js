@@ -291,6 +291,8 @@ function removeHotelPhoto() {
 		images : '' + values,
 	}, function(photos) {
 		$('#switchContent').html(photos);
+		$('#btnRemovePhoto').hide();
+		$('#btnToMain').hide();
 	});
 }
 

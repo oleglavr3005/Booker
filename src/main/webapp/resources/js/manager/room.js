@@ -322,6 +322,8 @@ function removeRoomPhoto() {
 		img : '' + values,
 	}, function(hotels) {
 		$('#switchContent').html(hotels);
+		$('#btnRemovePhoto').hide();
+		$('#btnToMain').hide();
 	});
 }
 
