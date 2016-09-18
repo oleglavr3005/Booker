@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.RoomPhoto;
 import com.epam.task.database.service.RoomPhotoService;
 import com.epam.task.database.service.RoomService;
@@ -16,6 +18,7 @@ import com.epam.task.database.service.RoomService;
 @WebServlet("/remove_room_photo")
 public class RemoveRoomPhotoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(RemoveRoomPhotoServlet.class);
 
     public RemoveRoomPhotoServlet() {
         super();
@@ -24,6 +27,7 @@ public class RemoveRoomPhotoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String photoIdsString = request.getParameter("img");
 		if(photoIdsString == null) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}
@@ -52,6 +56,7 @@ public class RemoveRoomPhotoServlet extends HttpServlet {
 			request.setAttribute("room", new RoomService().getRoomById(roomId));
 			request.getRequestDispatcher("/pages/cards/roomPhotoCard.jsp").forward(request, response);
 		} catch (Exception e) {
+        	LOGGER.error("Remove room pics exception", e);
 			response.setContentType("application/text");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write("error");

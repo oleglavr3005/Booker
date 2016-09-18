@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.UserService;
 import com.epam.task.util.ImageSetter;
@@ -15,6 +17,7 @@ import com.epam.task.util.ImageSetter;
 @WebServlet("/change_image")
 public class ChangeImageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(ChangeImageServlet.class);
 
     public ChangeImageServlet() {
         super();
@@ -31,6 +34,7 @@ public class ChangeImageServlet extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(photo);
 		} catch (Exception e) {
+        	LOGGER.error("Change avatar exception", e);
 			response.setContentType("application/text");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write("error");

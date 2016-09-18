@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.UserService;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -24,25 +26,18 @@ import com.github.scribejava.core.model.Response;
 import com.github.scribejava.core.model.Verb;
 import com.github.scribejava.core.oauth.OAuth20Service;
 
-/**
- * Servlet implementation class GoogleCallbackServlet
- */
 @WebServlet("/googlecallback")
 public class GoogleCallbackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String NETWORK_NAME = "G+";
-	private static final String PROTECTED_RESOURCE_URL = "https://www.googleapis.com/plus/v1/people/me";  
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	private static final String PROTECTED_RESOURCE_URL = "https://www.googleapis.com/plus/v1/people/me"; 
+	private static final Logger LOGGER = Logger.getLogger(GoogleCallbackServlet.class); 
+
+
     public GoogleCallbackServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String error = request.getParameter("error");
 		if ((null != error) && ("access_denied".equals(error.trim()))) {
@@ -92,11 +87,7 @@ public class GoogleCallbackServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/home");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 	private User getGoogleUser(Response response) throws IOException {
@@ -141,11 +132,9 @@ public class GoogleCallbackServlet extends HttpServlet {
 
 		            ImageIO.write(image, "jpg",new File(fileSaveDir + "\\" + socUser.getSocialNetworkId() +".jpg"));
 			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+	        	LOGGER.error("MalformedURLException", e);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+	        	LOGGER.error("IOException", e);
 			}
           socUser.setImage(socUser.getSocialNetworkId() + ".jpg");
 	}

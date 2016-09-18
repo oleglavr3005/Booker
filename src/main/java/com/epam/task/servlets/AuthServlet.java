@@ -1,6 +1,7 @@
 package com.epam.task.servlets;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.epam.task.database.model.User;
@@ -18,6 +21,7 @@ import com.epam.task.util.PasswordHasher;
 @WebServlet({ "/auth" })
 public class AuthServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(AuthServlet.class);
 
     public AuthServlet() {
         super();
@@ -27,6 +31,7 @@ public class AuthServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		if(email == null || password == null || password.length() < 6) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}
@@ -37,7 +42,9 @@ public class AuthServlet extends HttpServlet {
 			User user = new UserService().getUserByEmail(email);
 			if (user == null || user.getStatus().equals(UserStatus.PENDING) || !user.getPassword()
 					.equals(PasswordHasher.hash(password))) {
-				throw new Exception();
+				response.getWriter().write("false");
+				response.getWriter().flush();
+				return;
 			}
 			request.getSession().setAttribute("user", user);
 			
@@ -45,7 +52,11 @@ public class AuthServlet extends HttpServlet {
 			json.put("logged", true);
 			
 			response.getWriter().print(json.toString());
-		} catch (Exception e) {
+		} catch (JSONException e) {
+        	LOGGER.error("JSON exception", e);
+			response.getWriter().write("false");
+		} catch (NoSuchAlgorithmException e) {
+        	LOGGER.error("Hash exception", e);
 			response.getWriter().write("false");
 		}
 		response.getWriter().flush();

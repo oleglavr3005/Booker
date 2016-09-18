@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Request;
 import com.epam.task.database.model.enums.RequestStatus;
 import com.epam.task.database.transformers.UniversalTransformer;
@@ -14,6 +16,7 @@ import com.epam.task.database.transformers.UniversalTransformer;
 public class RequestDao {
 
 	private Connection connection;
+	private static final Logger LOGGER = Logger.getLogger(RequestDao.class);
 	
 	private final String SELECT_ALL = "SELECT * FROM `request`";
 	private final String SELECT_ALL_BY_STATUS = "SELECT * FROM `request` WHERE status LIKE ?";
@@ -39,7 +42,7 @@ public class RequestDao {
 					ResultSet result = statement.executeQuery()) {
 			return UniversalTransformer.getCollectionFromRS(result, Request.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all requests", e);
 			return new ArrayList<>();
 		}
 	}
@@ -51,7 +54,7 @@ public class RequestDao {
 				return UniversalTransformer.getCollectionFromRS(result, Request.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all requests by status", e);
 			return new ArrayList<>();
 		}
 	}
@@ -63,7 +66,7 @@ public class RequestDao {
 				return UniversalTransformer.getObjectFromRS(result, Request.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get request by id", e);
 			return null;
 		}
 	}
@@ -75,7 +78,7 @@ public class RequestDao {
 				return UniversalTransformer.getObjectFromRS(result, Request.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get request by user", e);
 			return null;
 		}
 	}
@@ -87,9 +90,13 @@ public class RequestDao {
 			statement.setString(i++, request.getMessage());
 			statement.setTimestamp(i++, request.getRequestDate());
 			statement.setString(i++, request.getStatus().toString());
-			return statement.executeUpdate();
+			int result = statement.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("Request inserted");
+			}
+			return result;
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot insert request", e);
 			return -1;
 		}
 	}
@@ -103,9 +110,13 @@ public class RequestDao {
 			statement.setString(i++, request.getStatus().toString());
 			
 			statement.setInt(i++, request.getId());
-			return statement.executeUpdate();
+			int result = statement.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("Request updated");
+			}
+			return result;
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot update request", e);
 			return -1;
 		}
 	}
@@ -115,9 +126,13 @@ public class RequestDao {
 			int i = 1;
 			statement.setString(i++, status.toString());
 			statement.setInt(i++, requestId);
-			return statement.executeUpdate();
+			int result = statement.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("Request status updated");
+			}
+			return result;
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot update request status", e);
 			return -1;
 		}
 	}
@@ -127,8 +142,11 @@ public class RequestDao {
 		try (PreparedStatement st = connection.prepareStatement(REMOVE_REQUEST)) {
 			st.setInt(1, requestId);
 			result = st.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("Request removed");
+			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot remove request", e);
 		}
 		return result;
 	}

@@ -7,11 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Feedback;
 import com.epam.task.database.transformers.UniversalTransformer;
 
 public class FeedbackDao {
 	private Connection connection;
+	private static final Logger LOGGER = Logger.getLogger(FeedbackDao.class);
+	
 	private final String SELECT_ALL_FEEDBACK = "SELECT * FROM feedback";
 	private final String INSERT_FEEDBACK = "INSERT INTO feedback (user_id, hotel_id, rating, title, comment, date) VALUES (?, ?, ?, ?, ?, ?)";
 	private final String UPDATE_FEEDBACK = "UPDATE feedback SET user_id = ?, hotel_id = ?, rating = ?, comment = ?, title = ?, date = ? WHERE feedback_id = ?";
@@ -40,7 +44,7 @@ public class FeedbackDao {
 			ResultSet rs = statment.executeQuery();
 			return UniversalTransformer.getCollectionFromRS(rs, Feedback.class);
 		} catch (Exception e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all feedbacks", e);
 			return new ArrayList<>();
 		}
 	}
@@ -53,9 +57,13 @@ public class FeedbackDao {
 			statment.setString(4, element.getTitle());
 			statment.setString(5, element.getComment());
 			statment.setTimestamp(6, element.getDate());
-			return statment.executeUpdate();
+			int result = statment.executeUpdate();
+			if(result > 0) {
+	        	LOGGER.info("New feedback inserted");
+			}
+			return result;
 		} catch (Exception e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot insert feedback", e);
 			return -1;
 		}
 	}
@@ -69,9 +77,13 @@ public class FeedbackDao {
 			statment.setString(5, element.getComment());
 			statment.setTimestamp(6, element.getDate());
 			statment.setInt(7, element.getId());
-			return statment.executeUpdate();
+			int result = statment.executeUpdate();
+			if(result > 0) {
+	        	LOGGER.info("Feedback updated");
+			}
+			return result;
 		} catch (Exception e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot update feedback", e);
 			return -1;
 		}
 	}
@@ -79,9 +91,13 @@ public class FeedbackDao {
 	public int deleteFeedback(int feedBackId) {
 		try (PreparedStatement statment = connection.prepareStatement(DELETE_FEEDBACK)) {
 			statment.setInt(1, feedBackId);
-			return statment.executeUpdate();
+			int result = statment.executeUpdate();
+			if(result > 0) {
+	        	LOGGER.info("Feedback removed");
+			}
+			return result;
 		} catch (Exception e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot delete feedback", e);
 			return -1;
 		}
 	}
@@ -92,7 +108,7 @@ public class FeedbackDao {
 			ResultSet rs = statment.executeQuery();
 			return UniversalTransformer.getCollectionFromRS(rs, Feedback.class);
 		} catch(SQLException e){
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all feedbacks by hotel", e);
 			return new ArrayList<>();
 		}
 	}
@@ -104,7 +120,7 @@ public class FeedbackDao {
 			ResultSet rs = statment.executeQuery();
 			return UniversalTransformer.getObjectFromRS(rs, Feedback.class);
 		} catch(SQLException e){
-			e.printStackTrace();
+        	LOGGER.error("Cannot get feedbacks by user and hotel", e);
 			return null;
 		}
 	}
@@ -115,7 +131,7 @@ public class FeedbackDao {
 			ResultSet rs = statment.executeQuery();
 			return UniversalTransformer.getCollectionFromRS(rs, Feedback.class);
 		} catch(SQLException e){
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all feedbacks by user", e);
 			return new ArrayList<>();
 		}
 	}
@@ -126,7 +142,7 @@ public class FeedbackDao {
 			ResultSet rs = statment.executeQuery();
 			return UniversalTransformer.getObjectFromRS(rs, Feedback.class);
 		} catch(SQLException e){
-			e.printStackTrace();
+        	LOGGER.error("Cannot get feedback by id", e);
 			return null;
 		}
 	}
@@ -145,7 +161,7 @@ public class FeedbackDao {
 			ResultSet rs = statment.executeQuery();
 			return UniversalTransformer.getCollectionFromRS(rs, Feedback.class);
 		} catch(SQLException e){
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all feedbacks by user and page", e);
 			return new ArrayList<>();
 		}
 	}

@@ -809,7 +809,6 @@ div.material-table .table-footer .dataTables_length {
 	
 	<script type="text/javascript">
 	$(document).ready(function() {
-		changeLanguage("${language}");
 		document.title = languages.script.current.title.hotel_orders;
 	});
 	</script>

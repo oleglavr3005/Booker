@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.database.service.RoomService;
@@ -23,6 +25,7 @@ import com.epam.task.util.StringUtil;
 @WebServlet("/search")
 public class FindHotelsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(FindHotelsServlet.class);
 
     public FindHotelsServlet() {
         super();
@@ -34,6 +37,7 @@ public class FindHotelsServlet extends HttpServlet {
 		if(request.getParameter("flag") == null || !request.getParameter("flag").equals("true")) {
 			
 			if(request.getParameter("name") == null ) {
+	        	LOGGER.error("Invalid data injection attempt");
 				response.sendError(500);
 				return;
 			}
@@ -54,7 +58,8 @@ public class FindHotelsServlet extends HttpServlet {
 			String maxUserPriceString = request.getParameter("maxUserPrice");
 			
 			if(!StringUtil.isInStarsRangeOrNull(minStarsString) || !StringUtil.isInStarsRangeOrNull(maxStarsString) || !StringUtil.isPositiveIntegerOrNull(peopleString) ||
-					!StringUtil.isPositiveIntegerOrNull(minUserPriceString) || !StringUtil.isPositiveIntegerOrNull(maxUserPriceString)) {				
+					!StringUtil.isPositiveIntegerOrNull(minUserPriceString) || !StringUtil.isPositiveIntegerOrNull(maxUserPriceString)) {	
+	        	LOGGER.error("Invalid data injection attempt");			
 				response.sendError(500);
 				return;
 			}
@@ -114,11 +119,13 @@ public class FindHotelsServlet extends HttpServlet {
 		try {
 			startDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(session.getAttribute("startDate").toString()).getTime());
 		} catch (ParseException e) {
+        	LOGGER.error("Exception while parsing date " + session.getAttribute("startDate").toString(), e);
 			startDate = new Timestamp(new Date().getTime());
 		}
 		try {
 			endDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(session.getAttribute("endDate").toString()).getTime());
 		} catch (ParseException e) {
+        	LOGGER.error("Exception while parsing date " + session.getAttribute("endDate").toString(), e);
 			endDate = new Timestamp(new Date().getTime());
 		}
 		

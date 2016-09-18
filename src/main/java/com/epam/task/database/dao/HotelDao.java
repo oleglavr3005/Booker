@@ -9,13 +9,15 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.transformers.UniversalTransformer;
 
 public class HotelDao {
 
-
 	private Connection connection;
+	private static final Logger LOGGER = Logger.getLogger(HotelDao.class);
 	
 	private final String SELECT_ALL_NOT_DELETED_NOT_BANNED = "SELECT * FROM `hotel` h INNER JOIN `user` u ON h.manager_id = u.user_id WHERE h.is_deleted = false AND u.status NOT LIKE 'BANNED'";
 	private final String SELECT_ALL_BY_MANAGER = "SELECT * FROM `hotel` WHERE manager_id = ?";
@@ -83,7 +85,7 @@ public class HotelDao {
 				ResultSet result = statement.executeQuery()) {
 			return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all hotels", e);
 			return new ArrayList<>();
 		}
 	}
@@ -106,7 +108,7 @@ public class HotelDao {
 				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all hotels by page", e);
 			return new ArrayList<>();
 		}
 	}
@@ -242,7 +244,7 @@ public class HotelDao {
 				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all suitable hotels by page", e);
 			return new ArrayList<>();
 		}
 	}
@@ -254,7 +256,7 @@ public class HotelDao {
 				return UniversalTransformer.getObjectFromRS(result, Hotel.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get hotel by id", e);
 			return null;
 		}
 	}
@@ -279,8 +281,11 @@ public class HotelDao {
 			statement.setBoolean(i++, hotel.getSpa());
 			statement.setBoolean(i++, hotel.getService());
 			statement.setBoolean(i++, hotel.getCleaner());
-			
-			statement.executeUpdate();
+
+			int result = statement.executeUpdate();
+			if(result > 0) {
+	        	LOGGER.info("New hotel inserted");
+			}
 			
 			ResultSet rs = statement.getGeneratedKeys();
 			if(rs.next()) {
@@ -289,7 +294,7 @@ public class HotelDao {
 				return 0;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot insert hotel", e);
 			return -1;
 		}
 	}
@@ -298,9 +303,13 @@ public class HotelDao {
 		try (PreparedStatement statment = connection.prepareStatement(CHANGE_HOTEL_STATUS)) {
 			statment.setBoolean(1, true);
 			statment.setInt(2, hotelId);
-			return statment.executeUpdate();
+			int result = statment.executeUpdate();
+			if(result > 0) {
+	        	LOGGER.info("Hotel removed");
+			}
+			return result;
 		} catch (Exception e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot remove hotel", e);
 			return -1;
 		}
 	}
@@ -309,9 +318,13 @@ public class HotelDao {
 		try (PreparedStatement statment = connection.prepareStatement(CHANGE_HOTEL_STATUS)) {
 			statment.setBoolean(1, false);
 			statment.setInt(2, hotelId);
-			return statment.executeUpdate();
+			int result = statment.executeUpdate();
+			if(result > 0) {
+	        	LOGGER.info("Hotel restored");
+			}
+			return result;
 		} catch (Exception e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot restore hotel", e);
 			return -1;
 		}
 	}
@@ -338,9 +351,14 @@ public class HotelDao {
 			statement.setBoolean(i++, hotel.getCleaner());
 
 			statement.setInt(i, hotel.getId());
-			return statement.executeUpdate();
+			
+			int result = statement.executeUpdate();
+			if(result > 0) {
+	        	LOGGER.info("Hotel updated");
+			}
+			return result;
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot update hotel", e);
 			return -1;
 		}
 	}
@@ -351,9 +369,13 @@ public class HotelDao {
 			statement.setDouble(i++, hotel.getRating());
 			
 			statement.setInt(i, hotel.getId());
-			return statement.executeUpdate();
+			int result = statement.executeUpdate();
+			if(result > 0) {
+	        	LOGGER.info("Hotel rating updated");
+			}
+			return result;
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot update hotel rating", e);
 			return -1;
 		}
 	}
@@ -472,7 +494,7 @@ public class HotelDao {
 				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all suitable hotels", e);
 			return new ArrayList<>();
 		}
 		
@@ -485,7 +507,7 @@ public class HotelDao {
 				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all hotels by manager", e);
 			return new ArrayList<>();
 		}
 	}
@@ -509,7 +531,7 @@ public class HotelDao {
 				return UniversalTransformer.getCollectionFromRS(result, Hotel.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all hotels by manager and page", e);
 			return new ArrayList<>();
 		}
 	}

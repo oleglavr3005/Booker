@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.HotelService;
@@ -15,6 +17,7 @@ import com.epam.task.database.service.RoomService;
 @WebServlet("/cabinet/my_hotels/*")
 public class ManagerHotelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(ManagerHotelServlet.class);
   
     public ManagerHotelServlet() {
         super();
@@ -32,6 +35,7 @@ public class ManagerHotelServlet extends HttpServlet {
 		
 		Hotel hotel = new HotelService().getHotelById(id);
 		if(hotel == null || hotel.getManagerId() != manager.getId() ){
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}

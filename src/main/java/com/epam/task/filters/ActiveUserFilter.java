@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.UserStatus;
 
@@ -19,6 +21,8 @@ import com.epam.task.database.model.enums.UserStatus;
 	"/check_order", "/create_request", "/add_feedback", "/change_feedback", "/deleteFeedback" })
 public class ActiveUserFilter implements Filter {
 
+	private static final Logger LOGGER = Logger.getLogger(ActiveUserFilter.class);
+	
     public ActiveUserFilter() {
     }
 
@@ -34,6 +38,7 @@ public class ActiveUserFilter implements Filter {
 		if(user != null && user.getStatus() == UserStatus.ACTIVE) {
 			chain.doFilter(request, response);
 		} else {		//throw the unexpected visitor on the error page
+        	LOGGER.warn("Not-active user tried to visit active users page");
 			((HttpServletResponse) response).sendError(404);
 		}
 	}

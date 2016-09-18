@@ -9,12 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.RoomPhoto;
 import com.epam.task.util.ImageSetter;
 
 @WebServlet("/upload_room")
 public class LoadRoomPicturesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(LoadRoomPicturesServlet.class);
 
     public LoadRoomPicturesServlet() {
         super();
@@ -38,6 +41,7 @@ public class LoadRoomPicturesServlet extends HttpServlet {
 			}			
 			response.getWriter().write(roomImages.toString());
 		} catch (Exception e) {
+        	LOGGER.error("Load room pics exception", e);
 			response.getWriter().write("error");
 		}
 	}

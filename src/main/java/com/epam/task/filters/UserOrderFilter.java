@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Order;
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.OrderStatus;
@@ -19,6 +21,7 @@ import com.epam.task.database.service.OrderService;
 
 @WebFilter("/cabinet/order/*")
 public class UserOrderFilter implements Filter {
+	private static final Logger LOGGER = Logger.getLogger(UserOrderFilter.class);
 
     public UserOrderFilter() {
     }
@@ -35,6 +38,7 @@ public class UserOrderFilter implements Filter {
 		try {
 			orderId = Integer.parseInt(httpRequest.getPathInfo().substring(1));
 		} catch (Exception e) {
+        	LOGGER.warn("User order page does not exist");
 			((HttpServletResponse) response).sendError(404);
 			return;
 		}
@@ -44,9 +48,11 @@ public class UserOrderFilter implements Filter {
 			if(order != null && order.getStatus() != OrderStatus.ORDER) {
 				chain.doFilter(request, response);
 			} else {
+	        	LOGGER.warn("User order page does not exist");
 				((HttpServletResponse) response).sendError(404);
 			}
 		} else {		//throw the unexpected visitor on the error page
+        	LOGGER.warn("Not-logged user tried to visit logged users page");
 			((HttpServletResponse) response).sendError(404);
 		}
 	}

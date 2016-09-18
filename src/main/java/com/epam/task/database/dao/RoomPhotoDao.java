@@ -7,12 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.RoomPhoto;
 import com.epam.task.database.transformers.UniversalTransformer;
 
 public class RoomPhotoDao {
 
 	private Connection connection;
+	private static final Logger LOGGER = Logger.getLogger(RoomPhotoDao.class);
 
 	private final String SQL_GET_ALL = "SELECT * FROM room_photo";
 	private final String SQL_CREATE_ROOM_PHOTO = "INSERT INTO room_photo (img, `desc`, room_id, is_main) VALUES (?, ?, ?, ?)";
@@ -36,7 +39,7 @@ public class RoomPhotoDao {
 			ResultSet rs = statement.executeQuery();
 			photos = (List<RoomPhoto>) UniversalTransformer.getCollectionFromRS(rs, RoomPhoto.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all room photos", e);
 		}
 
 		return photos;
@@ -51,8 +54,11 @@ public class RoomPhotoDao {
 			st.setBoolean(4, photo.isMain());
 			result = st.executeUpdate();
 
+			if(result > 0) {
+				LOGGER.info("Room photo inserted");
+			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot insert room photo", e);
 		}
 		return result;
 	}
@@ -64,7 +70,7 @@ public class RoomPhotoDao {
 			ResultSet rs = st.executeQuery();
 			photo = UniversalTransformer.getObjectFromRS(rs, RoomPhoto.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get room photo by id", e);
 		}
 		return photo;
 	}
@@ -76,7 +82,7 @@ public class RoomPhotoDao {
 			ResultSet rs = statement.executeQuery();
 			photos = (List<RoomPhoto>) UniversalTransformer.getCollectionFromRS(rs, RoomPhoto.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get room photos by room", e);
 		}
 		return photos;
 	}
@@ -84,9 +90,13 @@ public class RoomPhotoDao {
 	public int deleteRoomPhoto(int roomPhotoId) {
 		try (PreparedStatement statement = connection.prepareStatement(SQL_DELETE_PHOTO_BY_ID);) {
 			statement.setInt(1, roomPhotoId);
-			return statement.executeUpdate();
+			int result = statement.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("Room photo removed");
+			}
+			return result;
 		} catch (Exception e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot remove room photo", e);
 			return -1;
 		}
 	}
@@ -100,9 +110,13 @@ public class RoomPhotoDao {
 			statement.setBoolean(i++, photo.isMain());
 
 			statement.setInt(i, photo.getId());
-			return statement.executeUpdate();
+			int result = statement.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("Room photo updated");
+			}
+			return result;
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot remove update photo", e);
 			return -1;
 		}
 	}

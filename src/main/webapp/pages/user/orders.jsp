@@ -895,7 +895,6 @@ $(document).ready(function()
 
 <script type="text/javascript">
 $(document).ready(function() {
-	changeLanguage("${language}");
 	document.title = languages.script.current.title.orders;
 });
 </script>

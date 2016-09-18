@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Room;
 import com.epam.task.database.service.RoomService;
 import com.epam.task.util.StringUtil;
@@ -16,6 +18,7 @@ import com.epam.task.util.StringUtil;
 @WebServlet("/check_room_number")
 public class CheckRoomNumberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(CheckRoomNumberServlet.class);
 
     public CheckRoomNumberServlet() {
         super();
@@ -26,6 +29,7 @@ public class CheckRoomNumberServlet extends HttpServlet {
 		String roomNumber = request.getParameter("roomNumber");
 		
 		if(hotelIdString == null || roomNumber == null || !StringUtil.isPositiveInteger(hotelIdString)) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}

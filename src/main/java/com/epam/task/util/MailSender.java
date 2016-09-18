@@ -6,7 +6,10 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.log4j.Logger;
+
 public class MailSender {
+	private static final Logger LOGGER = Logger.getLogger(MailSender.class);
 	
 	public static void send(String subject, String text, String toEmail) {
 
@@ -24,6 +27,7 @@ public class MailSender {
 
 			Transport.send(message);
 		} catch (MessagingException e) {
+        	LOGGER.error("Error while sending e-mail", e);
 			throw new RuntimeException(e);
 		}
 	}

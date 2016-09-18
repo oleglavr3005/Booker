@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,6 +30,7 @@ import com.epam.task.util.StringUtil;
 @WebServlet("/get_visitors_chart_data")
 public class VisitorsChartDataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(VisitorsChartDataServlet.class);
 
     public VisitorsChartDataServlet() {
         super();
@@ -42,6 +44,7 @@ public class VisitorsChartDataServlet extends HttpServlet {
 		if(!StringUtil.isPositiveInteger(hotelIdString) || 
 				!StringUtil.isDateInFormat(startDateString, "yyyy-MM-dd") || 
 				!StringUtil.isDateInFormat(endDateString, "yyyy-MM-dd")) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}
@@ -49,6 +52,7 @@ public class VisitorsChartDataServlet extends HttpServlet {
 		User user = (User) request.getSession().getAttribute("user");
 		Hotel hotel = new HotelService().getHotelById(hotelId);
 		if(hotel.getManagerId() != user.getId()) {
+        	LOGGER.error("Attempt to load forbidden page");
 			response.sendError(404);
 			return;
 		}
@@ -59,11 +63,13 @@ public class VisitorsChartDataServlet extends HttpServlet {
 		try {
 			startDate = format.parse(startDateString);
 		} catch (ParseException e1) {
+        	LOGGER.error("Exception while parsing date " + startDateString, e1);
 			startDate = new Date();
 		}
 		try {
 			endDate = format.parse(endDateString);
 		} catch (ParseException e1) {
+        	LOGGER.error("Exception while parsing date " + endDateString, e1);
 			endDate = new Date();
 		}
 		
@@ -104,6 +110,7 @@ public class VisitorsChartDataServlet extends HttpServlet {
 			response.getWriter().print(json);
 			response.getWriter().flush();
 		} catch (JSONException e) {
+        	LOGGER.error("JSON exception", e);
 			response.getWriter().write("false");
 		}
 	}

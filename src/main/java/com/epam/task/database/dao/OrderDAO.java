@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Order;
 import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.transformers.UniversalTransformer;
@@ -17,6 +19,7 @@ import com.epam.task.database.transformers.UniversalTransformer;
 public class OrderDAO {
 
 	private Connection connection;
+	private static final Logger LOGGER = Logger.getLogger(OrderDAO.class);
 
 	private final String SQL_GET_ALL_ORDERS = "SELECT * FROM `order`";
 	private final String SQL_CREATE_ORDER = "INSERT INTO `order`(user_id, room_id, start_date, end_date, `status`, order_date, price, card_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -54,12 +57,11 @@ public class OrderDAO {
 
 	public List<Order> getAllOrders() {
 		List<Order> orders = new ArrayList<>();
-		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ALL_ORDERS);) {
-			
+		try (PreparedStatement statement = connection.prepareStatement(SQL_GET_ALL_ORDERS)) {
 			ResultSet rs = statement.executeQuery();
 			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all orders", e);
 		}
 
 		return orders;
@@ -77,7 +79,9 @@ public class OrderDAO {
 			st.setInt(7, order.getPrice());
 			st.setString(8, order.getCardNumber());
 			result = st.executeUpdate();
-			
+			if(result > 0) {
+				LOGGER.info("Order inserted");
+			}
 			ResultSet rs = st.getGeneratedKeys();
 			rs.next();
 			int orderId = rs.getInt(1);
@@ -89,7 +93,7 @@ public class OrderDAO {
 				st1.executeUpdate();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot insert order", e);
 			return -1;
 		}
 		return result;
@@ -100,8 +104,11 @@ public class OrderDAO {
 		try (PreparedStatement st = connection.prepareStatement(SQL_REMOVE_ORDER)) {
 			st.setInt(1, id);
 			result = st.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("Order removed");
+			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot remove order", e);
 		}
 		return result;
 	}
@@ -113,7 +120,7 @@ public class OrderDAO {
 			ResultSet rs = st.executeQuery();
 			order = UniversalTransformer.getObjectFromRS(rs, Order.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get order by id", e);
 		}
 		return order;
 	}
@@ -131,8 +138,11 @@ public class OrderDAO {
 			st.setString(8, order.getCardNumber());
 			st.setInt(9, order.getId());
 			result = st.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("Order updated");
+			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot update order", e);
 		}
 		return result;
 	}
@@ -145,7 +155,7 @@ public class OrderDAO {
 			ResultSet rs = statement.executeQuery();
 			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all orders by user and status", e);
 		}
 		return orders;
 	}
@@ -170,7 +180,7 @@ public class OrderDAO {
 			ResultSet rs = statement.executeQuery();
 			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all orders by user and status and page", e);
 		}
 		return orders;
 	}
@@ -182,7 +192,7 @@ public class OrderDAO {
 			ResultSet rs = statement.executeQuery();
 			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all orders by user", e);
 		}
 		return orders;
 	}
@@ -194,7 +204,7 @@ public class OrderDAO {
 			ResultSet rs = statement.executeQuery();
 			return UniversalTransformer.getObjectFromRS(rs, Order.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get order by user and id", e);
 			return null;
 		}
 	}
@@ -206,7 +216,7 @@ public class OrderDAO {
 			ResultSet rs = statement.executeQuery();
 			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all orders by room", e);
 		}
 		return orders;
 	}
@@ -217,8 +227,11 @@ public class OrderDAO {
 			st.setInt(1, userId);
 			st.setString(2, order.toString());
 			result = st.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("Orders by status removed");
+			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot remove all orders by status", e);
 		}
 		return result;
 	}
@@ -229,9 +242,13 @@ public class OrderDAO {
 			st.setString(2, comment);
 			st.setString(3, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 			st.setInt(4, userId);
-			return st.executeUpdate();
+			int result = st.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("Orders by user booked");
+			}
+			return result;
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot book (update) all orders by user", e);
 			return -1;
 		}
 	}
@@ -242,9 +259,13 @@ public class OrderDAO {
 			st.setString(2, comment);
 			st.setString(3, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 			st.setInt(4, orderId);
-			return st.executeUpdate();
+			int result = st.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("Order booked");
+			}
+			return result;
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot book (update) order", e);
 			return -1;
 		}
 	}
@@ -256,7 +277,7 @@ public class OrderDAO {
 			ResultSet rs = statement.executeQuery();
 			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all orders by hotel", e);
 		}
 		return orders;
 	}
@@ -270,7 +291,7 @@ public class OrderDAO {
 			ResultSet rs = statement.executeQuery();
 			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all finished orders by user and hotel", e);
 		}
 		return orders;
 	}
@@ -283,7 +304,7 @@ public class OrderDAO {
 			ResultSet rs = statement.executeQuery();
 			orders = UniversalTransformer.getCollectionFromRS(rs, Order.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all orders by hotel and status", e);
 		}
 		return orders;
 	}

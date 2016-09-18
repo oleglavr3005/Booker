@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Order;
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.OrderService;
@@ -24,6 +26,7 @@ import com.epam.task.util.StringUtil;
 @WebServlet("/add_to_cart")
 public class AddToCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(AddToCartServlet.class);
 
     public AddToCartServlet() {
         super();
@@ -35,6 +38,7 @@ public class AddToCartServlet extends HttpServlet {
 		String allRoomIdsString = request.getParameter("allRoomIds");
 		String amountString = request.getParameter("amount");
 		if (allRoomIdsString == null || !StringUtil.isPositiveInteger(amountString)) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}
@@ -46,11 +50,13 @@ public class AddToCartServlet extends HttpServlet {
 		try {
 			startDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(session.getAttribute("startDate").toString()).getTime());
 		} catch (ParseException e) {
+        	LOGGER.error("Exception while parsing date " + session.getAttribute("startDate").toString(), e);
 			startDate = new Timestamp(new Date().getTime());
 		}
 		try {
 			endDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(session.getAttribute("endDate").toString()).getTime());
 		} catch (ParseException e) {
+        	LOGGER.error("Exception while parsing date " + session.getAttribute("endDate").toString(), e);
 			endDate = new Timestamp(new Date().getTime());
 		}
 		Timestamp orderDate = new Timestamp(new Date().getTime());

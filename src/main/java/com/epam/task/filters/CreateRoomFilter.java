@@ -12,12 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.UserType;
 import com.epam.task.database.service.HotelService;
 
 @WebFilter({"/cabinet/create_room", "/check_room_number" })
 public class CreateRoomFilter implements Filter {
+	private static final Logger LOGGER = Logger.getLogger(CreateRoomFilter.class);
 
     public CreateRoomFilter() {
     }
@@ -36,9 +39,11 @@ public class CreateRoomFilter implements Filter {
 			if(!new HotelService().getAllHotelsByManager(user.getId()).isEmpty()) {
 				chain.doFilter(request, response);
 			} else {
+	        	LOGGER.warn("Manager without hotels tried to visit create room page");
 				((HttpServletResponse) response).sendError(404);
 			}
 		} else {		//throw the unexpected visitor on the error page
+        	LOGGER.warn("Not-manager user tried to visit create room page");
 			((HttpServletResponse) response).sendError(404);
 		}
 	}

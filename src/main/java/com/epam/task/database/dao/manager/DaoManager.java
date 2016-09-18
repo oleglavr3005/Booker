@@ -3,7 +3,8 @@ package com.epam.task.database.dao.manager;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import com.epam.task.database.dao.ConveniencesDao;
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.dao.CounterDao;
 import com.epam.task.database.dao.FeedbackDao;
 import com.epam.task.database.dao.HotelDao;
@@ -26,10 +27,11 @@ public class DaoManager {
     private HotelDao hotelDao;
     private HotelPhotoDao hotelPhotoDao;
 	private RoomPhotoDao roomPhotoDao; 
-	private ConveniencesDao conveniencesDao;
     private RequestDao requestDao;
     private MailConfirmDao mailConfirmDao;
     private CounterDao counterDao;
+    
+	private static final Logger LOGGER = Logger.getLogger(DaoManager.class);
     
     public DaoManager() {
     }
@@ -41,7 +43,7 @@ public class DaoManager {
                 if (connection == null) throw new NullPointerException("No connection.");
             }
         } catch (SQLException e) {
-        	e.printStackTrace();
+        	LOGGER.error("No connection", e);
             throw new NullPointerException("No connection.");
         }
         return connection;
@@ -70,12 +72,6 @@ public class DaoManager {
         else orderDAO.setConnection(getConnection());
         return orderDAO;
 	}
-    
-    public ConveniencesDao getConveniencesDao(){
-    	if(conveniencesDao == null) conveniencesDao = new ConveniencesDao(getConnection());
-    	else conveniencesDao.setConnection(getConnection());
-    	return conveniencesDao;
-    }
     
     public RequestDao getRequestDao(){
     	if(requestDao == null) requestDao = new RequestDao(getConnection());
@@ -128,7 +124,7 @@ public class DaoManager {
             try {
                 getConnection().close();
             } catch (SQLException e) {
-            	e.printStackTrace();
+            	LOGGER.error("Cannot close connection", e);
             }
         }
     }
@@ -140,7 +136,7 @@ public class DaoManager {
             try {
                 getConnection().close();
             } catch (SQLException e) {
-            	e.printStackTrace();
+            	LOGGER.error("Cannot close connection", e);
             }
         }
     }
