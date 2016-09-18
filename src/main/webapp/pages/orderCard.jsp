@@ -190,13 +190,13 @@ b {
 												<c:if test="${order.room.food == 'NONE'}">
 													<span class="subscribes_table_roomfood_none"></span>
 												</c:if>
-												<c:if test="${room.food == 'BREAKFAST'}">
+												<c:if test="${order.room.food == 'BREAKFAST'}">
 													<span class="subscribes_table_roomfood_breakfast"></span>
 												</c:if>
-												<c:if test="${room.food == 'TWICE'}">
+												<c:if test="${order.room.food == 'TWICE'}">
 													<span class="subscribes_table_roomfood_twice"></span>
 												</c:if>
-												<c:if test="${room.food == 'FULL'}">
+												<c:if test="${order.room.food == 'FULL'}">
 													<span class="subscribes_table_roomfood_full"></span>
 												</c:if>
 										</div>
