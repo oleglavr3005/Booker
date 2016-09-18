@@ -766,9 +766,9 @@ $(document).ready(function()
 											"oLanguage" : {
 												"sStripClasses" : "pholder_enter",
 												"sSearch" : "",
-												"sSearchPlaceholder" : "Enter Keywords Here",
-												"sInfo" : "_START_ -_END_ of _TOTAL_",
-												"sLengthMenu" : '<span>Rows per page:</span><select class="browser-default">'
+												"sSearchPlaceholder" : languages.script.current.hotel.enter_key,
+												"sInfo" : languages.script.current.hotel.sInfo,
+												"sLengthMenu" : '<span>'+languages.script.current.hotel.rows_per_page+'</span><select class="browser-default">'
 														+ '<option value="10">10</option>'
 														+ '<option value="20">20</option>'
 														+ '<option value="30">30</option>'
@@ -805,9 +805,9 @@ $(document).ready(function()
 									"oLanguage" : {
 										"sStripClasses" : "",
 										"sSearch" : "",
-										"sSearchPlaceholder" : "Enter Keywords Here",
-										"sInfo" : "_START_ -_END_ of _TOTAL_",
-										"sLengthMenu" : '<span>Rows per page:</span><select class="browser-default">'
+										"sSearchPlaceholder" : languages.script.current.hotel.enter_key,
+										"sInfo" : languages.script.current.hotel.sInfo,
+										"sLengthMenu" : '<span>'+languages.script.current.hotel.rows_per_page+'</span><select class="browser-default">'
 												+ '<option value="10">10</option>'
 												+ '<option value="20">20</option>'
 												+ '<option value="30">30</option>'
@@ -841,12 +841,12 @@ $(document).ready(function()
 				$('#tab3')
 						.dataTable(
 								{
-									"oLanguage" : {
+									"oLanguage" : { 
 										"sStripClasses" : "",
 										"sSearch" : "",
-										"sSearchPlaceholder" : "Enter Keywords Here",
-										"sInfo" : "_START_ -_END_ of _TOTAL_",
-										"sLengthMenu" : '<span>Rows per page:</span><select class="browser-default">'
+										"sSearchPlaceholder" : languages.script.current.hotel.enter_key,
+										"sInfo" : languages.script.current.hotel.sInfo,
+										"sLengthMenu" : '<span>'+languages.script.current.hotel.rows_per_page+'</span><select class="browser-default">'
 												+ '<option value="10">10</option>'
 												+ '<option value="20">20</option>'
 												+ '<option value="30">30</option>'
