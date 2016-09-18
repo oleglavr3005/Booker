@@ -2,6 +2,7 @@
 (function() {
 	var en = {
 
+		dataTables_empty : "No data available in table",
 		hootel_without_rooms : "This hotel has no rooms",
 		feedback_banned : "banned",
 		label_service : "Service",
@@ -325,6 +326,7 @@
 	}
 	var ua = {
 
+		dataTables_empty : "Немає доступних даних",
 		hootel_without_rooms : "Цей готель немає кімнат",
 		feedback_banned : "забанений",
 		label_service : "Обслуговування",

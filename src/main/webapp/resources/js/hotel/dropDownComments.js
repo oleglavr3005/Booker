@@ -34,7 +34,7 @@ function addNewComment(hotelId_val){
 				var r = result.substring(result.indexOf('id') + 4)
 				var id = r.substring(0, r.indexOf('"'));
 				var double_el = jQuery('#' + id);
-				setTimeout('double_el.remove();', 501);
+				setTimeout('jQuery("#" + id + ":last").remove();', 501);
 				double_el.slideUp(500);
 				
 				jQuery('#newComment').after(result);
