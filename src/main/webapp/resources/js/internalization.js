@@ -25,6 +25,8 @@
 		order_concret_comment : "Comment",
 		myfeedbacks_no_feedbacks : " no feedback",
 		myfeedbacks_header : "My feedback",
+		server_error : "Internal server error",
+		page_not_found : "Page not found",
 
 		comment_not_user : "Log in to post a feedback",
 		shopping_card_notice : "Notice: your orders will be stored in the shopping cart only for 30 minutes!",
@@ -346,6 +348,8 @@
 		order_concret_comment : "Коментар",
 		myfeedbacks_no_feedbacks : " немає відгуків",
 		myfeedbacks_header : "Мої відгуки",
+		server_error : "Помилка сервера",
+		page_not_found : "Сторінку не знайдено",
 
 		comment_not_user : "Ввійдіть, щоб залишити відгук",
 		shopping_card_notice : "Увага: ваші замовлення будуть зберігатися в кошику лише протягом 30 хвилин!",
@@ -773,7 +777,8 @@
 		en : {
 			title : {
 				index : 'Booker | Search',
-				error : 'Booker | 404',
+				error404 : 'Booker | Page not found',
+				error500 : 'Booker | Internal server error',
 				home : 'Booker | Home',
 				settings : 'Booker | Settings',
 				feedbacks : 'Booker | My feedbacks',
@@ -944,7 +949,8 @@
 		ua : {
 			title : {
 				index : 'Booker | Пошук',
-				error : 'Booker | 404',
+				error404 : 'Booker | Сторінку не знайдено',
+				error500 : 'Booker | Помилка сервера',
 				home : 'Booker | Головна',
 				settings : 'Booker | Налаштування',
 				feedbacks : 'Booker | Мої відгуки',
