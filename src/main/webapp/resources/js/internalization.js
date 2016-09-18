@@ -2,6 +2,10 @@
 (function() {
 	var en = {
 
+		feedback_banned : "banned",
+		label_service : "Service",
+		label_cleaner : "Dry cleaner's",
+		comment_user_is_banned : "Banned user can not comment",
 		my_feedback_edit : "Save",
 		foot_language : "Language",
 		roomCard_countOfFree : " available rooms",
@@ -318,6 +322,11 @@
 	}
 	var ua = {
 
+		feedback_banned : "забанений",
+		label_service : "Обслуговування",
+		label_cleaner : "Хімчистка",
+		lbl_sendnotif : "Здійснити розсилку",
+		comment_user_is_banned : "Забанений користувач не може залишати коментарі",
 		my_feedback_edit : "Зберегти",
 		foot_language : "Мова",
 		roomCard_countOfFree : "Кількість вільних кімнат : ",
@@ -546,8 +555,6 @@
 		settings_save_pass : "Зберегти пароль",
 		settings_chk_mails : "Хочу отримувати e-mail сповіщення!",
 		settings_chk_sms : "Хочу отримувати sms сповіщення!",
-
-		lbl_sendnotif : "Розіслати повідомлення",
 
 		my_hotels_header : "Загалом моїх готелів",
 		card_header : "Всього пропозицій ",
