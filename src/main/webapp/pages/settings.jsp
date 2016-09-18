@@ -183,10 +183,6 @@
 					</div>
 					<div class="row inline field fields">
 						<div class="input-field col s8 offset-s2">
-							<!-- 							<div class="ui pointing label" style="background-color: #f7f7f7;"> -->
-							<!-- 								<span id="settings_enter_pass" -->
-							<!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
-							<!-- 							</div> -->
 							<input id="currentPassword" type="password" class="validate">
 							<label id="currentPasswordLbl" data-error="${fmtPass}"
 								for="currentPassword"><span id="settings_enter_pass"></span></label>
@@ -194,10 +190,6 @@
 					</div>
 					<div class="row inline field fields">
 						<div class="input-field col s8 offset-s2">
-							<!-- 							<div class="ui pointing label" style="background-color: #f7f7f7;"> -->
-							<!-- 								<span id="settings_enter_passnew" -->
-							<!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
-							<!-- 							</div> -->
 							<input id="newPassword" type="password" class="validate">
 							<label id="newPasswordLbl" data-error="${fmtNewPass}"
 								for="newPassword"><span id="settings_enter_passnew"></span></label>
@@ -205,10 +197,6 @@
 					</div>
 					<div class="row inline field fields">
 						<div class="input-field col s8 offset-s2">
-							<!-- 							<div class="ui pointing label" style="background-color: #f7f7f7;"> -->
-							<!-- 								<span id="settings_enter_passrepeat" -->
-							<!-- 									style="color: #b7b2b2; background-color: #9990;"></span> -->
-							<!-- 							</div> -->
 							<input id="repeatPassword" type="password" class="validate">
 							<label id="repeatPasswordLbl" data-error="${fmtRepPass}"
 								for="repeatPassword"><span
@@ -254,6 +242,18 @@
 							</p>
 						</div>
 					</div>
+					
+					<div class="row" style="margin-top: 20px;">
+						<div class="col s3 offset-s9">
+							<a class="waves-effect waves-light btn"
+								onclick="savePhoneData()"
+								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
+								class="settings_enter_save"></span> </a>
+						</div>
+					</div>
+
+					<div class="divider" style="margin-bottom: 15px;"></div>
+					
 
 
 					<div class="row">
@@ -290,7 +290,7 @@
 						</div>
 						<div class="col s3 offset-s4">
 							<a id="savePersonal" class="waves-effect waves-light btn"
-								onclick="saveContactData()"
+								onclick="saveMailData()"
 								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
 								class="settings_enter_save"></span></a>
 						</div>

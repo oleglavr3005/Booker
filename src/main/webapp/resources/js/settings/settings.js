@@ -1,10 +1,6 @@
-
-function saveContactData() {
-	$('#settings_confirmMail').hide();
+function savePhoneData(){
 	var phone = $('#phoneNumber').val();
 	var phoneCheck = document.getElementById('phoneCheckBox').checked;
-	var mail = $('#email').val();
-	var mailCheck = document.getElementById('eMailBox').checked;
 	if (phoneIsValid(phone, phoneCheck)) {
 		$.post('../change_phone', {
 			phoneNumber : phone,
@@ -20,7 +16,11 @@ function saveContactData() {
 			}
 		});
 	}
+}
 
+function saveMailData() {
+	var mail = $('#email').val();
+	var mailCheck = document.getElementById('eMailBox').checked;
 	if (mailIsValid(mail, mailCheck)) {
 		$.post('../change_email', {
 			email : mail,
@@ -29,14 +29,9 @@ function saveContactData() {
 			var res = $.parseJSON(result);
 			if (res.changed != null) {
 				  Materialize.toast(languages.script.current.settings.confMail, 3000);
-//				$('#settings_confirmMail').text(confirmMail);
-//				$('#settings_confirmMail').show();
 			} else {
 				invalid('email');
 			}
-//			setTimeout(function() {
-//				$('#settings_confirmMail').hide();
-//			}, 2000);
 		});
 	} else {
 		invalid('email');
