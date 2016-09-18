@@ -315,7 +315,7 @@ b {
 				class="fa fa-2x fa-exclamation-circle invert" aria-hidden="true"></i></a>
 
 		</div>
-		<div class="col s6 offset-s2 right-align">
+		<div class="col s7 offset-s1 right-align">
 			<a id="clearBtn" class="waves-effect waves-light btn"
 				style="margin-right: 1rem; background: #F55151; color: #FFFFFF; font-size: 1rem;"
 				onclick="clearCart()"><span id="order_card_clear"></span></a>
