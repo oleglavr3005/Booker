@@ -29,6 +29,7 @@
 		myfeedbacks_header : "My feedback",
 		server_error : "Internal server error",
 		page_not_found : "Page not found",
+		hotel_manager : "Manager",
 
 		comment_not_user : "Log in to post a feedback",
 		shopping_card_notice : "Notice: your orders will be stored in the shopping cart only for 30 minutes!",
@@ -361,6 +362,7 @@
 		myfeedbacks_header : "Мої відгуки",
 		server_error : "Помилка сервера",
 		page_not_found : "Сторінку не знайдено",
+		hotel_manager : "Менеджер",
 
 		comment_not_user : "Ввійдіть, щоб залишити відгук",
 		shopping_card_notice : "Увага: ваші замовлення будуть зберігатися в кошику лише протягом 30 хвилин!",

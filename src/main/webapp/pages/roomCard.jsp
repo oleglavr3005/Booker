@@ -229,7 +229,7 @@ b {
 
 						<div class="row"
 							style="margin-bottom: 0px; margin-top: 80px;
-						<c:if test="${!(user != null && startDate != null)}"> visibility: hidden</c:if> ">
+						<c:if test="${!(user != null && startDate != null && user.status != 'BANNED')}"> visibility: hidden</c:if> ">
 							<div class="input-field col s7 offset-s4" style="margin-top: -20;">
 								<input id="countOfRooms${room.id}" type="number"
 									class="validate" name="countOfRooms" min=1 value=1
