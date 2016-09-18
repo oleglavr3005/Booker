@@ -96,7 +96,7 @@
 	<jsp:include page="../header.jsp"></jsp:include>
 	<!-- Header End====================================================================== -->
 
-	<div class="container" style="min-height: 340px;">
+	<div class="container" style="min-height: 380px;">
 		<div class="row">
 			<div class="col s10 offset-s1">
 				<a class="waves-effect waves-light btn" id="create_button"
