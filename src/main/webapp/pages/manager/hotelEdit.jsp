@@ -266,10 +266,10 @@ div #sidebar-wrapper {
 		</div>
 
 		<div class="row">
-			<div class="col s3 offset-s1">
+			<div class="col s12 center-align">
 
 				<a id="pushImage" class="waves-effect waves-light btn"
-					style="background: #26A69A; color: #FFFFFF; margin: 0 auto;"
+					style="background: #26A69A; color: #FFFFFF; margin-right: 1rem"
 					onclick="pushInput()"><span id="btn_add_image"></span> </a>
 
 				<!-- 				INPUT -->
@@ -278,19 +278,15 @@ div #sidebar-wrapper {
 					accept="image/*" />
 				<!-- 				END OF INPUT -->
 
-			</div>
-
-			<div class="col s3 offset-s1">
 				<a id="btnToMain" class="waves-effect waves-light btn"
-					style="background: #e68a00;; color: #FFFFFF; margin: 0 auto;"
+					style="background: #e68a00;; color: #FFFFFF; ; margin-right: 1rem"
 					onclick="promoteToMain()"><span id="btn_main"></span></a>
-			</div>
-
-			<div class="col s3 offset-s1">
+					
 				<a id="btnRemovePhoto" class="waves-effect waves-light btn"
-					style="background: #F55151; color: #FFFFFF; margin: 0 auto;"
+					style="background: #F55151; color: #FFFFFF; "
 					onclick="removeHotelPhoto()"><span id="btn_remove_selected"></span> </a>
 			</div>
+
 		</div>
 
 
@@ -406,7 +402,7 @@ div #sidebar-wrapper {
 		src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU&libraries=places&callback=initAutocomplete"
 		async defer></script>
 	<script>
-	if ("${hotel.isDeleted}") {
+	if ("${hotel.isDeleted}" == true) {
 		$('#isDeleted').click();
 	}
 	$(document).ready(function(){
