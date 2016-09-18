@@ -356,7 +356,7 @@ function showModal(result) {
 					+ result.hotels[i].photo;
 			$('#hotelName' + i).html(result.hotels[i].name);
 			$('#location' + i).html(
-					result.hotels[i].city + " " + result.hotels[i].street);
+					result.hotels[i].location);
 			
 		}
 	} else {
