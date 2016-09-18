@@ -27,8 +27,9 @@ public class CheckRoomNumberServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String hotelIdString = request.getParameter("hotelId");
 		String roomNumber = request.getParameter("roomNumber");
+		String roomIdString = request.getParameter("roomId");
 		
-		if(hotelIdString == null || roomNumber == null || !StringUtil.isPositiveInteger(hotelIdString)) {
+		if(roomNumber == null) {
         	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
@@ -38,15 +39,41 @@ public class CheckRoomNumberServlet extends HttpServlet {
 		
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
-		int hotelId = Integer.parseInt(hotelIdString);
 		
-		List<Room> rooms = new RoomService().getAllRoomsForHotel(hotelId);	//all rooms
-		for(int i = 0; i<numbers.length; i++) {
-			for (Room room : rooms) {
-				if(room.getNumber().equals(numbers[i])){		//if number exists for this hotel
-					response.getWriter().write("false");		//we CANNOT create room, return false
-					response.getWriter().flush();
-					return;
+		if(hotelIdString != null) {		//room creation
+			if(!StringUtil.isPositiveInteger(hotelIdString)) {
+	        	LOGGER.error("Invalid data injection attempt");
+				response.sendError(500);
+				return;
+			}
+			int hotelId = Integer.parseInt(hotelIdString);			
+			List<Room> rooms = new RoomService().getAllRoomsForHotel(hotelId);	//all rooms
+			for(int i = 0; i<numbers.length; i++) {
+				for (Room room : rooms) {
+					if(room.getNumber().equals(numbers[i])){		//if number exists for this hotel
+						response.getWriter().write("false");		//we CANNOT create room, return false
+						response.getWriter().flush();
+						return;
+					}
+				}
+			}
+		} else {						//room update
+			if(!StringUtil.isPositiveInteger(roomIdString)) {
+	        	LOGGER.error("Invalid data injection attempt");
+				response.sendError(500);
+				return;
+			}
+			int roomId = Integer.parseInt(roomIdString);	
+			Room room = new RoomService().getRoomById(roomId);
+			List<Room> rooms = new RoomService().getAllRoomsForHotel(room.getHotelId());	//all rooms
+			
+			for(int i = 0; i<numbers.length; i++) {
+				for (Room hotelRoom : rooms) {
+					if(hotelRoom.getNumber().equals(numbers[i]) && hotelRoom.getId() != roomId){		//if number exists for this hotel
+						response.getWriter().write("false");		//we CANNOT create room, return false
+						response.getWriter().flush();
+						return;
+					}
 				}
 			}
 		}
