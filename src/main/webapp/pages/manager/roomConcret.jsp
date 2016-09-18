@@ -373,7 +373,7 @@
 		$('#hasBalcony').attr('checked', '${room.balcony}' == 'true');
 		
 		$('#freeBook').attr('checked', '${room.daysCount}' < 0);
-		if ("${room.deleted}") {
+		if ("${room.deleted}" == true) {
 			$('#isDeleted').click();
 		}
 		
