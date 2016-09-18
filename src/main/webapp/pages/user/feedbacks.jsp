@@ -35,13 +35,20 @@ b {
 	<div id="feedbacks_card_${feedback.id}" class="col s10 offset-s1">
 		<div class="card">
 			<div class="container-fluid">
+			<div class="row" style="margin-top: 30px;">
+				<div class="col s6">
+					<h4 style="font-size: 1.3rem; margin-top: 0; margin-bottom: 10px;">
+						<a href="/booker/hotel/<c:out value="${feedback.hotel.id}"/>">
+							<c:out value="${feedback.hotel.name}"/></a>
+					</h4>
+				</div>
+				<div class="col s3 offset-s3 right-align">
+					<span><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${feedback.date}" /></span>
+				</div>
+			</div>
 				<div class="row" style="margin-top: 15px; margin-bottom: 10px;">
 					<div class="media col">
 						<div class="media-body">
-							<h4 style="font-size: 1.3rem; margin-top: 0; margin-bottom: 10px;">
-								<a href="/booker/hotel/<c:out value="${feedback.hotel.id}"/>">
-								<c:out value="${feedback.hotel.name}"/></a>
-							</h4>
 							<div class="col s6" style="margin-top: 15px; padding-left: 0;">
 								<input id="title_feedback_${feedback.id}" class="validate" type="text" value="<c:out value="${feedback.title}"/>">
 								<label id="title_feedback_${feedback.id}_label" data-error="" for="title_feedback_${feedback.id}" class="">
@@ -72,16 +79,24 @@ b {
 							</div>
 						</div>
 						<textarea id="feedback_${feedback.id}" class="materialize-textarea validate" style="padding-top: 0;"><c:out value="${feedback.comment}"/></textarea>
-						<div id="button_panel_${feedback.id}" class="row" style="text-align: center;">
-							<a class="waves-effect waves-light btn" onclick="deleteFeedback(${feedback.id})"
-								style="margin-left: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
-								<span class="feedback_error_${feedback.id}"></span>
-								<span class="my_feedback_delete"></span>
-							</a>
-							<a class="waves-effect waves-light btn" onclick="updateFeedback(${feedback.id})" style="background: #26A69A;text-align: center;color: #F7F7F7;">
-								<span class="my_feedback_edit">Edit</span>
-							</a>
-						</div>
+						
+						<c:if test="${user.status != 'BANNED'}">
+							<div id="button_panel_${feedback.id}" class="row" style="text-align: center;">
+								<a class="waves-effect waves-light btn" onclick="deleteFeedback(${feedback.id})"
+									style="margin-left: 10px; background: #F55151; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+									<span class="feedback_error_${feedback.id}"></span>
+									<span class="my_feedback_delete"></span>
+								</a>
+								<a class="waves-effect waves-light btn" onclick="updateFeedback(${feedback.id})" style="background: #26A69A;text-align: center;color: #F7F7F7;">
+									<span class="my_feedback_edit">Edit</span>
+								</a>
+							</div>
+						</c:if>
+						<c:if test="${user.status == 'BANNED'}">
+							<div style="border: 1px solid red; border-radius: 10px; padding: 5px; background-color: rgba(255, 0, 0, 0.3);">
+								<span class="comment_user_is_banned"></span>
+							</div>
+						</c:if>
 					</div>
 				</div>
 			</div>
