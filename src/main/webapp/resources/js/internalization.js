@@ -165,6 +165,7 @@
 		order_card_total_price : "Total price : ",
 		order_card_uan : " UAH",
 		order_card_clear : "Clear cart",
+		order_cart_time_left : "Time left",
 
 		index_search_header : "Find Hotels",
 		index_search_name : "Destination / Hotel Name:",
@@ -471,6 +472,7 @@
 		order_card_total_price : "Загальна сума : ",
 		order_card_uan : " Грн",
 		order_card_clear : "Очистити кошик",
+		order_cart_time_left : "Залишилось часу",
 		room_card_YOURE_BANNED : "Ви не можете здійснювати покупки, бо ви забанені",
 
 		index_room_noDeposit : "Без передоплати",

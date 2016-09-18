@@ -20,6 +20,41 @@
 	src="${pageContext.servletContext.contextPath}/resources/js/hotel/jquery.blueimp-gallery.min.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.servletContext.contextPath}/resources/fontawesome/css/font-awesome.min.css">
+	
+	<script type="text/javascript">
+	var refreshIntervalId;
+	
+	function updateTimeLeft(date, id) {
+		var currentDate = new Date();
+		var orderDate = new Date(date);
+		var minutesLeft = 29 - Math.floor(Math.abs(currentDate - orderDate) / (1000 * 60));
+		var secondsLeft = 59 - Math.floor((Math.abs(currentDate - orderDate) / 1000) % 60 );
+		if(minutesLeft < 10) {
+			minutesLeft = "0" + minutesLeft;
+		}
+		if(secondsLeft < 10) {
+			secondsLeft = "0" + secondsLeft;
+		}
+		if(secondsLeft == "00" && minutesLeft == "00") {
+			clearInterval(refreshIntervalId);
+			//reload cart
+			setTimeout(function() { 
+				$.post('../refresh_cart', {
+					compareBy : $('#compare').val(),
+					page : $('#pageNmb').val()
+				}, function(orders) {
+					$('#switchContent').html(orders);
+					updateLanguage();
+				});			
+			}, 1000);
+		}
+		$("#timer" + id).html(minutesLeft + ":" + secondsLeft);
+	}
+	
+	function startTimer(date, id) {
+		refreshIntervalId = setInterval(function() { updateTimeLeft(date, id) }, 1000);
+	};
+	</script>
 
 <style>
 b {
@@ -254,6 +289,16 @@ b {
 											data-position="icon" data-tooltip="Television"
 											style="color: #0d0d0d;"><i class="material-icons invert">tv</i></a>
 									</c:if>
+								</div>
+								<div class="row right-align">
+									<span style="font-size: 1rem" class="order_cart_time_left"></span>:
+								</div>
+								<div class="row right-align">
+									<span id="timer${order.id}" style="color: #F55151; font-size: 2rem">
+										<script type="text/javascript">
+										startTimer('${order.orderDate}', '${order.id}');
+										</script>
+									</span>
 								</div>
 							</div>
 						</div>
