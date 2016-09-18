@@ -190,8 +190,8 @@
 							<!-- NUMBER -->
 
 							<div class="row">
-								<input id="number" value="${room.number}" type="number"
-									class="validate" name="number" min=1 max=99999> <label
+								<input id="number" value="${room.number}" type="text"
+									class="validate" name="number" > <label
 									id="numberLbl" data-error="" for="number"><span
 									id="room_edit_number"></span></label>
 							</div>
