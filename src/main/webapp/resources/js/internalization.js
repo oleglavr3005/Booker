@@ -860,10 +860,6 @@
 				cont : "To complete the registration, use a message with instructions sent on your e-mail",
 				fald : "Registration failed",
 			},
-			settings : {
-				succesTitle : "SUCCESFULLY CHANGED PASSWORD",
-				oldHeader : "OLD HEADER TEXT INSERT HERE",
-			},
 			message : {
 				success : "Success change feedback",
 				danger : "Fald change feedback",
@@ -888,10 +884,19 @@
 				reqSentAgain : "your request was sent again",
 				reqUpd : "your request was updated",
 				reqRmv : "your request was removed",
+				pass : "password was changed",
 			},
 			concrete : {
 				succ : "comment was updated",
 				fail : "comment cannot be updated",
+			},
+			request : {
+				approved : "request was approved",
+				declined : "request was declined",
+			},
+			admin : {
+				activated : "user was activated",
+				banned : "user was banned",
 			}
 		},
 		ua : {
@@ -1022,10 +1027,6 @@
 				cont : "Для завершення реєстрації скористайтесь листом, надісланим на вказану e-mail адресу",
 				fald : "Помилка реєстрації",
 			},
-			settings : {
-				succesTitle : "Успішна зміна пароля",
-				oldHeader : "OLD HEADER TEXT INSERT HERE ???",
-			},
 			message : {
 				success : "Редагування відгуку пройшло успішно",
 				danger : "Помилка редагування відгуку",
@@ -1050,10 +1051,19 @@
 				reqSentAgain : "Ваш запит було повторно надіслано на розгляд",
 				reqUpd : "Ваш запит було оновлено",
 				reqRmv : "Ваш запит було видалено",
+				pass : "новий пароль збережено",
 			},
 			concrete : {
 				succ : "коментар було оновлено",
 				fail : "коментар оновити не вдалося",
+			},
+			request : {
+				approved : "запит підтверджено",
+				declined : "запит відхилено",
+			},
+			admin : {
+				activated : "користувача розбанено",
+				banned : "користувача забанено",
 			}
 		},
 	};

@@ -5,6 +5,7 @@ var reqSent = languages.script.current.settings.reqSent;
 var reqSentAgaint = languages.script.current.settings.reqSentAgain;
 var reqUpdated = languages.script.current.settings.reqUpd;
 var reqRemoved = languages.script.current.settings.reqRmv;
+var changePass = languages.script.current.settings.pass;
 
 function saveContactData() {
 	$('#settings_confirmMail').hide();
@@ -284,7 +285,7 @@ function savePassword(header, succesfull) {
 					$('#newPassword').val('');
 					$('#repeatPassword').val('');
 //					  Materialize.toast(languages.script.current.settings.succesTitle, 3000);
-					  Materialize.toast("succes", 3000);
+					  Materialize.toast(changePass, 3000);
 //					$('#pwd_title').text(
 //							languages.script.current.settings.succesTitle);
 //					$('#pwd_title').css('color', 'green');
