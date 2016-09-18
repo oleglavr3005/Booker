@@ -385,9 +385,9 @@ div #sidebar-wrapper {
 						<select id="compare" class="chosen-select optionstyle"
 							onchange="findPage(window.location.href,1)"><span
 							id="hotel_price"></span>
-							<option id="hotel_option_star_asc" class="optionstyle"
+							<option id="hotel_option_price_asc" class="optionstyle"
 								value="compareByPriceAsc"></option>
-							<option id="hotel_option_star_desc" class="optionstyle"
+							<option id="hotel_option_price_desc" class="optionstyle"
 								value="compareByPriceDesc"></option>
 							<option id="hotel_option_people_asc" class="optionstyle"
 								value="compareByPeopleAsc"></option>

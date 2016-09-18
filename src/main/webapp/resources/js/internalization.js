@@ -190,6 +190,8 @@
 		hotel_option_star_desc : "stars, descending",
 		hotel_option_people_asc : "people, ascending",
 		hotel_option_people_desc : "people, descending",
+		hotel_option_price_asc : "price, ascending",
+		hotel_option_price_desc : "price, descending",
 		hotel_price : "Price",
 		hotel_button_previous : "Previous",
 		hotel_button_next : "Next",
@@ -492,6 +494,8 @@
 		hotel_option_star_desc : "спаданням к-ті зірок",
 		hotel_option_people_asc : "зростанням к-ті  місць",
 		hotel_option_people_desc : "спаданням к-ті  місць",
+		hotel_option_price_asc : "зростанням ціни",
+		hotel_option_price_desc : "спаданням ціни",
 
 		map_button : "Карта",
 		search : "Пошук",
