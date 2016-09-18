@@ -433,8 +433,8 @@ function setRoomCon(nmb, box) {
 }
 
 function init() {
-	$('#room_create_card_type').text(roomStandart);
-	$('#room_create_card_food').text(roomFoodNone);
+	$('#room_create_card_type').text(languages.script.current.roomtype.standart);
+	$('#room_create_card_food').text(languages.script.current.roomfood.none);
 	setRoomSingle();
 	setRoomDouble();
 	setRoomPrice();
