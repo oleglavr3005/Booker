@@ -338,47 +338,35 @@ function changeFreeBookCreate() {
 }
 
 function changeIsDeleted() {
-	var deleted = document.getElementById('isDeleted').checked;
-	$('#percentage').prop('disabled', deleted);
-	$('#days').prop('disabled', deleted);
-	$('#single').prop('disabled', deleted);
-	$('#double').prop('disabled', deleted);
-	$('#number').prop('disabled', deleted);
-	$('#price').prop('disabled', deleted);
-	$('#hasWiFi').prop('disabled', deleted);
-	$('#hasShower').prop('disabled', deleted);
-	$('#hasCondition').prop('disabled', deleted);
-	$('#hasBalcony').prop('disabled', deleted);
-	if (deleted) {
-		$('#btn_add_image').addClass('disabled');
-	} else {
-		$('#btn_add_image').removeClass('disabled');
-	}
-	changeFreeBook();
+//	var deleted = document.getElementById('isDeleted').checked;
+//	$('#percentage').prop('disabled', deleted);
+//	$('#days').prop('disabled', deleted);
+//	$('#single').prop('disabled', deleted);
+//	$('#double').prop('disabled', deleted);
+//	$('#number').prop('disabled', deleted);
+//	$('#price').prop('disabled', deleted);
+//	$('#hasWiFi').prop('disabled', deleted);
+//	$('#hasTv').prop('disabled', deleted);
+//	$('#hasShower').prop('disabled', deleted);
+//	$('#hasCondition').prop('disabled', deleted);
+//	$('#hasBalcony').prop('disabled', deleted);
+//	if (deleted) {
+//		$('#btn_add_image').addClass('disabled');
+//	} else {
+//		$('#btn_add_image').removeClass('disabled');
+//	}
+//	changeFreeBook();
 }
-
-var roomStandart = "STANDART";
-var roomLux = "LUX";
-var roomDelux = "DELUX";
-
-var roomFoodNone = "NONE";
-var roomFoodBreak = "BREAKFAST";
-var roomFoodTwice = "TWICE";
-var roomFoodFull = "FULL";
-
-var p1 = "YOU WILL GET 100% REFUND IN CASE OF CANCELING ORDER ONLY IN ";
-var p2 = " DAYS BEFORE MOVING IN, AFTER THESE PERIOD REFUND WILL BE ONLY ";
-var p3 = "FREE_BOOK";
 
 function setRoomType() {
 	var text = $('#roomType').val();
 	if (text == "STANDART") {
-		$('#room_create_card_type').text(roomStandart);
+		$('#room_create_card_type').text(languages.script.current.roomtype.standart);
 	} else {
 		if (text == "LUX") {
-			$('#room_create_card_type').text(roomLux);
+			$('#room_create_card_type').text(languages.script.current.roomtype.lux);
 		} else {
-			$('#room_create_card_type').text(roomDelux);
+			$('#room_create_card_type').text(languages.script.current.roomtype.delux);
 		}
 	}
 }
@@ -386,15 +374,15 @@ function setRoomType() {
 function setRoomFood() {
 	var text = $('#foodType').val();
 	if (text == "NONE") {
-		$('#room_create_card_food').text(roomFoodNone);
+		$('#room_create_card_food').text(languages.script.current.roomfood.none);
 	} else {
 		if (text == "BREAKFAST") {
-			$('#room_create_card_food').text(roomFoodBreak);
+			$('#room_create_card_food').text(languages.script.current.roomfood.breakfast);
 		} else {
 			if (text == "TWICE") {
-				$('#room_create_card_food').text(roomFoodTwice);
+				$('#room_create_card_food').text(languages.script.current.roomfood.twice);
 			} else {
-				$('#room_create_card_food').text(roomFoodFull);
+				$('#room_create_card_food').text(languages.script.current.roomfood.fool);
 			}
 		}
 	}
@@ -419,13 +407,13 @@ function setRoomBook() {
 	var freeBook = document.getElementById('freeBook').checked;
 	var container = $('#content');
 	$('#details_panel').show();
-	var content = p3;
+	var content = languages.script.current.info.info3;
 	if (freeBook == true) {
 		container.html(content);
 		container.css("border-color", "green");
 		container.css("background-color", "rgba(0, 255, 0, 0.3)");
 	} else {
-		content = p1 + ($('#days').val() < 1 ? 0 : $('#days').val()) + p2
+		content = languages.script.current.info.info1 + ($('#days').val() < 1 ? 0 : $('#days').val()) + languages.script.current.info.info2
 				+ ($('#percentage').val() < 1 ? 0 : $('#percentage').val())
 				+ "%";
 		container.html(content);
@@ -445,8 +433,8 @@ function setRoomCon(nmb, box) {
 }
 
 function init() {
-	$('#room_create_card_type').text(roomStandart);
-	$('#room_create_card_food').text(roomFoodNone);
+	$('#room_create_card_type').text(languages.script.current.roomtype.standart);
+	$('#room_create_card_food').text(languages.script.current.roomfood.none);
 	setRoomSingle();
 	setRoomDouble();
 	setRoomPrice();

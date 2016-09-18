@@ -944,6 +944,22 @@
 			},
 			error : {
 				func : "function impossible",
+			},
+			roomfood : {
+				full : "Full",
+				twice : "Twice",
+				breakfast : "Breakfast",
+				none : "None",
+			},
+			roomtype : {
+				standart : "Standart",
+				lux : "Lux",
+				delux : "Delux",
+			},
+			info : {
+				info1 : "You will get 100% refund if you cancel the order at least in",
+				info2 : " days before moving in, after this date the sum will be only",
+				info3 : "Free book",
 			}
 		},
 		ua : {
@@ -1117,6 +1133,22 @@
 			},
 			error : {
 				func : "дія неможлива",
+			},
+			roomfood : {
+				full : "Все включено",
+				twice : "Сніданок і вечеря",
+				breakfast : "Сніданок",
+				none : "Немає",
+			},
+			roomtype : {
+				standart : "Стандарт",
+				lux : "Люкс",
+				delux : "Делюкс",
+			},
+			info : {
+				info1 : "Вам буде повернено 100% коштів у разі відміни замовлення не пізніше, ніж за ",
+				info2 : "днів до приїзду, після цього сума повернення становитиме лише ",
+				info3 : "Без передплати",
 			}
 		},
 	};

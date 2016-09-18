@@ -366,9 +366,9 @@ div #sidebar-wrapper {
 										style="color: #0d0d0d;"><i
 											class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span></td>
 									<td><c:if test="${room.daysCount >= 0}">
-											<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+											<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
 										</c:if> <c:if test="${room.daysCount < 0}">
-											<span class="glyphicon glyphicon-remove-sign"
+											<span class="glyphicon glyphicon-ok-sign"
 												aria-hidden="true"></span>
 										</c:if></td>
 									<td><c:if test="${room.deleted}">
