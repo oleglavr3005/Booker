@@ -321,10 +321,12 @@ b {
 
 	<div class="row">
 		<div class="col s3 offset-s1">
-			<span id="order_card_total_price"></span> <span>${summary/2}</span> <span
-				id="order_card_uan"></span> <a class="tooltipped tooltip_you_pay"
+			<a class="tooltipped tooltip_you_pay"
 				data-position="icon" data-tooltip="" style="color: #0d0d0d;"><i
-				class="fa fa-2x fa-exclamation-circle invert" aria-hidden="true"></i></a>
+				class="fa fa-2x fa-money invert" aria-hidden="true"></i></a>
+				
+			<span id="order_card_total_price"></span> <span>${summary/2}</span> <span
+				id="order_card_uan"></span> 				
 
 		</div>
 		<div class="col s7 offset-s1 right-align">
