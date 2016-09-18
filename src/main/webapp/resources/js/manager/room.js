@@ -91,16 +91,16 @@ function updateRoom(room) {
 function validate(flag,id) {
 	debugger;
 	var ok = true;
+	ok = checkNumberRegex($('#number').val(), flag) && ok;
 	if (flag){
 		ok = checkRoomNumberCreate($('#hotelId').val(), $('#number').val()) && ok;
 	}
 	else{
 		ok = checkRoomNumberUpdate(id, $('#number').val()) && ok;
 	}
-	ok = checkNumberRegex($('#number').val(), flag) && ok;
 	ok = numberIsValid('single', 0, 20) && ok;
 	ok = numberIsValid('double', 0, 20) && ok;
-	ok = checkBedsCount('single', 'double');
+	ok = checkBedsCount('single', 'double') && ok;
 	ok = numberIsValid('days', 0, 365) && ok;
 	ok = numberIsValid('price', 1, 99999999) && ok;
 	ok = numberIsValid('percentage', 0, 99) && ok;
@@ -195,7 +195,7 @@ function checkRoomNumberUpdate(id, nmb) {
 	var isValid = true;
 	$.ajax({
 		async : false,
-		url : '../check_room_number',
+		url : '../../check_room_number',
 		type : 'get',
 		dataType : 'text',
 		data : {
