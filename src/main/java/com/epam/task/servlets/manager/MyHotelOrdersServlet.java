@@ -2,6 +2,7 @@ package com.epam.task.servlets.manager;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -42,12 +43,14 @@ public class MyHotelOrdersServlet extends HttpServlet {
 				orderService.updateOrder(order);
 			}
 		}
-
+		
+		activeOrders = orderService.getOrdersByHotelAndStatus(hotelId, OrderStatus.ACTIVE);
 		List<Order> finishedOrders = orderService.getOrdersByHotelAndStatus(hotelId, OrderStatus.FINISHED);
 		List<Order> canceledOrders = orderService.getOrdersByHotelAndStatus(hotelId, OrderStatus.CANCELED);
-		List<Order> allOrders = orderService.getOrdersByHotelAndStatus(hotelId, OrderStatus.ACTIVE);
+		List<Order> allOrders = new ArrayList<Order>();
 		allOrders.addAll(finishedOrders);
 		allOrders.addAll(canceledOrders);
+		allOrders.addAll(activeOrders);
 
 		request.setAttribute("hotelId", hotelId);
 		request.setAttribute("allOrders", OrderDto.listConverter(allOrders));

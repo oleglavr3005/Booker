@@ -2,6 +2,7 @@ package com.epam.task.servlets.cabinet;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.epam.task.database.dto.OrderDto;
+import com.epam.task.database.model.Order;
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.service.OrderService;
@@ -30,24 +32,26 @@ public class OrdersServlet extends HttpServlet {
 		int userId = ((User) session.getAttribute("user")).getId();
 		
 		OrderService orderService = new OrderService();
-		List<OrderDto> activeOrders = OrderDto.listConverter(orderService.getOrdersByUserAndStatus(userId, OrderStatus.ACTIVE));
+		List<Order> activeOrders = orderService.getOrdersByUserAndStatus(userId, OrderStatus.ACTIVE);
 		Date currentDate = new Date();
-		for (OrderDto order : activeOrders) {
+		for (Order order : activeOrders) {
 			Timestamp endDate = order.getEndDate();
 			if (endDate.getTime() < currentDate.getTime()) {
 				order.setStatus(OrderStatus.FINISHED);
 				orderService.updateOrder(order);
 			}
 		}
-		List<OrderDto> finishedOrders = OrderDto.listConverter(orderService.getOrdersByUserAndStatus(userId, OrderStatus.FINISHED));
-		List<OrderDto> canceledOrders = OrderDto.listConverter(orderService.getOrdersByUserAndStatus(userId, OrderStatus.CANCELED));
-		List<OrderDto> allOrders = OrderDto.listConverter(orderService.getOrdersByUserAndStatus(userId, OrderStatus.ACTIVE));
+		activeOrders = orderService.getOrdersByUserAndStatus(userId, OrderStatus.ACTIVE);
+		List<Order> finishedOrders = orderService.getOrdersByUserAndStatus(userId, OrderStatus.FINISHED);
+		List<Order> canceledOrders = orderService.getOrdersByUserAndStatus(userId, OrderStatus.CANCELED);
+		List<Order> allOrders = new ArrayList<Order>();
 		allOrders.addAll(finishedOrders);
 		allOrders.addAll(canceledOrders);
+		allOrders.addAll(activeOrders);
 		
-		request.setAttribute("allOrders", allOrders);
-		request.setAttribute("activeOrders", activeOrders);
-		request.setAttribute("finishedOrders", finishedOrders);
+		request.setAttribute("allOrders", OrderDto.listConverter(allOrders));
+		request.setAttribute("activeOrders", OrderDto.listConverter(activeOrders));
+		request.setAttribute("finishedOrders", OrderDto.listConverter(finishedOrders));
 		
 		request.getRequestDispatcher("/pages/user/orders.jsp").forward(request, response);
 	}
