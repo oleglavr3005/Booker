@@ -131,6 +131,8 @@
 		label_pool : "Swiming pool",
 		label_gym : "Gym",
 		label_balcony : "Balcony",
+		label_spa : "Spa",
+		label_tv : "Television",
 
 		header_regist : "Registration",
 
@@ -433,6 +435,8 @@
 		label_pool : "Басейн",
 		label_gym : "Тренажерний зал",
 		label_balcony : "Балкон",
+		label_spa : "Spa",
+		label_tv : "Телебачення",
 
 		header_dropdown_shopping_cart : " Кошик",
 		header_dropdown_orders : " Мої покупки",
