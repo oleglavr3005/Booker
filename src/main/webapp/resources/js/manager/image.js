@@ -2,11 +2,11 @@ $("#Img").click(function() {
 	$("input[id='imgInput']").click();
 });
 
-function checkMax(max){
-	if (parseInt($('#imgInput')[0].files.length)>max){
-        alert(max + languages.script.current.hotel.is_max);
-        return;
-       }
+function checkMax(max) {
+	if (parseInt($('#imgInput')[0].files.length) > max) {
+		Materialize.toast(max + languages.script.current.hotel.is_max, 3000);
+		return;
+	}
 }
 
 function pushInput() {
@@ -24,11 +24,11 @@ function uploadRoom() {
 		reader.onloadend = function() {
 			preview.src = reader.result;
 			previewCard.src = reader.result;
-//			avatar.src = reader.result;
+			// avatar.src = reader.result;
 		}
 		reader.readAsDataURL(file);
 		var data = new FormData();
-		
+
 		$.each($('#imgInput')[0].files, function(i, file) {
 			data.append('file-' + i, file);
 		});
@@ -41,7 +41,6 @@ function uploadRoom() {
 			type : 'POST',
 			success : function(result) {
 				$('#photos').val(result);
-			//	picture.val(result);
 			}
 		});
 	}
@@ -58,7 +57,7 @@ function uploadHotel(rl) {
 		reader.onloadend = function() {
 			preview.src = reader.result;
 			previewCard.src = reader.result;
-		//	avatar.src = reader.result;
+			// avatar.src = reader.result;
 		}
 		reader.readAsDataURL(file);
 		var data = new FormData();
@@ -74,7 +73,6 @@ function uploadHotel(rl) {
 			type : 'POST',
 			success : function(result) {
 				$('#photos').val(result);
-				//picture.val(result);
 			}
 		});
 	}
