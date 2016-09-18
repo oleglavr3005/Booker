@@ -10,7 +10,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>${hotel.name}</title>
+<title>Booker | ${hotel.name}</title>
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">

@@ -8,7 +8,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>HOTEL LIST</title>
+<title>Booker | Request №${request.id}</title>
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -199,6 +199,12 @@
 	<script
 		src="${pageContext.servletContext.contextPath}/resources/js/admin/request.js"></script>
 
+	<script type="text/javascript">
+	$(document).ready(function() {
+		changeLanguage("${language}");
+		document.title = languages.script.current.title.request +  ' №' + '${request.id}';
+	});
+	</script>
 
 </body>
 

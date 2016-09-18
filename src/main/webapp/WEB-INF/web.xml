@@ -9,6 +9,15 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/pages/errorPage.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/pages/errorPage.jsp</location>
+	</error-page>
+	
   <context-param>
     <param-name>controllers</param-name>
     <param-value>com.epam.task.controller</param-value>

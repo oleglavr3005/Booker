@@ -13,7 +13,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>Booker | Hotel Orders</title>
+<title>Booker | Hotel orders</title>
 <link rel="icon" type="image/ico"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.ico">
 <link
@@ -806,6 +806,12 @@ div.material-table .table-footer .dataTables_length {
 		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/picker.date.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/visitorsDatepicker.js"></script>
-
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		changeLanguage("${language}");
+		document.title = languages.script.current.title.hotel_orders;
+	});
+	</script>
 </body>
 </html>

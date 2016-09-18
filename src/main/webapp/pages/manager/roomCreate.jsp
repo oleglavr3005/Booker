@@ -9,7 +9,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>ROOM CREATE</title>
+<title>Booker | New room</title>
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -438,6 +438,12 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/image.js"></script>
 	<script>init();</script>
 
+	<script type="text/javascript">
+	$(document).ready(function() {
+		changeLanguage("${language}");
+		document.title = languages.script.current.title.new_room;
+	});
+	</script>
 </body>
 
 </html>

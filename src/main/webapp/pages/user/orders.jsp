@@ -13,7 +13,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>Booker | My Orders</title>
+<title>Booker | My orders</title>
 <link rel="icon" type="image/ico"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.ico">
 <link
@@ -893,6 +893,12 @@ $(document).ready(function()
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/charts/charts.js"></script>
 
+<script type="text/javascript">
+$(document).ready(function() {
+	changeLanguage("${language}");
+	document.title = languages.script.current.title.orders;
+});
+</script>
 
 </body>
 </html>

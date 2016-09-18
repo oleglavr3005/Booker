@@ -13,7 +13,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>${hotel.name}</title>
+<title>Booker | ${hotel.name}</title>
 
 <link
 	href="${pageContext.servletContext.contextPath}/resources/css/rangeSlider/rangeStyle.css"

@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>My feedback</title>
+<title>Booker | My feedbacks</title>
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -136,6 +136,11 @@ div #sidebar-wrapper {
 			});
 		});
 	</script>
-
+<script type="text/javascript">
+$(document).ready(function() {
+	changeLanguage("${language}");
+	document.title = languages.script.current.title.feedbacks;
+});
+</script>
 </body>
 </html>

@@ -12,7 +12,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>MAIN PAGE</title>
+<title>Booker | 404</title>
 
 <link
 	href="${pageContext.servletContext.contextPath}/resources/css/rangeSlider/rangeStyle.css"
@@ -118,6 +118,13 @@ div #sidebar-wrapper {
 <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="http://unslider.com/unslider/dist/js/unslider-min.js"></script> <!-- but with the right path! -->
 
+
+<script type="text/javascript">
+$(document).ready(function() {
+	changeLanguage("${language}");
+	document.title = languages.script.current.title.error;
+});
+</script>
 
 </body>
 

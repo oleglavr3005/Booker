@@ -12,7 +12,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>Booker | ADMIN</title>
+<title>Booker | Administration</title>
 <link rel="icon" type="image/ico"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.ico">
 <link
@@ -318,6 +318,13 @@
 				stateSave : true
 			});
 		});
+	</script>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		changeLanguage("${language}");
+		document.title = languages.script.current.title.admin;
+	});
 	</script>
 </body>
 </html>

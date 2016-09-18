@@ -13,7 +13,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>SHOPPING CART</title>
+<title>Booker | Shopping cart</title>
 
 <link
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/bootstrap.min.css"
@@ -339,7 +339,13 @@
 // 		};
 // 		$('#periodicals_number_for_all_users').html(count);
 	</script>
-
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		changeLanguage("${language}");
+		document.title = languages.script.current.title.cart;
+	});
+	</script>
 </body>
 
 </html>

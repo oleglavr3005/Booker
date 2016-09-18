@@ -9,7 +9,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>HOTEL CREATE</title>
+<title>Booker | New hotel</title>
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -386,6 +386,13 @@
 		async defer></script>
 	<script>
 		init();
+	</script>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		changeLanguage("${language}");
+		document.title = languages.script.current.title.hotel_create;
+	});
 	</script>
 </body>
 

@@ -239,7 +239,7 @@
 						<div class="input-field col s12">
 							
 							<input id="phoneNumber" type="text" class="validate"
-								value="${user.phoneNumber}" length="45"> <label
+								value="${user.phoneNumber}" length="15"> <label
 								id="phoneLbl" data-error="${fmtName}"
 								for="phoneNumber"><span id="settings_enter_phone"></span>
 							</label>
@@ -376,6 +376,11 @@
 			$('input#name, input#surname, input#email').characterCounter();
 		});
 	</script>
-
+<script type="text/javascript">
+$(document).ready(function() {
+	changeLanguage("${language}");
+	document.title = languages.script.current.title.settings;
+});
+</script>
 </body>
 </html>

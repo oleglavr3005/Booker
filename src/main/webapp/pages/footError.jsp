@@ -22,7 +22,7 @@
 		</div>
 		<div сlass="col s1 offset-s1"
 				style="color: #cccccc;float:right; font-size: 15px; margin-top: 5px;">
-				<span>Lighthouse group 2016</span>
+				<span>Lighthouse group &copy; 2016</span>
 			</div>
 			<div class="col s1" style="color: #8c8c8c; font-size: 20px;padding-right:5px; float:right; width:auto;">
 				<img src="${pageContext.servletContext.contextPath}/resources/themes/images/foot1.png"></div>

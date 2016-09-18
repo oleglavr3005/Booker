@@ -12,7 +12,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>MAIN PAGE</title>
+<title>Booker | Search</title>
 
 <link
 	href="${pageContext.servletContext.contextPath}/resources/css/rangeSlider/rangeStyle.css"
@@ -454,6 +454,12 @@ div #sidebar-wrapper {
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/datepicker/datepicker.js"></script>
 
+<script type="text/javascript">
+$(document).ready(function() {
+	changeLanguage("${language}");
+	document.title = languages.script.current.title.index;
+});
+</script>
 
 </body>
 

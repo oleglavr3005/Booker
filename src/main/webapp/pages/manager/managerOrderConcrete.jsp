@@ -14,7 +14,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link type="image/png" rel="icon"
 	href="${pageContext.servletContext.contextPath}/resources/themes/images/ico/favicon.png">
-<title>Order № ${order.id}</title>
+<title>Booker | Order №${order.id}</title>
 
 <link
 	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/bootstrap.min.css"
@@ -485,7 +485,12 @@ div #sidebar-wrapper {
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/resources/js/order/removeOrder.js"></script>
 
-
+	<script type="text/javascript">
+	$(document).ready(function() {
+		changeLanguage("${language}");
+		document.title = languages.script.current.title.order +  ' №' + '${order.id}';
+	});
+	</script>
 </body>
 
 </html>

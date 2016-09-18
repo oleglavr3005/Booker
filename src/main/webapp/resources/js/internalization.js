@@ -734,6 +734,23 @@
 	
 	var script = {
 		en : {
+			title : {
+				index : 'Booker | Search',
+				error : 'Booker | 404',
+				home : 'Booker | Home',
+				settings : 'Booker | Settings',
+				feedbacks : 'Booker | My feedbacks',
+				order : 'Booker | Order',
+				orders : 'Booker | My orders',
+				cart : 'Booker | Shopping cart',
+				hotel_create : 'Booker | New hotel',
+				my_hotels : 'Booker | My hotels',
+				hotel_orders : 'Booker | Hotel orders',
+				new_room : 'Booker | New room',
+				room_edit : 'Booker | Room',
+				admin : 'Booker | Administration',
+				request : 'Booker | Request'
+			},
 			calendar : {
 				min : 'measure create',
 				max : 'measure create',
@@ -878,6 +895,23 @@
 			}
 		},
 		ua : {
+			title : {
+				index : 'Booker | Пошук',
+				error : 'Booker | 404',
+				home : 'Booker | Головна',
+				settings : 'Booker | Налаштування',
+				feedbacks : 'Booker | Мої відгуки',
+				order : 'Booker | Замовлення',
+				orders : 'Booker | Мої замовлення',
+				cart : 'Booker | Кошик',
+				hotel_create : 'Booker | Новий готель',
+				my_hotels : 'Booker | Мої готелі',
+				hotel_orders : 'Booker | Замовлення на готель',
+				new_room : 'Booker | Новий номер',
+				room_edit : 'Booker | Номер',
+				admin : 'Booker | Адміністрування',
+				request : 'Booker | Запит'
+			},
 			calendar : {
 				min : 'measure create',
 				max : 'measure create',

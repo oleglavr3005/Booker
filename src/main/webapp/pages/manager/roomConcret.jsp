@@ -9,7 +9,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>HOTEL_NAME ${room.number}</title>
+<title>Booker | Room №${room.number}</title>
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -379,6 +379,12 @@
 	</script>
 
 
+	<script type="text/javascript">
+	$(document).ready(function() {
+		changeLanguage("${language}");
+		document.title = languages.script.current.title.room_edit +  ' №' + '${room.number}';
+	});
+	</script>
 
 </body>
 

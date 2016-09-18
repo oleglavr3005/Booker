@@ -8,7 +8,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>HOTEL LIST</title>
+<title>Booker | My hotels</title>
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -160,6 +160,13 @@
 		async defer></script>
 	<script>
 		$('#rating').rating('update', 1);
+	</script>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		changeLanguage("${language}");
+		document.title = languages.script.current.title.my_hotels;
+	});
 	</script>
 </body>
 
