@@ -63,6 +63,11 @@
 		admin_page_message : "Message",
 		admin_page_no_email : "No email for this user",
 		admin_page_no_phone : "No phone for this user",
+		
+		admin_table_type_user : "user",
+		admin_table_type_manager : "manager",
+		admin_table_type_admin : "admin",
+		
 		admin_deleted : "Delete",
 
 		request_approve : "Approve",
@@ -360,6 +365,11 @@
 		admin_page_message : "Повідомлення",
 		admin_page_no_email : "e-mail відсутній",
 		admin_page_no_phone : "Телефон відсутній",
+		
+		admin_table_type_user : "користувач",
+		admin_table_type_manager : "менеджер",
+		admin_table_type_admin : "адміністратор",
+		
 		request_approve : "Підтвердити",
 		request_decline : "Відхилити",
 		admin_request_name : "Користувач",
