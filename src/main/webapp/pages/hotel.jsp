@@ -270,7 +270,7 @@ div #sidebar-wrapper {
 							</div>
 						</div>
 						<div class="row" style="margin-bottom: 10px">
-							<div class="col s6" style="padding-left: 1px;">
+							<div class="col s6">
 								<a class="tooltipped tooltip_phone_number" data-position="icon"
 									data-tooltip="" style="color: #0d0d0d; margin-left: -1rem; text-decoration: none;"><i
 									class="fa fa-lg fa-phone-square invert" aria-hidden="true"></i></a>
