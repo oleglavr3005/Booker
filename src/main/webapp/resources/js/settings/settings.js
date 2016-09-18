@@ -1,11 +1,3 @@
-var confirmMail = languages.script.current.settings.confMail;
-var phoneChanged = languages.script.current.settings.phnChng;
-var personalChanged = languages.script.current.settings.prsnChang;
-var reqSent = languages.script.current.settings.reqSent;
-var reqSentAgaint = languages.script.current.settings.reqSentAgain;
-var reqUpdated = languages.script.current.settings.reqUpd;
-var reqRemoved = languages.script.current.settings.reqRmv;
-var changePass = languages.script.current.settings.pass;
 
 function saveContactData() {
 	$('#settings_confirmMail').hide();
@@ -20,7 +12,7 @@ function saveContactData() {
 		}, function(result) {
 			var res = $.parseJSON(result);
 			if (result != null) {
-				  Materialize.toast(phoneChanged, 3000);
+				  Materialize.toast(languages.script.current.settings.phnChng, 3000);
 				$('#phoneNumber').val(res.phoneNumber);
 				clearField('phoneNumber');
 			} else {
@@ -36,7 +28,7 @@ function saveContactData() {
 		}, function(result) {
 			var res = $.parseJSON(result);
 			if (res.changed != null) {
-				  Materialize.toast(confirmMail, 3000);
+				  Materialize.toast(languages.script.current.settings.confMail, 3000);
 //				$('#settings_confirmMail').text(confirmMail);
 //				$('#settings_confirmMail').show();
 			} else {
@@ -66,7 +58,7 @@ function savePersonalData() {
 			$('#surname').val(res.lastName);
 			clearField('surname');
 			$('#userNameSpan').html(res.firstName + " " + res.lastName);
-			  Materialize.toast(personalChanged, 3000);
+			  Materialize.toast(languages.script.current.settings.prsnChang, 3000);
 		}
 	});
 }
@@ -85,21 +77,21 @@ function createRequest(flag) {
 				$('#req_status').show();
 				$('#settings_request_status_pending').show();
 				$('#settings_request_status_declined').hide();
-				  Materialize.toast(reqSent, 3000);
+				  Materialize.toast(languages.script.current.settings.reqSent, 3000);
 				  $('#cancelRequest').css("visibility","visible");
 			} else {
 				if (result == 'sent_again') {
 					  $('#cancelRequest').css("visibility","visible");
 					$('#settings_request_status_declined').hide();
 					$('#settings_request_status_pending').show();
-					  Materialize.toast(reqSentAgaint, 3000);
+					  Materialize.toast(languages.script.current.settings.reqSentAgain, 3000);
 				} else {
 					if (result == 'updated') {
 						  $('#cancelRequest').css("visibility","visible");
-						  Materialize.toast(reqUpdated, 3000);
+						  Materialize.toast(languages.script.current.settings.reqUpd, 3000);
 					} else {
 						$('#req_status').hide();
-						  Materialize.toast(reqRemoved, 3000);
+						  Materialize.toast(languages.script.current.settings.reqRmv, 3000);
 						  $('#cancelRequest').css("visibility","hidden");
 						  $('#requestForm').val("");
 					}
@@ -285,7 +277,7 @@ function savePassword(header, succesfull) {
 					$('#newPassword').val('');
 					$('#repeatPassword').val('');
 //					  Materialize.toast(languages.script.current.settings.succesTitle, 3000);
-					  Materialize.toast(changePass, 3000);
+					  Materialize.toast(languages.script.current.settings.pass, 3000);
 //					$('#pwd_title').text(
 //							languages.script.current.settings.succesTitle);
 //					$('#pwd_title').css('color', 'green');

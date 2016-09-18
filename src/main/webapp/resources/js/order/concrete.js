@@ -1,5 +1,3 @@
-var succes = languages.script.current.concrete.succ;
-var fail = languages.script.current.concrete.fail;
 
 function updateComment(orderId) {
 	var comment = $('#comment').val();
@@ -10,10 +8,10 @@ function updateComment(orderId) {
 			comment : comment
 		}, function(result) {
 			if (result == 'true') {
-				  Materialize.toast(succes, 3000);
+				  Materialize.toast(languages.script.current.concrete.succ, 3000);
 //				$('#commentInfo').text("SUCCES");
 			} else {
-				  Materialize.toast(fail, 3000);
+				  Materialize.toast(languages.script.current.concrete.fail, 3000);
 //				$('#commentInfo').text("FAIL");
 			}
 		});

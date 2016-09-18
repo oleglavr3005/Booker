@@ -1,5 +1,3 @@
-var activated = languages.script.current.admin.activated;
-var banned = languages.script.current.admin.banned;
 
 function changeUserStatus(id){
 	var sel = $('#userStatus' + id).val();
@@ -8,9 +6,9 @@ function changeUserStatus(id){
 		status : $('#userStatus' + id).val(),
 	});
 	if (sel == "ACTIVE"){
-		Materialize.toast(activated, 3000);
+		Materialize.toast(languages.script.current.admin.activated, 3000);
 	}
 	else {
-		Materialize.toast(banned, 3000);
+		Materialize.toast(languages.script.current.admin.banned, 3000);
 	}
 }
