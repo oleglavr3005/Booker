@@ -9,12 +9,15 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Room;
 import com.epam.task.database.transformers.UniversalTransformer;
 
 public class RoomDao {
 
 	private Connection connection;
+	private static final Logger LOGGER = Logger.getLogger(RoomDao.class);
 
 	private final String GET_ALL_ACIVE_ROOMS_FOR_HOTEL = "SELECT * FROM room WHERE hotel_id = ? AND is_deleted = 'false'";
 	
@@ -96,11 +99,12 @@ public class RoomDao {
 				return UniversalTransformer.getCollectionFromRS(rs, Room.class);
 			}
 		} catch (Exception e) {
+        	LOGGER.error("Cannot get all rooms by hotel", e);
 			return new ArrayList<Room>();
 		}
 	}
 	
-	public List<Room> getAllActiveRoomsForHotel(int id, int page) {
+	public List<Room> getAllActiveRoomsForHotelByPage(int id, int page) {
 		try (PreparedStatement ps = connection.prepareStatement(GET_ALL_ACIVE_ROOMS_FOR_HOTEL + PAGINATION)) {
 			ps.setInt(1, id);
 			ps.setInt(2, (page-1)*5);
@@ -108,11 +112,12 @@ public class RoomDao {
 				return UniversalTransformer.getCollectionFromRS(rs, Room.class);
 			}
 		} catch (Exception e) {
+        	LOGGER.error("Cannot get all active rooms by hotel by page", e);
 			return new ArrayList<Room>();
 		}
 	}
 	
-	public List<Room> getAllSuitableRoomsForHotel(int id, int page, 
+	public List<Room> getAllSuitableRoomsForHotelByPage(int id, int page, 
 			boolean typeStandart, boolean typeLux, boolean typeDelux, 
 			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull,
 			int minPrice, int maxPrice, int people,
@@ -240,11 +245,12 @@ public class RoomDao {
 				return UniversalTransformer.getCollectionFromRS(rs, Room.class);
 			}
 		} catch (Exception e) {
+        	LOGGER.error("Cannot get all suitable rooms by hotel by page", e);
 			return new ArrayList<Room>();
 		}
 	}
 	
-	public List<Room> getAllRoomsForHotel(int id, int page) {
+	public List<Room> getAllRoomsForHotelByPage(int id, int page) {
 		try (PreparedStatement ps = connection.prepareStatement(GET_ALL_ROOMS_FOR_HOTEL + PAGINATION)) {
 			ps.setInt(1, id);
 			ps.setInt(2, (page-1)*5);
@@ -252,6 +258,7 @@ public class RoomDao {
 				return UniversalTransformer.getCollectionFromRS(rs, Room.class);
 			}			
 		} catch (Exception e) {
+        	LOGGER.error("Cannot get all rooms by hotel and page", e);
 			return new ArrayList<Room>();
 		}
 	}
@@ -263,6 +270,7 @@ public class RoomDao {
 				return UniversalTransformer.getObjectFromRS(rs, Room.class);
 			}			
 		} catch (Exception e) {
+        	LOGGER.error("Cannot get room by id", e);
 			return null;
 		}
 	}
@@ -286,7 +294,10 @@ public class RoomDao {
 			st.setInt(i++, room.getDaysCount());
 			st.setInt(i++, room.getPercentage());
 			st.setBoolean(i++, room.getDeleted());
-			st.executeUpdate();
+			
+			if(st.executeUpdate() > 0) {
+				LOGGER.info("Room inserted");
+			}
 			
 			ResultSet rs = st.getGeneratedKeys();
 			if(rs.next()) {
@@ -295,7 +306,7 @@ public class RoomDao {
 				return 0;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot insert room", e);
 		}
 		return result;
 	}
@@ -323,9 +334,12 @@ public class RoomDao {
 			st.setInt(i++, room.getId());
 	
 			result = st.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("Room updated");
+			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot update room", e);
 		}
 		return result;
 	}
@@ -339,9 +353,12 @@ public class RoomDao {
 			st.setInt(i++, id);
 			
 			result = st.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("Room removed");
+			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot remove room", e);
 		}
 		return result;
 	}
@@ -355,9 +372,12 @@ public class RoomDao {
 			st.setInt(i++, id);
 	
 			result = st.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("Room restored");
+			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot restore room", e);
 		}
 		return result;
 	}
@@ -371,7 +391,7 @@ public class RoomDao {
 				return 0;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get min room price", e);
 			return -1;
 		}
 		
@@ -386,7 +406,7 @@ public class RoomDao {
 				return 0;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get max room price", e);
 			return -1;
 		}
 		
@@ -407,7 +427,7 @@ public class RoomDao {
 				}
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot check if room is available", e);
 			return false;
 		}
 	}
@@ -521,7 +541,7 @@ public class RoomDao {
 				return UniversalTransformer.getCollectionFromRS(rs, Room.class);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot all suitable rooms", e);
 			return new ArrayList<>();
 		}
 	}

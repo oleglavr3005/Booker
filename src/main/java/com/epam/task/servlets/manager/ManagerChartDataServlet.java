@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,6 +28,7 @@ import com.epam.task.util.StringUtil;
 @WebServlet("/get_manager_chart_data")
 public class ManagerChartDataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(ManagerChartDataServlet.class);
 
     public ManagerChartDataServlet() {
         super();
@@ -35,6 +37,7 @@ public class ManagerChartDataServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String hotelIdString = request.getParameter("hotelId");
 		if(!StringUtil.isPositiveInteger(hotelIdString)) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}
@@ -42,6 +45,7 @@ public class ManagerChartDataServlet extends HttpServlet {
 		User user = (User) request.getSession().getAttribute("user");
 		Hotel hotel = new HotelService().getHotelById(hotelId);
 		if(hotel.getManagerId() != user.getId()) {
+        	LOGGER.error("Attempt to load forbidden page");
 			response.sendError(404);
 			return;
 		}
@@ -131,6 +135,7 @@ public class ManagerChartDataServlet extends HttpServlet {
 			response.getWriter().print(json);
 			response.getWriter().flush();
 		} catch (JSONException e) {
+        	LOGGER.error("JSON exception", e);
 			response.getWriter().write("false");
 		}
 	}

@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.Room;
 import com.epam.task.database.model.User;
@@ -20,6 +22,7 @@ import com.epam.task.database.service.RoomService;
 
 @WebFilter({"/cabinet/room/*",  "/edit_room_pictures/*" })
 public class ManagerRoomFilter implements Filter {
+	private static final Logger LOGGER = Logger.getLogger(ManagerRoomFilter.class);
 
     public ManagerRoomFilter() {
     }
@@ -36,6 +39,7 @@ public class ManagerRoomFilter implements Filter {
 		try {
 			roomId = Integer.parseInt(httpRequest.getPathInfo().substring(1));
 		} catch (Exception e) {
+        	LOGGER.warn("Manager room page does not exist");
 			((HttpServletResponse) response).sendError(404);
 			return;
 		}
@@ -46,9 +50,11 @@ public class ManagerRoomFilter implements Filter {
 			if (hotel.getManagerId() == manager.getId()) {
 				chain.doFilter(request, response);
 			} else {
+	        	LOGGER.warn("Manager user tried to visit room page for hotel, that does not belong him");
 				((HttpServletResponse) response).sendError(404);
 			}
 		} else {		//throw the unexpected visitor on the error page
+        	LOGGER.warn("Not-manager user tried to visit manager room page");
 			((HttpServletResponse) response).sendError(404);
 		}
 	}

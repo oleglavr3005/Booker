@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,6 +27,7 @@ import com.epam.task.util.MapUtil;
 @WebServlet("/get_chart_data")
 public class ChartDataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(ChartDataServlet.class);
 
     public ChartDataServlet() {
         super();
@@ -96,6 +98,7 @@ public class ChartDataServlet extends HttpServlet {
 			response.getWriter().print(json);
 			response.getWriter().flush();
 		} catch (JSONException e) {
+        	LOGGER.error("JSON exception", e);
 			response.getWriter().write("false");
 		}
 	}

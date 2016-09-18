@@ -13,12 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.UserStatus;
 
 @WebFilter({ "/cabinet/*", "/cancel_order", "/change_info", "/change_password", "/change_image", "/change_email", 
 	"/change_phone", "/refresh_cart", "/get_chart_data" })
 public class UserFilter implements Filter {
+	private static final Logger LOGGER = Logger.getLogger(UserFilter.class);
 
     public UserFilter() {
     }
@@ -35,6 +38,7 @@ public class UserFilter implements Filter {
 		if(user != null && user.getStatus() != UserStatus.PENDING) {
 			chain.doFilter(request, response);
 		} else {		//throw the unexpected visitor on the error page
+        	LOGGER.warn("Not-logged user tried to visit logged users page");
 			((HttpServletResponse) response).sendError(404);
 		}
 	}

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,6 +20,7 @@ import com.epam.task.database.service.UserService;
 @WebServlet("/change_info")
 public class ChangeInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(ChangeInfoServlet.class);
 
     public ChangeInfoServlet() {
         super();
@@ -29,6 +31,7 @@ public class ChangeInfoServlet extends HttpServlet {
 		String lastName = request.getParameter("lastName");
 
 		if(lastName == null || firstName == null) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}
@@ -54,6 +57,7 @@ public class ChangeInfoServlet extends HttpServlet {
 			response.getWriter().print(json.toString());
 			response.getWriter().flush();
 		} catch (JSONException e) {
+        	LOGGER.error("JSON exception", e);
 			response.getWriter().write("false");
 		}
 	}

@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Order;
 import com.epam.task.database.service.OrderService;
 import com.epam.task.util.StringUtil;
@@ -14,6 +16,7 @@ import com.epam.task.util.StringUtil;
 @WebServlet("/change_order_comment")
 public class ChangeOrderCommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(ChangeOrderCommentServlet.class);
 
     public ChangeOrderCommentServlet() {
         super();
@@ -24,6 +27,7 @@ public class ChangeOrderCommentServlet extends HttpServlet {
 		String newComment = request.getParameter("comment");
 		
 		if(!StringUtil.isPositiveInteger(orderIdString) || newComment == null) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}

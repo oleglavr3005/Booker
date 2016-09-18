@@ -9,12 +9,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Counter;
 import com.epam.task.database.transformers.UniversalTransformer;
 
 public class CounterDao {
 
 	private Connection connection;
+	private static final Logger LOGGER = Logger.getLogger(CounterDao.class);
 	
 	private final String INSERT_COUNTER = "INSERT INTO `visitor_counter` (hotel_id, date, `count`) VALUES (?, ?, ?)";
 	private final String UPDATE_COUNTER = "UPDATE `visitor_counter` SET hotel_id = ?, date = ?, `count` = ? WHERE visitor_counter_id = ?";
@@ -36,9 +39,13 @@ public class CounterDao {
 			statment.setInt(1, counter.getHotelId());
 			statment.setString(2, new SimpleDateFormat("yyyy-MM-dd").format(counter.getDate()));
 			statment.setInt(3, counter.getCount());
-			return statment.executeUpdate();
+			int result = statment.executeUpdate();
+			if(result > 0) {
+	        	LOGGER.info("New counter inserted");
+			}
+			return result;
 		} catch (Exception e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot insert counter", e);
 			return -1;
 		}
 	}
@@ -50,9 +57,13 @@ public class CounterDao {
 			statment.setInt(3, counter.getCount());
 
 			statment.setInt(4, counter.getId());
-			return statment.executeUpdate();
+			int result = statment.executeUpdate();
+			if(result > 0) {
+	        	LOGGER.info("Counter updated");
+			}
+			return result;
 		} catch (Exception e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot update counter", e);
 			return -1;
 		}
 	}
@@ -63,7 +74,7 @@ public class CounterDao {
 			ResultSet rs = statment.executeQuery();
 			return UniversalTransformer.getCollectionFromRS(rs, Counter.class);
 		} catch(SQLException e){
-			e.printStackTrace();
+        	LOGGER.error("Cannot get counters by hotel", e);
 			return new ArrayList<>();
 		}
 	}
@@ -74,7 +85,7 @@ public class CounterDao {
 			ResultSet rs = statment.executeQuery();
 			return UniversalTransformer.getObjectFromRS(rs, Counter.class);
 		} catch(SQLException e){
-			e.printStackTrace();
+        	LOGGER.error("Cannot get counter by id", e);
 			return null;
 		}
 	}
@@ -86,7 +97,7 @@ public class CounterDao {
 			ResultSet rs = statment.executeQuery();
 			return UniversalTransformer.getObjectFromRS(rs, Counter.class);
 		} catch(SQLException e){
-			e.printStackTrace();
+        	LOGGER.error("Cannot get counter by hotel and date", e);
 			return null;
 		}
 	}

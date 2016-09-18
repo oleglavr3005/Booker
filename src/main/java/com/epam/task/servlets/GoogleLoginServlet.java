@@ -14,9 +14,6 @@ import com.github.scribejava.apis.GoogleApi20;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.oauth.OAuth20Service;
 
-/**
- * Servlet implementation class GoogleLoginServlet
- */
 @WebServlet("/googleLogin")
 public class GoogleLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,18 +22,12 @@ public class GoogleLoginServlet extends HttpServlet {
     private final String clientSecret = "0b4DAckgRD5JLHoko5RdPOGB";
     private final String secretState = "secret" + new Random().nextInt(999_999);
     private static final String CALLBACK_URL = "http://localhost:8080/booker/googlecallback";
-    /**
-	 * @see HttpServlet#HttpServlet()
-	 */
+
+
 	public GoogleLoginServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		 OAuth20Service service = new ServiceBuilder()
@@ -50,14 +41,9 @@ public class GoogleLoginServlet extends HttpServlet {
 		sess.setAttribute("oauth2Service", service);
 		response.sendRedirect(service.getAuthorizationUrl(null));
 	}
-	
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

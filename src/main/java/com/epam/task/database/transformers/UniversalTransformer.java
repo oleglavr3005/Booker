@@ -9,8 +9,10 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 public class UniversalTransformer {
-	//public static final Logger LOG = Logger.getLogger(UniversalTransformer.class);
+	private static final Logger LOGER = Logger.getLogger(UniversalTransformer.class);
 
 	public static <T> List<T> getCollectionFromRS(ResultSet result, Class<T> clazz) throws SQLException {
 
@@ -61,7 +63,7 @@ public class UniversalTransformer {
 				return constructor.newInstance(values.toArray());
 			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e) {
-				//LOG.error("Something is wrong with the transformer", e);
+				LOGER.error("Something is wrong with the transformer", e);
 				return null;
 			}
 	}

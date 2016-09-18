@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.UserType;
 
@@ -19,6 +21,7 @@ import com.epam.task.database.model.enums.UserType;
 	"/remove_hotel_photo", "/remove_room_photo", "/set_main_hotel_photo", "/set_main_room_photo", 
 	"/get_manager_chart_data", "/get_visitors_chart_data", "/cabinet/create_hotel"})
 public class ManagerFilter implements Filter {
+	private static final Logger LOGGER = Logger.getLogger(ManagerFilter.class);
 
     public ManagerFilter() {
     }
@@ -35,6 +38,7 @@ public class ManagerFilter implements Filter {
 		if(user != null && user.getType() == UserType.MANAGER) {
 			chain.doFilter(request, response);
 		} else {		//throw the unexpected visitor on the error page
+        	LOGGER.warn("Not-manager user tried to visit manager page");
 			((HttpServletResponse) response).sendError(404);
 		}
 	}

@@ -14,8 +14,8 @@ public class RoomService {
 		daoManager = new DaoManager();
 	}
 
-	public List<Room> getAllActiveRoomsForHotel(int id, int page) {
-		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllActiveRoomsForHotel(id, page));
+	public List<Room> getAllActiveRoomsForHotelByPage(int id, int page) {
+		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllActiveRoomsForHotelByPage(id, page));
 	}
 
 	public List<Room> getAllRoomsForHotel(int hotelId) {
@@ -26,7 +26,7 @@ public class RoomService {
 		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getRoomById(id));
 	}
 
-	public List<Room> getAllSuitableRoomsForHotel(int id, int page, 
+	public List<Room> getAllSuitableRoomsForHotelByPage(int id, int page, 
 			boolean typeStandart, boolean typeLux, boolean typeDelux, 
 			boolean foodNone, boolean foodBreakfast, boolean foodTwice, boolean foodFull,
 			int minPrice, int maxPrice, int people,
@@ -34,7 +34,7 @@ public class RoomService {
 			boolean hasPool, boolean hasGym, boolean hasBalcony, boolean hasSpa, 
 			boolean hasService, boolean hasCleaner, boolean hasTv, boolean noDeposit,
 			Timestamp startDate, Timestamp endDate, String compareBy) {
-		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllSuitableRoomsForHotel(id, page, 
+		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllSuitableRoomsForHotelByPage(id, page, 
 				typeStandart, typeLux, typeDelux, 
 				foodNone, foodBreakfast, foodTwice, foodFull,
 				minPrice, maxPrice, people,
@@ -44,8 +44,8 @@ public class RoomService {
 				startDate, endDate, compareBy));
 	}
 
-	public List<Room> getAllRoomsForHotel(int id, int page) {
-		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllRoomsForHotel(id, page));
+	public List<Room> getAllRoomsForHotelByPage(int id, int page) {
+		return daoManager.executeAndClose(() -> daoManager.getRoomDao().getAllRoomsForHotelByPage(id, page));
 	}
 
 	public Integer insertRoom(Room room) {
@@ -80,12 +80,12 @@ public class RoomService {
 	private void testing(){
 		RoomService service = new RoomService();
 		System.out.println("Active");
-		List<Room> rooms = service.getAllActiveRoomsForHotel(1, 1);
+		List<Room> rooms = service.getAllActiveRoomsForHotelByPage(1, 1);
 		for (Room room : rooms) {
 			System.out.println(room);
 		}
 		System.out.println("All");
-		rooms = service.getAllRoomsForHotel(1, 1);
+		rooms = service.getAllRoomsForHotelByPage(1, 1);
 		for (Room room : rooms) {
 			System.out.println(room);
 		}

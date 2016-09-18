@@ -7,12 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.HotelPhoto;
 import com.epam.task.database.transformers.UniversalTransformer;
 
 public class HotelPhotoDao {
 
 	private Connection connection;
+	private static final Logger LOGGER = Logger.getLogger(HotelPhotoDao.class);
 
 	private final String SQL_GET_ALL = "SELECT * FROM hotel_photo";
 	private final String SQL_CREATE_HOTEL_PHOTO = "INSERT INTO hotel_photo (img, `desc`, hotel_id, is_main) VALUES (?, ?, ?, ?)";
@@ -21,8 +24,6 @@ public class HotelPhotoDao {
 	private final String SQL_DELETE_PHOTO_BY_ID = "DELETE FROM hotel_photo WHERE hotel_photo_id = ?";
 	
 	private final String UPDATE = "UPDATE `hotel_photo` SET img = ?, `desc` = ?, hotel_id = ?, is_main = ? WHERE hotel_photo_id = ?";
-
-	// private final String SQL_UPDATE_HOTEL_PHOTO = "";
 
 	public HotelPhotoDao(Connection connection) {
 		super();
@@ -39,7 +40,7 @@ public class HotelPhotoDao {
 			ResultSet rs = statement.executeQuery();
 			photos = (List<HotelPhoto>) UniversalTransformer.getCollectionFromRS(rs, HotelPhoto.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all hotel photos", e);
 		}
 
 		return photos;
@@ -53,9 +54,11 @@ public class HotelPhotoDao {
 			st.setInt(3, photo.getHotelId());
 			st.setBoolean(4, photo.isMain());
 			result = st.executeUpdate();
-
+			if(result > 0) {
+	        	LOGGER.info("Hotel photo inserted");
+			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot insert hotel photo", e);
 		}
 		return result;
 	}
@@ -67,7 +70,7 @@ public class HotelPhotoDao {
 			ResultSet rs = st.executeQuery();
 			photo = UniversalTransformer.getObjectFromRS(rs, HotelPhoto.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get hotel photo by id", e);
 		}
 		return photo;
 	}
@@ -79,7 +82,7 @@ public class HotelPhotoDao {
 			ResultSet rs = statement.executeQuery();
 			photos = (List<HotelPhoto>) UniversalTransformer.getCollectionFromRS(rs, HotelPhoto.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get hotel photos by hotel", e);
 		}
 		return photos;
 	}
@@ -87,9 +90,13 @@ public class HotelPhotoDao {
 	public int deleteHotelPhoto(int hotelPhotoId) {
 		try (PreparedStatement statement = connection.prepareStatement(SQL_DELETE_PHOTO_BY_ID);) {
 			statement.setInt(1, hotelPhotoId);
-			return statement.executeUpdate();
+			int result = statement.executeUpdate();
+			if(result > 0) {
+	        	LOGGER.info("Hotel photo removed");
+			}
+			return result;
 		} catch (Exception e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot delete hotel photo", e);
 			return -1;
 		}
 	}
@@ -103,9 +110,13 @@ public class HotelPhotoDao {
 			statement.setBoolean(i++, photo.isMain());
 
 			statement.setInt(i, photo.getId());
-			return statement.executeUpdate();
+			int result = statement.executeUpdate();
+			if(result > 0) {
+	        	LOGGER.info("Hotel photo updated");
+			}
+			return result;
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot update hotel photo", e);
 			return -1;
 		}
 	}

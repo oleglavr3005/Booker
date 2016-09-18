@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Order;
 import com.epam.task.database.service.OrderService;
 import com.epam.task.util.StringUtil;
@@ -14,6 +16,7 @@ import com.epam.task.util.StringUtil;
 @WebServlet("/check_order")
 public class CheckOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(CheckOrderServlet.class);
        
     public CheckOrderServlet() {
         super();
@@ -22,6 +25,7 @@ public class CheckOrderServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String orderIdString = request.getParameter("orderId");
 		if(orderIdString == null || !StringUtil.isPositiveInteger(orderIdString)) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}

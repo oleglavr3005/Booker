@@ -88,12 +88,14 @@ public class HotelServlet extends HttpServlet {
 		try {
 			startDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(session.getAttribute("startDate").toString()).getTime());
 		} catch (Exception e) {
+        	LOGGER.error("Exception while parsing date " + session.getAttribute("startDate").toString(), e);
 			startDate = new Timestamp(0);
 		}
 		try {
 			endDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(session.getAttribute("endDate").toString()).getTime());
 		} catch (Exception e) {
-			endDate = new Timestamp(0);
+        	LOGGER.error("Exception while parsing date " + session.getAttribute("endDate").toString(), e);
+        	endDate = new Timestamp(0);
 		}
 
 		String pageString = request.getParameter("page");

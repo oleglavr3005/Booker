@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Order;
 import com.epam.task.database.model.Room;
 import com.epam.task.database.model.User;
@@ -23,6 +25,7 @@ import com.epam.task.database.service.RoomService;
 
 @WebFilter("/cabinet/manager_order/*")
 public class ManagerOrderFilter implements Filter {
+	private static final Logger LOGGER = Logger.getLogger(ManagerOrderFilter.class);
 
     public ManagerOrderFilter() {
     }
@@ -39,6 +42,7 @@ public class ManagerOrderFilter implements Filter {
 		try {
 			orderId = Integer.parseInt(httpRequest.getPathInfo().substring(1));
 		} catch (Exception e) {
+        	LOGGER.warn("Manager order page does not exist");
 			((HttpServletResponse) response).sendError(404);
 			return;
 		}
@@ -51,12 +55,15 @@ public class ManagerOrderFilter implements Filter {
 				if(managerId == user.getId()) {
 					chain.doFilter(request, response);
 				} else {
+		        	LOGGER.warn("Manager user tried to visit order page for hotel, that does not belong him");
 					((HttpServletResponse) response).sendError(404);
 				}
 			} else {
+	        	LOGGER.warn("Manager user tried to visit order page that does not exist");
 				((HttpServletResponse) response).sendError(404);
 			}
 		} else {		//throw the unexpected visitor on the error page
+        	LOGGER.warn("Not-manager user tried to visit manager order page");
 			((HttpServletResponse) response).sendError(404);
 		}
 	}
