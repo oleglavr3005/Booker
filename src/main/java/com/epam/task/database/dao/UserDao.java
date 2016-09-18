@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.UserStatus;
 import com.epam.task.database.model.enums.UserType;
@@ -15,6 +17,7 @@ import com.epam.task.database.transformers.UniversalTransformer;
 public class UserDao {
 
 	private Connection connection;
+	private static final Logger LOGGER = Logger.getLogger(UserDao.class);
 	
 	private final String SELECT_ALL = "SELECT * FROM `user`";
 	private final String SELECT_ALL_NOT_ADMINS = SELECT_ALL + " WHERE type NOT LIKE 'ADMIN'";
@@ -47,7 +50,7 @@ public class UserDao {
 					ResultSet result = statement.executeQuery()) {
 			return UniversalTransformer.getCollectionFromRS(result, User.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all users", e);
 			return new ArrayList<>();
 		}
 	}
@@ -57,7 +60,7 @@ public class UserDao {
 					ResultSet result = statement.executeQuery()) {
 			return UniversalTransformer.getCollectionFromRS(result, User.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all users with email notif", e);
 			return new ArrayList<>();
 		}
 	}
@@ -69,7 +72,7 @@ public class UserDao {
 				return UniversalTransformer.getCollectionFromRS(result, User.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all users with email notif in hotel", e);
 			return new ArrayList<>();
 		}
 	}
@@ -79,7 +82,7 @@ public class UserDao {
 					ResultSet result = statement.executeQuery()) {
 			return UniversalTransformer.getCollectionFromRS(result, User.class);
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all users with phone notif", e);
 			return new ArrayList<>();
 		}
 	}
@@ -91,7 +94,7 @@ public class UserDao {
 				return UniversalTransformer.getCollectionFromRS(result, User.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all users with phone notif in hotel", e);
 			return new ArrayList<>();
 		}
 	}
@@ -103,7 +106,7 @@ public class UserDao {
 				return UniversalTransformer.getObjectFromRS(result, User.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get user by id", e);
 			return null;
 		}
 	}
@@ -115,7 +118,7 @@ public class UserDao {
 				return UniversalTransformer.getObjectFromRS(result, User.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get user by email", e);
 			return null;
 		}
 	}
@@ -127,6 +130,7 @@ public class UserDao {
 				return UniversalTransformer.getObjectFromRS(result, User.class);
 			}
 		} catch (Exception e) {
+        	LOGGER.error("Cannot get user by confirm code", e);
 			return null;
 		}
 	}
@@ -138,7 +142,7 @@ public class UserDao {
 				return UniversalTransformer.getCollectionFromRS(result, User.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all users by status", e);
 			return new ArrayList<>();
 		}
 	}
@@ -150,7 +154,7 @@ public class UserDao {
 				return UniversalTransformer.getCollectionFromRS(result, User.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get all users by type", e);
 			return new ArrayList<>();
 		}
 	}
@@ -172,9 +176,13 @@ public class UserDao {
 			statement.setBoolean(i++, user.getEmailNotif());
 			statement.setBoolean(i++, user.getPhoneNotif());
 			statement.setString(i++, user.getLanguage());
-			return statement.executeUpdate();
+			int result = statement.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("User inserted");
+			}
+			return result;
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot insert user", e);
 			return -1;
 		}
 	}
@@ -198,9 +206,13 @@ public class UserDao {
 			statement.setString(i++, user.getLanguage());
 
 			statement.setInt(i, user.getId());
-			return statement.executeUpdate();
+			int result = statement.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("User updated");
+			}
+			return result;
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot update user", e);
 			return -1;
 		}
 	}
@@ -209,9 +221,13 @@ public class UserDao {
 		try (PreparedStatement statement = connection.prepareStatement(UPDATE_STATUS)) {
 			statement.setString(1, status.toString());
 			statement.setInt(2, userId);
-			return statement.executeUpdate();
+			int result = statement.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("User status updated");
+			}
+			return result;
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot update user status", e);
 			return -1;
 		}
 	}
@@ -220,9 +236,13 @@ public class UserDao {
 		try (PreparedStatement statement = connection.prepareStatement(UPDATE_TYPE)) {
 			statement.setString(1, type.toString());
 			statement.setInt(2, userId);
-			return statement.executeUpdate();
+			int result = statement.executeUpdate();
+			if(result > 0) {
+				LOGGER.info("User type updated");
+			}
+			return result;
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot update type", e);
 			return -1;
 		}
 	}
@@ -232,7 +252,7 @@ public class UserDao {
 				ResultSet result = statement.executeQuery()) {
 		return UniversalTransformer.getCollectionFromRS(result, User.class);
 	} catch (SQLException e) {
-		e.printStackTrace();
+    	LOGGER.error("Cannot get all not-admin users", e);
 		return new ArrayList<>();
 	}
 	}

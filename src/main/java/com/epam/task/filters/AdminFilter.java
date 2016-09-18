@@ -12,11 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.UserType;
 
 @WebFilter( { "/cabinet/admin/*", "/change_user_status", "/change_request_status" } )
 public class AdminFilter implements Filter {
+	private static final Logger LOGGER = Logger.getLogger(AdminFilter.class);
 
     public AdminFilter() {
     }
@@ -33,6 +36,7 @@ public class AdminFilter implements Filter {
 		if(user != null && user.getType() == UserType.ADMIN) {
 			chain.doFilter(request, response);
 		} else {		//throw the unexpected visitor on the error page
+        	LOGGER.warn("Not-admin user tried to visit admin page");
 			((HttpServletResponse) response).sendError(404);
 		}
 	}

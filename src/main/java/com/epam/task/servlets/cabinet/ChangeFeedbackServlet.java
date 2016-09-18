@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Feedback;
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.User;
@@ -21,6 +23,7 @@ import com.epam.task.util.StringUtil;
 @WebServlet("/change_feedback")
 public class ChangeFeedbackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(ChangeFeedbackServlet.class);
 
     public ChangeFeedbackServlet() {
         super();
@@ -34,6 +37,7 @@ public class ChangeFeedbackServlet extends HttpServlet {
 		
 		if(comment == null || ratingString == null || feedbackIdString == null || title == null ||
 				!StringUtil.isInRatingRange(ratingString) || !StringUtil.isPositiveInteger(feedbackIdString)) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}

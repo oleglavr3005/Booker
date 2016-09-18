@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.Room;
 import com.epam.task.database.model.RoomPhoto;
@@ -24,6 +26,7 @@ import com.epam.task.util.StringUtil;
 @WebServlet("/add_room")
 public class AddRoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(AddRoomServlet.class);
 
     public AddRoomServlet() {
         super();
@@ -65,16 +68,19 @@ public class AddRoomServlet extends HttpServlet {
 				!(food.equalsIgnoreCase("NONE") || food.equalsIgnoreCase("BREAKFAST") || food.equalsIgnoreCase("TWICE") || food.equalsIgnoreCase("FULL")) ||
 				!StringUtil.isBoolean(sendNotifString) || !StringUtil.isBoolean(hasWiFiString) || !StringUtil.isBoolean(hasShowerString) ||
 				!StringUtil.isBoolean(hasConditionString) || !StringUtil.isBoolean(hasBalconyString) || !StringUtil.isBoolean(hasTvString)) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}
 		boolean freeBook = Boolean.parseBoolean(freeBookString);
 		if (freeBook && (daysCountString == null || percentageString == null) ) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}
 		
 		if(roomImagesString.equals("error")) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}

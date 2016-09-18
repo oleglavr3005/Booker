@@ -5,12 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.MailConfirm;
 import com.epam.task.database.transformers.UniversalTransformer;
 
 public class MailConfirmDao {
 
 	private Connection connection;
+	private static final Logger LOGGER = Logger.getLogger(MailConfirmDao.class);
 	
 	private final String SELECT_BY_ID = "SELECT * FROM `mail_confirm` WHERE confirm_id = ?";
 	private final String SELECT_BY_USER = "SELECT * FROM `mail_confirm` WHERE user_id = ?";
@@ -36,7 +39,7 @@ public class MailConfirmDao {
 				return UniversalTransformer.getObjectFromRS(result, MailConfirm.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get mail confirm by id", e);
 			return null;
 		}
 	}
@@ -48,7 +51,7 @@ public class MailConfirmDao {
 				return UniversalTransformer.getObjectFromRS(result, MailConfirm.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get mail confirm by user", e);
 			return null;
 		}
 	}
@@ -60,7 +63,7 @@ public class MailConfirmDao {
 				return UniversalTransformer.getObjectFromRS(result, MailConfirm.class);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot get mail confirm by code", e);
 			return null;
 		}
 	}
@@ -71,9 +74,13 @@ public class MailConfirmDao {
 			statement.setInt(i++, mailConfirm.getUserId());
 			statement.setString(i++, mailConfirm.getEmail());
 			statement.setString(i++, mailConfirm.getConfirmCode());
-			return statement.executeUpdate();
+			int result = statement.executeUpdate();
+			if(result > 0) {
+	        	LOGGER.info("Mail confirm inserted");
+			}
+			return result;
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot insert mail confirm", e);
 			return -1;
 		}
 	}
@@ -83,8 +90,11 @@ public class MailConfirmDao {
 		try (PreparedStatement st = connection.prepareStatement(REMOVE)) {
 			st.setInt(1, id);
 			result = st.executeUpdate();
+			if(result > 0) {
+	        	LOGGER.info("Mail confirm removed");
+			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot remove mail confirm", e);
 		}
 		return result;
 	}
@@ -98,8 +108,11 @@ public class MailConfirmDao {
 			
 			st.setInt(4, mailConfirm.getId());
 			result = st.executeUpdate();
+			if(result > 0) {
+	        	LOGGER.info("Mail confirm updated");
+			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+        	LOGGER.error("Cannot update mail confirm", e);
 		}
 		return result;
 	}

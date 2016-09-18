@@ -9,16 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.HotelPhoto;
 import com.epam.task.database.service.HotelPhotoService;
 import com.epam.task.database.service.HotelService;
 import com.epam.task.util.ImageSetter;
 
 @WebServlet("/edit_hotel_pictures/*")
-public class EditHotelPictuesServlet extends HttpServlet {
+public class EditHotelPicturesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(EditHotelPicturesServlet.class);
        
-    public EditHotelPictuesServlet() {
+    public EditHotelPicturesServlet() {
         super();
     }
 
@@ -41,6 +44,7 @@ public class EditHotelPictuesServlet extends HttpServlet {
 			request.setAttribute("hotel", new HotelService().getHotelById(hotelId));
 			request.getRequestDispatcher("/pages/cards/hotelPhotoCard.jsp").forward(request, response);
 		} catch (Exception e) {
+        	LOGGER.error("Edit hotel pics exception", e);
 			response.setContentType("application/text");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write("error");

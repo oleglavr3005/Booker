@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.HotelPhoto;
 import com.epam.task.database.model.User;
@@ -19,6 +21,7 @@ import com.epam.task.util.StringUtil;
 @WebServlet("/set_main_hotel_photo")
 public class SetMainHotelPhotoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(SetMainHotelPhotoServlet.class);
 
     public SetMainHotelPhotoServlet() {
         super();
@@ -28,6 +31,7 @@ public class SetMainHotelPhotoServlet extends HttpServlet {
 		String photoIdString = request.getParameter("photoId");
 		
 		if(!StringUtil.isPositiveInteger(photoIdString)) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}
@@ -37,14 +41,16 @@ public class SetMainHotelPhotoServlet extends HttpServlet {
 		HotelPhoto photo = hotelPhotoService.getHotelPhotoById(photoId);
 		
 		if(photo == null) {	//no photos by this id
-			response.sendError(500);
+        	LOGGER.error("Attempt to load page, that does not exist");
+			response.sendError(404);
 			return;
 		}
 		
 		Hotel hotel = new HotelService().getHotelById(photo.getHotelId());
 		User user = (User) request.getSession().getAttribute("user");
 		if(hotel.getManagerId() != user.getId()) {	//not your hotel
-			response.sendError(500);
+        	LOGGER.error("Attempt to load forbidden page");
+			response.sendError(404);
 			return;
 		}
 		
@@ -58,7 +64,6 @@ public class SetMainHotelPhotoServlet extends HttpServlet {
 
 		request.setAttribute("hotel", new HotelService().getHotelById(hotel.getId()));
 		request.getRequestDispatcher("/pages/cards/hotelPhotoCard.jsp").forward(request, response);
-		//response.getWriter().write(updated > 0 ? photo.getImg() : "false");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

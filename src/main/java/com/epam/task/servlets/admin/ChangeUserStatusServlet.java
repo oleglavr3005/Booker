@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.model.enums.UserStatus;
 import com.epam.task.database.service.OrderService;
@@ -15,6 +17,7 @@ import com.epam.task.database.service.UserService;
 @WebServlet("/change_user_status")
 public class ChangeUserStatusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(ChangeUserStatusServlet.class);
 
     public ChangeUserStatusServlet() {
         super();
@@ -24,7 +27,9 @@ public class ChangeUserStatusServlet extends HttpServlet {
 		String userIdString = request.getParameter("userId");
 		String status = request.getParameter("status"); //BANNED ACTIVE
 		
-		if(userIdString == null || status == null || !(status.equalsIgnoreCase("BANNED") || status.equalsIgnoreCase("ACTIVE"))) {
+		if(userIdString == null || status == null || 
+				!(status.equalsIgnoreCase("BANNED") || status.equalsIgnoreCase("ACTIVE"))) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}

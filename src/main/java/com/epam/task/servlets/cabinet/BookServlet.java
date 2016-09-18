@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,6 +28,7 @@ import com.epam.task.util.StringUtil;
 @WebServlet("/book")
 public class BookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(BookServlet.class);
 
     public BookServlet() {
         super();
@@ -38,6 +40,7 @@ public class BookServlet extends HttpServlet {
 		String comment = request.getParameter("comment");
 		
 		if(orderIdString == null || cardNumber == null || !StringUtil.isPositiveInteger(orderIdString)) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}
@@ -49,7 +52,8 @@ public class BookServlet extends HttpServlet {
 		Room room = new RoomService().getRoomById(roomId);
 		int userId = ((User) request.getSession().getAttribute("user")).getId();
 		if (order.getUserId() != userId) {
-			response.sendError(500);
+        	LOGGER.error("Attempt to load forbidden page");
+			response.sendError(404);
 			return;
 		}
 		Set<Integer> hotelIds = new HashSet<>();
@@ -81,6 +85,7 @@ public class BookServlet extends HttpServlet {
 			response.getWriter().print(json);
 			response.getWriter().flush();
 		} catch (JSONException e) {
+        	LOGGER.error("JSON exception", e);
 			response.getWriter().write("false");
 		}
 	}

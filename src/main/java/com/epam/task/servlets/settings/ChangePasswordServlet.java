@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.UserService;
 import com.epam.task.util.PasswordHasher;
@@ -17,6 +19,7 @@ import com.epam.task.util.PasswordHasher;
 @WebServlet("/change_password")
 public class ChangePasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(ChangePasswordServlet.class);
 
     public ChangePasswordServlet() {
         super();
@@ -28,6 +31,7 @@ public class ChangePasswordServlet extends HttpServlet {
 		String newPasswordConfirm = request.getParameter("newPasswordConfirm");
 		
 		if(oldPassword == null || newPassword == null || newPasswordConfirm == null || newPassword.length() < 6) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}
@@ -56,6 +60,7 @@ public class ChangePasswordServlet extends HttpServlet {
 				response.getWriter().write("wrongOldPass");
 			}
 		} catch (NoSuchAlgorithmException e) {
+        	LOGGER.error("Hashing exception");
 			response.getWriter().write("false");
 		}
 	}

@@ -16,18 +16,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.comparators.PeopleRoomComparator;
 import com.epam.task.comparators.PriceRoomComparator;
 import com.epam.task.database.dto.FeedbackDto;
 import com.epam.task.database.dto.RoomDto;
-import com.epam.task.database.model.Conveniences;
 import com.epam.task.database.model.Feedback;
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.HotelPhoto;
 import com.epam.task.database.model.Order;
 import com.epam.task.database.model.Room;
 import com.epam.task.database.model.User;
-import com.epam.task.database.service.ConveniencesService;
 import com.epam.task.database.service.FeedbackService;
 import com.epam.task.database.service.HotelPhotoService;
 import com.epam.task.database.service.HotelService;
@@ -37,6 +37,7 @@ import com.epam.task.database.service.RoomService;
 @WebServlet("/find_rooms")
 public class FindRooms extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(FindRooms.class);
 
     public FindRooms() {
         super();
@@ -49,7 +50,8 @@ public class FindRooms extends HttpServlet {
 		String hotelIdString = request.getParameter("hotelId");
 		String peopleString = request.getParameter("people");
 		
-		if(startDateString == null || endDateString == null || !isPositiveInteger(hotelIdString) || !isPositiveInteger(peopleString)) {		
+		if(startDateString == null || endDateString == null || !isPositiveInteger(hotelIdString) || !isPositiveInteger(peopleString)) {	
+        	LOGGER.error("Invalid data injection attempt");	
 			response.sendError(500);
 			return;
 		}
@@ -58,11 +60,13 @@ public class FindRooms extends HttpServlet {
 		try {
 			startDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(startDateString).getTime());
 		} catch (ParseException e) {
-			startDate = new Timestamp(new Date().getTime());
+        	LOGGER.error("Exception while parsing date " + startDateString, e);
+        	startDate = new Timestamp(new Date().getTime());
 		}
 		try {
 			endDate = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(endDateString).getTime());
 		} catch (ParseException e) {
+        	LOGGER.error("Exception while parsing date " + endDateString, e);
 			endDate = new Timestamp(new Date().getTime());
 		}
 		session.setAttribute("startDate", new SimpleDateFormat("yyyy-MM-dd").format(startDate));
@@ -70,13 +74,6 @@ public class FindRooms extends HttpServlet {
 		int hotelId = Integer.parseInt(hotelIdString);
 		
 		Hotel hotel = new HotelService().getHotelById(hotelId);
-		Conveniences conveniences = null;
-		if(hotel != null){
-			conveniences = new ConveniencesService().getConveniencesForHotel(hotel.getId());
-		} else {
-			response.sendError(HttpServletResponse.SC_NOT_FOUND);
-			return;
-		}
 		
 		int people = Integer.parseInt(peopleString);
 		session.setAttribute("people", people);
@@ -119,47 +116,46 @@ public class FindRooms extends HttpServlet {
 				startDate, endDate);
 	//////MAGIC
 		
-			List<RoomDto> roomTemplates = new ArrayList<>();
-			for(Room room : allRooms) {
-				boolean exists = false;
-				for(RoomDto templ : roomTemplates) {
-					if(templ.getHotelId() == room.getHotelId() && templ.getType().equals(room.getType()) &&
-							templ.getBedsCount() == room.getBedsCount() && templ.getDoubleBedsCount() == room.getDoubleBedsCount() &&
-							templ.getPrice() == room.getPrice() && templ.getWifi() == room.getWifi() && 
-							templ.getShower() == room.getShower() && templ.getTv() == room.getTv() &&
-							templ.getCondition() == room.getCondition() &&
-							templ.getBalcony() == room.getBalcony() &&
-							templ.getFood().equals(room.getFood()) && templ.getDaysCount() == room.getDaysCount() &&
-							templ.getPercentage() == room.getPercentage()) { 
-															//if this tempalte alredy exists, add room id in it
-						templ.addRoom(room.getId());
-						exists = true;
-						break;
-					}
-				}
-				if (!exists) { //create template
-					RoomDto template = new RoomDto(room.getHotelId(), room.getType().toString(), 
-							room.getBedsCount(), room.getDoubleBedsCount(), room.getPrice(), 
-							room.getWifi(), room.getShower(), room.getCondition(), 
-							room.getBalcony(), room.getTv(),
-							room.getFood().toString(), room.getDaysCount(), room.getPercentage());
-					template.addRoom(room.getId());
-					roomTemplates.add(template);
+		List<RoomDto> roomTemplates = new ArrayList<>();
+		for (Room room : allRooms) {
+			boolean exists = false;
+			for (RoomDto templ : roomTemplates) {
+				if (templ.getHotelId() == room.getHotelId() && templ.getType().equals(room.getType())
+						&& templ.getBedsCount() == room.getBedsCount()
+						&& templ.getDoubleBedsCount() == room.getDoubleBedsCount()
+						&& templ.getPrice() == room.getPrice() && templ.getWifi() == room.getWifi()
+						&& templ.getShower() == room.getShower() && templ.getTv() == room.getTv()
+						&& templ.getCondition() == room.getCondition() && templ.getBalcony() == room.getBalcony()
+						&& templ.getFood().equals(room.getFood()) && templ.getDaysCount() == room.getDaysCount()
+						&& templ.getPercentage() == room.getPercentage()) {
+					// if this tempalte alredy exists, add room id in it
+					templ.addRoom(room.getId());
+					exists = true;
+					break;
 				}
 			}
-			
-			//////EO MAGIC
+			if (!exists) { // create template
+				RoomDto template = new RoomDto(room.getHotelId(), room.getType().toString(), room.getBedsCount(),
+						room.getDoubleBedsCount(), room.getPrice(), room.getWifi(), room.getShower(),
+						room.getCondition(), room.getBalcony(), room.getTv(), room.getFood().toString(),
+						room.getDaysCount(), room.getPercentage());
+				template.addRoom(room.getId());
+				roomTemplates.add(template);
+			}
+		}
 
-			String compareBy = request.getParameter("compareBy");
-			if("compareByPriceAsc".equals(compareBy)) {
-				roomTemplates.sort(new PriceRoomComparator());
-			} else if("compareByPriceDesc".equals(compareBy)) {
-				roomTemplates.sort(Collections.reverseOrder(new PriceRoomComparator()));
-			} else if("compareByPeopleAsc".equals(compareBy)) {
-				roomTemplates.sort(new PeopleRoomComparator());
-			} else { //compareByPeopleDesc or null
-				roomTemplates.sort(Collections.reverseOrder(new PeopleRoomComparator()));
-			}
+		////// EO MAGIC
+
+		String compareBy = request.getParameter("compareBy");
+		if ("compareByPriceAsc".equals(compareBy)) {
+			roomTemplates.sort(new PriceRoomComparator());
+		} else if ("compareByPriceDesc".equals(compareBy)) {
+			roomTemplates.sort(Collections.reverseOrder(new PriceRoomComparator()));
+		} else if ("compareByPeopleAsc".equals(compareBy)) {
+			roomTemplates.sort(new PeopleRoomComparator());
+		} else { // compareByPeopleDesc or null
+			roomTemplates.sort(Collections.reverseOrder(new PeopleRoomComparator()));
+		}
 			
 		int countOfPages = (int) Math.ceil(roomTemplates.size() / 5.0);
 		if (page > countOfPages) {
@@ -198,7 +194,6 @@ public class FindRooms extends HttpServlet {
 		List<HotelPhoto> hotelPhoto = new HotelPhotoService().getHotelPhotosByHotel(hotelId); 
 		
 		request.setAttribute("hotel", hotel);
-		request.setAttribute("conveniences", conveniences);
 		request.setAttribute("feedbacks", FeedbackDto.listConverter(feedbacks));
 		request.setAttribute("rooms", roomTemplatesByPage);
 		if (hotelPhoto.size() > 0) {

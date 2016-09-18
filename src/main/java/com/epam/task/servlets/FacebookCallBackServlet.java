@@ -1,12 +1,8 @@
 package com.epam.task.servlets;
 
-
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -31,27 +27,16 @@ import com.github.scribejava.core.model.Response;
 import com.github.scribejava.core.model.Verb;
 import com.github.scribejava.core.oauth.OAuth20Service;
 
-/**
- * Servlet implementation class FacebookCallBackServlet
- */
 @WebServlet("/oauth2callback")
 public class FacebookCallBackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = Logger.getLogger(FacebookCallBackServlet.class);
 	private ObjectMapper objectMapper;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public FacebookCallBackServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// Check if the user have rejected
@@ -96,13 +81,8 @@ public class FacebookCallBackServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath() + "/home");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
@@ -133,8 +113,7 @@ public class FacebookCallBackServlet extends HttpServlet {
 		try {
 			url = getFinalLocation(url);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+        	LOGGER.error("IOException", e1);
 		}
 		//System.out.println(url);
 		  String savePath = getServletContext().getInitParameter("images-folder");
@@ -149,8 +128,7 @@ public class FacebookCallBackServlet extends HttpServlet {
 		try {
 			imageUrl = new URL(url);
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+        	LOGGER.error("MalformedURLException", e);
 		}
 		BufferedImage image = null;
 

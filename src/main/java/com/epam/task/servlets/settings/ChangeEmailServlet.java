@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,6 +23,7 @@ import com.epam.task.util.StringUtil;
 @WebServlet("/change_email")
 public class ChangeEmailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(ChangeEmailServlet.class);
 
     public ChangeEmailServlet() {
         super();
@@ -32,6 +34,7 @@ public class ChangeEmailServlet extends HttpServlet {
 		String mailNotifString = request.getParameter("mailNotif");
 		
 		if(email == null || !StringUtil.isBoolean(mailNotifString)) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}
@@ -75,6 +78,7 @@ public class ChangeEmailServlet extends HttpServlet {
 			response.getWriter().print(json.toString());
 			response.getWriter().flush();
 		} catch (JSONException e) {
+        	LOGGER.error("JSON exception", e);
 			response.setContentType("text/plain");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write("false");

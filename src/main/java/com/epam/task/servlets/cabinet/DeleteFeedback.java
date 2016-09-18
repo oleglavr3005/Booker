@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Feedback;
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.User;
@@ -21,6 +23,7 @@ import com.epam.task.util.StringUtil;
 @WebServlet("/deleteFeedback")
 public class DeleteFeedback extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(DeleteFeedback.class);
 
     public DeleteFeedback() {
         super();
@@ -29,6 +32,7 @@ public class DeleteFeedback extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String commentIdString = request.getParameter("commentId");
 		if(commentIdString == null || !StringUtil.isPositiveInteger(commentIdString)) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}
@@ -67,6 +71,7 @@ public class DeleteFeedback extends HttpServlet {
 			}
 			response.getWriter().write(""+hotel.getRating());
 		} catch (Exception e) {
+        	LOGGER.error("JSON exception", e);
 			response.getWriter().write("false");
 		}
 		response.getWriter().flush();

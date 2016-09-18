@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Request;
 import com.epam.task.database.model.User;
 import com.epam.task.database.model.enums.RequestStatus;
@@ -19,6 +21,7 @@ import com.epam.task.database.service.RequestService;
 @WebServlet("/create_request")
 public class CreateRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(CreateRequestServlet.class);
 
     public CreateRequestServlet() {
         super();
@@ -28,6 +31,7 @@ public class CreateRequestServlet extends HttpServlet {
 		String message = request.getParameter("message");
 		
 		if(message == null) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}

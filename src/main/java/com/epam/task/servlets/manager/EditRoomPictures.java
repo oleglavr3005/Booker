@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.RoomPhoto;
 import com.epam.task.database.service.RoomPhotoService;
 import com.epam.task.database.service.RoomService;
@@ -17,6 +19,7 @@ import com.epam.task.util.ImageSetter;
 @WebServlet("/edit_room_pictures/*")
 public class EditRoomPictures extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(EditRoomPictures.class);
 
     public EditRoomPictures() {
         super();
@@ -41,6 +44,7 @@ public class EditRoomPictures extends HttpServlet {
 			request.setAttribute("room", new RoomService().getRoomById(roomId));
 			request.getRequestDispatcher("/pages/cards/roomPhotoCard.jsp").forward(request, response);
 		} catch (Exception e) {
+        	LOGGER.error("Edit room pics exception", e);
 			response.setContentType("application/text");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write("error");

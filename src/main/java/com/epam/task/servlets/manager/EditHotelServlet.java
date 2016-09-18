@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.User;
 import com.epam.task.database.service.HotelService;
@@ -15,6 +17,7 @@ import com.epam.task.util.StringUtil;
 @WebServlet("/edit_hotel")
 public class EditHotelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(EditHotelServlet.class);
 
     public EditHotelServlet() {
         super();
@@ -45,6 +48,7 @@ public class EditHotelServlet extends HttpServlet {
 				!StringUtil.isDouble(xCoordString) || !StringUtil.isDouble(yCoordString) || !StringUtil.isBoolean(deletedString) ||
 				!StringUtil.isBoolean(hasParkingString) || !StringUtil.isBoolean(hasPoolString) || !StringUtil.isBoolean(hasGymString) || 
 				!StringUtil.isBoolean(hasSpaString) || !StringUtil.isBoolean(hasServiceString) || !StringUtil.isBoolean(hasCleanerString)) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}
@@ -54,6 +58,7 @@ public class EditHotelServlet extends HttpServlet {
 		Hotel hotel = hotelService.getHotelById(hotelId);
 		int userId = ((User) request.getSession().getAttribute("user")).getId();
 		if(hotel.getManagerId() != userId) {
+        	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
 		}
