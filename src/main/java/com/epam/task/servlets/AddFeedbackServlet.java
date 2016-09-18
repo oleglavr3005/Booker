@@ -77,6 +77,8 @@ public class AddFeedbackServlet extends HttpServlet {
 		} else { 	//create new
 			userFeedback = new Feedback(0, userId, hotelId, rating, comment, title, new Timestamp(new Date().getTime()));
 			success = feedbackService.insertFeedback(userFeedback);
+			Feedback newUserFeedback = feedbackService.getFeedBackByUserAndHotel(userId, hotelId);
+			userFeedback.setId(newUserFeedback.getId());
 		}
 		
 		if (success > 0) { //calculate new rating
