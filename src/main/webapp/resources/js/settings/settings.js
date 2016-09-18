@@ -233,9 +233,9 @@ function emailIsValid(email) {
 		success : function(data) {
 			isValid = (data == "true");// true
 			if (!isValid) {
-				invalid('email');
-				$('#emailLbl').attr("data-error",
-						languages.script.current.settings.usedMail);
+//				invalid('email');
+//				$('#emailLbl').attr("data-error",
+//						languages.script.current.settings.usedMail);
 				return false;
 			}
 		},
@@ -268,6 +268,7 @@ function savePassword(header, succesfull) {
 		newPasswordConfirm : $('#repeatPassword').val()
 	},
 			function(result) {
+		debugger;
 				clearPasswordFields();
 				if (result == 'wrongOldPass') {
 					invalid('currentPassword');
@@ -282,7 +283,8 @@ function savePassword(header, succesfull) {
 					$('#currentPassword').val('');
 					$('#newPassword').val('');
 					$('#repeatPassword').val('');
-					  Materialize.toast(languages.script.current.settings.succesTitle, 3000);
+//					  Materialize.toast(languages.script.current.settings.succesTitle, 3000);
+					  Materialize.toast("succes", 3000);
 //					$('#pwd_title').text(
 //							languages.script.current.settings.succesTitle);
 //					$('#pwd_title').css('color', 'green');

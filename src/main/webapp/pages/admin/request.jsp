@@ -106,9 +106,9 @@
 		<div class="row">
 			<div class="col s3">
 				<!-- 					PHOTO -->
-				<a href="#!"><img id="Img"
+				<img id="Img"
 					style="height: 200px; padding: 10px; width: 200px;"
-					src="<i:urlToImage url="${userPhoto}" />"> </a>
+					src="<i:urlToImage url="${userPhoto}" />">
 				<!-- 					END OF PHOTO -->
 
 			</div>
@@ -135,7 +135,7 @@
 
 							<!-- 						DATE -->
 
-							<span id="request_date"> : <span>${request.requestDate}
+							<span id="request_date"></span> : <span>${request.requestDate}
 							</span> <!-- 							END OF DATE -->
 						</div>
 					</div>
@@ -145,8 +145,18 @@
 
 							<!-- 						STATUS -->
 
-							<span id="request_status"> : <span>${request.status}
-							</span> <!-- 							END OF STATUS -->
+							<span id="request_status"></span> : 
+							<c:if test="${request.status == 'APPROVED'}">
+								<span class="request_status_approved"></span>
+							</c:if>
+							<c:if test="${request.status == 'DECLINED'}">
+								<span class="request_status_declined"></span>
+							</c:if>
+							<c:if test="${request.status == 'PENDING'}">
+								<span class="request_status_pending"></span>
+							</c:if>
+						
+							 <!-- 							END OF STATUS -->
 						</div>
 					</div>
 
@@ -161,7 +171,6 @@
 			<div class="col s12">
 
 				<!-- 						MESSAGE -->
-				<a></a>
 				<div style="font-size: 15px; padding: 10px; 	border: solid 1px #000; border-radius: 10px; background-color: lightgray;">${request.message}</div>
 
 				<!-- 							END OF MESSAGE -->
