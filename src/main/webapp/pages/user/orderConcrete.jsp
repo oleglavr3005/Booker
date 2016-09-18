@@ -383,7 +383,7 @@ div #sidebar-wrapper {
 							</div>
 							<div class="input-field">
 								<textarea id="comment"
-									<c:if test="${order.status != 'ACTIVE' || user.type == 'MANAGER'}">readonly</c:if>
+									<c:if test="${order.status != 'ACTIVE'}">readonly</c:if>
 									class="materialize-textarea">${order.comment}</textarea>
 								<label id="commentLbl" data-error="COMMENT IS NOT VALID!"
 									for="name"></label>
@@ -391,7 +391,7 @@ div #sidebar-wrapper {
 						</div>
 					</div>
 
-					<c:if test="${order.status == 'ACTIVE' && user.type == 'USER'}">
+					<c:if test="${order.status == 'ACTIVE'}">
 						<div class="col s2 offset-s1">
 							<div class="row">
 								<a class="waves-effect waves-light btn" id="create_button"
