@@ -242,7 +242,8 @@
 									<c:if test="${request.status != 'PENDING'}">style="background-color: lightgrey;"</c:if>>
 									<td><c:out value="${request.id }"></c:out></td>
 									<td><c:out value="${request.userId}"></c:out></td>
-									<td><c:out value="${request.requestDate}"></c:out></td>
+									<td><span><fmt:formatDate
+													pattern="yyyy-MM-dd hh:mm" value="${request.requestDate}" /></span></td>
 									<td><a
 										href="${pageContext.servletContext.contextPath}/cabinet/admin/request/${request.id}"><c:out
 												value="${request.message}"></c:out></a></td>

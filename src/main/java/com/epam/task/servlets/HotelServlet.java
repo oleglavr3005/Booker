@@ -26,6 +26,7 @@ import com.epam.task.database.model.Hotel;
 import com.epam.task.database.model.Order;
 import com.epam.task.database.model.Room;
 import com.epam.task.database.model.User;
+import com.epam.task.database.model.enums.UserStatus;
 import com.epam.task.database.service.CounterService;
 import com.epam.task.database.service.FeedbackService;
 import com.epam.task.database.service.HotelService;
@@ -183,7 +184,7 @@ public class HotelServlet extends HttpServlet {
 		request.setAttribute("currentPage", page);		
 
 		User user = ((User) session.getAttribute("user"));
-		if(user != null) {
+		if(user != null && user.getStatus() != UserStatus.BANNED) {
 			int userId = user.getId();
 			//ADDED CHECK: if user has no finished orders in this hotel, he cannot leave feedback
 			List<Order> finishedOrdersInHotel = new OrderService().getFinishedOrdersByUserAndHotel(userId, id);
