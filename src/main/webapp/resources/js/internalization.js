@@ -18,9 +18,9 @@
 		subscribes_table_roomfood_none : "None",
 		subscribes_table_roomfood : "Food : ",
 		subscribes_table_price : "Price",
-		subscribes_table_roomtype_standart : "STANDART",
-		subscribes_table_roomtype_lux : "LUX",
-		subscribes_table_roomtype_delux : "DELUX",
+		subscribes_table_roomtype_standart : "Standart",
+		subscribes_table_roomtype_lux : "Lux",
+		subscribes_table_roomtype_delux : "Delux",
 		orderConcret_title : "Order №",
 		order_concret_comment : "Comment",
 		myfeedbacks_no_feedbacks : " no feedback",
@@ -339,9 +339,9 @@
 		subscribes_table_roomfood_none : "Немає",
 		subscribes_table_roomfood : "Харчування : ",
 		subscribes_table_price : "Ціна",
-		subscribes_table_roomtype_standart : "СТАНДАРТ",
-		subscribes_table_roomtype_lux : "ЛЮКС",
-		subscribes_table_roomtype_delux : "ДЕЛЮКС",
+		subscribes_table_roomtype_standart : "Стандарт",
+		subscribes_table_roomtype_lux : "Люкс",
+		subscribes_table_roomtype_delux : "Делюкс",
 		orderConcret_title : "Замовлення №",
 		order_concret_comment : "Коментар",
 		myfeedbacks_no_feedbacks : " немає відгуків",
@@ -729,6 +729,7 @@
 			tooltip_money_to_pay : "Сума оплати",
 			tooltip_you_pay : "Загальна сума",
 			tooltip_show_info : "Показати додаткову інформацію",
+			tooltip_status : "Статус замовлення",
 		},
 		en : {
 			index_room_wifi : "Wifi",
@@ -762,6 +763,7 @@
 			tooltip_money_to_pay : "Money to pay",
 			tooltip_you_pay : "Total sum",
 			tooltip_show_info : "Show additional info",
+			tooltip_status : "Order status",
 		}
 	};
 	
