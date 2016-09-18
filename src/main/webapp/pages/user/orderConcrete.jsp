@@ -280,7 +280,8 @@ div #sidebar-wrapper {
 									<a class="tooltipped tooltip_order_date" data-position="icon"
 										data-tooltip="Order date" style="color: #0d0d0d;"><i
 										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> <span
-										id="order_concrete_order_date"></span> <span id="order_date">${order.orderDate}</span>
+										id="order_concrete_order_date"></span> <span id="order_date"><fmt:formatDate
+													pattern="yyyy-MM-dd hh:mm" value="${order.orderDate}" /></span>
 								</div>
 							</div>
 							<!-- END OF ORDER DATE MARKER -->
@@ -291,7 +292,8 @@ div #sidebar-wrapper {
 									<a class="tooltipped tooltip_start_date" data-position="icon"
 										data-tooltip="Start date" style="color: #0d0d0d;"><i
 										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> <span
-										id="order_card_from"></span> <span id="start_date">${order.startDate}</span>
+										id="order_card_from"></span> <span id="start_date"><fmt:formatDate
+													pattern="yyyy-MM-dd" value="${order.startDate}" /></span>
 								</div>
 							</div>
 							<!-- END OF START DATE MARKER -->
@@ -302,7 +304,8 @@ div #sidebar-wrapper {
 									<a class="tooltipped tooltip_start_date" data-position="icon"
 										data-tooltip="End date" style="color: #0d0d0d;"><i
 										class="fa fa-lg fa-calendar invert" aria-hidden="true"></i></a> <span
-										id="order_card_to"></span> <span id="end_date">${order.endDate}</span>
+										id="order_card_to"></span> <span id="end_date"><fmt:formatDate
+													pattern="yyyy-MM-dd" value="${order.endDate}" /></span>
 								</div>
 							</div>
 							<!-- END OF END DATE MARKER -->
