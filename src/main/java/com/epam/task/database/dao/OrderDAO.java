@@ -25,8 +25,8 @@ public class OrderDAO {
 	private final String SQL_CREATE_ORDER = "INSERT INTO `order`(user_id, room_id, start_date, end_date, `status`, order_date, price, card_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 	private final String SQL_READ_ORDER_BY_ID = "SELECT * FROM `order` WHERE order_id = ?";
 	private final String SQL_UPDATE_ORDER = "UPDATE `order` SET user_id = ?, room_id = ?, start_date = ?, end_date = ?, `status` = ?, order_date = ?, price = ?, card_number = ? WHERE order_id = ?";
-	private final String SQL_BOOK_ORDER_BY_ID = "UPDATE `order` SET `status` = 'ACTIVE', card_number = ?, comment = ?, order_date = ? WHERE order_id = ?";
-	private final String SQL_BOOK_ALL_ORDERS_BY_USER = "UPDATE `order` SET `status` = 'ACTIVE', card_number = ?, comment = ?, order_date = ? WHERE user_id = ? AND `status` LIKE 'ORDER'";
+	private final String SQL_BOOK_ORDER_BY_ID = "UPDATE `order` SET `status` = 'ACTIVE', card_number = ?, comment = ? WHERE order_id = ?";
+	private final String SQL_BOOK_ALL_ORDERS_BY_USER = "UPDATE `order` SET `status` = 'ACTIVE', card_number = ?, comment = ? WHERE user_id = ? AND `status` LIKE 'ORDER'";
 	private final String SQL_REMOVE_ORDER = "DELETE FROM `order` WHERE order_id = ?";
 	private final String SQL_REMOVE_ORDERS_BY_STATUS = "DELETE FROM `order` WHERE user_id = ? AND `status` LIKE ?";
 	private final String SQL_GET_ALL_ORDERS_BY_USER_AND_STATUS = "SELECT * FROM `order` WHERE `status` LIKE ? AND user_id = ?";
@@ -240,7 +240,6 @@ public class OrderDAO {
 		try (PreparedStatement st = connection.prepareStatement(SQL_BOOK_ALL_ORDERS_BY_USER)) {
 			st.setString(1, cardNumber);
 			st.setString(2, comment);
-			st.setString(3, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 			st.setInt(4, userId);
 			int result = st.executeUpdate();
 			if(result > 0) {
@@ -257,7 +256,6 @@ public class OrderDAO {
 		try (PreparedStatement st = connection.prepareStatement(SQL_BOOK_ORDER_BY_ID)) {
 			st.setString(1, cardNumber);
 			st.setString(2, comment);
-			st.setString(3, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 			st.setInt(4, orderId);
 			int result = st.executeUpdate();
 			if(result > 0) {

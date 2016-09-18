@@ -135,7 +135,8 @@
 
 							<!-- 						DATE -->
 
-							<span id="admin_page_reqDate"></span> : <span>${request.requestDate}
+							<span id="admin_page_reqDate"></span> : <span><fmt:formatDate
+													pattern="yyyy-MM-dd hh:mm" value="${request.requestDate}" />
 							</span> <!-- 							END OF DATE -->
 						</div>
 					</div>
