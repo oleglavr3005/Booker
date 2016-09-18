@@ -287,7 +287,7 @@ div #sidebar-wrapper {
 			</div>
 
 			<div class="col s3 offset-s1">
-				<a class="waves-effect waves-light btn"
+				<a id="btnRemovePhoto" class="waves-effect waves-light btn"
 					style="background: #F55151; color: #FFFFFF; margin: 0 auto;"
 					onclick="removeHotelPhoto()"><span id="btn_remove_selected"></span> </a>
 			</div>
@@ -406,7 +406,7 @@ div #sidebar-wrapper {
 		src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU&libraries=places&callback=initAutocomplete"
 		async defer></script>
 	<script>
-	if (${hotel.isDeleted} == true) {
+	if ("${hotel.isDeleted}") {
 		$('#isDeleted').click();
 	}
 	$(document).ready(function(){
@@ -421,6 +421,11 @@ div #sidebar-wrapper {
 		$('#hasSpa').attr('checked', '${hotel.spa}' == 'true');
 		$('#hasService').attr('checked', '${hotel.service}' == 'true');
 		$('#hasCleaner').attr('checked', '${hotel.cleaner}' == 'true');
+		
+		if ("${hotel.photos[0].id}" == 0) {
+			$('#btnRemovePhoto').hide();
+			$('#btnToMain').hide();
+		}
 	</script>
 
 

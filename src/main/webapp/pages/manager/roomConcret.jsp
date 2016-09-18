@@ -328,13 +328,13 @@
 				<div class="col s3 offset-s1">
 					<a id="btnToMain" class="waves-effect waves-light btn"
 						style="background: #e68a00;; color: #FFFFFF; margin: 0 auto;"
-						onclick="promoteToMain()"><span id="btn_main"></span>MAIN </a>
+						onclick="promoteToMain()"><span id="btn_main"></span> </a>
 				</div>
 
 				<div class="col s3 offset-s1">
-					<a id="btn_remove_selected" class="waves-effect waves-light btn"
+					<a id="btnRemovePhoto" class="waves-effect waves-light btn"
 						style="background: #F55151; color: #FFFFFF; margin: 0 auto;"
-						onclick="removeRoomPhoto()"></a>
+						onclick="removeRoomPhoto()"><span id="btn_remove_selected"></span></a>
 				</div>
 			</div>
 
@@ -373,8 +373,14 @@
 		$('#hasBalcony').attr('checked', '${room.balcony}' == 'true');
 		
 		$('#freeBook').attr('checked', '${room.daysCount}' < 0);
-		if (${room.deleted} == true) {
+		if ("${room.deleted}") {
 			$('#isDeleted').click();
+		}
+		
+
+		if ("${room.photos[0].id}" == 0) {
+			$('#btnRemovePhoto').hide();
+			$('#btnToMain').hide();
 		}
 	</script>
 
