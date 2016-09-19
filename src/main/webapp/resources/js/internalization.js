@@ -917,6 +917,14 @@
 				enter_key : "Enter Keywords Here",
 				rows_per_page : "Rows per page:",
 				sInfo :  "Showing _START_ to _END_ of _TOTAL_ entries",
+				sLengthMenu : "Show _MENU_ entries", 
+				sLengthMenu : "Search:",
+				oPaginate: {
+			        "sFirst":    "First",
+			        "sLast":     "Last",
+			        "sNext":     "Next",
+			        "sPrevious": "Previous"
+			    },
 			},
 			createOrder : {
 				error : "ERROR OCCURED",
@@ -1105,6 +1113,14 @@
 				enter_key : "Введіть ключові слова",
 				rows_per_page : "Рядків на сторінку:",
 				sInfo : "Записи з _START_ по _END_ із _TOTAL_ записів",
+				sLengthMenu : "Показати _MENU_ записів",
+				sSearch:       "Пошук:",
+				oPaginate: {
+			        "sFirst": "Перша",
+			        "sPrevious": "Попередня",
+			        "sNext": "Наступна",
+			        "sLast": "Остання"
+			    },
 			},
 			createOrder : {
 				error : "ПОМИЛКА",
