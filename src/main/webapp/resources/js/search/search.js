@@ -68,7 +68,7 @@ function find() {
 
 function searchRooms(hotelId) {
 	var flag = true;
-	flag = peopleIsValid($('#people').val()) && flag;
+	//flag = peopleIsValid($('#people').val()) && flag;
 	flag = startDateIsValid() && flag;
 	flag = endDateIsValid() && flag;
 	if (flag) {

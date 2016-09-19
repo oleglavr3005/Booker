@@ -40,6 +40,13 @@ function saveMailData() {
 	}
 }
 
+function saveMailNotif() {
+	var mailCheck = document.getElementById('eMailBox').checked;
+	$.post('../change_email', {
+		mailNotif : mailCheck,
+	});
+}
+
 function savePersonalData() {
 	var name = $('#name').val();
 	var surname = $('#surname').val();

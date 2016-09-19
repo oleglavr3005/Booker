@@ -121,6 +121,25 @@ $j(document).ready(function () {
 	});
 </script>
 <style>
+.invertPng {-webkit-filter: brightness(2); filter: brightness(2);}
+
+
+#fixedbutton {
+    position: fixed;
+    bottom: 50px;
+    right: 50px; 
+	background-color: #F55151; 
+	max-width: 100px; 
+	padding: 20px; 
+	border-radius: 50px; 
+	box-shadow: 5px 5px 7px grey;
+	overflow: visible;
+}
+
+#fixedbutton:hover {
+	box-shadow: 7px 7px 10px grey;
+}
+
 div #sidebar-wrapper {
 	position: relative;
 	left: 0;
@@ -410,6 +429,12 @@ div #sidebar-wrapper {
 			<jsp:include page="comments/commentCard.jsp"></jsp:include>
 		</div>
 	</div>
+	
+	<c:if test="${user != null}">
+		<a href="${pageContext.servletContext.contextPath}/cabinet/cart" id="fixedbutton">
+			<img src="${pageContext.servletContext.contextPath}/resources/images/cart.png" class="invertPng"/>
+		</a>
+	</c:if>
 
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="foot.jsp"></jsp:include>
