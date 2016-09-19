@@ -115,11 +115,11 @@
 			<div class="col s3">
 				<!-- 					PHOTO -->
 				<div class="row">
-					<img id="Img" style="height: 210px; padding: 10px; width: 290px;"
+					<img id="Img" style="max-height: 200px; padding: 5px; width: 100%;"
 						src="<i:urlToImage url="${room.photos[0].img }" />">
 					<a class="waves-effect waves-light btn" id="create_button"
 						onclick="updateRoom(${room.id})"
-						style="margin-left: 10px; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
+						style="width: 60%; margin-left: 20%; margin-top: 10px; background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;">
 						<span id="room_concret_save"></span>
 					</a>
 					<p id="create_error" style="color: red"></p>
@@ -143,7 +143,7 @@
 				<div class="container-fluid">
 
 					<div class="row">
-						<div class="col s4 offset-s2" style="margin-top: 20px;">
+						<div class="col s6" style="margin-top: 20px; padding-left: 50px;">
 
 							<!-- 						ROOM TYPE -->
 							<div class="row">
@@ -211,7 +211,7 @@
 
 						</div>
 
-						<div class="col s4 offset-s2" style="margin-top: 20px;">
+						<div class="col s6" style="margin-top: 20px; padding-left: 50px;">
 
 							<!-- 						FOOD TYPE -->
 							<div class="row">
