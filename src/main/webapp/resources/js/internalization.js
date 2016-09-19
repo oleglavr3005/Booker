@@ -918,7 +918,7 @@
 				rows_per_page : "Rows per page:",
 				sInfo :  "Showing _START_ to _END_ of _TOTAL_ entries",
 				sLengthMenu : "Show _MENU_ entries", 
-				sLengthMenu : "Search:",
+				sSearch : "Search:",
 				oPaginate: {
 			        "sFirst":    "First",
 			        "sLast":     "Last",
