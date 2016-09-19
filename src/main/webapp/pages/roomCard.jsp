@@ -230,17 +230,18 @@ b {
 						<div class="row"
 							style="margin-bottom: 0px; margin-top: 80px;
 						<c:if test="${!(user != null && startDate != null && user.status != 'BANNED')}"> visibility: hidden</c:if> ">
-							<div class="input-field col s7 offset-s4" style="margin-top: -20;">
-								<input id="countOfRooms${room.id}" type="number"
+							<div class="input-field col s7 offset-s4"
+								style="margin-top: -20;">
+								<input id="countOfRooms${room.id}" type="number" placeholder=""
 									class="validate" name="countOfRooms" min=1 value=1
-									max="${room.amount}"><label id="nameLbl"
-									data-error="NAME INVALID" for="name"><span
+									max="${room.amount}"><label class="countOfRooms" id="countOfRooms${room.id}Lbl"
+									data-error="NAME INVALID" for="countOfRooms${room.id}"><span
 									class="room_orderedrooms"></span></label>
 							</div>
 						</div>
 
 
-						<div class="row">
+						<div class="row" style="padding-top: 10px; margin-bottom: 0px;">
 							<c:if test="${user != null && user.status != 'BANNED'}">
 								<div class="col s3" id="cont"></div>
 								<c:if test="${startDate != null}">
@@ -261,12 +262,14 @@ b {
 							</c:if>
 							<c:if test="${user != null && user.status == 'BANNED'}">
 								<div>
-									<label style="color: red"><span class="room_card_YOURE_BANNED"></span></label>
+									<label style="color: red"><span
+										class="room_card_YOURE_BANNED"></span></label>
 								</div>
 							</c:if>
 							<c:if test="${user == null}">
 								<div>
-									<label style="color: red"><span class="room_card_need_login"></span></label>
+									<label style="color: red"><span
+										class="room_card_need_login"></span></label>
 								</div>
 							</c:if>
 
