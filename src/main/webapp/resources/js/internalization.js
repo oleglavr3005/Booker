@@ -298,6 +298,8 @@
 		user_cart_header : "Shopping Cart",
 		orders_charts_HOTELSCHART : "Most visited hotels",
 		orders_charts_MONTHCHART : "Monthly activity",
+		
+		datatable_all : "All",
 		// hotelList
 		room_header : "Rooms",
 		room_type : "Room type",
@@ -339,7 +341,7 @@
 	var ua = {
 
 		dataTables_empty : "Немає доступних даних",
-		hootel_without_rooms : "Цей готель немає кімнат",
+		hootel_without_rooms : "Цей готель не має вільних кімнат",
 		feedback_banned : "забанений",
 		label_service : "Обслуговування",
 		label_cleaner : "Хімчистка",
@@ -619,7 +621,7 @@
 		user_cart_header : "Кошик",
 		orders_charts_HOTELSCHART : "Найчастіше відвідувані готелі",
 		orders_charts_MONTHCHART : "Активність по місяцях",
-
+		datatable_all : "Всі",
 		admin_edit_name : "Назва готелю",
 		admin_edit_rating : "Рейтинг",
 		admin_edit_address : "Адреса",
@@ -914,7 +916,7 @@
 				is_max : " - is maximum count of images",
 				enter_key : "Enter Keywords Here",
 				rows_per_page : "Rows per page:",
-				sInfo : "_START_ -_END_ of _TOTAL_",
+				sInfo :  "Showing _START_ to _END_ of _TOTAL_ entries",
 			},
 			createOrder : {
 				error : "ERROR OCCURED",
@@ -1102,7 +1104,7 @@
 				is_max : " : максимальна кількість зображеннь",
 				enter_key : "Введіть ключові слова",
 				rows_per_page : "Рядків на сторінку:",
-				sInfo : "_ПОЧАТОК_ -_КІНЕЦЬ_ з _ВСЬОГО_",
+				sInfo : "Записи з _START_ по _END_ із _TOTAL_ записів",
 			},
 			createOrder : {
 				error : "ПОМИЛКА",
