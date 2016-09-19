@@ -167,7 +167,7 @@
 				<div class="container-fluid">
 
 					<div class="row">
-						<div class="col s5 offset-s1" style="margin-top: 20px;">
+						<div class="col s7" style="margin-top: 20px;">
 
 							<!-- NUMBER -->
 
@@ -241,7 +241,7 @@
 
 						</div>
 
-						<div class="col s5 offset-s1" style="margin-top: 20px;">
+						<div class="col s4 offset-s1" style="margin-top: 20px;">
 
 							<!-- 								CHECKBOX -->
 
