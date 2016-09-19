@@ -66,9 +66,9 @@
     bottom: 50px;
     right: 50px; 
 	background-color: #F55151; 
-	max-width: 100px; 
-	padding: 20px; 
-	border-radius: 50px; 
+	max-width: 60px; 
+	padding: 15px; 
+	border-radius: 30px; 
 	box-shadow: 5px 5px 7px grey;
 	
 /* 	-webkit-animation-name: example; /* Chrome, Safari, Opera */ */
@@ -402,11 +402,10 @@ div #sidebar-wrapper {
 
 	</div>
 	
-	<c:if test="${user != null}">
-		<a href="${pageContext.servletContext.contextPath}/cabinet/cart" id="fixedbutton">
+		<a href="${pageContext.servletContext.contextPath}/cabinet/cart" id="fixedbutton" <c:if test="${user == null || ordersCount <= 0}">style="display:none"</c:if> >
 			<img src="${pageContext.servletContext.contextPath}/resources/images/cart.png" class="invertPng"/>
 		</a>
-	</c:if>
+	
 		
 	<!-- Footer ========================================================================== -->
 	<jsp:include page="foot.jsp"></jsp:include>

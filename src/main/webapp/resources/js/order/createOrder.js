@@ -185,6 +185,7 @@ function addToCart(roomId) {
 					$('#switchContent').html(orders);
 					$(document).ready(updateLanguage());
 				});
+				$('#fixedbutton').show();
 			} else {
 				 Materialize.toast(languages.script.current.cart.addFail, 3000);
 				$('#btn' + roomId).text(languages.script.current.createOrder.error);

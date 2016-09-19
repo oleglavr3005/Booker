@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.epam.task.database.model.Hotel;
+import com.epam.task.database.model.User;
+import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.service.HotelService;
+import com.epam.task.database.service.OrderService;
 import com.epam.task.database.service.RoomService;
 
 @WebServlet("/home")
@@ -43,13 +46,16 @@ public class HomeServlet extends HttpServlet {
 		request.setAttribute("countOfPages", countOfPages);
 		request.setAttribute("suitableHotels", hotels);
 		request.setAttribute("currentPage", page);
+
+		HttpSession session = request.getSession(true);
+		User user = (User) session.getAttribute("user");
+		request.setAttribute("ordersCount", user == null ? 0 : new OrderService().getOrdersByUserAndStatus(user.getId(), OrderStatus.ORDER).size());
 		
 		RoomService roomService = new RoomService();
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
-		} else {	
-			HttpSession session = request.getSession(true);		
+		} else {		
 //			Enumeration<String> names = session.getAttributeNames();
 //			while(names.hasMoreElements()) {
 //				String name = names.nextElement();

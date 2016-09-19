@@ -28,6 +28,7 @@ import com.epam.task.database.model.HotelPhoto;
 import com.epam.task.database.model.Order;
 import com.epam.task.database.model.Room;
 import com.epam.task.database.model.User;
+import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.model.enums.UserStatus;
 import com.epam.task.database.service.FeedbackService;
 import com.epam.task.database.service.HotelPhotoService;
@@ -190,6 +191,8 @@ public class FindRooms extends HttpServlet {
 		request.setAttribute("countOfRooms", roomTemplates.size());
 		request.setAttribute("countOfPages", countOfPages);
 		request.setAttribute("currentPage", page);
+		
+		request.setAttribute("ordersCount", user == null ? 0 : new OrderService().getOrdersByUserAndStatus(user.getId(), OrderStatus.ORDER).size());
 		
 		List<Feedback> feedbacks = new FeedbackService().getAllFeedbacksByHotel(hotelId);
 		List<HotelPhoto> hotelPhoto = new HotelPhotoService().getHotelPhotosByHotel(hotelId); 

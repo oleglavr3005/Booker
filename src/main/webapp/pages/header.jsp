@@ -99,7 +99,7 @@ img.logo {
 	<div class="container-fluid">
 		<div class="row" style="margin-bottom: 0;">
 			<div class="navbar-header" style="margin-left: 30px; margin-right: 50px;">
-				<a href="${pageContext.servletContext.contextPath}/home" class="brand" style="padding-bottom: 0px; padding-top: 0px;">
+				<a href="${pageContext.servletContext.contextPath}/" class="brand" style="padding-bottom: 0px; padding-top: 0px;">
 					<img class="logo" src="${pageContext.servletContext.contextPath}/resources/themes/images/logo.png" alt="Periodicals" />
 				</a>
 			</div>

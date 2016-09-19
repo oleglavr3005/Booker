@@ -18,7 +18,10 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 import com.epam.task.database.model.Hotel;
+import com.epam.task.database.model.User;
+import com.epam.task.database.model.enums.OrderStatus;
 import com.epam.task.database.service.HotelService;
+import com.epam.task.database.service.OrderService;
 import com.epam.task.database.service.RoomService;
 import com.epam.task.util.StringUtil;
 
@@ -171,6 +174,8 @@ public class FindHotelsServlet extends HttpServlet {
 				startDate, endDate, page, compareBy);
 		
 		request.setAttribute("suitableHotels", suitableHotels);
+		User user = (User) session.getAttribute("user");
+		request.setAttribute("ordersCount", user == null ? 0 : new OrderService().getOrdersByUserAndStatus(user.getId(), OrderStatus.ORDER).size());
 		
 		if(request.getParameter("flag") != null && request.getParameter("flag").equals("true")) {
 			request.getRequestDispatcher("pages/card.jsp").forward(request, response);
