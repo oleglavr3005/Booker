@@ -52,6 +52,14 @@
 <style>
 .invertPng {-webkit-filter: brightness(2); filter: brightness(2);}
 
+/* Chrome, Safari, Opera */
+/* @-webkit-keyframes example { */
+/*     0%   {background-color: #F55151; bottom: 50px;} */
+/*     25%  {background-color: red; bottom: 100px;} */
+/*     50%  {background-color: #F55151; bottom: 50px;} */
+/*     75% {background-color: red; bottom: 100px;} */
+/*     100% {background-color: #F55151; bottom: 50px;} */
+/* } */
 
 #fixedbutton {
     position: fixed;
@@ -62,11 +70,16 @@
 	padding: 20px; 
 	border-radius: 50px; 
 	box-shadow: 5px 5px 7px grey;
-	overflow: visible;
+	
+/* 	-webkit-animation-name: example; /* Chrome, Safari, Opera */ */
+/*     -webkit-animation-duration: 2s; /* Chrome, Safari, Opera */ */
+/*     animation-name: example; */
+/*     animation-duration: 2s; */
 }
 
 #fixedbutton:hover {
 	box-shadow: 7px 7px 10px grey;
+	transition: max-height 2s ease-in;
 }
 
 div #sidebar-wrapper {
