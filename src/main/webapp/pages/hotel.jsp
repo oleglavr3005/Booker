@@ -337,7 +337,7 @@ div #sidebar-wrapper {
 				    id="index_search_start"></span></label>						
 				</div>
 
-				<div class="col s3">
+				<div class="col s3 offset-s1">
 					<input type="date" name="endDate" id="date_to"
 						class="datepicker validate" style="cursor: default;"
 						value="${endDate}"><label id="endLbl"
@@ -345,13 +345,13 @@ div #sidebar-wrapper {
 				    id="index_search_end"></span></label>
 				</div>
 
-				<div class="col s3">
-					<input id="people" type="number" class="validate" name="people"
-						value="${people}" min=1 max=1000> <label id="pplLbl" data-error=""
-						for="pplCount"><span id="index_search_ppl"></span></label>
-				</div>
+<!-- 				<div class="col s3"> -->
+<%-- 					<input id="people" type="number" class="validate" name="people" --%>
+<%-- 						value="${people}" min=1 max=1000> <label id="pplLbl" data-error="" --%>
+<!-- 						for="pplCount"><span id="index_search_ppl"></span></label> -->
+<!-- 				</div> -->
 
-				<div class="col s2 offset-s1">
+				<div class="col s2 offset-s2">
 					<a id="search" class="waves-effect waves-light btn"
 						onclick="searchRooms(${hotel.id})"
 						style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span

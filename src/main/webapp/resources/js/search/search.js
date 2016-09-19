@@ -74,7 +74,7 @@ function searchRooms(hotelId) {
 	if (flag) {
 		$.post('../find_rooms', {
 			hotelId : hotelId,
-			people : $('#people').val(),
+	//		people : $('#people').val(),
 			startDate : $('#date_from').val(),
 			endDate : $('#date_to').val(),
 		}, function(hotels) {
