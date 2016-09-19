@@ -220,7 +220,8 @@ div #sidebar-wrapper {
 			<!-- 						DESC -->
 			<div class="input-field">
 
-				<textarea style="padding-bottom: 10px; padding-top: 10px; padding-left: 15px;"
+				<textarea
+					style="padding-bottom: 10px; padding-top: 10px; padding-left: 15px;"
 					id="desc" class="materialize-textarea" class="validate"
 					length="999">${hotel.desc}</textarea>
 				<label id="descLbl" data-error="${fmtName}" for="desc"><span
@@ -279,12 +280,12 @@ div #sidebar-wrapper {
 				<!-- 				END OF INPUT -->
 
 				<a id="btnToMain" class="waves-effect waves-light btn"
-					style="background: #e68a00;; color: #FFFFFF; ; margin-right: 1rem"
-					onclick="promoteToMain()"><span id="btn_main"></span></a>
-					
-				<a id="btnRemovePhoto" class="waves-effect waves-light btn"
-					style="background: #F55151; color: #FFFFFF; "
-					onclick="removeHotelPhoto()"><span id="btn_remove_selected"></span> </a>
+					style="background: #e68a00;; color: #FFFFFF;; margin-right: 1rem"
+					onclick="promoteToMain()"><span id="btn_main"></span></a> <a
+					id="btnRemovePhoto" class="waves-effect waves-light btn"
+					style="background: #F55151; color: #FFFFFF;"
+					onclick="removeHotelPhoto()"><span id="btn_remove_selected"></span>
+				</a>
 			</div>
 
 		</div>
@@ -331,7 +332,14 @@ div #sidebar-wrapper {
 									<td><a
 										href="${pageContext.servletContext.contextPath}/cabinet/room/${room.id}"><c:out
 												value="${room.number }"></c:out></a></td>
-									<td><c:out value="${room.type }"></c:out></td>
+									<td><c:if test="${room.type == 'STANDART'}">
+											<span class="subscribes_table_roomtype_standart"></span>
+										</c:if> <c:if test="${room.type == 'LUX'}">
+											<span class="subscribes_table_roomtype_lux"></span>
+										</c:if> <c:if test="${room.type == 'DELUX'}">
+											<span class="subscribes_table_roomtype_delux"></span>
+										</c:if>
+									</td>
 									<td>${room.doubleBedsCount * 2 + room.bedsCount}</td>
 									<td><c:if test="${room.wifi == true}">
 											<a class="tooltipped index_room_wifi" data-position="icon"
@@ -351,8 +359,7 @@ div #sidebar-wrapper {
 												data-tooltip="Balcony"><img class="invert"
 												style="width: 18px; margin-top: -0.8em;"
 												src="${pageContext.servletContext.contextPath}/resources/images/balcony.png" /></a>
-										</c:if>
-										<c:if test="${room.tv == true}">
+										</c:if> <c:if test="${room.tv == true}">
 											<a class="tooltipped index_room_tv" data-position="icon"
 												data-tooltip="Television" style="color: #0d0d0d;"><i
 												class="material-icons invert">tv</i></a>
@@ -362,10 +369,10 @@ div #sidebar-wrapper {
 										style="color: #0d0d0d;"><i
 											class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span></td>
 									<td><c:if test="${room.daysCount >= 0}">
-											<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
-										</c:if> <c:if test="${room.daysCount < 0}">
-											<span class="glyphicon glyphicon-ok-sign"
+											<span class="glyphicon glyphicon-remove-sign"
 												aria-hidden="true"></span>
+										</c:if> <c:if test="${room.daysCount < 0}">
+											<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
 										</c:if></td>
 									<td><c:if test="${room.deleted}">
 											<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>

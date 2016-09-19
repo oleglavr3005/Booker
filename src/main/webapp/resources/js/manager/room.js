@@ -89,7 +89,6 @@ function updateRoom(room) {
 }
 
 function validate(flag, id) {
-	debugger;
 	var ok = true;
 	ok = checkNumberRegex($('#number').val(), flag) && ok;
 	if (flag) {

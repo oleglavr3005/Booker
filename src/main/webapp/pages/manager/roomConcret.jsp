@@ -148,15 +148,15 @@
 							<!-- 						ROOM TYPE -->
 							<div class="row">
 								<select id="roomType" class="chosen-select optionstyle">
-									<option class="optionstyle" value="STANDART"
+									<option id="index_room_type_standart" class="optionstyle" value="STANDART"
 										<c:if test="${room.type == 'STANDART'}"> selected="selected"</c:if>>
-										<span id="index_room_type_standart"></span></option>
-									<option class="optionstyle" value="LUX"
+										</option>
+									<option id="index_room_type_lux" class="optionstyle" value="LUX"
 										<c:if test="${room.type == 'LUX'}"> selected="selected"</c:if>>
-										<span id="index_room_type_lux"></span></option>
-									<option class="optionstyle" value="DELUX"
+										</option>
+									<option id="index_room_type_delux" class="optionstyle" value="DELUX"
 										<c:if test="${room.type == 'DELUX'}"> selected="selected"</c:if>>
-										<span id="index_room_type_delux"></span></option>
+										</option>
 								</select>
 							</div>
 							<!-- 						END OF ROOM TYPE -->
@@ -216,21 +216,17 @@
 							<!-- 						FOOD TYPE -->
 							<div class="row">
 								<select id="foodType" class="chosen-select optionstyle">
-									<option class="optionstyle" value="NONE" selected="selected"
+									<option id="index_room_type_food_none" class="optionstyle" value="NONE" selected="selected"
 										<c:if test="${room.food == 'NONE'}"> selected="selected"</c:if>>
-										<span id="index_room_type_food_none"></span>
 									</option>
-									<option class="optionstyle" value="BREAKFAST"
+									<option id="index_room_type_food_breakfast" class="optionstyle" value="BREAKFAST"
 										<c:if test="${room.food == 'BREAKFAST'}"> selected="selected"</c:if>>
-										<span id="index_room_type_food_breakfast"></span>
 									</option>
-									<option class="optionstyle" value="TWICE"
+									<option id="index_room_type_food_twice" class="optionstyle" value="TWICE"
 										<c:if test="${room.food == 'TWICE'}"> selected="selected"</c:if>>
-										<span id="index_room_type_food_twice"></span>
 									</option>
-									<option class="optionstyle" value="FULL"
+									<option id="index_room_type_food_full" class="optionstyle" value="FULL"
 										<c:if test="${room.food == 'FULL'}"> selected="selected"</c:if>>
-										<span id="index_room_type_food_full"></span>
 									</option>
 								</select>
 							</div>
@@ -361,6 +357,10 @@
 		src="${pageContext.servletContext.contextPath}/resources/js/manager/image.js"></script>
 
 	<script>
+	
+	$('#roomType').show();
+	$('#foodType').show();
+	
 		$('#hasWiFi').attr('checked', '${room.wifi}' == 'true');
 		$('#hasShower').attr('checked', '${room.shower}' == 'true');
 		$('#hasTv').attr('checked', '${room.tv}' == 'true');
