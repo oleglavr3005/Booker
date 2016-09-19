@@ -385,7 +385,7 @@ function setRoomFood() {
 			if (text == "TWICE") {
 				$('#room_create_card_food').text(languages.script.current.roomfood.twice);
 			} else {
-				$('#room_create_card_food').text(languages.script.current.roomfood.fool);
+				$('#room_create_card_food').text(languages.script.current.roomfood.full);
 			}
 		}
 	}
