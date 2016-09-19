@@ -202,7 +202,7 @@
 
 							<div class="row">
 								<input id="price" value="${room.price}" type="number"
-									class="validate" name="price" min=1 max=100> <label
+									class="validate" name="price" min=1 max=9999999> <label
 									id="priceLbl" data-error="" for="price"><span
 									id="room_concrete_price"></span> </label>
 							</div>
@@ -368,8 +368,10 @@
 		$('#hasBalcony').attr('checked', '${room.balcony}' == 'true');
 		
 		$('#freeBook').attr('checked', '${room.daysCount}' < 0);
-		if ("${room.deleted}" == true) {
+				
+		if ("${room.deleted}" == 'true') {
 			$('#isDeleted').click();
+			//$('#isDeleted').attr('checked', '${room.deleted}' == 'true');
 		}
 		
 

@@ -409,7 +409,7 @@ div #sidebar-wrapper {
 		src="https://maps.googleapis.com/maps/api/js?language=en&key=AIzaSyCKs6QYAUVp6Eb7EbfnChID4kNfYjpkLjU&libraries=places&callback=initAutocomplete"
 		async defer></script>
 	<script>
-	if ("${hotel.isDeleted}" == true) {
+	if ("${hotel.isDeleted}" == 'true') {
 		$('#isDeleted').click();
 	}
 	$(document).ready(function(){
