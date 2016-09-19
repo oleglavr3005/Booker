@@ -34,7 +34,7 @@
 		shopping_cart_row_header : "Maybe it will be interest for you : ",
 
 		comment_not_user : "Log in to post a feedback",
-		shopping_card_notice : "Notice: your orders will be stored in the shopping cart only for 30 minutes!",
+		shopping_card_notice : "Notice: your orders will be stored in the shopping cart only for 15 minutes!",
 		tab_charts : "Statistic",
 		comment_can_not : "You can not leave feedbacks because you have not been in this hotel.",
 		sort_by : "Sort by : ",
@@ -371,7 +371,7 @@
 		shopping_cart_row_header : "Vожливо вас також зацікавить : ",
 
 		comment_not_user : "Ввійдіть, щоб залишити відгук",
-		shopping_card_notice : "Увага: ваші замовлення будуть зберігатися в кошику лише протягом 30 хвилин!",
+		shopping_card_notice : "Увага: ваші замовлення будуть зберігатися в кошику лише протягом 15 хвилин!",
 		tab_charts : "Статистика",
 		comment_can_not : "Ви не можете залишити відгук, оскільки ще не відвідали цей готель.",
 		sort_by : "Сортувати за : ",
