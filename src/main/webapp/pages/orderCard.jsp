@@ -27,7 +27,7 @@
 	function updateTimeLeft(date, id) {
 		var currentDate = new Date();
 		var orderDate = new Date(date);
-		var minutesLeft = 29 - Math.floor(Math.abs(currentDate - orderDate) / (1000 * 60));
+		var minutesLeft = 14 - Math.floor(Math.abs(currentDate - orderDate) / (1000 * 60));
 		var orMinutesLeft = minutesLeft;
 		var secondsLeft = 59 - Math.floor((Math.abs(currentDate - orderDate) / 1000) % 60 );
 		var orSecondsLeft = secondsLeft;
@@ -38,17 +38,28 @@
 			secondsLeft = "0" + secondsLeft;
 		}
 		if(orSecondsLeft <= 0 && orMinutesLeft <= 0) {
-			clearInterval(refreshIntervalId);
+			//clearInterval(refreshIntervalId);
 			//reload cart
 			setTimeout(function() { 
-				$.post('../refresh_cart', {
-					compareBy : $('#compare').val(),
-					page : $('#pageNmb').val()
-				}, function(orders) {
-					$('#switchContent').html(orders);
-					$(document).ready(updateLanguage());
-				});			
-			}, 1000);
+				$.post('../remove_from_cart', {
+					orderId : id
+				}, function(result) {
+					$.get('../refresh_cart', {
+						compareBy : $('#compare').val(),
+						page : $('#pageNmb').val()
+					}, function(orders) {
+						$('#switchContent').html(orders);
+						$(document).ready(updateLanguage());
+					});
+				});
+// 				$.post('../refresh_cart', {
+// 					compareBy : $('#compare').val(),
+// 					page : $('#pageNmb').val()
+// 				}, function(orders) {
+// 					$('#switchContent').html(orders);
+// 					$(document).ready(updateLanguage());
+// 				});			
+			}, 500);
 		}
 		$("#timer" + id).html(minutesLeft + ":" + secondsLeft);
 	}
@@ -396,7 +407,6 @@ b {
 	<div id="demo5" class="col s4 offset-s5"></div>
 </div>
 <!-- END OF PAGINATOR 3000 -->
-
 <script type="text/javascript"
 	src="${pageContext.servletContext.contextPath}/resources/js/order/removeOrder.js"></script>
 <script type="text/javascript"
