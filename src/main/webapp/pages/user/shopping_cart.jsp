@@ -107,7 +107,8 @@
 			</div>
 			<div class="col s5 offset-s4" style="text-align: right;">
 				<c:if test="${countOfOrders > 0 }">
-					<span class="sort_by" style="font-size: 15;position: relative;/* display: inline-block; */bottom: 3px;"></span>
+					<span class="sort_by"
+						style="font-size: 15; position: relative; /* display: inline-block; */ bottom: 3px;"></span>
 					<select id="compare" class="chosen-select optionstyle"
 						onchange="findPage(window.location.href,1)">
 						<option id="shoping_card_date_asc" class="optionstyle"
@@ -136,32 +137,32 @@
 
 		<!-- TEST ZONE -->
 
-<!-- 		<div class="row"> -->
-<!-- 			<div class="col s2 offset-s1"> -->
-<!-- 				<a class="waves-effect waves-light btn" -->
-<!-- 					style="background: #26A69A; color: #FFFFFF;" -->
-<!-- 					onclick="testFunction(0)">0</a> -->
-<!-- 			</div> -->
-<!-- 			<div class="col s2 offset-s1"> -->
-<!-- 				<a class="waves-effect waves-light btn" -->
-<!-- 					style="background: #26A69A; color: #FFFFFF;" -->
-<!-- 					onclick="testFunction(1)">1</a> -->
-<!-- 			</div> -->
-<!-- 			<div class="col s2 offset-s1"> -->
-<!-- 				<a class="waves-effect waves-light btn" -->
-<!-- 					style="background: #26A69A; color: #FFFFFF;" -->
-<!-- 					onclick="testFunction(2)">2</a> -->
-<!-- 			</div> -->
-<!-- 			<div class="col s2 offset-s1"> -->
-<!-- 				<a class="waves-effect waves-light btn" -->
-<!-- 					style="background: #26A69A; color: #FFFFFF;" -->
-<!-- 					onclick="testFunction(3)">3</a> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
+		<!-- 		<div class="row"> -->
+		<!-- 			<div class="col s2 offset-s1"> -->
+		<!-- 				<a class="waves-effect waves-light btn" -->
+		<!-- 					style="background: #26A69A; color: #FFFFFF;" -->
+		<!-- 					onclick="testFunction(0)">0</a> -->
+		<!-- 			</div> -->
+		<!-- 			<div class="col s2 offset-s1"> -->
+		<!-- 				<a class="waves-effect waves-light btn" -->
+		<!-- 					style="background: #26A69A; color: #FFFFFF;" -->
+		<!-- 					onclick="testFunction(1)">1</a> -->
+		<!-- 			</div> -->
+		<!-- 			<div class="col s2 offset-s1"> -->
+		<!-- 				<a class="waves-effect waves-light btn" -->
+		<!-- 					style="background: #26A69A; color: #FFFFFF;" -->
+		<!-- 					onclick="testFunction(2)">2</a> -->
+		<!-- 			</div> -->
+		<!-- 			<div class="col s2 offset-s1"> -->
+		<!-- 				<a class="waves-effect waves-light btn" -->
+		<!-- 					style="background: #26A69A; color: #FFFFFF;" -->
+		<!-- 					onclick="testFunction(3)">3</a> -->
+		<!-- 			</div> -->
+		<!-- 		</div> -->
 
 
-<!-- 		<script type="text/javascript" -->
-<%-- 			src="${pageContext.servletContext.contextPath}/resources/js/test/recommendModal.js"></script> --%>
+		<!-- 		<script type="text/javascript" -->
+		<%-- 			src="${pageContext.servletContext.contextPath}/resources/js/test/recommendModal.js"></script> --%>
 
 
 		<!-- END OF TEST ZONE -->
@@ -191,7 +192,12 @@
 
 
 
-				<div class="row" id="row0" style="display: none">
+				<div class="row" id="row0" style="display: none; margin-top: -25px;">
+
+					<h5>
+						<span id="shopping_cart_row_header"></span>
+					</h5>
+
 					<div class="col s4">
 						<a id="href01" href="http://localhost:8080/booker/hotel/"> <img
 							id="img0" src="<i:urlToImage url="new_hotel.jpg" />"
@@ -205,11 +211,11 @@
 									id="hotelName0"></span></a>
 							</div>
 							<div class="col s6 offset-s1">
-								<i id="00" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
-								<i id="01" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
-								<i id="02" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
-								<i id="03" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
-								<i id="04" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								<i id="00" class="fa fa-lg fa-star-o" aria-hidden="true"></i> <i
+									id="01" class="fa fa-lg fa-star-o" aria-hidden="true"></i> <i
+									id="02" class="fa fa-lg fa-star-o" aria-hidden="true"></i> <i
+									id="03" class="fa fa-lg fa-star-o" aria-hidden="true"></i> <i
+									id="04" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
 							</div>
 						</div>
 						<div class="row">
@@ -236,11 +242,11 @@
 									id="hotelName1"></span></a>
 							</div>
 							<div class="col s6 offset-s1">
-								<i id="10" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
-								<i id="11" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
-								<i id="12" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
-								<i id="13" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
-								<i id="04" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								<i id="10" class="fa fa-lg fa-star-o" aria-hidden="true"></i> <i
+									id="11" class="fa fa-lg fa-star-o" aria-hidden="true"></i> <i
+									id="12" class="fa fa-lg fa-star-o" aria-hidden="true"></i> <i
+									id="13" class="fa fa-lg fa-star-o" aria-hidden="true"></i> <i
+									id="04" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
 							</div>
 						</div>
 						<div class="row">
@@ -266,11 +272,11 @@
 									id="hotelName2"></span></a>
 							</div>
 							<div class="col s6 offset-s1">
-								<i id="20" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
-								<i id="21" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
-								<i id="22" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
-								<i id="23" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
-								<i id="24" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
+								<i id="20" class="fa fa-lg fa-star-o" aria-hidden="true"></i> <i
+									id="21" class="fa fa-lg fa-star-o" aria-hidden="true"></i> <i
+									id="22" class="fa fa-lg fa-star-o" aria-hidden="true"></i> <i
+									id="23" class="fa fa-lg fa-star-o" aria-hidden="true"></i> <i
+									id="24" class="fa fa-lg fa-star-o" aria-hidden="true"></i>
 							</div>
 						</div>
 						<div class="row">
@@ -333,17 +339,17 @@
 	</script>
 
 	<script>
-// 		var count = $
-// 		{
-// 			countOfOrders
-// 		};
-// 		$('#periodicals_number_for_all_users').html(count);
+		// 		var count = $
+		// 		{
+		// 			countOfOrders
+		// 		};
+		// 		$('#periodicals_number_for_all_users').html(count);
 	</script>
-	
+
 	<script type="text/javascript">
-	$(document).ready(function() {
-		document.title = languages.script.current.title.cart;
-	});
+		$(document).ready(function() {
+			document.title = languages.script.current.title.cart;
+		});
 	</script>
 </body>
 
