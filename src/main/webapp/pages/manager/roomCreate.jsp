@@ -173,7 +173,7 @@
 							<!-- NUMBER -->
 
 							<div class="input-field row" style="margin-bottom: 0px">
-								<input onkeyup="setRoomNumber()" onchange="setRoomNumber()" id="number" type="text" class="validate" name="number">
+								<input id="number" type="text" class="validate" name="number">
 								<label id="numberLbl" data-error="${fmtPeople}" for="number"><span
 									id="room_concrete_number"></span></label>
 							</div>

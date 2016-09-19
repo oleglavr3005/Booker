@@ -375,6 +375,7 @@ function setRoomType() {
 }
 
 function setRoomFood() {
+	debugger;
 	var text = $('#foodType').val();
 	if (text == "NONE") {
 		$('#room_create_card_food').text(languages.script.current.roomfood.none);
