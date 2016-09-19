@@ -56,6 +56,7 @@ function bookOrderCard(orderId, daysCount) {
 										page : $('#pageNmb').val()
 									}, function(orders) {
 										$('#switchContent').html(orders);
+										$(document).ready(updateLanguage());
 									});
 								}
 							});

@@ -939,10 +939,10 @@
 				updateFail : "room cannot be updated",
 			},
 			cart : {
-				addSucces : "item was added to cart",
-				addFail : "item cannot be added to cart",
-				removeSucces : "item was removed from cart",
-				removeFail : "item cannot be removed from cart",
+				addSucces : "Room was added to cart",
+				addFail : "Room cannot be added to cart",
+				removeSucces : "Room was removed from cart",
+				removeFail : "Room cannot be removed from cart",
 				pay : "Pay",
 				fail : "Room cannot be booked",
 			},
@@ -1128,10 +1128,10 @@
 				updateFail : "Кімнату оновити не вдалося",
 			},
 			cart : {
-				addSucces : "Предмет було додано до кошика",
-				addFail : "Предмет додати в кошик не вдалося",
-				removeSucces : "Предмет було видалено із кошика",
-				removeFail : "Не вдалося вилучити предмет із кошика",
+				addSucces : "Кімната уcпішно заброньована",
+				addFail : "Не вдалося забронювати кімнату",
+				removeSucces : "Кімната була видалено із кошика",
+				removeFail : "Не вдалося видалити кімнату із кошика",
 				pay : "Оплатити",
 				fail : "Здійснити покупку не вдалося",
 			},
@@ -1291,20 +1291,19 @@ function changeLanguageOnTags(language) {
 }
 
 function changeLanguageOnTitle(language){
-	for ( var prop in languages) {
-		if (prop == oldLanguage) {
-			for ( var idElement in languages.title[prop]) {
-				
-					if	(languages.title[prop][idElement] == $(document).find("title").text())
-						$(document).find("title").text(languages.title[language][idElement]);
+	var text = $(document).find("title").text();
+	for ( var prop in languages.title) {
+		for ( var idElement in languages.title[prop]) {
+			if	(languages.title[prop][idElement] == text){
+					$(document).find("title").text(languages.title[language][idElement]);
+					break;
 			}
-			break;
 		}
 	}
 }
 
 function changeLanguageOfErrors(language) {
-	for ( var prop in languages) {
+	for ( var prop in languages.data_error) {
 		if (prop == language) {
 			languages.data_error.current = languages.data_error[prop];
 			for ( var idElement in languages.data_error[prop]) {
@@ -1331,7 +1330,7 @@ function changeLanguageOfDataTooltip(language) {
 	}
 }
 function changeLanguageOfDataPlaceholder(language) {
-	for ( var prop in languages) {
+	for ( var prop in languages.placeholder) {
 		if (prop == language) {
 			for ( var idElement in languages.placeholder[prop]) {
 				$("#" + idElement).attr('placeholder',
