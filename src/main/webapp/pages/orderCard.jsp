@@ -290,8 +290,8 @@ b {
 									</c:if>
 								</div>
 								<div class="row right-align" style="text-align: center;">
-									<span style="font-size: 1rem; padding-right: 8px;" class="order_cart_time_left"></span>:
-									<span id="timer${order.id}" style="color: #F55151; font-size: 1.2rem">
+									<span style="font-size: 1rem; padding-right: 3px;" class="order_cart_time_left"></span>:
+									<span id="timer${order.id}" style="padding-left: 3px;color: #F55151; font-size: 1.2rem">
 										<script type="text/javascript">
 											startTimer('${order.orderDate}', '${order.id}');
 										</script>
