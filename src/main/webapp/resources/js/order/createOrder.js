@@ -230,7 +230,7 @@ function textIsValid(field) {
 }
 
 function validateComment(comment,orderId) {
-	if (comment == "" || (comment.length >= 5 && comment.length <= 1000 && textIsValid(comment))) {
+	if (comment == "" || (comment.length >= 5 && comment.length <= 999 && textIsValid(comment))) {
 		valid('comment' + orderId);
 		return true;
 	} else {
