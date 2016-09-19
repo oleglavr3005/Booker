@@ -132,59 +132,59 @@ public class Room {
 		this.type = type == null ? null : RoomType.valueOf(type);
 	}
 
-	public Integer getBedsCount() {
+	public int getBedsCount() {
 		return bedsCount;
 	}
 
-	public void setBedsCount(Integer bedsCount) {
+	public void setBedsCount(int bedsCount) {
 		this.bedsCount = bedsCount;
 	}
 
-	public Integer getDoubleBedsCount() {
+	public int getDoubleBedsCount() {
 		return doubleBedsCount;
 	}
 
-	public void setDoubleBedsCount(Integer doubleBedsCount) {
+	public void setDoubleBedsCount(int doubleBedsCount) {
 		this.doubleBedsCount = doubleBedsCount;
 	}
 
-	public Integer getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(Integer price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
-	public Boolean getWifi() {
+	public boolean getWifi() {
 		return wifi;
 	}
 
-	public void setWifi(Boolean wifi) {
+	public void setWifi(boolean wifi) {
 		this.wifi = wifi;
 	}
 
-	public Boolean getShower() {
+	public boolean getShower() {
 		return shower;
 	}
 
-	public void setShower(Boolean shower) {
+	public void setShower(boolean shower) {
 		this.shower = shower;
 	}
 
-	public Boolean getCondition() {
+	public boolean getCondition() {
 		return condition;
 	}
 
-	public void setCondition(Boolean condition) {
+	public void setCondition(boolean condition) {
 		this.condition = condition;
 	}
 
-	public Boolean getBalcony() {
+	public boolean getBalcony() {
 		return balcony;
 	}
 
-	public void setBalcony(Boolean balcony) {
+	public void setBalcony(boolean balcony) {
 		this.balcony = balcony;
 	}
 
@@ -196,27 +196,27 @@ public class Room {
 		this.food = food == null ? null : RoomFood.valueOf(food);
 	}
 
-	public Integer getDaysCount() {
+	public int getDaysCount() {
 		return daysCount;
 	}
 
-	public void setDaysCount(Integer daysCount) {
+	public void setDaysCount(int daysCount) {
 		this.daysCount = daysCount;
 	}
 
-	public Integer getPercentage() {
+	public int getPercentage() {
 		return percentage;
 	}
 
-	public void setPercentage(Integer percentage) {
+	public void setPercentage(int percentage) {
 		this.percentage = percentage;
 	}
 
-	public Boolean getDeleted() {
+	public boolean getDeleted() {
 		return deleted;
 	}
 
-	public void setDeleted(Boolean deleted) {
+	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
 	
