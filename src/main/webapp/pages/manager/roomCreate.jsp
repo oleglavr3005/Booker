@@ -172,7 +172,7 @@
 
 							<!-- NUMBER -->
 
-							<div class="row" style="margin-bottom: 0px">
+							<div class="input-field row" style="margin-bottom: 0px">
 								<input onkeyup="setRoomNumber()" onchange="setRoomNumber()" id="number" type="text" class="validate" name="number">
 								<label id="numberLbl" data-error="${fmtPeople}" for="number"><span
 									id="room_concrete_number"></span></label>
@@ -183,7 +183,7 @@
 
 							<!-- 1 BEDS COUNT -->
 
-							<div class="row" style="margin-bottom: 0px">
+							<div class="input-field row" style="margin-bottom: 0px">
 								<input onkeyup="setRoomSingle()" onchange="setRoomSingle()" id="single" onchange="checkBeds()" type="number"
 									class="validate" name="single" min=0 max=100> <label
 									id="singleLbl" data-error="${fmtPeople}" for="single"><span
@@ -194,7 +194,7 @@
 
 							<!-- 2 BEDS COUNT -->
 
-							<div class="row" style="margin-bottom: 0px">
+							<div class="input-field row" style="margin-bottom: 0px">
 								<input onkeyup="setRoomDouble()" onchange="setRoomDouble()" id="double" onchange="checkBeds()" type="number"
 									class="validate" name="single" min=0 max=100> <label
 									id="doubleLbl" data-error="${fmtPeople}" for="double"><span
@@ -207,7 +207,7 @@
 
 							<!-- PRICE -->
 
-							<div class="row" style="margin-bottom: 0px">
+							<div class="input-field row" style="margin-bottom: 0px">
 								<input onkeyup="setRoomPrice()" onchange="setRoomPrice()" id="price" type="number" class="validate"
 									name="percentage" min=1 max=1000000> <label
 									id="priceLbl" data-error="${fmtPeople}" for="price"><span
@@ -218,7 +218,7 @@
 
 							<!-- DAYS COUNT -->
 
-							<div class="row" style="margin-bottom: 0px">
+							<div class="input-field row" style="margin-bottom: 0px">
 								<input onkeyup="setRoomBook()" onchange="setRoomBook()" id="days" type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="days" min=0 max=365> <label
@@ -230,7 +230,7 @@
 
 							<!-- PERCENTAGE COUNT -->
 
-							<div class="row" style="margin-bottom: 0px">
+							<div class="input-field row" style="margin-bottom: 0px">
 								<input onkeyup="setRoomBook()" onchange="setRoomBook()" id="percentage" type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="percentage" min=0 max=100> <label
