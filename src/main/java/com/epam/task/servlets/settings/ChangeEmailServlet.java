@@ -33,7 +33,7 @@ public class ChangeEmailServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String mailNotifString = request.getParameter("mailNotif");
 		
-		if(email == null || !StringUtil.isBoolean(mailNotifString)) {
+		if(!StringUtil.isBoolean(mailNotifString)) {
         	LOGGER.error("Invalid data injection attempt");
 			response.sendError(500);
 			return;
@@ -44,8 +44,10 @@ public class ChangeEmailServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		
+		String em = email == null ? user.getEmail() : email;
+		
 		int result;
-		if(user.getEmail().equals(email)) {
+		if(user.getEmail().equals(em)) {
 			user.setEmailNotif(mailNotif);
 			result = new UserService().updateUser(user);
 			session.setAttribute("user", user);
@@ -56,16 +58,16 @@ public class ChangeEmailServlet extends HttpServlet {
 
 				@Override
 				public void run() {
-					sendConfirmation(user.getFirstName(), email, confirmCode);
+					sendConfirmation(user.getFirstName(), em, confirmCode);
 				}
 			}).start();
 			
 			MailConfirmService mailConfirmService = new MailConfirmService();
 			MailConfirm mailConfirm = mailConfirmService.getMailConfirmByUser(user.getId());
 			if(mailConfirm == null) {
-				result = mailConfirmService.insertMailConfirm(new MailConfirm(0, user.getId(), email, confirmCode));
+				result = mailConfirmService.insertMailConfirm(new MailConfirm(0, user.getId(), em, confirmCode));
 			} else {
-				mailConfirm.setEmail(email);
+				mailConfirm.setEmail(em);
 				mailConfirm.setConfirmCode(confirmCode);
 				result = mailConfirmService.updateMailConfirm(mailConfirm);
 			}
