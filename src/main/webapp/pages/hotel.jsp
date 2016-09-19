@@ -119,6 +119,7 @@ var $j = jQuery.noConflict();
 $j(document).ready(function () {
 		$j('#example').DataTable();
 	});
+	var mapZoom = 16;
 </script>
 <style>
 .invertPng {-webkit-filter: brightness(2); filter: brightness(2);}
