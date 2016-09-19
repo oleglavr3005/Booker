@@ -177,43 +177,44 @@
 					</div>
 
 					<div class="divider"></div>
+					<c:if test="${user.socialNetwork == 'NONE'}">
+						<div class="row" style="margin-bottom: 10px;">
+							<h4 id="pwd_title" style="text-align: center; margin-top: 20px;">
+								<span id="settings_header_pass"></span>
+							</h4>
 
-					<div class="row" style="margin-bottom: 10px;">
-						<h4 id="pwd_title" style="text-align: center; margin-top: 20px;">
-							<span id="settings_header_pass"></span>
-						</h4>
-
-					</div>
-					<div class="row inline field fields">
-						<div class="input-field col s8 offset-s2">
-							<input id="currentPassword" type="password" class="validate">
-							<label id="currentPasswordLbl" data-error="${fmtPass}"
-								for="currentPassword"><span id="settings_enter_pass"></span></label>
 						</div>
-					</div>
-					<div class="row inline field fields">
-						<div class="input-field col s8 offset-s2">
-							<input id="newPassword" type="password" class="validate">
-							<label id="newPasswordLbl" data-error="${fmtNewPass}"
-								for="newPassword"><span id="settings_enter_passnew"></span></label>
+						<div class="row inline field fields">
+							<div class="input-field col s8 offset-s2">
+								<input id="currentPassword" type="password" class="validate">
+								<label id="currentPasswordLbl" data-error="${fmtPass}"
+									for="currentPassword"><span id="settings_enter_pass"></span></label>
+							</div>
 						</div>
-					</div>
-					<div class="row inline field fields">
-						<div class="input-field col s8 offset-s2">
-							<input id="repeatPassword" type="password" class="validate">
-							<label id="repeatPasswordLbl" data-error="${fmtRepPass}"
-								for="repeatPassword"><span
-								id="settings_enter_passrepeat"></span></label>
+						<div class="row inline field fields">
+							<div class="input-field col s8 offset-s2">
+								<input id="newPassword" type="password" class="validate">
+								<label id="newPasswordLbl" data-error="${fmtNewPass}"
+									for="newPassword"><span id="settings_enter_passnew"></span></label>
+							</div>
 						</div>
-					</div>
-					<div class="row" style="margin-top: 20px;">
-						<div class="col s3 offset-s7">
-							<a id="savePassword" class="waves-effect waves-light btn"
-								onclick="savePassword('${fmtHeader}','${fmtSucces}')"
-								style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
-								id="settings_save_pass"></span></a>
+						<div class="row inline field fields">
+							<div class="input-field col s8 offset-s2">
+								<input id="repeatPassword" type="password" class="validate">
+								<label id="repeatPasswordLbl" data-error="${fmtRepPass}"
+									for="repeatPassword"><span
+									id="settings_enter_passrepeat"></span></label>
+							</div>
 						</div>
-					</div>
+						<div class="row" style="margin-top: 20px;">
+							<div class="col s3 offset-s7">
+								<a id="savePassword" class="waves-effect waves-light btn"
+									onclick="savePassword('${fmtHeader}','${fmtSucces}')"
+									style="background: #26A69A; color: #F7F7F7; font-family: 'Times NewRoman', Times, serif;"><span
+									id="settings_save_pass"></span></a>
+							</div>
+						</div>
+					</c:if>
 				</div>
 			</div>
 			<!-- 			End of Tab #1 -->
@@ -266,8 +267,8 @@
 								id="settings_enter_email"></span></label>
 
 							<p>
-								<input onclick="saveMailNotif()" style="" type="checkbox" class="filled-in" id="eMailBox"
-									name="eMailBox"
+								<input onclick="saveMailNotif()" style="" type="checkbox"
+									class="filled-in" id="eMailBox" name="eMailBox"
 									<c:if
 								test="${user.email.substring(user.email.length()-1) == '*'}">disabled</c:if> />
 								<label for="eMailBox"> <span class="settings_chk_mails">
