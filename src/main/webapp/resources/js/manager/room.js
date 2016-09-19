@@ -39,7 +39,8 @@ function createRoom() {
 			}
 		});
 	} else {
-		$('#create_error').text(languages.script.current.hotel.wrongData);
+		Materialize.toast(languages.script.current.hotel.wrongData, 3000);
+		//$('#create_error').text(languages.script.current.hotel.wrongData);
 	}
 }
 
@@ -83,8 +84,9 @@ function updateRoom(room) {
 			}
 		});
 	} else {
-		$('#create_error').show();
-		$('#create_error').text(languages.script.current.hotel.wrongData);
+		//$('#create_error').show();
+		//$('#create_error').text(languages.script.current.hotel.wrongData);
+		Materialize.toast(languages.script.current.hotel.wrongData, 3000);
 	}
 }
 
@@ -178,16 +180,16 @@ function checkRoomNumberCreate(id, nmb) {
 			isValid = (data == "true");
 			if (!isValid) {
 				invalid('number');
-				$('#numberLbl').attr("data-error",
-						languages.script.current.hotel.numberBusy);
+				Materialize.toast(languages.script.current.hotel.numberBusy, 3000);
+				//$('#numberLbl').attr("data-error", languages.script.current.hotel.numberBusy);
 			} else {
 				valid('number');
 			}
 		},
 		error : function(data) {
 			isValid = false;
-			$('#numberLbl').attr("data-error",
-					languages.script.current.hotel.numberBusy);
+			Materialize.toast(languages.script.current.hotel.numberBusy, 3000);
+			//$('#numberLbl').attr("data-error", languages.script.current.hotel.numberBusy);
 			invalid('number');
 		}
 	});
@@ -209,16 +211,16 @@ function checkRoomNumberUpdate(id, nmb) {
 			isValid = (data == "true");
 			if (!isValid) {
 				invalid('number');
-				$('#numberLbl').attr("data-error",
-						languages.script.current.hotel.numberBusy);
+				Materialize.toast(languages.script.current.hotel.numberBusy, 3000);
+				//$('#numberLbl').attr("data-error", languages.script.current.hotel.numberBusy);
 			} else {
 				valid('number');
 			}
 		},
 		error : function(data) {
 			isValid = false;
-			$('#numberLbl').attr("data-error",
-					languages.script.current.hotel.numberBusy);
+			Materialize.toast(languages.script.current.hotel.numberBusy, 3000);
+			//$('#numberLbl').attr("data-error", languages.script.current.hotel.numberBusy);
 			invalid('number');
 		}
 	});

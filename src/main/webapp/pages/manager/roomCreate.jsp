@@ -118,8 +118,7 @@
 			<div class="col s3">
 				<!-- 					PHOTO -->
 				<div class="row">
-					<a href="#!"><img id="Img"
-						style="height: 100px; padding: 10px; width: 110px;"
+					<a href="#!"><img id="Img" style="max-height: 200px; padding: 5px; width: 100%;"
 						<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
 								src="<i:urlToImage url="new_room.png" />">
 					</a>
@@ -132,7 +131,7 @@
 				</div>
 
 				<!-- 						ROOM TYPE -->
-				<div class="row">
+				<div class="row" style="padding-left: 6px;">
 					<select id="roomType" class="chosen-select optionstyle" onchange="setRoomType()">
 						<option id="subscribes_table_roomtype_standart"
 							class="optionstyle" value="STANDART" selected="selected">
@@ -147,7 +146,7 @@
 
 
 				<!-- 						FOOD TYPE -->
-				<div class="row">
+				<div class="row" style="padding-left: 6px;">
 					<select id="foodType" class="chosen-select optionstyle" onchange="setRoomFood()">
 						<option id="subscribes_table_roomfood_none" class="optionstyle"
 							value="NONE" selected="selected"></option>
@@ -222,8 +221,8 @@
 								<input onkeyup="setRoomBook()" onchange="setRoomBook()" id="days" type="number"
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="days" min=0 max=365> <label
-									id="daysLbl" data-error="${fmtPeople}" for="days"><span
-									id="room_concrete_days"></span> </label>
+									id="daysLbl" data-error="${fmtPeople}" for="days">
+									<span id="room_concrete_days" style="font-size : 0.9rem"></span> </label>
 							</div>
 
 							<!-- 							END OF DAYS COUNT -->
@@ -235,7 +234,7 @@
 									<c:if test="${room.daysCount < 0 }"> disabled="disabled"</c:if>
 									class="validate" name="percentage" min=0 max=100> <label
 									id="percentageLbl" data-error="${fmtPeople}" for="percentage"><span
-									id="room_concrete_percentage"></span> </label>
+									id="room_concrete_percentage" style="font-size : 0.9rem"></span> </label>
 							</div>
 
 							<!-- 							END OF PERCENTAGE COUNT -->
@@ -319,7 +318,7 @@
 						<div class="card-image col s4" style="position: relative;">
 							<div>
 								<img id="ImgCard"
-									style="height: 180px; width: 230px; padding: 10px;"
+									style="padding: 5px; width: 100%; max-height: 200px;"
 									src="<i:urlToImage url="new_hotel.png" />">
 							</div>
 						</div>
