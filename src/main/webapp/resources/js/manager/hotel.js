@@ -3,7 +3,7 @@ var hotel_location = '';
 var places;
 
 function initAutocomplete() {
-	var input = document.getElementById('address');
+	var input = document.getElementById('addressInput');
 	var searchBox = new google.maps.places.SearchBox(input);
 	searchBox.addListener('places_changed', function() {
 		places = searchBox.getPlaces();
@@ -19,7 +19,7 @@ function updateHotel(hotelId) {
 	
 function getInfoFromGoogle(str, id) {
 	try {
-		var input = document.getElementById('address');
+		var input = document.getElementById('addressInput');
 		var text = input.value;
 		text = text.replace(' ', '+');
 		text = text.replace(' ', '+');
@@ -54,7 +54,7 @@ function getInfoFromGoogle(str, id) {
 			Materialize.toast(languages.script.current.hotel.wrongData, 4000);
 		}
 	} catch (err) {
-		invalid('address');
+		invalid('addressInput');
 		return;
 	}
 }
@@ -177,10 +177,10 @@ function starsIsValid(stars) {
 
 function addressIsValid(address) {
 	if (address.length >= 5 && address.length <= 145 && checkAddress(address) && subAddressIsValid(address)) {
-		valid('address');
+		valid('addressInput');
 		return true;
 	} else {
-		invalid('address');
+		invalid('addressInput');
 		return false;
 	}
 }
@@ -362,7 +362,7 @@ function setHotelStars(){
 }
 
 function setHotelLocation(){
-	var text = $('#address').val();
+	var text = $('#addressInput').val();
 	if (text.length > 999)
 		return;
 	$('#hotel_card_location').text(text == '' ? noHotelLocation : text);	
