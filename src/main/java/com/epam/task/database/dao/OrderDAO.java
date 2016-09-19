@@ -44,7 +44,7 @@ public class OrderDAO {
 	private final String ORDER_BY_DATE_DESC = " ORDER BY start_date DESC";
 
 	private final String SQL_ENABLE_EVENTS = "SET GLOBAL event_scheduler=ON";
-	private final String SQL_CREATE_ORDER_EVENT = "CREATE EVENT eventname ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 30 MINUTE DO DELETE FROM `order` WHERE order_id = ? AND `status` LIKE 'ORDER'";
+	private final String SQL_CREATE_ORDER_EVENT = "CREATE EVENT eventname ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 15 MINUTE DO DELETE FROM `order` WHERE order_id = ? AND `status` LIKE 'ORDER'";
 	
 	public OrderDAO(Connection connection) {
 		super();
