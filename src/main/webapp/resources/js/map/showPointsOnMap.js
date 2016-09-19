@@ -6,7 +6,7 @@ var map;
 function map_initialize() {
 	//console.log("map_initialize");
     //Google map option
-	if(mapZoom == undefined){
+	if(typeof mapZoom == 'undefined'){
 		mapZoom = 11;
 	}
 	

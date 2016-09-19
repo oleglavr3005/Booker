@@ -1,4 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="i" uri="../WEB-INF/PrintImage.tld"%>
@@ -290,13 +289,11 @@ b {
 											style="color: #0d0d0d;"><i class="material-icons invert">tv</i></a>
 									</c:if>
 								</div>
-								<div class="row right-align">
-									<span style="font-size: 1rem" class="order_cart_time_left"></span>:
-								</div>
-								<div class="row right-align">
-									<span id="timer${order.id}" style="color: #F55151; font-size: 2rem">
+								<div class="row right-align" style="text-align: center;">
+									<span style="font-size: 1rem; padding-right: 8px;" class="order_cart_time_left"></span>:
+									<span id="timer${order.id}" style="color: #F55151; font-size: 1.2rem">
 										<script type="text/javascript">
-										startTimer('${order.orderDate}', '${order.id}');
+											startTimer('${order.orderDate}', '${order.id}');
 										</script>
 									</span>
 								</div>
