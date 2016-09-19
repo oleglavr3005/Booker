@@ -138,13 +138,18 @@
 
 					<div class="row">
 						<div class="col s4">
-							<a href="#!"><img id="avatarImg"
-								style="max-height: 200px; padding: 10px; max-width: 290px; float: right"
-								<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
+							<div class="row">
+								<a href="#!"><img id="avatarImg"
+									style="max-height: 200px; padding: 10px; max-width: 290px; float: right"
+									<%-- 								src="${pageContext.servletContext.contextPath}/resources/images/avatar/${user.image}"> --%>
 								src="<i:urlToImage url="${user.image}" />">
-							</a> <input style="margin-top: 60px; display: none" type="file"
-								id="avatarInput" onchange="showPhoto()" accept="image/*" /> <label
-								style="padding-left: 10px;" id="settings_avatar_info"></label>
+								</a> <input style="margin-top: 60px; display: none" type="file"
+									id="avatarInput" onchange="showPhoto()" accept="image/*" />
+							</div>
+
+							<div class="row">
+								<label style="padding-left: 70px;" id="settings_avatar_info"></label>
+							</div>
 						</div>
 						<div class="col s7 offset-s1">
 
