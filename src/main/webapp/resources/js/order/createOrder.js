@@ -161,34 +161,48 @@ function bookOrderCard(orderId, daysCount) {
 function addToCart(roomId) {
 	var rooms = $('#ids'+roomId).val();
 	var am = $('#countOfRooms'+roomId).val();
-	$.post('../add_to_cart', {
-		allRoomIds : rooms,
-		amount : am,
-		people : $('#people').val(),
-		startDate : $('#date_from').val(),
-		endDate : $('#date_to').val(),
-	}, function(result) {
-		$('#btn' + roomId).onclick = null;
-		if (result == 'true') {
-			$('#btn' + roomId).attr('disabled', true);			
-			var url = window.location.href;
-			var compare = $('#compare').val();
-			var pageNumber = $('#pageNmb').val();
-			$.get(url, {
-				flag : 'true',
-				page : pageNumber,
-				compareBy : compare
-			}, function(orders) {
-				 Materialize.toast(languages.script.current.cart.addSucces, 3000);
-				$('#switchContent').html(orders);
-				$(document).ready(updateLanguage());
-			});
-		} else {
-			 Materialize.toast(languages.script.current.cart.addFail, 3000);
-			$('#btn' + roomId).text(languages.script.current.createOrder.error);
-			$('#btn' + roomId).attr('disabled', true);
-		}
-	});
+	if (validCart(roomId)){
+		$.post('../add_to_cart', {
+			allRoomIds : rooms,
+			amount : am,
+		//	people : $('#people').val(),
+			startDate : $('#date_from').val(),
+			endDate : $('#date_to').val(),
+		}, function(result) {
+			$('#btn' + roomId).onclick = null;
+			if (result == 'true') {
+				$('#btn' + roomId).attr('disabled', true);			
+				var url = window.location.href;
+				var compare = $('#compare').val();
+				var pageNumber = $('#pageNmb').val();
+				$.get(url, {
+					flag : 'true',
+					page : pageNumber,
+					compareBy : compare
+				}, function(orders) {
+					 Materialize.toast(languages.script.current.cart.addSucces, 3000);
+					$('#switchContent').html(orders);
+					$(document).ready(updateLanguage());
+				});
+			} else {
+				 Materialize.toast(languages.script.current.cart.addFail, 3000);
+				$('#btn' + roomId).text(languages.script.current.createOrder.error);
+				$('#btn' + roomId).attr('disabled', true);
+			}
+		});
+	}
+}
+
+function validCart(roomId){
+	var am = $('#countOfRooms'+roomId).val();
+	if (am > 0){
+		valid('countOfRooms'+roomId);
+		return true;
+	}
+	else {
+		invalid('countOfRooms'+roomId);
+		return false;
+	}
 }
 
 function isInfoValid() {
@@ -216,7 +230,7 @@ function textIsValid(field) {
 }
 
 function validateComment(comment,orderId) {
-	if (comment == "" || (comment.length >= 5 && comment.length <= 1000 && textIsValid(comment))) {
+	if (comment == "" || (comment.length >= 5 && comment.length <= 999 && textIsValid(comment))) {
 		valid('comment' + orderId);
 		return true;
 	} else {

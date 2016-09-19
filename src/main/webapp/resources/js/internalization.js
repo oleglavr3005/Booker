@@ -693,6 +693,7 @@
 			addressLbl : "Некоректна адреса",
 			phoneLbl : "Некоректний номер телефону",
 			descLbl : "Некоректний опис",
+			countOfRooms : "Некоректнo",
 
 			header_regist_succes : "header_regist_succes",
 			header_regist_confirmmail : "header_regist_confirmmail",
@@ -709,6 +710,7 @@
 			addressLbl : "Invalid address",
 			phoneLbl : "Invalid phone number",
 			descLbl : "Invalid decription",
+			countOfRooms : "Invalid field",
 
 			header_regist_succes : "header_regist_succes",
 			header_regist_confirmmail : "header_regist_confirmmail",

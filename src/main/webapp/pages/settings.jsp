@@ -266,7 +266,7 @@
 								id="settings_enter_email"></span></label>
 
 							<p>
-								<input style="" type="checkbox" class="filled-in" id="eMailBox"
+								<input onclick="saveMailNotif()" style="" type="checkbox" class="filled-in" id="eMailBox"
 									name="eMailBox"
 									<c:if
 								test="${user.email.substring(user.email.length()-1) == '*'}">disabled</c:if> />
