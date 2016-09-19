@@ -338,8 +338,7 @@ div #sidebar-wrapper {
 											<span class="subscribes_table_roomtype_lux"></span>
 										</c:if> <c:if test="${room.type == 'DELUX'}">
 											<span class="subscribes_table_roomtype_delux"></span>
-										</c:if>
-									</td>
+										</c:if></td>
 									<td>${room.doubleBedsCount * 2 + room.bedsCount}</td>
 									<td><c:if test="${room.wifi == true}">
 											<a class="tooltipped index_room_wifi" data-position="icon"
@@ -367,7 +366,16 @@ div #sidebar-wrapper {
 									<td><a class="tooltipped tooltip_food"
 										data-position="icon" data-tooltip="Food"
 										style="color: #0d0d0d;"><i
-											class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <span>${room.food}</span></td>
+											class="fa fa-lg fa-cutlery invert" aria-hidden="true"></i></a> <c:if
+											test="${room.food == 'NONE'}">
+											<span class="subscribes_table_roomfood_none"></span>
+										</c:if> <c:if test="${room.food == 'BREAKFAST'}">
+											<span class="subscribes_table_roomfood_breakfast"></span>
+										</c:if> <c:if test="${room.food == 'TWICE'}">
+											<span class="subscribes_table_roomfood_twice"></span>
+										</c:if> <c:if test="${room.food == 'FULL'}">
+											<span class="subscribes_table_roomfood_full"></span>
+										</c:if></td>
 									<td><c:if test="${room.daysCount >= 0}">
 											<span class="glyphicon glyphicon-remove-sign"
 												aria-hidden="true"></span>
