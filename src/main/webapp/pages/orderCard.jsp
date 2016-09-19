@@ -28,14 +28,16 @@
 		var currentDate = new Date();
 		var orderDate = new Date(date);
 		var minutesLeft = 29 - Math.floor(Math.abs(currentDate - orderDate) / (1000 * 60));
+		var orMinutesLeft = minutesLeft;
 		var secondsLeft = 59 - Math.floor((Math.abs(currentDate - orderDate) / 1000) % 60 );
+		var orSecondsLeft = secondsLeft;
 		if(minutesLeft < 10) {
 			minutesLeft = "0" + minutesLeft;
 		}
 		if(secondsLeft < 10) {
 			secondsLeft = "0" + secondsLeft;
 		}
-		if(secondsLeft == "00" && minutesLeft == "00") {
+		if(orSecondsLeft <= 0 && orMinutesLeft <= 0) {
 			clearInterval(refreshIntervalId);
 			//reload cart
 			setTimeout(function() { 
@@ -292,10 +294,10 @@ b {
 								</div>
 								<div class="row right-align" style="text-align: center;">
 									<span style="font-size: 1rem; padding-right: 3px;" class="order_cart_time_left"></span>:
-									<span id="timer${order.id}" style="padding-left: 3px;color: #F55151; font-size: 1.2rem">
+									
 								</div>
 								<div class="row right-align" style="text-align: center;">
-									
+										<span id="timer${order.id}" style="padding-left: 3px;color: #F55151; font-size: 2rem">
 										<script type="text/javascript">
 											startTimer('${order.orderDate}', '${order.id}');
 										</script>
