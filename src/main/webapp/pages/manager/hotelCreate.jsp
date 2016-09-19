@@ -326,11 +326,9 @@
 														data-tooltip="Room service" style="color: #0d0d0d; float:right"><i id="con5"
 														class="material-icons invert" style="display:none; font-size:1.3rem">room_service</i></a>
 
-													<a id="index_room_cleaner" class="tooltipped"
-														data-position="icon" data-tooltip="Dry cleaner"><img
-														class="invert" id="con6"
-														style="display:none; max-width: 17%; max-height: 17%; float:right"
-														src="${pageContext.servletContext.contextPath}/resources/images/cleaner.png" /></a>
+													<a id="index_room_cleaner" class="tooltipped" data-position="icon"
+														data-tooltip="Dry cleaner" style="color: #0d0d0d; float:right"><i id="con6"
+														class="material-icons invert" style="display:none; font-size:1.3rem">local_laundry_service</i></a>
 								</div>
 							</div>
 
