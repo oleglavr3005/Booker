@@ -93,7 +93,7 @@ function simpleSearch() {
 function searchForm() {
 	var flag = true;
 	flag = nameIsValid($('#nam').val()) && flag;
-	flag = peopleIsValid($('#people').val()) && flag;
+	//flag = peopleIsValid($('#people').val()) && flag;
 	flag = startDateIsValid() && flag;
 	flag = endDateIsValid() && flag;
 	if (flag) {
