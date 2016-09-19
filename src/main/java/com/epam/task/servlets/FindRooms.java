@@ -49,9 +49,9 @@ public class FindRooms extends HttpServlet {
 		String startDateString = request.getParameter("startDate");
 		String endDateString = request.getParameter("endDate");
 		String hotelIdString = request.getParameter("hotelId");
-		String peopleString = request.getParameter("people");
+		//String peopleString = request.getParameter("people");
 		
-		if(startDateString == null || endDateString == null || !isPositiveInteger(hotelIdString) || !isPositiveInteger(peopleString)) {	
+		if(startDateString == null || endDateString == null || !isPositiveInteger(hotelIdString)) {	
         	LOGGER.error("Invalid data injection attempt");	
 			response.sendError(500);
 			return;
@@ -76,7 +76,7 @@ public class FindRooms extends HttpServlet {
 		
 		Hotel hotel = new HotelService().getHotelById(hotelId);
 		
-		int people = Integer.parseInt(peopleString);
+		int people = session.getAttribute("people") == null ? 1 : Integer.parseInt(session.getAttribute("people").toString());
 		session.setAttribute("people", people);
 		
 		boolean typeStandart = session.getAttribute("typeStandart") == null ? false : (boolean) session.getAttribute("typeStandart");

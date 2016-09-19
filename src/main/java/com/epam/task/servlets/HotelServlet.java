@@ -179,7 +179,7 @@ public class HotelServlet extends HttpServlet {
 		request.setAttribute("feedbacks", FeedbackDto.listConverter(feedbacks));
 		request.setAttribute("rooms", roomTemplatesByPage);		
 		
-		request.setAttribute("countOfRooms", roomTemplates.size());
+		request.setAttribute("countOfRooms", allRooms.size());
 		request.setAttribute("countOfPages", countOfPages);
 		request.setAttribute("currentPage", page);		
 

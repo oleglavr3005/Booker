@@ -325,7 +325,7 @@
 									<c:if test="${request.status == 'DECLINED'}">style="display:none"
 								</c:if>
 									id="admin_request_status_pending">PENDING</span> <span
-									<c:if test="${request.status == 'PENDING'}"> style="display:none" </c:if>
+									<c:if test="${request.status == null || request.status == 'PENDING'}"> style="display:none" </c:if>
 									id="admin_request_status_declined">DECLINED</span>
 							</div>
 						</div>
