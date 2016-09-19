@@ -192,7 +192,12 @@
 
 
 
-				<div class="row" id="row0" style="display: none">
+				<div class="row" id="row0" style="display: none; margin-top: -25px;">
+
+					<h5>
+						<span id="shopping_cart_row_header"></span>
+					</h5>
+
 					<div class="col s4">
 						<a id="href01" href="http://localhost:8080/booker/hotel/"> <img
 							id="img0" src="<i:urlToImage url="new_hotel.jpg" />"
