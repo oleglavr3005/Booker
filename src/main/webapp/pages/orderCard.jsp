@@ -44,7 +44,7 @@
 					page : $('#pageNmb').val()
 				}, function(orders) {
 					$('#switchContent').html(orders);
-					updateLanguage();
+					$(document).ready(updateLanguage());
 				});			
 			}, 1000);
 		}
