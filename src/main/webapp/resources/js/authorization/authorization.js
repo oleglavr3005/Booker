@@ -37,6 +37,7 @@ function forgot(){
 		if(result == 'false'){
 			invalid('emailAuth');
 		}else{
+			Materialize.toast(languages.script.current.forgot.pass, 3000);
 	//		document.location.href = '/Periodical/' + result + '/home';
 		}
 	});
