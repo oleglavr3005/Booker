@@ -715,7 +715,7 @@
 			ratingLbl : "Rating from 1 to 5 stars ",
 			addressLbl : "Invalid address",
 			phoneLbl : "Invalid phone number",
-			descLbl : "Invalid decription",
+			descLbl : "Invalid description",
 			countOfRooms : "Invalid field",
 
 			header_regist_succes : "header_regist_success",
@@ -908,11 +908,11 @@
 			last : "Last",
 			hotel : {
 				createSucces : "hotel was created",
-				createFail : "hotel wasnt created",
+				createFail : "hotel wasn't created",
 				updateSucces : "hotel was updated",
-				updateFail : "hotel wasnt updated",
+				updateFail : "hotel wasn't updated",
 				wrongData : "INVALID DATA",
-				numberBusy : "this number is allready in use",
+				numberBusy : "this number is already in use",
 				is_max : " - is maximum count of images",
 				enter_key : "Enter Keywords Here",
 				rows_per_page : "Rows per page:",
@@ -927,7 +927,7 @@
 			    },
 			},
 			createOrder : {
-				error : "ERROR OCCURED",
+				error : "ERROR OCCURRED",
 				cvvError : "Card number is wrong",
 				cardError : "Card number is wrong",
 				succes : "SUCCESS",
@@ -1100,7 +1100,7 @@
 				second_month : 'Другий місяць',
 				third_month : 'Третій місяць'
 			},
-			message_error : 'Неможли додати коментар',
+			message_error : 'Неможливо додати коментар',
 			info_toggle_open : 'Показати додаткову інформацію',
 			info_toggle_hide : 'Сховати додаткову інформацію',
 			first : "Перша",
