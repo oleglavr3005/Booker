@@ -31,7 +31,7 @@
 		page_not_found : "Page not found",
 		hotel_manager : "Manager",
 		
-		shopping_cart_row_header : "Maybe it will be interest for you : ",
+		shopping_cart_row_header : "Maybe it will be interesting for you : ",
 
 		comment_not_user : "Log in to post a feedback",
 		shopping_card_notice : "Notice: your orders will be stored in the shopping cart only for 15 minutes!",
@@ -370,7 +370,7 @@
 		page_not_found : "Сторінку не знайдено",
 		hotel_manager : "Менеджер",
 		
-		shopping_cart_row_header : "Vожливо вас також зацікавить : ",
+		shopping_cart_row_header : "Можливо вас також зацікавить : ",
 
 		comment_not_user : "Ввійдіть, щоб залишити відгук",
 		shopping_card_notice : "Увага: ваші замовлення будуть зберігатися в кошику лише протягом 15 хвилин!",
@@ -386,7 +386,7 @@
 		tab_manage : "Менеджер",
 		tab_request : "Запити",
 		admin_page_id : "ID",
-		admin_page_fName : "І'мя",
+		admin_page_fName : "Ім'я",
 		admin_page_lName : "Прізвище",
 		admin_page_mail : "E-mail",
 		admin_page_phone : "Телефон",
@@ -552,7 +552,7 @@
 		footer_social_google_plus : "Google +",
 		footer_copyright : "Всі права зарезервовані.",
 
-		header_regist_name : "І'мя",
+		header_regist_name : "Ім'я",
 		header_regist_surname : "Прізвище",
 		header_regist_mail : "E-mail",
 		header_regist_pass : "Пароль",
@@ -571,7 +571,7 @@
 		// файл не выбран??
 		settings_header : "Налаштування",
 		settings_header_PERSONAL : "Особиста інформація",
-		settings_enter_name : "І'мя",
+		settings_enter_name : "Ім'я",
 		settings_enter_surname : "Прізвище",
 		settings_avatar_info : "Натисніть на фотографію для її зміни",
 		settings_enter_save : "Зберегти",
@@ -596,7 +596,7 @@
 		card_no_periodicals : "Наявних  пропозицій немає",
 		card_no_hotels : "Готелів не знайдено",
 		card_no_orders : "Ваш кошик порожній",
-		room_card_count : "Вартість кімнати??",
+		room_card_count : "Вартість кімнати",
 		room_card_info1 : "Вам буде повернено 100% коштів у разі відміни замовлення не пізніше, ніж за ",
 		room_card_info2 : " днів до приїзду, після цього сума повернення становитиме лише ",
 		room_card_info3 : "Без передплати",
@@ -652,7 +652,7 @@
 		admin_deleted : "Видалити",
 		// admin page
 		admin_page_id : "ID",
-		admin_page_fName : "І'мя",
+		admin_page_fName : "Ім'я",
 		admin_page_lName : "Прізвище",
 		admin_page_mail : "E-mail",
 		admin_page_phone : "Телефон",
@@ -689,7 +689,7 @@
 	
 	var data_error = {
 		ua : {
-			nameLbl : "Некоректне і'мя",
+			nameLbl : "Некоректне ім'я",
 			surnameLbl : "Некоректне прізвище",
 			emailLbl : "Некоректний e-mail",
 			passwordLbl : "Некоректний пароль",
@@ -701,7 +701,7 @@
 			descLbl : "Некоректний опис",
 			countOfRooms : "Некоректнo",
 
-			header_regist_succes : "header_regist_succes",
+			header_regist_succes : "header_regist_success",
 			header_regist_confirmmail : "header_regist_confirmmail",
 			header_error_fail : "header_error_fail",
 		},
@@ -718,7 +718,7 @@
 			descLbl : "Invalid decription",
 			countOfRooms : "Invalid field",
 
-			header_regist_succes : "header_regist_succes",
+			header_regist_succes : "header_regist_success",
 			header_regist_confirmmail : "header_regist_confirmmail",
 			header_error_fail : "header_error_fail",
 
@@ -930,8 +930,8 @@
 				error : "ERROR OCCURED",
 				cvvError : "Card number is wrong",
 				cardError : "Card number is wrong",
-				succes : "SUCCES",
-				removed : "REMOVED!",
+				succes : "SUCCESS",
+				removed : "Cancelled",
 				fald : "FAIL",
 			},
 			registration : {
@@ -1000,7 +1000,10 @@
 				info1 : "You will get 100% refund if you cancel the order at least in",
 				info2 : " days before moving in, after this date the sum will be only",
 				info3 : "Free book",
-			}
+			},
+			forgot : {
+				 pass : "New password was sent on your email",
+				}
 		},
 		ua : {
 			title : {
@@ -1197,7 +1200,10 @@
 				info1 : "Вам буде повернено 100% коштів у разі відміни замовлення не пізніше, ніж за ",
 				info2 : "днів до приїзду, після цього сума повернення становитиме лише ",
 				info3 : "Без передплати",
-			}
+			},
+			forgot : {
+				 pass : "Новий пароль був відправлений на вашу пошту",
+				}
 		},
 	};
 	
