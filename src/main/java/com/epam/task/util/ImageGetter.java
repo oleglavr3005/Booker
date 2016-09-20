@@ -26,7 +26,7 @@ public class ImageGetter {
 			s.close();
 		} catch (Exception e){
         	LOGGER.error("Error while getting image", e);
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 }

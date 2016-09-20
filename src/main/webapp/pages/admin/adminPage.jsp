@@ -314,7 +314,15 @@
 		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('#users').DataTable({
+			$('#users').DataTable(
+				{
+					"oLanguage" : { 
+						"sInfo" : languages.script.current.hotel.sInfo,
+						"sSearchPlaceholder" : languages.script.current.hotel.enter_key,
+						 "sLengthMenu" :  languages.script.current.hotel.sLengthMenu,
+						 "sSearch":  languages.script.current.hotel.sSearch,
+						 "oPaginate": languages.script.current.hotel.oPaginate
+					},
 				stateSave : true,
 				'length.dt': function(settings ) {
 					$('#users').ready(updateLanguage()); 
@@ -326,6 +334,13 @@
 					                }
 			});
 			$('#requests').DataTable({
+				"oLanguage" : { 
+					"sInfo" : languages.script.current.hotel.sInfo,
+					"sSearchPlaceholder" : languages.script.current.hotel.enter_key,
+					 "sLengthMenu" :  languages.script.current.hotel.sLengthMenu,
+					 "sSearch":  languages.script.current.hotel.sSearch,
+					 "oPaginate": languages.script.current.hotel.oPaginate
+				},
 				stateSave : true
 			});
 		});

@@ -113,7 +113,9 @@ div #sidebar-wrapper {
 }
 </style>
 </head>
-
+<script>
+	var mapZoom = 13;
+</script>
 
 <body>
 	<input id="lang" type="hidden" value="${language}" />
