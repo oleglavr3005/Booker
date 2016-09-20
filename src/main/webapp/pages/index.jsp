@@ -53,13 +53,13 @@
 .invertPng {-webkit-filter: brightness(2); filter: brightness(2);}
 
 /* Chrome, Safari, Opera */
-/* @-webkit-keyframes example { */
-/*     0%   {background-color: #F55151; bottom: 50px;} */
-/*     25%  {background-color: red; bottom: 100px;} */
-/*     50%  {background-color: #F55151; bottom: 50px;} */
-/*     75% {background-color: red; bottom: 100px;} */
-/*     100% {background-color: #F55151; bottom: 50px;} */
-/* } */
+ @-webkit-keyframes slide { 
+     0%   {background-color: #F55151; bottom: 50px;} 
+     25%  {background-color: red; bottom: 100px;} 
+     50%  {background-color: #F55151; bottom: 50px;} 
+     75% {background-color: red; bottom: 100px;} 
+     100% {background-color: #F55151; bottom: 50px;} 
+}
 
 #fixedbutton {
     position: fixed;
@@ -71,10 +71,10 @@
 	border-radius: 30px; 
 	box-shadow: 5px 5px 7px grey;
 	
-/* 	-webkit-animation-name: example; /* Chrome, Safari, Opera */ */
-/*     -webkit-animation-duration: 2s; /* Chrome, Safari, Opera */ */
-/*     animation-name: example; */
-/*     animation-duration: 2s; */
+ 	-webkit-animation-name: slide; /* Chrome, Safari, Opera */ 
+     -webkit-animation-duration: 1s; /* Chrome, Safari, Opera */ 
+     animation-name: slide; 
+     animation-duration: 2s; 
 }
 
 #fixedbutton:hover {

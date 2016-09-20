@@ -26,7 +26,7 @@ public class LogOutServlet extends HttpServlet {
 		if(user != null) {
 			session.setAttribute("language", user.getLanguage());
 		}
-		response.sendRedirect("home");
+		response.sendRedirect(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
