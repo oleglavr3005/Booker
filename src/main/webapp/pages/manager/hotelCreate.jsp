@@ -123,8 +123,9 @@
 					<!-- 				END OF INPUT -->
 				</div>
 				<div class="row">
-					<p style="margin-top: 20px;">
-						<input type="checkbox" class="filled-in" id="sendNotif"
+					<p style="margin-top: 20px;display : none">
+						<input 
+						type="checkbox" class="filled-in" id="sendNotif"
 							name="sendNotif" /> <label for="sendNotif"> <span
 							id=lbl_sendnotif>SEND NOTIF</span></label>
 					</p>

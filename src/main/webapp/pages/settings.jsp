@@ -240,8 +240,10 @@
 								id="phoneLbl" data-error="${fmtName}" for="phoneNumber"><span
 								id="settings_enter_phone"></span> </label>
 
-							<p>
-								<input type="checkbox" class="filled-in" id="phoneCheckBox"
+							<p
+								style="display : none">
+								<input 						
+								type="checkbox" class="filled-in" id="phoneCheckBox"
 									name="phonoCheckBox"
 									<c:if
 								test="${user.phoneNumber == null || user.phoneNumber == ''}">disabled</c:if> />
@@ -271,8 +273,10 @@
 								data-error="${fmtMail}" for="email"><span
 								id="settings_enter_email"></span></label>
 
-							<p>
-								<input onclick="saveMailNotif()" style="" type="checkbox"
+							<p
+								style="display : none">
+								<input 
+								onclick="saveMailNotif()" style="" type="checkbox"
 									class="filled-in" id="eMailBox" name="eMailBox"
 									<c:if
 								test="${user.email.substring(user.email.length()-1) == '*'}">disabled</c:if> />

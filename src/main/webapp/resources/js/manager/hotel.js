@@ -145,7 +145,7 @@ function engLetIsValid(field) {
 }
 
 function textIsValid(field) {
-	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’,?=+-_.!/'" ]*)$/;
+	var re = /^([a-zA-Zа-яА-Я0-9іІьїЇєЄ’,?=+-_.!/'"\n ]*)$/;
 	return re.test(field);
 }
 
