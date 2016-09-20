@@ -911,7 +911,7 @@
 				createFail : "hotel wasn't created",
 				updateSucces : "hotel was updated",
 				updateFail : "hotel wasn't updated",
-				wrongData : "INVALID DATA",
+				wrongData : "Invalid data",
 				numberBusy : "this number is already in use",
 				is_max : " - is maximum count of images",
 				enter_key : "Enter Keywords Here",
